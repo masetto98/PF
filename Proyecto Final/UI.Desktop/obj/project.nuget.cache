@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "7CFIf+FogXgio6R9kQY2vcn0ZhxSFOU9UGbpZz7wsvbL4pwoQyoO70EDW3Tzm9dqhXiqP+8hKIly2zeCTMwvBw==",
+  "dgSpecHash": "TVNzmDEAMT0jGs1WJP60KqeHQgto+ZA3tMMIjnXYagIzRgfPPdeF8FGGQGgGUFntatMfWmVE5niS3IuCeyckWw==",
   "success": true,
-  "projectFilePath": "D:\\Proyectos\\PF\\Proyecto Final\\UI.Desktop\\UI.Desktop.csproj",
+  "projectFilePath": "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\UI.Desktop\\UI.Desktop.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema al leer el archivo de caché C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\UI.Desktop\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

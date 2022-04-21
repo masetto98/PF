@@ -8,19 +8,19 @@
     "net5.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\SANTI-PC\\.nuget\\packages\\": {}
+    "C:\\Users\\manud\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Proyectos\\PF\\Proyecto Final\\UI.Desktop\\UI.Desktop.csproj",
+      "projectUniqueName": "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\UI.Desktop\\UI.Desktop.csproj",
       "projectName": "UI.Desktop",
-      "projectPath": "D:\\Proyectos\\PF\\Proyecto Final\\UI.Desktop\\UI.Desktop.csproj",
-      "packagesPath": "C:\\Users\\SANTI-PC\\.nuget\\packages\\",
-      "outputPath": "D:\\Proyectos\\PF\\Proyecto Final\\UI.Desktop\\obj\\",
+      "projectPath": "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\UI.Desktop\\UI.Desktop.csproj",
+      "packagesPath": "C:\\Users\\manud\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\UI.Desktop\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\SANTI-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\manud\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -66,5 +66,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema al leer el archivo de caché C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\UI.Desktop\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

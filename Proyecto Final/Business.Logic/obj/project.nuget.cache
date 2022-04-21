@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "y5eo8udunv56RrMusvv/Hk2ua50bJCJsbnylqv55D8mqIggukVWCwKrp6d/GOA+TIs4o+jyTliLTDg+0SzfLNw==",
+  "dgSpecHash": "1Lv6QazcrD3tj4hXeytq9haxkFg6+Sx3eK1b3eaZaDbMa8mdbfE1mc/hNhCEUY0tKGbBmXy+SlLU6SapF9a/2w==",
   "success": true,
-  "projectFilePath": "D:\\Proyectos\\PF\\Proyecto Final\\Business.Logic\\Business.Logic.csproj",
+  "projectFilePath": "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Business.Logic\\Business.Logic.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema al leer el archivo de caché C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Business.Logic\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

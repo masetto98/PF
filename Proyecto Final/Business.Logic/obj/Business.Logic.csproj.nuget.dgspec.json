@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Proyectos\\PF\\Proyecto Final\\Business.Logic\\Business.Logic.csproj": {}
+    "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Business.Logic\\Business.Logic.csproj": {}
   },
   "projects": {
-    "D:\\Proyectos\\PF\\Proyecto Final\\Business.Logic\\Business.Logic.csproj": {
+    "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Business.Logic\\Business.Logic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Proyectos\\PF\\Proyecto Final\\Business.Logic\\Business.Logic.csproj",
+        "projectUniqueName": "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Business.Logic\\Business.Logic.csproj",
         "projectName": "Business.Logic",
-        "projectPath": "D:\\Proyectos\\PF\\Proyecto Final\\Business.Logic\\Business.Logic.csproj",
-        "packagesPath": "C:\\Users\\SANTI-PC\\.nuget\\packages\\",
-        "outputPath": "D:\\Proyectos\\PF\\Proyecto Final\\Business.Logic\\obj\\",
+        "projectPath": "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Business.Logic\\Business.Logic.csproj",
+        "packagesPath": "C:\\Users\\manud\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Business.Logic\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\SANTI-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\manud\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
