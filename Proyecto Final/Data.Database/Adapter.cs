@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
+using System.Configuration;
 
 namespace Data.Database
 {
@@ -9,14 +9,10 @@ namespace Data.Database
     {
         const string consKeyDefaultCnnString = "ConnStringLocal";
         protected SqlConnection sqlConn;
+        
         protected void OpenConnection()
         {
-            var configuration = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .Build();
-            string connectionString = configuration.GetConnectionString("ConnStringLocal");
-            //var connectionString = @"Server=(localdb)\mssqllocaldb;Database=academia;Trusted_Connection=True;MultipleActiveResultSets=true";
-            //var connectionString = @"Server=.\LOCALHOST;Database=academia; User=net; Password=net";
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnStringDefault"].ConnectionString;
             this.sqlConn = new SqlConnection(connectionString);
             sqlConn.Open();
         }
@@ -26,5 +22,7 @@ namespace Data.Database
             sqlConn.Close();
             sqlConn = null;
         }
+
+        
     }
 }
