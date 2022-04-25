@@ -14,6 +14,10 @@ namespace Business.Entities
         private int _idServicio;
         private int _idTipoPrenda;
         private int _ordenItem;
+        private Maquina _maquina;
+        private Orden _orden;
+        private Servicio _servicio;
+        private TipoPrenda _tipoPrenda;
 
         public int IdMaquina
         {
@@ -45,6 +49,30 @@ namespace Business.Entities
         {
             get { return _ordenItem; }
             set { _ordenItem = value; }
+        }
+
+        public Maquina Maquina
+        {
+            get { return _maquina; }
+            set { _maquina = value; }
+        }
+
+        public Servicio Servicio
+        {
+            get { return _servicio; }
+            set { _servicio = value; }
+        }
+
+        public TipoPrenda TipoPrenda
+        {
+            get { return _tipoPrenda; }
+            set { _tipoPrenda = value; }
+        }
+
+        public Orden Orden
+        {
+            get { return _orden; }
+            set { _orden = value; }
         }
     }
 }

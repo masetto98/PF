@@ -11,7 +11,8 @@ namespace Business.Entities
         private int _idServicio;
         private int _idTipoPrenda;
         private DateTime _tiempoRequerido; // esta debe ser una variable que indique el tiempo que tarda un servicio para un determinado tipo de prenda
-
+        private Servicio _servicio;
+        private TipoPrenda _tipoPrenda;
         public int IdServicio
         {
             get { return _idServicio; }
@@ -28,6 +29,18 @@ namespace Business.Entities
         {
             get { return _tiempoRequerido; }
             set { _tiempoRequerido = value; }
+        }
+
+        public Servicio Servicio
+        {
+            get { return _servicio; }
+            set { _servicio = value; }
+        }
+
+        public TipoPrenda TipoPrenda
+        {
+            get { return _tipoPrenda; }
+            set { _tipoPrenda = value; }
         }
     }
 }

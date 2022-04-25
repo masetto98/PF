@@ -18,6 +18,10 @@ namespace Business.Entities
         private DateTime _tiempoEntregaEstimado; //necesitamos que cuente el tiempo estimado para que se realiza el pedido
         private DateTime _tiempoEntregaReal; // lo mismo que el de arriba
         private string _estado;
+        private Cliente _cliente;
+        private Empleado _empleado;
+        private Factura _factura;
+        private Empleado _emplAtencion;
 
         public int NroOrden
         {
@@ -77,6 +81,30 @@ namespace Business.Entities
         {
             get { return _estado; }
             set { _estado = value; }  //esto deberia ser parte del la relacion entre la orden y el item
+        }
+
+        public Cliente Cliente
+        {
+            get { return _cliente; }
+            set { _cliente = value; }
+        }
+
+        public Empleado Empleado
+        {
+            get { return _empleado; }
+            set { _empleado = value; }
+        }
+
+        public Empleado EmpleadoAtencion
+        {
+            get { return _emplAtencion; }
+            set { _emplAtencion = value; }
+        }
+
+        public Factura Factura
+        {
+            get { return _factura; }
+            set { _factura = value; }
         }
 
     }

@@ -12,7 +12,7 @@ namespace Business.Entities
         private DateTime _fechaRealizado;
         private string _descripcion;
         private decimal _costo;
-
+        private Maquina _maquina;
         public int IdMaquina 
         {
             get { return _idMaquina; }
@@ -35,6 +35,12 @@ namespace Business.Entities
         {
             get { return _costo; }
             set { _costo = value; }
+        }
+
+        public Maquina Maquina
+        {
+            get { return _maquina; }
+            set { _maquina = value; }
         }
     }
 }

@@ -12,6 +12,8 @@ namespace Business.Entities
         private int _idInsumo;
         private DateTime _fechaIngreso;
         private decimal _cantidad;
+        private Proveedor _proveedor;
+        private Insumo _insumo;
 
         public string CuitProveedor
         {
@@ -36,6 +38,19 @@ namespace Business.Entities
             get { return _cantidad; }
             set { _cantidad = value; }
         }
+
+        public Proveedor Proveedor
+        {
+            get { return _proveedor; }
+            set { _proveedor = value; }
+        }
+
+        public Insumo Insumo
+        {
+            get { return _insumo; }
+            set { _insumo = value; }
+        }
+    }
 
     }
 }

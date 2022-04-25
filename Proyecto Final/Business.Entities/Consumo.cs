@@ -13,6 +13,9 @@ namespace Business.Entities
         private int _idTipoPrenda;
         private DateTime _fechaDesde;
         private decimal _cantidad;
+        private Insumo _insumo;
+        private Servicio _servicio;
+        private TipoPrenda _tipoPrenda;
 
         public int IdInsumo
         {
@@ -42,6 +45,24 @@ namespace Business.Entities
         {
             get { return _cantidad; }
             set { _cantidad = value; }
+        }
+
+        public Insumo Insumo 
+        {
+            get { return _insumo; }
+            set { _insumo = value; }
+        }
+
+        public Servicio Servicio
+        {
+            get { return _servicio; }
+            set { _servicio = value; }
+        }
+
+        public TipoPrenda TipoPrenda
+        {
+            get { return _tipoPrenda; }
+            set { _tipoPrenda = value; }
         }
     }
 }

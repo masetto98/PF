@@ -11,7 +11,7 @@ namespace Business.Entities
         private int _nroFactura;
         private DateTime _fechaPago;
         private decimal _importe;
-
+        private Factura _factura;
         public int NroFactura
         {
             get { return _nroFactura; }
@@ -28,6 +28,12 @@ namespace Business.Entities
         {
             get { return _importe; }
             set { _importe = value; }
+        }
+
+        public Factura Factura
+        {
+            get { return _factura; }
+            set { _factura = value; }
         }
     }
 }

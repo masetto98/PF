@@ -11,7 +11,9 @@ namespace Business.Entities
         private int _idInsumo;
         private int _idServicio;
         private int _idTipoPrenda;
-
+        private Insumo _insumo;
+        private Servicio _servicio;
+        private TipoPrenda _tipoPrenda;
         public int IdInsumo 
         {
             get {return _idInsumo; }
@@ -29,5 +31,24 @@ namespace Business.Entities
             get { return _idTipoPrenda; }
             set { _idTipoPrenda = value; }
         }
+
+        public Insumo Insumo
+        {
+            get { return _insumo; }
+            set { _insumo = value; }
+        }
+
+        public Servicio Servicio
+        {
+            get { return _servicio; }
+            set { _servicio = value; }
+        }
+
+        public TipoPrenda TipoPrenda
+        {
+            get { return _tipoPrenda; }
+            set { _tipoPrenda = value; }
+        }
     }
+
 }
