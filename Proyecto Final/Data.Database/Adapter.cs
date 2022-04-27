@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Configuration;
-
+using Microsoft.Extensions.Configuration;
 namespace Data.Database
 {
     public class Adapter
@@ -12,7 +11,13 @@ namespace Data.Database
         
         protected void OpenConnection()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["ConnStringDefault"].ConnectionString;
+            //string connectionString = ConfigurationManager.ConnectionStrings["ConnStringDefault"].ConnectionString;
+            //this.sqlConn = new SqlConnection(connectionString);
+           
+            var configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .Build();
+            string connectionString = configuration.GetConnectionString("ConnStringLocal");
             this.sqlConn = new SqlConnection(connectionString);
             sqlConn.Open();
         }
