@@ -52,5 +52,5 @@ namespace Business.Entities
         }
     }
 
-    }
+    
 }

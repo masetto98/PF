@@ -145,6 +145,7 @@ namespace Data.Database
         public DbSet<Orden>? Ordenes { get; set; }
         public DbSet<OrdenServicioTipoPrenda>? OrdenesServiciosTipoPrendas { get; set; }
         public DbSet<Pago>? Pagos { get; set; }
+        public DbSet<Cliente>? Clientes { get; set; }
         public DbSet<Precio>? Precios { get; set; }
         public DbSet<ServicioTipoPrenda>? ServiciosTipoPrendas { get; set; }
         public LavanderiaContext() {}
