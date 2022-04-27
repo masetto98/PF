@@ -1,0 +1,17 @@
+D:\Proyectos\PF\Proyecto Final\Business.Logic\bin\Debug\net5.0\Business.Logic.deps.json
+D:\Proyectos\PF\Proyecto Final\Business.Logic\bin\Debug\net5.0\Business.Logic.dll
+D:\Proyectos\PF\Proyecto Final\Business.Logic\bin\Debug\net5.0\ref\Business.Logic.dll
+D:\Proyectos\PF\Proyecto Final\Business.Logic\bin\Debug\net5.0\Business.Logic.pdb
+D:\Proyectos\PF\Proyecto Final\Business.Logic\bin\Debug\net5.0\Business.Entities.dll
+D:\Proyectos\PF\Proyecto Final\Business.Logic\bin\Debug\net5.0\Data.Database.dll
+D:\Proyectos\PF\Proyecto Final\Business.Logic\bin\Debug\net5.0\Business.Entities.pdb
+D:\Proyectos\PF\Proyecto Final\Business.Logic\bin\Debug\net5.0\Data.Database.pdb
+D:\Proyectos\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\Business.Logic.csproj.AssemblyReference.cache
+D:\Proyectos\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\Business.Logic.GeneratedMSBuildEditorConfig.editorconfig
+D:\Proyectos\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\Business.Logic.AssemblyInfoInputs.cache
+D:\Proyectos\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\Business.Logic.AssemblyInfo.cs
+D:\Proyectos\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\Business.Logic.csproj.CoreCompileInputs.cache
+D:\Proyectos\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\Business.Logic.csproj.CopyComplete
+D:\Proyectos\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\Business.Logic.dll
+D:\Proyectos\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\ref\Business.Logic.dll
+D:\Proyectos\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\Business.Logic.pdb
