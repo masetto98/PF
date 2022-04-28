@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +14,6 @@ namespace Business.Entities
         private string _cuitCliente;
         private string _cuitEmpleado;
         private int _nroFactura;
-        private string _cuitEmpAtencion;
         private string _prioridad;
         private DateTime _fechaEntrada;
         private DateTime _tiempoEntregaEstimado; //necesitamos que cuente el tiempo estimado para que se realiza el pedido
@@ -23,34 +24,29 @@ namespace Business.Entities
         private Factura _factura;
         private Empleado _emplAtencion;
 
+        [Key]
         public int NroOrden
         {
             get { return _nroOrden; }
             set { _nroOrden = value; }
         }
-
+        [ForeignKey("Cliente")]
         public string CuitCliente
         {
             get { return _cuitCliente; }
             set { _cuitCliente = value; }
         }
-
+        [ForeignKey("Empleado")]
         public string CuitEmpleado
         {
             get { return _cuitEmpleado; }
             set { _cuitEmpleado = value; }
         }
-
+        [ForeignKey("Factura")]
         public int NroFactura
         {
             get { return _nroFactura; }
             set { _nroFactura = value; }
-        }
-
-        public string CuitEmpleadoAtencion
-        {
-            get { return _cuitEmpAtencion; }
-            set { _cuitEmpAtencion = value; }
         }
 
         public string prioridad

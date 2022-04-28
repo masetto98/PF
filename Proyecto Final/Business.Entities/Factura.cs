@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace Business.Entities
         private int _nroFactura;
         private DateTime _fechaFactura;
         private decimal _importe;
-
+        [Key]
         public int NroFactura
         {
             get { return _nroFactura; }

@@ -7061,7 +7061,6 @@
     "net5.0-windows7.0": [
       "Business.Entities >= 1.0.0",
       "Business.Logic >= 1.0.0",
-      "Data.Database >= 1.0.0",
       "MaterialSkin.2 >= 2.3.1",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.16",
       "Microsoft.Extensions.Hosting >= 6.0.1"
@@ -7099,9 +7098,6 @@
             },
             "D:\\Proyectos\\PF\\Proyecto Final\\Business.Logic\\Business.Logic.csproj": {
               "projectPath": "D:\\Proyectos\\PF\\Proyecto Final\\Business.Logic\\Business.Logic.csproj"
-            },
-            "D:\\Proyectos\\PF\\Proyecto Final\\Data.Database\\Data.Database.csproj": {
-              "projectPath": "D:\\Proyectos\\PF\\Proyecto Final\\Data.Database\\Data.Database.csproj"
             }
           }
         }

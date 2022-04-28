@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,12 +16,13 @@ namespace Business.Entities
         private Servicio _servicio;
         private TipoPrenda _tipoPrenda;
 
+        [ForeignKey("ServicioTipoPrenda")]
         public int IdServicio
         {
             get { return _idServicio; }
             set { _idServicio = value; }
         }
-
+        [ForeignKey("ServicioTipoPrenda")]
         public int IdTipoPrenda
         {
             get { return _idTipoPrenda; }

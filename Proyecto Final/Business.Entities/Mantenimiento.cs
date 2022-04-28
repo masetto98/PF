@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace Business.Entities
         private string _descripcion;
         private decimal _costo;
         private Maquina _maquina;
+        [ForeignKey("Maquina")]
         public int IdMaquina 
         {
             get { return _idMaquina; }

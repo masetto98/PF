@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,13 +15,13 @@ namespace Business.Entities
         private decimal _cantidad;
         private Proveedor _proveedor;
         private Insumo _insumo;
-
+        [ForeignKey("Proveedor")]
         public string CuitProveedor
         {
             get { return _cuitProveedor; }
             set { _cuitProveedor = value; }
         }
-
+        [ForeignKey("Insumo")]
         public int IdInsumo
         {
             get { return _idInsumo; }

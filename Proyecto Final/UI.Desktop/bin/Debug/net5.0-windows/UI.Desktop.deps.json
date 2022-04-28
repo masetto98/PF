@@ -10,7 +10,6 @@
         "dependencies": {
           "Business.Entities": "1.0.0",
           "Business.Logic": "1.0.0",
-          "Data.Database": "1.0.0",
           "MaterialSkin.2": "2.3.1",
           "Microsoft.EntityFrameworkCore.Design": "5.0.16",
           "Microsoft.Extensions.Hosting": "6.0.1"

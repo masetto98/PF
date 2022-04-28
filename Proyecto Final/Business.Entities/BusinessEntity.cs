@@ -18,7 +18,7 @@ namespace Business.Entities
             Modified,
             Unmodified
         }
-        public int ID
+        /*public int ID
         {
             get
             {
@@ -28,7 +28,7 @@ namespace Business.Entities
             {
                 _ID = value;
             }
-        }
+        }*/
         [NotMapped]
         public States State
         {

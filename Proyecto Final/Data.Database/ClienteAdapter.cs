@@ -30,11 +30,11 @@ namespace Data.Database
             }
             return clientes;
         }
-        public Business.Entities.Cliente GetOne(int ID)
+        public Business.Entities.Cliente GetOne(string Cuit)
         {
             try
             {
-                return _context.Clientes.FirstOrDefault(p => p.ID == ID);
+                return _context.Clientes.FirstOrDefault(p => p.Cuit == Cuit);
             }
             catch (Exception e)
             {
@@ -69,12 +69,12 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
-        public void Delete(int ID)
+        public void Delete(string Cuit)
         {
             Cliente cliente = new Cliente();
             try
             {
-                cliente = _context.Clientes.Find(ID);
+                cliente = _context.Clientes.Find(Cuit);
                 _context.Clientes.Remove(cliente);
                 _context.SaveChanges();
             }
@@ -93,7 +93,7 @@ namespace Data.Database
             }
             else if (cliente.State == BusinessEntity.States.Deleted)
             {
-                this.Delete(cliente.ID);
+                this.Delete(cliente.Cuit);
             }
             else if (cliente.State == BusinessEntity.States.Modified)
             {

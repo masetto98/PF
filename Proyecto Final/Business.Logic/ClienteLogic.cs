@@ -29,11 +29,11 @@ namespace Business.Logic
                 throw ExceptionManejada;
             }
         }
-        public Cliente GetOne(int id)
+        public Cliente GetOne(string cuit)
         {
             try
             {
-                return ClienteData.GetOne(id);
+                return ClienteData.GetOne(cuit);
             }
             catch (Exception e)
             {
@@ -55,11 +55,11 @@ namespace Business.Logic
                 throw ExceptionManejada;
             }
         }
-        public void Delete(int id)
+        public void Delete(string cuit)
         {
             try
             {
-                ClienteData.Delete(id);
+                ClienteData.Delete(cuit);
             }
             catch (Exception e)
             {

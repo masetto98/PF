@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace Business.Entities
     {
         private int _idMaquina;
         private string _descripcion;
-
+        [Key]
         public int IdMaquina 
         {
             get { return _idMaquina; }

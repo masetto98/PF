@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,12 +14,14 @@ namespace Business.Entities
         private DateTime _tiempoRequerido; // esta debe ser una variable que indique el tiempo que tarda un servicio para un determinado tipo de prenda
         private Servicio _servicio;
         private TipoPrenda _tipoPrenda;
+
+        [ForeignKey("Servicio")]
         public int IdServicio
         {
             get { return _idServicio; }
             set { _idServicio = value; }
         }
-
+        [ForeignKey("TipoPrenda")]
         public int IdTipoPrenda
         {
             get { return _idTipoPrenda; }

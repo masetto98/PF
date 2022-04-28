@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace Business.Entities
         private DateTime _fechaPago;
         private decimal _importe;
         private Factura _factura;
+        [ForeignKey("Factura")]
         public int NroFactura
         {
             get { return _nroFactura; }

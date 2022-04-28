@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace Business.Entities
         private string _email;
         private string _direccion;
 
+        [Key]
         public string Cuit
         {
             get { return _cuit; }
