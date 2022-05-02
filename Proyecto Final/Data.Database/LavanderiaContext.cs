@@ -12,6 +12,11 @@ namespace Data.Database
     {
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Usuario>()
+               .HasOne(u => u.Empleado)
+               .WithMany()
+               .OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<Consumo>()
                 .HasOne(c => c.Insumo)
                 .WithMany()
@@ -171,6 +176,8 @@ namespace Data.Database
         public DbSet<Cliente>? Clientes { get; set; }
         public DbSet<Precio>? Precios { get; set; }
         public DbSet<ServicioTipoPrenda>? ServiciosTipoPrendas { get; set; }
+        public DbSet<Usuario>? Usuarios { get; set; }
+        public DbSet<Empleado>? Empleados { get; set; }
         public LavanderiaContext() {}
         public LavanderiaContext(DbContextOptions<LavanderiaContext> options) : base(options) {}
     }

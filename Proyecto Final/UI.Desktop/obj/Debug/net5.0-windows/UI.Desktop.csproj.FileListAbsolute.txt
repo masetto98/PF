@@ -108,3 +108,5 @@ D:\Proyectos\PF\Proyecto Final\UI.Desktop\bin\Debug\net5.0-windows\Data.Database
 D:\Proyectos\PF\Proyecto Final\UI.Desktop\bin\Debug\net5.0-windows\Business.Entities.pdb
 D:\Proyectos\PF\Proyecto Final\UI.Desktop\bin\Debug\net5.0-windows\Business.Logic.pdb
 D:\Proyectos\PF\Proyecto Final\UI.Desktop\bin\Debug\net5.0-windows\Data.Database.pdb
+D:\Proyectos\PF\Proyecto Final\UI.Desktop\obj\Debug\net5.0-windows\UI.Desktop.frmLogin.resources
+D:\Proyectos\PF\Proyecto Final\UI.Desktop\obj\Debug\net5.0-windows\UI.Desktop.EmpleadoDesktop.resources

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,25 +16,20 @@ namespace Business.Entities
             Usuario = 2,
         }
         private string _cuit;
-        private string _razon_social;
         private string _nombre;
         private string _apellido;
         private string _telefono;
         private string _email;
         private string _direccion;
+        [DataType(DataType.Date)]
         private DateTime _fechaInicio;
         public TiposEmpleado _tipoEmpleado;
         [Key]
+        [Column("cuit")]
         public string Cuit
         {
             get { return _cuit; }
             set { _cuit = value; }
-        }
-
-        public string RazonSocial
-        {
-            get { return _razon_social; }
-            set { _razon_social = value; }
         }
 
         public string Nombre
@@ -65,13 +61,14 @@ namespace Business.Entities
             get { return _direccion; }
             set { _direccion = value; }
         }
-
+        [Column("fecha_inicio")]
+        [DataType(DataType.Date)]
         public DateTime FechaInicio
         {
             get { return _fechaInicio; }
             set { _fechaInicio = value; }
         }
-
+        [Column("tipo_empleado")]
         public TiposEmpleado TipoEmpleado
         {
             get { return _tipoEmpleado; }

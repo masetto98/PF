@@ -32,5 +32,20 @@ namespace UI.Desktop
             ClienteDesktop frmCliente = new ClienteDesktop(_context);
             frmCliente.ShowDialog();
         }
+
+        /*private void frmMain_Shown(object sender, EventArgs e)
+        {
+            frmLogin appLogin = new frmLogin(_context);
+            if(appLogin.ShowDialog()!= DialogResult.OK)
+            {
+                this.Dispose();
+            }
+        }*/
+
+        private void btnNuevoEmpleado_Click(object sender, EventArgs e)
+        {
+            EmpleadoDesktop frmEmpleado = new EmpleadoDesktop(_context);
+            frmEmpleado.ShowDialog();
+        }
     }
 }
