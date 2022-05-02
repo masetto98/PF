@@ -31,6 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="EmpleadoDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ClienteDesktop.cs">
       <SubType>Form</SubType>
     </Compile>

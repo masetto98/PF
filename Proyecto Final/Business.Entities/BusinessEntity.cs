@@ -9,7 +9,7 @@ namespace Business.Entities
 {
     public class BusinessEntity
     {
-        private int _ID;
+        //private int _ID;
         private States _State;
         public enum States
         {
@@ -18,7 +18,7 @@ namespace Business.Entities
             Modified,
             Unmodified
         }
-        /*public int ID
+        /* public int ID
         {
             get
             {
