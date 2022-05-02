@@ -10,6 +10,7 @@ namespace Business.Entities
 {
     public class Empleado:BusinessEntity
     {
+        private int _idEmpleado;
         public enum TiposEmpleado
         {
             Admin = 1,
@@ -24,7 +25,15 @@ namespace Business.Entities
         [DataType(DataType.Date)]
         private DateTime _fechaInicio;
         public TiposEmpleado _tipoEmpleado;
+
         [Key]
+        [Column("id_empleado")]
+        public int IdEmpleado
+        {
+            get { return _idEmpleado; }
+            set { _idEmpleado = value; }
+        }
+
         [Column("cuit")]
         public string Cuit
         {

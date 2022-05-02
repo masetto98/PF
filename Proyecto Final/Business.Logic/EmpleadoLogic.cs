@@ -28,11 +28,11 @@ namespace Business.Logic
                 throw ExceptionManejada;
             }
         }
-        public Empleado GetOne(string cuit)
+        public Empleado GetOne(int idEmpelado)
         {
             try
             {
-                return EmpleadoData.GetOne(cuit);
+                return EmpleadoData.GetOne(idEmpelado);
             }
             catch (Exception e)
             {
@@ -41,12 +41,26 @@ namespace Business.Logic
                 throw ExceptionManejada;
             }
         }
-        
-        public void Delete(string cuit)
+
+        public Empleado GetOneConCuit(string cuit)
         {
             try
             {
-                EmpleadoData.Delete(cuit);
+                return EmpleadoData.GetOneConCuit(cuit);
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al recuperar datos del empleado", e);
+                Logger.Log(ExceptionManejada.Message);
+                throw ExceptionManejada;
+            }
+        }
+
+        public void Delete(int idEmpleado)
+        {
+            try
+            {
+                EmpleadoData.Delete(idEmpleado);
             }
             catch (Exception e)
             {

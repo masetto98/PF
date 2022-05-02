@@ -15,6 +15,7 @@ namespace Business.Entities
         private string _cuitEmpleado;
         private int _nroFactura;
         private string _prioridad;
+        [DataType(DataType.Date)]
         private DateTime _fechaEntrada;
         private DateTime _tiempoEntregaEstimado; //necesitamos que cuente el tiempo estimado para que se realiza el pedido
         private DateTime _tiempoEntregaReal; // lo mismo que el de arriba
@@ -22,7 +23,7 @@ namespace Business.Entities
         private Cliente _cliente;
         private Empleado _empleado;
         private Factura _factura;
-        private Empleado _emplAtencion;
+        
 
         [Key]
         public int NroOrden
@@ -89,12 +90,6 @@ namespace Business.Entities
         {
             get { return _empleado; }
             set { _empleado = value; }
-        }
-
-        public Empleado EmpleadoAtencion
-        {
-            get { return _emplAtencion; }
-            set { _emplAtencion = value; }
         }
 
         public Factura Factura

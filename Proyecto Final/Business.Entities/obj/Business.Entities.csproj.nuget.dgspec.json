@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Proyectos\\PF\\Proyecto Final\\Business.Entities\\Business.Entities.csproj": {}
+    "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Business.Entities\\Business.Entities.csproj": {}
   },
   "projects": {
-    "D:\\Proyectos\\PF\\Proyecto Final\\Business.Entities\\Business.Entities.csproj": {
+    "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Business.Entities\\Business.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Proyectos\\PF\\Proyecto Final\\Business.Entities\\Business.Entities.csproj",
+        "projectUniqueName": "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Business.Entities\\Business.Entities.csproj",
         "projectName": "Business.Entities",
-        "projectPath": "D:\\Proyectos\\PF\\Proyecto Final\\Business.Entities\\Business.Entities.csproj",
-        "packagesPath": "C:\\Users\\SANTI-PC\\.nuget\\packages\\",
-        "outputPath": "D:\\Proyectos\\PF\\Proyecto Final\\Business.Entities\\obj\\",
+        "projectPath": "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Business.Entities\\Business.Entities.csproj",
+        "packagesPath": "C:\\Users\\manud\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Business.Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\SANTI-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\manud\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

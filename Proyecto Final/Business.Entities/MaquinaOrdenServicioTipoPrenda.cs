@@ -15,10 +15,12 @@ namespace Business.Entities
         private int _idServicio;
         private int _idTipoPrenda;
         private int _ordenItem;
+        private int _idEmpleado;
         private Maquina _maquina;
         private Orden _orden;
         private Servicio _servicio;
         private TipoPrenda _tipoPrenda;
+        private Empleado _empleado;
 
         [ForeignKey("Maquina")]
         public int IdMaquina
@@ -79,6 +81,12 @@ namespace Business.Entities
         {
             get { return _orden; }
             set { _orden = value; }
+        }
+
+        public Empleado Empleado
+        {
+            get { return _empleado; }
+            set { _empleado = value; }
         }
     }
 }

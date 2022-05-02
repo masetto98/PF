@@ -4,11 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace Business.Entities
 {
     public class Proveedor:BusinessEntity
     {
+        private int _idProveedor;
         private string _cuit;
         private string _razon_social;
         private string _telefono;
@@ -16,6 +19,13 @@ namespace Business.Entities
         private string _direccion;
 
         [Key]
+        [Column("id_proveedor")]
+        public int IdProveedor
+        {
+            get { return _idProveedor; }
+            set { _idProveedor = value; }
+        }
+
         public string Cuit
         {
             get { return _cuit; }

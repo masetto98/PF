@@ -4,12 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.ComponentModel.DataAnnotations;
 namespace Business.Entities
 {
     public class Mantenimiento : BusinessEntity
     {
         private int _idMaquina;
+        [DataType(DataType.Date)]
         private DateTime _fechaRealizado;
         private string _descripcion;
         private decimal _costo;

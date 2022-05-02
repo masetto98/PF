@@ -109,11 +109,6 @@ namespace Data.Database
                 .WithMany()
                 .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<Orden>()
-                .HasOne(m => m.EmpleadoAtencion)
-                .WithMany()
-                .OnDelete(DeleteBehavior.NoAction);
-
             modelBuilder.Entity<OrdenServicioTipoPrenda>()
                 .HasOne(m => m.Orden)
                 .WithMany()
@@ -174,7 +169,12 @@ namespace Data.Database
         public DbSet<OrdenServicioTipoPrenda>? OrdenesServiciosTipoPrendas { get; set; }
         public DbSet<Pago>? Pagos { get; set; }
         public DbSet<Cliente>? Clientes { get; set; }
+        public DbSet<Proveedor>? Proveedores { get; set; }
+        public DbSet<Maquina>? Maquinas { get; set; }
         public DbSet<Precio>? Precios { get; set; }
+        public DbSet<Factura>? Facturas { get; set; }
+        public DbSet<Servicio>? Servicios { get; set; }
+        public DbSet<TipoPrenda>? TipoPrendas { get; set; }
         public DbSet<ServicioTipoPrenda>? ServiciosTipoPrendas { get; set; }
         public DbSet<Usuario>? Usuarios { get; set; }
         public DbSet<Empleado>? Empleados { get; set; }

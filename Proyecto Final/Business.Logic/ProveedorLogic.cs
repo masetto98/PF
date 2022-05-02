@@ -8,69 +8,69 @@ using Business.Entities;
 
 namespace Business.Logic
 {
-    public class ClienteLogic : BusinessLogic
+    public class ProveedorLogic : BusinessLogic
     {
-        private ClienteAdapter ClienteData { get; set; }
+        private ProveedorAdapter ProveedorData { get; set; }
 
-        public ClienteLogic(ClienteAdapter clienteAdapter)
+        public ProveedorLogic(ProveedorAdapter proveedorAdapter)
         {
-            ClienteData = clienteAdapter;
+            ProveedorData = proveedorAdapter;
         }
-        public List<Cliente> GetAll()
+        public List<Proveedor> GetAll()
         {
             try
             {
-                return ClienteData.GetAll();
+                return ProveedorData.GetAll();
             }
             catch (Exception e)
             {
-                Exception ExceptionManejada = new Exception("Error al recuperar lista de clientes", e);
+                Exception ExceptionManejada = new Exception("Error al recuperar lista de proveedores", e);
                 Logger.Log(ExceptionManejada.Message);
                 throw ExceptionManejada;
             }
         }
-        public Cliente GetOne(int idCliente)
+        public Proveedor GetOne(int idProveedor)
         {
             try
             {
-                return ClienteData.GetOne(idCliente);
+                return ProveedorData.GetOne(idProveedor);
             }
             catch (Exception e)
             {
-                Exception ExceptionManejada = new Exception("Error al recuperar datos de clientes", e);
+                Exception ExceptionManejada = new Exception("Error al recuperar datos del proveedor", e);
                 Logger.Log(ExceptionManejada.Message);
                 throw ExceptionManejada;
             }
         }
-        public Cliente GetOneConCuit(string cuit)
+        public Proveedor GetOneConCuit(string cuit)
         {
             try
             {
-                return ClienteData.GetOneConCuit(cuit);
+                return ProveedorData.GetOneConCuit(cuit);
             }
             catch (Exception e)
             {
-                Exception ExceptionManejada = new Exception("Error al recuperar datos del cliente", e);
+                Exception ExceptionManejada = new Exception("Error al recuperar datos del cproveedor", e);
                 Logger.Log(ExceptionManejada.Message);
                 throw ExceptionManejada;
             }
         }
-        public void Delete(int idCliente)
+        public void Delete(int idProveedor)
         {
             try
             {
-                ClienteData.Delete(idCliente);
+                ProveedorData.Delete(idProveedor);
             }
             catch (Exception e)
             {
-                Exception ExceptionManejada = new Exception("Error al eliminar el cliente", e);
+                Exception ExceptionManejada = new Exception("Error al eliminar el proveedor", e);
                 Logger.Log(ExceptionManejada.Message);
                 throw ExceptionManejada;
             }
         }
-        public void Save(Cliente cliente)
+        public void Save(Proveedor proveedor)
         {
-            ClienteData.Save(cliente);
+            ProveedorData.Save(proveedor);
         }
     }
 }

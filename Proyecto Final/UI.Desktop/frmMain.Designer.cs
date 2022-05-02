@@ -140,7 +140,7 @@ namespace UI.Desktop
             this.Name = "frmMain";
             this.Text = " Lavanderia";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            //this.Shown += new System.EventHandler(this.frmMain_Shown);
+            this.Shown += new System.EventHandler(this.frmMain_Shown);
             this.materialTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

@@ -30,11 +30,11 @@ namespace Data.Database
             }
             return clientes;
         }
-        public Business.Entities.Cliente GetOne(string Cuit)
+        public Business.Entities.Cliente GetOne(int idCliente)
         {
             try
             {
-                return _context.Clientes.FirstOrDefault(p => p.Cuit == Cuit);
+                return _context.Clientes.FirstOrDefault(c => c.IdCliente == idCliente);
             }
             catch (Exception e)
             {
@@ -69,12 +69,12 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
-        public void Delete(string Cuit)
+        public void Delete(int idCliente)
         {
             Cliente cliente = new Cliente();
             try
             {
-                cliente = _context.Clientes.Find(Cuit);
+                cliente = _context.Clientes.Find(idCliente);
                 _context.Clientes.Remove(cliente);
                 _context.SaveChanges();
             }
@@ -93,7 +93,7 @@ namespace Data.Database
             }
             else if (cliente.State == BusinessEntity.States.Deleted)
             {
-                this.Delete(cliente.Cuit);
+                this.Delete(cliente.IdCliente);
             }
             else if (cliente.State == BusinessEntity.States.Modified)
             {
@@ -101,7 +101,8 @@ namespace Data.Database
             }
             cliente.State = BusinessEntity.States.Unmodified;
         }
-        public Business.Entities.Cliente GetOneConLegajo(string Cuit)
+
+        public Business.Entities.Cliente GetOneConCuit(string Cuit)
         {
             Cliente cliente = new Cliente();
             try

@@ -29,11 +29,11 @@ namespace Data.Database
             }
             return empleados;
         }
-        public Business.Entities.Empleado GetOne(string Cuit)
+        public Business.Entities.Empleado GetOne(int idEmpleado)
         {
             try
             {
-                return _context.Empleados.FirstOrDefault(e => e.Cuit == Cuit);
+                return _context.Empleados.FirstOrDefault(e => e.IdEmpleado == idEmpleado);
             }
             catch (Exception e)
             {
@@ -68,12 +68,12 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
-        public void Delete(string Cuit)
+        public void Delete(int idEmpleado)
         {
             Empleado empleado = new Empleado();
             try
             {
-                empleado = _context.Empleados.Find(Cuit);
+                empleado = _context.Empleados.Find(idEmpleado);
                 _context.Empleados.Remove(empleado);
                 _context.SaveChanges();
             }
@@ -92,7 +92,7 @@ namespace Data.Database
             }
             else if (empleado.State == BusinessEntity.States.Deleted)
             {
-                this.Delete(empleado.Cuit);
+                this.Delete(empleado.IdEmpleado);
             }
             else if (empleado.State == BusinessEntity.States.Modified)
             {
@@ -100,6 +100,20 @@ namespace Data.Database
             }
             empleado.State = BusinessEntity.States.Unmodified;
         }
-        
+
+        public Business.Entities.Empleado GetOneConCuit(string Cuit)
+        {
+            Empleado empleado = new Empleado();
+            try
+            {
+                empleado = _context.Empleados.FirstOrDefault(e => e.Cuit == Cuit);
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al recuperar datos del cliente", e);
+                throw ExceptionManejada;
+            }
+            return empleado;
+        }
     }
 }

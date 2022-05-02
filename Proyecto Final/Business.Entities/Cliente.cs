@@ -10,6 +10,7 @@ namespace Business.Entities
 {
     public class Cliente:BusinessEntity
     {
+        private int _idCliente;
         private string _cuit;
         private string _razon_social;
         private string _nombre;
@@ -18,6 +19,13 @@ namespace Business.Entities
         private string _email;
         private string _direccion;
         [Key]
+        [Column("id_cliente")]
+        public int IdCliente
+        {
+            get { return _idCliente; }
+            set { _idCliente = value; }
+        }
+
         [Column("cuit")]
         public string Cuit 
         {

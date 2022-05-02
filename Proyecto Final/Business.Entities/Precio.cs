@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace Business.Entities
     {
         private int _idServicio;
         private int _idTipoPrenda;
+        [DataType(DataType.Date)]
         private DateTime _fechaDesde;
         private decimal _valor;
         private Servicio _servicio;

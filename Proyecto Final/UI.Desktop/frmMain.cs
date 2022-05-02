@@ -33,14 +33,14 @@ namespace UI.Desktop
             frmCliente.ShowDialog();
         }
 
-        /*private void frmMain_Shown(object sender, EventArgs e)
+        private void frmMain_Shown(object sender, EventArgs e)
         {
             frmLogin appLogin = new frmLogin(_context);
             if(appLogin.ShowDialog()!= DialogResult.OK)
             {
                 this.Dispose();
             }
-        }*/
+        }
 
         private void btnNuevoEmpleado_Click(object sender, EventArgs e)
         {
