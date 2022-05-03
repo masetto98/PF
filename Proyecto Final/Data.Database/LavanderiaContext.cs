@@ -44,7 +44,7 @@ namespace Data.Database
                 .WithMany()
                 .OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<InsumoProveedor>()
-                .HasKey(ip => new { ip.IdInsumo, ip.CuitProveedor, ip.FechaIngreso });
+                .HasKey(ip => new { ip.IdInsumo, ip.IdProveedor, ip.FechaIngreso });
 
             modelBuilder.Entity<InsumoServicioTipoPrenda>()
                 .HasOne(istp => istp.Insumo)
@@ -89,6 +89,10 @@ namespace Data.Database
 
             modelBuilder.Entity<MaquinaOrdenServicioTipoPrenda>()
                 .HasOne(m => m.TipoPrenda)
+                .WithMany()
+                .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<MaquinaOrdenServicioTipoPrenda>()
+                .HasOne(m => m.Empleado)
                 .WithMany()
                 .OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<MaquinaOrdenServicioTipoPrenda>()

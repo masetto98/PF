@@ -10,7 +10,7 @@ namespace Business.Entities
 {
     public class InsumoProveedor:BusinessEntity
     {
-        private string _cuitProveedor;
+        private int _idProveedor;
         private int _idInsumo;
         [DataType(DataType.Date)]
         private DateTime _fechaIngreso;
@@ -18,10 +18,10 @@ namespace Business.Entities
         private Proveedor _proveedor;
         private Insumo _insumo;
         [ForeignKey("Proveedor")]
-        public string CuitProveedor
+        public int IdProveedor
         {
-            get { return _cuitProveedor; }
-            set { _cuitProveedor = value; }
+            get { return _idProveedor; }
+            set { _idProveedor = value; }
         }
         [ForeignKey("Insumo")]
         public int IdInsumo

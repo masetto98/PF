@@ -11,8 +11,8 @@ namespace Business.Entities
     public class Orden:BusinessEntity
     {
         private int _nroOrden;
-        private string _cuitCliente;
-        private string _cuitEmpleado;
+        private int _idCliente;
+        private int _idEmpleado;
         private int _nroFactura;
         private string _prioridad;
         [DataType(DataType.Date)]
@@ -32,16 +32,16 @@ namespace Business.Entities
             set { _nroOrden = value; }
         }
         [ForeignKey("Cliente")]
-        public string CuitCliente
+        public int IdCliente
         {
-            get { return _cuitCliente; }
-            set { _cuitCliente = value; }
+            get { return _idCliente; }
+            set { _idCliente = value; }
         }
         [ForeignKey("Empleado")]
-        public string CuitEmpleado
+        public int IdEmpleado
         {
-            get { return _cuitEmpleado; }
-            set { _cuitEmpleado = value; }
+            get { return _idEmpleado; }
+            set { _idEmpleado = value; }
         }
         [ForeignKey("Factura")]
         public int NroFactura

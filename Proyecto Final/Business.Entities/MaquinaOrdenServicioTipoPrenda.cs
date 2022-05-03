@@ -58,6 +58,12 @@ namespace Business.Entities
             get { return _ordenItem; }
             set { _ordenItem = value; }
         }
+        [ForeignKey("Empleado")]
+        public int IdEmpleado
+        {
+            get { return _idEmpleado; }
+            set { _idEmpleado = value; }
+        }
 
         public Maquina Maquina
         {

@@ -14,7 +14,7 @@ namespace Business.Entities
         private string _nombreUsuario;
         private string _clave;
         private bool _habilitado;
-        private string _cuitEmpleado;
+        private int _idEmpleado;
         private Empleado _empleado;
 
         [Key]
@@ -68,15 +68,15 @@ namespace Business.Entities
         }
         [Column("cuit_empleado")]
         [ForeignKey("Empleado")]
-        public string CuitEmpleado
+        public int IdEmpleado
         {
             get
             {
-                return _cuitEmpleado;
+                return _idEmpleado;
             }
             set
             {
-                _cuitEmpleado = value;
+                _idEmpleado = value;
             }
         }
         public Empleado Empleado

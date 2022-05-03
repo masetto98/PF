@@ -32,13 +32,23 @@ namespace UI.Desktop
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.btnNuevoCliente = new MaterialSkin.Controls.MaterialButton();
-            this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.mnuPrincipal = new MaterialSkin.Controls.MaterialTabControl();
+            this.mnuTabPage1 = new System.Windows.Forms.TabPage();
             this.btnNuevoEmpleado = new MaterialSkin.Controls.MaterialButton();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.mnuTabPage2 = new System.Windows.Forms.TabPage();
+            this.listClientes = new MaterialSkin.Controls.MaterialListView();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.materialTabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.mnuPrincipal.SuspendLayout();
+            this.mnuTabPage1.SuspendLayout();
+            this.mnuTabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnNuevoCliente
@@ -61,33 +71,34 @@ namespace UI.Desktop
             this.btnNuevoCliente.UseVisualStyleBackColor = true;
             this.btnNuevoCliente.Click += new System.EventHandler(this.btnNuevoCliente_Click);
             // 
-            // materialTabControl1
+            // mnuPrincipal
             // 
-            this.materialTabControl1.Controls.Add(this.tabPage1);
-            this.materialTabControl1.Controls.Add(this.tabPage2);
-            this.materialTabControl1.Depth = 0;
-            this.materialTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.materialTabControl1.ImageList = this.imageList1;
-            this.materialTabControl1.Location = new System.Drawing.Point(3, 64);
-            this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialTabControl1.Multiline = true;
-            this.materialTabControl1.Name = "materialTabControl1";
-            this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(794, 383);
-            this.materialTabControl1.TabIndex = 1;
+            this.mnuPrincipal.Controls.Add(this.mnuTabPage1);
+            this.mnuPrincipal.Controls.Add(this.mnuTabPage2);
+            this.mnuPrincipal.Depth = 0;
+            this.mnuPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mnuPrincipal.ImageList = this.imageList1;
+            this.mnuPrincipal.Location = new System.Drawing.Point(3, 64);
+            this.mnuPrincipal.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mnuPrincipal.Multiline = true;
+            this.mnuPrincipal.Name = "mnuPrincipal";
+            this.mnuPrincipal.SelectedIndex = 0;
+            this.mnuPrincipal.Size = new System.Drawing.Size(938, 721);
+            this.mnuPrincipal.TabIndex = 1;
+            this.mnuPrincipal.SelectedIndexChanged += new System.EventHandler(this.mnuPrincipal_SelectedIndexChanged);
             // 
-            // tabPage1
+            // mnuTabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.White;
-            this.tabPage1.Controls.Add(this.btnNuevoEmpleado);
-            this.tabPage1.Controls.Add(this.btnNuevoCliente);
-            this.tabPage1.ImageKey = "adduser_añadir_3553.png";
-            this.tabPage1.Location = new System.Drawing.Point(4, 39);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(786, 340);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Nuevo Cliente";
+            this.mnuTabPage1.BackColor = System.Drawing.Color.White;
+            this.mnuTabPage1.Controls.Add(this.btnNuevoEmpleado);
+            this.mnuTabPage1.Controls.Add(this.btnNuevoCliente);
+            this.mnuTabPage1.ImageKey = "addthelist_añadir_3477.png";
+            this.mnuTabPage1.Location = new System.Drawing.Point(4, 39);
+            this.mnuTabPage1.Name = "mnuTabPage1";
+            this.mnuTabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.mnuTabPage1.Size = new System.Drawing.Size(930, 678);
+            this.mnuTabPage1.TabIndex = 0;
+            this.mnuTabPage1.Text = "Ordenes";
             // 
             // btnNuevoEmpleado
             // 
@@ -109,15 +120,84 @@ namespace UI.Desktop
             this.btnNuevoEmpleado.UseVisualStyleBackColor = true;
             this.btnNuevoEmpleado.Click += new System.EventHandler(this.btnNuevoEmpleado_Click);
             // 
-            // tabPage2
+            // mnuTabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 39);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(786, 340);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.mnuTabPage2.Controls.Add(this.listClientes);
+            this.mnuTabPage2.ImageKey = "adduser_añadir_3553.png";
+            this.mnuTabPage2.Location = new System.Drawing.Point(4, 39);
+            this.mnuTabPage2.Name = "mnuTabPage2";
+            this.mnuTabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.mnuTabPage2.Size = new System.Drawing.Size(930, 678);
+            this.mnuTabPage2.TabIndex = 1;
+            this.mnuTabPage2.Text = "Clientes";
+            this.mnuTabPage2.UseVisualStyleBackColor = true;
+            
+            // 
+            // listClientes
+            // 
+            this.listClientes.AutoSizeTable = false;
+            this.listClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listClientes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7,
+            this.columnHeader8});
+            this.listClientes.Depth = 0;
+            this.listClientes.FullRowSelect = true;
+            this.listClientes.HideSelection = false;
+            this.listClientes.Location = new System.Drawing.Point(3, 3);
+            this.listClientes.MinimumSize = new System.Drawing.Size(200, 100);
+            this.listClientes.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listClientes.MouseState = MaterialSkin.MouseState.OUT;
+            this.listClientes.Name = "listClientes";
+            this.listClientes.OwnerDraw = true;
+            this.listClientes.Size = new System.Drawing.Size(785, 607);
+            this.listClientes.TabIndex = 0;
+            this.listClientes.UseCompatibleStateImageBehavior = false;
+            this.listClientes.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ID";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Cuit";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Nombre";
+            this.columnHeader3.Width = 100;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Apellido";
+            this.columnHeader4.Width = 100;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Direccion";
+            this.columnHeader5.Width = 100;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Razon Social";
+            this.columnHeader6.Width = 125;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Email";
+            this.columnHeader7.Width = 100;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Telefono";
+            this.columnHeader8.Width = 100;
             // 
             // imageList1
             // 
@@ -125,25 +205,26 @@ namespace UI.Desktop
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "adduser_añadir_3553.png");
+            this.imageList1.Images.SetKeyName(1, "addthelist_añadir_3477.png");
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.materialTabControl1);
+            this.ClientSize = new System.Drawing.Size(944, 788);
+            this.Controls.Add(this.mnuPrincipal);
             this.DoubleBuffered = false;
             this.DrawerShowIconsWhenHidden = true;
-            this.DrawerTabControl = this.materialTabControl1;
+            this.DrawerTabControl = this.mnuPrincipal;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
             this.Name = "frmMain";
             this.Text = " Lavanderia";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Shown += new System.EventHandler(this.frmMain_Shown);
-            this.materialTabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.mnuPrincipal.ResumeLayout(false);
+            this.mnuTabPage1.ResumeLayout(false);
+            this.mnuTabPage1.PerformLayout();
+            this.mnuTabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -151,11 +232,20 @@ namespace UI.Desktop
         #endregion
 
         private MaterialSkin.Controls.MaterialButton btnNuevoCliente;
-        private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private MaterialSkin.Controls.MaterialTabControl mnuPrincipal;
+        private System.Windows.Forms.TabPage mnuTabPage1;
+        private System.Windows.Forms.TabPage mnuTabPage2;
         private System.Windows.Forms.ImageList imageList1;
         private MaterialSkin.Controls.MaterialButton btnNuevoEmpleado;
+        private MaterialSkin.Controls.MaterialListView listClientes;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
     }
 }
 
