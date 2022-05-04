@@ -20,11 +20,13 @@ namespace UI.Desktop
         readonly MaterialSkin.MaterialSkinManager materialSkinManager;
         private readonly LavanderiaContext _context;
         private readonly ClienteLogic _clienteLogic;
+        private readonly EmpleadoLogic _empleadoLogic;
         public frmMain(LavanderiaContext context)
         {
             InitializeComponent();
             _context = context;
             _clienteLogic = new ClienteLogic(new ClienteAdapter(context));
+            _empleadoLogic = new EmpleadoLogic(new EmpleadoAdapter(context));
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
@@ -54,22 +56,48 @@ namespace UI.Desktop
 
         private void mnuPrincipal_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<Cliente> clientes = _clienteLogic.GetAll();
-            listClientes.Items.Clear();
-            foreach (Cliente c in clientes)
+            if (mnuPrincipal.SelectedTab == mnuTabOrdenes) 
             {
-                ListViewItem item = new ListViewItem(c.IdCliente.ToString());
-                item.SubItems.Add(c.Cuit);
-                item.SubItems.Add(c.Nombre);
-                item.SubItems.Add(c.Apellido);
-                item.SubItems.Add(c.Direccion);
-                item.SubItems.Add(c.RazonSocial);
-                item.SubItems.Add(c.Email);
-                item.SubItems.Add(c.Telefono);
-                listClientes.Items.Add(item);
+                List<Empleado> empleados = _empleadoLogic.GetAll();
+                listEmpleados.Items.Clear();
+                foreach (Empleado em in empleados)
+                {
+                    ListViewItem item = new ListViewItem(em.IdEmpleado.ToString());
+                    item.SubItems.Add(em.Cuit);
+                    item.SubItems.Add(em.Nombre);
+                    item.SubItems.Add(em.Apellido);
+                    item.SubItems.Add(em.Direccion);
+                    item.SubItems.Add(em.Telefono);
+                    item.SubItems.Add(em.Email);
+                    item.SubItems.Add(em.FechaInicio.ToString());
+                    item.SubItems.Add(em.TipoEmpleado.ToString());
+                    listEmpleados.Items.Add(item);
+                }
+
             }
+            else if (mnuPrincipal.SelectedTab == mnuTabClientes)
+            {
+                List<Cliente> clientes = _clienteLogic.GetAll();
+                listClientes.Items.Clear();
+                foreach (Cliente c in clientes)
+                {
+                    ListViewItem item = new ListViewItem(c.IdCliente.ToString());
+                    item.SubItems.Add(c.Cuit);
+                    item.SubItems.Add(c.Nombre);
+                    item.SubItems.Add(c.Apellido);
+                    item.SubItems.Add(c.Direccion);
+                    item.SubItems.Add(c.RazonSocial);
+                    item.SubItems.Add(c.Email);
+                    item.SubItems.Add(c.Telefono);
+                    listClientes.Items.Add(item);
+                }
+            }
+           
 
         }
+
         
+
+
     }
 }

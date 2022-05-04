@@ -223,3 +223,4 @@ C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\UI.Des
 C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\UI.Desktop\obj\Debug\net5.0-windows\UI.Desktop.pdb
 C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\UI.Desktop\obj\Debug\net5.0-windows\UI.Desktop.genruntimeconfig.cache
 D:\Proyectos\PF\Proyecto Final\UI.Desktop\obj\Debug\net5.0-windows\UI.Desktop.Properties.Resources.resources
+C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\UI.Desktop\obj\Debug\net5.0-windows\UI.Desktop.Properties.Resources.resources
