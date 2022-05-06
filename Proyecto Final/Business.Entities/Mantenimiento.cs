@@ -15,6 +15,7 @@ namespace Business.Entities
         private string _descripcion;
         private decimal _costo;
         private Maquina _maquina;
+
         [ForeignKey("Maquina")]
         public int IdMaquina 
         {

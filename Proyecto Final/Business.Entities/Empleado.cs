@@ -25,6 +25,9 @@ namespace Business.Entities
         [DataType(DataType.Date)]
         private DateTime _fechaInicio;
         public TiposEmpleado _tipoEmpleado;
+        private List<Orden> _ordenesRegistradas;
+        private List<MaquinaOrdenServicioTipoPrenda> _ordenesAtendidas;
+        private List<Usuario> _usuarios;
 
         [Key]
         [Column("id_empleado")]
@@ -82,6 +85,24 @@ namespace Business.Entities
         {
             get { return _tipoEmpleado; }
             set { _tipoEmpleado = value; }
+        }
+
+        public List<Orden> OrdenesRegistradas
+        {
+            get { return _ordenesRegistradas; }
+            set { _ordenesRegistradas = value; }
+        }
+
+        public List<MaquinaOrdenServicioTipoPrenda> OrdenesAtendidas
+        {
+            get { return _ordenesAtendidas; }
+            set { _ordenesAtendidas = value; }
+        }
+
+        public List<Usuario> Usuarios
+        {
+            get { return _usuarios; }
+            set { _usuarios = value; }
         }
     }
 }

@@ -15,8 +15,12 @@ namespace Business.Entities
         private int _ordenItem;
         private string _estado;
         private Orden _orden;
-        private Servicio _servicio;
-        private TipoPrenda _tipoPrenda;
+        private ServicioTipoPrenda _servicioTipoPrenda;
+        private List<MaquinaOrdenServicioTipoPrenda> _maquinasItem;// un item de orden puede pasar por varias maquinas como en el caso de lavado y secado que debe pasar por el lavaropas y secarropas.
+        //private Servicio _servicio;
+        //private TipoPrenda _tipoPrenda;
+
+
         [ForeignKey("Orden")]
         public int NroOrden
         {
@@ -48,7 +52,25 @@ namespace Business.Entities
             set { _estado = value; }
         }
 
-        public Servicio Servicio
+        public ServicioTipoPrenda ServicioTipoPrenda
+        {
+            get { return _servicioTipoPrenda; }
+            set { _servicioTipoPrenda = value; }
+        }
+
+        public Orden Orden
+        {
+            get { return _orden; }
+            set { _orden = value; }
+        }
+
+        public List<MaquinaOrdenServicioTipoPrenda> MaquinaOrdenServicioTipoPrenda
+        {
+            get { return _maquinasItem; }
+            set { _maquinasItem = value; }
+        }
+
+        /*public Servicio Servicio
         {
             get { return _servicio; }
             set { _servicio = value; }
@@ -58,12 +80,8 @@ namespace Business.Entities
         {
             get { return _tipoPrenda; }
             set { _tipoPrenda = value; }
-        }
+        }*/
 
-        public Orden Orden
-        {
-            get { return _orden; }
-            set { _orden = value; }
-        }
+
     }
 }

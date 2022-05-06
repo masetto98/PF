@@ -13,8 +13,11 @@ namespace Business.Entities
         private int _idServicio;
         private int _idTipoPrenda;
         private Insumo _insumo;
-        private Servicio _servicio;
-        private TipoPrenda _tipoPrenda;
+        private ServicioTipoPrenda _servicioTipoPrenda;
+        //private Servicio _servicio;
+        //private TipoPrenda _tipoPrenda;
+        private List<Consumo> _historicoConsumos;
+
         [ForeignKey("Insumo")]
         public int IdInsumo 
         {
@@ -40,7 +43,7 @@ namespace Business.Entities
             set { _insumo = value; }
         }
 
-        public Servicio Servicio
+        /*public Servicio Servicio
         {
             get { return _servicio; }
             set { _servicio = value; }
@@ -50,6 +53,18 @@ namespace Business.Entities
         {
             get { return _tipoPrenda; }
             set { _tipoPrenda = value; }
+        }*/
+
+        public List<Consumo> HistoricoConsumos
+        {
+            get { return _historicoConsumos; }
+            set { _historicoConsumos = value; }
+        }
+
+        public ServicioTipoPrenda ServicioTipoPrenda
+        {
+            get { return _servicioTipoPrenda; }
+            set { _servicioTipoPrenda = value; }
         }
     }
 

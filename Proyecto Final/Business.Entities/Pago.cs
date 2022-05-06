@@ -13,6 +13,7 @@ namespace Business.Entities
         private DateTime _fechaPago;
         private decimal _importe;
         private Factura _factura;
+
         [ForeignKey("Factura")]
         public int NroFactura
         {

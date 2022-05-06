@@ -18,6 +18,9 @@ namespace Business.Entities
         private string _telefono;
         private string _email;
         private string _direccion;
+        private List<Orden> _ordenes;
+
+
         [Key]
         [Column("id_cliente")]
         public int IdCliente
@@ -67,6 +70,12 @@ namespace Business.Entities
         {
             get { return _direccion; }
             set { _direccion = value; }
+        }
+
+        public List<Orden> Ordenes 
+        {
+            get { return _ordenes; }
+            set { _ordenes = value; }
         }
     }
 }

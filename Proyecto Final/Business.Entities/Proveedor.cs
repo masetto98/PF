@@ -17,6 +17,7 @@ namespace Business.Entities
         private string _telefono;
         private string _email;
         private string _direccion;
+        private List<InsumoProveedor> _insumosProveedor;//Lista de insumos que provee ese proveedor
 
         [Key]
         [Column("id_proveedor")]
@@ -54,6 +55,12 @@ namespace Business.Entities
         {
             get { return _direccion; }
             set { _direccion = value; }
+        }
+
+        public List<InsumoProveedor> InsumosProveedor
+        {
+            get { return _insumosProveedor; }
+            set { _insumosProveedor = value; }
         }
     }
 }

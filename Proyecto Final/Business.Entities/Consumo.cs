@@ -16,9 +16,12 @@ namespace Business.Entities
         [DataType(DataType.Date)]
         private DateTime _fechaDesde;
         private decimal _cantidad;
-        private Insumo _insumo;
-        private Servicio _servicio;
-        private TipoPrenda _tipoPrenda;
+        private InsumoServicioTipoPrenda _insumoServicioTipoPrenda;
+        //private Insumo _insumo;
+        //private Servicio _servicio;
+        //private TipoPrenda _tipoPrenda;
+
+
         [ForeignKey("InsumoServicioTipoPrenda")]
         public int IdInsumo
         {
@@ -50,7 +53,13 @@ namespace Business.Entities
             set { _cantidad = value; }
         }
 
-        public Insumo Insumo 
+        public InsumoServicioTipoPrenda InsumoServicioTipoPrenda
+        {
+            get { return _insumoServicioTipoPrenda; }
+            set { _insumoServicioTipoPrenda = value; }
+        }
+
+        /*public Insumo Insumo 
         {
             get { return _insumo; }
             set { _insumo = value; }
@@ -66,6 +75,6 @@ namespace Business.Entities
         {
             get { return _tipoPrenda; }
             set { _tipoPrenda = value; }
-        }
+        }*/
     }
 }

@@ -12,6 +12,9 @@ namespace Business.Entities
     {
         private int _idMaquina;
         private string _descripcion;
+        private List<Mantenimiento> _mantenimientos;// Listado de mantenimientos realizados
+        private List<MaquinaOrdenServicioTipoPrenda> _itemsAtendidos; // Lista de items de ordenes atendidos en esa maquina
+
         [Key]
         [Column("id_maquina")]
         public int IdMaquina 
@@ -24,6 +27,18 @@ namespace Business.Entities
         {
             get { return _descripcion; }
             set { _descripcion = value; }
+        }
+
+        public List<Mantenimiento> Mantenimientos
+        {
+            get { return _mantenimientos; }
+            set { _mantenimientos = value; }
+        }
+
+        public List<MaquinaOrdenServicioTipoPrenda> itemsAtendidos
+        {
+            get { return _itemsAtendidos; }
+            set { _itemsAtendidos = value; }
         }
     }
 }

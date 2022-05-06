@@ -17,6 +17,8 @@ namespace Business.Entities
         private decimal _cantidad;
         private Proveedor _proveedor;
         private Insumo _insumo;
+
+
         [ForeignKey("Proveedor")]
         public int IdProveedor
         {

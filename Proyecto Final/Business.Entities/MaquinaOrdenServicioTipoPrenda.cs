@@ -17,10 +17,12 @@ namespace Business.Entities
         private int _ordenItem;
         private int _idEmpleado;
         private Maquina _maquina;
-        private Orden _orden;
-        private Servicio _servicio;
-        private TipoPrenda _tipoPrenda;
+        private OrdenServicioTipoPrenda _ordenServicioTipoPrenda;
         private Empleado _empleado;
+        //private Orden _orden;
+        //private Servicio _servicio;
+        //private TipoPrenda _tipoPrenda;
+
 
         [ForeignKey("Maquina")]
         public int IdMaquina
@@ -71,7 +73,19 @@ namespace Business.Entities
             set { _maquina = value; }
         }
 
-        public Servicio Servicio
+        public OrdenServicioTipoPrenda OrdenServicioTipoPrenda
+        {
+            get { return _ordenServicioTipoPrenda; }
+            set { _ordenServicioTipoPrenda = value; }
+        }
+
+        public Empleado Empleado
+        {
+            get { return _empleado; }
+            set { _empleado = value; }
+        }
+
+        /*public Servicio Servicio
         {
             get { return _servicio; }
             set { _servicio = value; }
@@ -87,12 +101,8 @@ namespace Business.Entities
         {
             get { return _orden; }
             set { _orden = value; }
-        }
+        }*/
 
-        public Empleado Empleado
-        {
-            get { return _empleado; }
-            set { _empleado = value; }
-        }
+
     }
 }

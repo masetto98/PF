@@ -11,6 +11,7 @@ namespace Business.Entities
     {
         private int _idServicio;
         private string _descripcion;
+        private List<ServicioTipoPrenda>_servicioTipoPrenda;//Listas de prendas a las cuales se puede aplicar ese servicio
 
         [Key]
         [Column("id_servicio")]
@@ -24,6 +25,12 @@ namespace Business.Entities
         {
             get { return _descripcion; }
             set { _descripcion = value; }
+        }
+
+        public List<ServicioTipoPrenda> ServicioTipoPrenda
+        {
+            get { return _servicioTipoPrenda; }
+            set { _servicioTipoPrenda = value; }
         }
     }
 }

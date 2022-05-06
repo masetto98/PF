@@ -19,12 +19,18 @@ namespace Business.Entities
         private DateTime _fechaEntrada;
         private DateTime _tiempoEntregaEstimado; //necesitamos que cuente el tiempo estimado para que se realiza el pedido
         private DateTime _tiempoEntregaReal; // lo mismo que el de arriba
-        private string _estado;
         private Cliente _cliente;
         private Empleado _empleado;
         private Factura _factura;
-        
+        private List<OrdenServicioTipoPrenda> _itemsPedidos;
 
+        public enum Estados
+        {
+            Pendiente = 1,
+            Procesando = 2,
+            Finalizado =3,
+        }
+        public Estados _estado;
         [Key]
         public int NroOrden
         {
@@ -50,7 +56,7 @@ namespace Business.Entities
             set { _nroFactura = value; }
         }
 
-        public string prioridad
+        public string Prioridad
         {
             get { return _prioridad; }
             set { _prioridad = value; }
@@ -74,10 +80,11 @@ namespace Business.Entities
             set { _tiempoEntregaReal = value; }
         }
 
-        public string Estado
+        [Column("estado")]
+        public Estados Estado
         {
             get { return _estado; }
-            set { _estado = value; }  //esto deberia ser parte del la relacion entre la orden y el item
+            set { _estado = value; }
         }
 
         public Cliente Cliente
@@ -98,5 +105,10 @@ namespace Business.Entities
             set { _factura = value; }
         }
 
+        public List<OrdenServicioTipoPrenda> ItemsPedidos
+        {
+            get { return _itemsPedidos; }
+            set { _itemsPedidos = value; }
+        }
     }
 }
