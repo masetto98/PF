@@ -59,5 +59,75 @@ namespace UI.Desktop.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1486564394_edit_81508 {
+            get {
+                object obj = ResourceManager.GetObject("1486564394-edit_81508", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _353430_checkbox_edit_pen_pencil_107516 {
+            get {
+                object obj = ResourceManager.GetObject("353430-checkbox-edit-pen-pencil_107516", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap adduser_añadir_3553 {
+            get {
+                object obj = ResourceManager.GetObject("adduser_añadir_3553", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap new_add_user_16734 {
+            get {
+                object obj = ResourceManager.GetObject("new_add_user_16734", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_find_user_16727 {
+            get {
+                object obj = ResourceManager.GetObject("search_find_user_16727", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap searcher_magnifyng_glass_search_locate_find_icon_123813 {
+            get {
+                object obj = ResourceManager.GetObject("searcher_magnifyng_glass_search_locate_find_icon_123813", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap trash_bin_icon_icons_com_67981 {
+            get {
+                object obj = ResourceManager.GetObject("trash_bin_icon-icons.com_67981", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

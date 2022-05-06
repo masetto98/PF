@@ -47,7 +47,7 @@ namespace UI.Desktop
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Curso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public override void MapearDeDatos()

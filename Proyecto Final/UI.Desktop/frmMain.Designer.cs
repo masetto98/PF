@@ -34,27 +34,22 @@ namespace UI.Desktop
             this.btnNuevoCliente = new MaterialSkin.Controls.MaterialButton();
             this.mnuPrincipal = new MaterialSkin.Controls.MaterialTabControl();
             this.mnuTabOrdenes = new System.Windows.Forms.TabPage();
-            this.listEmpleados = new MaterialSkin.Controls.MaterialListView();
-            this.columnIdEmpleado = new System.Windows.Forms.ColumnHeader();
-            this.columnCuit = new System.Windows.Forms.ColumnHeader();
-            this.columnName = new System.Windows.Forms.ColumnHeader();
-            this.columnApellido = new System.Windows.Forms.ColumnHeader();
-            this.columnDireccion = new System.Windows.Forms.ColumnHeader();
-            this.columnTelefono = new System.Windows.Forms.ColumnHeader();
-            this.columnEmail = new System.Windows.Forms.ColumnHeader();
-            this.columnFechaInicio = new System.Windows.Forms.ColumnHeader();
-            this.columnTipoEmpleado = new System.Windows.Forms.ColumnHeader();
             this.btnNuevoEmpleado = new MaterialSkin.Controls.MaterialButton();
             this.mnuTabClientes = new System.Windows.Forms.TabPage();
+            this.txtBuscarCliente = new MaterialSkin.Controls.MaterialTextBox();
+            this.btnEditarCliente = new MaterialSkin.Controls.MaterialButton();
+            this.btnEliminarCliente = new MaterialSkin.Controls.MaterialButton();
+            this.btnAgregarCliente = new MaterialSkin.Controls.MaterialButton();
             this.listClientes = new MaterialSkin.Controls.MaterialListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
+            this.columnID = new System.Windows.Forms.ColumnHeader();
+            this.columnCuit = new System.Windows.Forms.ColumnHeader();
+            this.columnNombre = new System.Windows.Forms.ColumnHeader();
+            this.columnApellido = new System.Windows.Forms.ColumnHeader();
+            this.columnDireccion = new System.Windows.Forms.ColumnHeader();
+            this.columnRazonSocial = new System.Windows.Forms.ColumnHeader();
+            this.columnEmail = new System.Windows.Forms.ColumnHeader();
+            this.columnTel = new System.Windows.Forms.ColumnHeader();
+            this.mnuTabPage3 = new System.Windows.Forms.TabPage();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.mnuPrincipal.SuspendLayout();
             this.mnuTabOrdenes.SuspendLayout();
@@ -85,6 +80,7 @@ namespace UI.Desktop
             // 
             this.mnuPrincipal.Controls.Add(this.mnuTabOrdenes);
             this.mnuPrincipal.Controls.Add(this.mnuTabClientes);
+            this.mnuPrincipal.Controls.Add(this.mnuTabPage3);
             this.mnuPrincipal.Depth = 0;
             this.mnuPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mnuPrincipal.ImageList = this.imageList1;
@@ -93,88 +89,22 @@ namespace UI.Desktop
             this.mnuPrincipal.Multiline = true;
             this.mnuPrincipal.Name = "mnuPrincipal";
             this.mnuPrincipal.SelectedIndex = 0;
-            this.mnuPrincipal.Size = new System.Drawing.Size(970, 721);
+            this.mnuPrincipal.Size = new System.Drawing.Size(1380, 721);
             this.mnuPrincipal.TabIndex = 1;
             this.mnuPrincipal.SelectedIndexChanged += new System.EventHandler(this.mnuPrincipal_SelectedIndexChanged);
             // 
             // mnuTabOrdenes
             // 
             this.mnuTabOrdenes.BackColor = System.Drawing.Color.White;
-            this.mnuTabOrdenes.Controls.Add(this.listEmpleados);
             this.mnuTabOrdenes.Controls.Add(this.btnNuevoEmpleado);
             this.mnuTabOrdenes.Controls.Add(this.btnNuevoCliente);
             this.mnuTabOrdenes.ImageKey = "addthelist_añadir_3477.png";
             this.mnuTabOrdenes.Location = new System.Drawing.Point(4, 39);
             this.mnuTabOrdenes.Name = "mnuTabOrdenes";
             this.mnuTabOrdenes.Padding = new System.Windows.Forms.Padding(3);
-            this.mnuTabOrdenes.Size = new System.Drawing.Size(962, 678);
+            this.mnuTabOrdenes.Size = new System.Drawing.Size(1372, 678);
             this.mnuTabOrdenes.TabIndex = 0;
             this.mnuTabOrdenes.Text = "Ordenes";
-            // 
-            // listEmpleados
-            // 
-            this.listEmpleados.AutoSizeTable = false;
-            this.listEmpleados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listEmpleados.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listEmpleados.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnIdEmpleado,
-            this.columnCuit,
-            this.columnName,
-            this.columnApellido,
-            this.columnDireccion,
-            this.columnTelefono,
-            this.columnEmail,
-            this.columnFechaInicio,
-            this.columnTipoEmpleado});
-            this.listEmpleados.Depth = 0;
-            this.listEmpleados.FullRowSelect = true;
-            this.listEmpleados.HideSelection = false;
-            this.listEmpleados.Location = new System.Drawing.Point(7, 9);
-            this.listEmpleados.MinimumSize = new System.Drawing.Size(200, 100);
-            this.listEmpleados.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.listEmpleados.MouseState = MaterialSkin.MouseState.OUT;
-            this.listEmpleados.Name = "listEmpleados";
-            this.listEmpleados.OwnerDraw = true;
-            this.listEmpleados.Size = new System.Drawing.Size(713, 334);
-            this.listEmpleados.TabIndex = 2;
-            this.listEmpleados.UseCompatibleStateImageBehavior = false;
-            this.listEmpleados.View = System.Windows.Forms.View.Details;
-            // 
-            // columnIdEmpleado
-            // 
-            this.columnIdEmpleado.Text = "ID";
-            // 
-            // columnCuit
-            // 
-            this.columnCuit.Text = "CUIT";
-            // 
-            // columnName
-            // 
-            this.columnName.Text = "Nombre";
-            // 
-            // columnApellido
-            // 
-            this.columnApellido.Text = "Apellido";
-            // 
-            // columnDireccion
-            // 
-            this.columnDireccion.Text = "Direccion";
-            // 
-            // columnTelefono
-            // 
-            this.columnTelefono.Text = "Telefono";
-            // 
-            // columnEmail
-            // 
-            this.columnEmail.Text = "Email";
-            // 
-            // columnFechaInicio
-            // 
-            this.columnFechaInicio.Text = "Fecha Inicio";
-            // 
-            // columnTipoEmpleado
-            // 
-            this.columnTipoEmpleado.Text = "Tipo Empleado";
             // 
             // btnNuevoEmpleado
             // 
@@ -198,81 +128,179 @@ namespace UI.Desktop
             // 
             // mnuTabClientes
             // 
+            this.mnuTabClientes.Controls.Add(this.txtBuscarCliente);
+            this.mnuTabClientes.Controls.Add(this.btnEditarCliente);
+            this.mnuTabClientes.Controls.Add(this.btnEliminarCliente);
+            this.mnuTabClientes.Controls.Add(this.btnAgregarCliente);
             this.mnuTabClientes.Controls.Add(this.listClientes);
             this.mnuTabClientes.ImageKey = "adduser_añadir_3553.png";
             this.mnuTabClientes.Location = new System.Drawing.Point(4, 39);
             this.mnuTabClientes.Name = "mnuTabClientes";
             this.mnuTabClientes.Padding = new System.Windows.Forms.Padding(3);
-            this.mnuTabClientes.Size = new System.Drawing.Size(962, 678);
+            this.mnuTabClientes.Size = new System.Drawing.Size(1372, 678);
             this.mnuTabClientes.TabIndex = 1;
             this.mnuTabClientes.Text = "Clientes";
             this.mnuTabClientes.UseVisualStyleBackColor = true;
             // 
+            // txtBuscarCliente
+            // 
+            this.txtBuscarCliente.AnimateReadOnly = false;
+            this.txtBuscarCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBuscarCliente.Depth = 0;
+            this.txtBuscarCliente.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtBuscarCliente.Hint = "Buscar cliente...";
+            this.txtBuscarCliente.LeadingIcon = null;
+            this.txtBuscarCliente.Location = new System.Drawing.Point(1020, 53);
+            this.txtBuscarCliente.MaxLength = 50;
+            this.txtBuscarCliente.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtBuscarCliente.Multiline = false;
+            this.txtBuscarCliente.Name = "txtBuscarCliente";
+            this.txtBuscarCliente.Size = new System.Drawing.Size(221, 50);
+            this.txtBuscarCliente.TabIndex = 4;
+            this.txtBuscarCliente.Text = "";
+            this.txtBuscarCliente.TrailingIcon = null;
+            this.txtBuscarCliente.TextChanged += new System.EventHandler(this.txtBuscarCliente_TextChanged);
+            // 
+            // btnEditarCliente
+            // 
+            this.btnEditarCliente.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEditarCliente.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnEditarCliente.Depth = 0;
+            this.btnEditarCliente.HighEmphasis = true;
+            this.btnEditarCliente.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
+            this.btnEditarCliente.Location = new System.Drawing.Point(18, 112);
+            this.btnEditarCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEditarCliente.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEditarCliente.Name = "btnEditarCliente";
+            this.btnEditarCliente.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnEditarCliente.Size = new System.Drawing.Size(99, 36);
+            this.btnEditarCliente.TabIndex = 3;
+            this.btnEditarCliente.Text = "Editar";
+            this.btnEditarCliente.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnEditarCliente.UseAccentColor = false;
+            this.btnEditarCliente.UseVisualStyleBackColor = true;
+            this.btnEditarCliente.Click += new System.EventHandler(this.btnEditarCliente_Click);
+            // 
+            // btnEliminarCliente
+            // 
+            this.btnEliminarCliente.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEliminarCliente.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnEliminarCliente.Depth = 0;
+            this.btnEliminarCliente.HighEmphasis = true;
+            this.btnEliminarCliente.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
+            this.btnEliminarCliente.Location = new System.Drawing.Point(18, 172);
+            this.btnEliminarCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEliminarCliente.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEliminarCliente.Name = "btnEliminarCliente";
+            this.btnEliminarCliente.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnEliminarCliente.Size = new System.Drawing.Size(116, 36);
+            this.btnEliminarCliente.TabIndex = 2;
+            this.btnEliminarCliente.Text = "Eliminar";
+            this.btnEliminarCliente.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnEliminarCliente.UseAccentColor = false;
+            this.btnEliminarCliente.UseVisualStyleBackColor = true;
+            this.btnEliminarCliente.Click += new System.EventHandler(this.btnEliminarCliente_Click);
+            // 
+            // btnAgregarCliente
+            // 
+            this.btnAgregarCliente.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAgregarCliente.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnAgregarCliente.Depth = 0;
+            this.btnAgregarCliente.HighEmphasis = true;
+            this.btnAgregarCliente.Icon = global::UI.Desktop.Properties.Resources.adduser_añadir_3553;
+            this.btnAgregarCliente.Location = new System.Drawing.Point(18, 53);
+            this.btnAgregarCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAgregarCliente.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAgregarCliente.Name = "btnAgregarCliente";
+            this.btnAgregarCliente.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnAgregarCliente.Size = new System.Drawing.Size(116, 36);
+            this.btnAgregarCliente.TabIndex = 1;
+            this.btnAgregarCliente.Text = "Agregar";
+            this.btnAgregarCliente.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnAgregarCliente.UseAccentColor = false;
+            this.btnAgregarCliente.UseVisualStyleBackColor = true;
+            this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click);
+            // 
             // listClientes
             // 
+            this.listClientes.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.listClientes.AutoSizeTable = false;
             this.listClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.listClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listClientes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6,
-            this.columnHeader7,
-            this.columnHeader8});
+            this.columnID,
+            this.columnCuit,
+            this.columnNombre,
+            this.columnApellido,
+            this.columnDireccion,
+            this.columnRazonSocial,
+            this.columnEmail,
+            this.columnTel});
             this.listClientes.Depth = 0;
+            this.listClientes.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listClientes.FullRowSelect = true;
             this.listClientes.HideSelection = false;
-            this.listClientes.Location = new System.Drawing.Point(3, 3);
+            this.listClientes.Location = new System.Drawing.Point(225, 53);
             this.listClientes.MinimumSize = new System.Drawing.Size(200, 100);
             this.listClientes.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listClientes.MouseState = MaterialSkin.MouseState.OUT;
+            this.listClientes.MultiSelect = false;
             this.listClientes.Name = "listClientes";
             this.listClientes.OwnerDraw = true;
-            this.listClientes.Size = new System.Drawing.Size(785, 607);
+            this.listClientes.Size = new System.Drawing.Size(747, 581);
             this.listClientes.TabIndex = 0;
             this.listClientes.UseCompatibleStateImageBehavior = false;
             this.listClientes.View = System.Windows.Forms.View.Details;
+            this.listClientes.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listClientes_ColumnWidthChanging);
             // 
-            // columnHeader1
+            // columnID
             // 
-            this.columnHeader1.Text = "ID";
+            this.columnID.Text = "ID";
+            this.columnID.Width = 50;
             // 
-            // columnHeader2
+            // columnCuit
             // 
-            this.columnHeader2.Text = "Cuit";
+            this.columnCuit.Text = "Cuit";
+            this.columnCuit.Width = 100;
             // 
-            // columnHeader3
+            // columnNombre
             // 
-            this.columnHeader3.Text = "Nombre";
-            this.columnHeader3.Width = 100;
+            this.columnNombre.Text = "Nombre";
+            this.columnNombre.Width = 100;
             // 
-            // columnHeader4
+            // columnApellido
             // 
-            this.columnHeader4.Text = "Apellido";
-            this.columnHeader4.Width = 100;
+            this.columnApellido.Text = "Apellido";
+            this.columnApellido.Width = 100;
             // 
-            // columnHeader5
+            // columnDireccion
             // 
-            this.columnHeader5.Text = "Direccion";
-            this.columnHeader5.Width = 100;
+            this.columnDireccion.Text = "Direccion";
+            this.columnDireccion.Width = 100;
             // 
-            // columnHeader6
+            // columnRazonSocial
             // 
-            this.columnHeader6.Text = "Razon Social";
-            this.columnHeader6.Width = 125;
+            this.columnRazonSocial.Text = "Razon Social";
+            this.columnRazonSocial.Width = 125;
             // 
-            // columnHeader7
+            // columnEmail
             // 
-            this.columnHeader7.Text = "Email";
-            this.columnHeader7.Width = 100;
+            this.columnEmail.Text = "Email";
+            this.columnEmail.Width = 100;
             // 
-            // columnHeader8
+            // columnTel
             // 
-            this.columnHeader8.Text = "Telefono";
-            this.columnHeader8.Width = 100;
+            this.columnTel.Text = "Telefono";
+            this.columnTel.Width = 100;
+            // 
+            // mnuTabPage3
+            // 
+            this.mnuTabPage3.Location = new System.Drawing.Point(4, 39);
+            this.mnuTabPage3.Name = "mnuTabPage3";
+            this.mnuTabPage3.Size = new System.Drawing.Size(1372, 678);
+            this.mnuTabPage3.TabIndex = 2;
+            this.mnuTabPage3.Text = "tabPage1";
+            this.mnuTabPage3.UseVisualStyleBackColor = true;
             // 
             // imageList1
             // 
@@ -286,7 +314,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(976, 788);
+            this.ClientSize = new System.Drawing.Size(1386, 788);
             this.Controls.Add(this.mnuPrincipal);
             this.DoubleBuffered = false;
             this.DrawerShowIconsWhenHidden = true;
@@ -300,6 +328,7 @@ namespace UI.Desktop
             this.mnuTabOrdenes.ResumeLayout(false);
             this.mnuTabOrdenes.PerformLayout();
             this.mnuTabClientes.ResumeLayout(false);
+            this.mnuTabClientes.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -313,24 +342,19 @@ namespace UI.Desktop
         private System.Windows.Forms.ImageList imageList1;
         private MaterialSkin.Controls.MaterialButton btnNuevoEmpleado;
         private MaterialSkin.Controls.MaterialListView listClientes;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.ColumnHeader columnHeader7;
-        private System.Windows.Forms.ColumnHeader columnHeader8;
-        private MaterialSkin.Controls.MaterialListView listEmpleados;
-        private System.Windows.Forms.ColumnHeader columnIdEmpleado;
+        private System.Windows.Forms.ColumnHeader columnID;
         private System.Windows.Forms.ColumnHeader columnCuit;
-        private System.Windows.Forms.ColumnHeader columnName;
+        private System.Windows.Forms.ColumnHeader columnNombre;
         private System.Windows.Forms.ColumnHeader columnApellido;
         private System.Windows.Forms.ColumnHeader columnDireccion;
-        private System.Windows.Forms.ColumnHeader columnTelefono;
+        private System.Windows.Forms.ColumnHeader columnRazonSocial;
         private System.Windows.Forms.ColumnHeader columnEmail;
-        private System.Windows.Forms.ColumnHeader columnFechaInicio;
-        private System.Windows.Forms.ColumnHeader columnTipoEmpleado;
+        private System.Windows.Forms.ColumnHeader columnTel;
+        private System.Windows.Forms.TabPage mnuTabPage3;
+        private MaterialSkin.Controls.MaterialButton btnEditarCliente;
+        private MaterialSkin.Controls.MaterialButton btnEliminarCliente;
+        private MaterialSkin.Controls.MaterialButton btnAgregarCliente;
+        private MaterialSkin.Controls.MaterialTextBox txtBuscarCliente;
     }
 }
 
