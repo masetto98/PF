@@ -18,19 +18,19 @@ namespace Business.Entities
         //private TipoPrenda _tipoPrenda;
         private List<Consumo> _historicoConsumos;
 
-        [ForeignKey("Insumo")]
+   
         public int IdInsumo 
         {
             get {return _idInsumo; }
             set {_idInsumo = value; }
         }
-        [ForeignKey("ServicioTipoPrenda")]
+        
         public int IdServicio
         {
             get { return _idServicio; }
             set { _idServicio = value; }
         }
-        [ForeignKey("ServicioTipoPrenda")]
+        
         public int IdTipoPrenda
         {
             get { return _idTipoPrenda; }

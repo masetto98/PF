@@ -21,12 +21,18 @@ namespace UI.Desktop
         private readonly LavanderiaContext _context;
         private readonly ClienteLogic _clienteLogic;
         private readonly EmpleadoLogic _empleadoLogic;
+        private readonly ProveedorLogic _proveedorLogic;
+        private readonly InsumoLogic _insumoLogic;
+        private readonly InsumoProveedorLogic _insumoProveedorLogic;
         public frmMain(LavanderiaContext context)
         {
             InitializeComponent();
             _context = context;
             _clienteLogic = new ClienteLogic(new ClienteAdapter(context));
             _empleadoLogic = new EmpleadoLogic(new EmpleadoAdapter(context));
+            _proveedorLogic = new ProveedorLogic(new ProveedorAdapter(context));
+            _insumoLogic = new InsumoLogic(new InsumoAdapter(context));
+            _insumoProveedorLogic = new InsumoProveedorLogic(new InsumoProveedorAdapter(context));
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
@@ -56,7 +62,7 @@ namespace UI.Desktop
 
         private void mnuPrincipal_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (mnuPrincipal.SelectedTab == mnuTabOrdenes) 
+            if (mnuPrincipal.SelectedIndex == 0) 
             {
                 /*List<Empleado> empleados = _empleadoLogic.GetAll();
                 listEmpleados.Items.Clear();
@@ -75,9 +81,23 @@ namespace UI.Desktop
                 }
                 */
             }
-            else if (mnuPrincipal.SelectedTab == mnuTabClientes)
+            else if (mnuPrincipal.SelectedIndex == 1)
             {
                 ListarClientes();
+               
+            }
+            else if(mnuPrincipal.SelectedIndex == 2)
+            {
+                
+                    ListarProveedores();  
+                
+               
+                    ListarInsumos();
+                
+                
+                    ListarIngresos();
+               
+               
             }
            
 
@@ -168,5 +188,174 @@ namespace UI.Desktop
             e.NewWidth = listClientes.Columns[e.ColumnIndex].Width;
         }
         #endregion
+
+        #region --------- INVENTARIO ---------
+        private void ListarProveedores()
+        {
+            List<Proveedor> proveedores = _proveedorLogic.GetAll();
+            listProveedores.Items.Clear();
+            foreach (Proveedor p in proveedores)
+            {
+                ListViewItem item = new ListViewItem(p.IdProveedor.ToString());
+                item.SubItems.Add(p.Cuit);
+                item.SubItems.Add(p.RazonSocial);
+                item.SubItems.Add(p.Telefono);
+                item.SubItems.Add(p.Email);
+                item.SubItems.Add(p.Direccion);
+                listProveedores.Items.Add(item);
+            }
+        }
+        private void ListarInsumos()
+        {
+            List<Insumo> insumos = _insumoLogic.GetAll();
+            listInsumos.Items.Clear();
+            foreach (Insumo i in insumos)
+            {
+                ListViewItem item = new ListViewItem(i.IdInsumo.ToString());
+                item.SubItems.Add(i.Descripcion);
+                item.SubItems.Add(i.Stock.ToString());
+                
+                listInsumos.Items.Add(item);
+            }
+            
+        }
+        private void ListarIngresos()
+        {
+            List<InsumoProveedor> insumosproveedores = _insumoProveedorLogic.GetAll();
+            insumosproveedores.OrderBy(ip => ip.FechaIngreso);
+            listIngresos.Items.Clear();
+            foreach(InsumoProveedor ip in insumosproveedores)
+            {
+                ListViewItem item = new ListViewItem(ip.Proveedor.IdProveedor.ToString());
+                item.SubItems.Add(ip.Proveedor.RazonSocial);
+                item.SubItems.Add(ip.Insumo.IdInsumo.ToString());
+                item.SubItems.Add(ip.Insumo.Descripcion);
+                item.SubItems.Add(ip.FechaIngreso.ToString());
+                item.SubItems.Add(ip.Cantidad.ToString());
+                listIngresos.Items.Add(item);
+            }
+        }
+
+        private void btnAgregarProv_Click(object sender, EventArgs e)
+        {
+            ProveedorDesktop frmProveedor = new ProveedorDesktop(ApplicationForm.ModoForm.Alta, _context);
+            frmProveedor.ShowDialog();
+            ListarProveedores();
+        }
+        private void btnEditarProv_Click(object sender, EventArgs e)
+        {
+            if (listProveedores.SelectedItems.Count > 0)
+            {
+                int ID = Int32.Parse(this.listProveedores.SelectedItems[0].Text);
+                ProveedorDesktop formProveedor = new ProveedorDesktop(ID, ApplicationForm.ModoForm.Modificacion, _context);
+                formProveedor.ShowDialog();
+                ListarProveedores();
+            }
+            else
+            {
+                MessageBox.Show("Seleccionar una fila en la lista para poder editar");
+            }
+        }
+        private void btnEliminarProv_Click(object sender, EventArgs e)
+        {
+            if (listProveedores.SelectedItems.Count > 0)
+            {
+                int ID = Int32.Parse(this.listProveedores.SelectedItems[0].Text);
+                ProveedorDesktop formProveedor = new ProveedorDesktop(ID, ApplicationForm.ModoForm.Baja, _context);
+                formProveedor.ShowDialog();
+                //listClientes.Items.Remove(listClientes.SelectedItems[0]); Otra forma de borrar de la lista
+                ListarProveedores();
+            }
+            else
+            {
+                MessageBox.Show("Seleccionar una fila en la lista para poder eliminar");
+            }
+        }
+        private void listProveedores_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listProveedores.Columns[e.ColumnIndex].Width;
+        }
+        private void btnAgregarInsumo_Click(object sender, EventArgs e)
+        {
+            InsumoDesktop frmInsumo = new InsumoDesktop(ApplicationForm.ModoForm.Alta, _context);
+            frmInsumo.ShowDialog();
+            ListarInsumos();
+        }
+        private void btnEditarInsumo_Click(object sender, EventArgs e)
+        {
+            if (listInsumos.SelectedItems.Count > 0)
+            {
+                int ID = Int32.Parse(this.listInsumos.SelectedItems[0].Text);
+                InsumoDesktop formInsumo = new InsumoDesktop(ID, ApplicationForm.ModoForm.Modificacion, _context);
+                formInsumo.ShowDialog();
+                ListarInsumos();
+            }
+            else
+            {
+                MessageBox.Show("Seleccionar una fila en la lista para poder editar");
+            }
+        }
+
+        private void btnEliminarInsumo_Click(object sender, EventArgs e)
+        {
+            if (listInsumos.SelectedItems.Count > 0)
+            {
+                int ID = Int32.Parse(this.listInsumos.SelectedItems[0].Text);
+                InsumoDesktop formInsumo = new InsumoDesktop(ID, ApplicationForm.ModoForm.Baja, _context);
+                formInsumo.ShowDialog();
+                //listClientes.Items.Remove(listClientes.SelectedItems[0]); Otra forma de borrar de la lista
+                ListarInsumos();
+            }
+            else
+            {
+                MessageBox.Show("Seleccionar una fila en la lista para poder eliminar");
+            }
+        }
+
+        private void btnNuevoIngreso_Click(object sender, EventArgs e)
+        {
+            InsumoProveedorDesktop frmInsumoProveedor = new InsumoProveedorDesktop(ApplicationForm.ModoForm.Alta, _context);
+            frmInsumoProveedor.ShowDialog();
+            ListarIngresos();
+        }
+        private void btnEditarIngreso_Click(object sender, EventArgs e)
+        {
+            if (listIngresos.SelectedItems.Count > 0)
+            {
+                int IDProv = Int32.Parse(this.listIngresos.SelectedItems[0].Text);
+                int IDIns = Int32.Parse(this.listIngresos.SelectedItems[0].SubItems[2].Text);
+                DateTime fechaIngreso = DateTime.Parse(this.listIngresos.SelectedItems[0].SubItems[4].Text);
+                InsumoProveedorDesktop formInsumoProveedor = new InsumoProveedorDesktop(IDProv,IDIns,fechaIngreso, ApplicationForm.ModoForm.Modificacion, _context);
+                formInsumoProveedor.ShowDialog();
+                ListarIngresos();
+            }
+            else
+            {
+                MessageBox.Show("Seleccionar una fila en la lista para poder editar");
+            }
+        }
+
+        private void btnEliminarIngreso_Click(object sender, EventArgs e)
+        {
+            if (listIngresos.SelectedItems.Count > 0)
+            {
+                int IDProv = Int32.Parse(this.listIngresos.SelectedItems[0].Text);
+                int IDIns = Int32.Parse(this.listIngresos.SelectedItems[0].SubItems[2].Text);
+                DateTime fechaIngreso = DateTime.Parse(this.listIngresos.SelectedItems[0].SubItems[4].Text);
+                InsumoProveedorDesktop formInsumoProveedor = new InsumoProveedorDesktop(IDProv, IDIns, fechaIngreso, ApplicationForm.ModoForm.Baja, _context);
+                formInsumoProveedor.ShowDialog();
+                //listClientes.Items.Remove(listClientes.SelectedItems[0]); Otra forma de borrar de la lista
+                ListarIngresos();
+            }
+            else
+            {
+                MessageBox.Show("Seleccionar una fila en la lista para poder eliminar");
+            }
+
+        }
+        #endregion
+
+        
     }
 }

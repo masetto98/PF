@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Data.Database\\Data.Database.csproj": {}
+    "D:\\Proyectos\\PF\\Proyecto Final\\Data.Database\\Data.Database.csproj": {}
   },
   "projects": {
-    "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Business.Entities\\Business.Entities.csproj": {
+    "D:\\Proyectos\\PF\\Proyecto Final\\Business.Entities\\Business.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Business.Entities\\Business.Entities.csproj",
+        "projectUniqueName": "D:\\Proyectos\\PF\\Proyecto Final\\Business.Entities\\Business.Entities.csproj",
         "projectName": "Business.Entities",
-        "projectPath": "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Business.Entities\\Business.Entities.csproj",
-        "packagesPath": "C:\\Users\\manud\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Business.Entities\\obj\\",
+        "projectPath": "D:\\Proyectos\\PF\\Proyecto Final\\Business.Entities\\Business.Entities.csproj",
+        "packagesPath": "C:\\Users\\SANTI-PC\\.nuget\\packages\\",
+        "outputPath": "D:\\Proyectos\\PF\\Proyecto Final\\Business.Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\manud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\SANTI-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,17 +58,17 @@
         }
       }
     },
-    "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Data.Database\\Data.Database.csproj": {
+    "D:\\Proyectos\\PF\\Proyecto Final\\Data.Database\\Data.Database.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Data.Database\\Data.Database.csproj",
+        "projectUniqueName": "D:\\Proyectos\\PF\\Proyecto Final\\Data.Database\\Data.Database.csproj",
         "projectName": "Data.Database",
-        "projectPath": "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Data.Database\\Data.Database.csproj",
-        "packagesPath": "C:\\Users\\manud\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Data.Database\\obj\\",
+        "projectPath": "D:\\Proyectos\\PF\\Proyecto Final\\Data.Database\\Data.Database.csproj",
+        "packagesPath": "C:\\Users\\SANTI-PC\\.nuget\\packages\\",
+        "outputPath": "D:\\Proyectos\\PF\\Proyecto Final\\Data.Database\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\manud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\SANTI-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,8 +82,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Business.Entities\\Business.Entities.csproj": {
-                "projectPath": "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Business.Entities\\Business.Entities.csproj"
+              "D:\\Proyectos\\PF\\Proyecto Final\\Business.Entities\\Business.Entities.csproj": {
+                "projectPath": "D:\\Proyectos\\PF\\Proyecto Final\\Business.Entities\\Business.Entities.csproj"
               }
             }
           }

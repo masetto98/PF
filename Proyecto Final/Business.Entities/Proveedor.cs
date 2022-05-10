@@ -32,7 +32,7 @@ namespace Business.Entities
             get { return _cuit; }
             set { _cuit = value; }
         }
-
+        [Column("razon_social")]
         public string RazonSocial
         {
             get { return _razon_social; }

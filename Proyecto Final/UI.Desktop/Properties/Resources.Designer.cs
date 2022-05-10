@@ -103,6 +103,16 @@ namespace UI.Desktop.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap plus_icon_icons_com_70890 {
+            get {
+                object obj = ResourceManager.GetObject("plus_icon-icons.com_70890", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap search_find_user_16727 {
             get {
                 object obj = ResourceManager.GetObject("search_find_user_16727", resourceCulture);

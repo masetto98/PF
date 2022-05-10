@@ -27,13 +27,13 @@ namespace Business.Entities
             get { return _nroOrden; }
             set { _nroOrden = value; }
         }
-        [ForeignKey("ServicioTipoPrenda")]
+        
         public int IdServicio
         {
             get { return _idServicio; }
             set { _idServicio = value; }
         }
-        [ForeignKey("ServicioTipoPrenda")]
+       
         public int IdTipoPrenda
         {
             get { return _idTipoPrenda; }

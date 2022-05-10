@@ -49,11 +49,53 @@ namespace UI.Desktop
             this.columnRazonSocial = new System.Windows.Forms.ColumnHeader();
             this.columnEmail = new System.Windows.Forms.ColumnHeader();
             this.columnTel = new System.Windows.Forms.ColumnHeader();
-            this.mnuTabPage3 = new System.Windows.Forms.TabPage();
+            this.mnuTabInventario = new System.Windows.Forms.TabPage();
+            this.tabControlInventario = new MaterialSkin.Controls.MaterialTabControl();
+            this.TabStock = new System.Windows.Forms.TabPage();
+            this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
+            this.columnInsumo = new System.Windows.Forms.ColumnHeader();
+            this.columnExistencia = new System.Windows.Forms.ColumnHeader();
+            this.TabProveedor = new System.Windows.Forms.TabPage();
+            this.listProveedores = new MaterialSkin.Controls.MaterialListView();
+            this.columnIDProv = new System.Windows.Forms.ColumnHeader();
+            this.columnCuitProv = new System.Windows.Forms.ColumnHeader();
+            this.columnRazonSocialProv = new System.Windows.Forms.ColumnHeader();
+            this.columnTelProv = new System.Windows.Forms.ColumnHeader();
+            this.columnEmailProv = new System.Windows.Forms.ColumnHeader();
+            this.columnDireccionProv = new System.Windows.Forms.ColumnHeader();
+            this.btnEditarProv = new MaterialSkin.Controls.MaterialButton();
+            this.btnEliminarProv = new MaterialSkin.Controls.MaterialButton();
+            this.btnAgregarProv = new MaterialSkin.Controls.MaterialButton();
+            this.TabInsumo = new System.Windows.Forms.TabPage();
+            this.listInsumos = new MaterialSkin.Controls.MaterialListView();
+            this.columnIdInsumo = new System.Windows.Forms.ColumnHeader();
+            this.columnDescInsumo = new System.Windows.Forms.ColumnHeader();
+            this.columnStockInsumo = new System.Windows.Forms.ColumnHeader();
+            this.btnEditarInsumo = new MaterialSkin.Controls.MaterialButton();
+            this.btnEliminarInsumo = new MaterialSkin.Controls.MaterialButton();
+            this.btnAgregarInsumo = new MaterialSkin.Controls.MaterialButton();
+            this.TabMovimientos = new System.Windows.Forms.TabPage();
+            this.btnEditarIngreso = new MaterialSkin.Controls.MaterialButton();
+            this.btnEliminarIngreso = new MaterialSkin.Controls.MaterialButton();
+            this.btnNuevoIngreso = new MaterialSkin.Controls.MaterialButton();
+            this.listIngresos = new MaterialSkin.Controls.MaterialListView();
+            this.columnIdProvIngreso = new System.Windows.Forms.ColumnHeader();
+            this.columnProvIngreso = new System.Windows.Forms.ColumnHeader();
+            this.columnIdInsumoIngreso = new System.Windows.Forms.ColumnHeader();
+            this.columnInsumoIngreso = new System.Windows.Forms.ColumnHeader();
+            this.columnFechaIngreso = new System.Windows.Forms.ColumnHeader();
+            this.columnCantIngreso = new System.Windows.Forms.ColumnHeader();
+            this.tabSelectorInventario = new MaterialSkin.Controls.MaterialTabSelector();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.mnuPrincipal.SuspendLayout();
             this.mnuTabOrdenes.SuspendLayout();
             this.mnuTabClientes.SuspendLayout();
+            this.mnuTabInventario.SuspendLayout();
+            this.tabControlInventario.SuspendLayout();
+            this.TabStock.SuspendLayout();
+            this.TabProveedor.SuspendLayout();
+            this.TabInsumo.SuspendLayout();
+            this.TabMovimientos.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnNuevoCliente
@@ -80,7 +122,7 @@ namespace UI.Desktop
             // 
             this.mnuPrincipal.Controls.Add(this.mnuTabOrdenes);
             this.mnuPrincipal.Controls.Add(this.mnuTabClientes);
-            this.mnuPrincipal.Controls.Add(this.mnuTabPage3);
+            this.mnuPrincipal.Controls.Add(this.mnuTabInventario);
             this.mnuPrincipal.Depth = 0;
             this.mnuPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mnuPrincipal.ImageList = this.imageList1;
@@ -293,14 +335,459 @@ namespace UI.Desktop
             this.columnTel.Text = "Telefono";
             this.columnTel.Width = 100;
             // 
-            // mnuTabPage3
+            // mnuTabInventario
             // 
-            this.mnuTabPage3.Location = new System.Drawing.Point(4, 39);
-            this.mnuTabPage3.Name = "mnuTabPage3";
-            this.mnuTabPage3.Size = new System.Drawing.Size(1372, 678);
-            this.mnuTabPage3.TabIndex = 2;
-            this.mnuTabPage3.Text = "tabPage1";
-            this.mnuTabPage3.UseVisualStyleBackColor = true;
+            this.mnuTabInventario.Controls.Add(this.tabControlInventario);
+            this.mnuTabInventario.Controls.Add(this.tabSelectorInventario);
+            this.mnuTabInventario.ImageKey = "sales_sale_supermarket_stock_market_icon_153849.png";
+            this.mnuTabInventario.Location = new System.Drawing.Point(4, 39);
+            this.mnuTabInventario.Name = "mnuTabInventario";
+            this.mnuTabInventario.Size = new System.Drawing.Size(1372, 678);
+            this.mnuTabInventario.TabIndex = 2;
+            this.mnuTabInventario.Text = "Inventario";
+            this.mnuTabInventario.UseVisualStyleBackColor = true;
+            // 
+            // tabControlInventario
+            // 
+            this.tabControlInventario.Controls.Add(this.TabStock);
+            this.tabControlInventario.Controls.Add(this.TabProveedor);
+            this.tabControlInventario.Controls.Add(this.TabInsumo);
+            this.tabControlInventario.Controls.Add(this.TabMovimientos);
+            this.tabControlInventario.Depth = 0;
+            this.tabControlInventario.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlInventario.Location = new System.Drawing.Point(0, 48);
+            this.tabControlInventario.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tabControlInventario.Multiline = true;
+            this.tabControlInventario.Name = "tabControlInventario";
+            this.tabControlInventario.SelectedIndex = 0;
+            this.tabControlInventario.Size = new System.Drawing.Size(1372, 630);
+            this.tabControlInventario.TabIndex = 1;
+            // 
+            // TabStock
+            // 
+            this.TabStock.Controls.Add(this.materialListView1);
+            this.TabStock.Location = new System.Drawing.Point(4, 24);
+            this.TabStock.Name = "TabStock";
+            this.TabStock.Padding = new System.Windows.Forms.Padding(3);
+            this.TabStock.Size = new System.Drawing.Size(1364, 602);
+            this.TabStock.TabIndex = 0;
+            this.TabStock.Text = "Stock";
+            this.TabStock.UseVisualStyleBackColor = true;
+            // 
+            // materialListView1
+            // 
+            this.materialListView1.AutoSizeTable = false;
+            this.materialListView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnInsumo,
+            this.columnExistencia});
+            this.materialListView1.Depth = 0;
+            this.materialListView1.FullRowSelect = true;
+            this.materialListView1.HideSelection = false;
+            this.materialListView1.Location = new System.Drawing.Point(414, 68);
+            this.materialListView1.MinimumSize = new System.Drawing.Size(200, 100);
+            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
+            this.materialListView1.Name = "materialListView1";
+            this.materialListView1.OwnerDraw = true;
+            this.materialListView1.Size = new System.Drawing.Size(260, 404);
+            this.materialListView1.TabIndex = 0;
+            this.materialListView1.UseCompatibleStateImageBehavior = false;
+            this.materialListView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnInsumo
+            // 
+            this.columnInsumo.Text = "Descripción Insumo";
+            this.columnInsumo.Width = 160;
+            // 
+            // columnExistencia
+            // 
+            this.columnExistencia.Text = "Existencia";
+            this.columnExistencia.Width = 100;
+            // 
+            // TabProveedor
+            // 
+            this.TabProveedor.Controls.Add(this.listProveedores);
+            this.TabProveedor.Controls.Add(this.btnEditarProv);
+            this.TabProveedor.Controls.Add(this.btnEliminarProv);
+            this.TabProveedor.Controls.Add(this.btnAgregarProv);
+            this.TabProveedor.Location = new System.Drawing.Point(4, 24);
+            this.TabProveedor.Name = "TabProveedor";
+            this.TabProveedor.Padding = new System.Windows.Forms.Padding(3);
+            this.TabProveedor.Size = new System.Drawing.Size(1364, 602);
+            this.TabProveedor.TabIndex = 1;
+            this.TabProveedor.Text = "Proveedor";
+            this.TabProveedor.UseVisualStyleBackColor = true;
+            // 
+            // listProveedores
+            // 
+            this.listProveedores.AutoSizeTable = false;
+            this.listProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listProveedores.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listProveedores.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnIDProv,
+            this.columnCuitProv,
+            this.columnRazonSocialProv,
+            this.columnTelProv,
+            this.columnEmailProv,
+            this.columnDireccionProv});
+            this.listProveedores.Depth = 0;
+            this.listProveedores.FullRowSelect = true;
+            this.listProveedores.HideSelection = false;
+            this.listProveedores.Location = new System.Drawing.Point(193, 51);
+            this.listProveedores.MinimumSize = new System.Drawing.Size(200, 100);
+            this.listProveedores.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listProveedores.MouseState = MaterialSkin.MouseState.OUT;
+            this.listProveedores.Name = "listProveedores";
+            this.listProveedores.OwnerDraw = true;
+            this.listProveedores.Size = new System.Drawing.Size(679, 408);
+            this.listProveedores.TabIndex = 7;
+            this.listProveedores.UseCompatibleStateImageBehavior = false;
+            this.listProveedores.View = System.Windows.Forms.View.Details;
+            this.listProveedores.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listProveedores_ColumnWidthChanging);
+            // 
+            // columnIDProv
+            // 
+            this.columnIDProv.Text = "ID";
+            // 
+            // columnCuitProv
+            // 
+            this.columnCuitProv.Text = "Cuit";
+            this.columnCuitProv.Width = 120;
+            // 
+            // columnRazonSocialProv
+            // 
+            this.columnRazonSocialProv.Text = "Razon Social";
+            this.columnRazonSocialProv.Width = 120;
+            // 
+            // columnTelProv
+            // 
+            this.columnTelProv.Text = "Telefono";
+            this.columnTelProv.Width = 120;
+            // 
+            // columnEmailProv
+            // 
+            this.columnEmailProv.Text = "Email";
+            this.columnEmailProv.Width = 140;
+            // 
+            // columnDireccionProv
+            // 
+            this.columnDireccionProv.Text = "Direccion";
+            this.columnDireccionProv.Width = 120;
+            // 
+            // btnEditarProv
+            // 
+            this.btnEditarProv.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEditarProv.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnEditarProv.Depth = 0;
+            this.btnEditarProv.HighEmphasis = true;
+            this.btnEditarProv.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
+            this.btnEditarProv.Location = new System.Drawing.Point(21, 110);
+            this.btnEditarProv.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEditarProv.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEditarProv.Name = "btnEditarProv";
+            this.btnEditarProv.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnEditarProv.Size = new System.Drawing.Size(99, 36);
+            this.btnEditarProv.TabIndex = 6;
+            this.btnEditarProv.Text = "Editar";
+            this.btnEditarProv.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnEditarProv.UseAccentColor = false;
+            this.btnEditarProv.UseVisualStyleBackColor = true;
+            this.btnEditarProv.Click += new System.EventHandler(this.btnEditarProv_Click);
+            // 
+            // btnEliminarProv
+            // 
+            this.btnEliminarProv.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEliminarProv.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnEliminarProv.Depth = 0;
+            this.btnEliminarProv.HighEmphasis = true;
+            this.btnEliminarProv.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
+            this.btnEliminarProv.Location = new System.Drawing.Point(21, 170);
+            this.btnEliminarProv.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEliminarProv.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEliminarProv.Name = "btnEliminarProv";
+            this.btnEliminarProv.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnEliminarProv.Size = new System.Drawing.Size(116, 36);
+            this.btnEliminarProv.TabIndex = 5;
+            this.btnEliminarProv.Text = "Eliminar";
+            this.btnEliminarProv.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnEliminarProv.UseAccentColor = false;
+            this.btnEliminarProv.UseVisualStyleBackColor = true;
+            this.btnEliminarProv.Click += new System.EventHandler(this.btnEliminarProv_Click);
+            // 
+            // btnAgregarProv
+            // 
+            this.btnAgregarProv.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAgregarProv.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnAgregarProv.Depth = 0;
+            this.btnAgregarProv.HighEmphasis = true;
+            this.btnAgregarProv.Icon = global::UI.Desktop.Properties.Resources.adduser_añadir_3553;
+            this.btnAgregarProv.Location = new System.Drawing.Point(21, 51);
+            this.btnAgregarProv.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAgregarProv.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAgregarProv.Name = "btnAgregarProv";
+            this.btnAgregarProv.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnAgregarProv.Size = new System.Drawing.Size(116, 36);
+            this.btnAgregarProv.TabIndex = 4;
+            this.btnAgregarProv.Text = "Agregar";
+            this.btnAgregarProv.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnAgregarProv.UseAccentColor = false;
+            this.btnAgregarProv.UseVisualStyleBackColor = true;
+            this.btnAgregarProv.Click += new System.EventHandler(this.btnAgregarProv_Click);
+            // 
+            // TabInsumo
+            // 
+            this.TabInsumo.Controls.Add(this.listInsumos);
+            this.TabInsumo.Controls.Add(this.btnEditarInsumo);
+            this.TabInsumo.Controls.Add(this.btnEliminarInsumo);
+            this.TabInsumo.Controls.Add(this.btnAgregarInsumo);
+            this.TabInsumo.Location = new System.Drawing.Point(4, 24);
+            this.TabInsumo.Name = "TabInsumo";
+            this.TabInsumo.Size = new System.Drawing.Size(1364, 602);
+            this.TabInsumo.TabIndex = 2;
+            this.TabInsumo.Text = "Insumo";
+            this.TabInsumo.UseVisualStyleBackColor = true;
+            // 
+            // listInsumos
+            // 
+            this.listInsumos.AutoSizeTable = false;
+            this.listInsumos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listInsumos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listInsumos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnIdInsumo,
+            this.columnDescInsumo,
+            this.columnStockInsumo});
+            this.listInsumos.Depth = 0;
+            this.listInsumos.FullRowSelect = true;
+            this.listInsumos.HideSelection = false;
+            this.listInsumos.Location = new System.Drawing.Point(208, 27);
+            this.listInsumos.MinimumSize = new System.Drawing.Size(200, 100);
+            this.listInsumos.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listInsumos.MouseState = MaterialSkin.MouseState.OUT;
+            this.listInsumos.Name = "listInsumos";
+            this.listInsumos.OwnerDraw = true;
+            this.listInsumos.Size = new System.Drawing.Size(360, 446);
+            this.listInsumos.TabIndex = 10;
+            this.listInsumos.UseCompatibleStateImageBehavior = false;
+            this.listInsumos.View = System.Windows.Forms.View.Details;
+            // 
+            // columnIdInsumo
+            // 
+            this.columnIdInsumo.Text = "ID";
+            // 
+            // columnDescInsumo
+            // 
+            this.columnDescInsumo.Text = "Descripción";
+            this.columnDescInsumo.Width = 200;
+            // 
+            // columnStockInsumo
+            // 
+            this.columnStockInsumo.Text = "Stock";
+            this.columnStockInsumo.Width = 100;
+            // 
+            // btnEditarInsumo
+            // 
+            this.btnEditarInsumo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEditarInsumo.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnEditarInsumo.Depth = 0;
+            this.btnEditarInsumo.HighEmphasis = true;
+            this.btnEditarInsumo.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
+            this.btnEditarInsumo.Location = new System.Drawing.Point(30, 86);
+            this.btnEditarInsumo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEditarInsumo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEditarInsumo.Name = "btnEditarInsumo";
+            this.btnEditarInsumo.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnEditarInsumo.Size = new System.Drawing.Size(99, 36);
+            this.btnEditarInsumo.TabIndex = 9;
+            this.btnEditarInsumo.Text = "Editar";
+            this.btnEditarInsumo.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnEditarInsumo.UseAccentColor = false;
+            this.btnEditarInsumo.UseVisualStyleBackColor = true;
+            this.btnEditarInsumo.Click += new System.EventHandler(this.btnEditarInsumo_Click);
+            // 
+            // btnEliminarInsumo
+            // 
+            this.btnEliminarInsumo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEliminarInsumo.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnEliminarInsumo.Depth = 0;
+            this.btnEliminarInsumo.HighEmphasis = true;
+            this.btnEliminarInsumo.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
+            this.btnEliminarInsumo.Location = new System.Drawing.Point(30, 146);
+            this.btnEliminarInsumo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEliminarInsumo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEliminarInsumo.Name = "btnEliminarInsumo";
+            this.btnEliminarInsumo.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnEliminarInsumo.Size = new System.Drawing.Size(116, 36);
+            this.btnEliminarInsumo.TabIndex = 8;
+            this.btnEliminarInsumo.Text = "Eliminar";
+            this.btnEliminarInsumo.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnEliminarInsumo.UseAccentColor = false;
+            this.btnEliminarInsumo.UseVisualStyleBackColor = true;
+            this.btnEliminarInsumo.Click += new System.EventHandler(this.btnEliminarInsumo_Click);
+            // 
+            // btnAgregarInsumo
+            // 
+            this.btnAgregarInsumo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAgregarInsumo.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnAgregarInsumo.Depth = 0;
+            this.btnAgregarInsumo.HighEmphasis = true;
+            this.btnAgregarInsumo.Icon = global::UI.Desktop.Properties.Resources.adduser_añadir_3553;
+            this.btnAgregarInsumo.Location = new System.Drawing.Point(30, 27);
+            this.btnAgregarInsumo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAgregarInsumo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAgregarInsumo.Name = "btnAgregarInsumo";
+            this.btnAgregarInsumo.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnAgregarInsumo.Size = new System.Drawing.Size(116, 36);
+            this.btnAgregarInsumo.TabIndex = 7;
+            this.btnAgregarInsumo.Text = "Agregar";
+            this.btnAgregarInsumo.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnAgregarInsumo.UseAccentColor = false;
+            this.btnAgregarInsumo.UseVisualStyleBackColor = true;
+            this.btnAgregarInsumo.Click += new System.EventHandler(this.btnAgregarInsumo_Click);
+            // 
+            // TabMovimientos
+            // 
+            this.TabMovimientos.Controls.Add(this.btnEditarIngreso);
+            this.TabMovimientos.Controls.Add(this.btnEliminarIngreso);
+            this.TabMovimientos.Controls.Add(this.btnNuevoIngreso);
+            this.TabMovimientos.Controls.Add(this.listIngresos);
+            this.TabMovimientos.Location = new System.Drawing.Point(4, 24);
+            this.TabMovimientos.Name = "TabMovimientos";
+            this.TabMovimientos.Size = new System.Drawing.Size(1364, 602);
+            this.TabMovimientos.TabIndex = 3;
+            this.TabMovimientos.Text = "Movimientos";
+            this.TabMovimientos.UseVisualStyleBackColor = true;
+            // 
+            // btnEditarIngreso
+            // 
+            this.btnEditarIngreso.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEditarIngreso.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnEditarIngreso.Depth = 0;
+            this.btnEditarIngreso.HighEmphasis = true;
+            this.btnEditarIngreso.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
+            this.btnEditarIngreso.Location = new System.Drawing.Point(24, 135);
+            this.btnEditarIngreso.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEditarIngreso.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEditarIngreso.Name = "btnEditarIngreso";
+            this.btnEditarIngreso.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnEditarIngreso.Size = new System.Drawing.Size(99, 36);
+            this.btnEditarIngreso.TabIndex = 12;
+            this.btnEditarIngreso.Text = "Editar";
+            this.btnEditarIngreso.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnEditarIngreso.UseAccentColor = false;
+            this.btnEditarIngreso.UseVisualStyleBackColor = true;
+            this.btnEditarIngreso.Click += new System.EventHandler(this.btnEditarIngreso_Click);
+            // 
+            // btnEliminarIngreso
+            // 
+            this.btnEliminarIngreso.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEliminarIngreso.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnEliminarIngreso.Depth = 0;
+            this.btnEliminarIngreso.HighEmphasis = true;
+            this.btnEliminarIngreso.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
+            this.btnEliminarIngreso.Location = new System.Drawing.Point(24, 195);
+            this.btnEliminarIngreso.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEliminarIngreso.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEliminarIngreso.Name = "btnEliminarIngreso";
+            this.btnEliminarIngreso.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnEliminarIngreso.Size = new System.Drawing.Size(116, 36);
+            this.btnEliminarIngreso.TabIndex = 11;
+            this.btnEliminarIngreso.Text = "Eliminar";
+            this.btnEliminarIngreso.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnEliminarIngreso.UseAccentColor = false;
+            this.btnEliminarIngreso.UseVisualStyleBackColor = true;
+            this.btnEliminarIngreso.Click += new System.EventHandler(this.btnEliminarIngreso_Click);
+            // 
+            // btnNuevoIngreso
+            // 
+            this.btnNuevoIngreso.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnNuevoIngreso.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnNuevoIngreso.Depth = 0;
+            this.btnNuevoIngreso.HighEmphasis = true;
+            this.btnNuevoIngreso.Icon = global::UI.Desktop.Properties.Resources.adduser_añadir_3553;
+            this.btnNuevoIngreso.Location = new System.Drawing.Point(24, 76);
+            this.btnNuevoIngreso.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnNuevoIngreso.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnNuevoIngreso.Name = "btnNuevoIngreso";
+            this.btnNuevoIngreso.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnNuevoIngreso.Size = new System.Drawing.Size(163, 36);
+            this.btnNuevoIngreso.TabIndex = 10;
+            this.btnNuevoIngreso.Text = "nuevo ingreso";
+            this.btnNuevoIngreso.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnNuevoIngreso.UseAccentColor = false;
+            this.btnNuevoIngreso.UseVisualStyleBackColor = true;
+            this.btnNuevoIngreso.Click += new System.EventHandler(this.btnNuevoIngreso_Click);
+            // 
+            // listIngresos
+            // 
+            this.listIngresos.AutoSizeTable = false;
+            this.listIngresos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listIngresos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listIngresos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnIdProvIngreso,
+            this.columnProvIngreso,
+            this.columnIdInsumoIngreso,
+            this.columnInsumoIngreso,
+            this.columnFechaIngreso,
+            this.columnCantIngreso});
+            this.listIngresos.Depth = 0;
+            this.listIngresos.FullRowSelect = true;
+            this.listIngresos.HideSelection = false;
+            this.listIngresos.Location = new System.Drawing.Point(225, 76);
+            this.listIngresos.MinimumSize = new System.Drawing.Size(200, 100);
+            this.listIngresos.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listIngresos.MouseState = MaterialSkin.MouseState.OUT;
+            this.listIngresos.Name = "listIngresos";
+            this.listIngresos.OwnerDraw = true;
+            this.listIngresos.Size = new System.Drawing.Size(890, 341);
+            this.listIngresos.TabIndex = 0;
+            this.listIngresos.UseCompatibleStateImageBehavior = false;
+            this.listIngresos.View = System.Windows.Forms.View.Details;
+            // 
+            // columnIdProvIngreso
+            // 
+            this.columnIdProvIngreso.Text = "ID Proveedor";
+            this.columnIdProvIngreso.Width = 110;
+            // 
+            // columnProvIngreso
+            // 
+            this.columnProvIngreso.Text = "Proveedor";
+            this.columnProvIngreso.Width = 200;
+            // 
+            // columnIdInsumoIngreso
+            // 
+            this.columnIdInsumoIngreso.Text = "ID Insumo";
+            this.columnIdInsumoIngreso.Width = 100;
+            // 
+            // columnInsumoIngreso
+            // 
+            this.columnInsumoIngreso.Text = "Insumo";
+            this.columnInsumoIngreso.Width = 150;
+            // 
+            // columnFechaIngreso
+            // 
+            this.columnFechaIngreso.Text = "Fecha Ingreso";
+            this.columnFechaIngreso.Width = 180;
+            // 
+            // columnCantIngreso
+            // 
+            this.columnCantIngreso.Text = "Cantidad";
+            this.columnCantIngreso.Width = 150;
+            // 
+            // tabSelectorInventario
+            // 
+            this.tabSelectorInventario.BaseTabControl = this.tabControlInventario;
+            this.tabSelectorInventario.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
+            this.tabSelectorInventario.Depth = 0;
+            this.tabSelectorInventario.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tabSelectorInventario.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.tabSelectorInventario.Location = new System.Drawing.Point(0, 0);
+            this.tabSelectorInventario.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tabSelectorInventario.Name = "tabSelectorInventario";
+            this.tabSelectorInventario.Size = new System.Drawing.Size(1372, 48);
+            this.tabSelectorInventario.TabIndex = 0;
+            this.tabSelectorInventario.Text = "TabSelectorInventario";
             // 
             // imageList1
             // 
@@ -309,6 +796,7 @@ namespace UI.Desktop
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "adduser_añadir_3553.png");
             this.imageList1.Images.SetKeyName(1, "addthelist_añadir_3477.png");
+            this.imageList1.Images.SetKeyName(2, "sales_sale_supermarket_stock_market_icon_153849.png");
             // 
             // frmMain
             // 
@@ -329,6 +817,15 @@ namespace UI.Desktop
             this.mnuTabOrdenes.PerformLayout();
             this.mnuTabClientes.ResumeLayout(false);
             this.mnuTabClientes.PerformLayout();
+            this.mnuTabInventario.ResumeLayout(false);
+            this.tabControlInventario.ResumeLayout(false);
+            this.TabStock.ResumeLayout(false);
+            this.TabProveedor.ResumeLayout(false);
+            this.TabProveedor.PerformLayout();
+            this.TabInsumo.ResumeLayout(false);
+            this.TabInsumo.PerformLayout();
+            this.TabMovimientos.ResumeLayout(false);
+            this.TabMovimientos.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -350,11 +847,47 @@ namespace UI.Desktop
         private System.Windows.Forms.ColumnHeader columnRazonSocial;
         private System.Windows.Forms.ColumnHeader columnEmail;
         private System.Windows.Forms.ColumnHeader columnTel;
-        private System.Windows.Forms.TabPage mnuTabPage3;
+        private System.Windows.Forms.TabPage mnuTabInventario;
         private MaterialSkin.Controls.MaterialButton btnEditarCliente;
         private MaterialSkin.Controls.MaterialButton btnEliminarCliente;
         private MaterialSkin.Controls.MaterialButton btnAgregarCliente;
         private MaterialSkin.Controls.MaterialTextBox txtBuscarCliente;
+        private MaterialSkin.Controls.MaterialTabControl tabControlInventario;
+        private System.Windows.Forms.TabPage TabStock;
+        private System.Windows.Forms.TabPage TabProveedor;
+        private MaterialSkin.Controls.MaterialTabSelector tabSelectorInventario;
+        private System.Windows.Forms.TabPage TabInsumo;
+        private MaterialSkin.Controls.MaterialListView listProveedores;
+        private System.Windows.Forms.ColumnHeader columnIDProv;
+        private System.Windows.Forms.ColumnHeader columnCuitProv;
+        private System.Windows.Forms.ColumnHeader columnRazonSocialProv;
+        private System.Windows.Forms.ColumnHeader columnTelProv;
+        private System.Windows.Forms.ColumnHeader columnEmailProv;
+        private System.Windows.Forms.ColumnHeader columnDireccionProv;
+        private MaterialSkin.Controls.MaterialButton btnEditarProv;
+        private MaterialSkin.Controls.MaterialButton btnEliminarProv;
+        private MaterialSkin.Controls.MaterialButton btnAgregarProv;
+        private MaterialSkin.Controls.MaterialListView listInsumos;
+        private System.Windows.Forms.ColumnHeader columnIdInsumo;
+        private System.Windows.Forms.ColumnHeader columnDescInsumo;
+        private System.Windows.Forms.ColumnHeader columnStockInsumo;
+        private MaterialSkin.Controls.MaterialButton btnEditarInsumo;
+        private MaterialSkin.Controls.MaterialButton btnEliminarInsumo;
+        private MaterialSkin.Controls.MaterialButton btnAgregarInsumo;
+        private MaterialSkin.Controls.MaterialListView materialListView1;
+        private System.Windows.Forms.ColumnHeader columnInsumo;
+        private System.Windows.Forms.ColumnHeader columnExistencia;
+        private System.Windows.Forms.TabPage TabMovimientos;
+        private MaterialSkin.Controls.MaterialButton btnEditarIngreso;
+        private MaterialSkin.Controls.MaterialButton btnEliminarIngreso;
+        private MaterialSkin.Controls.MaterialButton btnNuevoIngreso;
+        private MaterialSkin.Controls.MaterialListView listIngresos;
+        private System.Windows.Forms.ColumnHeader columnIdProvIngreso;
+        private System.Windows.Forms.ColumnHeader columnProvIngreso;
+        private System.Windows.Forms.ColumnHeader columnIdInsumoIngreso;
+        private System.Windows.Forms.ColumnHeader columnInsumoIngreso;
+        private System.Windows.Forms.ColumnHeader columnFechaIngreso;
+        private System.Windows.Forms.ColumnHeader columnCantIngreso;
     }
 }
 
