@@ -57,16 +57,16 @@ namespace Data.Database
         }
         protected void Insert(TipoPrenda tipoPrenda)
         {
-            try
-            {
+            //try
+            //{
                 _context.TipoPrendas.Add(tipoPrenda);
                 _context.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                Exception ExceptionManejada = new Exception("Error al crear tipo de prenda", e);
-                throw ExceptionManejada;
-            }
+            //}
+            //catch (Exception e)
+            //{
+                //Exception ExceptionManejada = new Exception("Error al crear tipo de prenda", e);
+                //throw ExceptionManejada;
+            //}
         }
         public void Delete(int idTipoPrenda)
         {

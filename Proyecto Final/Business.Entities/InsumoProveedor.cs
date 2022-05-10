@@ -19,13 +19,13 @@ namespace Business.Entities
         private Insumo _insumo;
 
 
-        [ForeignKey("Proveedor")]
+        //[ForeignKey("Proveedor")]
         public int IdProveedor
         {
             get { return _idProveedor; }
             set { _idProveedor = value; }
         }
-        [ForeignKey("Insumo")]
+        //[ForeignKey("Insumo")]
         public int IdInsumo
         {
             get { return _idInsumo; }

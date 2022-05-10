@@ -21,7 +21,7 @@ namespace Data.Database
             List<ServicioTipoPrenda> serviciosTipoPrendas = new List<ServicioTipoPrenda>();
             try
             {
-                serviciosTipoPrendas = _context.ServiciosTipoPrendas.ToList();
+                serviciosTipoPrendas = _context.ServiciosTipoPrendas.Include(i=>i.Servicio).Include(i => i.TipoPrenda).ToList();
             }
             catch (Exception e)
             {
@@ -34,7 +34,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.ServiciosTipoPrendas.FirstOrDefault(stp => stp.IdTipoPrenda == idTipoPrenda && stp.IdServicio == idServicio );
+                return _context.ServiciosTipoPrendas.Include(i => i.Servicio).Include(i => i.TipoPrenda).FirstOrDefault(stp => stp.IdTipoPrenda == idTipoPrenda && stp.IdServicio == idServicio );
             }
             catch (Exception e)
             {

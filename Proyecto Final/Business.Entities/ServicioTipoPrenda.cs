@@ -11,27 +11,29 @@ namespace Business.Entities
     {
         private int _idServicio;
         private int _idTipoPrenda;
-        private DateTime _tiempoRequerido; // esta debe ser una variable que indique el tiempo que tarda un servicio para un determinado tipo de prenda
+        private TimeSpan _tiempoRequerido; // esta debe ser una variable que indique el tiempo que tarda un servicio para un determinado tipo de prenda
         private Servicio _servicio;
         private TipoPrenda _tipoPrenda;
         private List<OrdenServicioTipoPrenda> _itemsPedidos;//Listado de ordenes que tiene ese servicio-tipoPrenda
         private List<Precio> _historicoPrecios;// Lista de todos los precios que tuvo el servicio-tipo Prenda
         private List<InsumoServicioTipoPrenda> _insumoServicioTipoPrenda;//Lista de insumos que requiere el servicio-TipoPrenda
 
-        [ForeignKey("Servicio")]
+        //[ForeignKey("Servicio")]
+        [Column("id_servicio")]
         public int IdServicio
         {
             get { return _idServicio; }
             set { _idServicio = value; }
         }
-        [ForeignKey("TipoPrenda")]
+        //[ForeignKey("TipoPrenda")]
+        [Column("id_tp")]
         public int IdTipoPrenda
         {
             get { return _idTipoPrenda; }
             set { _idTipoPrenda = value; }
         }
-
-        public DateTime TiempoRequerido
+        [Column("tiempo_requerido")]
+        public TimeSpan TiempoRequerido
         {
             get { return _tiempoRequerido; }
             set { _tiempoRequerido = value; }

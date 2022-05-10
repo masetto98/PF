@@ -20,7 +20,7 @@ namespace Business.Entities
             get { return _idServicio; }
             set { _idServicio = value; }
         }
-
+        [Column("descripcion")]
         public string Descripcion
         {
             get { return _descripcion; }

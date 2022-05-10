@@ -20,13 +20,14 @@ namespace UI.Desktop
         readonly MaterialSkin.MaterialSkinManager materialSkinManager;
         private readonly LavanderiaContext _context;
         private readonly ClienteLogic _clienteLogic;
-        private readonly EmpleadoLogic _empleadoLogic;
+        private readonly OrdenLogic _ordenLogic;
         public frmMain(LavanderiaContext context)
         {
             InitializeComponent();
             _context = context;
             _clienteLogic = new ClienteLogic(new ClienteAdapter(context));
-            _empleadoLogic = new EmpleadoLogic(new EmpleadoAdapter(context));
+            _ordenLogic = new OrdenLogic(new OrdenAdapter(context));
+            CargarOrdenes();
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
@@ -54,26 +55,30 @@ namespace UI.Desktop
             frmEmpleado.ShowDialog();
         }
 
-        private void mnuPrincipal_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnEliminarOrden_Click(object sender, EventArgs e)
         {
-            if (mnuPrincipal.SelectedTab == mnuTabOrdenes) 
-            {
-                List<Empleado> empleados = _empleadoLogic.GetAll();
-                listEmpleados.Items.Clear();
-                foreach (Empleado em in empleados)
-                {
-                    ListViewItem item = new ListViewItem(em.IdEmpleado.ToString());
-                    item.SubItems.Add(em.Cuit);
-                    item.SubItems.Add(em.Nombre);
-                    item.SubItems.Add(em.Apellido);
-                    item.SubItems.Add(em.Direccion);
-                    item.SubItems.Add(em.Telefono);
-                    item.SubItems.Add(em.Email);
-                    item.SubItems.Add(em.FechaInicio.ToString());
-                    item.SubItems.Add(em.TipoEmpleado.ToString());
-                    listEmpleados.Items.Add(item);
-                }
 
+        }
+
+        private void btnNuevaOrden_Click(object sender, EventArgs e)
+        {
+            OrdenDesktop frmOrden = new OrdenDesktop(ApplicationForm.ModoForm.Alta, _context);
+            frmOrden.ShowDialog();
+        }
+
+        private void btnNuevoServicioTipoPrenda_Click(object sender, EventArgs e)
+        {
+            ServicioTipoPrendaDesktop frmServicioTipoPrenda = new ServicioTipoPrendaDesktop(ApplicationForm.ModoForm.Alta, _context);
+            frmServicioTipoPrenda.ShowDialog();
+
+        }
+
+        private void mnuPrincipal_Selected(object sender, TabControlEventArgs e)
+        {
+            if (mnuPrincipal.SelectedTab == mnuTabOrdenes)
+            {
+                CargarOrdenes();
+                
             }
             else if (mnuPrincipal.SelectedTab == mnuTabClientes)
             {
@@ -92,12 +97,32 @@ namespace UI.Desktop
                     listClientes.Items.Add(item);
                 }
             }
-           
-
         }
 
-        
+        private void CargarOrdenes() 
+        {
+            List<Orden> ordenes = _ordenLogic.GetAll();
+            listOrdenes.Items.Clear();
+            foreach (Orden o in ordenes)
+            {
+                ListViewItem item = new ListViewItem(o.NroOrden.ToString());
+                item.SubItems.Add(o.IdCliente.ToString());
+                item.SubItems.Add(o.IdEmpleado.ToString());
+                item.SubItems.Add(o.NroFactura.ToString());
+                item.SubItems.Add(o.Prioridad);
+                item.SubItems.Add(o.FechaEntrada.ToString());
+                item.SubItems.Add(o.TiempofinalizacionEstimado.ToString());
+                item.SubItems.Add(o.TiempoFinalizacionReal.ToString());
+                item.SubItems.Add(o.FechaSalida.ToString());
+                item.SubItems.Add(o.Estado.ToString());
+                listOrdenes.Items.Add(item);
+            }
+        }
 
-
+        private void btnNuevoTipoPrenda_Click(object sender, EventArgs e)
+        {
+            TipoPrendaDesktop formTipoPrendaDesktop = new TipoPrendaDesktop(ApplicationForm.ModoForm.Alta, _context);
+            formTipoPrendaDesktop.ShowDialog();
+        }
     }
 }

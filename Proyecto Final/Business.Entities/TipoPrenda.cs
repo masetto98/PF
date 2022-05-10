@@ -21,13 +21,13 @@ namespace Business.Entities
             get { return _idTipoPrenda; }
             set { _idTipoPrenda = value; }
         }
-
+        [Column("descripcion")]
         public string Descripcion
         {
             get { return _descripcion; }
             set { _descripcion = value; }
         }
-
+        
         public List<ServicioTipoPrenda> ServicioTipoPrenda
         {
             get { return _servicioTipoPrenda; }

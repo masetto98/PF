@@ -67,7 +67,7 @@ namespace Business.Entities
             }
         }
         [Column("cuit_empleado")]
-        [ForeignKey("Empleado")]
+        //[ForeignKey("Empleado")]
         public int IdEmpleado
         {
             get

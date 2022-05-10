@@ -14,51 +14,47 @@ namespace Data.Database
         {
             modelBuilder.Entity<Usuario>()
                .HasOne(u => u.Empleado)
-               .WithMany()
+               .WithMany(e => e.Usuarios)
+               .HasForeignKey(u => u.IdUsuario)
                .OnDelete(DeleteBehavior.NoAction);
 
+            modelBuilder.Entity<TipoPrenda>().ToTable("tipo_prendas");
+
+            modelBuilder.Entity<ServicioTipoPrenda>().ToTable("servicios_tipoprendas");
+
             modelBuilder.Entity<Consumo>()
-                .HasOne(c => c.Insumo)
-                .WithMany()
-                .OnDelete(DeleteBehavior.NoAction);
-            
-            modelBuilder.Entity<Consumo>()
-                .HasOne(c => c.Servicio)
-                .WithMany()
+                .HasOne(c => c.InsumoServicioTipoPrenda)
+                .WithMany(istp => istp.HistoricoConsumos)
+                .HasForeignKey(c => new { c.IdInsumo, c.IdServicio, c.IdTipoPrenda })
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Consumo>()
-                .HasOne(c => c.TipoPrenda)
-                .WithMany()
-                .OnDelete(DeleteBehavior.NoAction);
-            modelBuilder.Entity<Consumo>()
-                .HasKey(c => new { c.IdInsumo, c.IdServicio,c.IdTipoPrenda,c.FechaDesde});
+                .HasKey(c => new { c.IdInsumo, c.IdServicio, c.IdTipoPrenda, c.FechaDesde });
 
             modelBuilder.Entity<InsumoProveedor>()
                 .HasOne(ip => ip.Proveedor)
-                .WithMany()
+                .WithMany(p => p.InsumosProveedor)
+                .HasForeignKey(ip => ip.IdProveedor)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<InsumoProveedor>()
                 .HasOne(ip => ip.Insumo)
-                .WithMany()
+                .WithMany(i => i.InsumosProveedores)
+                .HasForeignKey(ip => ip.IdInsumo)
                 .OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<InsumoProveedor>()
                 .HasKey(ip => new { ip.IdInsumo, ip.IdProveedor, ip.FechaIngreso });
 
             modelBuilder.Entity<InsumoServicioTipoPrenda>()
                 .HasOne(istp => istp.Insumo)
-                .WithMany()
+                .WithMany(i => i.InsumoServicioTipoPrenda)
+                .HasForeignKey(istp => istp.IdInsumo)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<InsumoServicioTipoPrenda>()
-                .HasOne(istp => istp.Servicio)
-                .WithMany()
-                .OnDelete(DeleteBehavior.NoAction);
-
-            modelBuilder.Entity<InsumoServicioTipoPrenda>()
-                .HasOne(istp => istp.TipoPrenda)
-                .WithMany()
+                .HasOne(istp => istp.ServicioTipoPrenda)
+                .WithMany(stp => stp.InsumoServicioTipoPrenda)
+                .HasForeignKey(istp => new { istp.IdServicio, istp.IdTipoPrenda })
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<InsumoServicioTipoPrenda>()
@@ -66,7 +62,8 @@ namespace Data.Database
 
             modelBuilder.Entity<Mantenimiento>()
                 .HasOne(m => m.Maquina)
-                .WithMany()
+                .WithMany(ma => ma.Mantenimientos)
+                .HasForeignKey(m => m.IdMaquina)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Mantenimiento>()
@@ -74,58 +71,52 @@ namespace Data.Database
 
             modelBuilder.Entity<MaquinaOrdenServicioTipoPrenda>()
                 .HasOne(m => m.Maquina)
-                .WithMany()
+                .WithMany(ma => ma.itemsAtendidos)
+                .HasForeignKey(m => m.IdMaquina)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<MaquinaOrdenServicioTipoPrenda>()
-                .HasOne(m => m.Orden)
-                .WithMany()
+                .HasOne(m => m.OrdenServicioTipoPrenda)
+                .WithMany(ostp => ostp.MaquinaOrdenServicioTipoPrenda)
+                .HasForeignKey(m => new { m.NroOrden, m.IdServicio, m.IdTipoPrenda, m.OrdenItem })
                 .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<MaquinaOrdenServicioTipoPrenda>()
-                .HasOne(m => m.Servicio)
-                .WithMany()
-                .OnDelete(DeleteBehavior.NoAction);
-
-            modelBuilder.Entity<MaquinaOrdenServicioTipoPrenda>()
-                .HasOne(m => m.TipoPrenda)
-                .WithMany()
-                .OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<MaquinaOrdenServicioTipoPrenda>()
                 .HasOne(m => m.Empleado)
-                .WithMany()
+                .WithMany(e => e.OrdenesAtendidas)
+                .HasForeignKey(m => m.IdEmpleado)
                 .OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<MaquinaOrdenServicioTipoPrenda>()
                 .HasKey(m => new { m.IdMaquina, m.FechaHoraServicio });
 
             modelBuilder.Entity<Orden>()
                 .HasOne(m => m.Cliente)
-                .WithMany()
+                .WithMany(c => c.Ordenes)
+                .HasForeignKey(m => m.IdCliente)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Orden>()
                 .HasOne(m => m.Empleado)
-                .WithMany()
+                .WithMany(e => e.OrdenesRegistradas)
+                .HasForeignKey(m => m.IdEmpleado)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Orden>()
                 .HasOne(m => m.Factura)
                 .WithMany()
+                .HasForeignKey(m => m.NroFactura)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<OrdenServicioTipoPrenda>()
                 .HasOne(m => m.Orden)
-                .WithMany()
+                .WithMany(o => o.ItemsPedidos)
+                .HasForeignKey(m => m.NroOrden)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<OrdenServicioTipoPrenda>()
-                .HasOne(m => m.Servicio)
-                .WithMany()
-                .OnDelete(DeleteBehavior.NoAction);
-
-            modelBuilder.Entity<OrdenServicioTipoPrenda>()
-                .HasOne(m => m.TipoPrenda)
-                .WithMany()
+                .HasOne(m => m.ServicioTipoPrenda)
+                .WithMany(stp => stp.ItemsPedidos)
+                .HasForeignKey(m => new { m.IdServicio, m.IdTipoPrenda })
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<OrdenServicioTipoPrenda>()
@@ -133,20 +124,17 @@ namespace Data.Database
 
             modelBuilder.Entity<Pago>()
                 .HasOne(m => m.Factura)
-                .WithMany()
+                .WithMany(f => f.Pagos)
+                .HasForeignKey(m => m.NroFactura)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Pago>()
                 .HasKey(m => new { m.NroFactura, m.FechaPago });
 
             modelBuilder.Entity<Precio>()
-                .HasOne(m => m.Servicio)
-                .WithMany()
-                .OnDelete(DeleteBehavior.NoAction);
-
-            modelBuilder.Entity<Precio>()
-                .HasOne(m => m.TipoPrenda)
-                .WithMany()
+                .HasOne(m => m.ServicioTipoPrenda)
+                .WithMany(stp => stp.HistoricoPrecios)
+                .HasForeignKey(m => new { m.IdServicio, m.IdTipoPrenda })
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Precio>()
@@ -154,34 +142,40 @@ namespace Data.Database
 
             modelBuilder.Entity<ServicioTipoPrenda>()
                 .HasOne(m => m.Servicio)
-                .WithMany()
+                .WithMany(s => s.ServicioTipoPrenda)
+                .HasForeignKey(m => m.IdServicio)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<ServicioTipoPrenda>()
                 .HasOne(m => m.TipoPrenda)
-                .WithMany()
+                .WithMany(tp => tp.ServicioTipoPrenda)
+                .HasForeignKey(m => m.IdTipoPrenda)
                 .OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<ServicioTipoPrenda>()
                 .HasKey(m => new { m.IdServicio, m.IdTipoPrenda });
         }
+
+        public DbSet<Cliente>? Clientes { get; set; }
+        public DbSet<TipoPrenda>? TipoPrendas { get; set; }
         public DbSet<Consumo>? Consumos { get; set; }
+        public DbSet<Empleado>? Empleados { get; set; }
+        public DbSet<Factura>? Facturas { get; set; }
+        public DbSet<Insumo>? Insumos { get; set; }
         public DbSet<InsumoProveedor>? InsumosProveedores { get; set; }
         public DbSet<InsumoServicioTipoPrenda>? InsumosServiciosTipoPrendas { get; set; }
         public DbSet<Mantenimiento>? Mantenimientos { get; set; }
+        public DbSet<Maquina>? Maquinas { get; set; }
         public DbSet<MaquinaOrdenServicioTipoPrenda>? MaquinasOrdenesServiciosTipoPrendas { get; set; }
         public DbSet<Orden>? Ordenes { get; set; }
         public DbSet<OrdenServicioTipoPrenda>? OrdenesServiciosTipoPrendas { get; set; }
         public DbSet<Pago>? Pagos { get; set; }
-        public DbSet<Cliente>? Clientes { get; set; }
-        public DbSet<Proveedor>? Proveedores { get; set; }
-        public DbSet<Maquina>? Maquinas { get; set; }
         public DbSet<Precio>? Precios { get; set; }
-        public DbSet<Factura>? Facturas { get; set; }
+        public DbSet<Proveedor>? Proveedores { get; set; }
         public DbSet<Servicio>? Servicios { get; set; }
-        public DbSet<TipoPrenda>? TipoPrendas { get; set; }
         public DbSet<ServicioTipoPrenda>? ServiciosTipoPrendas { get; set; }
+        
         public DbSet<Usuario>? Usuarios { get; set; }
-        public DbSet<Empleado>? Empleados { get; set; }
         public LavanderiaContext() {}
         public LavanderiaContext(DbContextOptions<LavanderiaContext> options) : base(options) {}
     }

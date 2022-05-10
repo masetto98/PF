@@ -21,13 +21,13 @@ namespace Business.Entities
 
 
 
-        [ForeignKey("ServicioTipoPrenda")]
+        //[ForeignKey("ServicioTipoPrenda")]
         public int IdServicio
         {
             get { return _idServicio; }
             set { _idServicio = value; }
         }
-        [ForeignKey("ServicioTipoPrenda")]
+        //[ForeignKey("ServicioTipoPrenda")]
         public int IdTipoPrenda
         {
             get { return _idTipoPrenda; }
