@@ -20,7 +20,7 @@ namespace Data.Database
             List<Orden> ordenes = new List<Orden>();
             try
             {
-                ordenes = _context.Ordenes.ToList();
+                ordenes = _context.Ordenes.Include(i => i.Cliente).ToList();
             }
             catch (Exception e)
             {

@@ -22,6 +22,10 @@ namespace Data.Database
             modelBuilder.Entity<InsumoProveedor>()
                 .ToTable("insumos_proveedores");
 
+            modelBuilder.Entity<TipoPrenda>().ToTable("tipo_prendas");
+
+            modelBuilder.Entity<ServicioTipoPrenda>().ToTable("servicios_tipoprendas");
+
             modelBuilder.Entity<Consumo>()
                 .HasOne(c => c.InsumoServicioTipoPrenda)
                 .WithMany(istp => istp.HistoricoConsumos)
@@ -155,25 +159,27 @@ namespace Data.Database
             modelBuilder.Entity<ServicioTipoPrenda>()
                 .HasKey(m => new { m.IdServicio, m.IdTipoPrenda });
         }
+
+        public DbSet<Cliente>? Clientes { get; set; }
+        public DbSet<TipoPrenda>? TipoPrendas { get; set; }
         public DbSet<Consumo>? Consumos { get; set; }
+        public DbSet<Empleado>? Empleados { get; set; }
+        public DbSet<Factura>? Facturas { get; set; }
+        public DbSet<Insumo>? Insumos { get; set; }
         public DbSet<InsumoProveedor>? InsumosProveedores { get; set; }
         public DbSet<InsumoServicioTipoPrenda>? InsumosServiciosTipoPrendas { get; set; }
         public DbSet<Mantenimiento>? Mantenimientos { get; set; }
+        public DbSet<Maquina>? Maquinas { get; set; }
         public DbSet<MaquinaOrdenServicioTipoPrenda>? MaquinasOrdenesServiciosTipoPrendas { get; set; }
         public DbSet<Orden>? Ordenes { get; set; }
         public DbSet<OrdenServicioTipoPrenda>? OrdenesServiciosTipoPrendas { get; set; }
         public DbSet<Pago>? Pagos { get; set; }
-        public DbSet<Cliente>? Clientes { get; set; }
-        public DbSet<Proveedor>? Proveedores { get; set; }
-        public DbSet<Maquina>? Maquinas { get; set; }
         public DbSet<Precio>? Precios { get; set; }
-        public DbSet<Factura>? Facturas { get; set; }
+        public DbSet<Proveedor>? Proveedores { get; set; }
         public DbSet<Servicio>? Servicios { get; set; }
-        public DbSet<TipoPrenda>? TipoPrendas { get; set; }
         public DbSet<ServicioTipoPrenda>? ServiciosTipoPrendas { get; set; }
         public DbSet<Insumo>? Insumos { get; set; }
         public DbSet<Usuario>? Usuarios { get; set; }
-        public DbSet<Empleado>? Empleados { get; set; }
         public LavanderiaContext() {}
         public LavanderiaContext(DbContextOptions<LavanderiaContext> options) : base(options) {}
     }

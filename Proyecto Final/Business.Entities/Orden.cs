@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
-    public class Orden:BusinessEntity
+    public class Orden : BusinessEntity
     {
         private int _nroOrden;
         private int _idCliente;
@@ -17,8 +17,11 @@ namespace Business.Entities
         private string _prioridad;
         [DataType(DataType.Date)]
         private DateTime _fechaEntrada;
-        private DateTime _tiempoEntregaEstimado; //necesitamos que cuente el tiempo estimado para que se realiza el pedido
-        private DateTime _tiempoEntregaReal; // lo mismo que el de arriba
+        [DataType(DataType.Date)]
+        private DateTime _fechaSalida;
+        private TimeSpan _tiempoFinalizacionEstimado;
+        private TimeSpan _tiempoFinalizacionReal;
+        private Estados _estado;
         private Cliente _cliente;
         private Empleado _empleado;
         private Factura _factura;
@@ -28,56 +31,66 @@ namespace Business.Entities
         {
             Pendiente = 1,
             Procesando = 2,
-            Finalizado =3,
+            Finalizado = 3,
         }
-        public Estados _estado;
+        
         [Key]
+        [Column("nro_orden")]
         public int NroOrden
         {
             get { return _nroOrden; }
             set { _nroOrden = value; }
         }
-        [ForeignKey("Cliente")]
+        //[ForeignKey("Cliente")]
+        [Column ("id_cliente")]
         public int IdCliente
         {
             get { return _idCliente; }
             set { _idCliente = value; }
         }
-        [ForeignKey("Empleado")]
+        //[ForeignKey("Empleado")]
+        [Column("id_empleado")]
         public int IdEmpleado
         {
             get { return _idEmpleado; }
             set { _idEmpleado = value; }
         }
-        [ForeignKey("Factura")]
+        //[ForeignKey("Factura")]
+        [Column("id_factura")]
         public int NroFactura
         {
             get { return _nroFactura; }
             set { _nroFactura = value; }
         }
-
+        [Column("prioridad")]
         public string Prioridad
         {
             get { return _prioridad; }
             set { _prioridad = value; }
         }
-
+        [Column("fecha_entrada")]
         public DateTime FechaEntrada
         {
             get { return _fechaEntrada; }
             set { _fechaEntrada = value; }
         }
-
-        public DateTime TiempoEntegaEstimado
+        [Column("tiempo_finalizacion_estimado")]
+        public TimeSpan TiempofinalizacionEstimado
         {
-            get { return _tiempoEntregaEstimado; }
-            set { _tiempoEntregaEstimado = value; }
+            get { return _tiempoFinalizacionEstimado; }
+            set { _tiempoFinalizacionEstimado = value; }
         }
-
-        public DateTime TiempoEntegaReal
+        [Column("tiempo_finalizacion_real")]
+        public TimeSpan TiempoFinalizacionReal
         {
-            get { return _tiempoEntregaReal; }
-            set { _tiempoEntregaReal = value; }
+            get { return _tiempoFinalizacionReal; }
+            set { _tiempoFinalizacionReal = value; }
+        }
+        [Column("fecha_salida")]
+        public DateTime FechaSalida
+        {
+            get { return _fechaSalida; }
+            set { _fechaSalida = value; }
         }
 
         [Column("estado")]

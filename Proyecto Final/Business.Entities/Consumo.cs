@@ -22,19 +22,19 @@ namespace Business.Entities
         //private TipoPrenda _tipoPrenda;
 
 
-        
+        //[ForeignKey("InsumoServicioTipoPrenda")]
         public int IdInsumo
         {
             get { return _idInsumo; }
             set { _idInsumo = value; }
         }
-        
+        //[ForeignKey("InsumoServicioTipoPrenda")]
         public int IdServicio
         {
             get { return _idServicio; }
             set { _idServicio = value; }
         }
-        
+        //[ForeignKey("InsumoServicioTipoPrenda")]
         public int IdTipoPrenda
         {
             get { return _idTipoPrenda; }

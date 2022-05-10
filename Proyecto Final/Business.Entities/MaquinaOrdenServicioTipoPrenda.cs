@@ -24,7 +24,7 @@ namespace Business.Entities
         //private TipoPrenda _tipoPrenda;
 
 
-        [ForeignKey("Maquina")]
+        //[ForeignKey("Maquina")]
         public int IdMaquina
         {
             get { return _idMaquina; }
@@ -36,31 +36,31 @@ namespace Business.Entities
             get { return _fechaHoraServicio; }
             set { _fechaHoraServicio = value; }
         }
-        
+        //[ForeignKey("OrdenServicioTipoPrenda")]
         public int NroOrden
         {
             get { return _nroOrden; }
             set { _nroOrden = value; }
         }
-        
+        //[ForeignKey("OrdenServicioTipoPrenda")]
         public int IdServicio
         {
             get { return _idServicio; }
             set { _idServicio = value; }
         }
-        
+        //[ForeignKey("OrdenServicioTipoPrenda")]
         public int IdTipoPrenda
         {
             get { return _idTipoPrenda; }
             set { _idTipoPrenda = value; }
         }
-        
+        //[ForeignKey("OrdenServicioTipoPrenda")]
         public int OrdenItem
         {
             get { return _ordenItem; }
             set { _ordenItem = value; }
         }
-        [ForeignKey("Empleado")]
+        //[ForeignKey("Empleado")]
         public int IdEmpleado
         {
             get { return _idEmpleado; }

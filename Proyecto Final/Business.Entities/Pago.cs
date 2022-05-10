@@ -14,7 +14,7 @@ namespace Business.Entities
         private decimal _importe;
         private Factura _factura;
 
-        [ForeignKey("Factura")]
+        //[ForeignKey("Factura")]
         public int NroFactura
         {
             get { return _nroFactura; }
