@@ -18,6 +18,7 @@ namespace UI.Desktop
     public partial class OrdenDesktop : ApplicationForm
     {
         readonly MaterialSkin.MaterialSkinManager materialSkinManager;
+        private readonly LavanderiaContext _context;
         public Orden OrdenActual { set; get; }
         public List<OrdenServicioTipoPrenda>? _itemsServicio;
         private readonly OrdenLogic _ordenLogic;
@@ -25,16 +26,27 @@ namespace UI.Desktop
         private readonly ServicioLogic _servicioLogic;
         private readonly TipoPrendaLogic _tipoPrendaLogic;
         private readonly ServicioTipoPrendaLogic _servicioTipoPrendaLogic;
+        private readonly EmpleadoLogic _empleadoLogic;
+        private readonly FacturaLogic _facturaLogic;
+        public decimal _total;
         public OrdenDesktop(LavanderiaContext context)
         {
             InitializeComponent();
+            _context = context;
             _ordenLogic = new OrdenLogic(new OrdenAdapter(context));
             _clienteLogic = new ClienteLogic(new ClienteAdapter(context));
             _servicioLogic = new ServicioLogic(new ServicioAdapter(context));
             _tipoPrendaLogic = new TipoPrendaLogic(new TipoPrendaAdapter(context));
             _servicioTipoPrendaLogic = new ServicioTipoPrendaLogic(new ServicioTipoPrendaAdapter(context));
+            _empleadoLogic = new EmpleadoLogic(new EmpleadoAdapter(context));
+            _facturaLogic = new FacturaLogic(new FacturaAdapter(context));
             listItemsServicio.Items.Clear();
             _itemsServicio = new List<OrdenServicioTipoPrenda>();
+
+            this.txtApellido.Enabled = false;
+            this.txtNombre.Enabled = false;
+            this.txtRazonSocial.Enabled = false;
+            this.txtIdCliente.Enabled = false;
 
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
@@ -75,24 +87,29 @@ namespace UI.Desktop
             }
         }
 
-        /*public override void MapearDeDatos()
+        public override void MapearDeDatos()
         {
             this.txtIdCliente.Text = OrdenActual.IdCliente.ToString();
             this.cmbEstado.SelectedIndex = cmbEstado.FindStringExact(Enum.GetName(OrdenActual.Estado));
             this.dtpFechaIngreso.Value = OrdenActual.FechaEntrada.Date;
             this.txtTiempoFinalizacionEstimado.Text = OrdenActual.TiempofinalizacionEstimado.Hours.ToString() + " : " + OrdenActual.TiempofinalizacionEstimado.Minutes.ToString();
-            this.txtTiempoFinalizacionReal.Text = OrdenActual.TiempoFinalizacionReal.Hours.ToString() + " : " + OrdenActual.TiempoFinalizacionReal.Minutes.ToString();
             this.dtpFechaSalida.Value = OrdenActual.FechaSalida.Date;
             try
             {
-                Servicio ServicioActual = _servicioLogic.GetOne(OrdenActual.);
-                TipoPrenda TipoPrendaActual = _tipoPrendaLogic.GetOne(ServicioTipoPrendaActual.IdTipoPrenda);
+                List<OrdenServicioTipoPrenda> itemsOrdenActual = OrdenActual.ItemsPedidos;
+                listItemsServicio.Items.Clear();
+                foreach (OrdenServicioTipoPrenda i in itemsOrdenActual) 
+                {
+                    ListViewItem item = new ListViewItem((listItemsServicio.Items.Count + 1).ToString());
+                    item.SubItems.Add(i.ServicioTipoPrenda.Servicio.Descripcion);
+                    item.SubItems.Add(i.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                    listItemsServicio.Items.Add(item);
+                }
                 List<Servicio> servicios = _servicioLogic.GetAll();
                 List<TipoPrenda> tipoPrendas = _tipoPrendaLogic.GetAll();
                 this.cmbServicios.DataSource = servicios;
-                this.cmbTipoPrendas.DataSource = tipoPrendas;
-                this.cmbServicios.SelectedIndex = cmbServicios.FindStringExact(ServicioActual.Descripcion);
-                this.cmbTipoPrendas.SelectedIndex = cmbTipoPrendas.FindStringExact(TipoPrendaActual.Descripcion);
+                this.cmbTipoPrenda.DataSource = tipoPrendas;
+                
             }
             catch (Exception e)
             {
@@ -101,54 +118,54 @@ namespace UI.Desktop
             switch (this.Modos)
             {
                 case ModoForm.Alta:
+                    this.dtpFechaSalida.Enabled = false;
+                    
                     this.btnAceptar.Text = "Guardar";
                     break;
                 case ModoForm.Modificacion:
                     this.btnAceptar.Text = "Guardar";
+                    
                     break;
                 case ModoForm.Baja:
                     this.btnAceptar.Text = "Eliminar";
                     this.cmbServicios.Enabled = false;
-                    this.cmbTipoPrendas.Enabled = false;
-                    this.txtHoras.Enabled = false;
-                    this.txtMinutos.Enabled = false;
-
+                    this.cmbTipoPrenda.Enabled = false;
+                    this.txtCuit.Enabled = false;
                     break;
                 case ModoForm.Consulta:
                     this.btnAceptar.Text = "Aceptar";
                     this.cmbServicios.Enabled = false;
-                    this.cmbTipoPrendas.Enabled = false;
-                    this.txtHoras.Enabled = false;
-                    this.txtMinutos.Enabled = false;
+                    this.cmbTipoPrenda.Enabled = false;
                     ;
                     break;
             }
-        }*/
+        }
 
         public override void MapearADatos()
         {
             if (Modos == ModoForm.Alta)
             {
                 OrdenActual = new Orden();
-                OrdenActual.IdCliente = Int32.Parse(this.txtIdCliente.Text);
-                //OrdenActual.IdEmpleado = ; Deberia ser asignado el empleado que se encuentra logueado
-                OrdenActual.FechaEntrada = DateTime.Today;
+                _total = 0;
+                OrdenActual.Cliente = _clienteLogic.GetOne(Int32.Parse(this.txtIdCliente.Text));
+                //OrdenActual.Empleado = Singleton.getInstance().EmpleadoLogged;
+                OrdenActual.Factura = _facturaLogic.GetOne(1);
+                OrdenActual.Empleado = _empleadoLogic.GetOne(1);
+                OrdenActual.FechaEntrada = dtpFechaIngreso.Value;
                 OrdenActual.Estado = Orden.Estados.Pendiente;
-                OrdenActual.ItemsPedidos.AddRange(_itemsServicio);
+                OrdenActual.ItemsPedidos = _itemsServicio;
             }
             if (Modos == ModoForm.Modificacion)
             {
-                //ServicioTipoPrendaActual.IdServicio = (int)this.cmbServicios.SelectedValue;
-                //ServicioTipoPrendaActual.IdTipoPrenda = (int)this.cmbTipoPrendas.SelectedValue;
                 //ServicioTipoPrendaActual.TiempoRequerido = new TimeSpan(Int32.Parse(this.txtHoras.Text), Int32.Parse(this.txtMinutos.Text), 00);
             }
             switch (Modos)
             {
                 case ModoForm.Alta:
-                    //ServicioTipoPrendaActual.State = BusinessEntity.States.New;
+                    OrdenActual.State = BusinessEntity.States.New;
                     break;
                 case ModoForm.Modificacion:
-                    //ServicioTipoPrendaActual.State = BusinessEntity.States.Modified;
+                    OrdenActual.State = BusinessEntity.States.Modified;
                     break;
             }
         }
@@ -170,10 +187,18 @@ namespace UI.Desktop
             }
         }
 
-        private void cargarPersona()
+        #region -------Buscar Cliente--------
+
+        private void txtCuit_Leave(object sender, EventArgs e)
+        {
+            cargarCliente();
+        }
+
+        private void cargarCliente()
         {
             this.txtNombre.Text = "";
             this.txtApellido.Text = "";
+            this.txtRazonSocial.Text = "";
             try
             {
                 Cliente cli = _clienteLogic.GetOneConCuit(this.txtCuit.Text);
@@ -185,22 +210,25 @@ namespace UI.Desktop
                 this.txtNombre.Text = cli.Nombre;
                 this.txtApellido.Text = cli.Apellido;
                 this.txtIdCliente.Text = cli.IdCliente.ToString();
+                this.txtRazonSocial.Text = cli.RazonSocial;
+                
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
         }
+        #endregion
 
-        private void AgregarItem(int idServicio,int idTipoPrenda) 
+        #region ------manejo de items de la orden------
+        private void AgregarItem(ServicioTipoPrenda servicioTipoPrenda) 
         {
             OrdenServicioTipoPrenda itemActual = new OrdenServicioTipoPrenda();
-            itemActual.IdServicio = idServicio + 1;
-            itemActual.IdTipoPrenda = idTipoPrenda + 1;
+            itemActual.ServicioTipoPrenda = servicioTipoPrenda;
             itemActual.Estado = OrdenServicioTipoPrenda.Estados.Pendiente;
-            itemActual.OrdenItem = ContarItems(idServicio+1,idTipoPrenda+1);
-            //itemActual.NroOrden = OrdenActual.NroOrden;
+            itemActual.OrdenItem = ContarItems(servicioTipoPrenda.IdServicio,servicioTipoPrenda.IdTipoPrenda);
             _itemsServicio.Add(itemActual);
+            
         }
 
         private int ContarItems(int idServicio, int idTipoPrenda) 
@@ -225,39 +253,61 @@ namespace UI.Desktop
 
         private void EliminarItem() 
         {
-            if (listItemsServicio.SelectedItems.Count > 0)
-            {
+            
+            if (listItemsServicio.SelectedItems.Count >0)
+            { 
+                var _itemDelete = _itemsServicio.FindLast(
+                    delegate (OrdenServicioTipoPrenda item)
+                    {
+                        return 
+                            item.ServicioTipoPrenda.Servicio.Descripcion == this.listItemsServicio.SelectedItems[0].SubItems[1].Text 
+                            &&
+                            item.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listItemsServicio.SelectedItems[0].SubItems[2].Text;
+                    }
+                );
+                Precio precioActual = _itemDelete.ServicioTipoPrenda.HistoricoPrecios.FindLast(
+                    delegate (Precio p)
+                    {
+                        return p.FechaDesde < DateTime.Today;
+                    });
+                _total -= precioActual.Valor;
+                this.txtPrecioTotal.Text = _total.ToString();
+                //int _indice = listItemsServicio.SelectedItems.IndexOf(listItemsServicio.SelectedItems[0]);
+                //_itemsServicio.FindLastIndex(listItemsServicio.SelectedItems[0])
+                _itemsServicio.Remove(_itemDelete);
                 listItemsServicio.Items.Remove(listItemsServicio.SelectedItems[0]);
-                int _index = listItemsServicio.Items.IndexOf(listItemsServicio.SelectedItems[0]);
-                _itemsServicio.RemoveAt(_index+1);
             }
         }
-
-
-        private void txtCuit_Leave(object sender, EventArgs e)
-        {
-            cargarPersona();
-        }
+        
 
         private void btnAgregarItemOrden_Click(object sender, EventArgs e)
         {
             try 
             {
-                int idServicio = ((int)this.cmbServicios.SelectedIndex) + 1;
-                int idTipoPrenda = ((int)this.cmbTipoPrenda.SelectedIndex)+ 1;
-                ServicioTipoPrenda itemOrden = _servicioTipoPrendaLogic.GetOne(idServicio, idTipoPrenda);
-                if (itemOrden == null)
+                int idServicio = (int)this.cmbServicios.SelectedValue;
+                int idTipoPrenda = (int)this.cmbTipoPrenda.SelectedValue;
+                ServicioTipoPrenda servicioTp = _servicioTipoPrendaLogic.GetOne(idServicio, idTipoPrenda);
+                if (servicioTp == null)
                 {
                     Exception r = new Exception("No existe el servicio ingresado.");
                     throw r;
                 }
                 else 
                 {
-                    AgregarItem((int)this.cmbServicios.SelectedIndex, (int)this.cmbTipoPrenda.SelectedIndex);
+                    AgregarItem(servicioTp);
+                    Precio precioActual = servicioTp.HistoricoPrecios.FindLast(
+                    delegate (Precio p)
+                    {
+                        return p.FechaDesde < DateTime.Today;
+                    });
+                    _total += precioActual.Valor;
                     ListViewItem item = new ListViewItem((listItemsServicio.Items.Count+1).ToString());
-                    item.SubItems.Add(this.cmbServicios.SelectedText);
-                    item.SubItems.Add(this.cmbTipoPrenda.SelectedText);
+                    item.SubItems.Add(this.cmbServicios.Text);
+                    item.SubItems.Add(this.cmbTipoPrenda.Text);
+                    item.SubItems.Add(precioActual.Valor.ToString());
+                    item.SubItems.Add("Pendiente");
                     listItemsServicio.Items.Add(item);
+                    this.txtPrecioTotal.Text = _total.ToString();
                 }
             }
             catch (Exception r)
@@ -265,6 +315,13 @@ namespace UI.Desktop
                 MessageBox.Show(r.Message, "ItemServicio", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            EliminarItem();
+        }
+
+        #endregion
 
         public override void GuardarCambios()
         {
@@ -276,14 +333,12 @@ namespace UI.Desktop
                     _ordenLogic.Save(OrdenActual);
                     Close();
                 }
-
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message, "Servicio-TipoPrenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -312,10 +367,10 @@ namespace UI.Desktop
 
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
-            EliminarItem();
-
+            ClienteDesktop frmCliente = new ClienteDesktop(ApplicationForm.ModoForm.Alta, _context);
+            frmCliente.ShowDialog();
         }
     }
 }

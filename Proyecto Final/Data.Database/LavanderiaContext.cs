@@ -20,12 +20,15 @@ namespace Data.Database
             
             modelBuilder.Entity<TipoPrenda>()
                 .ToTable("tipo_prendas");
+
             modelBuilder.Entity<InsumoProveedor>()
                 .ToTable("insumos_proveedores");
 
-            modelBuilder.Entity<TipoPrenda>().ToTable("tipo_prendas");
+            modelBuilder.Entity<ServicioTipoPrenda>()
+                .ToTable("servicios_tipoprendas");
 
-            modelBuilder.Entity<ServicioTipoPrenda>().ToTable("servicios_tipoprendas");
+            modelBuilder.Entity<OrdenServicioTipoPrenda>()
+                .ToTable("ordenes_servicios_tipoprendas");
 
             modelBuilder.Entity<Consumo>()
                 .HasOne(c => c.InsumoServicioTipoPrenda)
@@ -47,6 +50,7 @@ namespace Data.Database
                 .WithMany(i => i.InsumosProveedores)
                 .HasForeignKey(ip => ip.IdInsumo)
                 .OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<InsumoProveedor>()
                 .HasKey(ip => new { ip.IdInsumo, ip.IdProveedor, ip.FechaIngreso });
 

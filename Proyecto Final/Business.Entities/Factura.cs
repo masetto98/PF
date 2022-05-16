@@ -4,7 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 namespace Business.Entities
 {
     public class Factura:BusinessEntity
@@ -16,18 +17,19 @@ namespace Business.Entities
         private List<Pago> _pagos;
 
         [Key]
+        [Column("nro_factura")]
         public int NroFactura
         {
             get { return _nroFactura; }
             set { _nroFactura = value; }
         }
-
+        [Column("fecha_factura")]
         public DateTime FechaFactura
         {
             get { return _fechaFactura; }
             set { _fechaFactura = value; }
         }
-
+        [Column("importe")]
         public decimal Importe
         {
             get { return _importe; }

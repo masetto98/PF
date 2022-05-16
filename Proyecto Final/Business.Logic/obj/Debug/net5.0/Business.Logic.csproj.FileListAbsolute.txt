@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\Proyectos\PF\Proyecto Final\Business.Logic\bin\Debug\net5.0\Business.Logic.deps.json
 D:\Proyectos\PF\Proyecto Final\Business.Logic\bin\Debug\net5.0\Business.Logic.dll
 D:\Proyectos\PF\Proyecto Final\Business.Logic\bin\Debug\net5.0\ref\Business.Logic.dll
@@ -15,3 +16,22 @@ D:\Proyectos\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\Business.Logic.cs
 D:\Proyectos\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\Business.Logic.dll
 D:\Proyectos\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\ref\Business.Logic.dll
 D:\Proyectos\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\Business.Logic.pdb
+=======
+C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\Business.Logic.csproj.AssemblyReference.cache
+C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\Business.Logic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\Business.Logic.AssemblyInfoInputs.cache
+C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\Business.Logic.AssemblyInfo.cs
+C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\Business.Logic.csproj.CoreCompileInputs.cache
+C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Logic\bin\Debug\net5.0\Business.Logic.deps.json
+C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Logic\bin\Debug\net5.0\Business.Logic.dll
+C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Logic\bin\Debug\net5.0\ref\Business.Logic.dll
+C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Logic\bin\Debug\net5.0\Business.Logic.pdb
+C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Logic\bin\Debug\net5.0\Business.Entities.dll
+C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Logic\bin\Debug\net5.0\Data.Database.dll
+C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Logic\bin\Debug\net5.0\Business.Entities.pdb
+C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Logic\bin\Debug\net5.0\Data.Database.pdb
+C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\Business.Logic.csproj.CopyComplete
+C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\Business.Logic.dll
+C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\ref\Business.Logic.dll
+C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Logic\obj\Debug\net5.0\Business.Logic.pdb
+>>>>>>> main

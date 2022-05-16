@@ -91,23 +91,16 @@ namespace UI.Desktop
             }
             else if (mnuPrincipal.SelectedIndex == 2)
             {
-                //if(tabControlInventario.SelectedIndex == 0)
-                //{
-                    
-                //}
-                //else if(tabControlInventario.SelectedIndex == 1)
-                //{
-                    ListarProveedores();
-                //}
-               //else if(tabControlInventario.SelectedIndex == 2)
-                //{
-                    ListarInsumos();
-                //}
-                //else if(tabControlInventario.SelectedIndex == 3)
-                //
-                    ListarIngresos();
-                //}
-                
+
+                ListarProveedores();
+
+
+                ListarInsumos();
+
+
+                ListarIngresos();
+
+
             }
 
 
@@ -193,25 +186,7 @@ namespace UI.Desktop
                 buscarCliente();
             }
         }
-        private void CargarOrdenes()
-        {
-            List<Orden> ordenes = _ordenLogic.GetAll();
-            listOrdenes.Items.Clear();
-            foreach (Orden o in ordenes)
-            {
-                ListViewItem item = new ListViewItem(o.NroOrden.ToString());
-                item.SubItems.Add(o.IdCliente.ToString());
-                item.SubItems.Add(o.IdEmpleado.ToString());
-                item.SubItems.Add(o.NroFactura.ToString());
-                item.SubItems.Add(o.Prioridad);
-                item.SubItems.Add(o.FechaEntrada.ToString());
-                item.SubItems.Add(o.TiempofinalizacionEstimado.ToString());
-                item.SubItems.Add(o.TiempoFinalizacionReal.ToString());
-                item.SubItems.Add(o.FechaSalida.ToString());
-                item.SubItems.Add(o.Estado.ToString());
-                listOrdenes.Items.Add(item);
-            }
-        }
+
         //evento para fixear columnas del listview
         private void listClientes_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
@@ -236,6 +211,7 @@ namespace UI.Desktop
                 listProveedores.Items.Add(item);
             }
         }
+
         private void ListarInsumos()
         {
             List<Insumo> insumos = _insumoLogic.GetAll();
@@ -251,6 +227,7 @@ namespace UI.Desktop
             }
 
         }
+
         private void ListarIngresos()
         {
             List<InsumoProveedor> insumosproveedores = _insumoProveedorLogic.GetAll();
@@ -274,6 +251,7 @@ namespace UI.Desktop
             frmProveedor.ShowDialog();
             ListarProveedores();
         }
+
         private void btnEditarProv_Click(object sender, EventArgs e)
         {
             if (listProveedores.SelectedItems.Count > 0)
@@ -288,6 +266,7 @@ namespace UI.Desktop
                 MessageBox.Show("Seleccionar una fila en la lista para poder editar");
             }
         }
+
         private void btnEliminarProv_Click(object sender, EventArgs e)
         {
             if (listProveedores.SelectedItems.Count > 0)
@@ -303,17 +282,20 @@ namespace UI.Desktop
                 MessageBox.Show("Seleccionar una fila en la lista para poder eliminar");
             }
         }
+        
         private void listProveedores_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             e.Cancel = true;
             e.NewWidth = listProveedores.Columns[e.ColumnIndex].Width;
         }
+            
         private void btnAgregarInsumo_Click(object sender, EventArgs e)
         {
             InsumoDesktop frmInsumo = new InsumoDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmInsumo.ShowDialog();
             ListarInsumos();
         }
+        
         private void btnEditarInsumo_Click(object sender, EventArgs e)
         {
             if (listInsumos.SelectedItems.Count > 0)
@@ -351,6 +333,7 @@ namespace UI.Desktop
             frmInsumoProveedor.ShowDialog();
             ListarIngresos();
         }
+
         private void btnEditarIngreso_Click(object sender, EventArgs e)
         {
             if (listIngresos.SelectedItems.Count > 0)
@@ -433,6 +416,31 @@ namespace UI.Desktop
             formTipoPrendaDesktop.ShowDialog();
         }
 
+        #region -------------- ORDENES ---------------
+        private void CargarOrdenes()
+        {
+            List<Orden> ordenes = _ordenLogic.GetAll();
+            listOrdenes.Items.Clear();
+            foreach (Orden o in ordenes)
+            {
+                ListViewItem item = new ListViewItem(o.NroOrden.ToString());
+                item.SubItems.Add(o.IdCliente.ToString());
+                item.SubItems.Add(o.IdEmpleado.ToString());
+                item.SubItems.Add(o.NroFactura.ToString());
+                item.SubItems.Add(o.Prioridad);
+                item.SubItems.Add(o.FechaEntrada.ToString());
+                item.SubItems.Add(o.TiempofinalizacionEstimado.ToString());
+                item.SubItems.Add(o.TiempoFinalizacionReal.ToString());
+                item.SubItems.Add(o.FechaSalida.ToString());
+                item.SubItems.Add(o.Estado.ToString());
+                listOrdenes.Items.Add(item);
+            }
+        }
+        #endregion
+
+
+
+
         private void frmMain_Shown(object sender, EventArgs e)
         {
             this.mnuPrincipal.Visible = false;
@@ -464,4 +472,5 @@ namespace UI.Desktop
 
         
     }
-}
+} 
+

@@ -119,6 +119,7 @@ namespace UI.Desktop
             this.epUser = new MaterialSkin.Controls.MaterialExpansionPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnCerrarSesion = new MaterialSkin.Controls.MaterialButton();
+            this.btnRetirarOrden = new MaterialSkin.Controls.MaterialButton();
             this.mnuPrincipal.SuspendLayout();
             this.mnuTabOrdenes.SuspendLayout();
             this.mnuTabClientes.SuspendLayout();
@@ -176,6 +177,7 @@ namespace UI.Desktop
             // mnuTabOrdenes
             // 
             this.mnuTabOrdenes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.mnuTabOrdenes.Controls.Add(this.btnRetirarOrden);
             this.mnuTabOrdenes.Controls.Add(this.btnNuevoTipoPrenda);
             this.mnuTabOrdenes.Controls.Add(this.btnNuevoServicioTipoPrenda);
             this.mnuTabOrdenes.Controls.Add(this.materialTextBox1);
@@ -1218,6 +1220,25 @@ namespace UI.Desktop
             this.btnCerrarSesion.UseVisualStyleBackColor = false;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
+            // btnRetirarOrden
+            // 
+            this.btnRetirarOrden.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnRetirarOrden.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnRetirarOrden.Depth = 0;
+            this.btnRetirarOrden.HighEmphasis = true;
+            this.btnRetirarOrden.Icon = null;
+            this.btnRetirarOrden.Location = new System.Drawing.Point(284, 9);
+            this.btnRetirarOrden.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnRetirarOrden.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnRetirarOrden.Name = "btnRetirarOrden";
+            this.btnRetirarOrden.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnRetirarOrden.Size = new System.Drawing.Size(158, 36);
+            this.btnRetirarOrden.TabIndex = 9;
+            this.btnRetirarOrden.Text = "Retirar Orden";
+            this.btnRetirarOrden.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnRetirarOrden.UseAccentColor = false;
+            this.btnRetirarOrden.UseVisualStyleBackColor = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1342,6 +1363,7 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnNuevoServicioTipoPrenda;
         private MaterialSkin.Controls.MaterialButton btnNuevoTipoPrenda;
         private System.Windows.Forms.ColumnHeader columnFechaSalida;
+        private MaterialSkin.Controls.MaterialButton btnRetirarOrden;
         private MaterialSkin.Controls.MaterialExpansionPanel epUser;
         private System.Windows.Forms.ColumnHeader columnUnidadMedida;
         private MaterialSkin.Controls.MaterialButton btnCerrarSesion;

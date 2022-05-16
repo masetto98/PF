@@ -20,7 +20,7 @@ namespace Data.Database
             List<Orden> ordenes = new List<Orden>();
             try
             {
-                ordenes = _context.Ordenes.Include(i => i.Cliente).ToList();
+                ordenes = _context.Ordenes.Include(i => i.Cliente).ToList();//Recordar agregar los include de los items que contienen servicio-tipoprenda que a suz contiene servicios y tipo prenda porque sino peta el formulario de orden
             }
             catch (Exception e)
             {
@@ -100,7 +100,7 @@ namespace Data.Database
             }
             orden.State = BusinessEntity.States.Unmodified;
         }
-        /*
+        
         public Business.Entities.Cliente GetOneConCuit(string Cuit)
         {
             Cliente cliente = new Cliente();
@@ -114,6 +114,6 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
             return cliente;
-        }*/
+        }
     }
 }
