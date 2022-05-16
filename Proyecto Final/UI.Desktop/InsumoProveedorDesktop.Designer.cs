@@ -41,6 +41,7 @@ namespace UI.Desktop
             this.btnCancelarIngreso = new MaterialSkin.Controls.MaterialButton();
             this.btnNewProvIngreso = new MaterialSkin.Controls.MaterialButton();
             this.btnNewInsumoIngreso = new MaterialSkin.Controls.MaterialButton();
+            this.txtUnidadMedidaIngreso = new MaterialSkin.Controls.MaterialTextBox();
             this.SuspendLayout();
             // 
             // cbProveedores
@@ -90,6 +91,7 @@ namespace UI.Desktop
             this.cbInsumos.StartIndex = 0;
             this.cbInsumos.TabIndex = 1;
             this.cbInsumos.ValueMember = "IdInsumo";
+            this.cbInsumos.SelectionChangeCommitted += new System.EventHandler(this.cbInsumos_SelectionChangeCommitted);
             // 
             // txtCantidad
             // 
@@ -105,7 +107,7 @@ namespace UI.Desktop
             this.txtCantidad.MouseState = MaterialSkin.MouseState.OUT;
             this.txtCantidad.Multiline = false;
             this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(100, 50);
+            this.txtCantidad.Size = new System.Drawing.Size(86, 50);
             this.txtCantidad.TabIndex = 2;
             this.txtCantidad.Text = "";
             this.txtCantidad.TrailingIcon = null;
@@ -208,7 +210,7 @@ namespace UI.Desktop
             this.btnCancelarIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnCancelarIngreso.HighEmphasis = true;
             this.btnCancelarIngreso.Icon = null;
-            this.btnCancelarIngreso.Location = new System.Drawing.Point(329, 396);
+            this.btnCancelarIngreso.Location = new System.Drawing.Point(319, 396);
             this.btnCancelarIngreso.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelarIngreso.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelarIngreso.Name = "btnCancelarIngreso";
@@ -265,11 +267,32 @@ namespace UI.Desktop
             this.btnNewInsumoIngreso.UseVisualStyleBackColor = false;
             this.btnNewInsumoIngreso.Click += new System.EventHandler(this.btnNewInsumoIngreso_Click);
             // 
+            // txtUnidadMedidaIngreso
+            // 
+            this.txtUnidadMedidaIngreso.AnimateReadOnly = false;
+            this.txtUnidadMedidaIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtUnidadMedidaIngreso.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtUnidadMedidaIngreso.Depth = 0;
+            this.txtUnidadMedidaIngreso.Enabled = false;
+            this.txtUnidadMedidaIngreso.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtUnidadMedidaIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtUnidadMedidaIngreso.LeadingIcon = null;
+            this.txtUnidadMedidaIngreso.Location = new System.Drawing.Point(281, 316);
+            this.txtUnidadMedidaIngreso.MaxLength = 50;
+            this.txtUnidadMedidaIngreso.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtUnidadMedidaIngreso.Multiline = false;
+            this.txtUnidadMedidaIngreso.Name = "txtUnidadMedidaIngreso";
+            this.txtUnidadMedidaIngreso.Size = new System.Drawing.Size(134, 50);
+            this.txtUnidadMedidaIngreso.TabIndex = 12;
+            this.txtUnidadMedidaIngreso.Text = "";
+            this.txtUnidadMedidaIngreso.TrailingIcon = null;
+            // 
             // InsumoProveedorDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(534, 460);
+            this.Controls.Add(this.txtUnidadMedidaIngreso);
             this.Controls.Add(this.btnNewInsumoIngreso);
             this.Controls.Add(this.btnNewProvIngreso);
             this.Controls.Add(this.btnCancelarIngreso);
@@ -283,6 +306,7 @@ namespace UI.Desktop
             this.Controls.Add(this.cbInsumos);
             this.Controls.Add(this.cbProveedores);
             this.Name = "InsumoProveedorDesktop";
+            this.Sizable = false;
             this.Text = "Nuevo Ingreso";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -303,5 +327,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnCancelarIngreso;
         private MaterialSkin.Controls.MaterialButton btnNewProvIngreso;
         private MaterialSkin.Controls.MaterialButton btnNewInsumoIngreso;
+        private MaterialSkin.Controls.MaterialTextBox txtUnidadMedidaIngreso;
     }
 }

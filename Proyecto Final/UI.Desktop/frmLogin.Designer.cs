@@ -29,125 +29,117 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblBienvenido = new MaterialSkin.Controls.MaterialLabel();
-            this.lblNombreUsuario = new MaterialSkin.Controls.MaterialLabel();
-            this.lblContrasenia = new MaterialSkin.Controls.MaterialLabel();
+            this.btnIngresar = new MaterialSkin.Controls.MaterialButton();
             this.txtNombreUsuario = new MaterialSkin.Controls.MaterialTextBox();
             this.txtContrasenia = new MaterialSkin.Controls.MaterialTextBox();
-            this.btnIngresar = new MaterialSkin.Controls.MaterialButton();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
             // 
-            // lblBienvenido
+            // btnIngresar
             // 
-            this.lblBienvenido.AutoSize = true;
-            this.lblBienvenido.Depth = 0;
-            this.lblBienvenido.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblBienvenido.Location = new System.Drawing.Point(77, 86);
-            this.lblBienvenido.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblBienvenido.Name = "lblBienvenido";
-            this.lblBienvenido.Size = new System.Drawing.Size(341, 19);
-            this.lblBienvenido.TabIndex = 0;
-            this.lblBienvenido.Text = "Bienvenido al Sistema de Gestión de Lavandería";
-            // 
-            // lblNombreUsuario
-            // 
-            this.lblNombreUsuario.AutoSize = true;
-            this.lblNombreUsuario.Depth = 0;
-            this.lblNombreUsuario.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblNombreUsuario.Location = new System.Drawing.Point(77, 167);
-            this.lblNombreUsuario.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblNombreUsuario.Name = "lblNombreUsuario";
-            this.lblNombreUsuario.Size = new System.Drawing.Size(140, 19);
-            this.lblNombreUsuario.TabIndex = 1;
-            this.lblNombreUsuario.Text = "Nombre de Usuario:";
-            // 
-            // lblContrasenia
-            // 
-            this.lblContrasenia.AutoSize = true;
-            this.lblContrasenia.Depth = 0;
-            this.lblContrasenia.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblContrasenia.Location = new System.Drawing.Point(77, 266);
-            this.lblContrasenia.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblContrasenia.Name = "lblContrasenia";
-            this.lblContrasenia.Size = new System.Drawing.Size(86, 19);
-            this.lblContrasenia.TabIndex = 2;
-            this.lblContrasenia.Text = "Contraseña:";
+            this.btnIngresar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnIngresar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnIngresar.Depth = 0;
+            this.btnIngresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnIngresar.HighEmphasis = true;
+            this.btnIngresar.Icon = null;
+            this.btnIngresar.Location = new System.Drawing.Point(568, 315);
+            this.btnIngresar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnIngresar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnIngresar.Name = "btnIngresar";
+            this.btnIngresar.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnIngresar.Size = new System.Drawing.Size(91, 36);
+            this.btnIngresar.TabIndex = 0;
+            this.btnIngresar.Text = "Ingresar";
+            this.btnIngresar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnIngresar.UseAccentColor = false;
+            this.btnIngresar.UseVisualStyleBackColor = false;
+            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
             // 
             // txtNombreUsuario
             // 
             this.txtNombreUsuario.AnimateReadOnly = false;
+            this.txtNombreUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.txtNombreUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNombreUsuario.Depth = 0;
             this.txtNombreUsuario.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtNombreUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.txtNombreUsuario.LeadingIcon = null;
-            this.txtNombreUsuario.Location = new System.Drawing.Point(77, 199);
+            this.txtNombreUsuario.Location = new System.Drawing.Point(422, 156);
             this.txtNombreUsuario.MaxLength = 50;
             this.txtNombreUsuario.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNombreUsuario.Multiline = false;
             this.txtNombreUsuario.Name = "txtNombreUsuario";
-            this.txtNombreUsuario.Size = new System.Drawing.Size(298, 50);
-            this.txtNombreUsuario.TabIndex = 3;
+            this.txtNombreUsuario.Size = new System.Drawing.Size(237, 50);
+            this.txtNombreUsuario.TabIndex = 1;
             this.txtNombreUsuario.Text = "";
             this.txtNombreUsuario.TrailingIcon = null;
             // 
             // txtContrasenia
             // 
             this.txtContrasenia.AnimateReadOnly = false;
+            this.txtContrasenia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.txtContrasenia.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtContrasenia.Depth = 0;
             this.txtContrasenia.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtContrasenia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.txtContrasenia.LeadingIcon = null;
-            this.txtContrasenia.Location = new System.Drawing.Point(77, 297);
+            this.txtContrasenia.Location = new System.Drawing.Point(422, 234);
             this.txtContrasenia.MaxLength = 50;
             this.txtContrasenia.MouseState = MaterialSkin.MouseState.OUT;
             this.txtContrasenia.Multiline = false;
             this.txtContrasenia.Name = "txtContrasenia";
-            this.txtContrasenia.Password = true;
-            this.txtContrasenia.Size = new System.Drawing.Size(298, 50);
-            this.txtContrasenia.TabIndex = 4;
+            this.txtContrasenia.Size = new System.Drawing.Size(237, 50);
+            this.txtContrasenia.TabIndex = 2;
             this.txtContrasenia.Text = "";
             this.txtContrasenia.TrailingIcon = null;
             // 
-            // btnIngresar
+            // materialLabel1
             // 
-            this.btnIngresar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnIngresar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnIngresar.Depth = 0;
-            this.btnIngresar.HighEmphasis = true;
-            this.btnIngresar.Icon = null;
-            this.btnIngresar.Location = new System.Drawing.Point(284, 378);
-            this.btnIngresar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnIngresar.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnIngresar.Size = new System.Drawing.Size(91, 36);
-            this.btnIngresar.TabIndex = 5;
-            this.btnIngresar.Text = "Ingresar";
-            this.btnIngresar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnIngresar.UseAccentColor = false;
-            this.btnIngresar.UseVisualStyleBackColor = true;
-            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel1.Location = new System.Drawing.Point(422, 134);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(136, 19);
+            this.materialLabel1.TabIndex = 3;
+            this.materialLabel1.Text = "Nombre de Usuario";
+            // 
+            // materialLabel2
+            // 
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel2.Location = new System.Drawing.Point(422, 209);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(82, 19);
+            this.materialLabel2.TabIndex = 4;
+            this.materialLabel2.Text = "Contraseña";
             // 
             // frmLogin
             // 
-            this.AcceptButton = this.btnIngresar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 475);
-            this.Controls.Add(this.btnIngresar);
+            this.ClientSize = new System.Drawing.Size(827, 506);
+            this.Controls.Add(this.materialLabel2);
+            this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.txtContrasenia);
             this.Controls.Add(this.txtNombreUsuario);
-            this.Controls.Add(this.lblContrasenia);
-            this.Controls.Add(this.lblNombreUsuario);
-            this.Controls.Add(this.lblBienvenido);
-            this.DoubleBuffered = false;
+            this.Controls.Add(this.btnIngresar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmLogin";
-            this.Padding = new System.Windows.Forms.Padding(0);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Ingreso";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Ingresar";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,11 +147,10 @@ namespace UI.Desktop
 
         #endregion
 
-        private MaterialSkin.Controls.MaterialLabel lblBienvenido;
-        private MaterialSkin.Controls.MaterialLabel lblNombreUsuario;
-        private MaterialSkin.Controls.MaterialLabel lblContrasenia;
+        private MaterialSkin.Controls.MaterialButton btnIngresar;
         private MaterialSkin.Controls.MaterialTextBox txtNombreUsuario;
         private MaterialSkin.Controls.MaterialTextBox txtContrasenia;
-        private MaterialSkin.Controls.MaterialButton btnIngresar;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
     }
 }

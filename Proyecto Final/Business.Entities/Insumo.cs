@@ -12,6 +12,7 @@ namespace Business.Entities
     {
         private int _idInsumo;
         private string _descripcion;
+        private string _unidadmedida;
         private decimal _stock;
         private List<InsumoProveedor> _insumosProveedores;// lista de proveedores que proveen ese insumo
         private List<InsumoServicioTipoPrenda> _insumosServicioTipoPrenda;//lista de serviciosTipoPrenda donde se utiliza ese insumo
@@ -32,6 +33,12 @@ namespace Business.Entities
         {
             get { return _stock; }
             set { _stock = value; }
+        }
+        [Column("unidad_medida")]
+        public string UnidadMedida
+        {
+            get { return _unidadmedida; }
+            set { _unidadmedida = value; }
         }
 
         public List<InsumoProveedor> InsumosProveedores

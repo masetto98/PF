@@ -20,7 +20,7 @@ namespace UI.Desktop
         private readonly ProveedorLogic _proveedorLogic;
         private readonly InsumoLogic _insumoLogic;
         private readonly InsumoProveedorLogic _insumoProveedorLogic;
-        private InsumoProveedor InsumoProveedorActual;
+        public InsumoProveedor InsumoProveedorActual { set; get; }
         private LavanderiaContext _context;
         public InsumoProveedorDesktop(LavanderiaContext context)
         {
@@ -84,6 +84,7 @@ namespace UI.Desktop
                 List<Insumo> insumos = _insumoLogic.GetAll();
                 this.cbInsumos.DataSource = insumos;
                 this.cbInsumos.SelectedIndex = cbInsumos.FindStringExact(InsumoProveedorActual.Insumo.Descripcion);
+                
             }
             catch (Exception e)
             {
@@ -122,7 +123,7 @@ namespace UI.Desktop
                     InsumoProveedorActual.IdInsumo = (int)this.cbInsumos.SelectedValue;
                     InsumoProveedorActual.IdProveedor = (int)this.cbProveedores.SelectedValue;
                     InsumoProveedorActual.FechaIngreso = this.dtpFechaIngreso.Value;
-                    InsumoProveedorActual.Cantidad = Convert.ToDecimal(this.txtCantidad.Text);
+                    InsumoProveedorActual.Cantidad = double.Parse(this.txtCantidad.Text);
                 }
                 
                 switch (Modos)
@@ -207,6 +208,13 @@ namespace UI.Desktop
         {
             InsumoDesktop frmIns = new InsumoDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmIns.ShowDialog();
+        }
+
+        private void cbInsumos_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            int IDInsumo = (int)this.cbInsumos.SelectedValue;
+            Insumo insumo = _insumoLogic.GetOne(IDInsumo);
+            this.txtUnidadMedidaIngreso.Text = insumo.UnidadMedida;
         }
     }
 }

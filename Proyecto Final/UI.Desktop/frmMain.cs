@@ -15,7 +15,7 @@ using Business.Logic;
 
 namespace UI.Desktop
 {
-    public partial class frmMain : MaterialForm
+    public partial class frmMain : ApplicationForm
     {
         readonly MaterialSkin.MaterialSkinManager materialSkinManager;
         private readonly LavanderiaContext _context;
@@ -25,6 +25,7 @@ namespace UI.Desktop
         private readonly InsumoLogic _insumoLogic;
         private readonly InsumoProveedorLogic _insumoProveedorLogic;
         private readonly OrdenLogic _ordenLogic;
+        
         public frmMain(LavanderiaContext context)
         {
             InitializeComponent();
@@ -36,27 +37,22 @@ namespace UI.Desktop
             _insumoProveedorLogic = new InsumoProveedorLogic(new InsumoProveedorAdapter(context));
             _ordenLogic = new OrdenLogic(new OrdenAdapter(context));
             CargarOrdenes();
-            materialSkinManager = MaterialSkinManager.Instance;
+           /* materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500,Accent.LightBlue200,TextShade.WHITE);
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+           */
         }
 
         private void btnNuevoCliente_Click(object sender, EventArgs e)
         {
-            ClienteDesktop frmCliente = new ClienteDesktop(ApplicationForm.ModoForm.Alta,_context);
+            ClienteDesktop frmCliente = new ClienteDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmCliente.ShowDialog();
+           
         }
 
-        /*private void frmMain_Shown(object sender, EventArgs e)
-        {
-            frmLogin appLogin = new frmLogin(_context);
-            if(appLogin.ShowDialog()!= DialogResult.OK)
-            {
-                this.Dispose();
-            }
-        }
-        */
+        
+        
         private void btnNuevoEmpleado_Click(object sender, EventArgs e)
         {
             EmpleadoDesktop frmEmpleado = new EmpleadoDesktop(_context);
@@ -65,7 +61,7 @@ namespace UI.Desktop
 
         private void btnEliminarOrden_Click(object sender, EventArgs e)
         {
-            if (mnuPrincipal.SelectedIndex == 0) 
+
 
         }
 
@@ -86,42 +82,34 @@ namespace UI.Desktop
         {
             if (mnuPrincipal.SelectedTab == mnuTabOrdenes)
             {
-                /*List<Empleado> empleados = _empleadoLogic.GetAll();
-                listEmpleados.Items.Clear();
-                foreach (Empleado em in empleados)
-                {
-                    ListViewItem item = new ListViewItem(em.IdEmpleado.ToString());
-                    item.SubItems.Add(em.Cuit);
-                    item.SubItems.Add(em.Nombre);
-                    item.SubItems.Add(em.Apellido);
-                    item.SubItems.Add(em.Direccion);
-                    item.SubItems.Add(em.Telefono);
-                    item.SubItems.Add(em.Email);
-                    item.SubItems.Add(em.FechaInicio.ToString());
-                    item.SubItems.Add(em.TipoEmpleado.ToString());
-                    listEmpleados.Items.Add(item);
-                }
-                */
+                CargarOrdenes();
             }
             else if (mnuPrincipal.SelectedIndex == 1)
             {
                 ListarClientes();
-               
+
             }
-            else if(mnuPrincipal.SelectedIndex == 2)
+            else if (mnuPrincipal.SelectedIndex == 2)
             {
-                
-                    ListarProveedores();  
-                
-               
+                //if(tabControlInventario.SelectedIndex == 0)
+                //{
+                    
+                //}
+                //else if(tabControlInventario.SelectedIndex == 1)
+                //{
+                    ListarProveedores();
+                //}
+               //else if(tabControlInventario.SelectedIndex == 2)
+                //{
                     ListarInsumos();
-                
-                
+                //}
+                //else if(tabControlInventario.SelectedIndex == 3)
+                //
                     ListarIngresos();
-               
-               
+                //}
+                
             }
-           
+
 
         }
         #region ------- CLIENTES -------
@@ -142,7 +130,7 @@ namespace UI.Desktop
                 item.SubItems.Add(c.Telefono);
                 listClientes.Items.Add(item);
                 CargarOrdenes();
-                
+
             }
         }
 
@@ -196,7 +184,7 @@ namespace UI.Desktop
 
         private void txtBuscarCliente_TextChanged(object sender, EventArgs e)
         {
-            if(txtBuscarCliente.Text == "")
+            if (txtBuscarCliente.Text == "")
             {
                 ListarClientes();
             }
@@ -204,7 +192,8 @@ namespace UI.Desktop
             {
                 buscarCliente();
             }
-        private void CargarOrdenes() 
+        }
+        private void CargarOrdenes()
         {
             List<Orden> ordenes = _ordenLogic.GetAll();
             listOrdenes.Items.Clear();
@@ -256,17 +245,18 @@ namespace UI.Desktop
                 ListViewItem item = new ListViewItem(i.IdInsumo.ToString());
                 item.SubItems.Add(i.Descripcion);
                 item.SubItems.Add(i.Stock.ToString());
-                
+                item.SubItems.Add(i.UnidadMedida);
+
                 listInsumos.Items.Add(item);
             }
-            
+
         }
         private void ListarIngresos()
         {
             List<InsumoProveedor> insumosproveedores = _insumoProveedorLogic.GetAll();
-            insumosproveedores.OrderBy(ip => ip.FechaIngreso);
+            insumosproveedores.OrderByDescending(ip => ip.FechaIngreso);
             listIngresos.Items.Clear();
-            foreach(InsumoProveedor ip in insumosproveedores)
+            foreach (InsumoProveedor ip in insumosproveedores)
             {
                 ListViewItem item = new ListViewItem(ip.Proveedor.IdProveedor.ToString());
                 item.SubItems.Add(ip.Proveedor.RazonSocial);
@@ -368,7 +358,7 @@ namespace UI.Desktop
                 int IDProv = Int32.Parse(this.listIngresos.SelectedItems[0].Text);
                 int IDIns = Int32.Parse(this.listIngresos.SelectedItems[0].SubItems[2].Text);
                 DateTime fechaIngreso = DateTime.Parse(this.listIngresos.SelectedItems[0].SubItems[4].Text);
-                InsumoProveedorDesktop formInsumoProveedor = new InsumoProveedorDesktop(IDProv,IDIns,fechaIngreso, ApplicationForm.ModoForm.Modificacion, _context);
+                InsumoProveedorDesktop formInsumoProveedor = new InsumoProveedorDesktop(IDProv, IDIns, fechaIngreso, ApplicationForm.ModoForm.Modificacion, _context);
                 formInsumoProveedor.ShowDialog();
                 ListarIngresos();
             }
@@ -376,6 +366,10 @@ namespace UI.Desktop
             {
                 MessageBox.Show("Seleccionar una fila en la lista para poder editar");
             }
+        }
+        private void ListarStock()
+        {
+
         }
 
         private void btnEliminarIngreso_Click(object sender, EventArgs e)
@@ -396,13 +390,78 @@ namespace UI.Desktop
             }
 
         }
+        private void dtpFiltrarFechaIngreso_CloseUp(object sender, EventArgs e)
+        {
+            DateTime fechaFiltro = dtpFiltrarFechaIngreso.Value;
+            List<InsumoProveedor> insumosproveedores = _insumoProveedorLogic.GetAll();
+            List<InsumoProveedor> ipFecha = insumosproveedores.FindAll(ip => ip.FechaIngreso == fechaFiltro.Date);
+            listIngresos.Items.Clear();
+            foreach (InsumoProveedor ip in ipFecha)
+            {
+                ListViewItem item = new ListViewItem(ip.Proveedor.IdProveedor.ToString());
+                item.SubItems.Add(ip.Proveedor.RazonSocial);
+                item.SubItems.Add(ip.Insumo.IdInsumo.ToString());
+                item.SubItems.Add(ip.Insumo.Descripcion);
+                item.SubItems.Add(ip.FechaIngreso.ToString());
+                item.SubItems.Add(ip.Cantidad.ToString());
+                listIngresos.Items.Add(item);
+            }
+
+        }
+
+        private void listIngresos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listIngresos.Columns[e.ColumnIndex].Width;
+        }
+
+        private void listInsumos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listInsumos.Columns[e.ColumnIndex].Width;
+        }
+        private void btnActualizarIngresos_Click(object sender, EventArgs e)
+        {
+            ListarIngresos();
+        }
         #endregion
 
-        
+
         private void btnNuevoTipoPrenda_Click(object sender, EventArgs e)
         {
             TipoPrendaDesktop formTipoPrendaDesktop = new TipoPrendaDesktop(ApplicationForm.ModoForm.Alta, _context);
             formTipoPrendaDesktop.ShowDialog();
         }
+
+        private void frmMain_Shown(object sender, EventArgs e)
+        {
+            this.mnuPrincipal.Visible = false;
+            
+            this.epUser.Visible = false;
+            frmLogin appLogin = new frmLogin(_context);
+            if (appLogin.ShowDialog() != DialogResult.OK)
+            {
+                this.Dispose();
+            }
+
+            this.mnuPrincipal.Visible = true;
+            this.epUser.Visible = true;
+            
+            this.epUser.Title = $"{Singleton.getInstance().UserLogged.NombreUsuario}";
+            
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            this.frmMain_Shown(sender, e);
+            this.epUser.Collapse = true;
+        }
+
+        private void epUser_Leave(object sender, EventArgs e)
+        {
+            this.epUser.Collapse = true;
+        }
+
+        
     }
 }

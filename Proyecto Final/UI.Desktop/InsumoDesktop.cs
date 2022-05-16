@@ -75,6 +75,7 @@ namespace UI.Desktop
             this.txtIDInsumo.Text = this.InsumoActual.IdInsumo.ToString();
             this.txtDescInsumo.Text = this.InsumoActual.Descripcion;
             this.txtExistenciaInsumo.Text = this.InsumoActual.Stock.ToString();
+            this.txtUnidadMedida.Text = this.InsumoActual.UnidadMedida;
             
             switch (this.Modos)
             {
@@ -89,6 +90,7 @@ namespace UI.Desktop
                     this.txtIDInsumo.Enabled = false;
                     this.txtDescInsumo.Enabled = false;
                     this.txtExistenciaInsumo.Enabled = false;
+                    this.txtUnidadMedida.Enabled = false;
                     
                     break;
                 case ModoForm.Consulta:
@@ -108,12 +110,14 @@ namespace UI.Desktop
                 InsumoActual = new Insumo();
                 InsumoActual.Descripcion = this.txtDescInsumo.Text;
                 InsumoActual.Stock = Int32.Parse(this.txtExistenciaInsumo.Text);
+                InsumoActual.UnidadMedida = this.txtUnidadMedida.Text;
                 
             }
             if (Modos == ModoForm.Modificacion)
             {
                 InsumoActual.Descripcion = this.txtDescInsumo.Text;
                 InsumoActual.Stock = Int32.Parse(this.txtExistenciaInsumo.Text);
+                InsumoActual.UnidadMedida = this.txtUnidadMedida.Text;
             }
             switch (Modos)
             {
@@ -127,18 +131,18 @@ namespace UI.Desktop
         }
         public override void GuardarCambios()
         {
-            //            try
-            //            {
+            try
+            {
             MapearADatos();
             _insumoLogic.Save(InsumoActual);
             Close();
 
-            //            }
-            /*            catch (Exception e)
-                        {
-                            MessageBox.Show(e.Message, "Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-            */
+            }
+            catch (Exception e)
+            {
+              MessageBox.Show(e.Message, "Insumo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         public virtual void Eliminar()
         {

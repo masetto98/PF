@@ -1,4 +1,6 @@
-﻿using MaterialSkin.Controls;
+﻿using Business.Entities;
+using Business.Logic;
+using Data.Database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,48 +11,42 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin;
-using Business.Entities;
-using Business.Logic;
-using Data.Database;
 
 namespace UI.Desktop
 {
-    public partial class frmLogin : MaterialForm
+    public partial class frmLogin : ApplicationForm
     {
-        readonly MaterialSkin.MaterialSkinManager materialSkinManager;
         private readonly UsuarioLogic _usuarioLogic;
-        //private readonly EmpleadoLogic _empleadoLogic;
+        private readonly EmpleadoLogic _empleadoLogic;
         public frmLogin(LavanderiaContext context)
         {
             InitializeComponent();
             _usuarioLogic = new UsuarioLogic(new UsuarioAdapter(context));
-           // _empleadoLogic = new EmpleadoLogic(new EmpleadoAdapter(context));
-            materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+            _empleadoLogic = new EmpleadoLogic(new EmpleadoAdapter(context));
         }
-
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             try
             {
-                Usuario usr = _usuarioLogic.Login(this.txtNombreUsuario.Text, this.txtContrasenia.Text);
+                Usuario usr = _usuarioLogic.Login(this.txtNombreUsuario.Text.ToLower(), this.txtContrasenia.Text.ToLower());
                 if (usr != null)
                 {
                     if (usr.Habilitado == true)
                     {
-                        //Singleton.setInstance(_personaLogic.GetOne(usr.IDPersona), usr);
+                        Singleton.setInstance(_empleadoLogic.GetOne(usr.IdEmpleado), usr);
                         this.DialogResult = DialogResult.OK;
+
                     }
                     else
                     {
+
                         MessageBox.Show("Usuario no habilitado, contactese con su administrador", "Login"
                     , MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
+
                     MessageBox.Show("Contraseña incorrecta", "Login"
                     , MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

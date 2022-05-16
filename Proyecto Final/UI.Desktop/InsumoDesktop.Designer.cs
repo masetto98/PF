@@ -37,6 +37,8 @@ namespace UI.Desktop
             this.txtExistenciaInsumo = new MaterialSkin.Controls.MaterialTextBox();
             this.btnAceptarInsumo = new MaterialSkin.Controls.MaterialButton();
             this.btnCancelar = new MaterialSkin.Controls.MaterialButton();
+            this.lblUnidadMedida = new MaterialSkin.Controls.MaterialLabel();
+            this.txtUnidadMedida = new MaterialSkin.Controls.MaterialTextBox();
             this.SuspendLayout();
             // 
             // txtIDInsumo
@@ -54,7 +56,7 @@ namespace UI.Desktop
             this.txtIDInsumo.MouseState = MaterialSkin.MouseState.OUT;
             this.txtIDInsumo.Multiline = false;
             this.txtIDInsumo.Name = "txtIDInsumo";
-            this.txtIDInsumo.Size = new System.Drawing.Size(253, 50);
+            this.txtIDInsumo.Size = new System.Drawing.Size(70, 50);
             this.txtIDInsumo.TabIndex = 0;
             this.txtIDInsumo.Text = "";
             this.txtIDInsumo.TrailingIcon = null;
@@ -101,7 +103,7 @@ namespace UI.Desktop
             this.txtDescInsumo.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDescInsumo.Multiline = false;
             this.txtDescInsumo.Name = "txtDescInsumo";
-            this.txtDescInsumo.Size = new System.Drawing.Size(253, 50);
+            this.txtDescInsumo.Size = new System.Drawing.Size(357, 50);
             this.txtDescInsumo.TabIndex = 3;
             this.txtDescInsumo.Text = "";
             this.txtDescInsumo.TrailingIcon = null;
@@ -183,11 +185,46 @@ namespace UI.Desktop
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // lblUnidadMedida
+            // 
+            this.lblUnidadMedida.AutoSize = true;
+            this.lblUnidadMedida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lblUnidadMedida.Depth = 0;
+            this.lblUnidadMedida.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblUnidadMedida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblUnidadMedida.Location = new System.Drawing.Point(235, 218);
+            this.lblUnidadMedida.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblUnidadMedida.Name = "lblUnidadMedida";
+            this.lblUnidadMedida.Size = new System.Drawing.Size(129, 19);
+            this.lblUnidadMedida.TabIndex = 8;
+            this.lblUnidadMedida.Text = "Unidad de medida";
+            // 
+            // txtUnidadMedida
+            // 
+            this.txtUnidadMedida.AnimateReadOnly = false;
+            this.txtUnidadMedida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtUnidadMedida.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtUnidadMedida.Depth = 0;
+            this.txtUnidadMedida.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtUnidadMedida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtUnidadMedida.LeadingIcon = null;
+            this.txtUnidadMedida.Location = new System.Drawing.Point(370, 200);
+            this.txtUnidadMedida.MaxLength = 50;
+            this.txtUnidadMedida.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtUnidadMedida.Multiline = false;
+            this.txtUnidadMedida.Name = "txtUnidadMedida";
+            this.txtUnidadMedida.Size = new System.Drawing.Size(131, 50);
+            this.txtUnidadMedida.TabIndex = 9;
+            this.txtUnidadMedida.Text = "";
+            this.txtUnidadMedida.TrailingIcon = null;
+            // 
             // InsumoDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(453, 370);
+            this.ClientSize = new System.Drawing.Size(568, 370);
+            this.Controls.Add(this.txtUnidadMedida);
+            this.Controls.Add(this.lblUnidadMedida);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptarInsumo);
             this.Controls.Add(this.txtExistenciaInsumo);
@@ -213,5 +250,7 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialTextBox txtExistenciaInsumo;
         private MaterialSkin.Controls.MaterialButton btnAceptarInsumo;
         private MaterialSkin.Controls.MaterialButton btnCancelar;
+        private MaterialSkin.Controls.MaterialLabel lblUnidadMedida;
+        private MaterialSkin.Controls.MaterialTextBox txtUnidadMedida;
     }
 }

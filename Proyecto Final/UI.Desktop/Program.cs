@@ -30,19 +30,31 @@ namespace UI.Desktop
                 .Build();
 
                 services.AddSingleton<frmMain>();
+                //services.AddSingleton<frmLogin>();
                 services.AddDbContext<LavanderiaContext>(opt =>
                 {
                     //opt.UseSqlServer(ConfigurationManager.ConnectionStrings["ConnStringLocal"].ConnectionString);
                     opt.UseSqlServer(configuration.GetConnectionString("ConnStringLocal"));
                 });
             }).Build();
+
+
             using (var services = host.Services.CreateScope())
             {
                 var dbContext = services.ServiceProvider.GetRequiredService<LavanderiaContext>();
                 
 
-                var frmMain = services.ServiceProvider.GetRequiredService<frmMain>();
-                Application.Run(frmMain);
+               var frmMain = services.ServiceProvider.GetRequiredService<frmMain>();
+               
+                
+                    Application.Run(frmMain);
+                
+               //var frmLogin = services.ServiceProvider.GetRequiredService<frmLogin>();
+               //if (frmLogin.ShowDialog() == DialogResult.OK)
+               //{
+                   
+               //}
+                
             }
             
         }

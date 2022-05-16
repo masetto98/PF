@@ -103,9 +103,39 @@ namespace UI.Desktop.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap off_log_icon_214125 {
+            get {
+                object obj = ResourceManager.GetObject("off_log_icon_214125", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap plus_icon_icons_com_70890 {
             get {
                 object obj = ResourceManager.GetObject("plus_icon-icons.com_70890", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap power_on_off_log_out_exit_icon_141949 {
+            get {
+                object obj = ResourceManager.GetObject("power_on_off_log_out_exit_icon_141949", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap round_account_button_with_user_inside_icon_icons_com_72596 {
+            get {
+                object obj = ResourceManager.GetObject("round-account-button-with-user-inside_icon-icons.com_72596", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
