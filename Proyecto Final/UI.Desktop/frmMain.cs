@@ -39,24 +39,20 @@ namespace UI.Desktop
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500,Accent.LightBlue200,TextShade.WHITE);
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
 
         private void btnNuevoCliente_Click(object sender, EventArgs e)
         {
-            ClienteDesktop frmCliente = new ClienteDesktop(ApplicationForm.ModoForm.Alta,_context);
+            ClienteDesktop frmCliente = new ClienteDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmCliente.ShowDialog();
         }
 
         /*private void frmMain_Shown(object sender, EventArgs e)
         {
-            frmLogin appLogin = new frmLogin(_context);
-            if(appLogin.ShowDialog()!= DialogResult.OK)
-            {
-                this.Dispose();
-            }
-        }
-        */
+
+        }*/
+
         private void btnNuevoEmpleado_Click(object sender, EventArgs e)
         {
             EmpleadoDesktop frmEmpleado = new EmpleadoDesktop(_context);
@@ -65,7 +61,7 @@ namespace UI.Desktop
 
         private void btnEliminarOrden_Click(object sender, EventArgs e)
         {
-            if (mnuPrincipal.SelectedIndex == 0) 
+            
 
         }
 
@@ -86,42 +82,28 @@ namespace UI.Desktop
         {
             if (mnuPrincipal.SelectedTab == mnuTabOrdenes)
             {
-                /*List<Empleado> empleados = _empleadoLogic.GetAll();
-                listEmpleados.Items.Clear();
-                foreach (Empleado em in empleados)
-                {
-                    ListViewItem item = new ListViewItem(em.IdEmpleado.ToString());
-                    item.SubItems.Add(em.Cuit);
-                    item.SubItems.Add(em.Nombre);
-                    item.SubItems.Add(em.Apellido);
-                    item.SubItems.Add(em.Direccion);
-                    item.SubItems.Add(em.Telefono);
-                    item.SubItems.Add(em.Email);
-                    item.SubItems.Add(em.FechaInicio.ToString());
-                    item.SubItems.Add(em.TipoEmpleado.ToString());
-                    listEmpleados.Items.Add(item);
-                }
-                */
+                CargarOrdenes();
+
             }
             else if (mnuPrincipal.SelectedIndex == 1)
             {
                 ListarClientes();
-               
+
             }
-            else if(mnuPrincipal.SelectedIndex == 2)
+            else if (mnuPrincipal.SelectedIndex == 2)
             {
-                
-                    ListarProveedores();  
-                
-               
-                    ListarInsumos();
-                
-                
-                    ListarIngresos();
-               
-               
+
+                ListarProveedores();
+
+
+                ListarInsumos();
+
+
+                ListarIngresos();
+
+
             }
-           
+
 
         }
         #region ------- CLIENTES -------
@@ -142,7 +124,7 @@ namespace UI.Desktop
                 item.SubItems.Add(c.Telefono);
                 listClientes.Items.Add(item);
                 CargarOrdenes();
-                
+
             }
         }
 
@@ -196,7 +178,7 @@ namespace UI.Desktop
 
         private void txtBuscarCliente_TextChanged(object sender, EventArgs e)
         {
-            if(txtBuscarCliente.Text == "")
+            if (txtBuscarCliente.Text == "")
             {
                 ListarClientes();
             }
@@ -204,25 +186,8 @@ namespace UI.Desktop
             {
                 buscarCliente();
             }
-        private void CargarOrdenes() 
-        {
-            List<Orden> ordenes = _ordenLogic.GetAll();
-            listOrdenes.Items.Clear();
-            foreach (Orden o in ordenes)
-            {
-                ListViewItem item = new ListViewItem(o.NroOrden.ToString());
-                item.SubItems.Add(o.IdCliente.ToString());
-                item.SubItems.Add(o.IdEmpleado.ToString());
-                item.SubItems.Add(o.NroFactura.ToString());
-                item.SubItems.Add(o.Prioridad);
-                item.SubItems.Add(o.FechaEntrada.ToString());
-                item.SubItems.Add(o.TiempofinalizacionEstimado.ToString());
-                item.SubItems.Add(o.TiempoFinalizacionReal.ToString());
-                item.SubItems.Add(o.FechaSalida.ToString());
-                item.SubItems.Add(o.Estado.ToString());
-                listOrdenes.Items.Add(item);
-            }
         }
+
         //evento para fixear columnas del listview
         private void listClientes_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
@@ -247,6 +212,7 @@ namespace UI.Desktop
                 listProveedores.Items.Add(item);
             }
         }
+
         private void ListarInsumos()
         {
             List<Insumo> insumos = _insumoLogic.GetAll();
@@ -256,17 +222,17 @@ namespace UI.Desktop
                 ListViewItem item = new ListViewItem(i.IdInsumo.ToString());
                 item.SubItems.Add(i.Descripcion);
                 item.SubItems.Add(i.Stock.ToString());
-                
                 listInsumos.Items.Add(item);
             }
-            
+
         }
+
         private void ListarIngresos()
         {
             List<InsumoProveedor> insumosproveedores = _insumoProveedorLogic.GetAll();
             insumosproveedores.OrderBy(ip => ip.FechaIngreso);
             listIngresos.Items.Clear();
-            foreach(InsumoProveedor ip in insumosproveedores)
+            foreach (InsumoProveedor ip in insumosproveedores)
             {
                 ListViewItem item = new ListViewItem(ip.Proveedor.IdProveedor.ToString());
                 item.SubItems.Add(ip.Proveedor.RazonSocial);
@@ -284,6 +250,7 @@ namespace UI.Desktop
             frmProveedor.ShowDialog();
             ListarProveedores();
         }
+
         private void btnEditarProv_Click(object sender, EventArgs e)
         {
             if (listProveedores.SelectedItems.Count > 0)
@@ -298,6 +265,7 @@ namespace UI.Desktop
                 MessageBox.Show("Seleccionar una fila en la lista para poder editar");
             }
         }
+
         private void btnEliminarProv_Click(object sender, EventArgs e)
         {
             if (listProveedores.SelectedItems.Count > 0)
@@ -313,17 +281,20 @@ namespace UI.Desktop
                 MessageBox.Show("Seleccionar una fila en la lista para poder eliminar");
             }
         }
+        
         private void listProveedores_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             e.Cancel = true;
             e.NewWidth = listProveedores.Columns[e.ColumnIndex].Width;
         }
+            
         private void btnAgregarInsumo_Click(object sender, EventArgs e)
         {
             InsumoDesktop frmInsumo = new InsumoDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmInsumo.ShowDialog();
             ListarInsumos();
         }
+        
         private void btnEditarInsumo_Click(object sender, EventArgs e)
         {
             if (listInsumos.SelectedItems.Count > 0)
@@ -361,6 +332,7 @@ namespace UI.Desktop
             frmInsumoProveedor.ShowDialog();
             ListarIngresos();
         }
+
         private void btnEditarIngreso_Click(object sender, EventArgs e)
         {
             if (listIngresos.SelectedItems.Count > 0)
@@ -368,7 +340,7 @@ namespace UI.Desktop
                 int IDProv = Int32.Parse(this.listIngresos.SelectedItems[0].Text);
                 int IDIns = Int32.Parse(this.listIngresos.SelectedItems[0].SubItems[2].Text);
                 DateTime fechaIngreso = DateTime.Parse(this.listIngresos.SelectedItems[0].SubItems[4].Text);
-                InsumoProveedorDesktop formInsumoProveedor = new InsumoProveedorDesktop(IDProv,IDIns,fechaIngreso, ApplicationForm.ModoForm.Modificacion, _context);
+                InsumoProveedorDesktop formInsumoProveedor = new InsumoProveedorDesktop(IDProv, IDIns, fechaIngreso, ApplicationForm.ModoForm.Modificacion, _context);
                 formInsumoProveedor.ShowDialog();
                 ListarIngresos();
             }
@@ -398,11 +370,37 @@ namespace UI.Desktop
         }
         #endregion
 
-        
+
         private void btnNuevoTipoPrenda_Click(object sender, EventArgs e)
         {
             TipoPrendaDesktop formTipoPrendaDesktop = new TipoPrendaDesktop(ApplicationForm.ModoForm.Alta, _context);
             formTipoPrendaDesktop.ShowDialog();
         }
+
+        #region -------------- ORDENES ---------------
+        private void CargarOrdenes()
+        {
+            List<Orden> ordenes = _ordenLogic.GetAll();
+            listOrdenes.Items.Clear();
+            foreach (Orden o in ordenes)
+            {
+                ListViewItem item = new ListViewItem(o.NroOrden.ToString());
+                item.SubItems.Add(o.IdCliente.ToString());
+                item.SubItems.Add(o.IdEmpleado.ToString());
+                item.SubItems.Add(o.NroFactura.ToString());
+                item.SubItems.Add(o.Prioridad);
+                item.SubItems.Add(o.FechaEntrada.ToString());
+                item.SubItems.Add(o.TiempofinalizacionEstimado.ToString());
+                item.SubItems.Add(o.TiempoFinalizacionReal.ToString());
+                item.SubItems.Add(o.FechaSalida.ToString());
+                item.SubItems.Add(o.Estado.ToString());
+                listOrdenes.Items.Add(item);
+            }
+        }
+        #endregion
+
+
+
     }
-}
+} 
+

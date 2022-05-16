@@ -20,6 +20,7 @@ namespace UI.Desktop
         readonly MaterialSkin.MaterialSkinManager materialSkinManager;
         
         public ServicioTipoPrenda ServicioTipoPrendaActual { set; get; }
+        public Precio PrecioActual { set; get; }
         private readonly ServicioTipoPrendaLogic _servicioTipoPrendaLogic;
         private readonly ServicioLogic _servicioLogic;
         private readonly TipoPrendaLogic _tipoPrendaLogic;
@@ -30,6 +31,7 @@ namespace UI.Desktop
             _servicioTipoPrendaLogic = new ServicioTipoPrendaLogic(new ServicioTipoPrendaAdapter(context));
             _servicioLogic = new ServicioLogic(new ServicioAdapter(context));
             _tipoPrendaLogic = new TipoPrendaLogic(new TipoPrendaAdapter(context));
+
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
@@ -58,6 +60,11 @@ namespace UI.Desktop
             try
             {
                 ServicioTipoPrendaActual = _servicioTipoPrendaLogic.GetOne(idServicio,IdTipoPrenda);
+                PrecioActual = ServicioTipoPrendaActual.HistoricoPrecios.FindLast(
+                    delegate (Precio p)
+                    {
+                        return p.FechaDesde <= DateTime.Today;
+                    });
                 MapearDeDatos();
             }
             catch (Exception e)
@@ -68,19 +75,17 @@ namespace UI.Desktop
 
         public override void MapearDeDatos()
         {
-            this.txtHoras.Text = ServicioTipoPrendaActual.TiempoRequerido.Hours.ToString();
-            this.txtMinutos.Text = ServicioTipoPrendaActual.TiempoRequerido.Minutes.ToString();
-
+            this.nudHoras.Value = ServicioTipoPrendaActual.TiempoRequerido.Hours;
+            this.nudMinutos.Value = ServicioTipoPrendaActual.TiempoRequerido.Minutes;
+            this.txtPrecio.Text = PrecioActual.Valor.ToString();
             try
-            {
-                Servicio ServicioActual = _servicioLogic.GetOne(ServicioTipoPrendaActual.IdServicio);
-                TipoPrenda TipoPrendaActual = _tipoPrendaLogic.GetOne(ServicioTipoPrendaActual.IdTipoPrenda);
+            { 
                 List<Servicio> servicios = _servicioLogic.GetAll();
                 List<TipoPrenda> tipoPrendas = _tipoPrendaLogic.GetAll();
                 this.cmbServicios.DataSource = servicios;
                 this.cmbTipoPrendas.DataSource = tipoPrendas;
-                this.cmbServicios.SelectedIndex = cmbServicios.FindStringExact(ServicioActual.Descripcion);
-                this.cmbTipoPrendas.SelectedIndex = cmbTipoPrendas.FindStringExact(TipoPrendaActual.Descripcion);
+                this.cmbServicios.SelectedIndex = cmbServicios.FindStringExact(ServicioTipoPrendaActual.Servicio.Descripcion);
+                this.cmbTipoPrendas.SelectedIndex = cmbTipoPrendas.FindStringExact(ServicioTipoPrendaActual.TipoPrenda.Descripcion);
             }
             catch (Exception e)
             {
@@ -93,21 +98,24 @@ namespace UI.Desktop
                     break;
                 case ModoForm.Modificacion:
                     this.btnAceptar.Text = "Guardar";
+                    this.cmbServicios.Enabled = false;
+                    this.cmbTipoPrendas.Enabled = false;
                     break;
                 case ModoForm.Baja:
                     this.btnAceptar.Text = "Eliminar";
                     this.cmbServicios.Enabled = false;
                     this.cmbTipoPrendas.Enabled = false;
-                    this.txtHoras.Enabled = false;
-                    this.txtMinutos.Enabled = false;
+                    this.nudHoras.Enabled = false;
+                    this.nudMinutos.Enabled = false;
+                    this.txtPrecio.Enabled = false;
 
                     break;
                 case ModoForm.Consulta:
                     this.btnAceptar.Text = "Aceptar";
                     this.cmbServicios.Enabled = false;
                     this.cmbTipoPrendas.Enabled = false;
-                    this.txtHoras.Enabled = false;
-                    this.txtMinutos.Enabled = false;
+                    this.nudHoras.Enabled = false;
+                    this.nudMinutos.Enabled = false;
                     ;
                     break;
             }
@@ -118,15 +126,30 @@ namespace UI.Desktop
             if (Modos == ModoForm.Alta)
             {
                 ServicioTipoPrendaActual = new ServicioTipoPrenda();
-                ServicioTipoPrendaActual.IdServicio = (int)this.cmbServicios.SelectedValue;
-                ServicioTipoPrendaActual.IdTipoPrenda = (int)this.cmbTipoPrendas.SelectedValue;
-                ServicioTipoPrendaActual.TiempoRequerido = new TimeSpan(Int32.Parse(this.txtHoras.Text), Int32.Parse(this.txtMinutos.Text),00);
+                Precio precioActual = new Precio();
+                ServicioTipoPrendaActual.Servicio = _servicioLogic.GetOne((int)this.cmbServicios.SelectedValue);
+                ServicioTipoPrendaActual.TipoPrenda = _tipoPrendaLogic.GetOne((int)this.cmbTipoPrendas.SelectedValue);
+                ServicioTipoPrendaActual.TiempoRequerido = new TimeSpan(((int)this.nudHoras.Value),((int)this.nudMinutos.Value),00);
+                precioActual.Valor = Decimal.Parse(this.txtPrecio.Text);
+                precioActual.FechaDesde = DateTime.Today;
+                ServicioTipoPrendaActual.HistoricoPrecios = new List<Precio>();
+                ServicioTipoPrendaActual.HistoricoPrecios.Add(precioActual);
+
             }
             if (Modos == ModoForm.Modificacion)
             {
-                ServicioTipoPrendaActual.IdServicio = (int)this.cmbServicios.SelectedValue;
-                ServicioTipoPrendaActual.IdTipoPrenda = (int)this.cmbTipoPrendas.SelectedValue;
-                ServicioTipoPrendaActual.TiempoRequerido = new TimeSpan(Int32.Parse(this.txtHoras.Text), Int32.Parse(this.txtMinutos.Text), 00);
+                this.cmbServicios.FindStringExact(ServicioTipoPrendaActual.Servicio.Descripcion);
+                this.cmbServicios.FindStringExact(ServicioTipoPrendaActual.TipoPrenda.Descripcion);
+                this.cmbServicios.Enabled = false;
+                this.cmbTipoPrendas.Enabled = false;
+                ServicioTipoPrendaActual.TiempoRequerido = new TimeSpan(((int)this.nudHoras.Value), ((int)this.nudMinutos.Value), 00);
+                if (PrecioActual.Valor != Decimal.Parse(this.txtPrecio.Text)) 
+                {
+                    Precio nuevoPrecio = new Precio();
+                    nuevoPrecio.Valor = Decimal.Parse(this.txtPrecio.Text);
+                    nuevoPrecio.FechaDesde = DateTime.Today;
+                    ServicioTipoPrendaActual.HistoricoPrecios.Add(nuevoPrecio);
+                }
             }
             switch (Modos)
             {
@@ -141,20 +164,20 @@ namespace UI.Desktop
 
         public override void GuardarCambios()
         {
-            try
-            {
-                if (true)
-                {
+            //try
+            //{
+                //if (true)
+                //{
                     MapearADatos();
                     _servicioTipoPrendaLogic.Save(ServicioTipoPrendaActual);
                     Close();
-                }
+                //}
             
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "Servicio-TipoPrenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //catch (Exception e)
+            //{
+            ///    MessageBox.Show(e.Message, "Servicio-TipoPrenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         public virtual void Eliminar()

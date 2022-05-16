@@ -34,6 +34,23 @@ namespace UI.Desktop
             this.btnNuevoCliente = new MaterialSkin.Controls.MaterialButton();
             this.mnuPrincipal = new MaterialSkin.Controls.MaterialTabControl();
             this.mnuTabOrdenes = new System.Windows.Forms.TabPage();
+            this.btnNuevoTipoPrenda = new MaterialSkin.Controls.MaterialButton();
+            this.btnNuevoServicioTipoPrenda = new MaterialSkin.Controls.MaterialButton();
+            this.materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.btnEliminarOrden = new MaterialSkin.Controls.MaterialButton();
+            this.btnNuevaOrden = new MaterialSkin.Controls.MaterialButton();
+            this.listOrdenes = new MaterialSkin.Controls.MaterialListView();
+            this.columnNroOrden = new System.Windows.Forms.ColumnHeader();
+            this.columnIdCliente = new System.Windows.Forms.ColumnHeader();
+            this.columnIdEmpleado = new System.Windows.Forms.ColumnHeader();
+            this.columnIdFactura = new System.Windows.Forms.ColumnHeader();
+            this.columnPrioridad = new System.Windows.Forms.ColumnHeader();
+            this.columnFechaEntrada = new System.Windows.Forms.ColumnHeader();
+            this.columnTiempoEntregaEstimado = new System.Windows.Forms.ColumnHeader();
+            this.columnTiempoEntregaReal = new System.Windows.Forms.ColumnHeader();
+            this.columnFechaSalida = new System.Windows.Forms.ColumnHeader();
+            this.columnEstado = new System.Windows.Forms.ColumnHeader();
             this.btnNuevoEmpleado = new MaterialSkin.Controls.MaterialButton();
             this.mnuTabClientes = new System.Windows.Forms.TabPage();
             this.txtBuscarCliente = new MaterialSkin.Controls.MaterialTextBox();
@@ -86,26 +103,7 @@ namespace UI.Desktop
             this.columnFechaIngreso = new System.Windows.Forms.ColumnHeader();
             this.columnCantIngreso = new System.Windows.Forms.ColumnHeader();
             this.tabSelectorInventario = new MaterialSkin.Controls.MaterialTabSelector();
-            this.btnNuevoTipoPrenda = new MaterialSkin.Controls.MaterialButton();
-            this.btnNuevoServicioTipoPrenda = new MaterialSkin.Controls.MaterialButton();
-            this.materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.btnEliminarOrden = new MaterialSkin.Controls.MaterialButton();
-            this.btnNuevaOrden = new MaterialSkin.Controls.MaterialButton();
-            this.listOrdenes = new MaterialSkin.Controls.MaterialListView();
-            this.columnNroOrden = new System.Windows.Forms.ColumnHeader();
-            this.columnIdCliente = new System.Windows.Forms.ColumnHeader();
-            this.columnIdEmpleado = new System.Windows.Forms.ColumnHeader();
-            this.columnIdFactura = new System.Windows.Forms.ColumnHeader();
-            this.columnPrioridad = new System.Windows.Forms.ColumnHeader();
-            this.columnFechaEntrada = new System.Windows.Forms.ColumnHeader();
-            this.columnTiempoEntregaEstimado = new System.Windows.Forms.ColumnHeader();
-            this.columnTiempoEntregaReal = new System.Windows.Forms.ColumnHeader();
-            this.columnFechaSalida = new System.Windows.Forms.ColumnHeader();
-            this.columnEstado = new System.Windows.Forms.ColumnHeader();
-            this.btnNuevoEmpleado = new MaterialSkin.Controls.MaterialButton();
-            this.mnuTabClientes = new System.Windows.Forms.TabPage();
-            this.listClientes = new MaterialSkin.Controls.MaterialListView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
@@ -114,7 +112,7 @@ namespace UI.Desktop
             this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.btnRetirarOrden = new MaterialSkin.Controls.MaterialButton();
             this.mnuPrincipal.SuspendLayout();
             this.mnuTabOrdenes.SuspendLayout();
             this.mnuTabClientes.SuspendLayout();
@@ -160,13 +158,13 @@ namespace UI.Desktop
             this.mnuPrincipal.Name = "mnuPrincipal";
             this.mnuPrincipal.SelectedIndex = 0;
             this.mnuPrincipal.Size = new System.Drawing.Size(1380, 721);
-            this.mnuPrincipal.Size = new System.Drawing.Size(1355, 721);
             this.mnuPrincipal.TabIndex = 1;
             this.mnuPrincipal.Selected += new System.Windows.Forms.TabControlEventHandler(this.mnuPrincipal_Selected);
             // 
             // mnuTabOrdenes
             // 
             this.mnuTabOrdenes.BackColor = System.Drawing.Color.White;
+            this.mnuTabOrdenes.Controls.Add(this.btnRetirarOrden);
             this.mnuTabOrdenes.Controls.Add(this.btnNuevoTipoPrenda);
             this.mnuTabOrdenes.Controls.Add(this.btnNuevoServicioTipoPrenda);
             this.mnuTabOrdenes.Controls.Add(this.materialTextBox1);
@@ -181,7 +179,6 @@ namespace UI.Desktop
             this.mnuTabOrdenes.Name = "mnuTabOrdenes";
             this.mnuTabOrdenes.Padding = new System.Windows.Forms.Padding(3);
             this.mnuTabOrdenes.Size = new System.Drawing.Size(1372, 678);
-            this.mnuTabOrdenes.Size = new System.Drawing.Size(1347, 678);
             this.mnuTabOrdenes.TabIndex = 0;
             this.mnuTabOrdenes.Text = "Ordenes";
             // 
@@ -408,7 +405,6 @@ namespace UI.Desktop
             this.mnuTabClientes.Name = "mnuTabClientes";
             this.mnuTabClientes.Padding = new System.Windows.Forms.Padding(3);
             this.mnuTabClientes.Size = new System.Drawing.Size(1372, 678);
-            this.mnuTabClientes.Size = new System.Drawing.Size(1331, 678);
             this.mnuTabClientes.TabIndex = 1;
             this.mnuTabClientes.Text = "Clientes";
             this.mnuTabClientes.UseVisualStyleBackColor = true;
@@ -511,7 +507,7 @@ namespace UI.Desktop
             this.listClientes.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listClientes.FullRowSelect = true;
             this.listClientes.HideSelection = false;
-            this.listClientes.Location = new System.Drawing.Point(225, 53);
+            this.listClientes.Location = new System.Drawing.Point(230, 53);
             this.listClientes.MinimumSize = new System.Drawing.Size(200, 100);
             this.listClientes.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listClientes.MouseState = MaterialSkin.MouseState.OUT;
@@ -606,7 +602,7 @@ namespace UI.Desktop
             // materialListView1
             // 
             this.materialListView1.AutoSizeTable = false;
-            this.materialListView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialListView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnInsumo,
@@ -652,7 +648,7 @@ namespace UI.Desktop
             // listProveedores
             // 
             this.listProveedores.AutoSizeTable = false;
-            this.listProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.listProveedores.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listProveedores.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnIDProv,
@@ -781,7 +777,7 @@ namespace UI.Desktop
             // listInsumos
             // 
             this.listInsumos.AutoSizeTable = false;
-            this.listInsumos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listInsumos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.listInsumos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listInsumos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnIdInsumo,
@@ -951,7 +947,7 @@ namespace UI.Desktop
             // listIngresos
             // 
             this.listIngresos.AutoSizeTable = false;
-            this.listIngresos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listIngresos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.listIngresos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listIngresos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnIdProvIngreso,
@@ -1027,12 +1023,30 @@ namespace UI.Desktop
             this.imageList1.Images.SetKeyName(1, "addthelist_añadir_3477.png");
             this.imageList1.Images.SetKeyName(2, "sales_sale_supermarket_stock_market_icon_153849.png");
             // 
+            // btnRetirarOrden
+            // 
+            this.btnRetirarOrden.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnRetirarOrden.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnRetirarOrden.Depth = 0;
+            this.btnRetirarOrden.HighEmphasis = true;
+            this.btnRetirarOrden.Icon = null;
+            this.btnRetirarOrden.Location = new System.Drawing.Point(284, 9);
+            this.btnRetirarOrden.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnRetirarOrden.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnRetirarOrden.Name = "btnRetirarOrden";
+            this.btnRetirarOrden.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnRetirarOrden.Size = new System.Drawing.Size(158, 36);
+            this.btnRetirarOrden.TabIndex = 9;
+            this.btnRetirarOrden.Text = "Retirar Orden";
+            this.btnRetirarOrden.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnRetirarOrden.UseAccentColor = false;
+            this.btnRetirarOrden.UseVisualStyleBackColor = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1386, 788);
-            this.ClientSize = new System.Drawing.Size(1361, 788);
             this.Controls.Add(this.mnuPrincipal);
             this.DoubleBuffered = false;
             this.DrawerShowIconsWhenHidden = true;
@@ -1143,6 +1157,7 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnNuevoServicioTipoPrenda;
         private MaterialSkin.Controls.MaterialButton btnNuevoTipoPrenda;
         private System.Windows.Forms.ColumnHeader columnFechaSalida;
+        private MaterialSkin.Controls.MaterialButton btnRetirarOrden;
     }
 }
 

@@ -29,46 +29,19 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblServicio = new MaterialSkin.Controls.MaterialLabel();
-            this.lblTipoPrenda = new MaterialSkin.Controls.MaterialLabel();
             this.cmbServicios = new MaterialSkin.Controls.MaterialComboBox();
             this.cmbTipoPrendas = new MaterialSkin.Controls.MaterialComboBox();
             this.btnAceptar = new MaterialSkin.Controls.MaterialButton();
             this.btnCancelar = new MaterialSkin.Controls.MaterialButton();
             this.lblTiempoRequerido = new MaterialSkin.Controls.MaterialLabel();
-            this.txtHoras = new MaterialSkin.Controls.MaterialTextBox();
             this.lblHoras = new MaterialSkin.Controls.MaterialLabel();
-            this.txtMinutos = new MaterialSkin.Controls.MaterialTextBox();
             this.lblMinutos = new MaterialSkin.Controls.MaterialLabel();
+            this.nudHoras = new System.Windows.Forms.NumericUpDown();
+            this.nudMinutos = new System.Windows.Forms.NumericUpDown();
+            this.txtPrecio = new MaterialSkin.Controls.MaterialTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHoras)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMinutos)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblServicio
-            // 
-            this.lblServicio.AutoSize = true;
-            this.lblServicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.lblServicio.Depth = 0;
-            this.lblServicio.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblServicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblServicio.Location = new System.Drawing.Point(24, 116);
-            this.lblServicio.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblServicio.Name = "lblServicio";
-            this.lblServicio.Size = new System.Drawing.Size(57, 19);
-            this.lblServicio.TabIndex = 0;
-            this.lblServicio.Text = "Servicio";
-            // 
-            // lblTipoPrenda
-            // 
-            this.lblTipoPrenda.AutoSize = true;
-            this.lblTipoPrenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.lblTipoPrenda.Depth = 0;
-            this.lblTipoPrenda.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblTipoPrenda.Location = new System.Drawing.Point(24, 184);
-            this.lblTipoPrenda.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblTipoPrenda.Name = "lblTipoPrenda";
-            this.lblTipoPrenda.Size = new System.Drawing.Size(87, 19);
-            this.lblTipoPrenda.TabIndex = 1;
-            this.lblTipoPrenda.Text = "Tipo Prenda";
             // 
             // cmbServicios
             // 
@@ -83,13 +56,14 @@ namespace UI.Desktop
             this.cmbServicios.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cmbServicios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cmbServicios.FormattingEnabled = true;
+            this.cmbServicios.Hint = "Servicio";
             this.cmbServicios.IntegralHeight = false;
             this.cmbServicios.ItemHeight = 43;
-            this.cmbServicios.Location = new System.Drawing.Point(166, 86);
+            this.cmbServicios.Location = new System.Drawing.Point(24, 83);
             this.cmbServicios.MaxDropDownItems = 4;
             this.cmbServicios.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbServicios.Name = "cmbServicios";
-            this.cmbServicios.Size = new System.Drawing.Size(239, 49);
+            this.cmbServicios.Size = new System.Drawing.Size(172, 49);
             this.cmbServicios.StartIndex = 0;
             this.cmbServicios.TabIndex = 2;
             this.cmbServicios.ValueMember = "IdServicio";
@@ -107,13 +81,14 @@ namespace UI.Desktop
             this.cmbTipoPrendas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cmbTipoPrendas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cmbTipoPrendas.FormattingEnabled = true;
+            this.cmbTipoPrendas.Hint = "Tipo de prenda";
             this.cmbTipoPrendas.IntegralHeight = false;
             this.cmbTipoPrendas.ItemHeight = 43;
-            this.cmbTipoPrendas.Location = new System.Drawing.Point(166, 154);
+            this.cmbTipoPrendas.Location = new System.Drawing.Point(202, 83);
             this.cmbTipoPrendas.MaxDropDownItems = 4;
             this.cmbTipoPrendas.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbTipoPrendas.Name = "cmbTipoPrendas";
-            this.cmbTipoPrendas.Size = new System.Drawing.Size(239, 49);
+            this.cmbTipoPrendas.Size = new System.Drawing.Size(167, 49);
             this.cmbTipoPrendas.StartIndex = 0;
             this.cmbTipoPrendas.TabIndex = 3;
             this.cmbTipoPrendas.ValueMember = "IdTipoPrenda";
@@ -127,7 +102,7 @@ namespace UI.Desktop
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnAceptar.HighEmphasis = true;
             this.btnAceptar.Icon = null;
-            this.btnAceptar.Location = new System.Drawing.Point(215, 352);
+            this.btnAceptar.Location = new System.Drawing.Point(174, 275);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptar.Name = "btnAceptar";
@@ -149,7 +124,7 @@ namespace UI.Desktop
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
-            this.btnCancelar.Location = new System.Drawing.Point(309, 352);
+            this.btnCancelar.Location = new System.Drawing.Point(273, 275);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -169,31 +144,12 @@ namespace UI.Desktop
             this.lblTiempoRequerido.Depth = 0;
             this.lblTiempoRequerido.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblTiempoRequerido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblTiempoRequerido.Location = new System.Drawing.Point(24, 238);
+            this.lblTiempoRequerido.Location = new System.Drawing.Point(25, 154);
             this.lblTiempoRequerido.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblTiempoRequerido.Name = "lblTiempoRequerido";
             this.lblTiempoRequerido.Size = new System.Drawing.Size(133, 19);
             this.lblTiempoRequerido.TabIndex = 6;
             this.lblTiempoRequerido.Text = "Tiempo requerido: ";
-            // 
-            // txtHoras
-            // 
-            this.txtHoras.AnimateReadOnly = false;
-            this.txtHoras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.txtHoras.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtHoras.Depth = 0;
-            this.txtHoras.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtHoras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.txtHoras.LeadingIcon = null;
-            this.txtHoras.Location = new System.Drawing.Point(219, 263);
-            this.txtHoras.MaxLength = 50;
-            this.txtHoras.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtHoras.Multiline = false;
-            this.txtHoras.Name = "txtHoras";
-            this.txtHoras.Size = new System.Drawing.Size(50, 50);
-            this.txtHoras.TabIndex = 7;
-            this.txtHoras.Text = "";
-            this.txtHoras.TrailingIcon = null;
             // 
             // lblHoras
             // 
@@ -202,31 +158,12 @@ namespace UI.Desktop
             this.lblHoras.Depth = 0;
             this.lblHoras.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblHoras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblHoras.Location = new System.Drawing.Point(166, 294);
+            this.lblHoras.Location = new System.Drawing.Point(164, 154);
             this.lblHoras.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblHoras.Name = "lblHoras";
             this.lblHoras.Size = new System.Drawing.Size(47, 19);
             this.lblHoras.TabIndex = 8;
             this.lblHoras.Text = "Horas:";
-            // 
-            // txtMinutos
-            // 
-            this.txtMinutos.AnimateReadOnly = false;
-            this.txtMinutos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.txtMinutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMinutos.Depth = 0;
-            this.txtMinutos.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtMinutos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.txtMinutos.LeadingIcon = null;
-            this.txtMinutos.Location = new System.Drawing.Point(355, 263);
-            this.txtMinutos.MaxLength = 50;
-            this.txtMinutos.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtMinutos.Multiline = false;
-            this.txtMinutos.Name = "txtMinutos";
-            this.txtMinutos.Size = new System.Drawing.Size(50, 50);
-            this.txtMinutos.TabIndex = 10;
-            this.txtMinutos.Text = "";
-            this.txtMinutos.TrailingIcon = null;
             // 
             // lblMinutos
             // 
@@ -235,48 +172,97 @@ namespace UI.Desktop
             this.lblMinutos.Depth = 0;
             this.lblMinutos.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblMinutos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblMinutos.Location = new System.Drawing.Point(286, 294);
+            this.lblMinutos.Location = new System.Drawing.Point(266, 154);
             this.lblMinutos.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblMinutos.Name = "lblMinutos";
             this.lblMinutos.Size = new System.Drawing.Size(63, 19);
             this.lblMinutos.TabIndex = 12;
             this.lblMinutos.Text = "Minutos:";
             // 
+            // nudHoras
+            // 
+            this.nudHoras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.nudHoras.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.nudHoras.ForeColor = System.Drawing.Color.White;
+            this.nudHoras.Location = new System.Drawing.Point(217, 152);
+            this.nudHoras.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+            this.nudHoras.Name = "nudHoras";
+            this.nudHoras.Size = new System.Drawing.Size(43, 24);
+            this.nudHoras.TabIndex = 13;
+            // 
+            // nudMinutos
+            // 
+            this.nudMinutos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.nudMinutos.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.nudMinutos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.nudMinutos.Location = new System.Drawing.Point(325, 152);
+            this.nudMinutos.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+            this.nudMinutos.Name = "nudMinutos";
+            this.nudMinutos.Size = new System.Drawing.Size(44, 24);
+            this.nudMinutos.TabIndex = 14;
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.AnimateReadOnly = false;
+            this.txtPrecio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtPrecio.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPrecio.Depth = 0;
+            this.txtPrecio.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtPrecio.Hint = "Precio";
+            this.txtPrecio.LeadingIcon = null;
+            this.txtPrecio.Location = new System.Drawing.Point(24, 192);
+            this.txtPrecio.MaxLength = 50;
+            this.txtPrecio.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtPrecio.Multiline = false;
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(172, 50);
+            this.txtPrecio.TabIndex = 15;
+            this.txtPrecio.Text = "";
+            this.txtPrecio.TrailingIcon = null;
+            // 
             // ServicioTipoPrendaDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 410);
+            this.ClientSize = new System.Drawing.Size(379, 325);
+            this.Controls.Add(this.txtPrecio);
+            this.Controls.Add(this.nudMinutos);
+            this.Controls.Add(this.nudHoras);
             this.Controls.Add(this.lblMinutos);
-            this.Controls.Add(this.txtMinutos);
             this.Controls.Add(this.lblHoras);
-            this.Controls.Add(this.txtHoras);
             this.Controls.Add(this.lblTiempoRequerido);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.cmbTipoPrendas);
             this.Controls.Add(this.cmbServicios);
-            this.Controls.Add(this.lblTipoPrenda);
-            this.Controls.Add(this.lblServicio);
             this.Name = "ServicioTipoPrendaDesktop";
             this.Text = "Nuevo Servicio-TipoPrenda";
+            ((System.ComponentModel.ISupportInitialize)(this.nudHoras)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMinutos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private MaterialSkin.Controls.MaterialLabel lblServicio;
-        private MaterialSkin.Controls.MaterialLabel lblTipoPrenda;
         private MaterialSkin.Controls.MaterialComboBox cmbServicios;
         private MaterialSkin.Controls.MaterialComboBox cmbTipoPrendas;
         private MaterialSkin.Controls.MaterialButton btnAceptar;
         private MaterialSkin.Controls.MaterialButton btnCancelar;
         private MaterialSkin.Controls.MaterialLabel lblTiempoRequerido;
-        private MaterialSkin.Controls.MaterialTextBox txtHoras;
         private MaterialSkin.Controls.MaterialLabel lblHoras;
-        private MaterialSkin.Controls.MaterialTextBox txtMinutos;
         private MaterialSkin.Controls.MaterialLabel lblMinutos;
+        private System.Windows.Forms.NumericUpDown nudHoras;
+        private System.Windows.Forms.NumericUpDown nudMinutos;
+        private MaterialSkin.Controls.MaterialTextBox txtPrecio;
     }
 }

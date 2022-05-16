@@ -28,30 +28,33 @@ namespace Business.Entities
 
 
         //[ForeignKey("Orden")]
+        [Column("nro_orden")]
         public int NroOrden
         {
             get { return _nroOrden; }
             set { _nroOrden = value; }
         }
         //[ForeignKey("ServicioTipoPrenda")]
+        [Column("id_servicio")]
         public int IdServicio
         {
             get { return _idServicio; }
             set { _idServicio = value; }
         }
         //[ForeignKey("ServicioTipoPrenda")]
+        [Column("id_tp")]
         public int IdTipoPrenda
         {
             get { return _idTipoPrenda; }
             set { _idTipoPrenda = value; }
         }
-
+        [Column("orden_item")]
         public int OrdenItem
         {
             get { return _ordenItem; }
             set { _ordenItem = value; }
         }
-
+        [Column("estado")]
         public Estados Estado
         {
             get { return _estado; }

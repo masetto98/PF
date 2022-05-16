@@ -15,16 +15,20 @@ namespace Data.Database
             modelBuilder.Entity<Usuario>()
                .HasOne(u => u.Empleado)
                .WithMany(e => e.Usuarios)
-               .HasForeignKey(u => u.IdUsuario)
+               .HasForeignKey(u => u.IdEmpleado)
                .OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<TipoPrenda>()
                 .ToTable("tipo_prendas");
+
             modelBuilder.Entity<InsumoProveedor>()
                 .ToTable("insumos_proveedores");
 
-            modelBuilder.Entity<TipoPrenda>().ToTable("tipo_prendas");
+            modelBuilder.Entity<ServicioTipoPrenda>()
+                .ToTable("servicios_tipoprendas");
 
-            modelBuilder.Entity<ServicioTipoPrenda>().ToTable("servicios_tipoprendas");
+            modelBuilder.Entity<OrdenServicioTipoPrenda>()
+                .ToTable("ordenes_servicios_tipoprendas");
 
             modelBuilder.Entity<Consumo>()
                 .HasOne(c => c.InsumoServicioTipoPrenda)
@@ -46,6 +50,7 @@ namespace Data.Database
                 .WithMany(i => i.InsumosProveedores)
                 .HasForeignKey(ip => ip.IdInsumo)
                 .OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<InsumoProveedor>()
                 .HasKey(ip => new { ip.IdInsumo, ip.IdProveedor, ip.FechaIngreso });
 
@@ -178,7 +183,6 @@ namespace Data.Database
         public DbSet<Proveedor>? Proveedores { get; set; }
         public DbSet<Servicio>? Servicios { get; set; }
         public DbSet<ServicioTipoPrenda>? ServiciosTipoPrendas { get; set; }
-        public DbSet<Insumo>? Insumos { get; set; }
         public DbSet<Usuario>? Usuarios { get; set; }
         public LavanderiaContext() {}
         public LavanderiaContext(DbContextOptions<LavanderiaContext> options) : base(options) {}

@@ -1,25 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="ApplicationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ClienteDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="TipoPrendaDesktop.cs">
+    <Compile Update="EmpleadoDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="InsumoProveedorDesktop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="TipoPrendaDesktop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="InsumoDesktop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="OrdenDesktop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="ApplicationForm.cs">
+    <Compile Update="frmLogin2.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmLogin.cs">
@@ -28,11 +19,28 @@
     <Compile Update="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ProveedorDesktop.cs">
+    <Compile Update="OrdenDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="ServicioTipoPrendaDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="TipoPrendaDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="InsumoProveedorDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="InsumoDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ProveedorDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="frmMain.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

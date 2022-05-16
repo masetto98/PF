@@ -20,12 +20,14 @@ namespace Business.Entities
 
 
         //[ForeignKey("Proveedor")]
+        [Column("id_proveedor")]
         public int IdProveedor
         {
             get { return _idProveedor; }
             set { _idProveedor = value; }
         }
         //[ForeignKey("Insumo")]
+        [Column("id_insumo")]
         public int IdInsumo
         {
             get { return _idInsumo; }

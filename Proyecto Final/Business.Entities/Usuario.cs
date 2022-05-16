@@ -66,7 +66,7 @@ namespace Business.Entities
                 _habilitado = value;
             }
         }
-        [Column("cuit_empleado")]
+        [Column("id_empleado")]
         //[ForeignKey("Empleado")]
         public int IdEmpleado
         {

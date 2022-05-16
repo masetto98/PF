@@ -56,7 +56,7 @@ namespace Business.Entities
             set { _idEmpleado = value; }
         }
         //[ForeignKey("Factura")]
-        [Column("id_factura")]
+        [Column("nro_factura")]
         public int NroFactura
         {
             get { return _nroFactura; }

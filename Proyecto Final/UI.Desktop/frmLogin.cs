@@ -19,12 +19,14 @@ namespace UI.Desktop
     {
         readonly MaterialSkin.MaterialSkinManager materialSkinManager;
         private readonly UsuarioLogic _usuarioLogic;
-        //private readonly EmpleadoLogic _empleadoLogic;
+        private readonly EmpleadoLogic _empleadoLogic;
         public frmLogin(LavanderiaContext context)
         {
             InitializeComponent();
             _usuarioLogic = new UsuarioLogic(new UsuarioAdapter(context));
-           // _empleadoLogic = new EmpleadoLogic(new EmpleadoAdapter(context));
+            _empleadoLogic = new EmpleadoLogic(new EmpleadoAdapter(context));
+
+
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
@@ -35,12 +37,12 @@ namespace UI.Desktop
         {
             try
             {
-                Usuario usr = _usuarioLogic.Login(this.txtNombreUsuario.Text, this.txtContrasenia.Text);
+                Usuario usr = _usuarioLogic.Login(this.txtNombreUsuario.Text.ToLower(), this.txtContrasenia.Text.ToLower());
                 if (usr != null)
                 {
                     if (usr.Habilitado == true)
                     {
-                        //Singleton.setInstance(_personaLogic.GetOne(usr.IDPersona), usr);
+                        Singleton.setInstance(_empleadoLogic.GetOne(usr.IdEmpleado), usr);
                         this.DialogResult = DialogResult.OK;
                     }
                     else
