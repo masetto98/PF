@@ -172,7 +172,7 @@ namespace UI.Desktop
             this.mnuPrincipal.Multiline = true;
             this.mnuPrincipal.Name = "mnuPrincipal";
             this.mnuPrincipal.SelectedIndex = 0;
-            this.mnuPrincipal.Size = new System.Drawing.Size(1380, 680);
+            this.mnuPrincipal.Size = new System.Drawing.Size(1380, 722);
             this.mnuPrincipal.TabIndex = 1;
             this.mnuPrincipal.Selected += new System.Windows.Forms.TabControlEventHandler(this.mnuPrincipal_Selected);
             // 
@@ -200,7 +200,7 @@ namespace UI.Desktop
             this.mnuTabOrdenes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mnuTabOrdenes.Name = "mnuTabOrdenes";
             this.mnuTabOrdenes.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.mnuTabOrdenes.Size = new System.Drawing.Size(1372, 637);
+            this.mnuTabOrdenes.Size = new System.Drawing.Size(1372, 679);
             this.mnuTabOrdenes.TabIndex = 0;
             this.mnuTabOrdenes.Text = "Ordenes";
             // 
@@ -608,7 +608,7 @@ namespace UI.Desktop
             this.mnuTabClientes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mnuTabClientes.Name = "mnuTabClientes";
             this.mnuTabClientes.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.mnuTabClientes.Size = new System.Drawing.Size(1372, 637);
+            this.mnuTabClientes.Size = new System.Drawing.Size(1372, 679);
             this.mnuTabClientes.TabIndex = 1;
             this.mnuTabClientes.Text = "Clientes";
             // 
@@ -1550,7 +1550,7 @@ namespace UI.Desktop
             this.btnOrdenesCliente.Depth = 0;
             this.btnOrdenesCliente.HighEmphasis = true;
             this.btnOrdenesCliente.Icon = null;
-            this.btnOrdenesCliente.Location = new System.Drawing.Point(1020, 131);
+            this.btnOrdenesCliente.Location = new System.Drawing.Point(1020, 129);
             this.btnOrdenesCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnOrdenesCliente.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnOrdenesCliente.Name = "btnOrdenesCliente";
@@ -1715,6 +1715,7 @@ namespace UI.Desktop
         private System.Windows.Forms.ColumnHeader columnOrdenItem;
         private System.Windows.Forms.ColumnHeader columnState;
         private System.Windows.Forms.ColumnHeader columnPriority;
+        private MaterialSkin.Controls.MaterialButton btnOrdenesCliente;
     }
 }
 
