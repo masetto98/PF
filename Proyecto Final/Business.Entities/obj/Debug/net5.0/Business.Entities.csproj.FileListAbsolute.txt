@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 D:\Proyectos\PF\Proyecto Final\Business.Entities\bin\Debug\net5.0\Business.Entities.deps.json
 D:\Proyectos\PF\Proyecto Final\Business.Entities\bin\Debug\net5.0\Business.Entities.dll
 D:\Proyectos\PF\Proyecto Final\Business.Entities\bin\Debug\net5.0\ref\Business.Entities.dll
@@ -11,17 +10,3 @@ D:\Proyectos\PF\Proyecto Final\Business.Entities\obj\Debug\net5.0\Business.Entit
 D:\Proyectos\PF\Proyecto Final\Business.Entities\obj\Debug\net5.0\Business.Entities.dll
 D:\Proyectos\PF\Proyecto Final\Business.Entities\obj\Debug\net5.0\ref\Business.Entities.dll
 D:\Proyectos\PF\Proyecto Final\Business.Entities\obj\Debug\net5.0\Business.Entities.pdb
-=======
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Entities\bin\Debug\net5.0\Business.Entities.deps.json
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Entities\bin\Debug\net5.0\Business.Entities.dll
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Entities\bin\Debug\net5.0\ref\Business.Entities.dll
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Entities\bin\Debug\net5.0\Business.Entities.pdb
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Entities\obj\Debug\net5.0\Business.Entities.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Entities\obj\Debug\net5.0\Business.Entities.AssemblyInfoInputs.cache
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Entities\obj\Debug\net5.0\Business.Entities.AssemblyInfo.cs
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Entities\obj\Debug\net5.0\Business.Entities.csproj.CoreCompileInputs.cache
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Entities\obj\Debug\net5.0\Business.Entities.dll
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Entities\obj\Debug\net5.0\ref\Business.Entities.dll
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Entities\obj\Debug\net5.0\Business.Entities.pdb
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Business.Entities\obj\Debug\net5.0\Business.Entities.csproj.AssemblyReference.cache
->>>>>>> main

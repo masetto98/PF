@@ -148,10 +148,11 @@ namespace UI.Desktop
                 OrdenActual = new Orden();
                 _total = 0;
                 OrdenActual.Cliente = _clienteLogic.GetOne(Int32.Parse(this.txtIdCliente.Text));
-                //OrdenActual.Empleado = Singleton.getInstance().EmpleadoLogged;
+                OrdenActual.Empleado = Singleton.getInstance().EmpleadoLogged;
                 OrdenActual.Factura = _facturaLogic.GetOne(1);
-                OrdenActual.Empleado = _empleadoLogic.GetOne(1);
+                //OrdenActual.Empleado = _empleadoLogic.GetOne(1);
                 OrdenActual.FechaEntrada = dtpFechaIngreso.Value;
+                OrdenActual.FechaSalida = dtpFechaSalida.Value;
                 OrdenActual.Estado = Orden.Estados.Pendiente;
                 OrdenActual.ItemsPedidos = _itemsServicio;
             }
@@ -268,7 +269,7 @@ namespace UI.Desktop
                 Precio precioActual = _itemDelete.ServicioTipoPrenda.HistoricoPrecios.FindLast(
                     delegate (Precio p)
                     {
-                        return p.FechaDesde < DateTime.Today;
+                        return p.FechaDesde <= DateTime.Today;
                     });
                 _total -= precioActual.Valor;
                 this.txtPrecioTotal.Text = _total.ToString();
@@ -289,7 +290,7 @@ namespace UI.Desktop
                 ServicioTipoPrenda servicioTp = _servicioTipoPrendaLogic.GetOne(idServicio, idTipoPrenda);
                 if (servicioTp == null)
                 {
-                    Exception r = new Exception("No existe el servicio ingresado.");
+                    Exception r = new Exception("Error al recuperar el servicio tipo prenda.");
                     throw r;
                 }
                 else 
@@ -298,7 +299,7 @@ namespace UI.Desktop
                     Precio precioActual = servicioTp.HistoricoPrecios.FindLast(
                     delegate (Precio p)
                     {
-                        return p.FechaDesde < DateTime.Today;
+                        return p.FechaDesde <= DateTime.Today;
                     });
                     _total += precioActual.Valor;
                     ListViewItem item = new ListViewItem((listItemsServicio.Items.Count+1).ToString());

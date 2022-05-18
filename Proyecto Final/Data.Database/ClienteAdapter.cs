@@ -116,5 +116,19 @@ namespace Data.Database
             }
             return cliente;
         }
+
+        public Business.Entities.Cliente GetOrdenesCliente(int idCliente)
+        {
+            try
+            {
+                return _context.Clientes.Include(c => c.Ordenes).FirstOrDefault(c => c.IdCliente == idCliente);
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al recuperar datos del cliente", e);
+                throw ExceptionManejada;
+            }
+            return null;
+        }
     }
 }

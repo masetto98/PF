@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 D:\Proyectos\PF\Proyecto Final\Data.Database\bin\Debug\net5.0\Data.Database.deps.json
 D:\Proyectos\PF\Proyecto Final\Data.Database\bin\Debug\net5.0\Data.Database.runtimeconfig.json
 D:\Proyectos\PF\Proyecto Final\Data.Database\bin\Debug\net5.0\Data.Database.runtimeconfig.dev.json
@@ -17,23 +16,3 @@ D:\Proyectos\PF\Proyecto Final\Data.Database\obj\Debug\net5.0\Data.Database.dll
 D:\Proyectos\PF\Proyecto Final\Data.Database\obj\Debug\net5.0\ref\Data.Database.dll
 D:\Proyectos\PF\Proyecto Final\Data.Database\obj\Debug\net5.0\Data.Database.pdb
 D:\Proyectos\PF\Proyecto Final\Data.Database\obj\Debug\net5.0\Data.Database.genruntimeconfig.cache
-=======
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Data.Database\obj\Debug\net5.0\Data.Database.csproj.AssemblyReference.cache
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Data.Database\obj\Debug\net5.0\Data.Database.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Data.Database\obj\Debug\net5.0\Data.Database.AssemblyInfoInputs.cache
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Data.Database\obj\Debug\net5.0\Data.Database.AssemblyInfo.cs
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Data.Database\obj\Debug\net5.0\Data.Database.csproj.CoreCompileInputs.cache
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Data.Database\bin\Debug\net5.0\Data.Database.deps.json
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Data.Database\bin\Debug\net5.0\Data.Database.runtimeconfig.json
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Data.Database\bin\Debug\net5.0\Data.Database.runtimeconfig.dev.json
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Data.Database\bin\Debug\net5.0\Data.Database.dll
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Data.Database\bin\Debug\net5.0\ref\Data.Database.dll
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Data.Database\bin\Debug\net5.0\Data.Database.pdb
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Data.Database\bin\Debug\net5.0\Business.Entities.dll
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Data.Database\bin\Debug\net5.0\Business.Entities.pdb
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Data.Database\obj\Debug\net5.0\Data.Database.csproj.CopyComplete
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Data.Database\obj\Debug\net5.0\Data.Database.dll
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Data.Database\obj\Debug\net5.0\ref\Data.Database.dll
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Data.Database\obj\Debug\net5.0\Data.Database.pdb
-C:\Users\manud\Documents\Facultad\5to\Proyecto Final\PF\PF\Proyecto Final\Data.Database\obj\Debug\net5.0\Data.Database.genruntimeconfig.cache
->>>>>>> main

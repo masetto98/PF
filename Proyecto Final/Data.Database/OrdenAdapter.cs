@@ -57,16 +57,16 @@ namespace Data.Database
         }
         protected void Insert(Orden orden)
         {
-            try
-            {
-                _context.Ordenes.Add(orden);
-                _context.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                Exception ExceptionManejada = new Exception("Error al crear orden", e);
-                throw ExceptionManejada;
-            }
+            //try
+            //{
+            _context.Ordenes.Add(orden);
+            _context.SaveChanges();
+            //}
+            //catch (Exception e)
+            // {
+            // Exception ExceptionManejada = new Exception("Error al crear orden", e);
+            //throw ExceptionManejada;
+            //}
         }
         public void Delete(int nroOrden)
         {

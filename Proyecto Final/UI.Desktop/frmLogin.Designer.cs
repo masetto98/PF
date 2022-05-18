@@ -31,9 +31,9 @@ namespace UI.Desktop
         {
             this.btnIngresar = new MaterialSkin.Controls.MaterialButton();
             this.txtNombreUsuario = new MaterialSkin.Controls.MaterialTextBox();
-            this.txtContrasenia = new MaterialSkin.Controls.MaterialTextBox();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.txtContrasenia = new MaterialSkin.Controls.MaterialTextBox2();
             this.SuspendLayout();
             // 
             // btnIngresar
@@ -77,25 +77,6 @@ namespace UI.Desktop
             this.txtNombreUsuario.Text = "";
             this.txtNombreUsuario.TrailingIcon = null;
             // 
-            // txtContrasenia
-            // 
-            this.txtContrasenia.AnimateReadOnly = false;
-            this.txtContrasenia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.txtContrasenia.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtContrasenia.Depth = 0;
-            this.txtContrasenia.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtContrasenia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.txtContrasenia.LeadingIcon = null;
-            this.txtContrasenia.Location = new System.Drawing.Point(422, 234);
-            this.txtContrasenia.MaxLength = 50;
-            this.txtContrasenia.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtContrasenia.Multiline = false;
-            this.txtContrasenia.Name = "txtContrasenia";
-            this.txtContrasenia.Size = new System.Drawing.Size(237, 50);
-            this.txtContrasenia.TabIndex = 2;
-            this.txtContrasenia.Text = "";
-            this.txtContrasenia.TrailingIcon = null;
-            // 
             // materialLabel1
             // 
             this.materialLabel1.AutoSize = true;
@@ -124,14 +105,44 @@ namespace UI.Desktop
             this.materialLabel2.TabIndex = 4;
             this.materialLabel2.Text = "Contraseña";
             // 
+            // txtContrasenia
+            // 
+            this.txtContrasenia.AnimateReadOnly = false;
+            this.txtContrasenia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtContrasenia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.txtContrasenia.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtContrasenia.Depth = 0;
+            this.txtContrasenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtContrasenia.HelperText = "hola";
+            this.txtContrasenia.HideSelection = true;
+            this.txtContrasenia.LeadingIcon = null;
+            this.txtContrasenia.Location = new System.Drawing.Point(422, 246);
+            this.txtContrasenia.MaxLength = 32767;
+            this.txtContrasenia.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtContrasenia.Name = "txtContrasenia";
+            this.txtContrasenia.PasswordChar = '●';
+            this.txtContrasenia.PrefixSuffixText = null;
+            this.txtContrasenia.ReadOnly = false;
+            this.txtContrasenia.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtContrasenia.SelectedText = "";
+            this.txtContrasenia.SelectionLength = 0;
+            this.txtContrasenia.SelectionStart = 0;
+            this.txtContrasenia.ShortcutsEnabled = true;
+            this.txtContrasenia.Size = new System.Drawing.Size(237, 48);
+            this.txtContrasenia.TabIndex = 5;
+            this.txtContrasenia.TabStop = false;
+            this.txtContrasenia.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtContrasenia.TrailingIcon = null;
+            this.txtContrasenia.UseSystemPasswordChar = true;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(827, 506);
+            this.ClientSize = new System.Drawing.Size(755, 367);
+            this.Controls.Add(this.txtContrasenia);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.materialLabel1);
-            this.Controls.Add(this.txtContrasenia);
             this.Controls.Add(this.txtNombreUsuario);
             this.Controls.Add(this.btnIngresar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -149,8 +160,8 @@ namespace UI.Desktop
 
         private MaterialSkin.Controls.MaterialButton btnIngresar;
         private MaterialSkin.Controls.MaterialTextBox txtNombreUsuario;
-        private MaterialSkin.Controls.MaterialTextBox txtContrasenia;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialTextBox2 txtContrasenia;
     }
 }

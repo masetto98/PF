@@ -91,6 +91,7 @@ namespace UI.Desktop
             }
             else if (mnuPrincipal.SelectedIndex == 2)
             {
+                ListarStock();
 
                 ListarProveedores();
 
@@ -193,9 +194,37 @@ namespace UI.Desktop
             e.Cancel = true;
             e.NewWidth = listClientes.Columns[e.ColumnIndex].Width;
         }
+
+        private void btnOrdenesCliente_Click(object sender, EventArgs e)
+        {
+           
+            if (listClientes.SelectedItems.Count > 0)
+            {
+                int ID = Int32.Parse(this.listClientes.SelectedItems[0].Text);
+                ClienteOrdenDesktop oClientes = new ClienteOrdenDesktop(ID,_context);
+                oClientes.ShowDialog();
+                //listClientes.Items.Remove(listClientes.SelectedItems[0]); Otra forma de borrar de la lista
+                ListarClientes();
+            }
+            else
+            {
+                MessageBox.Show("Seleccionar una fila en la lista para poder observar las ordenes");
+            }
+        }
         #endregion
 
         #region --------- INVENTARIO ---------
+        private void ListarStock()
+        {
+            List<Insumo> insumos = _insumoLogic.GetAll();
+            listStock.Items.Clear();
+            foreach (Insumo i in insumos)
+            {
+                ListViewItem item = new ListViewItem(i.Descripcion);
+                item.SubItems.Add(i.Stock.ToString());
+                listStock.Items.Add(item);
+            }
+        }
         private void ListarProveedores()
         {
             List<Proveedor> proveedores = _proveedorLogic.GetAll();
@@ -350,10 +379,7 @@ namespace UI.Desktop
                 MessageBox.Show("Seleccionar una fila en la lista para poder editar");
             }
         }
-        private void ListarStock()
-        {
-
-        }
+       
 
         private void btnEliminarIngreso_Click(object sender, EventArgs e)
         {

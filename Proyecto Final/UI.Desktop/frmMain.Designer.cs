@@ -34,6 +34,7 @@ namespace UI.Desktop
             this.btnNuevoCliente = new MaterialSkin.Controls.MaterialButton();
             this.mnuPrincipal = new MaterialSkin.Controls.MaterialTabControl();
             this.mnuTabOrdenes = new System.Windows.Forms.TabPage();
+            this.btnRetirarOrden = new MaterialSkin.Controls.MaterialButton();
             this.btnNuevoTipoPrenda = new MaterialSkin.Controls.MaterialButton();
             this.btnNuevoServicioTipoPrenda = new MaterialSkin.Controls.MaterialButton();
             this.materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox();
@@ -69,7 +70,7 @@ namespace UI.Desktop
             this.mnuTabInventario = new System.Windows.Forms.TabPage();
             this.tabControlInventario = new MaterialSkin.Controls.MaterialTabControl();
             this.TabStock = new System.Windows.Forms.TabPage();
-            this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
+            this.listStock = new MaterialSkin.Controls.MaterialListView();
             this.columnInsumo = new System.Windows.Forms.ColumnHeader();
             this.columnExistencia = new System.Windows.Forms.ColumnHeader();
             this.TabProveedor = new System.Windows.Forms.TabPage();
@@ -119,7 +120,7 @@ namespace UI.Desktop
             this.epUser = new MaterialSkin.Controls.MaterialExpansionPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnCerrarSesion = new MaterialSkin.Controls.MaterialButton();
-            this.btnRetirarOrden = new MaterialSkin.Controls.MaterialButton();
+            this.btnOrdenesCliente = new MaterialSkin.Controls.MaterialButton();
             this.mnuPrincipal.SuspendLayout();
             this.mnuTabOrdenes.SuspendLayout();
             this.mnuTabClientes.SuspendLayout();
@@ -161,7 +162,7 @@ namespace UI.Desktop
             this.mnuPrincipal.Controls.Add(this.mnuTabClientes);
             this.mnuPrincipal.Controls.Add(this.mnuTabInventario);
             this.mnuPrincipal.Depth = 0;
-            this.mnuPrincipal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.mnuPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mnuPrincipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.mnuPrincipal.ImageList = this.imageList1;
             this.mnuPrincipal.Location = new System.Drawing.Point(3, 64);
@@ -195,6 +196,27 @@ namespace UI.Desktop
             this.mnuTabOrdenes.Size = new System.Drawing.Size(1372, 679);
             this.mnuTabOrdenes.TabIndex = 0;
             this.mnuTabOrdenes.Text = "Ordenes";
+            // 
+            // btnRetirarOrden
+            // 
+            this.btnRetirarOrden.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnRetirarOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnRetirarOrden.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnRetirarOrden.Depth = 0;
+            this.btnRetirarOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnRetirarOrden.HighEmphasis = true;
+            this.btnRetirarOrden.Icon = null;
+            this.btnRetirarOrden.Location = new System.Drawing.Point(284, 9);
+            this.btnRetirarOrden.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnRetirarOrden.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnRetirarOrden.Name = "btnRetirarOrden";
+            this.btnRetirarOrden.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnRetirarOrden.Size = new System.Drawing.Size(132, 36);
+            this.btnRetirarOrden.TabIndex = 9;
+            this.btnRetirarOrden.Text = "Retirar Orden";
+            this.btnRetirarOrden.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnRetirarOrden.UseAccentColor = false;
+            this.btnRetirarOrden.UseVisualStyleBackColor = false;
             // 
             // btnNuevoTipoPrenda
             // 
@@ -428,6 +450,7 @@ namespace UI.Desktop
             // mnuTabClientes
             // 
             this.mnuTabClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.mnuTabClientes.Controls.Add(this.btnOrdenesCliente);
             this.mnuTabClientes.Controls.Add(this.txtBuscarCliente);
             this.mnuTabClientes.Controls.Add(this.btnEditarCliente);
             this.mnuTabClientes.Controls.Add(this.btnEliminarCliente);
@@ -638,7 +661,7 @@ namespace UI.Desktop
             // TabStock
             // 
             this.TabStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.TabStock.Controls.Add(this.materialListView1);
+            this.TabStock.Controls.Add(this.listStock);
             this.TabStock.Location = new System.Drawing.Point(4, 24);
             this.TabStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TabStock.Name = "TabStock";
@@ -647,29 +670,29 @@ namespace UI.Desktop
             this.TabStock.TabIndex = 0;
             this.TabStock.Text = "Stock";
             // 
-            // materialListView1
+            // listStock
             // 
-            this.materialListView1.AutoSizeTable = false;
-            this.materialListView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listStock.AutoSizeTable = false;
+            this.listStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.listStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listStock.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnInsumo,
             this.columnExistencia});
-            this.materialListView1.Depth = 0;
-            this.materialListView1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialListView1.FullRowSelect = true;
-            this.materialListView1.HideSelection = false;
-            this.materialListView1.Location = new System.Drawing.Point(414, 68);
-            this.materialListView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.materialListView1.MinimumSize = new System.Drawing.Size(200, 100);
-            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView1.Name = "materialListView1";
-            this.materialListView1.OwnerDraw = true;
-            this.materialListView1.Size = new System.Drawing.Size(260, 404);
-            this.materialListView1.TabIndex = 0;
-            this.materialListView1.UseCompatibleStateImageBehavior = false;
-            this.materialListView1.View = System.Windows.Forms.View.Details;
+            this.listStock.Depth = 0;
+            this.listStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listStock.FullRowSelect = true;
+            this.listStock.HideSelection = false;
+            this.listStock.Location = new System.Drawing.Point(414, 68);
+            this.listStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listStock.MinimumSize = new System.Drawing.Size(200, 100);
+            this.listStock.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listStock.MouseState = MaterialSkin.MouseState.OUT;
+            this.listStock.Name = "listStock";
+            this.listStock.OwnerDraw = true;
+            this.listStock.Size = new System.Drawing.Size(260, 404);
+            this.listStock.TabIndex = 0;
+            this.listStock.UseCompatibleStateImageBehavior = false;
+            this.listStock.View = System.Windows.Forms.View.Details;
             // 
             // columnInsumo
             // 
@@ -1174,7 +1197,7 @@ namespace UI.Desktop
             this.epUser.ExpandHeight = 207;
             this.epUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.epUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.epUser.Location = new System.Drawing.Point(1119, 28);
+            this.epUser.Location = new System.Drawing.Point(1155, 28);
             this.epUser.Margin = new System.Windows.Forms.Padding(16, 1, 16, 0);
             this.epUser.MouseState = MaterialSkin.MouseState.HOVER;
             this.epUser.Name = "epUser";
@@ -1220,24 +1243,25 @@ namespace UI.Desktop
             this.btnCerrarSesion.UseVisualStyleBackColor = false;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
-            // btnRetirarOrden
+            // btnOrdenesCliente
             // 
-            this.btnRetirarOrden.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnRetirarOrden.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnRetirarOrden.Depth = 0;
-            this.btnRetirarOrden.HighEmphasis = true;
-            this.btnRetirarOrden.Icon = null;
-            this.btnRetirarOrden.Location = new System.Drawing.Point(284, 9);
-            this.btnRetirarOrden.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnRetirarOrden.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnRetirarOrden.Name = "btnRetirarOrden";
-            this.btnRetirarOrden.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnRetirarOrden.Size = new System.Drawing.Size(158, 36);
-            this.btnRetirarOrden.TabIndex = 9;
-            this.btnRetirarOrden.Text = "Retirar Orden";
-            this.btnRetirarOrden.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnRetirarOrden.UseAccentColor = false;
-            this.btnRetirarOrden.UseVisualStyleBackColor = true;
+            this.btnOrdenesCliente.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnOrdenesCliente.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnOrdenesCliente.Depth = 0;
+            this.btnOrdenesCliente.HighEmphasis = true;
+            this.btnOrdenesCliente.Icon = null;
+            this.btnOrdenesCliente.Location = new System.Drawing.Point(1020, 131);
+            this.btnOrdenesCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnOrdenesCliente.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnOrdenesCliente.Name = "btnOrdenesCliente";
+            this.btnOrdenesCliente.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnOrdenesCliente.Size = new System.Drawing.Size(158, 36);
+            this.btnOrdenesCliente.TabIndex = 5;
+            this.btnOrdenesCliente.Text = "Ver Ordenes";
+            this.btnOrdenesCliente.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnOrdenesCliente.UseAccentColor = false;
+            this.btnOrdenesCliente.UseVisualStyleBackColor = true;
+            this.btnOrdenesCliente.Click += new System.EventHandler(this.btnOrdenesCliente_Click);
             // 
             // frmMain
             // 
@@ -1324,7 +1348,7 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnEditarInsumo;
         private MaterialSkin.Controls.MaterialButton btnEliminarInsumo;
         private MaterialSkin.Controls.MaterialButton btnAgregarInsumo;
-        private MaterialSkin.Controls.MaterialListView materialListView1;
+        private MaterialSkin.Controls.MaterialListView listStock;
         private System.Windows.Forms.ColumnHeader columnInsumo;
         private System.Windows.Forms.ColumnHeader columnExistencia;
         private System.Windows.Forms.TabPage TabMovimientos;
@@ -1371,6 +1395,7 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialLabel lblFiltrarFecha;
         private System.Windows.Forms.DateTimePicker dtpFiltrarFechaIngreso;
         private MaterialSkin.Controls.MaterialButton btnActualizarIngresos;
+        private MaterialSkin.Controls.MaterialButton btnOrdenesCliente;
     }
 }
 

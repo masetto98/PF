@@ -149,6 +149,11 @@ namespace UI.Desktop
                 case ModoForm.Alta:
                     {
                         GuardarCambios();
+                        int IdInsumo = (int)this.cbInsumos.SelectedValue;
+                        Insumo insumo = _insumoLogic.GetOne(IdInsumo);
+                        insumo.Stock += Int32.Parse(this.txtCantidad.Text);
+                        insumo.State = BusinessEntity.States.Modified;
+                        _insumoLogic.Save(insumo);
                     };
                     break;
                 case ModoForm.Modificacion:

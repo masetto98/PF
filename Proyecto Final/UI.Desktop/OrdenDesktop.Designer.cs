@@ -216,7 +216,7 @@ namespace UI.Desktop
             // columnTipoPrenda
             // 
             this.columnTipoPrenda.Text = "Tipo de Prenda";
-            this.columnTipoPrenda.Width = 130;
+            this.columnTipoPrenda.Width = 150;
             // 
             // columnPrecio
             // 
@@ -226,7 +226,7 @@ namespace UI.Desktop
             // columnEstado
             // 
             this.columnEstado.Text = "Estado";
-            this.columnEstado.Width = 100;
+            this.columnEstado.Width = 106;
             // 
             // cmbServicios
             // 

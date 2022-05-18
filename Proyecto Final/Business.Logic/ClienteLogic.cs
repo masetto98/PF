@@ -37,7 +37,7 @@ namespace Business.Logic
             }
             catch (Exception e)
             {
-                Exception ExceptionManejada = new Exception("Error al recuperar datos de clientes", e);
+                Exception ExceptionManejada = new Exception("Error al recuperar datos del cliente", e);
                 Logger.Log(ExceptionManejada.Message);
                 throw ExceptionManejada;
             }
@@ -51,6 +51,19 @@ namespace Business.Logic
             catch (Exception e)
             {
                 Exception ExceptionManejada = new Exception("Error al recuperar datos del cliente", e);
+                Logger.Log(ExceptionManejada.Message);
+                throw ExceptionManejada;
+            }
+        }
+        public Cliente GetOrdenesCliente(int idCliente)
+        {
+            try
+            {
+                return ClienteData.GetOrdenesCliente(idCliente);
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al recuperar datos de cliente", e);
                 Logger.Log(ExceptionManejada.Message);
                 throw ExceptionManejada;
             }
