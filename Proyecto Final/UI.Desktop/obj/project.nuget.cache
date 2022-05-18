@@ -1,10 +1,6 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "YGkBDFWb068RrBX3N0uyCFFOIggZdNA4B2V4G2Uan212fkXTeE7kJmJHEBIIz9ftOeUAQfD4sI4ATl9yl2tmJw==",
-=======
   "dgSpecHash": "3bxdFALahaxsyLVP57htmToyuMLcu3wdiPf3fNSR6bHLUlkTBRRV5IM2Y6OLt1wGH1VQuCaHodBCv3K7Qa+ilA==",
->>>>>>> main
   "success": true,
   "projectFilePath": "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\UI.Desktop\\UI.Desktop.csproj",
   "expectedPackageFiles": [

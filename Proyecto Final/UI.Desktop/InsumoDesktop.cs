@@ -31,6 +31,7 @@ namespace UI.Desktop
         public InsumoDesktop(ModoForm modo, LavanderiaContext context) : this(context)
         {
             Modos = modo;
+            this.cmbUnidadMedida.DataSource= Enum.GetNames(typeof(Business.Entities.Insumo.Medidas));
         }
         // Este es el constructor cuando se edita o elimina algo, ya que tiene 3 args
         public InsumoDesktop(int ID, ModoForm modo, LavanderiaContext context) : this(context)
@@ -75,7 +76,7 @@ namespace UI.Desktop
             this.txtIDInsumo.Text = this.InsumoActual.IdInsumo.ToString();
             this.txtDescInsumo.Text = this.InsumoActual.Descripcion;
             this.txtExistenciaInsumo.Text = this.InsumoActual.Stock.ToString();
-            this.txtUnidadMedida.Text = this.InsumoActual.UnidadMedida;
+            this.cmbUnidadMedida.SelectedIndex = this.cmbUnidadMedida.FindStringExact(Enum.GetName(InsumoActual.UnidadMedida));
             
             switch (this.Modos)
             {
@@ -90,7 +91,7 @@ namespace UI.Desktop
                     this.txtIDInsumo.Enabled = false;
                     this.txtDescInsumo.Enabled = false;
                     this.txtExistenciaInsumo.Enabled = false;
-                    this.txtUnidadMedida.Enabled = false;
+                    this.cmbUnidadMedida.Enabled = false;
                     
                     break;
                 case ModoForm.Consulta:
@@ -110,14 +111,14 @@ namespace UI.Desktop
                 InsumoActual = new Insumo();
                 InsumoActual.Descripcion = this.txtDescInsumo.Text;
                 InsumoActual.Stock = Int32.Parse(this.txtExistenciaInsumo.Text);
-                InsumoActual.UnidadMedida = this.txtUnidadMedida.Text;
+                InsumoActual.UnidadMedida = (Business.Entities.Insumo.Medidas)Enum.Parse(typeof(Business.Entities.Insumo.Medidas), cmbUnidadMedida.SelectedItem.ToString());
                 
             }
             if (Modos == ModoForm.Modificacion)
             {
                 InsumoActual.Descripcion = this.txtDescInsumo.Text;
                 InsumoActual.Stock = Int32.Parse(this.txtExistenciaInsumo.Text);
-                InsumoActual.UnidadMedida = this.txtUnidadMedida.Text;
+                InsumoActual.UnidadMedida = (Business.Entities.Insumo.Medidas)Enum.Parse(typeof(Business.Entities.Insumo.Medidas), cmbUnidadMedida.SelectedItem.ToString());
             }
             switch (Modos)
             {

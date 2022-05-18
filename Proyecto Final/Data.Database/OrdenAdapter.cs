@@ -20,7 +20,17 @@ namespace Data.Database
             List<Orden> ordenes = new List<Orden>();
             try
             {
-                ordenes = _context.Ordenes.Include(i => i.Cliente).ToList();//Recordar agregar los include de los items que contienen servicio-tipoprenda que a suz contiene servicios y tipo prenda porque sino peta el formulario de orden
+                ordenes = _context.Ordenes
+                    .Include(o => o.Cliente)
+                    .Include(o => o.Empleado)
+                    .Include(o => o.ItemsPedidos)
+                        .ThenInclude(i => i.ServicioTipoPrenda)
+                            .ThenInclude(stp => stp.Servicio)
+                        .ThenInclude(i => i.ServicioTipoPrenda)
+                            .ThenInclude(stp => stp.TipoPrenda)
+                        .ThenInclude(i => i.ServicioTipoPrenda)
+                            .ThenInclude(stp => stp.HistoricoPrecios)
+                    .ToList();//Recordar agregar los include de los items que contienen servicio-tipoprenda que a suz contiene servicios y tipo prenda porque sino peta el formulario de orden
             }
             catch (Exception e)
             {
@@ -33,7 +43,17 @@ namespace Data.Database
         {
             try
             {
-                return _context.Ordenes.FirstOrDefault(o => o.NroOrden == nroOrden);
+                return _context.Ordenes
+                    .Include(o => o.Cliente)
+                    .Include(o => o.Empleado)
+                    .Include(o => o.ItemsPedidos)
+                        .ThenInclude(i => i.ServicioTipoPrenda)
+                            .ThenInclude(stp => stp.Servicio)
+                        .ThenInclude(i => i.ServicioTipoPrenda)
+                            .ThenInclude(stp => stp.TipoPrenda)
+                        .ThenInclude(i => i.ServicioTipoPrenda)
+                            .ThenInclude(stp => stp.HistoricoPrecios)
+                    .FirstOrDefault(o => o.NroOrden == nroOrden);
             }
             catch (Exception e)
             {
@@ -57,16 +77,16 @@ namespace Data.Database
         }
         protected void Insert(Orden orden)
         {
-            try
-            {
+            //try
+            //{
                 _context.Ordenes.Add(orden);
                 _context.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                Exception ExceptionManejada = new Exception("Error al crear orden", e);
-                throw ExceptionManejada;
-            }
+            //}
+            //catch (Exception e)
+            //{
+            //    Exception ExceptionManejada = new Exception("Error al crear orden", e);
+            //    throw ExceptionManejada;
+            //}
         }
         public void Delete(int nroOrden)
         {

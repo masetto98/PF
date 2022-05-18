@@ -44,7 +44,7 @@ namespace UI.Desktop
             this.columnEstado = new System.Windows.Forms.ColumnHeader();
             this.cmbServicios = new MaterialSkin.Controls.MaterialComboBox();
             this.btnAgregarItemOrden = new MaterialSkin.Controls.MaterialButton();
-            this.btnEliminar = new MaterialSkin.Controls.MaterialButton();
+            this.btnEliminarItemOrden = new MaterialSkin.Controls.MaterialButton();
             this.btnAceptar = new MaterialSkin.Controls.MaterialButton();
             this.btnCancelar = new MaterialSkin.Controls.MaterialButton();
             this.txtCuit = new MaterialSkin.Controls.MaterialTextBox();
@@ -57,6 +57,7 @@ namespace UI.Desktop
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.txtPrecioTotal = new MaterialSkin.Controls.MaterialTextBox();
             this.lblTotal = new MaterialSkin.Controls.MaterialLabel();
+            this.cmbPrioridad = new MaterialSkin.Controls.MaterialComboBox();
             this.materialCard1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -143,7 +144,7 @@ namespace UI.Desktop
             this.dtpFechaIngreso.Name = "dtpFechaIngreso";
             this.dtpFechaIngreso.Size = new System.Drawing.Size(185, 24);
             this.dtpFechaIngreso.TabIndex = 7;
-            this.dtpFechaIngreso.Value = new System.DateTime(2022, 5, 11, 12, 5, 4, 0);
+            this.dtpFechaIngreso.Value = new System.DateTime(2022, 5, 18, 0, 0, 0, 0);
             // 
             // dtpFechaSalida
             // 
@@ -275,27 +276,27 @@ namespace UI.Desktop
             this.btnAgregarItemOrden.UseVisualStyleBackColor = false;
             this.btnAgregarItemOrden.Click += new System.EventHandler(this.btnAgregarItemOrden_Click);
             // 
-            // btnEliminar
+            // btnEliminarItemOrden
             // 
-            this.btnEliminar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnEliminar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnEliminar.Depth = 0;
-            this.btnEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnEliminar.HighEmphasis = true;
-            this.btnEliminar.Icon = null;
-            this.btnEliminar.Location = new System.Drawing.Point(488, 35);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnEliminar.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEliminar.Size = new System.Drawing.Size(88, 36);
-            this.btnEliminar.TabIndex = 18;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnEliminar.UseAccentColor = false;
-            this.btnEliminar.UseVisualStyleBackColor = false;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            this.btnEliminarItemOrden.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEliminarItemOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnEliminarItemOrden.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnEliminarItemOrden.Depth = 0;
+            this.btnEliminarItemOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnEliminarItemOrden.HighEmphasis = true;
+            this.btnEliminarItemOrden.Icon = null;
+            this.btnEliminarItemOrden.Location = new System.Drawing.Point(488, 35);
+            this.btnEliminarItemOrden.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEliminarItemOrden.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEliminarItemOrden.Name = "btnEliminarItemOrden";
+            this.btnEliminarItemOrden.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnEliminarItemOrden.Size = new System.Drawing.Size(88, 36);
+            this.btnEliminarItemOrden.TabIndex = 18;
+            this.btnEliminarItemOrden.Text = "Eliminar";
+            this.btnEliminarItemOrden.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnEliminarItemOrden.UseAccentColor = false;
+            this.btnEliminarItemOrden.UseVisualStyleBackColor = false;
+            this.btnEliminarItemOrden.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnAceptar
             // 
@@ -485,7 +486,7 @@ namespace UI.Desktop
             this.materialCard1.Controls.Add(this.cmbServicios);
             this.materialCard1.Controls.Add(this.cmbTipoPrenda);
             this.materialCard1.Controls.Add(this.btnAgregarItemOrden);
-            this.materialCard1.Controls.Add(this.btnEliminar);
+            this.materialCard1.Controls.Add(this.btnEliminarItemOrden);
             this.materialCard1.Controls.Add(this.listItemsServicio);
             this.materialCard1.Depth = 0;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -494,7 +495,7 @@ namespace UI.Desktop
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(607, 233);
+            this.materialCard1.Size = new System.Drawing.Size(615, 233);
             this.materialCard1.TabIndex = 31;
             // 
             // txtPrecioTotal
@@ -530,11 +531,35 @@ namespace UI.Desktop
             this.lblTotal.TabIndex = 33;
             this.lblTotal.Text = "TOTAL:";
             // 
+            // cmbPrioridad
+            // 
+            this.cmbPrioridad.AutoResize = false;
+            this.cmbPrioridad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.cmbPrioridad.Depth = 0;
+            this.cmbPrioridad.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cmbPrioridad.DropDownHeight = 174;
+            this.cmbPrioridad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPrioridad.DropDownWidth = 121;
+            this.cmbPrioridad.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cmbPrioridad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cmbPrioridad.FormattingEnabled = true;
+            this.cmbPrioridad.Hint = "Prioridad";
+            this.cmbPrioridad.IntegralHeight = false;
+            this.cmbPrioridad.ItemHeight = 43;
+            this.cmbPrioridad.Location = new System.Drawing.Point(347, 262);
+            this.cmbPrioridad.MaxDropDownItems = 4;
+            this.cmbPrioridad.MouseState = MaterialSkin.MouseState.OUT;
+            this.cmbPrioridad.Name = "cmbPrioridad";
+            this.cmbPrioridad.Size = new System.Drawing.Size(281, 49);
+            this.cmbPrioridad.StartIndex = 0;
+            this.cmbPrioridad.TabIndex = 34;
+            // 
             // OrdenDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(645, 665);
+            this.Controls.Add(this.cmbPrioridad);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.txtPrecioTotal);
             this.Controls.Add(this.materialCard1);
@@ -572,7 +597,7 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialListView listItemsServicio;
         private MaterialSkin.Controls.MaterialComboBox cmbServicios;
         private MaterialSkin.Controls.MaterialButton btnAgregarItemOrden;
-        private MaterialSkin.Controls.MaterialButton btnEliminar;
+        private MaterialSkin.Controls.MaterialButton btnEliminarItemOrden;
         private MaterialSkin.Controls.MaterialButton btnAceptar;
         private MaterialSkin.Controls.MaterialButton btnCancelar;
         private MaterialSkin.Controls.MaterialTextBox txtCuit;
@@ -590,5 +615,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialCard materialCard1;
         private MaterialSkin.Controls.MaterialTextBox txtPrecioTotal;
         private MaterialSkin.Controls.MaterialLabel lblTotal;
+        private MaterialSkin.Controls.MaterialComboBox cmbPrioridad;
     }
 }

@@ -20,15 +20,15 @@ namespace UI.Desktop
         readonly MaterialSkin.MaterialSkinManager materialSkinManager;
         private readonly LavanderiaContext _context;
         public Orden OrdenActual { set; get; }
-        public List<OrdenServicioTipoPrenda>? _itemsServicio;
+        public List<OrdenServicioTipoPrenda> _itemsServicio;
         private readonly OrdenLogic _ordenLogic;
         private readonly ClienteLogic _clienteLogic;
         private readonly ServicioLogic _servicioLogic;
         private readonly TipoPrendaLogic _tipoPrendaLogic;
         private readonly ServicioTipoPrendaLogic _servicioTipoPrendaLogic;
-        private readonly EmpleadoLogic _empleadoLogic;
         private readonly FacturaLogic _facturaLogic;
         public decimal _total;
+
         public OrdenDesktop(LavanderiaContext context)
         {
             InitializeComponent();
@@ -38,7 +38,6 @@ namespace UI.Desktop
             _servicioLogic = new ServicioLogic(new ServicioAdapter(context));
             _tipoPrendaLogic = new TipoPrendaLogic(new TipoPrendaAdapter(context));
             _servicioTipoPrendaLogic = new ServicioTipoPrendaLogic(new ServicioTipoPrendaAdapter(context));
-            _empleadoLogic = new EmpleadoLogic(new EmpleadoAdapter(context));
             _facturaLogic = new FacturaLogic(new FacturaAdapter(context));
             listItemsServicio.Items.Clear();
             _itemsServicio = new List<OrdenServicioTipoPrenda>();
@@ -47,6 +46,8 @@ namespace UI.Desktop
             this.txtNombre.Enabled = false;
             this.txtRazonSocial.Enabled = false;
             this.txtIdCliente.Enabled = false;
+            this.dtpFechaIngreso.Value = DateTime.Now;
+            _total = 0;
 
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
@@ -59,17 +60,19 @@ namespace UI.Desktop
             Modos = modo;
             try
             {
-                List<Servicio> cursos = _servicioLogic.GetAll();
-                this.cmbServicios.DataSource = cursos;
+                List<Servicio> servicios = _servicioLogic.GetAll();
+                this.cmbServicios.DataSource = servicios;
                 this.cmbServicios.SelectedIndex = 0;
                 List<TipoPrenda> tipoPrendas = _tipoPrendaLogic.GetAll();
                 this.cmbTipoPrenda.DataSource = tipoPrendas;
                 this.cmbTipoPrenda.SelectedIndex = 0;
                 this.cmbEstado.DataSource = Enum.GetNames(typeof(Business.Entities.Orden.Estados));
+                this.cmbPrioridad.DataSource = Enum.GetNames(typeof(Business.Entities.Orden.Prioridades));
+                this.cmbTipoPrenda.SelectedIndex = 1;
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Curso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Orden", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -83,54 +86,55 @@ namespace UI.Desktop
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "TipoPrenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Orden", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         public override void MapearDeDatos()
         {
             this.txtIdCliente.Text = OrdenActual.IdCliente.ToString();
+            this.txtApellido.Text = OrdenActual.Cliente.Apellido;
+            this.txtNombre.Text = OrdenActual.Cliente.Nombre;
+            this.txtRazonSocial.Text = OrdenActual.Cliente.RazonSocial;
+            this.txtCuit.Text = OrdenActual.Cliente.Cuit;
             this.cmbEstado.SelectedIndex = cmbEstado.FindStringExact(Enum.GetName(OrdenActual.Estado));
             this.dtpFechaIngreso.Value = OrdenActual.FechaEntrada.Date;
             this.txtTiempoFinalizacionEstimado.Text = OrdenActual.TiempofinalizacionEstimado.Hours.ToString() + " : " + OrdenActual.TiempofinalizacionEstimado.Minutes.ToString();
             this.dtpFechaSalida.Value = OrdenActual.FechaSalida.Date;
+            this.cmbPrioridad.SelectedIndex = cmbEstado.FindStringExact(Enum.GetName(OrdenActual.Prioridad));
             try
             {
-                List<OrdenServicioTipoPrenda> itemsOrdenActual = OrdenActual.ItemsPedidos;
-                listItemsServicio.Items.Clear();
-                foreach (OrdenServicioTipoPrenda i in itemsOrdenActual) 
-                {
-                    ListViewItem item = new ListViewItem((listItemsServicio.Items.Count + 1).ToString());
-                    item.SubItems.Add(i.ServicioTipoPrenda.Servicio.Descripcion);
-                    item.SubItems.Add(i.ServicioTipoPrenda.TipoPrenda.Descripcion);
-                    listItemsServicio.Items.Add(item);
-                }
+                _itemsServicio = OrdenActual.ItemsPedidos;
+                ListarItems();
                 List<Servicio> servicios = _servicioLogic.GetAll();
                 List<TipoPrenda> tipoPrendas = _tipoPrendaLogic.GetAll();
                 this.cmbServicios.DataSource = servicios;
                 this.cmbTipoPrenda.DataSource = tipoPrendas;
-                
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "TipoPrenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Orden", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             switch (this.Modos)
             {
                 case ModoForm.Alta:
                     this.dtpFechaSalida.Enabled = false;
+                    this.cmbEstado.Enabled = false;
                     
-                    this.btnAceptar.Text = "Guardar";
                     break;
                 case ModoForm.Modificacion:
-                    this.btnAceptar.Text = "Guardar";
-                    
+                    this.txtCuit.Enabled = false;
+                    this.cmbEstado.Enabled = false;
+                    this.dtpFechaIngreso.Enabled = false;
+                    this.btnAgregarCliente.Enabled = false;
                     break;
                 case ModoForm.Baja:
                     this.btnAceptar.Text = "Eliminar";
                     this.cmbServicios.Enabled = false;
                     this.cmbTipoPrenda.Enabled = false;
                     this.txtCuit.Enabled = false;
+                    this.btnAgregarItemOrden.Enabled = false;
+                    this.btnEliminarItemOrden.Enabled = false;
                     break;
                 case ModoForm.Consulta:
                     this.btnAceptar.Text = "Aceptar";
@@ -146,18 +150,21 @@ namespace UI.Desktop
             if (Modos == ModoForm.Alta)
             {
                 OrdenActual = new Orden();
-                _total = 0;
                 OrdenActual.Cliente = _clienteLogic.GetOne(Int32.Parse(this.txtIdCliente.Text));
-                //OrdenActual.Empleado = Singleton.getInstance().EmpleadoLogged;
+                OrdenActual.Empleado = Singleton.getInstance().EmpleadoLogged;
                 OrdenActual.Factura = _facturaLogic.GetOne(1);
-                OrdenActual.Empleado = _empleadoLogic.GetOne(1);
-                OrdenActual.FechaEntrada = dtpFechaIngreso.Value;
+                OrdenActual.FechaEntrada = DateTime.Now;
+                OrdenActual.FechaSalida = dtpFechaSalida.MaxDate;
                 OrdenActual.Estado = Orden.Estados.Pendiente;
+                OrdenActual.Prioridad = (Business.Entities.Orden.Prioridades)Enum.Parse(typeof(Business.Entities.Orden.Prioridades), cmbPrioridad.SelectedItem.ToString());
+                AsignarPrioridadItems();
                 OrdenActual.ItemsPedidos = _itemsServicio;
+
             }
             if (Modos == ModoForm.Modificacion)
             {
-                //ServicioTipoPrendaActual.TiempoRequerido = new TimeSpan(Int32.Parse(this.txtHoras.Text), Int32.Parse(this.txtMinutos.Text), 00);
+                OrdenActual.ItemsPedidos = _itemsServicio;
+
             }
             switch (Modos)
             {
@@ -170,24 +177,9 @@ namespace UI.Desktop
             }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        
 
-        public virtual void Eliminar()
-        {
-            try
-            {
-                _ordenLogic.Delete(OrdenActual.NroOrden);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "Docente", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        #region -------Buscar Cliente--------
+        #region -------Cliente--------
 
         private void txtCuit_Leave(object sender, EventArgs e)
         {
@@ -217,6 +209,12 @@ namespace UI.Desktop
             {
                 MessageBox.Show(e.Message);
             }
+        }
+
+        private void btnAgregarCliente_Click(object sender, EventArgs e)
+        {
+            ClienteDesktop frmCliente = new ClienteDesktop(ApplicationForm.ModoForm.Alta, _context);
+            frmCliente.ShowDialog();
         }
         #endregion
 
@@ -253,40 +251,86 @@ namespace UI.Desktop
 
         private void EliminarItem() 
         {
-            
-            if (listItemsServicio.SelectedItems.Count >0)
-            { 
-                var _itemDelete = _itemsServicio.FindLast(
-                    delegate (OrdenServicioTipoPrenda item)
+            try
+            {
+
+                if (listItemsServicio.SelectedItems.Count > 0)
+                {
+                    var _itemDelete = _itemsServicio.FindLast(
+                        delegate (OrdenServicioTipoPrenda item)
+                        {
+                            return
+                                item.ServicioTipoPrenda.Servicio.Descripcion == this.listItemsServicio.SelectedItems[0].SubItems[1].Text
+                                &&
+                                item.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listItemsServicio.SelectedItems[0].SubItems[2].Text;
+                        }
+                    );
+                    if (_itemDelete.Estado == OrdenServicioTipoPrenda.Estados.Pendiente)
                     {
-                        return 
-                            item.ServicioTipoPrenda.Servicio.Descripcion == this.listItemsServicio.SelectedItems[0].SubItems[1].Text 
-                            &&
-                            item.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listItemsServicio.SelectedItems[0].SubItems[2].Text;
+                        Precio precioActual = _itemDelete.ServicioTipoPrenda.HistoricoPrecios.FindLast(
+                        delegate (Precio p)
+                        {
+                            return p.FechaDesde < DateTime.Today;
+                        });
+                        _total -= precioActual.Valor;
+                        this.txtPrecioTotal.Text = _total.ToString();
+                        _itemsServicio.Remove(_itemDelete);
+                        listItemsServicio.Items.Remove(listItemsServicio.SelectedItems[0]);
                     }
-                );
-                Precio precioActual = _itemDelete.ServicioTipoPrenda.HistoricoPrecios.FindLast(
+                    else 
+                    {
+                        Exception r = new Exception("El item que quiere eliminar ya fue atendido o se encuentra en proceso de atencion");
+                        throw r;
+                    }
+                }
+            }
+            catch (Exception r)
+            {
+                MessageBox.Show(r.Message, "ItemServicio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void ListarItems() 
+        {
+            listItemsServicio.Items.Clear();
+            foreach (OrdenServicioTipoPrenda i in _itemsServicio)
+            {
+                Precio precioActual = i.ServicioTipoPrenda.HistoricoPrecios.FindLast(
                     delegate (Precio p)
                     {
                         return p.FechaDesde < DateTime.Today;
                     });
-                _total -= precioActual.Valor;
+                ListViewItem item = new ListViewItem((listItemsServicio.Items.Count + 1).ToString());
+                item.SubItems.Add(i.ServicioTipoPrenda.Servicio.Descripcion);
+                item.SubItems.Add(i.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                item.SubItems.Add(precioActual.Valor.ToString());
+                item.SubItems.Add(i.Estado.ToString());
+                listItemsServicio.Items.Add(item);
+                _total += precioActual.Valor;
                 this.txtPrecioTotal.Text = _total.ToString();
-                //int _indice = listItemsServicio.SelectedItems.IndexOf(listItemsServicio.SelectedItems[0]);
-                //_itemsServicio.FindLastIndex(listItemsServicio.SelectedItems[0])
-                _itemsServicio.Remove(_itemDelete);
-                listItemsServicio.Items.Remove(listItemsServicio.SelectedItems[0]);
             }
         }
-        
+
+        public void AsignarPrioridadItems() 
+        {
+            foreach (OrdenServicioTipoPrenda o in _itemsServicio) 
+            {
+                if ((Business.Entities.Orden.Prioridades)Enum.Parse(typeof(Business.Entities.Orden.Prioridades), cmbPrioridad.SelectedItem.ToString()) == Orden.Prioridades.Alta)
+                {
+                    o.Prioridad = OrdenServicioTipoPrenda.Prioridades.Alta;
+                }
+                else 
+                {
+                    o.Prioridad =(OrdenServicioTipoPrenda.Prioridades)o.ServicioTipoPrenda.Prioridad;
+                }
+            }
+        }
 
         private void btnAgregarItemOrden_Click(object sender, EventArgs e)
         {
-            try 
-            {
-                int idServicio = (int)this.cmbServicios.SelectedValue;
-                int idTipoPrenda = (int)this.cmbTipoPrenda.SelectedValue;
-                ServicioTipoPrenda servicioTp = _servicioTipoPrendaLogic.GetOne(idServicio, idTipoPrenda);
+            try
+            { 
+                ServicioTipoPrenda servicioTp = _servicioTipoPrendaLogic.GetOne((int)this.cmbServicios.SelectedValue, (int)this.cmbTipoPrenda.SelectedValue);
                 if (servicioTp == null)
                 {
                     Exception r = new Exception("No existe el servicio ingresado.");
@@ -325,18 +369,39 @@ namespace UI.Desktop
 
         public override void GuardarCambios()
         {
-            try
-            {
+            //try
+            //{
                 if (true)
                 {
                     MapearADatos();
                     _ordenLogic.Save(OrdenActual);
                     Close();
                 }
+            //}
+            //catch (Exception e)
+            //{
+            //    MessageBox.Show(e.Message, "Servicio-TipoPrenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+        }
+
+        public virtual void Eliminar()
+        {
+            try
+            {
+                if (OrdenActual.Estado == Orden.Estados.Pendiente)
+                {
+                    _ordenLogic.Delete(OrdenActual.NroOrden);
+                }
+                else
+                {
+                    Exception r = new Exception("La orden que quiere eliminar ya esta finalizada o se encuentra en proceso de atencion");
+                    throw r;
+
+                }
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Servicio-TipoPrenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Orden", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -367,10 +432,10 @@ namespace UI.Desktop
 
         }
 
-        private void btnAgregarCliente_Click(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-            ClienteDesktop frmCliente = new ClienteDesktop(ApplicationForm.ModoForm.Alta, _context);
-            frmCliente.ShowDialog();
+            Close();
         }
+
     }
 }

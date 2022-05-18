@@ -1,10 +1,6 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "QCDs2kw0BMIpivvhQl3k20tOqO1usIbFu8/VqHQ51QxZzrPTOzsGFz6FpvSm+66XjovwhqhoQI+CuSnCGEbAxA==",
-=======
   "dgSpecHash": "Xy4H8/sNXw6EAqQ6VHGG51RXPwVakTpdEIGNOrEXPih2AxOXREnpB5WjHq/4TOAToFqryMCBonSSz9ynl4ahbg==",
->>>>>>> main
   "success": true,
   "projectFilePath": "C:\\Users\\manud\\Documents\\Facultad\\5to\\Proyecto Final\\PF\\PF\\Proyecto Final\\Business.Logic\\Business.Logic.csproj",
   "expectedPackageFiles": [
