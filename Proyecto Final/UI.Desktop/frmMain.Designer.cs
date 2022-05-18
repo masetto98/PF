@@ -31,9 +31,15 @@ namespace UI.Desktop
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.btnNuevoCliente = new MaterialSkin.Controls.MaterialButton();
             this.mnuPrincipal = new MaterialSkin.Controls.MaterialTabControl();
             this.mnuTabOrdenes = new System.Windows.Forms.TabPage();
+            this.btnEliminarEmpleado = new MaterialSkin.Controls.MaterialButton();
+            this.btnEditarEmpleado = new MaterialSkin.Controls.MaterialButton();
+            this.btnEliminarTipoPrenda = new MaterialSkin.Controls.MaterialButton();
+            this.btnEditarTipoPrenda = new MaterialSkin.Controls.MaterialButton();
+            this.EliminarServicioTipoPrenda = new MaterialSkin.Controls.MaterialButton();
+            this.btnEditarServicioTipoPrenda = new MaterialSkin.Controls.MaterialButton();
+            this.btnEditarOrden = new MaterialSkin.Controls.MaterialButton();
             this.btnRetirarOrden = new MaterialSkin.Controls.MaterialButton();
             this.btnNuevoTipoPrenda = new MaterialSkin.Controls.MaterialButton();
             this.btnNuevoServicioTipoPrenda = new MaterialSkin.Controls.MaterialButton();
@@ -42,14 +48,12 @@ namespace UI.Desktop
             this.btnEliminarOrden = new MaterialSkin.Controls.MaterialButton();
             this.btnNuevaOrden = new MaterialSkin.Controls.MaterialButton();
             this.listOrdenes = new MaterialSkin.Controls.MaterialListView();
-            this.columnNroOrden = new System.Windows.Forms.ColumnHeader();
+            this.columnNro = new System.Windows.Forms.ColumnHeader();
             this.columnIdCliente = new System.Windows.Forms.ColumnHeader();
             this.columnIdEmpleado = new System.Windows.Forms.ColumnHeader();
             this.columnIdFactura = new System.Windows.Forms.ColumnHeader();
             this.columnPrioridad = new System.Windows.Forms.ColumnHeader();
             this.columnFechaEntrada = new System.Windows.Forms.ColumnHeader();
-            this.columnTiempoEntregaEstimado = new System.Windows.Forms.ColumnHeader();
-            this.columnTiempoEntregaReal = new System.Windows.Forms.ColumnHeader();
             this.columnFechaSalida = new System.Windows.Forms.ColumnHeader();
             this.columnEstado = new System.Windows.Forms.ColumnHeader();
             this.btnNuevoEmpleado = new MaterialSkin.Controls.MaterialButton();
@@ -108,6 +112,20 @@ namespace UI.Desktop
             this.columnFechaIngreso = new System.Windows.Forms.ColumnHeader();
             this.columnCantIngreso = new System.Windows.Forms.ColumnHeader();
             this.tabSelectorInventario = new MaterialSkin.Controls.MaterialTabSelector();
+            this.tabPlanificacion = new System.Windows.Forms.TabPage();
+            this.tabControlPlanificacion = new MaterialSkin.Controls.MaterialTabControl();
+            this.tabPendientes = new System.Windows.Forms.TabPage();
+            this.btnInciarTrabajo = new MaterialSkin.Controls.MaterialButton();
+            this.listTrabajosPendientes = new MaterialSkin.Controls.MaterialListView();
+            this.columnOrden = new System.Windows.Forms.ColumnHeader();
+            this.columnServicio = new System.Windows.Forms.ColumnHeader();
+            this.columnTipoPrenda = new System.Windows.Forms.ColumnHeader();
+            this.columnOrdenItem = new System.Windows.Forms.ColumnHeader();
+            this.columnState = new System.Windows.Forms.ColumnHeader();
+            this.columnPriority = new System.Windows.Forms.ColumnHeader();
+            this.tabEnProceso = new System.Windows.Forms.TabPage();
+            this.tabSelectorPlanificacion = new MaterialSkin.Controls.MaterialTabSelector();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
@@ -130,37 +148,20 @@ namespace UI.Desktop
             this.TabProveedor.SuspendLayout();
             this.TabInsumo.SuspendLayout();
             this.TabMovimientos.SuspendLayout();
+            this.tabPlanificacion.SuspendLayout();
+            this.tabControlPlanificacion.SuspendLayout();
+            this.tabPendientes.SuspendLayout();
             this.epUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnNuevoCliente
-            // 
-            this.btnNuevoCliente.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnNuevoCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnNuevoCliente.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnNuevoCliente.Depth = 0;
-            this.btnNuevoCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnNuevoCliente.HighEmphasis = true;
-            this.btnNuevoCliente.Icon = null;
-            this.btnNuevoCliente.Location = new System.Drawing.Point(574, 367);
-            this.btnNuevoCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnNuevoCliente.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnNuevoCliente.Name = "btnNuevoCliente";
-            this.btnNuevoCliente.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnNuevoCliente.Size = new System.Drawing.Size(131, 36);
-            this.btnNuevoCliente.TabIndex = 0;
-            this.btnNuevoCliente.Text = "Nuevo Cliente";
-            this.btnNuevoCliente.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnNuevoCliente.UseAccentColor = false;
-            this.btnNuevoCliente.UseVisualStyleBackColor = false;
-            this.btnNuevoCliente.Click += new System.EventHandler(this.btnNuevoCliente_Click);
             // 
             // mnuPrincipal
             // 
             this.mnuPrincipal.Controls.Add(this.mnuTabOrdenes);
             this.mnuPrincipal.Controls.Add(this.mnuTabClientes);
             this.mnuPrincipal.Controls.Add(this.mnuTabInventario);
+            this.mnuPrincipal.Controls.Add(this.tabPlanificacion);
+            this.mnuPrincipal.Controls.Add(this.tabPage2);
             this.mnuPrincipal.Depth = 0;
             this.mnuPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mnuPrincipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -171,13 +172,20 @@ namespace UI.Desktop
             this.mnuPrincipal.Multiline = true;
             this.mnuPrincipal.Name = "mnuPrincipal";
             this.mnuPrincipal.SelectedIndex = 0;
-            this.mnuPrincipal.Size = new System.Drawing.Size(1380, 722);
+            this.mnuPrincipal.Size = new System.Drawing.Size(1380, 680);
             this.mnuPrincipal.TabIndex = 1;
             this.mnuPrincipal.Selected += new System.Windows.Forms.TabControlEventHandler(this.mnuPrincipal_Selected);
             // 
             // mnuTabOrdenes
             // 
             this.mnuTabOrdenes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.mnuTabOrdenes.Controls.Add(this.btnEliminarEmpleado);
+            this.mnuTabOrdenes.Controls.Add(this.btnEditarEmpleado);
+            this.mnuTabOrdenes.Controls.Add(this.btnEliminarTipoPrenda);
+            this.mnuTabOrdenes.Controls.Add(this.btnEditarTipoPrenda);
+            this.mnuTabOrdenes.Controls.Add(this.EliminarServicioTipoPrenda);
+            this.mnuTabOrdenes.Controls.Add(this.btnEditarServicioTipoPrenda);
+            this.mnuTabOrdenes.Controls.Add(this.btnEditarOrden);
             this.mnuTabOrdenes.Controls.Add(this.btnRetirarOrden);
             this.mnuTabOrdenes.Controls.Add(this.btnNuevoTipoPrenda);
             this.mnuTabOrdenes.Controls.Add(this.btnNuevoServicioTipoPrenda);
@@ -187,15 +195,168 @@ namespace UI.Desktop
             this.mnuTabOrdenes.Controls.Add(this.btnNuevaOrden);
             this.mnuTabOrdenes.Controls.Add(this.listOrdenes);
             this.mnuTabOrdenes.Controls.Add(this.btnNuevoEmpleado);
-            this.mnuTabOrdenes.Controls.Add(this.btnNuevoCliente);
             this.mnuTabOrdenes.ImageKey = "addthelist_añadir_3477.png";
             this.mnuTabOrdenes.Location = new System.Drawing.Point(4, 39);
             this.mnuTabOrdenes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mnuTabOrdenes.Name = "mnuTabOrdenes";
             this.mnuTabOrdenes.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.mnuTabOrdenes.Size = new System.Drawing.Size(1372, 679);
+            this.mnuTabOrdenes.Size = new System.Drawing.Size(1372, 637);
             this.mnuTabOrdenes.TabIndex = 0;
             this.mnuTabOrdenes.Text = "Ordenes";
+            // 
+            // btnEliminarEmpleado
+            // 
+            this.btnEliminarEmpleado.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEliminarEmpleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnEliminarEmpleado.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnEliminarEmpleado.Depth = 0;
+            this.btnEliminarEmpleado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnEliminarEmpleado.HighEmphasis = true;
+            this.btnEliminarEmpleado.Icon = null;
+            this.btnEliminarEmpleado.Location = new System.Drawing.Point(173, 482);
+            this.btnEliminarEmpleado.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEliminarEmpleado.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEliminarEmpleado.Name = "btnEliminarEmpleado";
+            this.btnEliminarEmpleado.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnEliminarEmpleado.Size = new System.Drawing.Size(169, 36);
+            this.btnEliminarEmpleado.TabIndex = 16;
+            this.btnEliminarEmpleado.Text = "Eliminar Empleado";
+            this.btnEliminarEmpleado.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnEliminarEmpleado.UseAccentColor = false;
+            this.btnEliminarEmpleado.UseVisualStyleBackColor = false;
+            this.btnEliminarEmpleado.Click += new System.EventHandler(this.btnEliminarEmpleado_Click);
+            // 
+            // btnEditarEmpleado
+            // 
+            this.btnEditarEmpleado.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEditarEmpleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnEditarEmpleado.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnEditarEmpleado.Depth = 0;
+            this.btnEditarEmpleado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnEditarEmpleado.HighEmphasis = true;
+            this.btnEditarEmpleado.Icon = null;
+            this.btnEditarEmpleado.Location = new System.Drawing.Point(173, 434);
+            this.btnEditarEmpleado.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEditarEmpleado.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEditarEmpleado.Name = "btnEditarEmpleado";
+            this.btnEditarEmpleado.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnEditarEmpleado.Size = new System.Drawing.Size(152, 36);
+            this.btnEditarEmpleado.TabIndex = 15;
+            this.btnEditarEmpleado.Text = "Editar Empleado";
+            this.btnEditarEmpleado.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnEditarEmpleado.UseAccentColor = false;
+            this.btnEditarEmpleado.UseVisualStyleBackColor = false;
+            this.btnEditarEmpleado.Click += new System.EventHandler(this.btnEditarEmpleado_Click);
+            // 
+            // btnEliminarTipoPrenda
+            // 
+            this.btnEliminarTipoPrenda.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEliminarTipoPrenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnEliminarTipoPrenda.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnEliminarTipoPrenda.Depth = 0;
+            this.btnEliminarTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnEliminarTipoPrenda.HighEmphasis = true;
+            this.btnEliminarTipoPrenda.Icon = null;
+            this.btnEliminarTipoPrenda.Location = new System.Drawing.Point(362, 482);
+            this.btnEliminarTipoPrenda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEliminarTipoPrenda.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEliminarTipoPrenda.Name = "btnEliminarTipoPrenda";
+            this.btnEliminarTipoPrenda.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnEliminarTipoPrenda.Size = new System.Drawing.Size(178, 36);
+            this.btnEliminarTipoPrenda.TabIndex = 14;
+            this.btnEliminarTipoPrenda.Text = "EliminarTipoPrenda";
+            this.btnEliminarTipoPrenda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnEliminarTipoPrenda.UseAccentColor = false;
+            this.btnEliminarTipoPrenda.UseVisualStyleBackColor = false;
+            this.btnEliminarTipoPrenda.Click += new System.EventHandler(this.btnEliminarTipoPrenda_Click);
+            // 
+            // btnEditarTipoPrenda
+            // 
+            this.btnEditarTipoPrenda.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEditarTipoPrenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnEditarTipoPrenda.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnEditarTipoPrenda.Depth = 0;
+            this.btnEditarTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnEditarTipoPrenda.HighEmphasis = true;
+            this.btnEditarTipoPrenda.Icon = null;
+            this.btnEditarTipoPrenda.Location = new System.Drawing.Point(362, 434);
+            this.btnEditarTipoPrenda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEditarTipoPrenda.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEditarTipoPrenda.Name = "btnEditarTipoPrenda";
+            this.btnEditarTipoPrenda.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnEditarTipoPrenda.Size = new System.Drawing.Size(165, 36);
+            this.btnEditarTipoPrenda.TabIndex = 13;
+            this.btnEditarTipoPrenda.Text = "Editar TipoPrenda";
+            this.btnEditarTipoPrenda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnEditarTipoPrenda.UseAccentColor = false;
+            this.btnEditarTipoPrenda.UseVisualStyleBackColor = false;
+            this.btnEditarTipoPrenda.Click += new System.EventHandler(this.btnEditarTipoPrenda_Click);
+            // 
+            // EliminarServicioTipoPrenda
+            // 
+            this.EliminarServicioTipoPrenda.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.EliminarServicioTipoPrenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.EliminarServicioTipoPrenda.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.EliminarServicioTipoPrenda.Depth = 0;
+            this.EliminarServicioTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.EliminarServicioTipoPrenda.HighEmphasis = true;
+            this.EliminarServicioTipoPrenda.Icon = null;
+            this.EliminarServicioTipoPrenda.Location = new System.Drawing.Point(30, 484);
+            this.EliminarServicioTipoPrenda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.EliminarServicioTipoPrenda.MouseState = MaterialSkin.MouseState.HOVER;
+            this.EliminarServicioTipoPrenda.Name = "EliminarServicioTipoPrenda";
+            this.EliminarServicioTipoPrenda.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.EliminarServicioTipoPrenda.Size = new System.Drawing.Size(123, 36);
+            this.EliminarServicioTipoPrenda.TabIndex = 12;
+            this.EliminarServicioTipoPrenda.Text = "Eliminar S-TP";
+            this.EliminarServicioTipoPrenda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.EliminarServicioTipoPrenda.UseAccentColor = false;
+            this.EliminarServicioTipoPrenda.UseVisualStyleBackColor = false;
+            this.EliminarServicioTipoPrenda.Click += new System.EventHandler(this.EliminarServicioTipoPrenda_Click);
+            // 
+            // btnEditarServicioTipoPrenda
+            // 
+            this.btnEditarServicioTipoPrenda.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEditarServicioTipoPrenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnEditarServicioTipoPrenda.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnEditarServicioTipoPrenda.Depth = 0;
+            this.btnEditarServicioTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnEditarServicioTipoPrenda.HighEmphasis = true;
+            this.btnEditarServicioTipoPrenda.Icon = null;
+            this.btnEditarServicioTipoPrenda.Location = new System.Drawing.Point(30, 436);
+            this.btnEditarServicioTipoPrenda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEditarServicioTipoPrenda.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEditarServicioTipoPrenda.Name = "btnEditarServicioTipoPrenda";
+            this.btnEditarServicioTipoPrenda.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnEditarServicioTipoPrenda.Size = new System.Drawing.Size(106, 36);
+            this.btnEditarServicioTipoPrenda.TabIndex = 11;
+            this.btnEditarServicioTipoPrenda.Text = "Editar S-TP";
+            this.btnEditarServicioTipoPrenda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnEditarServicioTipoPrenda.UseAccentColor = false;
+            this.btnEditarServicioTipoPrenda.UseVisualStyleBackColor = false;
+            this.btnEditarServicioTipoPrenda.Click += new System.EventHandler(this.btnEditarServicioTipoPrenda_Click);
+            // 
+            // btnEditarOrden
+            // 
+            this.btnEditarOrden.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEditarOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnEditarOrden.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnEditarOrden.Depth = 0;
+            this.btnEditarOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnEditarOrden.HighEmphasis = true;
+            this.btnEditarOrden.Icon = null;
+            this.btnEditarOrden.Location = new System.Drawing.Point(18, 80);
+            this.btnEditarOrden.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEditarOrden.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEditarOrden.Name = "btnEditarOrden";
+            this.btnEditarOrden.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnEditarOrden.Size = new System.Drawing.Size(123, 36);
+            this.btnEditarOrden.TabIndex = 10;
+            this.btnEditarOrden.Text = "Editar Orden";
+            this.btnEditarOrden.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnEditarOrden.UseAccentColor = false;
+            this.btnEditarOrden.UseVisualStyleBackColor = false;
+            this.btnEditarOrden.Click += new System.EventHandler(this.btnEditarOrden_Click);
             // 
             // btnRetirarOrden
             // 
@@ -206,7 +367,7 @@ namespace UI.Desktop
             this.btnRetirarOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnRetirarOrden.HighEmphasis = true;
             this.btnRetirarOrden.Icon = null;
-            this.btnRetirarOrden.Location = new System.Drawing.Point(284, 9);
+            this.btnRetirarOrden.Location = new System.Drawing.Point(18, 176);
             this.btnRetirarOrden.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnRetirarOrden.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRetirarOrden.Name = "btnRetirarOrden";
@@ -227,7 +388,7 @@ namespace UI.Desktop
             this.btnNuevoTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnNuevoTipoPrenda.HighEmphasis = true;
             this.btnNuevoTipoPrenda.Icon = null;
-            this.btnNuevoTipoPrenda.Location = new System.Drawing.Point(62, 366);
+            this.btnNuevoTipoPrenda.Location = new System.Drawing.Point(362, 388);
             this.btnNuevoTipoPrenda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnNuevoTipoPrenda.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNuevoTipoPrenda.Name = "btnNuevoTipoPrenda";
@@ -249,14 +410,14 @@ namespace UI.Desktop
             this.btnNuevoServicioTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnNuevoServicioTipoPrenda.HighEmphasis = true;
             this.btnNuevoServicioTipoPrenda.Icon = null;
-            this.btnNuevoServicioTipoPrenda.Location = new System.Drawing.Point(339, 367);
+            this.btnNuevoServicioTipoPrenda.Location = new System.Drawing.Point(30, 390);
             this.btnNuevoServicioTipoPrenda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnNuevoServicioTipoPrenda.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNuevoServicioTipoPrenda.Name = "btnNuevoServicioTipoPrenda";
             this.btnNuevoServicioTipoPrenda.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnNuevoServicioTipoPrenda.Size = new System.Drawing.Size(227, 36);
+            this.btnNuevoServicioTipoPrenda.Size = new System.Drawing.Size(104, 36);
             this.btnNuevoServicioTipoPrenda.TabIndex = 7;
-            this.btnNuevoServicioTipoPrenda.Text = "Nuevo ServicioTipoPrenda";
+            this.btnNuevoServicioTipoPrenda.Text = "Nuevo S-TP";
             this.btnNuevoServicioTipoPrenda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnNuevoServicioTipoPrenda.UseAccentColor = false;
             this.btnNuevoServicioTipoPrenda.UseVisualStyleBackColor = false;
@@ -271,13 +432,13 @@ namespace UI.Desktop
             this.materialTextBox1.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.materialTextBox1.LeadingIcon = null;
-            this.materialTextBox1.Location = new System.Drawing.Point(927, 2);
+            this.materialTextBox1.Location = new System.Drawing.Point(1190, 32);
             this.materialTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.materialTextBox1.MaxLength = 50;
             this.materialTextBox1.MouseState = MaterialSkin.MouseState.OUT;
             this.materialTextBox1.Multiline = false;
             this.materialTextBox1.Name = "materialTextBox1";
-            this.materialTextBox1.Size = new System.Drawing.Size(252, 50);
+            this.materialTextBox1.Size = new System.Drawing.Size(176, 50);
             this.materialTextBox1.TabIndex = 6;
             this.materialTextBox1.Text = "";
             this.materialTextBox1.TrailingIcon = null;
@@ -289,7 +450,7 @@ namespace UI.Desktop
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialLabel1.Location = new System.Drawing.Point(867, 19);
+            this.materialLabel1.Location = new System.Drawing.Point(1129, 49);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(54, 19);
@@ -305,7 +466,7 @@ namespace UI.Desktop
             this.btnEliminarOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnEliminarOrden.HighEmphasis = true;
             this.btnEliminarOrden.Icon = null;
-            this.btnEliminarOrden.Location = new System.Drawing.Point(136, 9);
+            this.btnEliminarOrden.Location = new System.Drawing.Point(18, 128);
             this.btnEliminarOrden.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminarOrden.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminarOrden.Name = "btnEliminarOrden";
@@ -327,7 +488,7 @@ namespace UI.Desktop
             this.btnNuevaOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnNuevaOrden.HighEmphasis = true;
             this.btnNuevaOrden.Icon = null;
-            this.btnNuevaOrden.Location = new System.Drawing.Point(7, 9);
+            this.btnNuevaOrden.Location = new System.Drawing.Point(18, 32);
             this.btnNuevaOrden.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnNuevaOrden.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNuevaOrden.Name = "btnNuevaOrden";
@@ -346,21 +507,19 @@ namespace UI.Desktop
             this.listOrdenes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.listOrdenes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listOrdenes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnNroOrden,
+            this.columnNro,
             this.columnIdCliente,
             this.columnIdEmpleado,
             this.columnIdFactura,
             this.columnPrioridad,
             this.columnFechaEntrada,
-            this.columnTiempoEntregaEstimado,
-            this.columnTiempoEntregaReal,
             this.columnFechaSalida,
             this.columnEstado});
             this.listOrdenes.Depth = 0;
             this.listOrdenes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.listOrdenes.FullRowSelect = true;
             this.listOrdenes.HideSelection = false;
-            this.listOrdenes.Location = new System.Drawing.Point(6, 59);
+            this.listOrdenes.Location = new System.Drawing.Point(173, 32);
             this.listOrdenes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listOrdenes.MinimumSize = new System.Drawing.Size(200, 100);
             this.listOrdenes.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -368,15 +527,15 @@ namespace UI.Desktop
             this.listOrdenes.MultiSelect = false;
             this.listOrdenes.Name = "listOrdenes";
             this.listOrdenes.OwnerDraw = true;
-            this.listOrdenes.Size = new System.Drawing.Size(1209, 299);
+            this.listOrdenes.Size = new System.Drawing.Size(949, 299);
             this.listOrdenes.TabIndex = 2;
             this.listOrdenes.UseCompatibleStateImageBehavior = false;
             this.listOrdenes.View = System.Windows.Forms.View.Details;
             // 
-            // columnNroOrden
+            // columnNro
             // 
-            this.columnNroOrden.Text = "Nro";
-            this.columnNroOrden.Width = 50;
+            this.columnNro.Text = "Nro";
+            this.columnNro.Width = 70;
             // 
             // columnIdCliente
             // 
@@ -403,27 +562,15 @@ namespace UI.Desktop
             this.columnFechaEntrada.Text = "Fecha Ingreso";
             this.columnFechaEntrada.Width = 150;
             // 
-            // columnTiempoEntregaEstimado
-            // 
-            this.columnTiempoEntregaEstimado.Text = "Tiempo Entrega Est.";
-            this.columnTiempoEntregaEstimado.Width = 200;
-            // 
-            // columnTiempoEntregaReal
-            // 
-            this.columnTiempoEntregaReal.Text = "Tiempo Entrega Real";
-            this.columnTiempoEntregaReal.Width = 200;
-            // 
             // columnFechaSalida
             // 
-            this.columnFechaSalida.DisplayIndex = 9;
             this.columnFechaSalida.Text = "Fecha de Salida";
             this.columnFechaSalida.Width = 150;
             // 
             // columnEstado
             // 
-            this.columnEstado.DisplayIndex = 8;
             this.columnEstado.Text = "Estado";
-            this.columnEstado.Width = 80;
+            this.columnEstado.Width = 100;
             // 
             // btnNuevoEmpleado
             // 
@@ -434,7 +581,7 @@ namespace UI.Desktop
             this.btnNuevoEmpleado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnNuevoEmpleado.HighEmphasis = true;
             this.btnNuevoEmpleado.Icon = null;
-            this.btnNuevoEmpleado.Location = new System.Drawing.Point(713, 367);
+            this.btnNuevoEmpleado.Location = new System.Drawing.Point(173, 390);
             this.btnNuevoEmpleado.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnNuevoEmpleado.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNuevoEmpleado.Name = "btnNuevoEmpleado";
@@ -461,7 +608,7 @@ namespace UI.Desktop
             this.mnuTabClientes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mnuTabClientes.Name = "mnuTabClientes";
             this.mnuTabClientes.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.mnuTabClientes.Size = new System.Drawing.Size(1372, 679);
+            this.mnuTabClientes.Size = new System.Drawing.Size(1372, 637);
             this.mnuTabClientes.TabIndex = 1;
             this.mnuTabClientes.Text = "Clientes";
             // 
@@ -635,7 +782,7 @@ namespace UI.Desktop
             this.mnuTabInventario.Location = new System.Drawing.Point(4, 39);
             this.mnuTabInventario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mnuTabInventario.Name = "mnuTabInventario";
-            this.mnuTabInventario.Size = new System.Drawing.Size(1372, 679);
+            this.mnuTabInventario.Size = new System.Drawing.Size(1372, 637);
             this.mnuTabInventario.TabIndex = 2;
             this.mnuTabInventario.Text = "Inventario";
             // 
@@ -655,7 +802,7 @@ namespace UI.Desktop
             this.tabControlInventario.Name = "tabControlInventario";
             this.tabControlInventario.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabControlInventario.SelectedIndex = 0;
-            this.tabControlInventario.Size = new System.Drawing.Size(1372, 632);
+            this.tabControlInventario.Size = new System.Drawing.Size(1372, 590);
             this.tabControlInventario.TabIndex = 1;
             // 
             // TabStock
@@ -666,7 +813,7 @@ namespace UI.Desktop
             this.TabStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TabStock.Name = "TabStock";
             this.TabStock.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TabStock.Size = new System.Drawing.Size(1364, 604);
+            this.TabStock.Size = new System.Drawing.Size(1364, 562);
             this.TabStock.TabIndex = 0;
             this.TabStock.Text = "Stock";
             // 
@@ -715,7 +862,7 @@ namespace UI.Desktop
             this.TabProveedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TabProveedor.Name = "TabProveedor";
             this.TabProveedor.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TabProveedor.Size = new System.Drawing.Size(1364, 604);
+            this.TabProveedor.Size = new System.Drawing.Size(1364, 562);
             this.TabProveedor.TabIndex = 1;
             this.TabProveedor.Text = "Proveedor";
             // 
@@ -853,7 +1000,7 @@ namespace UI.Desktop
             this.TabInsumo.Location = new System.Drawing.Point(4, 24);
             this.TabInsumo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TabInsumo.Name = "TabInsumo";
-            this.TabInsumo.Size = new System.Drawing.Size(1364, 604);
+            this.TabInsumo.Size = new System.Drawing.Size(1364, 562);
             this.TabInsumo.TabIndex = 2;
             this.TabInsumo.Text = "Insumo";
             // 
@@ -982,7 +1129,7 @@ namespace UI.Desktop
             this.TabMovimientos.Location = new System.Drawing.Point(4, 24);
             this.TabMovimientos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TabMovimientos.Name = "TabMovimientos";
-            this.TabMovimientos.Size = new System.Drawing.Size(1364, 604);
+            this.TabMovimientos.Size = new System.Drawing.Size(1364, 562);
             this.TabMovimientos.TabIndex = 3;
             this.TabMovimientos.Text = "Movimientos";
             // 
@@ -1176,6 +1323,159 @@ namespace UI.Desktop
             this.tabSelectorInventario.TabIndex = 0;
             this.tabSelectorInventario.Text = "TabSelectorInventario";
             // 
+            // tabPlanificacion
+            // 
+            this.tabPlanificacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.tabPlanificacion.Controls.Add(this.tabControlPlanificacion);
+            this.tabPlanificacion.Controls.Add(this.tabSelectorPlanificacion);
+            this.tabPlanificacion.Location = new System.Drawing.Point(4, 39);
+            this.tabPlanificacion.Name = "tabPlanificacion";
+            this.tabPlanificacion.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPlanificacion.Size = new System.Drawing.Size(1372, 637);
+            this.tabPlanificacion.TabIndex = 3;
+            this.tabPlanificacion.Text = "Planificación";
+            // 
+            // tabControlPlanificacion
+            // 
+            this.tabControlPlanificacion.Controls.Add(this.tabPendientes);
+            this.tabControlPlanificacion.Controls.Add(this.tabEnProceso);
+            this.tabControlPlanificacion.Depth = 0;
+            this.tabControlPlanificacion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPlanificacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tabControlPlanificacion.Location = new System.Drawing.Point(3, 51);
+            this.tabControlPlanificacion.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tabControlPlanificacion.Multiline = true;
+            this.tabControlPlanificacion.Name = "tabControlPlanificacion";
+            this.tabControlPlanificacion.SelectedIndex = 0;
+            this.tabControlPlanificacion.Size = new System.Drawing.Size(1366, 583);
+            this.tabControlPlanificacion.TabIndex = 1;
+            // 
+            // tabPendientes
+            // 
+            this.tabPendientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.tabPendientes.Controls.Add(this.btnInciarTrabajo);
+            this.tabPendientes.Controls.Add(this.listTrabajosPendientes);
+            this.tabPendientes.Location = new System.Drawing.Point(4, 24);
+            this.tabPendientes.Name = "tabPendientes";
+            this.tabPendientes.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPendientes.Size = new System.Drawing.Size(1358, 555);
+            this.tabPendientes.TabIndex = 0;
+            this.tabPendientes.Text = "Trabajos Pendientes";
+            // 
+            // btnInciarTrabajo
+            // 
+            this.btnInciarTrabajo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnInciarTrabajo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnInciarTrabajo.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnInciarTrabajo.Depth = 0;
+            this.btnInciarTrabajo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnInciarTrabajo.HighEmphasis = true;
+            this.btnInciarTrabajo.Icon = null;
+            this.btnInciarTrabajo.Location = new System.Drawing.Point(891, 33);
+            this.btnInciarTrabajo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnInciarTrabajo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnInciarTrabajo.Name = "btnInciarTrabajo";
+            this.btnInciarTrabajo.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnInciarTrabajo.Size = new System.Drawing.Size(73, 36);
+            this.btnInciarTrabajo.TabIndex = 1;
+            this.btnInciarTrabajo.Text = "Iniciar";
+            this.btnInciarTrabajo.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnInciarTrabajo.UseAccentColor = false;
+            this.btnInciarTrabajo.UseVisualStyleBackColor = false;
+            // 
+            // listTrabajosPendientes
+            // 
+            this.listTrabajosPendientes.AutoSizeTable = false;
+            this.listTrabajosPendientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.listTrabajosPendientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listTrabajosPendientes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnOrden,
+            this.columnServicio,
+            this.columnTipoPrenda,
+            this.columnOrdenItem,
+            this.columnState,
+            this.columnPriority});
+            this.listTrabajosPendientes.Depth = 0;
+            this.listTrabajosPendientes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listTrabajosPendientes.FullRowSelect = true;
+            this.listTrabajosPendientes.HideSelection = false;
+            this.listTrabajosPendientes.Location = new System.Drawing.Point(155, 33);
+            this.listTrabajosPendientes.MinimumSize = new System.Drawing.Size(200, 100);
+            this.listTrabajosPendientes.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listTrabajosPendientes.MouseState = MaterialSkin.MouseState.OUT;
+            this.listTrabajosPendientes.Name = "listTrabajosPendientes";
+            this.listTrabajosPendientes.OwnerDraw = true;
+            this.listTrabajosPendientes.Size = new System.Drawing.Size(720, 382);
+            this.listTrabajosPendientes.TabIndex = 0;
+            this.listTrabajosPendientes.UseCompatibleStateImageBehavior = false;
+            this.listTrabajosPendientes.View = System.Windows.Forms.View.Details;
+            // 
+            // columnOrden
+            // 
+            this.columnOrden.Text = "Orden";
+            this.columnOrden.Width = 100;
+            // 
+            // columnServicio
+            // 
+            this.columnServicio.Text = "Servicio";
+            this.columnServicio.Width = 150;
+            // 
+            // columnTipoPrenda
+            // 
+            this.columnTipoPrenda.Text = "Tipo de Prenda";
+            this.columnTipoPrenda.Width = 150;
+            // 
+            // columnOrdenItem
+            // 
+            this.columnOrdenItem.Text = "Orden Item";
+            this.columnOrdenItem.Width = 120;
+            // 
+            // columnState
+            // 
+            this.columnState.Text = "Estado";
+            this.columnState.Width = 100;
+            // 
+            // columnPriority
+            // 
+            this.columnPriority.Text = "Prioridad";
+            this.columnPriority.Width = 100;
+            // 
+            // tabEnProceso
+            // 
+            this.tabEnProceso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.tabEnProceso.Location = new System.Drawing.Point(4, 24);
+            this.tabEnProceso.Name = "tabEnProceso";
+            this.tabEnProceso.Padding = new System.Windows.Forms.Padding(3);
+            this.tabEnProceso.Size = new System.Drawing.Size(1358, 555);
+            this.tabEnProceso.TabIndex = 1;
+            this.tabEnProceso.Text = "Trabajos en Proceso";
+            // 
+            // tabSelectorPlanificacion
+            // 
+            this.tabSelectorPlanificacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.tabSelectorPlanificacion.BaseTabControl = this.tabControlPlanificacion;
+            this.tabSelectorPlanificacion.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
+            this.tabSelectorPlanificacion.Depth = 0;
+            this.tabSelectorPlanificacion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tabSelectorPlanificacion.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.tabSelectorPlanificacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tabSelectorPlanificacion.Location = new System.Drawing.Point(3, 3);
+            this.tabSelectorPlanificacion.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tabSelectorPlanificacion.Name = "tabSelectorPlanificacion";
+            this.tabSelectorPlanificacion.Size = new System.Drawing.Size(1366, 48);
+            this.tabSelectorPlanificacion.TabIndex = 0;
+            this.tabSelectorPlanificacion.Text = "tabSelectorPlanificacion";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.tabPage2.Location = new System.Drawing.Point(4, 39);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1372, 637);
+            this.tabPage2.TabIndex = 4;
+            this.tabPage2.Text = "tabPage2";
+            // 
             // imageList1
             // 
             this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
@@ -1271,7 +1571,6 @@ namespace UI.Desktop
             this.Controls.Add(this.epUser);
             this.Controls.Add(this.mnuPrincipal);
             this.DrawerAutoHide = false;
-            this.DrawerIsOpen = true;
             this.DrawerShowIconsWhenHidden = true;
             this.DrawerTabControl = this.mnuPrincipal;
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1297,6 +1596,10 @@ namespace UI.Desktop
             this.TabInsumo.PerformLayout();
             this.TabMovimientos.ResumeLayout(false);
             this.TabMovimientos.PerformLayout();
+            this.tabPlanificacion.ResumeLayout(false);
+            this.tabControlPlanificacion.ResumeLayout(false);
+            this.tabPendientes.ResumeLayout(false);
+            this.tabPendientes.PerformLayout();
             this.epUser.ResumeLayout(false);
             this.epUser.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1305,8 +1608,6 @@ namespace UI.Desktop
         }
 
         #endregion
-
-        private MaterialSkin.Controls.MaterialButton btnNuevoCliente;
         private MaterialSkin.Controls.MaterialTabControl mnuPrincipal;
         private System.Windows.Forms.TabPage mnuTabOrdenes;
         private System.Windows.Forms.TabPage mnuTabClientes;
@@ -1371,15 +1672,12 @@ namespace UI.Desktop
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private MaterialSkin.Controls.MaterialListView listOrdenes;
-        private System.Windows.Forms.ColumnHeader columnNroOrden;
+        private System.Windows.Forms.ColumnHeader columnNro;
         private System.Windows.Forms.ColumnHeader columnIdCliente;
         private System.Windows.Forms.ColumnHeader columnIdEmpleado;
         private System.Windows.Forms.ColumnHeader columnIdFactura;
         private System.Windows.Forms.ColumnHeader columnPrioridad;
         private System.Windows.Forms.ColumnHeader columnFechaEntrada;
-        private System.Windows.Forms.ColumnHeader columnTiempoEntregaEstimado;
-        private System.Windows.Forms.ColumnHeader columnTiempoEntregaReal;
-        private System.Windows.Forms.ColumnHeader columnEstado;
         private MaterialSkin.Controls.MaterialButton btnEliminarOrden;
         private MaterialSkin.Controls.MaterialButton btnNuevaOrden;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
@@ -1395,7 +1693,28 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialLabel lblFiltrarFecha;
         private System.Windows.Forms.DateTimePicker dtpFiltrarFechaIngreso;
         private MaterialSkin.Controls.MaterialButton btnActualizarIngresos;
-        private MaterialSkin.Controls.MaterialButton btnOrdenesCliente;
+        private MaterialSkin.Controls.MaterialButton btnEditarOrden;
+        private System.Windows.Forms.ColumnHeader columnEstado;
+        private MaterialSkin.Controls.MaterialButton btnEliminarEmpleado;
+        private MaterialSkin.Controls.MaterialButton btnEditarEmpleado;
+        private MaterialSkin.Controls.MaterialButton btnEliminarTipoPrenda;
+        private MaterialSkin.Controls.MaterialButton btnEditarTipoPrenda;
+        private MaterialSkin.Controls.MaterialButton EliminarServicioTipoPrenda;
+        private MaterialSkin.Controls.MaterialButton btnEditarServicioTipoPrenda;
+        private System.Windows.Forms.TabPage tabPlanificacion;
+        private MaterialSkin.Controls.MaterialTabControl tabControlPlanificacion;
+        private System.Windows.Forms.TabPage tabPendientes;
+        private System.Windows.Forms.TabPage tabEnProceso;
+        private MaterialSkin.Controls.MaterialTabSelector tabSelectorPlanificacion;
+        private System.Windows.Forms.TabPage tabPage2;
+        private MaterialSkin.Controls.MaterialButton btnInciarTrabajo;
+        private MaterialSkin.Controls.MaterialListView listTrabajosPendientes;
+        private System.Windows.Forms.ColumnHeader columnOrden;
+        private System.Windows.Forms.ColumnHeader columnServicio;
+        private System.Windows.Forms.ColumnHeader columnTipoPrenda;
+        private System.Windows.Forms.ColumnHeader columnOrdenItem;
+        private System.Windows.Forms.ColumnHeader columnState;
+        private System.Windows.Forms.ColumnHeader columnPriority;
     }
 }
 

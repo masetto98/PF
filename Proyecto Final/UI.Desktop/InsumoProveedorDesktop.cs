@@ -22,6 +22,8 @@ namespace UI.Desktop
         private readonly InsumoProveedorLogic _insumoProveedorLogic;
         public InsumoProveedor InsumoProveedorActual { set; get; }
         private LavanderiaContext _context;
+        public List<String> _unidadesMedida;
+
         public InsumoProveedorDesktop(LavanderiaContext context)
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace UI.Desktop
             _proveedorLogic = new ProveedorLogic(new ProveedorAdapter(context));
             _insumoProveedorLogic = new InsumoProveedorLogic(new InsumoProveedorAdapter(context));
             _context = context;
+            _unidadesMedida = new List<string>();
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
@@ -49,6 +52,7 @@ namespace UI.Desktop
                 List<Insumo> insumos = _insumoLogic.GetAll();
                 this.cbInsumos.DataSource = insumos;
                 this.cbInsumos.SelectedIndex = 0;
+                
             }
             catch (Exception e)
             {
@@ -84,6 +88,7 @@ namespace UI.Desktop
                 List<Insumo> insumos = _insumoLogic.GetAll();
                 this.cbInsumos.DataSource = insumos;
                 this.cbInsumos.SelectedIndex = cbInsumos.FindStringExact(InsumoProveedorActual.Insumo.Descripcion);
+
                 
             }
             catch (Exception e)
@@ -123,7 +128,7 @@ namespace UI.Desktop
                     InsumoProveedorActual.IdInsumo = (int)this.cbInsumos.SelectedValue;
                     InsumoProveedorActual.IdProveedor = (int)this.cbProveedores.SelectedValue;
                     InsumoProveedorActual.FechaIngreso = this.dtpFechaIngreso.Value;
-                    InsumoProveedorActual.Cantidad = double.Parse(this.txtCantidad.Text);
+                    InsumoProveedorActual.Cantidad = ConvertirUnidadesConsumo(Int32.Parse(this.txtCantidad.Text));
                 }
                 
                 switch (Modos)
@@ -139,6 +144,38 @@ namespace UI.Desktop
             catch (Exception e)
             {
                 MessageBox.Show(e.Message, "Ingresos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void SetearMedidas(int unidad)
+        {
+
+            _unidadesMedida.Clear();
+            if (unidad == 1)
+            {
+                
+                _unidadesMedida.Add("Litros(1L/1000Cm3/1000ml");
+                _unidadesMedida.Add("Mililitros / Cm3");
+            }
+            if (unidad == 2)
+            {
+                
+                _unidadesMedida.Add("Kilogramos(1Kg / 1000gr)");
+                _unidadesMedida.Add("Gramos(gr)");
+
+            }
+        }
+
+        private double ConvertirUnidadesConsumo(int _cantidad)
+        {
+
+            if (this.cmbUnidadMedida.SelectedText == "Mililitros/Cm3" || this.cmbUnidadMedida.SelectedText == "Gramos(gr)")
+            {
+                return _cantidad / 1000;
+            }
+            else
+            {
+                return _cantidad;
             }
         }
 
@@ -214,12 +251,28 @@ namespace UI.Desktop
             InsumoDesktop frmIns = new InsumoDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmIns.ShowDialog();
         }
-
+          
         private void cbInsumos_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            Insumo insumoActual = _insumoLogic.GetOne((int)this.cbInsumos.SelectedValue);
+            int unity = (int)insumoActual.UnidadMedida;
+            SetearMedidas(unity);
+            this.cmbUnidadMedida.DataSource = _unidadesMedida;
+
+        }
+        /*
+        private void cbInsumos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Insumo insumoActual = _insumoLogic.GetOne((int)this.cbInsumos.SelectedValue);
+            SetearMedidas((int)insumoActual.UnidadMedida);
+            this.cmbUnidadMedida.DataSource = _unidadesMedida;
+        }/*
+
+        /*private void cbInsumos_SelectionChangeCommitted(object sender, EventArgs e)
         {
             int IDInsumo = (int)this.cbInsumos.SelectedValue;
             Insumo insumo = _insumoLogic.GetOne(IDInsumo);
-            this.txtUnidadMedidaIngreso.Text = insumo.UnidadMedida;
-        }
+            this.txtUnidadMedidaIngreso.Text = insumo.UnidadMedida.ToString();
+        }*/
     }
 }

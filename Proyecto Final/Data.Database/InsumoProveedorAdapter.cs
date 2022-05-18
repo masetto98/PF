@@ -34,7 +34,10 @@ namespace Data.Database
         {
             try
             {
-                return _context.InsumosProveedores.FirstOrDefault(ip => ip.IdInsumo == idInsumo && ip.IdProveedor == idProveedor && ip.FechaIngreso == fechaIngreso);
+                return _context.InsumosProveedores
+                    .Include(ip => ip.Proveedor)
+                    .Include(ip => ip.Insumo)
+                    .FirstOrDefault(ip => ip.IdInsumo == idInsumo && ip.IdProveedor == idProveedor && ip.FechaIngreso == fechaIngreso);
             }
             catch (Exception e)
             {

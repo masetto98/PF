@@ -45,7 +45,7 @@ namespace UI.Desktop
             this.btnIngresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnIngresar.HighEmphasis = true;
             this.btnIngresar.Icon = null;
-            this.btnIngresar.Location = new System.Drawing.Point(568, 315);
+            this.btnIngresar.Location = new System.Drawing.Point(175, 250);
             this.btnIngresar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnIngresar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnIngresar.Name = "btnIngresar";
@@ -67,7 +67,7 @@ namespace UI.Desktop
             this.txtNombreUsuario.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtNombreUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.txtNombreUsuario.LeadingIcon = null;
-            this.txtNombreUsuario.Location = new System.Drawing.Point(422, 156);
+            this.txtNombreUsuario.Location = new System.Drawing.Point(29, 113);
             this.txtNombreUsuario.MaxLength = 50;
             this.txtNombreUsuario.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNombreUsuario.Multiline = false;
@@ -84,7 +84,7 @@ namespace UI.Desktop
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialLabel1.Location = new System.Drawing.Point(422, 134);
+            this.materialLabel1.Location = new System.Drawing.Point(29, 91);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(136, 19);
@@ -98,7 +98,7 @@ namespace UI.Desktop
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialLabel2.Location = new System.Drawing.Point(422, 209);
+            this.materialLabel2.Location = new System.Drawing.Point(29, 166);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(82, 19);
@@ -137,6 +137,7 @@ namespace UI.Desktop
             // 
             // frmLogin
             // 
+            this.AcceptButton = this.btnIngresar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(755, 367);
@@ -149,7 +150,7 @@ namespace UI.Desktop
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmLogin";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ingresar";
             this.ResumeLayout(false);
             this.PerformLayout();

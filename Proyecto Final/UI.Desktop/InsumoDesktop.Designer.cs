@@ -38,7 +38,7 @@ namespace UI.Desktop
             this.btnAceptarInsumo = new MaterialSkin.Controls.MaterialButton();
             this.btnCancelar = new MaterialSkin.Controls.MaterialButton();
             this.lblUnidadMedida = new MaterialSkin.Controls.MaterialLabel();
-            this.txtUnidadMedida = new MaterialSkin.Controls.MaterialTextBox();
+            this.cmbUnidadMedida = new MaterialSkin.Controls.MaterialComboBox();
             this.SuspendLayout();
             // 
             // txtIDInsumo
@@ -199,31 +199,34 @@ namespace UI.Desktop
             this.lblUnidadMedida.TabIndex = 8;
             this.lblUnidadMedida.Text = "Unidad de medida";
             // 
-            // txtUnidadMedida
+            // cmbUnidadMedida
             // 
-            this.txtUnidadMedida.AnimateReadOnly = false;
-            this.txtUnidadMedida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.txtUnidadMedida.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtUnidadMedida.Depth = 0;
-            this.txtUnidadMedida.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtUnidadMedida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.txtUnidadMedida.LeadingIcon = null;
-            this.txtUnidadMedida.Location = new System.Drawing.Point(370, 200);
-            this.txtUnidadMedida.MaxLength = 50;
-            this.txtUnidadMedida.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtUnidadMedida.Multiline = false;
-            this.txtUnidadMedida.Name = "txtUnidadMedida";
-            this.txtUnidadMedida.Size = new System.Drawing.Size(131, 50);
-            this.txtUnidadMedida.TabIndex = 9;
-            this.txtUnidadMedida.Text = "";
-            this.txtUnidadMedida.TrailingIcon = null;
+            this.cmbUnidadMedida.AutoResize = false;
+            this.cmbUnidadMedida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.cmbUnidadMedida.Depth = 0;
+            this.cmbUnidadMedida.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cmbUnidadMedida.DropDownHeight = 174;
+            this.cmbUnidadMedida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbUnidadMedida.DropDownWidth = 121;
+            this.cmbUnidadMedida.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cmbUnidadMedida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cmbUnidadMedida.FormattingEnabled = true;
+            this.cmbUnidadMedida.IntegralHeight = false;
+            this.cmbUnidadMedida.ItemHeight = 43;
+            this.cmbUnidadMedida.Location = new System.Drawing.Point(370, 201);
+            this.cmbUnidadMedida.MaxDropDownItems = 4;
+            this.cmbUnidadMedida.MouseState = MaterialSkin.MouseState.OUT;
+            this.cmbUnidadMedida.Name = "cmbUnidadMedida";
+            this.cmbUnidadMedida.Size = new System.Drawing.Size(144, 49);
+            this.cmbUnidadMedida.StartIndex = 0;
+            this.cmbUnidadMedida.TabIndex = 9;
             // 
             // InsumoDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(568, 370);
-            this.Controls.Add(this.txtUnidadMedida);
+            this.Controls.Add(this.cmbUnidadMedida);
             this.Controls.Add(this.lblUnidadMedida);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptarInsumo);
@@ -251,6 +254,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnAceptarInsumo;
         private MaterialSkin.Controls.MaterialButton btnCancelar;
         private MaterialSkin.Controls.MaterialLabel lblUnidadMedida;
-        private MaterialSkin.Controls.MaterialTextBox txtUnidadMedida;
+        private MaterialSkin.Controls.MaterialComboBox cmbUnidadMedida;
     }
 }

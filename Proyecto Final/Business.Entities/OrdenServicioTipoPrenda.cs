@@ -13,12 +13,13 @@ namespace Business.Entities
         private int _idServicio;
         private int _idTipoPrenda;
         private int _ordenItem;
+        private DateTime _fecha_cambio_prioridad;
         private Estados _estado;
+        private Prioridades _prioridad;
         private Orden _orden;
         private ServicioTipoPrenda _servicioTipoPrenda;
         private List<MaquinaOrdenServicioTipoPrenda> _maquinasItem;// un item de orden puede pasar por varias maquinas como en el caso de lavado y secado que debe pasar por el lavaropas y secarropas.
-        //private Servicio _servicio;
-        //private TipoPrenda _tipoPrenda;
+        
         public enum Estados
         {
             Pendiente = 1,
@@ -26,22 +27,28 @@ namespace Business.Entities
             Finalizado = 3,
         }
 
+        public enum Prioridades
+        {
+            Baja = 1,
+            Media = 2,
+            Alta = 3,
+        }
 
-        //[ForeignKey("Orden")]
+        
         [Column("nro_orden")]
         public int NroOrden
         {
             get { return _nroOrden; }
             set { _nroOrden = value; }
         }
-        //[ForeignKey("ServicioTipoPrenda")]
+        
         [Column("id_servicio")]
         public int IdServicio
         {
             get { return _idServicio; }
             set { _idServicio = value; }
         }
-        //[ForeignKey("ServicioTipoPrenda")]
+        
         [Column("id_tp")]
         public int IdTipoPrenda
         {
@@ -60,6 +67,19 @@ namespace Business.Entities
             get { return _estado; }
             set { _estado = value; }
         }
+        [Column("prioridad")]
+        public Prioridades Prioridad
+        {
+            get { return _prioridad; }
+            set { _prioridad = value; }
+        }
+        [Column("fecha_cambio_prioridad")]
+        public DateTime FechaCambioPrioridad
+        {
+            get { return _fecha_cambio_prioridad; }
+            set { _fecha_cambio_prioridad = value; }
+        }
+
 
         public ServicioTipoPrenda ServicioTipoPrenda
         {
@@ -78,19 +98,5 @@ namespace Business.Entities
             get { return _maquinasItem; }
             set { _maquinasItem = value; }
         }
-
-        /*public Servicio Servicio
-        {
-            get { return _servicio; }
-            set { _servicio = value; }
-        }
-
-        public TipoPrenda TipoPrenda
-        {
-            get { return _tipoPrenda; }
-            set { _tipoPrenda = value; }
-        }*/
-
-
     }
 }

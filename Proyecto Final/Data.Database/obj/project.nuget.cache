@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "j67m7WMozjGqbuheQiWV/YD6+YpY3PD4rw8LKS73zCjLw9Z79ijsb86+SCN5qtjX34GIfRi4M8lVVWjntABIUg==",
+=======
+  "dgSpecHash": "rwOZ80OmmEedshVmhu91THInFcohEwXCCfvBXNA8dZT4DS12wuMIhxuCcEueeGgFB768P3YftgWFKbJG7TYeQA==",
+>>>>>>> main
   "success": true,
   "projectFilePath": "D:\\Proyectos\\PF\\Proyecto Final\\Data.Database\\Data.Database.csproj",
   "expectedPackageFiles": [

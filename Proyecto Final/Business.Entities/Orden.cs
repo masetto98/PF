@@ -14,14 +14,15 @@ namespace Business.Entities
         private int _idCliente;
         private int _idEmpleado;
         private int _nroFactura;
-        private string _prioridad;
-        [DataType(DataType.Date)]
+        //private string _prioridad;
+        //[DataType(DataType.Date)]
         private DateTime _fechaEntrada;
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         private DateTime _fechaSalida;
         private TimeSpan _tiempoFinalizacionEstimado;
         private TimeSpan _tiempoFinalizacionReal;
         private Estados _estado;
+        private Prioridades _prioridad;
         private Cliente _cliente;
         private Empleado _empleado;
         private Factura _factura;
@@ -33,7 +34,14 @@ namespace Business.Entities
             Procesando = 2,
             Finalizado = 3,
         }
-        
+
+        public enum Prioridades
+        {
+            Baja = 1,
+            Media = 2,
+            Alta = 3,
+        }
+
         [Key]
         [Column("nro_orden")]
         public int NroOrden
@@ -63,7 +71,7 @@ namespace Business.Entities
             set { _nroFactura = value; }
         }
         [Column("prioridad")]
-        public string Prioridad
+        public Prioridades Prioridad
         {
             get { return _prioridad; }
             set { _prioridad = value; }

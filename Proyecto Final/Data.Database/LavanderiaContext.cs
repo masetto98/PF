@@ -30,15 +30,6 @@ namespace Data.Database
             modelBuilder.Entity<OrdenServicioTipoPrenda>()
                 .ToTable("ordenes_servicios_tipoprendas");
 
-            modelBuilder.Entity<Consumo>()
-                .HasOne(c => c.InsumoServicioTipoPrenda)
-                .WithMany(istp => istp.HistoricoConsumos)
-                .HasForeignKey( c=> new {c.IdInsumo,c.IdServicio,c.IdTipoPrenda})
-                .OnDelete(DeleteBehavior.NoAction);
-           
-            modelBuilder.Entity<Consumo>()
-                .HasKey(c => new { c.IdInsumo, c.IdServicio,c.IdTipoPrenda,c.FechaDesde});
-
             modelBuilder.Entity<InsumoProveedor>()
                 .HasOne(ip => ip.Proveedor)
                 .WithMany(p => p.InsumosProveedor)
@@ -120,7 +111,7 @@ namespace Data.Database
                 .HasOne(m => m.Orden)
                 .WithMany(o => o.ItemsPedidos)
                 .HasForeignKey(m => m.NroOrden)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.ClientCascade);
 
             modelBuilder.Entity<OrdenServicioTipoPrenda>()
                 .HasOne(m => m.ServicioTipoPrenda)
@@ -167,7 +158,7 @@ namespace Data.Database
 
         public DbSet<Cliente>? Clientes { get; set; }
         public DbSet<TipoPrenda>? TipoPrendas { get; set; }
-        public DbSet<Consumo>? Consumos { get; set; }
+        
         public DbSet<Empleado>? Empleados { get; set; }
         public DbSet<Factura>? Facturas { get; set; }
         public DbSet<Insumo>? Insumos { get; set; }

@@ -12,7 +12,7 @@ namespace Business.Entities
     {
         private int _idProveedor;
         private int _idInsumo;
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         private DateTime _fechaIngreso;
         private double _cantidad;
         private Proveedor _proveedor;

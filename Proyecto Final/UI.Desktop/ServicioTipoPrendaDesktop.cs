@@ -18,12 +18,16 @@ namespace UI.Desktop
     public partial class ServicioTipoPrendaDesktop : ApplicationForm
     {
         readonly MaterialSkin.MaterialSkinManager materialSkinManager;
-        
+
         public ServicioTipoPrenda ServicioTipoPrendaActual { set; get; }
         public Precio PrecioActual { set; get; }
+        public List<InsumoServicioTipoPrenda> _consumos;
         private readonly ServicioTipoPrendaLogic _servicioTipoPrendaLogic;
         private readonly ServicioLogic _servicioLogic;
         private readonly TipoPrendaLogic _tipoPrendaLogic;
+        private readonly InsumoLogic _insumoLogic;
+        private readonly InsumoServicioTipoPrendaLogic _insumoServicioTipoPrendaLogic;
+        public List<String> _unidadesMedida;
 
         public ServicioTipoPrendaDesktop(LavanderiaContext context)
         {
@@ -31,6 +35,9 @@ namespace UI.Desktop
             _servicioTipoPrendaLogic = new ServicioTipoPrendaLogic(new ServicioTipoPrendaAdapter(context));
             _servicioLogic = new ServicioLogic(new ServicioAdapter(context));
             _tipoPrendaLogic = new TipoPrendaLogic(new TipoPrendaAdapter(context));
+            _insumoLogic = new InsumoLogic(new InsumoAdapter(context));
+            _insumoServicioTipoPrendaLogic = new InsumoServicioTipoPrendaLogic(new InsumoServicioTipoPrendaAdapter(context));
+
 
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
@@ -45,8 +52,10 @@ namespace UI.Desktop
             {
                 List<Servicio> servicios = _servicioLogic.GetAll();
                 List<TipoPrenda> tipoPrendas = _tipoPrendaLogic.GetAll();
+                List<Insumo> insumos = _insumoLogic.GetAll();
                 this.cmbServicios.DataSource = servicios;
                 this.cmbTipoPrendas.DataSource = tipoPrendas;
+                this.cmbInsumos.DataSource = insumos;
             }
             catch (Exception e)
             {
@@ -164,20 +173,20 @@ namespace UI.Desktop
 
         public override void GuardarCambios()
         {
-            //try
-            //{
-                //if (true)
-                //{
+            try
+            {
+                if (true)
+                {
                     MapearADatos();
                     _servicioTipoPrendaLogic.Save(ServicioTipoPrendaActual);
                     Close();
-                //}
+                }
             
-            //}
-            //catch (Exception e)
-            //{
-            ///    MessageBox.Show(e.Message, "Servicio-TipoPrenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Servicio-TipoPrenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public virtual void Eliminar()
@@ -219,6 +228,87 @@ namespace UI.Desktop
                     Close();
                     break;
 
+            }
+
+
+        }
+
+        public void ListarConsumos() 
+        {
+            listConsumos.Items.Clear();
+            foreach (InsumoServicioTipoPrenda o in _consumos)
+            {
+                ListViewItem item = new ListViewItem((listConsumos.Items.Count + 1).ToString());
+                item.SubItems.Add(o.Insumo.Descripcion.ToString());
+                item.SubItems.Add(o.Cantidad.ToString());
+                listConsumos.Items.Add(item);
+            }
+        }
+
+        private void btnAgregarConsumo_Click(object sender, EventArgs e)
+        {
+            InsumoServicioTipoPrenda insumoServicioTipoPrenda = _insumoServicioTipoPrendaLogic.GetOne((int)this.cmbServicios.SelectedValue, (int)this.cmbTipoPrendas.SelectedValue, Int32.Parse(this.cmbInsumos.SelectedValue.ToString()));
+            if (insumoServicioTipoPrenda is null)
+            {
+                insumoServicioTipoPrenda = new InsumoServicioTipoPrenda();
+                insumoServicioTipoPrenda.ServicioTipoPrenda = _servicioTipoPrendaLogic.GetOne((int)this.cmbServicios.SelectedValue, (int)this.cmbTipoPrendas.SelectedValue);
+                insumoServicioTipoPrenda.Insumo = _insumoLogic.GetOne(Int32.Parse(this.cmbInsumos.SelectedValue.ToString()));
+                SetearMedidas((int)insumoServicioTipoPrenda.Insumo.UnidadMedida);
+                this.cmbUnidadMedida.DataSource = _unidadesMedida;
+                insumoServicioTipoPrenda.Cantidad = ConvertirUnidadesConsumo(Int32.Parse(this.txtCantidad.Text));
+            }
+            ListarConsumos();
+        }
+        #region ---------------- Unidades de medida -------------------------
+        private void SetearMedidas(int unidad) 
+        {
+            _unidadesMedida.Clear();
+            if (unidad == 1)
+            {
+                _unidadesMedida.Add("Litros(1L/1000Cm3/1000ml");
+                _unidadesMedida.Add("Mililitros / Cm3");
+            }
+            else 
+            {
+                _unidadesMedida.Add("Kilogramos(1Kg / 1000gr)");
+                _unidadesMedida.Add("Gramos(gr)");
+                
+            }
+        }
+
+        private double ConvertirUnidadesConsumo(int _cantidad) 
+        {
+            
+            if (this.cmbUnidadMedida.SelectedText == "Mililitros/Cm3" || this.cmbUnidadMedida.SelectedText == "Gramos(gr)")
+            { 
+                return _cantidad/1000; 
+            }
+            else
+            {
+                return _cantidad;
+            }
+        }
+        #endregion
+
+        private void btnEliminarConsumo_Click(object sender, EventArgs e)
+        {
+            if(listConsumos.SelectedItems.Count > 0)
+            {
+                var _itemDelete = _consumos.FindLast(
+                    delegate (InsumoServicioTipoPrenda item)
+                    {
+                        return
+                            item.ServicioTipoPrenda.Servicio.IdServicio == (int)this.cmbServicios.SelectedValue
+                            &&
+                            item.ServicioTipoPrenda.TipoPrenda.IdTipoPrenda == (int)this.cmbTipoPrendas.SelectedValue
+                            &&
+                            item.Insumo.IdInsumo== (int)this.cmbInsumos.SelectedValue;
+                    }
+                );
+                //int _indice = listItemsServicio.SelectedItems.IndexOf(listItemsServicio.SelectedItems[0]);
+                //_itemsServicio.FindLastIndex(listItemsServicio.SelectedItems[0])
+                _consumos.Remove(_itemDelete);
+                listConsumos.Items.Remove(listConsumos.SelectedItems[0]);
             }
 
 
