@@ -46,7 +46,7 @@ namespace UI.Desktop
             this.txtNombre.Enabled = false;
             this.txtRazonSocial.Enabled = false;
             this.txtIdCliente.Enabled = false;
-            this.dtpFechaIngreso.Value = DateTime.Now;
+            
             _total = 0;
 
             materialSkinManager = MaterialSkinManager.Instance;
@@ -154,7 +154,7 @@ namespace UI.Desktop
                 OrdenActual.Empleado = Singleton.getInstance().EmpleadoLogged;
                 OrdenActual.Factura = _facturaLogic.GetOne(1);
                 OrdenActual.FechaEntrada = DateTime.Now;
-                OrdenActual.FechaSalida = dtpFechaSalida.MaxDate;
+                //OrdenActual.FechaSalida = (DateTime)dtpFechaSalida.MaxDate;
                 OrdenActual.Estado = Orden.Estados.Pendiente;
                 OrdenActual.Prioridad = (Business.Entities.Orden.Prioridades)Enum.Parse(typeof(Business.Entities.Orden.Prioridades), cmbPrioridad.SelectedItem.ToString());
                 AsignarPrioridadItems();
@@ -225,6 +225,8 @@ namespace UI.Desktop
             itemActual.ServicioTipoPrenda = servicioTipoPrenda;
             itemActual.Estado = OrdenServicioTipoPrenda.Estados.Pendiente;
             itemActual.OrdenItem = ContarItems(servicioTipoPrenda.IdServicio,servicioTipoPrenda.IdTipoPrenda);
+            itemActual.Prioridad = (OrdenServicioTipoPrenda.Prioridades)servicioTipoPrenda.Prioridad;
+            itemActual.FechaCambioPrioridad = DateTime.Now;
             _itemsServicio.Add(itemActual);
             
         }
@@ -236,10 +238,11 @@ namespace UI.Desktop
             {
                 return 1;
             }
-            else {
+            else 
+            {
                 foreach (OrdenServicioTipoPrenda item in _itemsServicio)
                 {
-                    if (item.IdServicio == idServicio && item.IdTipoPrenda == idTipoPrenda)
+                    if (item.ServicioTipoPrenda.IdServicio == idServicio && item.ServicioTipoPrenda.IdTipoPrenda == idTipoPrenda)
                     {
                         _cont += 1;
                     }
@@ -369,19 +372,19 @@ namespace UI.Desktop
 
         public override void GuardarCambios()
         {
-            //try
-            //{
+            try
+            {
                 if (true)
                 {
                     MapearADatos();
                     _ordenLogic.Save(OrdenActual);
                     Close();
                 }
-            //}
-            //catch (Exception e)
-            //{
-            //    MessageBox.Show(e.Message, "Servicio-TipoPrenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Servicio-TipoPrenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public virtual void Eliminar()

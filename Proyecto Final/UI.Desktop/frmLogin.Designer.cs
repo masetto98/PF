@@ -116,7 +116,7 @@ namespace UI.Desktop
             this.txtContrasenia.HelperText = "hola";
             this.txtContrasenia.HideSelection = true;
             this.txtContrasenia.LeadingIcon = null;
-            this.txtContrasenia.Location = new System.Drawing.Point(422, 246);
+            this.txtContrasenia.Location = new System.Drawing.Point(29, 193);
             this.txtContrasenia.MaxLength = 32767;
             this.txtContrasenia.MouseState = MaterialSkin.MouseState.OUT;
             this.txtContrasenia.Name = "txtContrasenia";
@@ -140,7 +140,7 @@ namespace UI.Desktop
             this.AcceptButton = this.btnIngresar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(755, 367);
+            this.ClientSize = new System.Drawing.Size(279, 304);
             this.Controls.Add(this.txtContrasenia);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.materialLabel1);

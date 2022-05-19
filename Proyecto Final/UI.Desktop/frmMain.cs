@@ -191,7 +191,7 @@ namespace UI.Desktop
         }
         #endregion
 
-        #region --------- INVENTARIO ---------
+        #region ------- INVENTARIO -------
         private void ListarStock()
         {
             List<Insumo> insumos = _insumoLogic.GetAll();
@@ -414,7 +414,7 @@ namespace UI.Desktop
         #endregion
 
 
-        #region -------------- ORDENES ---------------
+        #region ------- ORDENES -------
         private void CargarOrdenes()
         {
             List<Orden> ordenes = _ordenLogic.GetAll();
@@ -468,7 +468,7 @@ namespace UI.Desktop
 
         #endregion
 
-        #region ----------Login ---------------
+        #region ------- LOGIN -------
         private void frmMain_Shown(object sender, EventArgs e)
         {
             this.mnuPrincipal.Visible = false;
@@ -498,7 +498,8 @@ namespace UI.Desktop
             this.epUser.Collapse = true;
         }
         #endregion
-        #region -------Servicio-TipoPrenda-------------------------
+
+        #region ------- SERVICIO-TIPOPRENDA -------
         private void btnNuevoServicioTipoPrenda_Click(object sender, EventArgs e)
         {
             ServicioTipoPrendaDesktop frmServicioTipoPrenda = new ServicioTipoPrendaDesktop(ApplicationForm.ModoForm.Alta, _context);
@@ -525,7 +526,7 @@ namespace UI.Desktop
         }
         #endregion
 
-        #region ------------Empleado - -- -----------
+        #region ------- EMPLEADO -------
         private void btnNuevoEmpleado_Click(object sender, EventArgs e)
         {
             EmpleadoDesktop frmEmpleado = new EmpleadoDesktop(_context);
@@ -543,7 +544,8 @@ namespace UI.Desktop
 
         }
         #endregion
-        #region ---------------TipoPrenda ---------------------
+
+        #region ------- TIPO PRENDA -------
         private void btnNuevoTipoPrenda_Click(object sender, EventArgs e)
         {
             TipoPrendaDesktop formTipoPrendaDesktop = new TipoPrendaDesktop(ApplicationForm.ModoForm.Alta, _context);
@@ -561,7 +563,7 @@ namespace UI.Desktop
         }
         #endregion
 
-        #region ---------PLANIFICACION ------------
+        #region ------- PLANIFICACION -------
 
         public void ListarOrdenesTrabajosPrendientes() 
         {

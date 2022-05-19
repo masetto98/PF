@@ -12,21 +12,18 @@ namespace Business.Entities
     {
         private int _idProveedor;
         private int _idInsumo;
-        //[DataType(DataType.Date)]
         private DateTime _fechaIngreso;
         private double _cantidad;
         private Proveedor _proveedor;
         private Insumo _insumo;
 
-
-        //[ForeignKey("Proveedor")]
         [Column("id_proveedor")]
         public int IdProveedor
         {
             get { return _idProveedor; }
             set { _idProveedor = value; }
         }
-        //[ForeignKey("Insumo")]
+        
         [Column("id_insumo")]
         public int IdInsumo
         {
@@ -41,6 +38,7 @@ namespace Business.Entities
             set { _fechaIngreso = value; }
         }
 
+        [Column("cantidad")]
         public double Cantidad
         {
             get { return _cantidad; }

@@ -153,25 +153,26 @@ namespace UI.Desktop
             _unidadesMedida.Clear();
             if (unidad == 1)
             {
-                
                 _unidadesMedida.Add("Litros(1L/1000Cm3/1000ml");
                 _unidadesMedida.Add("Mililitros / Cm3");
             }
             if (unidad == 2)
             {
-                
                 _unidadesMedida.Add("Kilogramos(1Kg / 1000gr)");
                 _unidadesMedida.Add("Gramos(gr)");
-
+            }
+            if (unidad == 3)
+            {
+                _unidadesMedida.Add("Unidades");
             }
         }
 
         private double ConvertirUnidadesConsumo(int _cantidad)
         {
 
-            if (this.cmbUnidadMedida.SelectedText == "Mililitros/Cm3" || this.cmbUnidadMedida.SelectedText == "Gramos(gr)")
+            if (this.cmbUnidadMedida.SelectedText == "Mililitros / Cm3" || this.cmbUnidadMedida.SelectedText == "Gramos(gr)")
             {
-                return _cantidad / 1000;
+                return (double)_cantidad / 1000;
             }
             else
             {
@@ -205,23 +206,20 @@ namespace UI.Desktop
                 case ModoForm.Consulta:
                     Close();
                     break;
-
             }
         }
         public override void GuardarCambios()
         {
-            //            try
-            //            {
-            MapearADatos();
-            _insumoProveedorLogic.Save(InsumoProveedorActual);
-            Close();
-
-            //            }
-            /*            catch (Exception e)
-                        {
-                            MessageBox.Show(e.Message, "Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-            */
+            try
+            {
+                MapearADatos();
+                _insumoProveedorLogic.Save(InsumoProveedorActual);
+                Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         public virtual void Eliminar()
         {
@@ -254,21 +252,12 @@ namespace UI.Desktop
           
         private void cbInsumos_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            Insumo insumoActual = _insumoLogic.GetOne((int)this.cbInsumos.SelectedValue);
-            int unity = (int)insumoActual.UnidadMedida;
-            SetearMedidas(unity);
-            this.cmbUnidadMedida.DataSource = _unidadesMedida;
-
-        }
-        /*
-        private void cbInsumos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Insumo insumoActual = _insumoLogic.GetOne((int)this.cbInsumos.SelectedValue);
+            Insumo insumoActual = _insumoLogic.GetOne(Int32.Parse(this.cbInsumos.SelectedValue.ToString()));
             SetearMedidas((int)insumoActual.UnidadMedida);
             this.cmbUnidadMedida.DataSource = _unidadesMedida;
-        }/*
-
-        /*private void cbInsumos_SelectionChangeCommitted(object sender, EventArgs e)
+        }
+        /*
+        private void cbInsumos_SelectionChangeCommitted(object sender, EventArgs e)
         {
             int IDInsumo = (int)this.cbInsumos.SelectedValue;
             Insumo insumo = _insumoLogic.GetOne(IDInsumo);

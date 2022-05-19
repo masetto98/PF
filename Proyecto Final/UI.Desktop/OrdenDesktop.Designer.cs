@@ -142,7 +142,7 @@ namespace UI.Desktop
             this.dtpFechaIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dtpFechaIngreso.Location = new System.Drawing.Point(144, 197);
             this.dtpFechaIngreso.Name = "dtpFechaIngreso";
-            this.dtpFechaIngreso.Size = new System.Drawing.Size(185, 24);
+            this.dtpFechaIngreso.Size = new System.Drawing.Size(179, 24);
             this.dtpFechaIngreso.TabIndex = 7;
             this.dtpFechaIngreso.Value = new System.DateTime(2022, 5, 18, 0, 0, 0, 0);
             // 
@@ -153,7 +153,7 @@ namespace UI.Desktop
             this.dtpFechaSalida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dtpFechaSalida.Location = new System.Drawing.Point(144, 232);
             this.dtpFechaSalida.Name = "dtpFechaSalida";
-            this.dtpFechaSalida.Size = new System.Drawing.Size(185, 24);
+            this.dtpFechaSalida.Size = new System.Drawing.Size(179, 24);
             this.dtpFechaSalida.TabIndex = 12;
             // 
             // cmbEstado
@@ -175,7 +175,7 @@ namespace UI.Desktop
             this.cmbEstado.MaxDropDownItems = 4;
             this.cmbEstado.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(295, 49);
+            this.cmbEstado.Size = new System.Drawing.Size(310, 49);
             this.cmbEstado.StartIndex = 0;
             this.cmbEstado.TabIndex = 13;
             // 

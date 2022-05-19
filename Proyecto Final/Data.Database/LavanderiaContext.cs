@@ -29,6 +29,10 @@ namespace Data.Database
 
             modelBuilder.Entity<OrdenServicioTipoPrenda>()
                 .ToTable("ordenes_servicios_tipoprendas");
+            
+            modelBuilder.Entity<InsumoServicioTipoPrenda>()
+                .ToTable("insumos_servicios_tipoprendas");
+
 
             modelBuilder.Entity<InsumoProveedor>()
                 .HasOne(ip => ip.Proveedor)

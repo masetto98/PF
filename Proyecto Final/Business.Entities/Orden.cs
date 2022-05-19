@@ -14,10 +14,7 @@ namespace Business.Entities
         private int _idCliente;
         private int _idEmpleado;
         private int _nroFactura;
-        //private string _prioridad;
-        //[DataType(DataType.Date)]
         private DateTime _fechaEntrada;
-        //[DataType(DataType.Date)]
         private DateTime _fechaSalida;
         private TimeSpan _tiempoFinalizacionEstimado;
         private TimeSpan _tiempoFinalizacionReal;
@@ -49,21 +46,21 @@ namespace Business.Entities
             get { return _nroOrden; }
             set { _nroOrden = value; }
         }
-        //[ForeignKey("Cliente")]
+        
         [Column ("id_cliente")]
         public int IdCliente
         {
             get { return _idCliente; }
             set { _idCliente = value; }
         }
-        //[ForeignKey("Empleado")]
+       
         [Column("id_empleado")]
         public int IdEmpleado
         {
             get { return _idEmpleado; }
             set { _idEmpleado = value; }
         }
-        //[ForeignKey("Factura")]
+        
         [Column("nro_factura")]
         public int NroFactura
         {

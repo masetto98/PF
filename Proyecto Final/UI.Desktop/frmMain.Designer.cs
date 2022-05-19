@@ -58,6 +58,7 @@ namespace UI.Desktop
             this.columnEstado = new System.Windows.Forms.ColumnHeader();
             this.btnNuevoEmpleado = new MaterialSkin.Controls.MaterialButton();
             this.mnuTabClientes = new System.Windows.Forms.TabPage();
+            this.btnOrdenesCliente = new MaterialSkin.Controls.MaterialButton();
             this.txtBuscarCliente = new MaterialSkin.Controls.MaterialTextBox();
             this.btnEditarCliente = new MaterialSkin.Controls.MaterialButton();
             this.btnEliminarCliente = new MaterialSkin.Controls.MaterialButton();
@@ -138,7 +139,6 @@ namespace UI.Desktop
             this.epUser = new MaterialSkin.Controls.MaterialExpansionPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnCerrarSesion = new MaterialSkin.Controls.MaterialButton();
-            this.btnOrdenesCliente = new MaterialSkin.Controls.MaterialButton();
             this.mnuPrincipal.SuspendLayout();
             this.mnuTabOrdenes.SuspendLayout();
             this.mnuTabClientes.SuspendLayout();
@@ -612,6 +612,28 @@ namespace UI.Desktop
             this.mnuTabClientes.TabIndex = 1;
             this.mnuTabClientes.Text = "Clientes";
             // 
+            // btnOrdenesCliente
+            // 
+            this.btnOrdenesCliente.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnOrdenesCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnOrdenesCliente.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnOrdenesCliente.Depth = 0;
+            this.btnOrdenesCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnOrdenesCliente.HighEmphasis = true;
+            this.btnOrdenesCliente.Icon = null;
+            this.btnOrdenesCliente.Location = new System.Drawing.Point(1020, 129);
+            this.btnOrdenesCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnOrdenesCliente.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnOrdenesCliente.Name = "btnOrdenesCliente";
+            this.btnOrdenesCliente.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnOrdenesCliente.Size = new System.Drawing.Size(117, 36);
+            this.btnOrdenesCliente.TabIndex = 5;
+            this.btnOrdenesCliente.Text = "Ver Ordenes";
+            this.btnOrdenesCliente.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnOrdenesCliente.UseAccentColor = false;
+            this.btnOrdenesCliente.UseVisualStyleBackColor = false;
+            this.btnOrdenesCliente.Click += new System.EventHandler(this.btnOrdenesCliente_Click);
+            // 
             // txtBuscarCliente
             // 
             this.txtBuscarCliente.AnimateReadOnly = false;
@@ -782,7 +804,7 @@ namespace UI.Desktop
             this.mnuTabInventario.Location = new System.Drawing.Point(4, 39);
             this.mnuTabInventario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mnuTabInventario.Name = "mnuTabInventario";
-            this.mnuTabInventario.Size = new System.Drawing.Size(1372, 637);
+            this.mnuTabInventario.Size = new System.Drawing.Size(1372, 679);
             this.mnuTabInventario.TabIndex = 2;
             this.mnuTabInventario.Text = "Inventario";
             // 
@@ -802,7 +824,7 @@ namespace UI.Desktop
             this.tabControlInventario.Name = "tabControlInventario";
             this.tabControlInventario.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabControlInventario.SelectedIndex = 0;
-            this.tabControlInventario.Size = new System.Drawing.Size(1372, 590);
+            this.tabControlInventario.Size = new System.Drawing.Size(1372, 632);
             this.tabControlInventario.TabIndex = 1;
             // 
             // TabStock
@@ -813,7 +835,7 @@ namespace UI.Desktop
             this.TabStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TabStock.Name = "TabStock";
             this.TabStock.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TabStock.Size = new System.Drawing.Size(1364, 562);
+            this.TabStock.Size = new System.Drawing.Size(1364, 604);
             this.TabStock.TabIndex = 0;
             this.TabStock.Text = "Stock";
             // 
@@ -1331,7 +1353,7 @@ namespace UI.Desktop
             this.tabPlanificacion.Location = new System.Drawing.Point(4, 39);
             this.tabPlanificacion.Name = "tabPlanificacion";
             this.tabPlanificacion.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPlanificacion.Size = new System.Drawing.Size(1372, 637);
+            this.tabPlanificacion.Size = new System.Drawing.Size(1372, 679);
             this.tabPlanificacion.TabIndex = 3;
             this.tabPlanificacion.Text = "Planificación";
             // 
@@ -1347,7 +1369,7 @@ namespace UI.Desktop
             this.tabControlPlanificacion.Multiline = true;
             this.tabControlPlanificacion.Name = "tabControlPlanificacion";
             this.tabControlPlanificacion.SelectedIndex = 0;
-            this.tabControlPlanificacion.Size = new System.Drawing.Size(1366, 583);
+            this.tabControlPlanificacion.Size = new System.Drawing.Size(1366, 625);
             this.tabControlPlanificacion.TabIndex = 1;
             // 
             // tabPendientes
@@ -1358,7 +1380,7 @@ namespace UI.Desktop
             this.tabPendientes.Location = new System.Drawing.Point(4, 24);
             this.tabPendientes.Name = "tabPendientes";
             this.tabPendientes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPendientes.Size = new System.Drawing.Size(1358, 555);
+            this.tabPendientes.Size = new System.Drawing.Size(1358, 597);
             this.tabPendientes.TabIndex = 0;
             this.tabPendientes.Text = "Trabajos Pendientes";
             // 
@@ -1472,7 +1494,7 @@ namespace UI.Desktop
             this.tabPage2.Location = new System.Drawing.Point(4, 39);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1372, 637);
+            this.tabPage2.Size = new System.Drawing.Size(1372, 679);
             this.tabPage2.TabIndex = 4;
             this.tabPage2.Text = "tabPage2";
             // 
@@ -1542,26 +1564,6 @@ namespace UI.Desktop
             this.btnCerrarSesion.UseAccentColor = false;
             this.btnCerrarSesion.UseVisualStyleBackColor = false;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
-            // 
-            // btnOrdenesCliente
-            // 
-            this.btnOrdenesCliente.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnOrdenesCliente.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnOrdenesCliente.Depth = 0;
-            this.btnOrdenesCliente.HighEmphasis = true;
-            this.btnOrdenesCliente.Icon = null;
-            this.btnOrdenesCliente.Location = new System.Drawing.Point(1020, 129);
-            this.btnOrdenesCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnOrdenesCliente.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnOrdenesCliente.Name = "btnOrdenesCliente";
-            this.btnOrdenesCliente.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnOrdenesCliente.Size = new System.Drawing.Size(158, 36);
-            this.btnOrdenesCliente.TabIndex = 5;
-            this.btnOrdenesCliente.Text = "Ver Ordenes";
-            this.btnOrdenesCliente.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnOrdenesCliente.UseAccentColor = false;
-            this.btnOrdenesCliente.UseVisualStyleBackColor = true;
-            this.btnOrdenesCliente.Click += new System.EventHandler(this.btnOrdenesCliente_Click);
             // 
             // frmMain
             // 
