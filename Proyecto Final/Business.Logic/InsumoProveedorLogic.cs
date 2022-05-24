@@ -29,17 +29,17 @@ namespace Business.Logic
                 throw ExceptionManejada;
             }
         }
-        public InsumoProveedor GetOne(int idInsumo, int idProveedor, DateTime fechaIngreso)
+        public InsumoProveedor GetOne(int idProveedor, int idInsumo, DateTime fechaIngreso)
         {
             try
             {
-                return InsumoProveedorData.GetOne(idInsumo, idProveedor, fechaIngreso);
+            return InsumoProveedorData.GetOne(idProveedor, idInsumo, fechaIngreso);
             }
             catch (Exception e)
             {
-                Exception ExceptionManejada = new Exception("Error al recuperar datos del insumo - proveedor", e);
-                Logger.Log(ExceptionManejada.Message);
-                throw ExceptionManejada;
+            Exception ExceptionManejada = new Exception("Error al recuperar datos del insumo - proveedor", e);
+            Logger.Log(ExceptionManejada.Message);
+            throw ExceptionManejada;
             }
         }
 

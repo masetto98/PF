@@ -13,6 +13,7 @@ using Data.Database;
 using Business.Entities;
 using Business.Logic;
 
+
 namespace UI.Desktop
 {
     public partial class frmMain : ApplicationForm
@@ -38,6 +39,7 @@ namespace UI.Desktop
             _ordenLogic = new OrdenLogic(new OrdenAdapter(context));
             _ordenServicioTipoPrendaLogic = new OrdenServicioTipoPrendaLogic(new OrdenServicioTipoPrendaAdapter(context));
             CargarOrdenes();
+            
            /* materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
@@ -238,7 +240,7 @@ namespace UI.Desktop
         private void ListarIngresos()
         {
             List<InsumoProveedor> insumosproveedores = _insumoProveedorLogic.GetAll();
-            insumosproveedores.OrderByDescending(ip => ip.FechaIngreso);
+            //insumosproveedores.OrderByDescending(ip => ip.FechaIngreso);
             listIngresos.Items.Clear();
             foreach (InsumoProveedor ip in insumosproveedores)
             {
@@ -246,7 +248,7 @@ namespace UI.Desktop
                 item.SubItems.Add(ip.Proveedor.RazonSocial);
                 item.SubItems.Add(ip.Insumo.IdInsumo.ToString());
                 item.SubItems.Add(ip.Insumo.Descripcion);
-                item.SubItems.Add(ip.FechaIngreso.ToString());
+                item.SubItems.Add(ip.FechaIngreso.ToString("O"));
                 item.SubItems.Add(ip.Cantidad.ToString());
                 listIngresos.Items.Add(item);
             }
@@ -345,6 +347,7 @@ namespace UI.Desktop
         {
             if (listIngresos.SelectedItems.Count > 0)
             {
+              
                 int IDProv = Int32.Parse(this.listIngresos.SelectedItems[0].Text);
                 int IDIns = Int32.Parse(this.listIngresos.SelectedItems[0].SubItems[2].Text);
                 DateTime fechaIngreso = DateTime.Parse(this.listIngresos.SelectedItems[0].SubItems[4].Text);
@@ -381,7 +384,7 @@ namespace UI.Desktop
         {
             DateTime fechaFiltro = dtpFiltrarFechaIngreso.Value;
             List<InsumoProveedor> insumosproveedores = _insumoProveedorLogic.GetAll();
-            List<InsumoProveedor> ipFecha = insumosproveedores.FindAll(ip => ip.FechaIngreso == fechaFiltro.Date);
+            List<InsumoProveedor> ipFecha = insumosproveedores.FindAll(ip => (bool)(ip.FechaIngreso == fechaFiltro));
             listIngresos.Items.Clear();
             foreach (InsumoProveedor ip in ipFecha)
             {
@@ -434,7 +437,27 @@ namespace UI.Desktop
                 listOrdenes.Items.Add(item);
             }
         }
+        private void buscarOrdenes()
+        {
+            ListViewItem foundItem = listOrdenes.FindItemWithText(txtBuscarOrdenes.Text, true, 0, true);
+            if (foundItem != null)
+            {
+                listOrdenes.Items.Clear();
+                listOrdenes.Items.Add(foundItem);
+            }
+        }
+        private void txtBuscarOrdenes_TextChanged(object sender, EventArgs e)
+        {
 
+            if (txtBuscarOrdenes.Text == "")
+            {
+                CargarOrdenes();
+            }
+            else
+            {
+                buscarOrdenes();
+            }
+        }
         private void btnNuevaOrden_Click(object sender, EventArgs e)
         {
             OrdenDesktop frmOrden = new OrdenDesktop(ApplicationForm.ModoForm.Alta, _context);
@@ -586,6 +609,8 @@ namespace UI.Desktop
 
 
         #endregion
+
+        
     }
 } 
 

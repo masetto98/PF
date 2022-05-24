@@ -59,12 +59,12 @@ namespace UI.Desktop
                 MessageBox.Show(e.Message, "Insumos Proveedores", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public InsumoProveedorDesktop(int idInsumo,int idProveedor,DateTime fechaIngreso, ModoForm modo, LavanderiaContext context) : this(context)
+        public InsumoProveedorDesktop(int idProveedor,int idInsumo,DateTime fechaIngreso, ModoForm modo, LavanderiaContext context) : this(context)
         {
             Modos = modo;
             try
             {
-                InsumoProveedorActual = _insumoProveedorLogic.GetOne(idInsumo,idProveedor,fechaIngreso);
+                InsumoProveedorActual = _insumoProveedorLogic.GetOne(idProveedor,idInsumo,fechaIngreso);
                 MapearDeDatos();
             }
             catch (Exception e)
@@ -76,8 +76,9 @@ namespace UI.Desktop
         {
             this.cbProveedores.Text = this.InsumoProveedorActual.Proveedor.RazonSocial;
             this.cbInsumos.Text = InsumoProveedorActual.Insumo.Descripcion;
-            this.dtpFechaIngreso.Value = InsumoProveedorActual.FechaIngreso;
+            //this.dtpFechaIngreso.Value = (DateTime)InsumoProveedorActual.FechaIngreso;
             this.txtCantidad.Text = InsumoProveedorActual.Cantidad.ToString();
+            this.cmbUnidadMedida.Text = InsumoProveedorActual.Insumo.UnidadMedida.ToString();
             // Tengo que cargar los cursos por si quiero seleccionar otro
             // Y seleccionar el actual
             try
@@ -102,14 +103,14 @@ namespace UI.Desktop
                     this.btnAceptarIngreso.Text = "Guardar";
                     break;
                 case ModoForm.Modificacion:
-                    this.btnAceptarIngreso.Enabled = false;
+                    
                     this.btnAceptarIngreso.Text = "Guardar";
                     break;
                 case ModoForm.Baja:
                     this.btnAceptarIngreso.Text = "Eliminar";
                     this.cbProveedores.Enabled = false;
                     this.cbInsumos.Enabled = false;
-                    this.dtpFechaIngreso.Enabled = false;
+                    // this.dtpFechaIngreso.Enabled = false;
                     this.txtCantidad.Enabled = false;
                     this.btnAceptarIngreso.Enabled = true;
                     break;
@@ -127,8 +128,8 @@ namespace UI.Desktop
                     InsumoProveedorActual = new InsumoProveedor();
                     InsumoProveedorActual.IdInsumo = (int)this.cbInsumos.SelectedValue;
                     InsumoProveedorActual.IdProveedor = (int)this.cbProveedores.SelectedValue;
-                    InsumoProveedorActual.FechaIngreso = this.dtpFechaIngreso.Value;
-                    InsumoProveedorActual.Cantidad = ConvertirUnidadesConsumo(Int32.Parse(this.txtCantidad.Text));
+                    InsumoProveedorActual.FechaIngreso = DateTime.Now;
+                    InsumoProveedorActual.Cantidad = ConvertirUnidadesConsumo(double.Parse(this.txtCantidad.Text),_unidadesMedida[this.cmbUnidadMedida.SelectedIndex]);
                 }
                 
                 switch (Modos)
@@ -147,32 +148,36 @@ namespace UI.Desktop
             }
         }
 
-        private void SetearMedidas(int unidad)
+        private List<String> SetearMedidas(int unidad, List<string> unidadesMedida)
         {
-
-            _unidadesMedida.Clear();
+            
+            unidadesMedida.Clear();
             if (unidad == 1)
             {
-                _unidadesMedida.Add("Litros(1L/1000Cm3/1000ml");
-                _unidadesMedida.Add("Mililitros / Cm3");
+                unidadesMedida.Add("Litros(1L/1000Cm3/1000ml");
+                unidadesMedida.Add("Mililitros / Cm3");
+                return unidadesMedida;
             }
             if (unidad == 2)
             {
-                _unidadesMedida.Add("Kilogramos(1Kg / 1000gr)");
-                _unidadesMedida.Add("Gramos(gr)");
+                unidadesMedida.Add("Kilogramos(1Kg / 1000gr)");
+                unidadesMedida.Add("Gramos(gr)");
+                return unidadesMedida;
             }
             if (unidad == 3)
             {
-                _unidadesMedida.Add("Unidades");
+                unidadesMedida.Add("Unidades");
+                return unidadesMedida;
             }
+            return null;
         }
 
-        private double ConvertirUnidadesConsumo(int _cantidad)
+        private double ConvertirUnidadesConsumo(double _cantidad,string unidadSelect)
         {
 
-            if (this.cmbUnidadMedida.SelectedText == "Mililitros / Cm3" || this.cmbUnidadMedida.SelectedText == "Gramos(gr)")
+            if (unidadSelect == "Mililitros / Cm3" || unidadSelect == "Gramos(gr)")
             {
-                return (double)_cantidad / 1000;
+                return _cantidad / 1000;
             }
             else
             {
@@ -189,7 +194,8 @@ namespace UI.Desktop
                         GuardarCambios();
                         int IdInsumo = (int)this.cbInsumos.SelectedValue;
                         Insumo insumo = _insumoLogic.GetOne(IdInsumo);
-                        insumo.Stock += Int32.Parse(this.txtCantidad.Text);
+                        double stockAnterior = insumo.Stock;
+                        insumo.Stock = stockAnterior + InsumoProveedorActual.Cantidad;
                         insumo.State = BusinessEntity.States.Modified;
                         _insumoLogic.Save(insumo);
                     };
@@ -218,14 +224,14 @@ namespace UI.Desktop
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Insumo Proveedor", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public virtual void Eliminar()
         {
             try
             {
-                _insumoProveedorLogic.Delete(InsumoProveedorActual.IdInsumo,InsumoProveedorActual.IdProveedor,InsumoProveedorActual.FechaIngreso);
+                _insumoProveedorLogic.Delete(InsumoProveedorActual.IdInsumo,InsumoProveedorActual.IdProveedor, InsumoProveedorActual.FechaIngreso);
             }
             catch (Exception e)
             {
@@ -253,7 +259,8 @@ namespace UI.Desktop
         private void cbInsumos_SelectionChangeCommitted(object sender, EventArgs e)
         {
             Insumo insumoActual = _insumoLogic.GetOne(Int32.Parse(this.cbInsumos.SelectedValue.ToString()));
-            SetearMedidas((int)insumoActual.UnidadMedida);
+            List<string> unidadesMedida = new List<string>();
+            _unidadesMedida = SetearMedidas((int)insumoActual.UnidadMedida, unidadesMedida);
             this.cmbUnidadMedida.DataSource = _unidadesMedida;
         }
         /*

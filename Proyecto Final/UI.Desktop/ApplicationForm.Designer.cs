@@ -35,11 +35,12 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 450);
+            this.ClientSize = new System.Drawing.Size(816, 489);
             this.DoubleBuffered = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_56;
             this.Name = "ApplicationForm";
-            this.Padding = new System.Windows.Forms.Padding(3, 80, 3, 3);
+            this.Padding = new System.Windows.Forms.Padding(0);
             this.Text = "Form1";
             this.ResumeLayout(false);
 

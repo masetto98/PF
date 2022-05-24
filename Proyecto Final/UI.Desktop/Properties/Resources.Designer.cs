@@ -133,6 +133,26 @@ namespace UI.Desktop.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap product_delivery_icon_152013 {
+            get {
+                object obj = ResourceManager.GetObject("product_delivery_icon_152013", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap productapplication_producto_3010 {
+            get {
+                object obj = ResourceManager.GetObject("productapplication_producto_3010", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap round_account_button_with_user_inside_icon_icons_com_72596 {
             get {
                 object obj = ResourceManager.GetObject("round-account-button-with-user-inside_icon-icons.com_72596", resourceCulture);

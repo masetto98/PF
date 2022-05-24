@@ -140,6 +140,7 @@ namespace UI.Desktop
             this.dtpFechaIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.dtpFechaIngreso.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpFechaIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dtpFechaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFechaIngreso.Location = new System.Drawing.Point(144, 197);
             this.dtpFechaIngreso.Name = "dtpFechaIngreso";
             this.dtpFechaIngreso.Size = new System.Drawing.Size(179, 24);
@@ -151,6 +152,7 @@ namespace UI.Desktop
             this.dtpFechaSalida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.dtpFechaSalida.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpFechaSalida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dtpFechaSalida.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFechaSalida.Location = new System.Drawing.Point(144, 232);
             this.dtpFechaSalida.Name = "dtpFechaSalida";
             this.dtpFechaSalida.Size = new System.Drawing.Size(179, 24);

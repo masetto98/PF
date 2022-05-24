@@ -30,19 +30,23 @@ namespace Data.Database
             }
             return insumosProveedores;
         }
-        public Business.Entities.InsumoProveedor GetOne(int idInsumo, int idProveedor, DateTime fechaIngreso)
+        public Business.Entities.InsumoProveedor GetOne(int idProveedor, int idInsumo, DateTime fechaIngreso)
         {
             try
             {
-                return _context.InsumosProveedores
+               
+                return GetAll().Find(ip => ip.IdProveedor == idProveedor && ip.IdInsumo == idInsumo && ip.FechaIngreso == fechaIngreso);
+                /*
+               return _context.InsumosProveedores
                     .Include(ip => ip.Proveedor)
                     .Include(ip => ip.Insumo)
-                    .FirstOrDefault(ip => ip.IdInsumo == idInsumo && ip.IdProveedor == idProveedor && ip.FechaIngreso == fechaIngreso);
+                    .FirstOrDefault(ip => ip.IdInsumo == idInsumo && ip.IdProveedor == idProveedor && ip.FechaIngreso ==  fechaIngreso);
+                */
             }
             catch (Exception e)
             {
-                Exception ExceptionManejada = new Exception("Error al recuperar datos del insumo - proveedor", e);
-                throw ExceptionManejada;
+            Exception ExceptionManejada = new Exception("Error al recuperar datos del insumo - proveedor", e);
+            throw ExceptionManejada;
             }
             return null;
         }
@@ -72,12 +76,12 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
-        public void Delete(int idInsumo, int idProveedor, DateTime fechaIngreso)
+        public void Delete(int idProveedor, int idInsumo, DateTime fechaIngreso)
         {
             InsumoProveedor insumoProveedor = new InsumoProveedor();
             try
             {
-                insumoProveedor = _context.InsumosProveedores.Find(idInsumo, idProveedor, fechaIngreso);
+                insumoProveedor = _context.InsumosProveedores.Find(idProveedor, idInsumo, fechaIngreso);
                 _context.InsumosProveedores.Remove(insumoProveedor);
                 _context.SaveChanges();
             }
@@ -96,7 +100,7 @@ namespace Data.Database
             }
             else if (insumoProveedor.State == BusinessEntity.States.Deleted)
             {
-                this.Delete(insumoProveedor.IdInsumo, insumoProveedor.IdProveedor,insumoProveedor.FechaIngreso);
+                this.Delete(insumoProveedor.IdProveedor, insumoProveedor.IdInsumo, insumoProveedor.FechaIngreso);
             }
             else if (insumoProveedor.State == BusinessEntity.States.Modified)
             {

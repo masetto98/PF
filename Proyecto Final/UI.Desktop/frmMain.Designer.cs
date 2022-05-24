@@ -43,7 +43,7 @@ namespace UI.Desktop
             this.btnRetirarOrden = new MaterialSkin.Controls.MaterialButton();
             this.btnNuevoTipoPrenda = new MaterialSkin.Controls.MaterialButton();
             this.btnNuevoServicioTipoPrenda = new MaterialSkin.Controls.MaterialButton();
-            this.materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox();
+            this.txtBuscarOrdenes = new MaterialSkin.Controls.MaterialTextBox();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.btnEliminarOrden = new MaterialSkin.Controls.MaterialButton();
             this.btnNuevaOrden = new MaterialSkin.Controls.MaterialButton();
@@ -172,7 +172,7 @@ namespace UI.Desktop
             this.mnuPrincipal.Multiline = true;
             this.mnuPrincipal.Name = "mnuPrincipal";
             this.mnuPrincipal.SelectedIndex = 0;
-            this.mnuPrincipal.Size = new System.Drawing.Size(1380, 722);
+            this.mnuPrincipal.Size = new System.Drawing.Size(1444, 722);
             this.mnuPrincipal.TabIndex = 1;
             this.mnuPrincipal.Selected += new System.Windows.Forms.TabControlEventHandler(this.mnuPrincipal_Selected);
             // 
@@ -189,7 +189,7 @@ namespace UI.Desktop
             this.mnuTabOrdenes.Controls.Add(this.btnRetirarOrden);
             this.mnuTabOrdenes.Controls.Add(this.btnNuevoTipoPrenda);
             this.mnuTabOrdenes.Controls.Add(this.btnNuevoServicioTipoPrenda);
-            this.mnuTabOrdenes.Controls.Add(this.materialTextBox1);
+            this.mnuTabOrdenes.Controls.Add(this.txtBuscarOrdenes);
             this.mnuTabOrdenes.Controls.Add(this.materialLabel1);
             this.mnuTabOrdenes.Controls.Add(this.btnEliminarOrden);
             this.mnuTabOrdenes.Controls.Add(this.btnNuevaOrden);
@@ -200,7 +200,7 @@ namespace UI.Desktop
             this.mnuTabOrdenes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mnuTabOrdenes.Name = "mnuTabOrdenes";
             this.mnuTabOrdenes.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.mnuTabOrdenes.Size = new System.Drawing.Size(1372, 679);
+            this.mnuTabOrdenes.Size = new System.Drawing.Size(1436, 679);
             this.mnuTabOrdenes.TabIndex = 0;
             this.mnuTabOrdenes.Text = "Ordenes";
             // 
@@ -423,25 +423,27 @@ namespace UI.Desktop
             this.btnNuevoServicioTipoPrenda.UseVisualStyleBackColor = false;
             this.btnNuevoServicioTipoPrenda.Click += new System.EventHandler(this.btnNuevoServicioTipoPrenda_Click);
             // 
-            // materialTextBox1
+            // txtBuscarOrdenes
             // 
-            this.materialTextBox1.AnimateReadOnly = false;
-            this.materialTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.materialTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialTextBox1.Depth = 0;
-            this.materialTextBox1.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialTextBox1.LeadingIcon = null;
-            this.materialTextBox1.Location = new System.Drawing.Point(1190, 32);
-            this.materialTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.materialTextBox1.MaxLength = 50;
-            this.materialTextBox1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox1.Multiline = false;
-            this.materialTextBox1.Name = "materialTextBox1";
-            this.materialTextBox1.Size = new System.Drawing.Size(176, 50);
-            this.materialTextBox1.TabIndex = 6;
-            this.materialTextBox1.Text = "";
-            this.materialTextBox1.TrailingIcon = null;
+            this.txtBuscarOrdenes.AnimateReadOnly = false;
+            this.txtBuscarOrdenes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtBuscarOrdenes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBuscarOrdenes.Depth = 0;
+            this.txtBuscarOrdenes.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtBuscarOrdenes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtBuscarOrdenes.Hint = "Buscar ordenes...";
+            this.txtBuscarOrdenes.LeadingIcon = null;
+            this.txtBuscarOrdenes.Location = new System.Drawing.Point(1120, 32);
+            this.txtBuscarOrdenes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBuscarOrdenes.MaxLength = 50;
+            this.txtBuscarOrdenes.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtBuscarOrdenes.Multiline = false;
+            this.txtBuscarOrdenes.Name = "txtBuscarOrdenes";
+            this.txtBuscarOrdenes.Size = new System.Drawing.Size(220, 50);
+            this.txtBuscarOrdenes.TabIndex = 6;
+            this.txtBuscarOrdenes.Text = "";
+            this.txtBuscarOrdenes.TrailingIcon = null;
+            this.txtBuscarOrdenes.TextChanged += new System.EventHandler(this.txtBuscarOrdenes_TextChanged);
             // 
             // materialLabel1
             // 
@@ -450,7 +452,7 @@ namespace UI.Desktop
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialLabel1.Location = new System.Drawing.Point(1129, 49);
+            this.materialLabel1.Location = new System.Drawing.Point(1059, 49);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(54, 19);
@@ -527,7 +529,7 @@ namespace UI.Desktop
             this.listOrdenes.MultiSelect = false;
             this.listOrdenes.Name = "listOrdenes";
             this.listOrdenes.OwnerDraw = true;
-            this.listOrdenes.Size = new System.Drawing.Size(949, 299);
+            this.listOrdenes.Size = new System.Drawing.Size(848, 299);
             this.listOrdenes.TabIndex = 2;
             this.listOrdenes.UseCompatibleStateImageBehavior = false;
             this.listOrdenes.View = System.Windows.Forms.View.Details;
@@ -608,7 +610,7 @@ namespace UI.Desktop
             this.mnuTabClientes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mnuTabClientes.Name = "mnuTabClientes";
             this.mnuTabClientes.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.mnuTabClientes.Size = new System.Drawing.Size(1372, 679);
+            this.mnuTabClientes.Size = new System.Drawing.Size(1404, 679);
             this.mnuTabClientes.TabIndex = 1;
             this.mnuTabClientes.Text = "Clientes";
             // 
@@ -804,7 +806,7 @@ namespace UI.Desktop
             this.mnuTabInventario.Location = new System.Drawing.Point(4, 39);
             this.mnuTabInventario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mnuTabInventario.Name = "mnuTabInventario";
-            this.mnuTabInventario.Size = new System.Drawing.Size(1372, 679);
+            this.mnuTabInventario.Size = new System.Drawing.Size(1404, 679);
             this.mnuTabInventario.TabIndex = 2;
             this.mnuTabInventario.Text = "Inventario";
             // 
@@ -824,7 +826,7 @@ namespace UI.Desktop
             this.tabControlInventario.Name = "tabControlInventario";
             this.tabControlInventario.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabControlInventario.SelectedIndex = 0;
-            this.tabControlInventario.Size = new System.Drawing.Size(1372, 632);
+            this.tabControlInventario.Size = new System.Drawing.Size(1404, 632);
             this.tabControlInventario.TabIndex = 1;
             // 
             // TabStock
@@ -835,7 +837,7 @@ namespace UI.Desktop
             this.TabStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TabStock.Name = "TabStock";
             this.TabStock.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TabStock.Size = new System.Drawing.Size(1364, 604);
+            this.TabStock.Size = new System.Drawing.Size(1396, 604);
             this.TabStock.TabIndex = 0;
             this.TabStock.Text = "Stock";
             // 
@@ -884,7 +886,7 @@ namespace UI.Desktop
             this.TabProveedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TabProveedor.Name = "TabProveedor";
             this.TabProveedor.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TabProveedor.Size = new System.Drawing.Size(1364, 562);
+            this.TabProveedor.Size = new System.Drawing.Size(1396, 604);
             this.TabProveedor.TabIndex = 1;
             this.TabProveedor.Text = "Proveedor";
             // 
@@ -1022,7 +1024,7 @@ namespace UI.Desktop
             this.TabInsumo.Location = new System.Drawing.Point(4, 24);
             this.TabInsumo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TabInsumo.Name = "TabInsumo";
-            this.TabInsumo.Size = new System.Drawing.Size(1364, 562);
+            this.TabInsumo.Size = new System.Drawing.Size(1396, 604);
             this.TabInsumo.TabIndex = 2;
             this.TabInsumo.Text = "Insumo";
             // 
@@ -1124,7 +1126,7 @@ namespace UI.Desktop
             this.btnAgregarInsumo.Depth = 0;
             this.btnAgregarInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnAgregarInsumo.HighEmphasis = true;
-            this.btnAgregarInsumo.Icon = global::UI.Desktop.Properties.Resources.adduser_añadir_3553;
+            this.btnAgregarInsumo.Icon = global::UI.Desktop.Properties.Resources.productapplication_producto_3010;
             this.btnAgregarInsumo.Location = new System.Drawing.Point(30, 28);
             this.btnAgregarInsumo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAgregarInsumo.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1151,7 +1153,7 @@ namespace UI.Desktop
             this.TabMovimientos.Location = new System.Drawing.Point(4, 24);
             this.TabMovimientos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TabMovimientos.Name = "TabMovimientos";
-            this.TabMovimientos.Size = new System.Drawing.Size(1364, 562);
+            this.TabMovimientos.Size = new System.Drawing.Size(1396, 604);
             this.TabMovimientos.TabIndex = 3;
             this.TabMovimientos.Text = "Movimientos";
             // 
@@ -1255,7 +1257,7 @@ namespace UI.Desktop
             this.btnNuevoIngreso.Depth = 0;
             this.btnNuevoIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnNuevoIngreso.HighEmphasis = true;
-            this.btnNuevoIngreso.Icon = global::UI.Desktop.Properties.Resources.adduser_añadir_3553;
+            this.btnNuevoIngreso.Icon = global::UI.Desktop.Properties.Resources.product_delivery_icon_152013;
             this.btnNuevoIngreso.Location = new System.Drawing.Point(24, 76);
             this.btnNuevoIngreso.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnNuevoIngreso.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1301,7 +1303,7 @@ namespace UI.Desktop
             // columnIdProvIngreso
             // 
             this.columnIdProvIngreso.Text = "ID Proveedor";
-            this.columnIdProvIngreso.Width = 110;
+            this.columnIdProvIngreso.Width = 115;
             // 
             // columnProvIngreso
             // 
@@ -1321,7 +1323,7 @@ namespace UI.Desktop
             // columnFechaIngreso
             // 
             this.columnFechaIngreso.Text = "Fecha Ingreso";
-            this.columnFechaIngreso.Width = 180;
+            this.columnFechaIngreso.Width = 210;
             // 
             // columnCantIngreso
             // 
@@ -1341,7 +1343,7 @@ namespace UI.Desktop
             this.tabSelectorInventario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabSelectorInventario.MouseState = MaterialSkin.MouseState.HOVER;
             this.tabSelectorInventario.Name = "tabSelectorInventario";
-            this.tabSelectorInventario.Size = new System.Drawing.Size(1372, 47);
+            this.tabSelectorInventario.Size = new System.Drawing.Size(1404, 47);
             this.tabSelectorInventario.TabIndex = 0;
             this.tabSelectorInventario.Text = "TabSelectorInventario";
             // 
@@ -1350,10 +1352,11 @@ namespace UI.Desktop
             this.tabPlanificacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.tabPlanificacion.Controls.Add(this.tabControlPlanificacion);
             this.tabPlanificacion.Controls.Add(this.tabSelectorPlanificacion);
+            this.tabPlanificacion.ImageKey = "20business-planning_102092.png";
             this.tabPlanificacion.Location = new System.Drawing.Point(4, 39);
             this.tabPlanificacion.Name = "tabPlanificacion";
             this.tabPlanificacion.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPlanificacion.Size = new System.Drawing.Size(1372, 679);
+            this.tabPlanificacion.Size = new System.Drawing.Size(1404, 679);
             this.tabPlanificacion.TabIndex = 3;
             this.tabPlanificacion.Text = "Planificación";
             // 
@@ -1362,14 +1365,14 @@ namespace UI.Desktop
             this.tabControlPlanificacion.Controls.Add(this.tabPendientes);
             this.tabControlPlanificacion.Controls.Add(this.tabEnProceso);
             this.tabControlPlanificacion.Depth = 0;
-            this.tabControlPlanificacion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlPlanificacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tabControlPlanificacion.Location = new System.Drawing.Point(3, 51);
+            this.tabControlPlanificacion.ItemSize = new System.Drawing.Size(48, 20);
+            this.tabControlPlanificacion.Location = new System.Drawing.Point(0, 47);
             this.tabControlPlanificacion.MouseState = MaterialSkin.MouseState.HOVER;
             this.tabControlPlanificacion.Multiline = true;
             this.tabControlPlanificacion.Name = "tabControlPlanificacion";
             this.tabControlPlanificacion.SelectedIndex = 0;
-            this.tabControlPlanificacion.Size = new System.Drawing.Size(1366, 625);
+            this.tabControlPlanificacion.Size = new System.Drawing.Size(1372, 632);
             this.tabControlPlanificacion.TabIndex = 1;
             // 
             // tabPendientes
@@ -1380,7 +1383,7 @@ namespace UI.Desktop
             this.tabPendientes.Location = new System.Drawing.Point(4, 24);
             this.tabPendientes.Name = "tabPendientes";
             this.tabPendientes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPendientes.Size = new System.Drawing.Size(1358, 597);
+            this.tabPendientes.Size = new System.Drawing.Size(1364, 604);
             this.tabPendientes.TabIndex = 0;
             this.tabPendientes.Text = "Trabajos Pendientes";
             // 
@@ -1468,7 +1471,7 @@ namespace UI.Desktop
             this.tabEnProceso.Location = new System.Drawing.Point(4, 24);
             this.tabEnProceso.Name = "tabEnProceso";
             this.tabEnProceso.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEnProceso.Size = new System.Drawing.Size(1358, 555);
+            this.tabEnProceso.Size = new System.Drawing.Size(1364, 604);
             this.tabEnProceso.TabIndex = 1;
             this.tabEnProceso.Text = "Trabajos en Proceso";
             // 
@@ -1478,13 +1481,13 @@ namespace UI.Desktop
             this.tabSelectorPlanificacion.BaseTabControl = this.tabControlPlanificacion;
             this.tabSelectorPlanificacion.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
             this.tabSelectorPlanificacion.Depth = 0;
-            this.tabSelectorPlanificacion.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabSelectorPlanificacion.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.tabSelectorPlanificacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tabSelectorPlanificacion.Location = new System.Drawing.Point(3, 3);
+            this.tabSelectorPlanificacion.Location = new System.Drawing.Point(0, 0);
+            this.tabSelectorPlanificacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabSelectorPlanificacion.MouseState = MaterialSkin.MouseState.HOVER;
             this.tabSelectorPlanificacion.Name = "tabSelectorPlanificacion";
-            this.tabSelectorPlanificacion.Size = new System.Drawing.Size(1366, 48);
+            this.tabSelectorPlanificacion.Size = new System.Drawing.Size(1372, 47);
             this.tabSelectorPlanificacion.TabIndex = 0;
             this.tabSelectorPlanificacion.Text = "tabSelectorPlanificacion";
             // 
@@ -1494,7 +1497,7 @@ namespace UI.Desktop
             this.tabPage2.Location = new System.Drawing.Point(4, 39);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1372, 679);
+            this.tabPage2.Size = new System.Drawing.Size(1404, 679);
             this.tabPage2.TabIndex = 4;
             this.tabPage2.Text = "tabPage2";
             // 
@@ -1506,6 +1509,7 @@ namespace UI.Desktop
             this.imageList1.Images.SetKeyName(0, "adduser_añadir_3553.png");
             this.imageList1.Images.SetKeyName(1, "addthelist_añadir_3477.png");
             this.imageList1.Images.SetKeyName(2, "sales_sale_supermarket_stock_market_icon_153849.png");
+            this.imageList1.Images.SetKeyName(3, "20business-planning_102092.png");
             // 
             // epUser
             // 
@@ -1569,14 +1573,14 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.ClientSize = new System.Drawing.Size(1450, 788);
             this.Controls.Add(this.epUser);
             this.Controls.Add(this.mnuPrincipal);
             this.DrawerAutoHide = false;
             this.DrawerShowIconsWhenHidden = true;
             this.DrawerTabControl = this.mnuPrincipal;
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmMain";
@@ -1683,7 +1687,7 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnEliminarOrden;
         private MaterialSkin.Controls.MaterialButton btnNuevaOrden;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox1;
+        private MaterialSkin.Controls.MaterialTextBox txtBuscarOrdenes;
         private MaterialSkin.Controls.MaterialButton btnNuevoServicioTipoPrenda;
         private MaterialSkin.Controls.MaterialButton btnNuevoTipoPrenda;
         private System.Windows.Forms.ColumnHeader columnFechaSalida;

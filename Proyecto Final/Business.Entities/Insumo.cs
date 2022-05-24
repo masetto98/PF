@@ -12,7 +12,7 @@ namespace Business.Entities
     {
         private int _idInsumo;
         private string _descripcion;
-        private decimal _stock;
+        private double _stock;
         private List<InsumoProveedor> _insumosProveedores;// lista de proveedores que proveen ese insumo
         private List<InsumoServicioTipoPrenda> _insumosServicioTipoPrenda;//lista de serviciosTipoPrenda donde se utiliza ese insumo
         private Medidas _unidadMedida;
@@ -40,7 +40,7 @@ namespace Business.Entities
         }
 
         [Column("stock")]
-        public decimal Stock
+        public double Stock
         {
             get { return _stock; }
             set { _stock = value; }
