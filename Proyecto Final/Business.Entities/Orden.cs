@@ -13,7 +13,7 @@ namespace Business.Entities
         private int _nroOrden;
         private int _idCliente;
         private int _idEmpleado;
-        private int _nroFactura;
+        private int? _nroFactura;
         private DateTime _fechaEntrada;
         private DateTime _fechaSalida;
         private TimeSpan _tiempoFinalizacionEstimado;
@@ -22,7 +22,7 @@ namespace Business.Entities
         private Prioridades _prioridad;
         private Cliente _cliente;
         private Empleado _empleado;
-        private Factura _factura;
+        private Factura? _factura;
         private List<OrdenServicioTipoPrenda> _itemsPedidos;
 
         public enum Estados
@@ -30,6 +30,8 @@ namespace Business.Entities
             Pendiente = 1,
             Procesando = 2,
             Finalizado = 3,
+            Pagado = 4,
+            Retirado = 5,
         }
 
         public enum Prioridades
@@ -62,7 +64,7 @@ namespace Business.Entities
         }
         
         [Column("nro_factura")]
-        public int NroFactura
+        public int? NroFactura
         {
             get { return _nroFactura; }
             set { _nroFactura = value; }
@@ -117,7 +119,7 @@ namespace Business.Entities
             set { _empleado = value; }
         }
 
-        public Factura Factura
+        public Factura? Factura
         {
             get { return _factura; }
             set { _factura = value; }

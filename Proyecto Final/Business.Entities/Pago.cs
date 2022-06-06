@@ -11,28 +11,44 @@ namespace Business.Entities
     {
         private int _nroFactura;
         private DateTime _fechaPago;
-        private decimal _importe;
+        private double _importe;
+        public enum FormasPago
+        {
+            Seña = 0,
+            Efectivo = 1,
+            TarjetaCredito = 2,
+            TarjetaDebito = 3,
+            BilleteraElectronica = 4,
+            TransferenciaBancaria = 5,
+        }
+        public FormasPago _formaPago;
         private Factura _factura;
 
         //[ForeignKey("Factura")]
+        [Column("nro_factura")]
         public int NroFactura
         {
             get { return _nroFactura; }
             set { _nroFactura = value; }
         }
-
+        [Column("fecha_pago")]
         public DateTime FechaPago
         {
             get { return _fechaPago; }
             set { _fechaPago = value; }
         }
-
-        public decimal Importe
+        [Column("importe_pago")]
+        public double Importe
         {
             get { return _importe; }
             set { _importe = value; }
         }
-
+        [Column("forma_pago")]
+        public FormasPago FormaPago
+        {
+            get { return _formaPago; }
+            set { _formaPago = value; }
+        }
         public Factura Factura
         {
             get { return _factura; }

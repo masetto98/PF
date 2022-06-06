@@ -12,7 +12,7 @@ namespace Business.Entities
     {
         private int _nroFactura;
         private DateTime _fechaFactura;
-        private decimal _importe;
+        private double _importe;
         private Orden _orden;
         private List<Pago> _pagos;
 
@@ -30,7 +30,7 @@ namespace Business.Entities
             set { _fechaFactura = value; }
         }
         [Column("importe")]
-        public decimal Importe
+        public double Importe
         {
             get { return _importe; }
             set { _importe = value; }

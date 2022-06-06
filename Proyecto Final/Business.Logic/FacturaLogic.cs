@@ -29,11 +29,11 @@ namespace Business.Logic
                 throw ExceptionManejada;
             }
         }
-        public Factura GetOne(int nroFactura)
+        public Factura GetOne(int? nroFactura)
         {
             try
             {
-                return FacturaData.GetOne(nroFactura);
+                return FacturaData.GetOne((int)nroFactura);
             }
             catch (Exception e)
             {

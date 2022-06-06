@@ -23,6 +23,7 @@ namespace Data.Database
                 ordenes = _context.Ordenes
                     .Include(o => o.Cliente)
                     .Include(o => o.Empleado)
+                    .Include(o => o.Factura)
                     .Include(o => o.ItemsPedidos)
                         .ThenInclude(i => i.ServicioTipoPrenda)
                             .ThenInclude(stp => stp.Servicio)
@@ -45,6 +46,7 @@ namespace Data.Database
             {
                 return _context.Ordenes
                     .Include(o => o.Cliente)
+                    .Include(o => o.Factura)
                     .Include(o => o.Empleado)
                     .Include(o => o.ItemsPedidos)
                         .ThenInclude(i => i.ServicioTipoPrenda)

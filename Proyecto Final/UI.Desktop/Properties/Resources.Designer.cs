@@ -83,6 +83,16 @@ namespace UI.Desktop.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap addthelist_añadir_3477 {
+            get {
+                object obj = ResourceManager.GetObject("addthelist_añadir_3477", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap adduser_añadir_3553 {
             get {
                 object obj = ResourceManager.GetObject("adduser_añadir_3553", resourceCulture);
@@ -176,6 +186,16 @@ namespace UI.Desktop.Properties {
         internal static System.Drawing.Bitmap searcher_magnifyng_glass_search_locate_find_icon_123813 {
             get {
                 object obj = ResourceManager.GetObject("searcher_magnifyng_glass_search_locate_find_icon_123813", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap thefreeforty_withdraw_icon_icons_com_66307 {
+            get {
+                object obj = ResourceManager.GetObject("thefreeforty_withdraw_icon-icons.com_66307", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

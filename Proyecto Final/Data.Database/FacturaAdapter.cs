@@ -33,7 +33,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.Facturas.FirstOrDefault(f => f.NroFactura ==nroFactura);
+                return _context.Facturas.Include(f => f.Pagos).FirstOrDefault(f => f.NroFactura ==nroFactura);
             }
             catch (Exception e)
             {
@@ -57,16 +57,16 @@ namespace Data.Database
         }
         protected void Insert(Factura factura)
         {
-            try
-            {
+            //try
+            //{
                 _context.Facturas.Add(factura);
                 _context.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                Exception ExceptionManejada = new Exception("Error al crear factura", e);
-                throw ExceptionManejada;
-            }
+            // }
+            // catch (Exception e)
+            // {
+            // Exception ExceptionManejada = new Exception("Error al crear factura", e);
+            // throw ExceptionManejada;
+            //}
         }
         public void Delete(int nroFactura)
         {

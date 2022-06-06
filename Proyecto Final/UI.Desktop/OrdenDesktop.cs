@@ -20,6 +20,9 @@ namespace UI.Desktop
         readonly MaterialSkin.MaterialSkinManager materialSkinManager;
         private readonly LavanderiaContext _context;
         public Orden OrdenActual { set; get; }
+        public Pago PagoActual { set; get; }
+        public Factura FacturaActual { set; get; }
+        public List<Pago> _pagosFactura;
         public List<OrdenServicioTipoPrenda> _itemsServicio;
         private readonly OrdenLogic _ordenLogic;
         private readonly ClienteLogic _clienteLogic;
@@ -27,7 +30,7 @@ namespace UI.Desktop
         private readonly TipoPrendaLogic _tipoPrendaLogic;
         private readonly ServicioTipoPrendaLogic _servicioTipoPrendaLogic;
         private readonly FacturaLogic _facturaLogic;
-        public decimal _total;
+        public double _total;
 
         public OrdenDesktop(LavanderiaContext context)
         {
@@ -41,7 +44,7 @@ namespace UI.Desktop
             _facturaLogic = new FacturaLogic(new FacturaAdapter(context));
             listItemsServicio.Items.Clear();
             _itemsServicio = new List<OrdenServicioTipoPrenda>();
-
+            
             this.txtApellido.Enabled = false;
             this.txtNombre.Enabled = false;
             this.txtRazonSocial.Enabled = false;
@@ -152,7 +155,21 @@ namespace UI.Desktop
                 OrdenActual = new Orden();
                 OrdenActual.Cliente = _clienteLogic.GetOne(Int32.Parse(this.txtIdCliente.Text));
                 OrdenActual.Empleado = Singleton.getInstance().EmpleadoLogged;
-                OrdenActual.Factura = _facturaLogic.GetOne(1);
+                FacturaActual = new Factura();
+                FacturaActual.FechaFactura = DateTime.Now;
+                //FacturaActual.Importe = null;
+                if (txtSeniaOrden.Text != "")
+                {
+                    PagoActual = new Pago();
+                    PagoActual.FechaPago = DateTime.Now;
+                    PagoActual.FormaPago = (Pago.FormasPago)Enum.Parse(typeof(Business.Entities.Pago.FormasPago), "Seña");
+                    PagoActual.Importe = double.Parse(txtSeniaOrden.Text);
+                    FacturaActual.Pagos = new List<Pago>();
+                    FacturaActual.Pagos.Add(PagoActual);
+                }
+                
+                OrdenActual.Factura = FacturaActual;
+                //_facturaLogic.GetOne(1);
                 OrdenActual.FechaEntrada = DateTime.Now;
                 //OrdenActual.FechaSalida = (DateTime)dtpFechaSalida.MaxDate;
                 OrdenActual.Estado = Orden.Estados.Pendiente;
@@ -439,6 +456,5 @@ namespace UI.Desktop
         {
             Close();
         }
-
     }
 }

@@ -240,3 +240,5 @@ D:\Proyectos\PF\Proyecto Final\UI.Desktop\obj\Debug\net5.0-windows\UI.Desktop.dl
 D:\Proyectos\PF\Proyecto Final\UI.Desktop\obj\Debug\net5.0-windows\ref\UI.Desktop.dll
 D:\Proyectos\PF\Proyecto Final\UI.Desktop\obj\Debug\net5.0-windows\UI.Desktop.pdb
 D:\Proyectos\PF\Proyecto Final\UI.Desktop\obj\Debug\net5.0-windows\UI.Desktop.genruntimeconfig.cache
+D:\Proyectos\PF\Proyecto Final\UI.Desktop\obj\Debug\net5.0-windows\UI.Desktop.RetirarOrdenDesktop.resources
+D:\Proyectos\PF\Proyecto Final\UI.Desktop\obj\Debug\net5.0-windows\UI.Desktop.PagoDesktop.resources

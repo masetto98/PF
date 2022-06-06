@@ -14,7 +14,7 @@ namespace Business.Entities
         private int _idTipoPrenda;
         [DataType(DataType.Date)]
         private DateTime _fechaDesde;
-        private decimal _valor;
+        private double _valor;
         private ServicioTipoPrenda _servicioTipoPrenda;
         //private Servicio _servicio;
         //private TipoPrenda _tipoPrenda;
@@ -42,7 +42,7 @@ namespace Business.Entities
             set { _fechaDesde = value; }
         }
         [Column("valor")]
-        public decimal Valor 
+        public double Valor 
         { 
             get { return _valor; }
             set { _valor = value; }

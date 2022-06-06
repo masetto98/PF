@@ -54,38 +54,52 @@ namespace UI.Desktop
            
         }
 
+        /*
         private void mnuPrincipal_Selected(object sender, TabControlEventArgs e)
         {
-            if (mnuPrincipal.SelectedTab == mnuTabOrdenes)
+            while (mnuPrincipal.SelectedIndex == 0 || mnuPrincipal.SelectedIndex == 1 || mnuPrincipal.SelectedIndex == 2 || mnuPrincipal.SelectedIndex == 3)
             {
-                CargarOrdenes();
-            }
-            else if (mnuPrincipal.SelectedIndex == 1)
-            {
-                ListarClientes();
+                if (mnuPrincipal.SelectedIndex == 0)
+                {
+                    CargarOrdenes();
+                }
+                else if (mnuPrincipal.SelectedIndex == 1)
+                {
+                    ListarClientes();
+                }
+                else if (mnuPrincipal.SelectedIndex == 2)
+                {
+                    if(tabControlInventario.SelectedIndex == 0)
+                    {
+                        ListarStock();
+                    }
+                    if(tabControlInventario.SelectedIndex == 1)
+                    {
+
+                        ListarProveedores();
+                    }
+                    if (tabControlInventario.SelectedIndex == 2)
+                    {
+                        ListarInsumos();
+                    }
+                    if (tabControlInventario.SelectedIndex == 3)
+                    {
+                        ListarIngresos();
+                    }
+
+                }
+                else if (mnuPrincipal.SelectedIndex == 3)
+                {
+                    ListarOrdenesTrabajosPrendientes();
+                }
+
 
             }
-            else if (mnuPrincipal.SelectedIndex == 2)
-            {
-                ListarStock();
-
-                ListarProveedores();
-
-
-                ListarInsumos();
-
-
-                ListarIngresos();
-
-
-            }
-            else if (mnuPrincipal.SelectedIndex == 3) 
-            {
-                ListarOrdenesTrabajosPrendientes();
-            }
+            
 
 
         }
+        */
         #region ------- CLIENTES -------
 
         private void ListarClientes()
@@ -384,7 +398,7 @@ namespace UI.Desktop
         {
             DateTime fechaFiltro = dtpFiltrarFechaIngreso.Value;
             List<InsumoProveedor> insumosproveedores = _insumoProveedorLogic.GetAll();
-            List<InsumoProveedor> ipFecha = insumosproveedores.FindAll(ip => (bool)(ip.FechaIngreso == fechaFiltro));
+            List<InsumoProveedor> ipFecha = insumosproveedores.FindAll(ip => ip.FechaIngreso.ToString("yyyy/MM/dd") == fechaFiltro.ToString("yyyy/MM/dd"));
             listIngresos.Items.Clear();
             foreach (InsumoProveedor ip in ipFecha)
             {
@@ -487,6 +501,12 @@ namespace UI.Desktop
                 CargarOrdenes();
             }
 
+        }
+
+        private void listOrdenes_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listOrdenes.Columns[e.ColumnIndex].Width;
         }
 
         #endregion
@@ -608,9 +628,59 @@ namespace UI.Desktop
 
 
 
+
         #endregion
 
-        
+        private void mnuPrincipal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(mnuPrincipal.SelectedIndex)
+            {
+                case 0:
+                    CargarOrdenes();
+                    break;
+                case 1:
+                    ListarClientes();
+                    break;
+                case 2:
+                    tabControlInventario_SelectedIndexChanged(sender, e);
+                    break;
+                case 3:
+                    ListarOrdenesTrabajosPrendientes();
+                    break;
+
+            }
+        }
+
+        private void tabControlInventario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (tabControlInventario.SelectedIndex)
+            {
+                case 0:
+                    ListarStock();
+                    break;
+                case 1:
+                    ListarProveedores();
+                    break;
+                case 2:
+                    ListarInsumos();
+                    break;
+                case 3:
+                    ListarIngresos();
+                    break;
+
+            }
+        }
+
+        private void btnRetirarOrden_Click(object sender, EventArgs e)
+        {
+            if (listOrdenes.SelectedItems.Count > 0)
+            {
+                int nroOrden = Int32.Parse(this.listOrdenes.SelectedItems[0].Text);
+                RetirarOrdenDesktop frmRetirarOrden = new RetirarOrdenDesktop(nroOrden, ApplicationForm.ModoForm.Modificacion, _context);
+                frmRetirarOrden.ShowDialog();
+                CargarOrdenes();
+            }
+        }
     }
 } 
 

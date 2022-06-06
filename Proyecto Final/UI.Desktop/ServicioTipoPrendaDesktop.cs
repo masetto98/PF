@@ -151,7 +151,7 @@ namespace UI.Desktop
                 ServicioTipoPrendaActual.TipoPrenda = _tipoPrendaLogic.GetOne((int)this.cmbTipoPrendas.SelectedValue);
                 ServicioTipoPrendaActual.TiempoRequerido = new TimeSpan(((int)this.nudHoras.Value),((int)this.nudMinutos.Value),00);
                 ServicioTipoPrendaActual.TiempoDemoraMax = new TimeSpan((int)this.nudDias.Value,(int)this.nudHoras2.Value,(int)this.nudMinutos2.Value,00);
-                precioActual.Valor = Decimal.Parse(this.txtPrecio.Text);
+                precioActual.Valor = double.Parse(this.txtPrecio.Text);
                 precioActual.FechaDesde = DateTime.Today;
                 ServicioTipoPrendaActual.HistoricoPrecios = new List<Precio>();
                 ServicioTipoPrendaActual.HistoricoPrecios.Add(precioActual);
@@ -165,10 +165,10 @@ namespace UI.Desktop
                 this.cmbTipoPrendas.Enabled = false;
                 ServicioTipoPrendaActual.TiempoRequerido = new TimeSpan(((int)this.nudHoras.Value), ((int)this.nudMinutos.Value), 00);
                 ServicioTipoPrendaActual.TiempoDemoraMax = new TimeSpan((int)this.nudDias.Value, (int)this.nudHoras2.Value, (int)this.nudMinutos2.Value, 00);
-                if (PrecioActual.Valor != Decimal.Parse(this.txtPrecio.Text)) 
+                if (PrecioActual.Valor != double.Parse(this.txtPrecio.Text)) 
                 {
                     Precio nuevoPrecio = new Precio();
-                    nuevoPrecio.Valor = Decimal.Parse(this.txtPrecio.Text);
+                    nuevoPrecio.Valor = double.Parse(this.txtPrecio.Text);
                     nuevoPrecio.FechaDesde = DateTime.Today;
                     ServicioTipoPrendaActual.HistoricoPrecios.Add(nuevoPrecio);
                 }
