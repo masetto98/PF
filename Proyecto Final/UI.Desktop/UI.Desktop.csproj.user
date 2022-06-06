@@ -8,9 +8,33 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="ClienteOrdenDesktop.cs">
-		<SubType>Form</SubType>
-	</Compile>
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="EmpleadoDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Empleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MantenimientoDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MaquinaDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Maquinas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ServicioTipoPrenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ObjetosPerdidosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MaquinaOrdenServicioTipoPrendaDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmLogin.cs">
@@ -20,15 +44,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="InsumoDesktop.cs">
-		<SubType>Form</SubType>
-	</Compile>
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="TipoPrendaDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="InsumoProveedorDesktop.cs">
-		<SubType>Form</SubType>
-	</Compile>
-    <Compile Update="EmpleadoDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="OrdenDesktop.cs">

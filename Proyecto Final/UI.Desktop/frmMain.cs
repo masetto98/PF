@@ -20,36 +20,49 @@ namespace UI.Desktop
         readonly MaterialSkin.MaterialSkinManager materialSkinManager;
         private readonly LavanderiaContext _context;
         private readonly ClienteLogic _clienteLogic;
-        private readonly EmpleadoLogic _empleadoLogic;
+        private readonly AtributosNegocioLogic _atributosNegocioLogic;
         private readonly ProveedorLogic _proveedorLogic;
         private readonly InsumoLogic _insumoLogic;
         private readonly InsumoProveedorLogic _insumoProveedorLogic;
         private readonly OrdenLogic _ordenLogic;
         private readonly OrdenServicioTipoPrendaLogic _ordenServicioTipoPrendaLogic;
+        private readonly MaquinaOrdenServicioTipoPrendaLogic _maquinaOrdenServicioTipoPrendaLogic;
+        private readonly MaquinaLogic _maquinaLogic;
+        public AtributosNegocio NegocioActual;
+        public List<OrdenServicioTipoPrenda> _trabajosPendientes;
+        public List<MaquinaOrdenServicioTipoPrenda> _trabajosEnProceso;
+        public List<ItemTrabajo> _listaEspera;
+
+
         public frmMain(LavanderiaContext context)
         {
             InitializeComponent();
             _context = context;
             _clienteLogic = new ClienteLogic(new ClienteAdapter(context));
-            _empleadoLogic = new EmpleadoLogic(new EmpleadoAdapter(context));
+            _atributosNegocioLogic = new AtributosNegocioLogic(new AtributosNegocioAdapter(context));
             _proveedorLogic = new ProveedorLogic(new ProveedorAdapter(context));
             _insumoLogic = new InsumoLogic(new InsumoAdapter(context));
             _insumoProveedorLogic = new InsumoProveedorLogic(new InsumoProveedorAdapter(context));
             _ordenLogic = new OrdenLogic(new OrdenAdapter(context));
             _ordenServicioTipoPrendaLogic = new OrdenServicioTipoPrendaLogic(new OrdenServicioTipoPrendaAdapter(context));
+            _maquinaOrdenServicioTipoPrendaLogic = new MaquinaOrdenServicioTipoPrendaLogic(new MaquinaOrdenServicioTipoPrendaAdapter(context));
+            _maquinaLogic = new MaquinaLogic(new MaquinaAdapter(context));
+            _listaEspera = new List<ItemTrabajo>();
+            //NegocioActual = _atributosNegocioLogic.GetOne(1);
             CargarOrdenes();
-           /* materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-           */
+            Planificar();
+            /* materialSkinManager = MaterialSkinManager.Instance;
+             materialSkinManager.AddFormToManage(this);
+             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+            */
         }
 
         private void btnNuevoCliente_Click(object sender, EventArgs e)
         {
             ClienteDesktop frmCliente = new ClienteDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmCliente.ShowDialog();
-           
+
         }
 
         private void mnuPrincipal_Selected(object sender, TabControlEventArgs e)
@@ -77,9 +90,12 @@ namespace UI.Desktop
 
 
             }
-            else if (mnuPrincipal.SelectedIndex == 3) 
+            else if (mnuPrincipal.SelectedIndex == 3)
             {
+                Planificar();
                 ListarOrdenesTrabajosPrendientes();
+                ListarEstadoMaquinas();
+
             }
 
 
@@ -175,11 +191,11 @@ namespace UI.Desktop
 
         private void btnOrdenesCliente_Click(object sender, EventArgs e)
         {
-           
+
             if (listClientes.SelectedItems.Count > 0)
             {
                 int ID = Int32.Parse(this.listClientes.SelectedItems[0].Text);
-                ClienteOrdenDesktop oClientes = new ClienteOrdenDesktop(ID,_context);
+                ClienteOrdenDesktop oClientes = new ClienteOrdenDesktop(ID, _context);
                 oClientes.ShowDialog();
                 //listClientes.Items.Remove(listClientes.SelectedItems[0]); Otra forma de borrar de la lista
                 ListarClientes();
@@ -289,20 +305,20 @@ namespace UI.Desktop
                 MessageBox.Show("Seleccionar una fila en la lista para poder eliminar");
             }
         }
-        
+
         private void listProveedores_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             e.Cancel = true;
             e.NewWidth = listProveedores.Columns[e.ColumnIndex].Width;
         }
-            
+
         private void btnAgregarInsumo_Click(object sender, EventArgs e)
         {
             InsumoDesktop frmInsumo = new InsumoDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmInsumo.ShowDialog();
             ListarInsumos();
         }
-        
+
         private void btnEditarInsumo_Click(object sender, EventArgs e)
         {
             if (listInsumos.SelectedItems.Count > 0)
@@ -357,7 +373,7 @@ namespace UI.Desktop
                 MessageBox.Show("Seleccionar una fila en la lista para poder editar");
             }
         }
-       
+
 
         private void btnEliminarIngreso_Click(object sender, EventArgs e)
         {
@@ -459,7 +475,7 @@ namespace UI.Desktop
             if (listOrdenes.SelectedItems.Count > 0)
             {
                 int nroOrden = Int32.Parse(this.listOrdenes.SelectedItems[0].Text);
-                OrdenDesktop frmOrden = new OrdenDesktop(nroOrden,ApplicationForm.ModoForm.Modificacion, _context);
+                OrdenDesktop frmOrden = new OrdenDesktop(nroOrden, ApplicationForm.ModoForm.Modificacion, _context);
                 frmOrden.ShowDialog();
                 CargarOrdenes();
             }
@@ -472,7 +488,7 @@ namespace UI.Desktop
         private void frmMain_Shown(object sender, EventArgs e)
         {
             this.mnuPrincipal.Visible = false;
-            
+
             this.epUser.Visible = false;
             frmLogin appLogin = new frmLogin(_context);
             if (appLogin.ShowDialog() != DialogResult.OK)
@@ -482,9 +498,9 @@ namespace UI.Desktop
 
             this.mnuPrincipal.Visible = true;
             this.epUser.Visible = true;
-            
+
             this.epUser.Title = $"{Singleton.getInstance().UserLogged.NombreUsuario}";
-            
+
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -499,93 +515,246 @@ namespace UI.Desktop
         }
         #endregion
 
-        #region ------- SERVICIO-TIPOPRENDA -------
-        private void btnNuevoServicioTipoPrenda_Click(object sender, EventArgs e)
-        {
-            ServicioTipoPrendaDesktop frmServicioTipoPrenda = new ServicioTipoPrendaDesktop(ApplicationForm.ModoForm.Alta, _context);
-            frmServicioTipoPrenda.ShowDialog();
-
-        }
-
-        private void btnEditarServicioTipoPrenda_Click(object sender, EventArgs e)
-        {
-            int idServicio=1;
-            int idTipoPrenda = 1;
-            ServicioTipoPrendaDesktop frmServicioTipoPrenda = new ServicioTipoPrendaDesktop(idServicio,idTipoPrenda,ApplicationForm.ModoForm.Modificacion, _context);
-            frmServicioTipoPrenda.ShowDialog();
-
-        }
-
-        private void EliminarServicioTipoPrenda_Click(object sender, EventArgs e)
-        {
-            int idServicio = 1;
-            int idTipoPrenda = 1;
-            ServicioTipoPrendaDesktop frmServicioTipoPrenda = new ServicioTipoPrendaDesktop(idServicio, idTipoPrenda, ApplicationForm.ModoForm.Baja, _context);
-            frmServicioTipoPrenda.ShowDialog();
-
-        }
-        #endregion
-
-        #region ------- EMPLEADO -------
-        private void btnNuevoEmpleado_Click(object sender, EventArgs e)
-        {
-            EmpleadoDesktop frmEmpleado = new EmpleadoDesktop(_context);
-            frmEmpleado.ShowDialog();
-        }
-
-        private void btnEditarEmpleado_Click(object sender, EventArgs e)
-        {
-            EmpleadoDesktop frmEmpleado = new EmpleadoDesktop(_context);
-            frmEmpleado.ShowDialog();
-        }
-
-        private void btnEliminarEmpleado_Click(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
-
-        #region ------- TIPO PRENDA -------
-        private void btnNuevoTipoPrenda_Click(object sender, EventArgs e)
-        {
-            TipoPrendaDesktop formTipoPrendaDesktop = new TipoPrendaDesktop(ApplicationForm.ModoForm.Alta, _context);
-            formTipoPrendaDesktop.ShowDialog();
-        }
-
-        private void btnEditarTipoPrenda_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnEliminarTipoPrenda_Click(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
-
         #region ------- PLANIFICACION -------
 
-        public void ListarOrdenesTrabajosPrendientes() 
+        public void Planificar()
         {
-            List<OrdenServicioTipoPrenda> itemsPendientes = _ordenServicioTipoPrendaLogic.GetItemsPendientes();
-            //var ordenado = itemsPendientes.OrderByDescending(x => x.Prioridad);
-            listTrabajosPendientes.Items.Clear();
-            foreach (OrdenServicioTipoPrenda i in itemsPendientes)
+            _trabajosPendientes = _ordenServicioTipoPrendaLogic.GetItemsPendientes();
+            _listaEspera.Clear();
+            CargarListaEspera();
+            ListarEstadoMaquinas();
+            ListarTrabajosEnProceso();
+        }
+
+        #region ------- TRABAJOS PENDIENTES -------
+
+        private void CargarListaEspera()
+        {
+
+            foreach (OrdenServicioTipoPrenda item in _trabajosPendientes)
             {
-                ListViewItem item = new ListViewItem(i.NroOrden.ToString());
-                item.SubItems.Add(i.ServicioTipoPrenda.Servicio.Descripcion);
-                item.SubItems.Add(i.ServicioTipoPrenda.TipoPrenda.Descripcion);
-                item.SubItems.Add(i.OrdenItem.ToString());
-                item.SubItems.Add(i.Estado.ToString());
-                item.SubItems.Add(i.Prioridad.ToString());
+                ItemTrabajo trabajo = new ItemTrabajo();
+                trabajo.Trabajo = item;
+                TimeSpan tiempoTranscurrido = DateTime.Today - item.Orden.FechaEntrada;
+                TimeSpan tiempoRestante = TimeSpan.Parse(item.ServicioTipoPrenda.TiempoDemoraMax) - tiempoTranscurrido - item.ServicioTipoPrenda.TiempoRequerido;
+                trabajo.TiempoRestante = tiempoRestante;
+                _listaEspera.Add(trabajo);
+
+            }
+            List<ItemTrabajo> orderList = _listaEspera.OrderByDescending(i => i.Trabajo.Prioridad).ThenBy(i => i.Trabajo.Estado).ThenBy(i => i.TiempoRestante).ToList();
+            _listaEspera.Clear();
+            _listaEspera = orderList;
+        }
+        public void ListarOrdenesTrabajosPrendientes()
+        {
+            listTrabajosPendientes.Items.Clear();
+            foreach (ItemTrabajo i in _listaEspera)
+            {
+                ListViewItem item = new ListViewItem(i.Trabajo.Orden.NroOrden.ToString());
+                item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.Servicio.Descripcion);
+                item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                item.SubItems.Add(i.Trabajo.OrdenItem.ToString());
+                item.SubItems.Add(i.Trabajo.Estado.ToString());
+                item.SubItems.Add(i.Trabajo.Prioridad.ToString());
+                item.SubItems.Add(i.TiempoRestante.ToString());
                 listTrabajosPendientes.Items.Add(item);
+            }
+            ColorCeldaListView();
+        }
+
+        private void ColorCeldaListView()
+        {
+            for (int i = 0; i <= listTrabajosPendientes.Items.Count - 1; i++)
+            {
+                if (listTrabajosPendientes.Items[i].SubItems[4].Text == OrdenServicioTipoPrenda.Estados.Iniciado.ToString())
+                {
+                    listTrabajosPendientes.Items[i].BackColor = Color.Green;
+                }
+                else { listTrabajosPendientes.Items[i].BackColor = Color.White; }
             }
         }
 
+        private void ListarEstadoMaquinas()
+        {
+            List<Maquina> maquinas = _maquinaLogic.GetAll();
+            listEstadoMaquinas.Items.Clear();
+            foreach (Maquina m in maquinas)
+            {
+                List<MaquinaOrdenServicioTipoPrenda> ordenesAtendidas = m.itemsAtendidos;
+                if (m.itemsAtendidos is null) { ordenesAtendidas = new List<MaquinaOrdenServicioTipoPrenda>(); }
+                MaquinaOrdenServicioTipoPrenda? itemEnAtencion = ordenesAtendidas.Find(delegate (MaquinaOrdenServicioTipoPrenda item)
+                {
+                    return item.TiempoFinServicio == DateTime.MinValue;
+                });
+                if (itemEnAtencion is null)
+                {
+                    ListViewItem estadoMaquina = new ListViewItem(m.Descripcion);
+                    estadoMaquina.SubItems.Add("Disponible");
+                    listEstadoMaquinas.Items.Add(estadoMaquina);
 
+                }
+                else
+                {
+                    ListViewItem estadoMaquina = new ListViewItem(m.Descripcion);
+                    estadoMaquina.SubItems.Add("En servicio");
+                    listEstadoMaquinas.Items.Add(estadoMaquina);
+                }
+            }
+            listMaquinasItem.Sort();
+        }
+
+        private void btnMostrarServicios_Click(object sender, EventArgs e)
+        {
+            List<MaquinaOrdenServicioTipoPrenda> maquinasItem = new List<MaquinaOrdenServicioTipoPrenda>();
+            if (listTrabajosPendientes.SelectedItems.Count > 0)
+            {
+                maquinasItem = _maquinaOrdenServicioTipoPrendaLogic.GetAll().FindAll(delegate (MaquinaOrdenServicioTipoPrenda item)
+                {
+                    return item.NroOrden == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].Text) &&
+                           item.OrdenServicioTipoPrenda.ServicioTipoPrenda.Servicio.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[1].Text &&
+                           item.OrdenServicioTipoPrenda.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[2].Text &&
+                           item.OrdenItem == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].SubItems[3].Text);
+                });
+            }
+            if (maquinasItem is not null)
+            {
+                listMaquinasItem.Items.Clear();
+                foreach (MaquinaOrdenServicioTipoPrenda mi in maquinasItem)
+                {
+                    ListViewItem mir = new ListViewItem(mi.Maquina.Descripcion);
+                    mir.SubItems.Add(mi.TiempoInicioServicio.ToString());
+                    if (mi.TiempoFinServicio == DateTime.MinValue)
+                    {
+                        mir.SubItems.Add("");
+                    }
+                    else { mir.SubItems.Add(mi.TiempoFinServicio.ToString()); }
+                    listMaquinasItem.Items.Add(mir);
+                }
+            }
+
+        }
+
+        private void btnIniciarServicio_Click(object sender, EventArgs e)
+        {
+            if (listTrabajosPendientes.SelectedItems.Count > 0)
+            {
+                OrdenServicioTipoPrenda t = _trabajosPendientes.Find(delegate (OrdenServicioTipoPrenda item)
+                {
+                    return item.NroOrden == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].Text) &&
+                           item.ServicioTipoPrenda.Servicio.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[1].Text &&
+                           item.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[2].Text &&
+                           item.OrdenItem == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].SubItems[3].Text);
+                });
+                MaquinaOrdenServicioTipoPrendaDesktop frmTrabajos = new MaquinaOrdenServicioTipoPrendaDesktop(t.NroOrden, t.IdServicio, t.IdTipoPrenda, t.OrdenItem, ApplicationForm.ModoForm.Alta, _context);
+                frmTrabajos.ShowDialog();
+            }
+            Planificar();
+            ListarOrdenesTrabajosPrendientes();
+            ListarTrabajosEnProceso();
+            ListarEstadoMaquinas();
+
+        }
+
+        private void btnFinalizarTrabajo_Click_1(object sender, EventArgs e)
+        {
+            if (listTrabajosPendientes.SelectedItems.Count > 0)
+            {
+                if (MessageBox.Show("Quieres terminar este trabajo?", "Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    OrdenServicioTipoPrenda t = _trabajosPendientes.Find(delegate (OrdenServicioTipoPrenda item)
+                    {
+                        return item.NroOrden == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].Text) &&
+                               item.ServicioTipoPrenda.Servicio.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[1].Text &&
+                               item.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[2].Text &&
+                               item.OrdenItem == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].SubItems[3].Text);
+                    });
+                    t.Estado = OrdenServicioTipoPrenda.Estados.Finalizado;
+                    t.State = BusinessEntity.States.Modified;
+                    _ordenServicioTipoPrendaLogic.Save(t);
+                }
+            }
+            Planificar();
+            ListarOrdenesTrabajosPrendientes();
+        }
+        #endregion
+
+        #region ------- TRABAJOS EN PROCESO -------
+        private void ListarTrabajosEnProceso()
+        {
+            _trabajosEnProceso = _maquinaOrdenServicioTipoPrendaLogic.GetAll().FindAll(delegate (MaquinaOrdenServicioTipoPrenda m) { return m.TiempoFinServicio == DateTime.MinValue; }); 
+            listTrabajosEnProceso.Items.Clear();
+            foreach (MaquinaOrdenServicioTipoPrenda i in _trabajosEnProceso)
+            {
+                ListViewItem item = new ListViewItem(i.Maquina.Descripcion);
+                item.SubItems.Add(i.NroOrden.ToString());
+                item.SubItems.Add(i.OrdenServicioTipoPrenda.ServicioTipoPrenda.Servicio.Descripcion);
+                item.SubItems.Add(i.OrdenServicioTipoPrenda.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                item.SubItems.Add(i.OrdenServicioTipoPrenda.OrdenItem.ToString());
+                item.SubItems.Add(i.TiempoInicioServicio.ToString("O"));
+                item.SubItems.Add(i.OrdenServicioTipoPrenda.Estado.ToString());
+                listTrabajosEnProceso.Items.Add(item);
+            }
+            
+        }
+
+        private void btnTerminarServicio_Click(object sender, EventArgs e)
+        {
+            if (listTrabajosEnProceso.SelectedItems.Count > 0)
+            {
+                if (MessageBox.Show("Quieres terminar este trabajo?", "Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    
+                    MaquinaOrdenServicioTipoPrenda mostpActual = _trabajosEnProceso.Find(delegate (MaquinaOrdenServicioTipoPrenda mostp)
+                    {
+                        return mostp.Maquina.Descripcion == this.listTrabajosEnProceso.SelectedItems[0].Text &&
+                        mostp.TiempoInicioServicio == DateTime.Parse(this.listTrabajosEnProceso.SelectedItems[0].SubItems[5].Text);
+                    });
+                    mostpActual.TiempoFinServicio = DateTime.Now;
+                    mostpActual.OrdenServicioTipoPrenda.Estado = OrdenServicioTipoPrenda.Estados.Iniciado;
+                    mostpActual.State = BusinessEntity.States.Modified;
+                    _maquinaOrdenServicioTipoPrendaLogic.Save(mostpActual);
+                }
+            }
+            ListarTrabajosEnProceso();
+        }
+
+        #endregion
+
+        #endregion
+
+        #region ------- UTILIDADES -------
+        
+        private void btnObjetosPerdidos_Click(object sender, EventArgs e)
+        {
+            ObjetosPerdidosForm frmObjetosPerdidos = new ObjetosPerdidosForm(_context);
+            frmObjetosPerdidos.ShowDialog();
+        }
 
 
         #endregion
-    }
-} 
 
+        private void btnServicioTipoPrenda_Click(object sender, EventArgs e)
+        {
+            ServicioTipoPrenda frmServicioTipoPrenda = new ServicioTipoPrenda(_context);
+            frmServicioTipoPrenda.ShowDialog();
+        }
+
+        private void btnEmpleados_Click(object sender, EventArgs e)
+        {
+            Empleados frmEmpleados = new Empleados(_context);
+            frmEmpleados.ShowDialog();
+        }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            Clientes frmClientes = new Clientes(_context);
+            frmClientes.ShowDialog();
+        }
+
+        private void btnMaquinas_Click(object sender, EventArgs e)
+        {
+            Maquinas frmMaquinas = new Maquinas(_context);
+            frmMaquinas.ShowDialog();
+        }
+    }
+}

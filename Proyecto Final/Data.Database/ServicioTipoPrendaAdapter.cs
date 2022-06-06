@@ -24,6 +24,7 @@ namespace Data.Database
                 serviciosTipoPrendas = _context.ServiciosTipoPrendas
                     .Include(i=>i.Servicio)
                     .Include(i => i.TipoPrenda)
+                    .Include(i => i.ItemsPedidos)
                     .Include(i =>i.HistoricoPrecios)
                     .ToList();
             }
@@ -41,6 +42,7 @@ namespace Data.Database
                 return _context.ServiciosTipoPrendas
                     .Include(i => i.Servicio)
                     .Include(i => i.TipoPrenda)
+                    .Include(i => i.ItemsPedidos)
                     .Include(i => i.HistoricoPrecios)
                     .FirstOrDefault(stp => stp.IdTipoPrenda == idTipoPrenda && stp.IdServicio == idServicio );
             }

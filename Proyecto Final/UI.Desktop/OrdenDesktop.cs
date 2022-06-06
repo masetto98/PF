@@ -17,7 +17,7 @@ namespace UI.Desktop
 {
     public partial class OrdenDesktop : ApplicationForm
     {
-        readonly MaterialSkin.MaterialSkinManager materialSkinManager;
+        
         private readonly LavanderiaContext _context;
         public Orden OrdenActual { set; get; }
         public List<OrdenServicioTipoPrenda> _itemsServicio;
@@ -42,17 +42,11 @@ namespace UI.Desktop
             listItemsServicio.Items.Clear();
             _itemsServicio = new List<OrdenServicioTipoPrenda>();
 
-            this.txtApellido.Enabled = false;
-            this.txtNombre.Enabled = false;
-            this.txtRazonSocial.Enabled = false;
+            this.txtNombreApellidoRazonSocial.Enabled = false;
             this.txtIdCliente.Enabled = false;
             
             _total = 0;
 
-            materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
 
         public OrdenDesktop(ModoForm modo, LavanderiaContext context) : this(context)
@@ -93,10 +87,16 @@ namespace UI.Desktop
         public override void MapearDeDatos()
         {
             this.txtIdCliente.Text = OrdenActual.IdCliente.ToString();
-            this.txtApellido.Text = OrdenActual.Cliente.Apellido;
-            this.txtNombre.Text = OrdenActual.Cliente.Nombre;
-            this.txtRazonSocial.Text = OrdenActual.Cliente.RazonSocial;
+            if (OrdenActual.Cliente.Nombre != "" && OrdenActual.Cliente.Apellido != "" && OrdenActual.Cliente.RazonSocial == "")
+            {
+                this.txtNombreApellidoRazonSocial.Text = String.Concat(OrdenActual.Cliente.Nombre, " ", OrdenActual.Cliente.Apellido);
+            }
+            if (OrdenActual.Cliente.Nombre != "" && OrdenActual.Cliente.Apellido != "" && OrdenActual.Cliente.RazonSocial != "")
+            {
+                this.txtNombreApellidoRazonSocial.Text = String.Concat(OrdenActual.Cliente.Nombre, " ", OrdenActual.Cliente.Apellido, " / ", OrdenActual.Cliente.RazonSocial);
+            }
             this.txtCuit.Text = OrdenActual.Cliente.Cuit;
+            this.txtDireccion.Text = OrdenActual.Cliente.Direccion;
             this.cmbEstado.SelectedIndex = cmbEstado.FindStringExact(Enum.GetName(OrdenActual.Estado));
             this.dtpFechaIngreso.Value = OrdenActual.FechaEntrada.Date;
             this.txtTiempoFinalizacionEstimado.Text = OrdenActual.TiempofinalizacionEstimado.Hours.ToString() + " : " + OrdenActual.TiempofinalizacionEstimado.Minutes.ToString();
@@ -180,17 +180,22 @@ namespace UI.Desktop
         
 
         #region -------Cliente--------
-
+        /*
         private void txtCuit_Leave(object sender, EventArgs e)
+        {
+            cargarCliente();
+        }*/
+
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
             cargarCliente();
         }
 
         private void cargarCliente()
         {
-            this.txtNombre.Text = "";
-            this.txtApellido.Text = "";
-            this.txtRazonSocial.Text = "";
+            this.txtDireccion.Text = "";
+            this.txtIdCliente.Text = "";
+            this.txtNombreApellidoRazonSocial.Text = "";
             try
             {
                 Cliente cli = _clienteLogic.GetOneConCuit(this.txtCuit.Text);
@@ -199,10 +204,16 @@ namespace UI.Desktop
                     Exception e = new Exception("No existe cliente para el cuit ingresado.");
                     throw e;
                 }
-                this.txtNombre.Text = cli.Nombre;
-                this.txtApellido.Text = cli.Apellido;
+                if (cli.Nombre != "" && cli.Apellido != "" && cli.RazonSocial == "") 
+                {
+                    this.txtNombreApellidoRazonSocial.Text =String.Concat(cli.Nombre, " ",cli.Apellido);
+                }
+                if (cli.Nombre != "" && cli.Apellido != "" && cli.RazonSocial != "") 
+                {
+                    this.txtNombreApellidoRazonSocial.Text = String.Concat(cli.Nombre, " ", cli.Apellido, " / ",cli.RazonSocial);
+                }
                 this.txtIdCliente.Text = cli.IdCliente.ToString();
-                this.txtRazonSocial.Text = cli.RazonSocial;
+                this.txtDireccion.Text = cli.Direccion;
                 
             }
             catch (Exception e)
@@ -219,7 +230,7 @@ namespace UI.Desktop
         #endregion
 
         #region ------manejo de items de la orden------
-        private void AgregarItem(ServicioTipoPrenda servicioTipoPrenda) 
+        private void AgregarItem(Business.Entities.ServicioTipoPrenda servicioTipoPrenda) 
         {
             OrdenServicioTipoPrenda itemActual = new OrdenServicioTipoPrenda();
             itemActual.ServicioTipoPrenda = servicioTipoPrenda;
@@ -233,21 +244,18 @@ namespace UI.Desktop
 
         private int ContarItems(int idServicio, int idTipoPrenda) 
         {
-            int _cont = 0;
+            
             if( _itemsServicio is null)
             {
-                return 1;
+                return 0;
             }
             else 
             {
-                foreach (OrdenServicioTipoPrenda item in _itemsServicio)
+                List<OrdenServicioTipoPrenda> items = _itemsServicio.FindAll(delegate (OrdenServicioTipoPrenda ostp)
                 {
-                    if (item.ServicioTipoPrenda.IdServicio == idServicio && item.ServicioTipoPrenda.IdTipoPrenda == idTipoPrenda)
-                    {
-                        _cont += 1;
-                    }
-                }
-                return _cont;
+                    return ostp.ServicioTipoPrenda.IdServicio == idServicio && ostp.ServicioTipoPrenda.IdTipoPrenda == idTipoPrenda;
+                });
+                return items.Count;
             }
             
         }
@@ -332,8 +340,8 @@ namespace UI.Desktop
         private void btnAgregarItemOrden_Click(object sender, EventArgs e)
         {
             try
-            { 
-                ServicioTipoPrenda servicioTp = _servicioTipoPrendaLogic.GetOne((int)this.cmbServicios.SelectedValue, (int)this.cmbTipoPrenda.SelectedValue);
+            {
+                Business.Entities.ServicioTipoPrenda servicioTp = _servicioTipoPrendaLogic.GetOne((int)this.cmbServicios.SelectedValue, (int)this.cmbTipoPrenda.SelectedValue);
                 if (servicioTp == null)
                 {
                     Exception r = new Exception("Error al recuperar el servicio tipo prenda.");
@@ -383,7 +391,7 @@ namespace UI.Desktop
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Servicio-TipoPrenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Orden", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -399,7 +407,6 @@ namespace UI.Desktop
                 {
                     Exception r = new Exception("La orden que quiere eliminar ya esta finalizada o se encuentra en proceso de atencion");
                     throw r;
-
                 }
             }
             catch (Exception e)
@@ -410,6 +417,7 @@ namespace UI.Desktop
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            
             switch (Modos)
             {
                 case ModoForm.Alta:
@@ -423,16 +431,15 @@ namespace UI.Desktop
                     };
                     break;
                 case ModoForm.Baja:
-                    Eliminar();
-                    Close();
+                    {
+                        Eliminar();
+                        Close();
+                    }
                     break;
                 case ModoForm.Consulta:
                     Close();
                     break;
-
             }
-
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -440,5 +447,6 @@ namespace UI.Desktop
             Close();
         }
 
+        
     }
 }

@@ -17,7 +17,7 @@ namespace UI.Desktop
 {
     public partial class ClienteDesktop : ApplicationForm
     {
-        readonly MaterialSkin.MaterialSkinManager materialSkinManager;
+        
         public Cliente ClienteActual { set; get; }
         private readonly ClienteLogic _clienteLogic;
 
@@ -26,10 +26,6 @@ namespace UI.Desktop
         {
             InitializeComponent();
             _clienteLogic = new ClienteLogic(new ClienteAdapter(context));
-            materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500,Accent.LightBlue200,TextShade.WHITE);
         }
         // Este es el constructor cuando se da de alta alta, ya que solo tiene un arg
         public ClienteDesktop(ModoForm modo, LavanderiaContext context) : this(context)

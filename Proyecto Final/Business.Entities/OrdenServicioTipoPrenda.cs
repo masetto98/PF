@@ -23,15 +23,15 @@ namespace Business.Entities
         public enum Estados
         {
             Pendiente = 1,
-            Procesando = 2,
-            Finalizado = 3,
+            Iniciado = 2,
+            Procesando = 3,
+            Finalizado = 4,
         }
 
         public enum Prioridades
         {
-            Baja = 1,
-            Media = 2,
-            Alta = 3,
+            Estandar=1,
+            Alta = 2,
         }
 
         

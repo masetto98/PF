@@ -22,7 +22,7 @@ namespace Business.Entities
             get { return _idMaquina; }
             set { _idMaquina = value; }
         }
-
+        [Column("descripcion")]
         public string Descripcion
         {
             get { return _descripcion; }

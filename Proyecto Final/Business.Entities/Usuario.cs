@@ -21,75 +21,45 @@ namespace Business.Entities
         [Column("id_usuario")]
         public int IdUsuario 
         { 
-            get
-            {
-                return _idUsuario;
-            }
-            set
-            {
-                _idUsuario = value;
-            }
+            get{return _idUsuario;}
+            set{_idUsuario = value;}
         }
+
         [Column("nombre_usuario")]
         public string NombreUsuario
         {
-            get
-            {
-                return _nombreUsuario;
-            }
-            set
-            {
-                _nombreUsuario = value;
-            }
+            get{return _nombreUsuario;}
+            set{_nombreUsuario = value;}
         }
+
         [Column("clave")]
         public string Clave
         {
-            get
-            {
-                return _clave;
-            }
-            set
-            {
-                _clave = value;
-            }
+            get{return _clave;}
+            set{_clave = value;}
         }
+
         [Column("habilitado")]
         public bool Habilitado
         {
-            get
-            {
-                return _habilitado;
-            }
-            set
-            {
-                _habilitado = value;
-            }
+            get{return _habilitado;}
+            set{_habilitado = value;}
         }
+
         [Column("id_empleado")]
-        //[ForeignKey("Empleado")]
+        
         public int IdEmpleado
         {
-            get
-            {
-                return _idEmpleado;
-            }
-            set
-            {
-                _idEmpleado = value;
-            }
+            get{return _idEmpleado;}
+            set{_idEmpleado = value;}
         }
+
         public Empleado Empleado
         {
-            get
-            {
-                return _empleado;
-            }
-            set
-            {
-                _empleado = value;
-            }
+            get{return _empleado;}
+            set{_empleado = value;}
         }
+
         //public string Salt { get; set; }
     }
 }

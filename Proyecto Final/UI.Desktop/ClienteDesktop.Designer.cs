@@ -58,7 +58,7 @@ namespace UI.Desktop
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnAceptar.HighEmphasis = true;
             this.btnAceptar.Icon = null;
-            this.btnAceptar.Location = new System.Drawing.Point(225, 550);
+            this.btnAceptar.Location = new System.Drawing.Point(247, 538);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptar.Name = "btnAceptar";
@@ -78,7 +78,7 @@ namespace UI.Desktop
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialLabel1.Location = new System.Drawing.Point(54, 161);
+            this.materialLabel1.Location = new System.Drawing.Point(23, 162);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(29, 19);
@@ -92,12 +92,12 @@ namespace UI.Desktop
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialLabel2.Location = new System.Drawing.Point(54, 215);
+            this.materialLabel2.Location = new System.Drawing.Point(23, 216);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(94, 19);
             this.materialLabel2.TabIndex = 3;
-            this.materialLabel2.Text = "Razon Social";
+            this.materialLabel2.Text = "Razón Social";
             // 
             // materialLabel3
             // 
@@ -106,7 +106,7 @@ namespace UI.Desktop
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialLabel3.Location = new System.Drawing.Point(54, 270);
+            this.materialLabel3.Location = new System.Drawing.Point(23, 271);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Size = new System.Drawing.Size(57, 19);
@@ -120,7 +120,7 @@ namespace UI.Desktop
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialLabel4.Location = new System.Drawing.Point(54, 327);
+            this.materialLabel4.Location = new System.Drawing.Point(23, 328);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(58, 19);
@@ -134,12 +134,12 @@ namespace UI.Desktop
             this.materialLabel5.Depth = 0;
             this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialLabel5.Location = new System.Drawing.Point(54, 385);
+            this.materialLabel5.Location = new System.Drawing.Point(23, 386);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(64, 19);
             this.materialLabel5.TabIndex = 6;
-            this.materialLabel5.Text = "Telefono";
+            this.materialLabel5.Text = "Teléfono";
             // 
             // materialLabel6
             // 
@@ -148,7 +148,7 @@ namespace UI.Desktop
             this.materialLabel6.Depth = 0;
             this.materialLabel6.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialLabel6.Location = new System.Drawing.Point(54, 439);
+            this.materialLabel6.Location = new System.Drawing.Point(23, 440);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Size = new System.Drawing.Size(41, 19);
@@ -162,12 +162,12 @@ namespace UI.Desktop
             this.materialLabel7.Depth = 0;
             this.materialLabel7.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialLabel7.Location = new System.Drawing.Point(54, 497);
+            this.materialLabel7.Location = new System.Drawing.Point(23, 498);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
             this.materialLabel7.Size = new System.Drawing.Size(67, 19);
             this.materialLabel7.TabIndex = 8;
-            this.materialLabel7.Text = "Direccion";
+            this.materialLabel7.Text = "Dirección";
             // 
             // txtCuit
             // 
@@ -177,8 +177,9 @@ namespace UI.Desktop
             this.txtCuit.Depth = 0;
             this.txtCuit.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtCuit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtCuit.Hint = "Cuit";
             this.txtCuit.LeadingIcon = null;
-            this.txtCuit.Location = new System.Drawing.Point(225, 147);
+            this.txtCuit.Location = new System.Drawing.Point(136, 145);
             this.txtCuit.MaxLength = 50;
             this.txtCuit.MouseState = MaterialSkin.MouseState.OUT;
             this.txtCuit.Multiline = false;
@@ -196,8 +197,9 @@ namespace UI.Desktop
             this.txtRazonSocial.Depth = 0;
             this.txtRazonSocial.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtRazonSocial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtRazonSocial.Hint = "Razón Social";
             this.txtRazonSocial.LeadingIcon = null;
-            this.txtRazonSocial.Location = new System.Drawing.Point(225, 203);
+            this.txtRazonSocial.Location = new System.Drawing.Point(136, 201);
             this.txtRazonSocial.MaxLength = 50;
             this.txtRazonSocial.MouseState = MaterialSkin.MouseState.OUT;
             this.txtRazonSocial.Multiline = false;
@@ -215,8 +217,9 @@ namespace UI.Desktop
             this.txtNombre.Depth = 0;
             this.txtNombre.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtNombre.Hint = "Nombre";
             this.txtNombre.LeadingIcon = null;
-            this.txtNombre.Location = new System.Drawing.Point(225, 257);
+            this.txtNombre.Location = new System.Drawing.Point(136, 255);
             this.txtNombre.MaxLength = 50;
             this.txtNombre.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNombre.Multiline = false;
@@ -234,8 +237,9 @@ namespace UI.Desktop
             this.txtApellido.Depth = 0;
             this.txtApellido.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtApellido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtApellido.Hint = "Apellido";
             this.txtApellido.LeadingIcon = null;
-            this.txtApellido.Location = new System.Drawing.Point(225, 313);
+            this.txtApellido.Location = new System.Drawing.Point(136, 311);
             this.txtApellido.MaxLength = 50;
             this.txtApellido.MouseState = MaterialSkin.MouseState.OUT;
             this.txtApellido.Multiline = false;
@@ -253,8 +257,9 @@ namespace UI.Desktop
             this.txtTelefono.Depth = 0;
             this.txtTelefono.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtTelefono.Hint = "Teléfono";
             this.txtTelefono.LeadingIcon = null;
-            this.txtTelefono.Location = new System.Drawing.Point(225, 369);
+            this.txtTelefono.Location = new System.Drawing.Point(136, 367);
             this.txtTelefono.MaxLength = 50;
             this.txtTelefono.MouseState = MaterialSkin.MouseState.OUT;
             this.txtTelefono.Multiline = false;
@@ -272,8 +277,9 @@ namespace UI.Desktop
             this.txtEmail.Depth = 0;
             this.txtEmail.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtEmail.Hint = "Email";
             this.txtEmail.LeadingIcon = null;
-            this.txtEmail.Location = new System.Drawing.Point(225, 425);
+            this.txtEmail.Location = new System.Drawing.Point(136, 423);
             this.txtEmail.MaxLength = 50;
             this.txtEmail.MouseState = MaterialSkin.MouseState.OUT;
             this.txtEmail.Multiline = false;
@@ -291,8 +297,9 @@ namespace UI.Desktop
             this.txtDireccion.Depth = 0;
             this.txtDireccion.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtDireccion.Hint = "Dirección";
             this.txtDireccion.LeadingIcon = null;
-            this.txtDireccion.Location = new System.Drawing.Point(225, 481);
+            this.txtDireccion.Location = new System.Drawing.Point(136, 479);
             this.txtDireccion.MaxLength = 50;
             this.txtDireccion.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDireccion.Multiline = false;
@@ -309,7 +316,7 @@ namespace UI.Desktop
             this.lbID.Depth = 0;
             this.lbID.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lbID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lbID.Location = new System.Drawing.Point(54, 107);
+            this.lbID.Location = new System.Drawing.Point(23, 108);
             this.lbID.MouseState = MaterialSkin.MouseState.HOVER;
             this.lbID.Name = "lbID";
             this.lbID.Size = new System.Drawing.Size(16, 19);
@@ -325,8 +332,9 @@ namespace UI.Desktop
             this.txtID.Enabled = false;
             this.txtID.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtID.Hint = "ID";
             this.txtID.LeadingIcon = null;
-            this.txtID.Location = new System.Drawing.Point(225, 91);
+            this.txtID.Location = new System.Drawing.Point(136, 89);
             this.txtID.MaxLength = 50;
             this.txtID.MouseState = MaterialSkin.MouseState.OUT;
             this.txtID.Multiline = false;
@@ -345,7 +353,7 @@ namespace UI.Desktop
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
-            this.btnCancelar.Location = new System.Drawing.Point(430, 550);
+            this.btnCancelar.Location = new System.Drawing.Point(341, 538);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -362,7 +370,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 611);
+            this.ClientSize = new System.Drawing.Size(453, 584);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.lbID);

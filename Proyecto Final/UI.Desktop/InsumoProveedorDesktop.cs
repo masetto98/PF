@@ -16,7 +16,6 @@ namespace UI.Desktop
 {
     public partial class InsumoProveedorDesktop : ApplicationForm
     {
-        readonly MaterialSkin.MaterialSkinManager materialSkinManager;
         private readonly ProveedorLogic _proveedorLogic;
         private readonly InsumoLogic _insumoLogic;
         private readonly InsumoProveedorLogic _insumoProveedorLogic;
@@ -32,11 +31,9 @@ namespace UI.Desktop
             _insumoProveedorLogic = new InsumoProveedorLogic(new InsumoProveedorAdapter(context));
             _context = context;
             _unidadesMedida = new List<string>();
-            materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+
         }
+
         public InsumoProveedorDesktop(ModoForm modo, LavanderiaContext context) : this(context)
         {
             Modos = modo;
@@ -59,6 +56,7 @@ namespace UI.Desktop
                 MessageBox.Show(e.Message, "Insumos Proveedores", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public InsumoProveedorDesktop(int idInsumo,int idProveedor,DateTime fechaIngreso, ModoForm modo, LavanderiaContext context) : this(context)
         {
             Modos = modo;
@@ -72,6 +70,7 @@ namespace UI.Desktop
                 MessageBox.Show(e.Message, "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public override void MapearDeDatos()
         {
             this.cbProveedores.Text = this.InsumoProveedorActual.Proveedor.RazonSocial;
@@ -118,6 +117,7 @@ namespace UI.Desktop
                     break;
             }
         }
+
         public override void MapearADatos()
         {
             try
@@ -130,7 +130,7 @@ namespace UI.Desktop
                     InsumoProveedorActual.FechaIngreso = this.dtpFechaIngreso.Value;
                     InsumoProveedorActual.Cantidad = ConvertirUnidadesConsumo(Int32.Parse(this.txtCantidad.Text));
                 }
-                
+        
                 switch (Modos)
                 {
                     case ModoForm.Alta:
@@ -180,6 +180,32 @@ namespace UI.Desktop
             }
         }
 
+        
+        public override void GuardarCambios()
+        {
+            try
+            { 
+                MapearADatos();
+                _insumoProveedorLogic.Save(InsumoProveedorActual);
+                Close();
+            }
+            catch (Exception e)
+            {
+               MessageBox.Show(e.Message, "Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public virtual void Eliminar()
+        {
+            try
+            {
+                _insumoProveedorLogic.Delete(InsumoProveedorActual.IdInsumo,InsumoProveedorActual.IdProveedor,InsumoProveedorActual.FechaIngreso);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnAceptarIngreso_Click(object sender, EventArgs e)
         {
             switch (Modos)
@@ -189,7 +215,7 @@ namespace UI.Desktop
                         GuardarCambios();
                         int IdInsumo = (int)this.cbInsumos.SelectedValue;
                         Insumo insumo = _insumoLogic.GetOne(IdInsumo);
-                        insumo.Stock += Int32.Parse(this.txtCantidad.Text);
+                        insumo.Stock += Double.Parse(InsumoProveedorActual.Cantidad.ToString());
                         insumo.State = BusinessEntity.States.Modified;
                         _insumoLogic.Save(insumo);
                     };
@@ -206,30 +232,6 @@ namespace UI.Desktop
                 case ModoForm.Consulta:
                     Close();
                     break;
-            }
-        }
-        public override void GuardarCambios()
-        {
-            try
-            {
-                MapearADatos();
-                _insumoProveedorLogic.Save(InsumoProveedorActual);
-                Close();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        public virtual void Eliminar()
-        {
-            try
-            {
-                _insumoProveedorLogic.Delete(InsumoProveedorActual.IdInsumo,InsumoProveedorActual.IdProveedor,InsumoProveedorActual.FechaIngreso);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -256,12 +258,5 @@ namespace UI.Desktop
             SetearMedidas((int)insumoActual.UnidadMedida);
             this.cmbUnidadMedida.DataSource = _unidadesMedida;
         }
-        /*
-        private void cbInsumos_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            int IDInsumo = (int)this.cbInsumos.SelectedValue;
-            Insumo insumo = _insumoLogic.GetOne(IDInsumo);
-            this.txtUnidadMedidaIngreso.Text = insumo.UnidadMedida.ToString();
-        }*/
     }
 }
