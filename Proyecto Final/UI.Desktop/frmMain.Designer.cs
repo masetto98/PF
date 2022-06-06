@@ -238,136 +238,8 @@ namespace UI.Desktop
             // 
             // btnEliminarEmpleado
             // 
-            this.btnEliminarEmpleado.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEliminarEmpleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnEliminarEmpleado.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnEliminarEmpleado.Depth = 0;
-            this.btnEliminarEmpleado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnEliminarEmpleado.HighEmphasis = true;
-            this.btnEliminarEmpleado.Icon = null;
-            this.btnEliminarEmpleado.Location = new System.Drawing.Point(201, 600);
-            this.btnEliminarEmpleado.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnEliminarEmpleado.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnEliminarEmpleado.Name = "btnEliminarEmpleado";
-            this.btnEliminarEmpleado.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEliminarEmpleado.Size = new System.Drawing.Size(169, 36);
-            this.btnEliminarEmpleado.TabIndex = 16;
-            this.btnEliminarEmpleado.Text = "Eliminar Empleado";
-            this.btnEliminarEmpleado.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnEliminarEmpleado.UseAccentColor = false;
-            this.btnEliminarEmpleado.UseVisualStyleBackColor = false;
-            this.btnEliminarEmpleado.Click += new System.EventHandler(this.btnEliminarEmpleado_Click);
-            // 
-            // btnEditarEmpleado
-            // 
-            this.btnEditarEmpleado.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEditarEmpleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnEditarEmpleado.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnEditarEmpleado.Depth = 0;
-            this.btnEditarEmpleado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnEditarEmpleado.HighEmphasis = true;
-            this.btnEditarEmpleado.Icon = null;
-            this.btnEditarEmpleado.Location = new System.Drawing.Point(201, 552);
-            this.btnEditarEmpleado.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnEditarEmpleado.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnEditarEmpleado.Name = "btnEditarEmpleado";
-            this.btnEditarEmpleado.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEditarEmpleado.Size = new System.Drawing.Size(152, 36);
-            this.btnEditarEmpleado.TabIndex = 15;
-            this.btnEditarEmpleado.Text = "Editar Empleado";
-            this.btnEditarEmpleado.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnEditarEmpleado.UseAccentColor = false;
-            this.btnEditarEmpleado.UseVisualStyleBackColor = false;
-            this.btnEditarEmpleado.Click += new System.EventHandler(this.btnEditarEmpleado_Click);
-            // 
-            // btnEliminarTipoPrenda
-            // 
-            this.btnEliminarTipoPrenda.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEliminarTipoPrenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnEliminarTipoPrenda.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnEliminarTipoPrenda.Depth = 0;
-            this.btnEliminarTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnEliminarTipoPrenda.HighEmphasis = true;
-            this.btnEliminarTipoPrenda.Icon = null;
-            this.btnEliminarTipoPrenda.Location = new System.Drawing.Point(390, 600);
-            this.btnEliminarTipoPrenda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnEliminarTipoPrenda.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnEliminarTipoPrenda.Name = "btnEliminarTipoPrenda";
-            this.btnEliminarTipoPrenda.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEliminarTipoPrenda.Size = new System.Drawing.Size(178, 36);
-            this.btnEliminarTipoPrenda.TabIndex = 14;
-            this.btnEliminarTipoPrenda.Text = "EliminarTipoPrenda";
-            this.btnEliminarTipoPrenda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnEliminarTipoPrenda.UseAccentColor = false;
-            this.btnEliminarTipoPrenda.UseVisualStyleBackColor = false;
-            this.btnEliminarTipoPrenda.Click += new System.EventHandler(this.btnEliminarTipoPrenda_Click);
-            // 
-            // btnEditarTipoPrenda
-            // 
-            this.btnEditarTipoPrenda.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEditarTipoPrenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnEditarTipoPrenda.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnEditarTipoPrenda.Depth = 0;
-            this.btnEditarTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnEditarTipoPrenda.HighEmphasis = true;
-            this.btnEditarTipoPrenda.Icon = null;
-            this.btnEditarTipoPrenda.Location = new System.Drawing.Point(390, 552);
-            this.btnEditarTipoPrenda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnEditarTipoPrenda.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnEditarTipoPrenda.Name = "btnEditarTipoPrenda";
-            this.btnEditarTipoPrenda.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEditarTipoPrenda.Size = new System.Drawing.Size(165, 36);
-            this.btnEditarTipoPrenda.TabIndex = 13;
-            this.btnEditarTipoPrenda.Text = "Editar TipoPrenda";
-            this.btnEditarTipoPrenda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnEditarTipoPrenda.UseAccentColor = false;
-            this.btnEditarTipoPrenda.UseVisualStyleBackColor = false;
-            this.btnEditarTipoPrenda.Click += new System.EventHandler(this.btnEditarTipoPrenda_Click);
-            // 
-            // EliminarServicioTipoPrenda
-            // 
-            this.EliminarServicioTipoPrenda.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.EliminarServicioTipoPrenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.EliminarServicioTipoPrenda.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.EliminarServicioTipoPrenda.Depth = 0;
-            this.EliminarServicioTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.EliminarServicioTipoPrenda.HighEmphasis = true;
-            this.EliminarServicioTipoPrenda.Icon = null;
-            this.EliminarServicioTipoPrenda.Location = new System.Drawing.Point(58, 602);
-            this.EliminarServicioTipoPrenda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.EliminarServicioTipoPrenda.MouseState = MaterialSkin.MouseState.HOVER;
-            this.EliminarServicioTipoPrenda.Name = "EliminarServicioTipoPrenda";
-            this.EliminarServicioTipoPrenda.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.EliminarServicioTipoPrenda.Size = new System.Drawing.Size(123, 36);
-            this.EliminarServicioTipoPrenda.TabIndex = 12;
-            this.EliminarServicioTipoPrenda.Text = "Eliminar S-TP";
-            this.EliminarServicioTipoPrenda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.EliminarServicioTipoPrenda.UseAccentColor = false;
-            this.EliminarServicioTipoPrenda.UseVisualStyleBackColor = false;
-            this.EliminarServicioTipoPrenda.Click += new System.EventHandler(this.EliminarServicioTipoPrenda_Click);
-            // 
-            // btnEditarServicioTipoPrenda
-            // 
-            this.btnEditarServicioTipoPrenda.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEditarServicioTipoPrenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnEditarServicioTipoPrenda.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnEditarServicioTipoPrenda.Depth = 0;
-            this.btnEditarServicioTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnEditarServicioTipoPrenda.HighEmphasis = true;
-            this.btnEditarServicioTipoPrenda.Icon = null;
-            this.btnEditarServicioTipoPrenda.Location = new System.Drawing.Point(58, 554);
-            this.btnEditarServicioTipoPrenda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnEditarServicioTipoPrenda.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnEditarServicioTipoPrenda.Name = "btnEditarServicioTipoPrenda";
-            this.btnEditarServicioTipoPrenda.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEditarServicioTipoPrenda.Size = new System.Drawing.Size(106, 36);
-            this.btnEditarServicioTipoPrenda.TabIndex = 11;
-            this.btnEditarServicioTipoPrenda.Text = "Editar S-TP";
-            this.btnEditarServicioTipoPrenda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnEditarServicioTipoPrenda.UseAccentColor = false;
-            this.btnEditarServicioTipoPrenda.UseVisualStyleBackColor = false;
-            this.btnEditarServicioTipoPrenda.Click += new System.EventHandler(this.btnEditarServicioTipoPrenda_Click);
-            // 
+            
+            
             // btnEditarOrden
             // 
             this.btnEditarOrden.AutoSize = false;
@@ -435,7 +307,7 @@ namespace UI.Desktop
             this.btnNuevoTipoPrenda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnNuevoTipoPrenda.UseAccentColor = false;
             this.btnNuevoTipoPrenda.UseVisualStyleBackColor = false;
-            this.btnNuevoTipoPrenda.Click += new System.EventHandler(this.btnNuevoTipoPrenda_Click);
+            //this.btnNuevoTipoPrenda.Click += new System.EventHandler(this.btnNuevoTipoPrenda_Click);
             // 
             // btnNuevoServicioTipoPrenda
             // 
@@ -457,7 +329,7 @@ namespace UI.Desktop
             this.btnNuevoServicioTipoPrenda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnNuevoServicioTipoPrenda.UseAccentColor = false;
             this.btnNuevoServicioTipoPrenda.UseVisualStyleBackColor = false;
-            this.btnNuevoServicioTipoPrenda.Click += new System.EventHandler(this.btnNuevoServicioTipoPrenda_Click);
+            //this.btnNuevoServicioTipoPrenda.Click += new System.EventHandler(this.btnNuevoServicioTipoPrenda_Click);
             // 
             // txtBuscarOrdenes
             // 
@@ -614,27 +486,7 @@ namespace UI.Desktop
             this.columnEstado.Text = "Estado";
             this.columnEstado.Width = 100;
             // 
-            // btnNuevoEmpleado
-            // 
-            this.btnNuevoEmpleado.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnNuevoEmpleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnNuevoEmpleado.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnNuevoEmpleado.Depth = 0;
-            this.btnNuevoEmpleado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnNuevoEmpleado.HighEmphasis = true;
-            this.btnNuevoEmpleado.Icon = null;
-            this.btnNuevoEmpleado.Location = new System.Drawing.Point(201, 508);
-            this.btnNuevoEmpleado.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnNuevoEmpleado.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnNuevoEmpleado.Name = "btnNuevoEmpleado";
-            this.btnNuevoEmpleado.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnNuevoEmpleado.Size = new System.Drawing.Size(150, 36);
-            this.btnNuevoEmpleado.TabIndex = 1;
-            this.btnNuevoEmpleado.Text = "Nuevo Empleado";
-            this.btnNuevoEmpleado.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnNuevoEmpleado.UseAccentColor = false;
-            this.btnNuevoEmpleado.UseVisualStyleBackColor = false;
-            this.btnNuevoEmpleado.Click += new System.EventHandler(this.btnNuevoEmpleado_Click);
+            
             // 
             // mnuTabClientes
             // 

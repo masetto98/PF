@@ -185,19 +185,7 @@ namespace UI.Desktop
         }
 
         
-        public override void GuardarCambios()
-        {
-            try
-            { 
-                MapearADatos();
-                _insumoProveedorLogic.Save(InsumoProveedorActual);
-                Close();
-            }
-            catch (Exception e)
-            {
-               MessageBox.Show(e.Message, "Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        
         public virtual void Eliminar()
         {
             try
@@ -252,17 +240,7 @@ namespace UI.Desktop
                 MessageBox.Show(e.Message, "Insumo Proveedor", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public virtual void Eliminar()
-        {
-            try
-            {
-                _insumoProveedorLogic.Delete(InsumoProveedorActual.IdInsumo,InsumoProveedorActual.IdProveedor, InsumoProveedorActual.FechaIngreso);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+       
 
         private void btnCancelarIngreso_Click(object sender, EventArgs e)
         {

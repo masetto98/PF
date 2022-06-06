@@ -10,10 +10,10 @@ namespace Business.Entities
     public class Mantenimiento : BusinessEntity
     {
         private int _idMaquina;
-        [DataType(DataType.Date)]
+        
         private DateTime _fechaRealizado;
         private string _descripcion;
-        private decimal _costo;
+        private double _costo;
         private Maquina _maquina;
 
         [Column("id_maquina")]
@@ -35,7 +35,7 @@ namespace Business.Entities
             set { _descripcion = value; }
         }
         [Column("costo")]
-        public decimal Costo 
+        public double Costo 
         {
             get { return _costo; }
             set { _costo = value; }

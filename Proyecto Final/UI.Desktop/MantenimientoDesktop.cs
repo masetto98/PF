@@ -82,14 +82,14 @@ namespace UI.Desktop
                 MantenimientoActual = new Mantenimiento();
                 MantenimientoActual.FechaRealizado = this.dtpFechaRealizacion.Value;
                 MantenimientoActual.Descripcion = this.txtDescripcion.Text;
-                MantenimientoActual.Costo = Decimal.Parse(this.txtCosto.Text);
+                MantenimientoActual.Costo = double.Parse(this.txtCosto.Text);
                 MantenimientoActual.Maquina = MaquinaActual;
             }
             if (Modos == ModoForm.Modificacion)
             {
                 MantenimientoActual.FechaRealizado = this.dtpFechaRealizacion.Value;
                 MantenimientoActual.Descripcion = this.txtDescripcion.Text;
-                MantenimientoActual.Costo = Decimal.Parse(this.txtCosto.Text);
+                MantenimientoActual.Costo = double.Parse(this.txtCosto.Text);
             }
             switch (Modos)
             {
