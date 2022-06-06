@@ -10,7 +10,8 @@ namespace Business.Entities
     public class MaquinaOrdenServicioTipoPrenda:BusinessEntity
     {
         private int _idMaquina;
-        private DateTime _fechaHoraServicio;
+        private DateTime _tiempoInicioServicio;
+        private DateTime _tiempoFinServicio;
         private int _nroOrden;
         private int _idServicio;
         private int _idTipoPrenda;
@@ -19,48 +20,57 @@ namespace Business.Entities
         private Maquina _maquina;
         private OrdenServicioTipoPrenda _ordenServicioTipoPrenda;
         private Empleado _empleado;
-        //private Orden _orden;
-        //private Servicio _servicio;
-        //private TipoPrenda _tipoPrenda;
 
-
-        //[ForeignKey("Maquina")]
+        [Column("id_maquina")]
         public int IdMaquina
         {
             get { return _idMaquina; }
             set { _idMaquina = value; }
         }
 
-        public DateTime FechaHoraServicio
+        [Column("tiempo_inicio_servicio")]
+        public DateTime TiempoInicioServicio
         {
-            get { return _fechaHoraServicio; }
-            set { _fechaHoraServicio = value; }
+            get { return _tiempoInicioServicio; }
+            set { _tiempoInicioServicio = value; }
         }
-        //[ForeignKey("OrdenServicioTipoPrenda")]
+
+        [Column("tiempo_fin_servicio")]
+        public DateTime TiempoFinServicio
+        {
+            get { return _tiempoFinServicio; }
+            set { _tiempoFinServicio = value; }
+        }
+
+        [Column("nro_orden")]
         public int NroOrden
         {
             get { return _nroOrden; }
             set { _nroOrden = value; }
         }
-        //[ForeignKey("OrdenServicioTipoPrenda")]
+
+        [Column("id_servicio")]
         public int IdServicio
         {
             get { return _idServicio; }
             set { _idServicio = value; }
         }
-        //[ForeignKey("OrdenServicioTipoPrenda")]
+
+        [Column("id_tp")]
         public int IdTipoPrenda
         {
             get { return _idTipoPrenda; }
             set { _idTipoPrenda = value; }
         }
-        //[ForeignKey("OrdenServicioTipoPrenda")]
+
+        [Column("orden_item")]
         public int OrdenItem
         {
             get { return _ordenItem; }
             set { _ordenItem = value; }
         }
-        //[ForeignKey("Empleado")]
+
+        [Column("id_empleado")]
         public int IdEmpleado
         {
             get { return _idEmpleado; }
@@ -85,23 +95,7 @@ namespace Business.Entities
             set { _empleado = value; }
         }
 
-        /*public Servicio Servicio
-        {
-            get { return _servicio; }
-            set { _servicio = value; }
-        }
-
-        public TipoPrenda TipoPrenda
-        {
-            get { return _tipoPrenda; }
-            set { _tipoPrenda = value; }
-        }
-
-        public Orden Orden
-        {
-            get { return _orden; }
-            set { _orden = value; }
-        }*/
+        
 
 
     }

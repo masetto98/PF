@@ -15,7 +15,7 @@ namespace Business.Entities
         private Servicio _servicio;
         private TipoPrenda _tipoPrenda;
         private Prioridades _prioridad;
-        private TimeSpan _tiempoDemoraMax;
+        private string _tiempoDemoraMax;
         private List<OrdenServicioTipoPrenda> _itemsPedidos;//Listado de ordenes que tiene ese servicio-tipoPrenda
         private List<Precio> _historicoPrecios;// Lista de todos los precios que tuvo el servicio-tipo Prenda
         private List<InsumoServicioTipoPrenda> _insumoServicioTipoPrenda;//Lista de insumos que requiere el servicio-TipoPrenda
@@ -61,7 +61,7 @@ namespace Business.Entities
         }
 
         [Column("tiempo_demora_max")]
-        public TimeSpan TiempoDemoraMax
+        public string TiempoDemoraMax
         {
             get { return _tiempoDemoraMax; }
             set { _tiempoDemoraMax = value; }

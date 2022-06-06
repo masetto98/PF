@@ -16,23 +16,21 @@ namespace UI.Desktop
 {
     public partial class InsumoDesktop : ApplicationForm
     {
-        readonly MaterialSkin.MaterialSkinManager materialSkinManager;
+        
         public Insumo InsumoActual { set; get; }
         private readonly InsumoLogic _insumoLogic;
         public InsumoDesktop(LavanderiaContext context)
         {
             InitializeComponent();
             _insumoLogic = new InsumoLogic(new InsumoAdapter(context));
-            materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
+
         public InsumoDesktop(ModoForm modo, LavanderiaContext context) : this(context)
         {
             Modos = modo;
             this.cmbUnidadMedida.DataSource= Enum.GetNames(typeof(Business.Entities.Insumo.Medidas));
         }
+
         // Este es el constructor cuando se edita o elimina algo, ya que tiene 3 args
         public InsumoDesktop(int ID, ModoForm modo, LavanderiaContext context) : this(context)
         {
@@ -47,30 +45,7 @@ namespace UI.Desktop
                 MessageBox.Show(e.Message, "Insumo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void btnAceptarInsumo_Click(object sender, EventArgs e)
-        {
-            switch (Modos)
-            {
-                case ModoForm.Alta:
-                    {
-                        GuardarCambios();
-                    };
-                    break;
-                case ModoForm.Modificacion:
-                    {
-                        GuardarCambios();
-                    };
-                    break;
-                case ModoForm.Baja:
-                    Eliminar();
-                    Close();
-                    break;
-                case ModoForm.Consulta:
-                    Close();
-                    break;
 
-            }
-        }
         public override void MapearDeDatos()
         {
             this.txtIDInsumo.Text = this.InsumoActual.IdInsumo.ToString();
@@ -104,6 +79,7 @@ namespace UI.Desktop
                     break;
             }
         }
+
         public override void MapearADatos()
         {
             if (Modos == ModoForm.Alta)
@@ -130,6 +106,7 @@ namespace UI.Desktop
                     break;
             }
         }
+
         public override void GuardarCambios()
         {
             try
@@ -145,6 +122,7 @@ namespace UI.Desktop
             }
 
         }
+
         public virtual void Eliminar()
         {
             try
@@ -154,6 +132,31 @@ namespace UI.Desktop
             catch (Exception e)
             {
                 MessageBox.Show(e.Message, "Insumo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnAceptarInsumo_Click(object sender, EventArgs e)
+        {
+            switch (Modos)
+            {
+                case ModoForm.Alta:
+                    {
+                        GuardarCambios();
+                    };
+                    break;
+                case ModoForm.Modificacion:
+                    {
+                        GuardarCambios();
+                    };
+                    break;
+                case ModoForm.Baja:
+                    Eliminar();
+                    Close();
+                    break;
+                case ModoForm.Consulta:
+                    Close();
+                    break;
+
             }
         }
 

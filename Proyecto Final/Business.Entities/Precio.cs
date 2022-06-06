@@ -16,31 +16,28 @@ namespace Business.Entities
         private DateTime _fechaDesde;
         private double _valor;
         private ServicioTipoPrenda _servicioTipoPrenda;
-        //private Servicio _servicio;
-        //private TipoPrenda _tipoPrenda;
 
-
-
-        //[ForeignKey("ServicioTipoPrenda")]
         [Column("id_servicio")]
         public int IdServicio
         {
             get { return _idServicio; }
             set { _idServicio = value; }
         }
-        //[ForeignKey("ServicioTipoPrenda")]
+        
         [Column("id_tp")]
         public int IdTipoPrenda
         {
             get { return _idTipoPrenda; }
             set { _idTipoPrenda = value; }
         }
+
         [Column("fecha_desde")]
         public DateTime FechaDesde
         {
             get { return _fechaDesde; }
             set { _fechaDesde = value; }
         }
+
         [Column("valor")]
         public double Valor 
         { 
@@ -53,19 +50,5 @@ namespace Business.Entities
             get { return _servicioTipoPrenda; }
             set { _servicioTipoPrenda = value; }
         }
-
-        /*public Servicio Servicio
-        {
-            get { return _servicio; }
-            set { _servicio = value; }
-        }
-
-        public TipoPrenda TipoPrenda
-        {
-            get { return _tipoPrenda; }
-            set { _tipoPrenda = value; }
-        }*/
-
-
     }
 }

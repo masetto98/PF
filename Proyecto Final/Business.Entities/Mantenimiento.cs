@@ -16,25 +16,25 @@ namespace Business.Entities
         private decimal _costo;
         private Maquina _maquina;
 
-        //[ForeignKey("Maquina")]
+        [Column("id_maquina")]
         public int IdMaquina 
         {
             get { return _idMaquina; }
             set { _idMaquina = value; }
         }
-
+        [Column("fecha_realizado")]
         public DateTime FechaRealizado
         {
             get { return _fechaRealizado; }
             set { _fechaRealizado = value; }
         }
-
+        [Column("descripcion")]
         public string Descripcion
         {
             get { return _descripcion; }
             set { _descripcion = value; }
         }
-
+        [Column("costo")]
         public decimal Costo 
         {
             get { return _costo; }

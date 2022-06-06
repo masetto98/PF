@@ -36,9 +36,8 @@ namespace Business.Entities
 
         public enum Prioridades
         {
-            Baja = 1,
-            Media = 2,
-            Alta = 3,
+            Estandar = 1,
+            Alta = 2,
         }
 
         [Key]

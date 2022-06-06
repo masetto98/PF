@@ -33,12 +33,6 @@ namespace UI.Desktop
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.mnuPrincipal = new MaterialSkin.Controls.MaterialTabControl();
             this.mnuTabOrdenes = new System.Windows.Forms.TabPage();
-            this.btnEliminarEmpleado = new MaterialSkin.Controls.MaterialButton();
-            this.btnEditarEmpleado = new MaterialSkin.Controls.MaterialButton();
-            this.btnEliminarTipoPrenda = new MaterialSkin.Controls.MaterialButton();
-            this.btnEditarTipoPrenda = new MaterialSkin.Controls.MaterialButton();
-            this.EliminarServicioTipoPrenda = new MaterialSkin.Controls.MaterialButton();
-            this.btnEditarServicioTipoPrenda = new MaterialSkin.Controls.MaterialButton();
             this.btnEditarOrden = new MaterialSkin.Controls.MaterialButton();
             this.btnRetirarOrden = new MaterialSkin.Controls.MaterialButton();
             this.btnNuevoTipoPrenda = new MaterialSkin.Controls.MaterialButton();
@@ -56,7 +50,6 @@ namespace UI.Desktop
             this.columnFechaEntrada = new System.Windows.Forms.ColumnHeader();
             this.columnFechaSalida = new System.Windows.Forms.ColumnHeader();
             this.columnEstado = new System.Windows.Forms.ColumnHeader();
-            this.btnNuevoEmpleado = new MaterialSkin.Controls.MaterialButton();
             this.mnuTabClientes = new System.Windows.Forms.TabPage();
             this.btnOrdenesCliente = new MaterialSkin.Controls.MaterialButton();
             this.txtBuscarCliente = new MaterialSkin.Controls.MaterialTextBox();
@@ -116,7 +109,16 @@ namespace UI.Desktop
             this.tabPlanificacion = new System.Windows.Forms.TabPage();
             this.tabControlPlanificacion = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPendientes = new System.Windows.Forms.TabPage();
-            this.btnInciarTrabajo = new MaterialSkin.Controls.MaterialButton();
+            this.btnFinalizarTrabajo = new MaterialSkin.Controls.MaterialButton();
+            this.btnIniciarServicio = new MaterialSkin.Controls.MaterialButton();
+            this.listMaquinasItem = new MaterialSkin.Controls.MaterialListView();
+            this.columnMaquina3 = new System.Windows.Forms.ColumnHeader();
+            this.columnInicio1 = new System.Windows.Forms.ColumnHeader();
+            this.columnFin = new System.Windows.Forms.ColumnHeader();
+            this.btnMostrarServicios = new MaterialSkin.Controls.MaterialButton();
+            this.listEstadoMaquinas = new MaterialSkin.Controls.MaterialListView();
+            this.columnMaquina2 = new System.Windows.Forms.ColumnHeader();
+            this.columnEstadoMaquina = new System.Windows.Forms.ColumnHeader();
             this.listTrabajosPendientes = new MaterialSkin.Controls.MaterialListView();
             this.columnOrden = new System.Windows.Forms.ColumnHeader();
             this.columnServicio = new System.Windows.Forms.ColumnHeader();
@@ -124,9 +126,39 @@ namespace UI.Desktop
             this.columnOrdenItem = new System.Windows.Forms.ColumnHeader();
             this.columnState = new System.Windows.Forms.ColumnHeader();
             this.columnPriority = new System.Windows.Forms.ColumnHeader();
+            this.columnTiempoRestante = new System.Windows.Forms.ColumnHeader();
             this.tabEnProceso = new System.Windows.Forms.TabPage();
+            this.btnTerminarServicio = new MaterialSkin.Controls.MaterialButton();
+            this.listTrabajosEnProceso = new MaterialSkin.Controls.MaterialListView();
+            this.columnMaquina = new System.Windows.Forms.ColumnHeader();
+            this.columnNroOrden2 = new System.Windows.Forms.ColumnHeader();
+            this.columnServicio2 = new System.Windows.Forms.ColumnHeader();
+            this.columnTipoPrenda2 = new System.Windows.Forms.ColumnHeader();
+            this.columnOrdenItem2 = new System.Windows.Forms.ColumnHeader();
+            this.columnInicio = new System.Windows.Forms.ColumnHeader();
+            this.columnState2 = new System.Windows.Forms.ColumnHeader();
             this.tabSelectorPlanificacion = new MaterialSkin.Controls.MaterialTabSelector();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabUtilidades = new System.Windows.Forms.TabPage();
+            this.materialCard5 = new MaterialSkin.Controls.MaterialCard();
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialCard4 = new MaterialSkin.Controls.MaterialCard();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.btnObjetosPerdidos = new MaterialSkin.Controls.MaterialButton();
+            this.materialCard3 = new MaterialSkin.Controls.MaterialCard();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.btnInsumos = new MaterialSkin.Controls.MaterialButton();
+            this.btnProveedores = new MaterialSkin.Controls.MaterialButton();
+            this.btnClientes = new MaterialSkin.Controls.MaterialButton();
+            this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            this.btnUsuarios = new MaterialSkin.Controls.MaterialButton();
+            this.btnMaquinas = new MaterialSkin.Controls.MaterialButton();
+            this.btnEmpleados = new MaterialSkin.Controls.MaterialButton();
+            this.btnServicioTipoPrenda = new MaterialSkin.Controls.MaterialButton();
+            this.btnTipoPrenda = new MaterialSkin.Controls.MaterialButton();
+            this.btnServicio = new MaterialSkin.Controls.MaterialButton();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
@@ -151,6 +183,13 @@ namespace UI.Desktop
             this.tabPlanificacion.SuspendLayout();
             this.tabControlPlanificacion.SuspendLayout();
             this.tabPendientes.SuspendLayout();
+            this.tabEnProceso.SuspendLayout();
+            this.tabUtilidades.SuspendLayout();
+            this.materialCard5.SuspendLayout();
+            this.materialCard4.SuspendLayout();
+            this.materialCard3.SuspendLayout();
+            this.materialCard2.SuspendLayout();
+            this.materialCard1.SuspendLayout();
             this.epUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -161,7 +200,7 @@ namespace UI.Desktop
             this.mnuPrincipal.Controls.Add(this.mnuTabClientes);
             this.mnuPrincipal.Controls.Add(this.mnuTabInventario);
             this.mnuPrincipal.Controls.Add(this.tabPlanificacion);
-            this.mnuPrincipal.Controls.Add(this.tabPage2);
+            this.mnuPrincipal.Controls.Add(this.tabUtilidades);
             this.mnuPrincipal.Depth = 0;
             this.mnuPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mnuPrincipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -179,12 +218,6 @@ namespace UI.Desktop
             // mnuTabOrdenes
             // 
             this.mnuTabOrdenes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.mnuTabOrdenes.Controls.Add(this.btnEliminarEmpleado);
-            this.mnuTabOrdenes.Controls.Add(this.btnEditarEmpleado);
-            this.mnuTabOrdenes.Controls.Add(this.btnEliminarTipoPrenda);
-            this.mnuTabOrdenes.Controls.Add(this.btnEditarTipoPrenda);
-            this.mnuTabOrdenes.Controls.Add(this.EliminarServicioTipoPrenda);
-            this.mnuTabOrdenes.Controls.Add(this.btnEditarServicioTipoPrenda);
             this.mnuTabOrdenes.Controls.Add(this.btnEditarOrden);
             this.mnuTabOrdenes.Controls.Add(this.btnRetirarOrden);
             this.mnuTabOrdenes.Controls.Add(this.btnNuevoTipoPrenda);
@@ -194,7 +227,6 @@ namespace UI.Desktop
             this.mnuTabOrdenes.Controls.Add(this.btnEliminarOrden);
             this.mnuTabOrdenes.Controls.Add(this.btnNuevaOrden);
             this.mnuTabOrdenes.Controls.Add(this.listOrdenes);
-            this.mnuTabOrdenes.Controls.Add(this.btnNuevoEmpleado);
             this.mnuTabOrdenes.ImageKey = "addthelist_añadir_3477.png";
             this.mnuTabOrdenes.Location = new System.Drawing.Point(4, 39);
             this.mnuTabOrdenes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -338,6 +370,7 @@ namespace UI.Desktop
             // 
             // btnEditarOrden
             // 
+            this.btnEditarOrden.AutoSize = false;
             this.btnEditarOrden.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnEditarOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.btnEditarOrden.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
@@ -361,6 +394,7 @@ namespace UI.Desktop
             // 
             // btnRetirarOrden
             // 
+            this.btnRetirarOrden.AutoSize = false;
             this.btnRetirarOrden.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnRetirarOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.btnRetirarOrden.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
@@ -486,6 +520,7 @@ namespace UI.Desktop
             // 
             // btnNuevaOrden
             // 
+            this.btnNuevaOrden.AutoSize = false;
             this.btnNuevaOrden.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnNuevaOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.btnNuevaOrden.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
@@ -860,7 +895,7 @@ namespace UI.Desktop
             this.listStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.listStock.FullRowSelect = true;
             this.listStock.HideSelection = false;
-            this.listStock.Location = new System.Drawing.Point(414, 68);
+            this.listStock.Location = new System.Drawing.Point(85, 31);
             this.listStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listStock.MinimumSize = new System.Drawing.Size(200, 100);
             this.listStock.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -1388,7 +1423,11 @@ namespace UI.Desktop
             // tabPendientes
             // 
             this.tabPendientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.tabPendientes.Controls.Add(this.btnInciarTrabajo);
+            this.tabPendientes.Controls.Add(this.btnFinalizarTrabajo);
+            this.tabPendientes.Controls.Add(this.btnIniciarServicio);
+            this.tabPendientes.Controls.Add(this.listMaquinasItem);
+            this.tabPendientes.Controls.Add(this.btnMostrarServicios);
+            this.tabPendientes.Controls.Add(this.listEstadoMaquinas);
             this.tabPendientes.Controls.Add(this.listTrabajosPendientes);
             this.tabPendientes.Location = new System.Drawing.Point(4, 24);
             this.tabPendientes.Name = "tabPendientes";
@@ -1397,26 +1436,143 @@ namespace UI.Desktop
             this.tabPendientes.TabIndex = 0;
             this.tabPendientes.Text = "Trabajos Pendientes";
             // 
-            // btnInciarTrabajo
+            // btnFinalizarTrabajo
             // 
-            this.btnInciarTrabajo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnInciarTrabajo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnInciarTrabajo.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnInciarTrabajo.Depth = 0;
-            this.btnInciarTrabajo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnInciarTrabajo.HighEmphasis = true;
-            this.btnInciarTrabajo.Icon = null;
-            this.btnInciarTrabajo.Location = new System.Drawing.Point(891, 33);
-            this.btnInciarTrabajo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnInciarTrabajo.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnInciarTrabajo.Name = "btnInciarTrabajo";
-            this.btnInciarTrabajo.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnInciarTrabajo.Size = new System.Drawing.Size(73, 36);
-            this.btnInciarTrabajo.TabIndex = 1;
-            this.btnInciarTrabajo.Text = "Iniciar";
-            this.btnInciarTrabajo.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnInciarTrabajo.UseAccentColor = false;
-            this.btnInciarTrabajo.UseVisualStyleBackColor = false;
+            this.btnFinalizarTrabajo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnFinalizarTrabajo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnFinalizarTrabajo.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnFinalizarTrabajo.Depth = 0;
+            this.btnFinalizarTrabajo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnFinalizarTrabajo.HighEmphasis = true;
+            this.btnFinalizarTrabajo.Icon = null;
+            this.btnFinalizarTrabajo.Location = new System.Drawing.Point(981, 53);
+            this.btnFinalizarTrabajo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnFinalizarTrabajo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnFinalizarTrabajo.Name = "btnFinalizarTrabajo";
+            this.btnFinalizarTrabajo.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnFinalizarTrabajo.Size = new System.Drawing.Size(163, 36);
+            this.btnFinalizarTrabajo.TabIndex = 6;
+            this.btnFinalizarTrabajo.Text = "Finalizar Trabajo";
+            this.btnFinalizarTrabajo.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnFinalizarTrabajo.UseAccentColor = false;
+            this.btnFinalizarTrabajo.UseVisualStyleBackColor = false;
+            this.btnFinalizarTrabajo.Click += new System.EventHandler(this.btnFinalizarTrabajo_Click_1);
+            // 
+            // btnIniciarServicio
+            // 
+            this.btnIniciarServicio.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnIniciarServicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnIniciarServicio.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnIniciarServicio.Depth = 0;
+            this.btnIniciarServicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnIniciarServicio.HighEmphasis = true;
+            this.btnIniciarServicio.Icon = null;
+            this.btnIniciarServicio.Location = new System.Drawing.Point(981, 7);
+            this.btnIniciarServicio.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnIniciarServicio.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnIniciarServicio.Name = "btnIniciarServicio";
+            this.btnIniciarServicio.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnIniciarServicio.Size = new System.Drawing.Size(141, 36);
+            this.btnIniciarServicio.TabIndex = 5;
+            this.btnIniciarServicio.Text = "Iniciar Servicio";
+            this.btnIniciarServicio.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnIniciarServicio.UseAccentColor = false;
+            this.btnIniciarServicio.UseVisualStyleBackColor = false;
+            this.btnIniciarServicio.Click += new System.EventHandler(this.btnIniciarServicio_Click);
+            // 
+            // listMaquinasItem
+            // 
+            this.listMaquinasItem.AutoSizeTable = false;
+            this.listMaquinasItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.listMaquinasItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listMaquinasItem.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnMaquina3,
+            this.columnInicio1,
+            this.columnFin});
+            this.listMaquinasItem.Depth = 0;
+            this.listMaquinasItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listMaquinasItem.FullRowSelect = true;
+            this.listMaquinasItem.HideSelection = false;
+            this.listMaquinasItem.Location = new System.Drawing.Point(980, 223);
+            this.listMaquinasItem.MinimumSize = new System.Drawing.Size(200, 100);
+            this.listMaquinasItem.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listMaquinasItem.MouseState = MaterialSkin.MouseState.OUT;
+            this.listMaquinasItem.Name = "listMaquinasItem";
+            this.listMaquinasItem.OwnerDraw = true;
+            this.listMaquinasItem.Size = new System.Drawing.Size(294, 355);
+            this.listMaquinasItem.TabIndex = 4;
+            this.listMaquinasItem.UseCompatibleStateImageBehavior = false;
+            this.listMaquinasItem.View = System.Windows.Forms.View.Details;
+            // 
+            // columnMaquina3
+            // 
+            this.columnMaquina3.Text = "Maquina";
+            this.columnMaquina3.Width = 100;
+            // 
+            // columnInicio1
+            // 
+            this.columnInicio1.Text = "Inicio";
+            this.columnInicio1.Width = 100;
+            // 
+            // columnFin
+            // 
+            this.columnFin.Text = "Fin";
+            this.columnFin.Width = 100;
+            // 
+            // btnMostrarServicios
+            // 
+            this.btnMostrarServicios.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnMostrarServicios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnMostrarServicios.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnMostrarServicios.Depth = 0;
+            this.btnMostrarServicios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnMostrarServicios.HighEmphasis = true;
+            this.btnMostrarServicios.Icon = null;
+            this.btnMostrarServicios.Location = new System.Drawing.Point(981, 178);
+            this.btnMostrarServicios.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnMostrarServicios.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnMostrarServicios.Name = "btnMostrarServicios";
+            this.btnMostrarServicios.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnMostrarServicios.Size = new System.Drawing.Size(216, 36);
+            this.btnMostrarServicios.TabIndex = 3;
+            this.btnMostrarServicios.Text = "Ver servicios realizados";
+            this.btnMostrarServicios.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnMostrarServicios.UseAccentColor = false;
+            this.btnMostrarServicios.UseVisualStyleBackColor = false;
+            this.btnMostrarServicios.Click += new System.EventHandler(this.btnMostrarServicios_Click);
+            // 
+            // listEstadoMaquinas
+            // 
+            this.listEstadoMaquinas.AutoSizeTable = false;
+            this.listEstadoMaquinas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.listEstadoMaquinas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listEstadoMaquinas.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnMaquina2,
+            this.columnEstadoMaquina});
+            this.listEstadoMaquinas.Depth = 0;
+            this.listEstadoMaquinas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listEstadoMaquinas.FullRowSelect = true;
+            this.listEstadoMaquinas.HideSelection = false;
+            this.listEstadoMaquinas.Location = new System.Drawing.Point(6, 6);
+            this.listEstadoMaquinas.MinimumSize = new System.Drawing.Size(200, 100);
+            this.listEstadoMaquinas.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listEstadoMaquinas.MouseState = MaterialSkin.MouseState.OUT;
+            this.listEstadoMaquinas.Name = "listEstadoMaquinas";
+            this.listEstadoMaquinas.OwnerDraw = true;
+            this.listEstadoMaquinas.Size = new System.Drawing.Size(200, 572);
+            this.listEstadoMaquinas.TabIndex = 2;
+            this.listEstadoMaquinas.UseCompatibleStateImageBehavior = false;
+            this.listEstadoMaquinas.View = System.Windows.Forms.View.Details;
+            // 
+            // columnMaquina2
+            // 
+            this.columnMaquina2.Text = "Maquina";
+            this.columnMaquina2.Width = 100;
+            // 
+            // columnEstadoMaquina
+            // 
+            this.columnEstadoMaquina.Text = "Estado";
+            this.columnEstadoMaquina.Width = 100;
             // 
             // listTrabajosPendientes
             // 
@@ -1429,18 +1585,19 @@ namespace UI.Desktop
             this.columnTipoPrenda,
             this.columnOrdenItem,
             this.columnState,
-            this.columnPriority});
+            this.columnPriority,
+            this.columnTiempoRestante});
             this.listTrabajosPendientes.Depth = 0;
             this.listTrabajosPendientes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.listTrabajosPendientes.FullRowSelect = true;
             this.listTrabajosPendientes.HideSelection = false;
-            this.listTrabajosPendientes.Location = new System.Drawing.Point(155, 33);
+            this.listTrabajosPendientes.Location = new System.Drawing.Point(212, 6);
             this.listTrabajosPendientes.MinimumSize = new System.Drawing.Size(200, 100);
             this.listTrabajosPendientes.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listTrabajosPendientes.MouseState = MaterialSkin.MouseState.OUT;
             this.listTrabajosPendientes.Name = "listTrabajosPendientes";
             this.listTrabajosPendientes.OwnerDraw = true;
-            this.listTrabajosPendientes.Size = new System.Drawing.Size(720, 382);
+            this.listTrabajosPendientes.Size = new System.Drawing.Size(762, 572);
             this.listTrabajosPendientes.TabIndex = 0;
             this.listTrabajosPendientes.UseCompatibleStateImageBehavior = false;
             this.listTrabajosPendientes.View = System.Windows.Forms.View.Details;
@@ -1448,12 +1605,12 @@ namespace UI.Desktop
             // columnOrden
             // 
             this.columnOrden.Text = "Orden";
-            this.columnOrden.Width = 100;
+            this.columnOrden.Width = 70;
             // 
             // columnServicio
             // 
             this.columnServicio.Text = "Servicio";
-            this.columnServicio.Width = 150;
+            this.columnServicio.Width = 130;
             // 
             // columnTipoPrenda
             // 
@@ -1462,8 +1619,7 @@ namespace UI.Desktop
             // 
             // columnOrdenItem
             // 
-            this.columnOrdenItem.Text = "Orden Item";
-            this.columnOrdenItem.Width = 120;
+            this.columnOrdenItem.Text = "Item";
             // 
             // columnState
             // 
@@ -1475,15 +1631,107 @@ namespace UI.Desktop
             this.columnPriority.Text = "Prioridad";
             this.columnPriority.Width = 100;
             // 
+            // columnTiempoRestante
+            // 
+            this.columnTiempoRestante.Text = "Tiempo Restante";
+            this.columnTiempoRestante.Width = 150;
+            // 
             // tabEnProceso
             // 
             this.tabEnProceso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.tabEnProceso.Controls.Add(this.btnTerminarServicio);
+            this.tabEnProceso.Controls.Add(this.listTrabajosEnProceso);
             this.tabEnProceso.Location = new System.Drawing.Point(4, 24);
             this.tabEnProceso.Name = "tabEnProceso";
             this.tabEnProceso.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEnProceso.Size = new System.Drawing.Size(1364, 604);
+            this.tabEnProceso.Size = new System.Drawing.Size(1358, 597);
             this.tabEnProceso.TabIndex = 1;
             this.tabEnProceso.Text = "Trabajos en Proceso";
+            // 
+            // btnTerminarServicio
+            // 
+            this.btnTerminarServicio.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnTerminarServicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnTerminarServicio.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnTerminarServicio.Depth = 0;
+            this.btnTerminarServicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnTerminarServicio.HighEmphasis = true;
+            this.btnTerminarServicio.Icon = null;
+            this.btnTerminarServicio.Location = new System.Drawing.Point(963, 6);
+            this.btnTerminarServicio.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnTerminarServicio.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnTerminarServicio.Name = "btnTerminarServicio";
+            this.btnTerminarServicio.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnTerminarServicio.Size = new System.Drawing.Size(162, 36);
+            this.btnTerminarServicio.TabIndex = 1;
+            this.btnTerminarServicio.Text = "Terminar Servicio";
+            this.btnTerminarServicio.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnTerminarServicio.UseAccentColor = false;
+            this.btnTerminarServicio.UseVisualStyleBackColor = false;
+            this.btnTerminarServicio.Click += new System.EventHandler(this.btnTerminarServicio_Click);
+            // 
+            // listTrabajosEnProceso
+            // 
+            this.listTrabajosEnProceso.AutoSizeTable = false;
+            this.listTrabajosEnProceso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.listTrabajosEnProceso.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listTrabajosEnProceso.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnMaquina,
+            this.columnNroOrden2,
+            this.columnServicio2,
+            this.columnTipoPrenda2,
+            this.columnOrdenItem2,
+            this.columnInicio,
+            this.columnState2});
+            this.listTrabajosEnProceso.Depth = 0;
+            this.listTrabajosEnProceso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listTrabajosEnProceso.FullRowSelect = true;
+            this.listTrabajosEnProceso.HideSelection = false;
+            this.listTrabajosEnProceso.Location = new System.Drawing.Point(6, 6);
+            this.listTrabajosEnProceso.MinimumSize = new System.Drawing.Size(200, 100);
+            this.listTrabajosEnProceso.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listTrabajosEnProceso.MouseState = MaterialSkin.MouseState.OUT;
+            this.listTrabajosEnProceso.Name = "listTrabajosEnProceso";
+            this.listTrabajosEnProceso.OwnerDraw = true;
+            this.listTrabajosEnProceso.Size = new System.Drawing.Size(950, 576);
+            this.listTrabajosEnProceso.TabIndex = 0;
+            this.listTrabajosEnProceso.UseCompatibleStateImageBehavior = false;
+            this.listTrabajosEnProceso.View = System.Windows.Forms.View.Details;
+            // 
+            // columnMaquina
+            // 
+            this.columnMaquina.Text = "Maquina";
+            this.columnMaquina.Width = 100;
+            // 
+            // columnNroOrden2
+            // 
+            this.columnNroOrden2.Text = "Nro Orden";
+            this.columnNroOrden2.Width = 100;
+            // 
+            // columnServicio2
+            // 
+            this.columnServicio2.Text = "Servicio";
+            this.columnServicio2.Width = 150;
+            // 
+            // columnTipoPrenda2
+            // 
+            this.columnTipoPrenda2.Text = "Tipo de Prenda";
+            this.columnTipoPrenda2.Width = 150;
+            // 
+            // columnOrdenItem2
+            // 
+            this.columnOrdenItem2.Text = "Orden Item";
+            this.columnOrdenItem2.Width = 120;
+            // 
+            // columnInicio
+            // 
+            this.columnInicio.Text = "Hora de inicio";
+            this.columnInicio.Width = 200;
+            // 
+            // columnState2
+            // 
+            this.columnState2.Text = "Estado";
+            this.columnState2.Width = 130;
             // 
             // tabSelectorPlanificacion
             // 
@@ -1501,15 +1749,385 @@ namespace UI.Desktop
             this.tabSelectorPlanificacion.TabIndex = 0;
             this.tabSelectorPlanificacion.Text = "tabSelectorPlanificacion";
             // 
-            // tabPage2
+            // tabUtilidades
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.tabPage2.Location = new System.Drawing.Point(4, 39);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1372, 679);
-            this.tabPage2.TabIndex = 4;
-            this.tabPage2.Text = "tabPage2";
+            this.tabUtilidades.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.tabUtilidades.Controls.Add(this.materialCard5);
+            this.tabUtilidades.Controls.Add(this.materialCard4);
+            this.tabUtilidades.Controls.Add(this.materialCard3);
+            this.tabUtilidades.Controls.Add(this.materialCard2);
+            this.tabUtilidades.Controls.Add(this.materialCard1);
+            this.tabUtilidades.Location = new System.Drawing.Point(4, 39);
+            this.tabUtilidades.Name = "tabUtilidades";
+            this.tabUtilidades.Padding = new System.Windows.Forms.Padding(3);
+            this.tabUtilidades.Size = new System.Drawing.Size(1372, 679);
+            this.tabUtilidades.TabIndex = 4;
+            this.tabUtilidades.Text = "Utilidades";
+            // 
+            // materialCard5
+            // 
+            this.materialCard5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.materialCard5.Controls.Add(this.materialLabel6);
+            this.materialCard5.Depth = 0;
+            this.materialCard5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard5.Location = new System.Drawing.Point(17, 357);
+            this.materialCard5.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard5.Name = "materialCard5";
+            this.materialCard5.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard5.Size = new System.Drawing.Size(276, 284);
+            this.materialCard5.TabIndex = 5;
+            // 
+            // materialLabel6
+            // 
+            this.materialLabel6.AutoSize = true;
+            this.materialLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel6.Location = new System.Drawing.Point(17, 18);
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            this.materialLabel6.Size = new System.Drawing.Size(66, 19);
+            this.materialLabel6.TabIndex = 0;
+            this.materialLabel6.Text = "Finanzas";
+            // 
+            // materialCard4
+            // 
+            this.materialCard4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.materialCard4.Controls.Add(this.materialLabel4);
+            this.materialCard4.Controls.Add(this.btnObjetosPerdidos);
+            this.materialCard4.Depth = 0;
+            this.materialCard4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard4.Location = new System.Drawing.Point(309, 220);
+            this.materialCard4.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard4.Name = "materialCard4";
+            this.materialCard4.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard4.Size = new System.Drawing.Size(279, 121);
+            this.materialCard4.TabIndex = 4;
+            // 
+            // materialLabel4
+            // 
+            this.materialLabel4.AutoSize = true;
+            this.materialLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel4.Location = new System.Drawing.Point(18, 18);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(71, 19);
+            this.materialLabel4.TabIndex = 1;
+            this.materialLabel4.Text = "Utilidades";
+            // 
+            // btnObjetosPerdidos
+            // 
+            this.btnObjetosPerdidos.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnObjetosPerdidos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnObjetosPerdidos.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnObjetosPerdidos.Depth = 0;
+            this.btnObjetosPerdidos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnObjetosPerdidos.HighEmphasis = true;
+            this.btnObjetosPerdidos.Icon = null;
+            this.btnObjetosPerdidos.Location = new System.Drawing.Point(18, 43);
+            this.btnObjetosPerdidos.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnObjetosPerdidos.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnObjetosPerdidos.Name = "btnObjetosPerdidos";
+            this.btnObjetosPerdidos.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnObjetosPerdidos.Size = new System.Drawing.Size(159, 36);
+            this.btnObjetosPerdidos.TabIndex = 0;
+            this.btnObjetosPerdidos.Text = "Objetos Perdidos";
+            this.btnObjetosPerdidos.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnObjetosPerdidos.UseAccentColor = false;
+            this.btnObjetosPerdidos.UseVisualStyleBackColor = false;
+            this.btnObjetosPerdidos.Click += new System.EventHandler(this.btnObjetosPerdidos_Click);
+            // 
+            // materialCard3
+            // 
+            this.materialCard3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.materialCard3.Controls.Add(this.materialLabel3);
+            this.materialCard3.Depth = 0;
+            this.materialCard3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard3.Location = new System.Drawing.Point(603, 20);
+            this.materialCard3.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard3.Name = "materialCard3";
+            this.materialCard3.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard3.Size = new System.Drawing.Size(279, 321);
+            this.materialCard3.TabIndex = 3;
+            // 
+            // materialLabel3
+            // 
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel3.Location = new System.Drawing.Point(18, 10);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(149, 19);
+            this.materialLabel3.TabIndex = 0;
+            this.materialLabel3.Text = "Informes del negocio";
+            // 
+            // materialCard2
+            // 
+            this.materialCard2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.materialCard2.Controls.Add(this.materialLabel5);
+            this.materialCard2.Controls.Add(this.btnInsumos);
+            this.materialCard2.Controls.Add(this.btnProveedores);
+            this.materialCard2.Controls.Add(this.btnClientes);
+            this.materialCard2.Depth = 0;
+            this.materialCard2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard2.Location = new System.Drawing.Point(309, 20);
+            this.materialCard2.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard2.Name = "materialCard2";
+            this.materialCard2.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard2.Size = new System.Drawing.Size(279, 178);
+            this.materialCard2.TabIndex = 2;
+            // 
+            // materialLabel5
+            // 
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel5.Location = new System.Drawing.Point(18, 10);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(107, 19);
+            this.materialLabel5.TabIndex = 3;
+            this.materialLabel5.Text = "materialLabel5";
+            // 
+            // btnInsumos
+            // 
+            this.btnInsumos.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnInsumos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnInsumos.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnInsumos.Depth = 0;
+            this.btnInsumos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnInsumos.HighEmphasis = true;
+            this.btnInsumos.Icon = null;
+            this.btnInsumos.Location = new System.Drawing.Point(18, 131);
+            this.btnInsumos.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnInsumos.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnInsumos.Name = "btnInsumos";
+            this.btnInsumos.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnInsumos.Size = new System.Drawing.Size(86, 36);
+            this.btnInsumos.TabIndex = 2;
+            this.btnInsumos.Text = "Insumos";
+            this.btnInsumos.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnInsumos.UseAccentColor = false;
+            this.btnInsumos.UseVisualStyleBackColor = false;
+            // 
+            // btnProveedores
+            // 
+            this.btnProveedores.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnProveedores.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnProveedores.Depth = 0;
+            this.btnProveedores.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnProveedores.HighEmphasis = true;
+            this.btnProveedores.Icon = null;
+            this.btnProveedores.Location = new System.Drawing.Point(18, 83);
+            this.btnProveedores.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnProveedores.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnProveedores.Name = "btnProveedores";
+            this.btnProveedores.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnProveedores.Size = new System.Drawing.Size(123, 36);
+            this.btnProveedores.TabIndex = 1;
+            this.btnProveedores.Text = "Proveedores";
+            this.btnProveedores.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnProveedores.UseAccentColor = false;
+            this.btnProveedores.UseVisualStyleBackColor = false;
+            // 
+            // btnClientes
+            // 
+            this.btnClientes.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnClientes.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnClientes.Depth = 0;
+            this.btnClientes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnClientes.HighEmphasis = true;
+            this.btnClientes.Icon = null;
+            this.btnClientes.Location = new System.Drawing.Point(18, 35);
+            this.btnClientes.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnClientes.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnClientes.Name = "btnClientes";
+            this.btnClientes.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnClientes.Size = new System.Drawing.Size(88, 36);
+            this.btnClientes.TabIndex = 0;
+            this.btnClientes.Text = "Clientes";
+            this.btnClientes.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnClientes.UseAccentColor = false;
+            this.btnClientes.UseVisualStyleBackColor = false;
+            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
+            // 
+            // materialCard1
+            // 
+            this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.materialCard1.Controls.Add(this.btnUsuarios);
+            this.materialCard1.Controls.Add(this.btnMaquinas);
+            this.materialCard1.Controls.Add(this.btnEmpleados);
+            this.materialCard1.Controls.Add(this.btnServicioTipoPrenda);
+            this.materialCard1.Controls.Add(this.btnTipoPrenda);
+            this.materialCard1.Controls.Add(this.btnServicio);
+            this.materialCard1.Controls.Add(this.materialLabel2);
+            this.materialCard1.Depth = 0;
+            this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.Location = new System.Drawing.Point(17, 20);
+            this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard1.Name = "materialCard1";
+            this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard1.Size = new System.Drawing.Size(276, 321);
+            this.materialCard1.TabIndex = 1;
+            // 
+            // btnUsuarios
+            // 
+            this.btnUsuarios.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnUsuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnUsuarios.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnUsuarios.Depth = 0;
+            this.btnUsuarios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnUsuarios.HighEmphasis = true;
+            this.btnUsuarios.Icon = null;
+            this.btnUsuarios.Location = new System.Drawing.Point(17, 270);
+            this.btnUsuarios.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnUsuarios.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnUsuarios.Size = new System.Drawing.Size(91, 36);
+            this.btnUsuarios.TabIndex = 3;
+            this.btnUsuarios.Text = "Usuarios";
+            this.btnUsuarios.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnUsuarios.UseAccentColor = false;
+            this.btnUsuarios.UseVisualStyleBackColor = false;
+            // 
+            // btnMaquinas
+            // 
+            this.btnMaquinas.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnMaquinas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnMaquinas.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnMaquinas.Depth = 0;
+            this.btnMaquinas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnMaquinas.HighEmphasis = true;
+            this.btnMaquinas.Icon = null;
+            this.btnMaquinas.Location = new System.Drawing.Point(18, 175);
+            this.btnMaquinas.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnMaquinas.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnMaquinas.Name = "btnMaquinas";
+            this.btnMaquinas.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnMaquinas.Size = new System.Drawing.Size(97, 36);
+            this.btnMaquinas.TabIndex = 4;
+            this.btnMaquinas.Text = "Maquinas";
+            this.btnMaquinas.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnMaquinas.UseAccentColor = false;
+            this.btnMaquinas.UseVisualStyleBackColor = false;
+            this.btnMaquinas.Click += new System.EventHandler(this.btnMaquinas_Click);
+            // 
+            // btnEmpleados
+            // 
+            this.btnEmpleados.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEmpleados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnEmpleados.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnEmpleados.Depth = 0;
+            this.btnEmpleados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnEmpleados.HighEmphasis = true;
+            this.btnEmpleados.Icon = null;
+            this.btnEmpleados.Location = new System.Drawing.Point(18, 223);
+            this.btnEmpleados.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEmpleados.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEmpleados.Name = "btnEmpleados";
+            this.btnEmpleados.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnEmpleados.Size = new System.Drawing.Size(107, 36);
+            this.btnEmpleados.TabIndex = 2;
+            this.btnEmpleados.Text = "Empleados";
+            this.btnEmpleados.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnEmpleados.UseAccentColor = false;
+            this.btnEmpleados.UseVisualStyleBackColor = false;
+            this.btnEmpleados.Click += new System.EventHandler(this.btnEmpleados_Click);
+            // 
+            // btnServicioTipoPrenda
+            // 
+            this.btnServicioTipoPrenda.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnServicioTipoPrenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnServicioTipoPrenda.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnServicioTipoPrenda.Depth = 0;
+            this.btnServicioTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnServicioTipoPrenda.HighEmphasis = true;
+            this.btnServicioTipoPrenda.Icon = null;
+            this.btnServicioTipoPrenda.Location = new System.Drawing.Point(18, 127);
+            this.btnServicioTipoPrenda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnServicioTipoPrenda.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnServicioTipoPrenda.Name = "btnServicioTipoPrenda";
+            this.btnServicioTipoPrenda.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnServicioTipoPrenda.Size = new System.Drawing.Size(195, 36);
+            this.btnServicioTipoPrenda.TabIndex = 3;
+            this.btnServicioTipoPrenda.Text = "Servicios - TipoPrenda";
+            this.btnServicioTipoPrenda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnServicioTipoPrenda.UseAccentColor = false;
+            this.btnServicioTipoPrenda.UseVisualStyleBackColor = false;
+            this.btnServicioTipoPrenda.Click += new System.EventHandler(this.btnServicioTipoPrenda_Click);
+            // 
+            // btnTipoPrenda
+            // 
+            this.btnTipoPrenda.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnTipoPrenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnTipoPrenda.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnTipoPrenda.Depth = 0;
+            this.btnTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnTipoPrenda.HighEmphasis = true;
+            this.btnTipoPrenda.Icon = null;
+            this.btnTipoPrenda.Location = new System.Drawing.Point(18, 81);
+            this.btnTipoPrenda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnTipoPrenda.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnTipoPrenda.Name = "btnTipoPrenda";
+            this.btnTipoPrenda.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnTipoPrenda.Size = new System.Drawing.Size(145, 36);
+            this.btnTipoPrenda.TabIndex = 2;
+            this.btnTipoPrenda.Text = "Tipos de prenda";
+            this.btnTipoPrenda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnTipoPrenda.UseAccentColor = false;
+            this.btnTipoPrenda.UseVisualStyleBackColor = false;
+            // 
+            // btnServicio
+            // 
+            this.btnServicio.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnServicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnServicio.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnServicio.Depth = 0;
+            this.btnServicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnServicio.HighEmphasis = true;
+            this.btnServicio.Icon = null;
+            this.btnServicio.Location = new System.Drawing.Point(18, 35);
+            this.btnServicio.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnServicio.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnServicio.Name = "btnServicio";
+            this.btnServicio.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnServicio.Size = new System.Drawing.Size(94, 36);
+            this.btnServicio.TabIndex = 1;
+            this.btnServicio.Text = "Servicios";
+            this.btnServicio.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnServicio.UseAccentColor = false;
+            this.btnServicio.UseVisualStyleBackColor = false;
+            // 
+            // materialLabel2
+            // 
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel2.Location = new System.Drawing.Point(17, 10);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(147, 19);
+            this.materialLabel2.TabIndex = 0;
+            this.materialLabel2.Text = "Administrar negocio:";
             // 
             // imageList1
             // 
@@ -1617,6 +2235,19 @@ namespace UI.Desktop
             this.tabControlPlanificacion.ResumeLayout(false);
             this.tabPendientes.ResumeLayout(false);
             this.tabPendientes.PerformLayout();
+            this.tabEnProceso.ResumeLayout(false);
+            this.tabEnProceso.PerformLayout();
+            this.tabUtilidades.ResumeLayout(false);
+            this.materialCard5.ResumeLayout(false);
+            this.materialCard5.PerformLayout();
+            this.materialCard4.ResumeLayout(false);
+            this.materialCard4.PerformLayout();
+            this.materialCard3.ResumeLayout(false);
+            this.materialCard3.PerformLayout();
+            this.materialCard2.ResumeLayout(false);
+            this.materialCard2.PerformLayout();
+            this.materialCard1.ResumeLayout(false);
+            this.materialCard1.PerformLayout();
             this.epUser.ResumeLayout(false);
             this.epUser.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1629,7 +2260,6 @@ namespace UI.Desktop
         private System.Windows.Forms.TabPage mnuTabOrdenes;
         private System.Windows.Forms.TabPage mnuTabClientes;
         private System.Windows.Forms.ImageList imageList1;
-        private MaterialSkin.Controls.MaterialButton btnNuevoEmpleado;
         private MaterialSkin.Controls.MaterialListView listClientes;
         private System.Windows.Forms.ColumnHeader columnID;
         private System.Windows.Forms.ColumnHeader columnCuit;
@@ -1712,19 +2342,12 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnActualizarIngresos;
         private MaterialSkin.Controls.MaterialButton btnEditarOrden;
         private System.Windows.Forms.ColumnHeader columnEstado;
-        private MaterialSkin.Controls.MaterialButton btnEliminarEmpleado;
-        private MaterialSkin.Controls.MaterialButton btnEditarEmpleado;
-        private MaterialSkin.Controls.MaterialButton btnEliminarTipoPrenda;
-        private MaterialSkin.Controls.MaterialButton btnEditarTipoPrenda;
-        private MaterialSkin.Controls.MaterialButton EliminarServicioTipoPrenda;
-        private MaterialSkin.Controls.MaterialButton btnEditarServicioTipoPrenda;
         private System.Windows.Forms.TabPage tabPlanificacion;
         private MaterialSkin.Controls.MaterialTabControl tabControlPlanificacion;
         private System.Windows.Forms.TabPage tabPendientes;
         private System.Windows.Forms.TabPage tabEnProceso;
         private MaterialSkin.Controls.MaterialTabSelector tabSelectorPlanificacion;
-        private System.Windows.Forms.TabPage tabPage2;
-        private MaterialSkin.Controls.MaterialButton btnInciarTrabajo;
+        private System.Windows.Forms.TabPage tabUtilidades;
         private MaterialSkin.Controls.MaterialListView listTrabajosPendientes;
         private System.Windows.Forms.ColumnHeader columnOrden;
         private System.Windows.Forms.ColumnHeader columnServicio;
@@ -1733,6 +2356,46 @@ namespace UI.Desktop
         private System.Windows.Forms.ColumnHeader columnState;
         private System.Windows.Forms.ColumnHeader columnPriority;
         private MaterialSkin.Controls.MaterialButton btnOrdenesCliente;
+        private System.Windows.Forms.ColumnHeader columnTiempoRestante;
+        private MaterialSkin.Controls.MaterialListView listTrabajosEnProceso;
+        private System.Windows.Forms.ColumnHeader columnMaquina;
+        private System.Windows.Forms.ColumnHeader columnNroOrden2;
+        private System.Windows.Forms.ColumnHeader columnServicio2;
+        private System.Windows.Forms.ColumnHeader columnTipoPrenda2;
+        private System.Windows.Forms.ColumnHeader columnOrdenItem2;
+        private MaterialSkin.Controls.MaterialListView listEstadoMaquinas;
+        private System.Windows.Forms.ColumnHeader columnMaquina2;
+        private System.Windows.Forms.ColumnHeader columnEstadoMaquina;
+        private System.Windows.Forms.ColumnHeader columnInicio;
+        private MaterialSkin.Controls.MaterialButton btnMostrarServicios;
+        private MaterialSkin.Controls.MaterialListView listMaquinasItem;
+        private System.Windows.Forms.ColumnHeader columnMaquina3;
+        private System.Windows.Forms.ColumnHeader columnInicio1;
+        private System.Windows.Forms.ColumnHeader columnFin;
+        private MaterialSkin.Controls.MaterialButton btnIniciarServicio;
+        private MaterialSkin.Controls.MaterialButton btnFinalizarTrabajo;
+        private MaterialSkin.Controls.MaterialButton btnTerminarServicio;
+        private System.Windows.Forms.ColumnHeader columnState2;
+        private MaterialSkin.Controls.MaterialButton btnObjetosPerdidos;
+        private MaterialSkin.Controls.MaterialCard materialCard1;
+        private MaterialSkin.Controls.MaterialButton btnMaquinas;
+        private MaterialSkin.Controls.MaterialButton btnServicioTipoPrenda;
+        private MaterialSkin.Controls.MaterialButton btnTipoPrenda;
+        private MaterialSkin.Controls.MaterialButton btnServicio;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialCard materialCard4;
+        private MaterialSkin.Controls.MaterialLabel materialLabel4;
+        private MaterialSkin.Controls.MaterialCard materialCard3;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialCard materialCard2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private MaterialSkin.Controls.MaterialButton btnInsumos;
+        private MaterialSkin.Controls.MaterialButton btnProveedores;
+        private MaterialSkin.Controls.MaterialButton btnClientes;
+        private MaterialSkin.Controls.MaterialButton btnUsuarios;
+        private MaterialSkin.Controls.MaterialButton btnEmpleados;
+        private MaterialSkin.Controls.MaterialCard materialCard5;
+        private MaterialSkin.Controls.MaterialLabel materialLabel6;
     }
 }
 

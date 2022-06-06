@@ -117,8 +117,8 @@ namespace Data.Database
         {
             try
             {
-                var consulta = from items in GetAll() where items.Estado == OrdenServicioTipoPrenda.Estados.Pendiente 
-                               orderby items.Prioridad descending, items.Orden.FechaEntrada ascending,items.NroOrden ascending, items.OrdenItem ascending
+                var consulta = from items in GetAll() where items.Estado == OrdenServicioTipoPrenda.Estados.Pendiente || items.Estado == OrdenServicioTipoPrenda.Estados.Iniciado
+                               orderby items.Orden.FechaEntrada descending
                                select items;
                                
                 return consulta.ToList<OrdenServicioTipoPrenda>();
@@ -126,6 +126,24 @@ namespace Data.Database
             catch (Exception e)
             {
                 Exception ExceptionManejada = new Exception("Error al recuperar trabajos pendientes", e);
+                throw ExceptionManejada;
+            }
+        }
+
+        public List<OrdenServicioTipoPrenda> GetItemsEnProceso()
+        {
+            try
+            {
+                var consulta = from items in GetAll()
+                               where items.Estado == OrdenServicioTipoPrenda.Estados.Procesando
+                               orderby items.Orden.FechaEntrada descending
+                               select items;
+
+                return consulta.ToList<OrdenServicioTipoPrenda>();
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al recuperar trabajos en proceso", e);
                 throw ExceptionManejada;
             }
         }

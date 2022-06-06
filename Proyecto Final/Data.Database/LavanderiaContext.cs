@@ -17,7 +17,7 @@ namespace Data.Database
                .WithMany(e => e.Usuarios)
                .HasForeignKey(u => u.IdEmpleado)
                .OnDelete(DeleteBehavior.NoAction);
-            
+
             modelBuilder.Entity<TipoPrenda>()
                 .ToTable("tipo_prendas");
 
@@ -33,6 +33,11 @@ namespace Data.Database
             modelBuilder.Entity<InsumoServicioTipoPrenda>()
                 .ToTable("insumos_servicios_tipoprendas");
 
+            modelBuilder.Entity<InsumoServicioTipoPrenda>()
+                .ToTable("atributos_negocio");
+
+            modelBuilder.Entity<Mantenimiento>()
+                .ToTable("mantenimientos");
 
             modelBuilder.Entity<InsumoProveedor>()
                 .HasOne(ip => ip.Proveedor)
@@ -83,15 +88,19 @@ namespace Data.Database
                 .HasOne(m => m.OrdenServicioTipoPrenda)
                 .WithMany(ostp => ostp.MaquinaOrdenServicioTipoPrenda)
                 .HasForeignKey(m => new {m.NroOrden,m.IdServicio,m.IdTipoPrenda,m.OrdenItem})
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.ClientCascade);
 
             modelBuilder.Entity<MaquinaOrdenServicioTipoPrenda>()
                 .HasOne(m => m.Empleado)
                 .WithMany(e => e.OrdenesAtendidas)
                 .HasForeignKey(m => m.IdEmpleado)
                 .OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<MaquinaOrdenServicioTipoPrenda>()
-                .HasKey(m => new { m.IdMaquina, m.FechaHoraServicio });
+                .HasKey(m => new { m.IdMaquina, m.TiempoInicioServicio });
+
+            modelBuilder.Entity<MaquinaOrdenServicioTipoPrenda>()
+                .ToTable("maquinas_ordenes_servicios_tipoprendas");
 
             modelBuilder.Entity<Orden>()
                 .HasOne(m => m.Cliente)
@@ -162,7 +171,6 @@ namespace Data.Database
 
         public DbSet<Cliente>? Clientes { get; set; }
         public DbSet<TipoPrenda>? TipoPrendas { get; set; }
-        
         public DbSet<Empleado>? Empleados { get; set; }
         public DbSet<Factura>? Facturas { get; set; }
         public DbSet<Insumo>? Insumos { get; set; }
@@ -178,8 +186,8 @@ namespace Data.Database
         public DbSet<Proveedor>? Proveedores { get; set; }
         public DbSet<Servicio>? Servicios { get; set; }
         public DbSet<ServicioTipoPrenda>? ServiciosTipoPrendas { get; set; }
-        
         public DbSet<Usuario>? Usuarios { get; set; }
+        public DbSet<AtributosNegocio> AtributosNegocio { get; set; }
         public LavanderiaContext() {}
         public LavanderiaContext(DbContextOptions<LavanderiaContext> options) : base(options) {}
     }

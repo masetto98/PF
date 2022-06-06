@@ -26,7 +26,7 @@ namespace Business.Entities
             get { return _idProveedor; }
             set { _idProveedor = value; }
         }
-
+        [Column("cuit")]
         public string Cuit
         {
             get { return _cuit; }
@@ -38,19 +38,19 @@ namespace Business.Entities
             get { return _razon_social; }
             set { _razon_social = value; }
         }
-
+        [Column("telefono")]
         public string Telefono
         {
             get { return _telefono; }
             set { _telefono = value; }
         }
-
+        [Column("email")]
         public string Email
         {
             get { return _email; }
             set { _email = value; }
         }
-
+        [Column("direccion")]
         public string Direccion
         {
             get { return _direccion; }

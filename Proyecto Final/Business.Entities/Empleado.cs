@@ -43,31 +43,31 @@ namespace Business.Entities
             get { return _cuit; }
             set { _cuit = value; }
         }
-
+        [Column("nombre")]
         public string Nombre
         {
             get { return _nombre; }
             set { _nombre = value; }
         }
-
+        [Column("apellido")]
         public string Apellido
         {
             get { return _apellido; }
             set { _apellido = value; }
         }
-
+        [Column("telefono")]
         public string Telefono
         {
             get { return _telefono; }
             set { _telefono = value; }
         }
-
+        [Column("email")]
         public string Email
         {
             get { return _email; }
             set { _email = value; }
         }
-
+        [Column("direccion")]
         public string Direccion
         {
             get { return _direccion; }

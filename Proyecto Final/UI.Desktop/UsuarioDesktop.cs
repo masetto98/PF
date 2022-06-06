@@ -61,7 +61,7 @@ namespace UI.Desktop
             // Ahora tengo que cargar los datos de la persona también
             try
             {
-                Empleado emp = _empleadoLogic.GetOne(UsuarioActual.IdEmpleado);
+                Business.Entities.Empleado emp = _empleadoLogic.GetOne(UsuarioActual.IdEmpleado);
                 this.txtCuitEmpleado.Text = emp.Cuit.ToString();
                 this.txtNombreEmpleado.Text = emp.Nombre;
                 this.txtApellidoEmpleado.Text = emp.Apellido;
@@ -130,7 +130,7 @@ namespace UI.Desktop
         private void cargarEmpleado()
         {
             this.btnAceptarUsuario.Enabled = false;
-            List<Empleado> empleados = _empleadoLogic.GetAll();
+            List<Business.Entities.Empleado> empleados = _empleadoLogic.GetAll();
             try
             {
                 // Esta validacion tiene q ser q no es vacio y q son solo numeros
@@ -148,7 +148,7 @@ namespace UI.Desktop
                     Exception e = new Exception("No existe empleado para el cuit ingresado.");
                     throw e;
                 }
-                Empleado emp = _empleadoLogic.GetOne(empleado[0].IdEmpleado);
+                Business.Entities.Empleado emp = _empleadoLogic.GetOne(empleado[0].IdEmpleado);
                 // Asigno los datos de la persona a los textbox
                 this.txtNombreEmpleado.Text = emp.Nombre;
                 this.txtApellidoEmpleado.Text = emp.Apellido;

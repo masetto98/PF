@@ -11,7 +11,7 @@ namespace UI.Desktop
     class Singleton
     {
         private Singleton() { }
-        private Empleado _empleadoActual;
+        private Business.Entities.Empleado _empleadoActual;
         private Usuario _usuarioActual;
         //private System.Windows.Forms.DataGridView _dgvActual;
         private string _moduloActual;
@@ -20,13 +20,13 @@ namespace UI.Desktop
         {
             return _instance;
         }
-        public static void setInstance(Empleado emp, Usuario usr)
+        public static void setInstance(Business.Entities.Empleado emp, Usuario usr)
         {
             _instance = new Singleton();
             _instance._empleadoActual = emp;
             _instance._usuarioActual = usr;
         }
-        public Empleado EmpleadoLogged
+        public Business.Entities.Empleado EmpleadoLogged
         {
             get
             {

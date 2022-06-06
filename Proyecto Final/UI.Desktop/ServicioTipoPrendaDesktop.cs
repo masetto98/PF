@@ -17,9 +17,8 @@ namespace UI.Desktop
 {
     public partial class ServicioTipoPrendaDesktop : ApplicationForm
     {
-        readonly MaterialSkin.MaterialSkinManager materialSkinManager;
 
-        public ServicioTipoPrenda ServicioTipoPrendaActual { set; get; }
+        public Business.Entities.ServicioTipoPrenda ServicioTipoPrendaActual { set; get; }
         public Insumo InsumoActual { set; get;}
         public Precio PrecioActual { set; get;}
         public List<InsumoServicioTipoPrenda> _consumos;
@@ -41,10 +40,6 @@ namespace UI.Desktop
             _consumos = new List<InsumoServicioTipoPrenda>();
             _unidadesMedida = new List<string>();
 
-            materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
 
         public ServicioTipoPrendaDesktop(ModoForm modo, LavanderiaContext context) : this(context)
@@ -91,9 +86,9 @@ namespace UI.Desktop
         {
             this.nudHoras.Value = ServicioTipoPrendaActual.TiempoRequerido.Hours;
             this.nudMinutos.Value = ServicioTipoPrendaActual.TiempoRequerido.Minutes;
-            this.nudDias.Value = ServicioTipoPrendaActual.TiempoDemoraMax.Days;
-            this.nudHoras2.Value = ServicioTipoPrendaActual.TiempoDemoraMax.Hours;
-            this.nudMinutos2.Value = ServicioTipoPrendaActual.TiempoDemoraMax.Minutes;
+            //this.nudDias.Value = ServicioTipoPrendaActual.TiempoDemoraMax.Days;
+            //this.nudHoras2.Value = ServicioTipoPrendaActual.TiempoDemoraMax.Hours;
+            //this.nudMinutos2.Value = ServicioTipoPrendaActual.TiempoDemoraMax.Minutes;
             
             this.txtPrecio.Text = PrecioActual.Valor.ToString();
             try
@@ -145,12 +140,12 @@ namespace UI.Desktop
         {
             if (Modos == ModoForm.Alta)
             {
-                ServicioTipoPrendaActual = new ServicioTipoPrenda();
+                ServicioTipoPrendaActual = new Business.Entities.ServicioTipoPrenda();
                 Precio precioActual = new Precio();
                 ServicioTipoPrendaActual.Servicio = _servicioLogic.GetOne((int)this.cmbServicios.SelectedValue);
                 ServicioTipoPrendaActual.TipoPrenda = _tipoPrendaLogic.GetOne((int)this.cmbTipoPrendas.SelectedValue);
                 ServicioTipoPrendaActual.TiempoRequerido = new TimeSpan(((int)this.nudHoras.Value),((int)this.nudMinutos.Value),00);
-                ServicioTipoPrendaActual.TiempoDemoraMax = new TimeSpan((int)this.nudDias.Value,(int)this.nudHoras2.Value,(int)this.nudMinutos2.Value,00);
+                ServicioTipoPrendaActual.TiempoDemoraMax = new TimeSpan((int)this.nudDias.Value,(int)this.nudHoras2.Value,(int)this.nudMinutos2.Value,00).ToString();
                 precioActual.Valor = double.Parse(this.txtPrecio.Text);
                 precioActual.FechaDesde = DateTime.Today;
                 ServicioTipoPrendaActual.HistoricoPrecios = new List<Precio>();
@@ -164,7 +159,7 @@ namespace UI.Desktop
                 this.cmbServicios.Enabled = false;
                 this.cmbTipoPrendas.Enabled = false;
                 ServicioTipoPrendaActual.TiempoRequerido = new TimeSpan(((int)this.nudHoras.Value), ((int)this.nudMinutos.Value), 00);
-                ServicioTipoPrendaActual.TiempoDemoraMax = new TimeSpan((int)this.nudDias.Value, (int)this.nudHoras2.Value, (int)this.nudMinutos2.Value, 00);
+                ServicioTipoPrendaActual.TiempoDemoraMax = new TimeSpan((int)this.nudDias.Value, (int)this.nudHoras2.Value, (int)this.nudMinutos2.Value, 00).ToString();
                 if (PrecioActual.Valor != double.Parse(this.txtPrecio.Text)) 
                 {
                     Precio nuevoPrecio = new Precio();
@@ -246,14 +241,17 @@ namespace UI.Desktop
 
         public void ListarConsumos() 
         {
-            listConsumos.Items.Clear();
-            foreach (InsumoServicioTipoPrenda o in _consumos)
+            if (_consumos is not null)
             {
-                ListViewItem item = new ListViewItem((listConsumos.Items.Count + 1).ToString());
-                item.SubItems.Add(o.Insumo.Descripcion.ToString());
-                item.SubItems.Add(o.Cantidad.ToString());
-                item.SubItems.Add(o.Insumo.UnidadMedida.ToString());
-                listConsumos.Items.Add(item);
+                listConsumos.Items.Clear();
+                foreach (InsumoServicioTipoPrenda o in _consumos)
+                {
+                    ListViewItem item = new ListViewItem((listConsumos.Items.Count + 1).ToString());
+                    item.SubItems.Add(o.Insumo.Descripcion.ToString());
+                    item.SubItems.Add(o.Cantidad.ToString());
+                    item.SubItems.Add(o.Insumo.UnidadMedida.ToString());
+                    listConsumos.Items.Add(item);
+                }
             }
         }
         #region ------ CONSUMOS -------

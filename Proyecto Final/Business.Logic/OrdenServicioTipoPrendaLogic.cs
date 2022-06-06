@@ -87,5 +87,19 @@ namespace Business.Logic
                 throw ExceptionManejada;
             }
         }
+
+        public List<OrdenServicioTipoPrenda> GetItemsEnProceso()
+        {
+            try
+            {
+                return OrdenServicioTipoPrendaData.GetItemsEnProceso();
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al recuperar trabajos en proceso", e);
+                Logger.Log(ExceptionManejada.Message);
+                throw ExceptionManejada;
+            }
+        }
     }
 }

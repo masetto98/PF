@@ -16,7 +16,6 @@ namespace UI.Desktop
 {
     public partial class InsumoProveedorDesktop : ApplicationForm
     {
-        readonly MaterialSkin.MaterialSkinManager materialSkinManager;
         private readonly ProveedorLogic _proveedorLogic;
         private readonly InsumoLogic _insumoLogic;
         private readonly InsumoProveedorLogic _insumoProveedorLogic;
@@ -32,11 +31,9 @@ namespace UI.Desktop
             _insumoProveedorLogic = new InsumoProveedorLogic(new InsumoProveedorAdapter(context));
             _context = context;
             _unidadesMedida = new List<string>();
-            materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+
         }
+
         public InsumoProveedorDesktop(ModoForm modo, LavanderiaContext context) : this(context)
         {
             Modos = modo;
@@ -72,6 +69,7 @@ namespace UI.Desktop
                 MessageBox.Show(e.Message, "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public override void MapearDeDatos()
         {
             this.cbProveedores.Text = this.InsumoProveedorActual.Proveedor.RazonSocial;
@@ -119,6 +117,7 @@ namespace UI.Desktop
                     break;
             }
         }
+
         public override void MapearADatos()
         {
             try
@@ -131,7 +130,7 @@ namespace UI.Desktop
                     InsumoProveedorActual.FechaIngreso = DateTime.Now;
                     InsumoProveedorActual.Cantidad = ConvertirUnidadesConsumo(double.Parse(this.txtCantidad.Text),_unidadesMedida[this.cmbUnidadMedida.SelectedIndex]);
                 }
-                
+        
                 switch (Modos)
                 {
                     case ModoForm.Alta:
@@ -182,6 +181,32 @@ namespace UI.Desktop
             else
             {
                 return _cantidad;
+            }
+        }
+
+        
+        public override void GuardarCambios()
+        {
+            try
+            { 
+                MapearADatos();
+                _insumoProveedorLogic.Save(InsumoProveedorActual);
+                Close();
+            }
+            catch (Exception e)
+            {
+               MessageBox.Show(e.Message, "Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public virtual void Eliminar()
+        {
+            try
+            {
+                _insumoProveedorLogic.Delete(InsumoProveedorActual.IdInsumo,InsumoProveedorActual.IdProveedor,InsumoProveedorActual.FechaIngreso);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -263,12 +288,5 @@ namespace UI.Desktop
             _unidadesMedida = SetearMedidas((int)insumoActual.UnidadMedida, unidadesMedida);
             this.cmbUnidadMedida.DataSource = _unidadesMedida;
         }
-        /*
-        private void cbInsumos_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            int IDInsumo = (int)this.cbInsumos.SelectedValue;
-            Insumo insumo = _insumoLogic.GetOne(IDInsumo);
-            this.txtUnidadMedidaIngreso.Text = insumo.UnidadMedida.ToString();
-        }*/
     }
 }

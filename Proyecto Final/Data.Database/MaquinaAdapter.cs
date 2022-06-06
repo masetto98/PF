@@ -20,7 +20,10 @@ namespace Data.Database
             List<Maquina> maquinas = new List<Maquina>();
             try
             {
-                maquinas = _context.Maquinas.ToList();
+                maquinas = _context.Maquinas
+                                            .Include(i=>i.itemsAtendidos)
+                                            .Include(i => i.Mantenimientos)
+                                            .ToList();
             }
             catch (Exception e)
             {
@@ -29,11 +32,14 @@ namespace Data.Database
             }
             return maquinas;
         }
-        public Business.Entities.Maquina GetOne(int idMaquina)
+        public Maquina GetOne(int idMaquina)
         {
             try
             {
-                return _context.Maquinas.FirstOrDefault(s => s.IdMaquina == idMaquina);
+                return _context.Maquinas
+                                        .Include(i => i.itemsAtendidos)
+                                        .Include(i => i.Mantenimientos)
+                                        .FirstOrDefault(s => s.IdMaquina == idMaquina);
             }
             catch (Exception e)
             {
