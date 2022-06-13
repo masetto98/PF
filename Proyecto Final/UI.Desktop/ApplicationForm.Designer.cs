@@ -35,7 +35,8 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(816, 489);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.ClientSize = new System.Drawing.Size(848, 567);
             this.DoubleBuffered = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_56;

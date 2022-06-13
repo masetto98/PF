@@ -51,6 +51,7 @@ namespace UI.Desktop
             this.columnFechaSalida = new System.Windows.Forms.ColumnHeader();
             this.columnEstado = new System.Windows.Forms.ColumnHeader();
             this.mnuTabClientes = new System.Windows.Forms.TabPage();
+            this.btnReporte = new MaterialSkin.Controls.MaterialButton();
             this.btnOrdenesCliente = new MaterialSkin.Controls.MaterialButton();
             this.txtBuscarCliente = new MaterialSkin.Controls.MaterialTextBox();
             this.btnEditarCliente = new MaterialSkin.Controls.MaterialButton();
@@ -169,7 +170,8 @@ namespace UI.Desktop
             this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
             this.epUser = new MaterialSkin.Controls.MaterialExpansionPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnEditarPerfil = new MaterialSkin.Controls.MaterialButton();
+            this.imgUserLogin = new System.Windows.Forms.PictureBox();
             this.btnCerrarSesion = new MaterialSkin.Controls.MaterialButton();
             this.mnuPrincipal.SuspendLayout();
             this.mnuTabOrdenes.SuspendLayout();
@@ -191,7 +193,7 @@ namespace UI.Desktop
             this.materialCard2.SuspendLayout();
             this.materialCard1.SuspendLayout();
             this.epUser.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgUserLogin)).BeginInit();
             this.SuspendLayout();
             // 
             // mnuPrincipal
@@ -236,10 +238,6 @@ namespace UI.Desktop
             this.mnuTabOrdenes.TabIndex = 0;
             this.mnuTabOrdenes.Text = "Ordenes";
             // 
-            // btnEliminarEmpleado
-            // 
-            
-            
             // btnEditarOrden
             // 
             this.btnEditarOrden.AutoSize = false;
@@ -307,7 +305,6 @@ namespace UI.Desktop
             this.btnNuevoTipoPrenda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnNuevoTipoPrenda.UseAccentColor = false;
             this.btnNuevoTipoPrenda.UseVisualStyleBackColor = false;
-            //this.btnNuevoTipoPrenda.Click += new System.EventHandler(this.btnNuevoTipoPrenda_Click);
             // 
             // btnNuevoServicioTipoPrenda
             // 
@@ -329,7 +326,6 @@ namespace UI.Desktop
             this.btnNuevoServicioTipoPrenda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnNuevoServicioTipoPrenda.UseAccentColor = false;
             this.btnNuevoServicioTipoPrenda.UseVisualStyleBackColor = false;
-            //this.btnNuevoServicioTipoPrenda.Click += new System.EventHandler(this.btnNuevoServicioTipoPrenda_Click);
             // 
             // txtBuscarOrdenes
             // 
@@ -394,7 +390,7 @@ namespace UI.Desktop
             // 
             this.btnNuevaOrden.AutoSize = false;
             this.btnNuevaOrden.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnNuevaOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnNuevaOrden.BackColor = System.Drawing.Color.Maroon;
             this.btnNuevaOrden.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnNuevaOrden.Depth = 0;
             this.btnNuevaOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -486,11 +482,10 @@ namespace UI.Desktop
             this.columnEstado.Text = "Estado";
             this.columnEstado.Width = 100;
             // 
-            
-            // 
             // mnuTabClientes
             // 
             this.mnuTabClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.mnuTabClientes.Controls.Add(this.btnReporte);
             this.mnuTabClientes.Controls.Add(this.btnOrdenesCliente);
             this.mnuTabClientes.Controls.Add(this.txtBuscarCliente);
             this.mnuTabClientes.Controls.Add(this.btnEditarCliente);
@@ -505,6 +500,28 @@ namespace UI.Desktop
             this.mnuTabClientes.Size = new System.Drawing.Size(1372, 679);
             this.mnuTabClientes.TabIndex = 1;
             this.mnuTabClientes.Text = "Clientes";
+            // 
+            // btnReporte
+            // 
+            this.btnReporte.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnReporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnReporte.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnReporte.Depth = 0;
+            this.btnReporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnReporte.HighEmphasis = true;
+            this.btnReporte.Icon = null;
+            this.btnReporte.Location = new System.Drawing.Point(1020, 177);
+            this.btnReporte.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnReporte.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnReporte.Name = "btnReporte";
+            this.btnReporte.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnReporte.Size = new System.Drawing.Size(85, 36);
+            this.btnReporte.TabIndex = 6;
+            this.btnReporte.Text = "Reporte";
+            this.btnReporte.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnReporte.UseAccentColor = false;
+            this.btnReporte.UseVisualStyleBackColor = false;
+            this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
             // 
             // btnOrdenesCliente
             // 
@@ -1092,12 +1109,12 @@ namespace UI.Desktop
             // dtpFiltrarFechaIngreso
             // 
             this.dtpFiltrarFechaIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.dtpFiltrarFechaIngreso.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dtpFiltrarFechaIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpFiltrarFechaIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dtpFiltrarFechaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFiltrarFechaIngreso.Location = new System.Drawing.Point(414, 29);
             this.dtpFiltrarFechaIngreso.Name = "dtpFiltrarFechaIngreso";
-            this.dtpFiltrarFechaIngreso.Size = new System.Drawing.Size(200, 24);
+            this.dtpFiltrarFechaIngreso.Size = new System.Drawing.Size(200, 23);
             this.dtpFiltrarFechaIngreso.TabIndex = 13;
             this.dtpFiltrarFechaIngreso.CloseUp += new System.EventHandler(this.dtpFiltrarFechaIngreso_CloseUp);
             // 
@@ -1496,7 +1513,7 @@ namespace UI.Desktop
             this.tabEnProceso.Location = new System.Drawing.Point(4, 24);
             this.tabEnProceso.Name = "tabEnProceso";
             this.tabEnProceso.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEnProceso.Size = new System.Drawing.Size(1358, 597);
+            this.tabEnProceso.Size = new System.Drawing.Size(1364, 604);
             this.tabEnProceso.TabIndex = 1;
             this.tabEnProceso.Text = "Trabajos en Proceso";
             // 
@@ -1996,7 +2013,8 @@ namespace UI.Desktop
             this.epUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.epUser.CancelButtonText = "";
             this.epUser.Collapse = true;
-            this.epUser.Controls.Add(this.pictureBox1);
+            this.epUser.Controls.Add(this.btnEditarPerfil);
+            this.epUser.Controls.Add(this.imgUserLogin);
             this.epUser.Controls.Add(this.btnCerrarSesion);
             this.epUser.Depth = 0;
             this.epUser.Description = "";
@@ -2014,18 +2032,40 @@ namespace UI.Desktop
             this.epUser.ValidationButtonText = "";
             this.epUser.Leave += new System.EventHandler(this.epUser_Leave);
             // 
-            // pictureBox1
+            // btnEditarPerfil
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.pictureBox1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.pictureBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.pictureBox1.Image = global::UI.Desktop.Properties.Resources.round_account_button_with_user_inside_icon_icons_com_72596;
-            this.pictureBox1.Location = new System.Drawing.Point(103, 8);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
+            this.btnEditarPerfil.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEditarPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnEditarPerfil.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnEditarPerfil.Depth = 0;
+            this.btnEditarPerfil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnEditarPerfil.HighEmphasis = true;
+            this.btnEditarPerfil.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
+            this.btnEditarPerfil.Location = new System.Drawing.Point(16, 70);
+            this.btnEditarPerfil.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEditarPerfil.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEditarPerfil.Name = "btnEditarPerfil";
+            this.btnEditarPerfil.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnEditarPerfil.Size = new System.Drawing.Size(164, 36);
+            this.btnEditarPerfil.TabIndex = 10;
+            this.btnEditarPerfil.Text = "Editar Usuario";
+            this.btnEditarPerfil.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnEditarPerfil.UseAccentColor = false;
+            this.btnEditarPerfil.UseVisualStyleBackColor = false;
+            this.btnEditarPerfil.Click += new System.EventHandler(this.btnEditarPerfil_Click);
+            // 
+            // imgUserLogin
+            // 
+            this.imgUserLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.imgUserLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.imgUserLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.imgUserLogin.Image = global::UI.Desktop.Properties.Resources.round_account_button_with_user_inside_icon_icons_com_72596;
+            this.imgUserLogin.Location = new System.Drawing.Point(103, 8);
+            this.imgUserLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.imgUserLogin.Name = "imgUserLogin";
+            this.imgUserLogin.Size = new System.Drawing.Size(32, 32);
+            this.imgUserLogin.TabIndex = 9;
+            this.imgUserLogin.TabStop = false;
             // 
             // btnCerrarSesion
             // 
@@ -2036,7 +2076,7 @@ namespace UI.Desktop
             this.btnCerrarSesion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnCerrarSesion.HighEmphasis = true;
             this.btnCerrarSesion.Icon = global::UI.Desktop.Properties.Resources.off_log_icon_214125;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(17, 81);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(16, 149);
             this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrarSesion.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrarSesion.Name = "btnCerrarSesion";
@@ -2053,10 +2093,10 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(1386, 788);
             this.Controls.Add(this.epUser);
             this.Controls.Add(this.mnuPrincipal);
-            this.DrawerAutoHide = false;
             this.DrawerShowIconsWhenHidden = true;
             this.DrawerTabControl = this.mnuPrincipal;
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -2065,7 +2105,6 @@ namespace UI.Desktop
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmMain";
             this.Padding = new System.Windows.Forms.Padding(3, 64, 3, 2);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " Lavanderia";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Shown += new System.EventHandler(this.frmMain_Shown);
@@ -2102,7 +2141,7 @@ namespace UI.Desktop
             this.materialCard1.PerformLayout();
             this.epUser.ResumeLayout(false);
             this.epUser.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgUserLogin)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2188,7 +2227,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialExpansionPanel epUser;
         private System.Windows.Forms.ColumnHeader columnUnidadMedida;
         private MaterialSkin.Controls.MaterialButton btnCerrarSesion;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private MaterialSkin.Controls.MaterialLabel lblFiltrarFecha;
         private System.Windows.Forms.DateTimePicker dtpFiltrarFechaIngreso;
         private MaterialSkin.Controls.MaterialButton btnActualizarIngresos;
@@ -2248,6 +2286,9 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnEmpleados;
         private MaterialSkin.Controls.MaterialCard materialCard5;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
+        private MaterialSkin.Controls.MaterialButton btnReporte;
+        private MaterialSkin.Controls.MaterialButton btnEditarPerfil;
+        private System.Windows.Forms.PictureBox imgUserLogin;
     }
 }
 

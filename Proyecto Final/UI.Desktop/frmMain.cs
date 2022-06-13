@@ -12,13 +12,18 @@ using System.Windows.Forms;
 using Data.Database;
 using Business.Entities;
 using Business.Logic;
+using iText.Kernel.Pdf;
+using iText.Layout.Element;
+using iText.Layout.Properties;
+using iText.Layout;
+using System.IO;
 
 
 namespace UI.Desktop
 {
     public partial class frmMain : ApplicationForm
     {
-        readonly MaterialSkin.MaterialSkinManager materialSkinManager;
+        
         private readonly LavanderiaContext _context;
         private readonly ClienteLogic _clienteLogic;
         private readonly AtributosNegocioLogic _atributosNegocioLogic;
@@ -782,6 +787,8 @@ namespace UI.Desktop
                     break;
                 case 1:
                     ListarClientes();
+                    Singleton.getInstance().ListActual = this.listClientes;
+                    Singleton.getInstance().ModuloActual = "Clientes";
                     break;
                 case 2:
                     tabControlInventario_SelectedIndexChanged(sender, e);
@@ -822,6 +829,10 @@ namespace UI.Desktop
                 frmRetirarOrden.ShowDialog();
                 CargarOrdenes();
             }
+            else
+            {
+                MessageBox.Show("Seleccionar una fila en la lista para poder retirar la orden");
+            }
         }
 
         private void btnServicioTipoPrenda_Click(object sender, EventArgs e)
@@ -846,6 +857,98 @@ namespace UI.Desktop
         {
             Maquinas frmMaquinas = new Maquinas(_context);
             frmMaquinas.ShowDialog();
+        }
+
+        private void btnReporte_Click(object sender, EventArgs e)
+        {
+            if (Singleton.getInstance().ListActual != null && Singleton.getInstance().ListActual.SelectedItems.Count > 0)
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "PDF (*.pdf)|*.pdf";
+                sfd.FileName = $"Reporte de {Singleton.getInstance().ModuloActual} - {DateTime.Now.ToString("yyyyMMddHHmmss")}.pdf";
+                bool fileError = false;
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(sfd.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(sfd.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            MessageBox.Show("No fue posible escribir el archivo en el disco." + ex.Message);
+                        }
+                    }
+                    if (!fileError)
+                    {
+                        try
+                        {
+                            Table pdfTable = new Table(Singleton.getInstance().ListActual.Columns.Count - 1);
+                            pdfTable.SetPadding(3);
+                            pdfTable.SetWidth(UnitValue.CreatePercentValue(100));
+                            pdfTable.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
+
+                            foreach (ColumnHeader column in Singleton.getInstance().ListActual.Columns)
+                            {
+                                    
+                                    Cell cell = new Cell().Add(new Paragraph(column.Text).SetBold());
+                                    cell.SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+                                    cell.SetTextAlignment(TextAlignment.CENTER);
+                                    pdfTable.AddCell(cell);
+                                
+                            }
+                            
+                            foreach (ListViewItem row in Singleton.getInstance().ListActual.Items)
+                            {
+                               foreach(ListViewItem.ListViewSubItem cell in row.SubItems)
+                                {
+                                    pdfTable.AddCell(cell.Text);
+                                }
+
+                            }
+
+                            using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                            {
+                                PdfWriter writer = new PdfWriter(stream);
+                                PdfDocument pdf = new PdfDocument(writer);
+                                Document document = new Document(pdf);
+                                pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4);
+                                document.SetMargins(10f, 20f, 20f, 10f);
+                                Paragraph p = new Paragraph();
+                                p.SetTextAlignment(TextAlignment.CENTER);
+                                p.Add($"Reporte de {Singleton.getInstance().ModuloActual} \n");
+                                p.SetBold();
+                                p.SetUnderline();
+                                p.SetFontSize(18);
+                                document.Add(p);
+                                document.Add(pdfTable);
+                                document.Close();
+                                stream.Close();
+                            }
+
+                            MessageBox.Show("Reporte exportado exitosamente", "Info");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error: " + ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay registros para exportar", "Info");
+            }
+        }
+
+        private void btnEditarPerfil_Click(object sender, EventArgs e)
+        {
+            
+            int ID = Singleton.getInstance().UserLogged.IdUsuario;
+            UsuarioDesktop frmUser = new UsuarioDesktop(ID, ApplicationForm.ModoForm.Modificacion, _context);
+            frmUser.ShowDialog();
         }
     }
 }

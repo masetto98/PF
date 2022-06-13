@@ -307,7 +307,7 @@ namespace UI.Desktop
             this.btnAceptarUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnAceptarUsuario.HighEmphasis = true;
             this.btnAceptarUsuario.Icon = null;
-            this.btnAceptarUsuario.Location = new System.Drawing.Point(107, 404);
+            this.btnAceptarUsuario.Location = new System.Drawing.Point(509, 404);
             this.btnAceptarUsuario.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptarUsuario.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptarUsuario.Name = "btnAceptarUsuario";
@@ -329,7 +329,7 @@ namespace UI.Desktop
             this.btnCancelarUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnCancelarUsuario.HighEmphasis = true;
             this.btnCancelarUsuario.Icon = null;
-            this.btnCancelarUsuario.Location = new System.Drawing.Point(579, 404);
+            this.btnCancelarUsuario.Location = new System.Drawing.Point(641, 404);
             this.btnCancelarUsuario.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelarUsuario.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelarUsuario.Name = "btnCancelarUsuario";
@@ -346,7 +346,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(791, 462);
+            this.ClientSize = new System.Drawing.Size(754, 461);
             this.Controls.Add(this.btnCancelarUsuario);
             this.Controls.Add(this.btnAceptarUsuario);
             this.Controls.Add(this.materialLabel7);
@@ -365,6 +365,8 @@ namespace UI.Desktop
             this.Controls.Add(this.txtIdUsuario);
             this.Controls.Add(this.materialLabel1);
             this.Name = "UsuarioDesktop";
+            this.Sizable = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuario";
             this.ResumeLayout(false);
             this.PerformLayout();

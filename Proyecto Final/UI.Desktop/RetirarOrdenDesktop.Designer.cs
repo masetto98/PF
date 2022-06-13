@@ -58,6 +58,7 @@ namespace UI.Desktop
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
             this.btnRetirar = new MaterialSkin.Controls.MaterialButton();
             this.btnCancelarRetiro = new MaterialSkin.Controls.MaterialButton();
+            this.btnImpFactura = new MaterialSkin.Controls.MaterialButton();
             this.cardClienteRetiro.SuspendLayout();
             this.cardOrdenRetiro.SuspendLayout();
             this.materialCard1.SuspendLayout();
@@ -490,7 +491,7 @@ namespace UI.Desktop
             this.btnRetirar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnRetirar.HighEmphasis = true;
             this.btnRetirar.Icon = null;
-            this.btnRetirar.Location = new System.Drawing.Point(597, 592);
+            this.btnRetirar.Location = new System.Drawing.Point(597, 583);
             this.btnRetirar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnRetirar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRetirar.Name = "btnRetirar";
@@ -512,7 +513,7 @@ namespace UI.Desktop
             this.btnCancelarRetiro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnCancelarRetiro.HighEmphasis = true;
             this.btnCancelarRetiro.Icon = null;
-            this.btnCancelarRetiro.Location = new System.Drawing.Point(697, 592);
+            this.btnCancelarRetiro.Location = new System.Drawing.Point(697, 583);
             this.btnCancelarRetiro.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelarRetiro.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelarRetiro.Name = "btnCancelarRetiro";
@@ -525,11 +526,34 @@ namespace UI.Desktop
             this.btnCancelarRetiro.UseVisualStyleBackColor = false;
             this.btnCancelarRetiro.Click += new System.EventHandler(this.btnCancelarRetiro_Click);
             // 
+            // btnImpFactura
+            // 
+            this.btnImpFactura.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnImpFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnImpFactura.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnImpFactura.Depth = 0;
+            this.btnImpFactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnImpFactura.HighEmphasis = true;
+            this.btnImpFactura.Icon = null;
+            this.btnImpFactura.Location = new System.Drawing.Point(23, 583);
+            this.btnImpFactura.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnImpFactura.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnImpFactura.Name = "btnImpFactura";
+            this.btnImpFactura.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnImpFactura.Size = new System.Drawing.Size(156, 36);
+            this.btnImpFactura.TabIndex = 5;
+            this.btnImpFactura.Text = "Imprimir Factura";
+            this.btnImpFactura.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnImpFactura.UseAccentColor = false;
+            this.btnImpFactura.UseVisualStyleBackColor = false;
+            this.btnImpFactura.Click += new System.EventHandler(this.btnImpFactura_Click);
+            // 
             // RetirarOrdenDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(950, 788);
+            this.ClientSize = new System.Drawing.Size(823, 649);
+            this.Controls.Add(this.btnImpFactura);
             this.Controls.Add(this.btnCancelarRetiro);
             this.Controls.Add(this.btnRetirar);
             this.Controls.Add(this.materialCard1);
@@ -580,5 +604,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnPagoRetirar;
         private MaterialSkin.Controls.MaterialButton btnRetirar;
         private MaterialSkin.Controls.MaterialButton btnCancelarRetiro;
+        private MaterialSkin.Controls.MaterialButton btnImpFactura;
     }
 }

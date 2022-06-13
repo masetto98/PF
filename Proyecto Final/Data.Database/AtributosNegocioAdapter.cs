@@ -18,17 +18,17 @@ namespace Data.Database
         
         public Business.Entities.AtributosNegocio GetOne(int id)
         {
-            try
-            {
-                return _context.AtributosNegocio.FirstOrDefault(f => f.ID == id);
-            }
-            catch (Exception e)
-            {
-                Exception ExceptionManejada = new Exception("Error al recuperar datos del negocio", e);
-                throw ExceptionManejada;
-            }
-            return null;
+            //    try
+            //    {
+            return _context.AtributosNegocio.FirstOrDefault(f => f.ID == id);
+            //   }
+            //   catch (Exception e)
+            //   {
+            //  Exception ExceptionManejada = new Exception("Error al recuperar datos del negocio", e);
+            //  throw ExceptionManejada;
         }
+        //return null;
+    
         protected void Update(AtributosNegocio an)
         {
             try

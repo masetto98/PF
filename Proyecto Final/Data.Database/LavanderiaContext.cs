@@ -33,7 +33,7 @@ namespace Data.Database
             modelBuilder.Entity<InsumoServicioTipoPrenda>()
                 .ToTable("insumos_servicios_tipoprendas");
 
-            modelBuilder.Entity<InsumoServicioTipoPrenda>()
+            modelBuilder.Entity<AtributosNegocio>()
                 .ToTable("atributos_negocio");
 
             modelBuilder.Entity<Mantenimiento>()

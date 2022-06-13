@@ -42,9 +42,15 @@ namespace UI.Desktop
             try
             {
                 UsuarioActual = _usuarioLogic.GetOne(ID);
-                // Como estoy modificando o borrando el usuario, no tengo que poder modificar el legajo
+                // Como estoy modificando o borrando el usuario, no tengo que poder modificar el cuit
                 // al cual está asociado
-                
+                this.txtCuitEmpleado.Enabled = false;
+                /*
+                this.txtNombreUsuario.ReadOnly = true;
+                this.chkHabilitado.Enabled = false;
+                this.txtClaveUser.ReadOnly = true;
+                this.txtConfirmarClave.ReadOnly = true;
+                */
                 MapearDeDatos();
             }
             catch (Exception e)
@@ -77,6 +83,7 @@ namespace UI.Desktop
                     break;
                 case ModoForm.Modificacion:
                     this.btnAceptarUsuario.Text = "Guardar";
+                    this.txtIdUsuario.Enabled = false;
                     break;
                 case ModoForm.Baja:
                     this.btnAceptarUsuario.Text = "Eliminar";

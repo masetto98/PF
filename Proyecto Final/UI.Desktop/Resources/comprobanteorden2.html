@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Comprobante lavado</title>
+	<style>
+		table.border {
+			border-collapse: collapse;
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<font size="2">
+		<table align="center" cellspacing=1 cellpadding=1>
+			<tr>
+				<td>
+					<table class="border">
+						<tr>
+							<td style="width:75%">
+								<table>
+									<tr><td><font size="5">@NombreLavanderia</font></td></tr>
+									<tr><td>@DireccionLav</td></tr>
+									<tr><td>Tel:@TelLav</td></tr>
+									<tr><td>@Redes</td></tr>
+								</table>
+							</td>
+							<td>
+								<table class="border" align="center">
+									<tr><td>Nro Orden:</td></tr>
+									<tr><td>@NroOrden</td></tr>
+
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<table align="right">
+									<tr>
+										<td>Fecha entrada:</td>
+										<td>@fechaentrada</td>
+									</tr>
+									<tr>
+										<td align="right">Fecha Retiro:</td>
+										<td>@fecharetiro</td>
+									</tr>
+								</table>
+
+								<table>
+									<tr>
+										<td align="left">Cliente:</td>
+										<td>@cliente</td>
+									</tr>
+									<tr>
+										<td align="left">Dirección:</td>
+										<td>@direccion</td>
+									</tr>
+									<tr>
+										<td align="left">Tel:</td>
+										<td>@telefono</td>
+									</tr>
+								</table>
+
+							</td>
+						</tr>
+						<tr><td colspan="2" height="10"></td></tr>
+						<tr>
+							<td colspan="2">
+								<table class="border" style="width:100%">
+									<thead style="background-color:#D8D8D8">
+										<tr>
+											<th>Nro</th>
+											<th>Servicio</th>
+											<th>Tipo Prenda</th>
+
+										</tr>
+									</thead>
+									<tbody>
+										@items
+									</tbody>
+								</table>
+							</td>
+						</tr>
+						<tr><td colspan="2" height="10"></td></tr>
+						<tr>
+							<td colspan="1">
+								Observaciones
+								<table class="border">
+									<tr><td>@obs</td></tr>
+								</table>
+							</td>
+							<td>
+								<table class="border">
+									<tr>
+										<td>Descuento:</td>
+										<td>@Desc</td>
+									</tr>
+									<tr>
+										<td>Seña:</td>
+										<td>@Seña</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr><td colspan="2" height="10"></td></tr>
+					</table>
+				</td>
+				<td>
+					<table class="border">
+						<tr>
+							<td style="width:75%">
+								<table>
+									<tr><td><h3>@NombreLavanderia</h3></td></tr>
+									<tr><td>@DireccionLav</td></tr>
+									<tr><td>Tel:@TelLav</td></tr>
+									<tr><td>@Redes</td></tr>
+								</table>
+							</td>
+							<td>
+								<table class="border" align="center">
+									<tr><td align="center">Nro Orden:</td></tr>
+									<tr><td align="center">@NroOrden</td></tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<table align="right">
+									<tr>
+										<td>Fecha entrada:</td>
+										<td>@fechaentrada</td>
+									</tr>
+									<tr>
+										<td align="right">Fecha Retiro:</td>
+										<td>@fecharetiro</td>
+									</tr>
+								</table>
+
+								<table>
+									<tr>
+										<td align="left">Cliente:</td>
+										<td>@cliente</td>
+									</tr>
+									<tr>
+										<td align="left">Dirección:</td>
+										<td>@direccion</td>
+									</tr>
+									<tr>
+										<td align="left">Tel:</td>
+										<td>@telefono</td>
+									</tr>
+								</table>
+
+							</td>
+						</tr>
+						<tr><td colspan="2" height="10"></td></tr>
+						<tr>
+							<td colspan="2">
+								<table class="border" style="width:100%">
+									<thead style="background-color:#D8D8D8">
+										<tr>
+											<th>Nro</th>
+											<th>Servicio</th>
+											<th>Tipo Prenda</th>
+
+										</tr>
+									</thead>
+									<tbody>
+										@items
+									</tbody>
+								</table>
+							</td>
+						</tr>
+						<tr><td colspan="2" height="10"></td></tr>
+						<tr>
+							<td colspan="1">
+								Observaciones
+								<table class="border">
+									<tr><td>@obs</td></tr>
+								</table>
+							</td>
+							<td>
+								<table class="border">
+									<tr>
+										<td>Descuento:</td>
+										<td>@Desc</td>
+									</tr>
+									<tr>
+										<td>Seña:</td>
+										<td>@Seña</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr><td colspan="2" height="10"></td></tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</font>
+</body>
+</html>

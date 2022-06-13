@@ -376,7 +376,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(845, 630);
+            this.ClientSize = new System.Drawing.Size(819, 555);
             this.Controls.Add(this.btnSaldarDeuda);
             this.Controls.Add(this.materialLabel5);
             this.Controls.Add(this.txtApagar);

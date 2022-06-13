@@ -13,7 +13,7 @@ namespace UI.Desktop
         private Singleton() { }
         private Business.Entities.Empleado _empleadoActual;
         private Usuario _usuarioActual;
-        //private System.Windows.Forms.DataGridView _dgvActual;
+        private System.Windows.Forms.ListView _listActual;
         private string _moduloActual;
         private static Singleton _instance;
         public static Singleton getInstance()
@@ -40,17 +40,17 @@ namespace UI.Desktop
                 return _usuarioActual;
             }
         }
-       /* public System.Windows.Forms.DataGridView DgvActual
+       public System.Windows.Forms.ListView ListActual
         {
             get
             {
-                return _dgvActual;
+                return _listActual;
             }
             set
             {
-                _dgvActual = value;
+                _listActual = value;
             }
-        }*/
+        }
         public string ModuloActual
         {
             get

@@ -12,6 +12,12 @@ using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
 using Data.Database;
+using iText.Kernel.Pdf;
+using iText.Html2pdf;
+using iText.Layout.Element;
+using iText.Layout.Properties;
+using iText.Layout;
+using System.IO;
 
 namespace UI.Desktop
 {
@@ -440,6 +446,7 @@ namespace UI.Desktop
                 case ModoForm.Alta:
                     {
                         GuardarCambios();
+                        PrintComprobante();
                     };
                     break;
                 case ModoForm.Modificacion:
@@ -459,6 +466,101 @@ namespace UI.Desktop
             }
         }
 
+        public void PrintComprobante()
+        {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "PDF (*.pdf)|*.pdf";
+                sfd.FileName = $"Comprobante de lavado - {OrdenActual.NroOrden} - {DateTime.Now.ToString("yyyyMMddHHmmss")}.pdf";
+                bool fileError = false;
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(sfd.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(sfd.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            MessageBox.Show("No fue posible escribir el archivo en el disco." + ex.Message);
+                        }
+                    }
+                    if (!fileError)
+                    {
+                        try
+                        {
+                        AtributosNegocio negocio = new AtributosNegocio();
+                        AtributosNegocioLogic negocioLogic = new AtributosNegocioLogic(new AtributosNegocioAdapter(_context));
+                        negocio = negocioLogic.GetOne(1);
+                        string comprobanteorden = Properties.Resources.comprobanteorden2.ToString();
+                        comprobanteorden = comprobanteorden.Replace("@NombreLavanderia", negocio.NombreEmpresa);
+                        comprobanteorden = comprobanteorden.Replace("@DireccionLav", negocio.DireccionEmpresa);
+                        comprobanteorden = comprobanteorden.Replace("@TelLav", negocio.TelEmpresa);
+                        comprobanteorden = comprobanteorden.Replace("@Redes", negocio.RedesEmpresa);
+                        comprobanteorden = comprobanteorden.Replace("@NroOrden", OrdenActual.NroOrden.ToString());
+                        comprobanteorden = comprobanteorden.Replace("@fechaentrada", OrdenActual.FechaEntrada.ToString());
+                        comprobanteorden = comprobanteorden.Replace("@fecharetiro", OrdenActual.FechaSalida.ToString());
+                        comprobanteorden = comprobanteorden.Replace("@cliente", OrdenActual.Cliente.Apellido + "," + OrdenActual.Cliente.Nombre);
+                        comprobanteorden = comprobanteorden.Replace("@direccion", OrdenActual.Cliente.Direccion);
+                        comprobanteorden = comprobanteorden.Replace("@telefono", OrdenActual.Cliente.Telefono);
+                        string items = string.Empty;
+                        foreach (OrdenServicioTipoPrenda row in _itemsServicio)
+                        {
+                            items += "<tr>";
+                            items += "<td align=" + "\"center\">" + row.OrdenItem + "</td>";
+                            items += "<td align=" + "\"center\">" + row.ServicioTipoPrenda.Servicio.Descripcion + "</td>";
+                            items += "<td align=" + "\"center\">" + row.ServicioTipoPrenda.TipoPrenda.Descripcion + "</td>";
+                            items += "</tr>";
+                        }
+                        comprobanteorden = comprobanteorden.Replace("@items", items);
+                        // falta condicion de si es null el listado de pagos pq falla con el count cuando no hay seña
+                        if(OrdenActual.Factura.Pagos.Count > 0)
+                        {
+                            comprobanteorden = comprobanteorden.Replace("@Seña", OrdenActual.Factura.Pagos[0].Importe.ToString());
+                        }
+                        else
+                        {
+                            comprobanteorden = comprobanteorden.Replace("@Seña", "0");
+                        }
+                        /*Table pdfTable = new Table(4);
+                            pdfTable.SetPadding(3);
+                            pdfTable.SetWidth(UnitValue.CreatePercentValue(100));
+                            pdfTable.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
+                        */
+
+
+                        using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                            {
+                                PdfWriter writer = new PdfWriter(stream);
+                                PdfDocument pdf = new PdfDocument(writer);
+                                pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4);
+                            //document.SetMargins(10f, 20f, 20f, 10f);
+                            //Paragraph p = new Paragraph();
+                            //p.SetTextAlignment(TextAlignment.CENTER);
+                            //p.Add($"Reporte de {Singleton.getInstance().ModuloActual} \n");
+                            //p.SetBold();
+                            //p.SetUnderline();
+                            //p.SetFontSize(18);
+                            using (StringReader sr = new StringReader(comprobanteorden))
+                            {
+                                Document document =  HtmlConverter.ConvertToDocument(comprobanteorden, writer);
+                                document.Close();
+                            }
+                                stream.Close();
+                            }
+
+                            MessageBox.Show("Reporte exportado exitosamente", "Info");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error: " + ex.Message);
+                        }
+                    }
+                }
+            }
+            
+        
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();

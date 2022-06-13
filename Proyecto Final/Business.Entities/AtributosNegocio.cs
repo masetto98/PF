@@ -13,6 +13,10 @@ namespace Business.Entities
         private int _id;
         private TimeSpan _horasLaboralesDiarias;
         private string _diasLaborales;
+        private string _nombreEmpresa;
+        private string _direccionEmpresa;
+        private string _telEmpresa;
+        private string _redesEmpresa;
 
         [Column ("id")]
         public int ID 
@@ -33,6 +37,30 @@ namespace Business.Entities
         {
             get { return _diasLaborales;}
             set { _diasLaborales = value; }
+        }
+        [Column("nombre_empresa")]
+        public string NombreEmpresa
+        {
+            get { return _nombreEmpresa; }
+            set { _nombreEmpresa = value; }
+        }
+        [Column("direccion_empresa")]
+        public string DireccionEmpresa
+        {
+            get { return _direccionEmpresa; }
+            set { _direccionEmpresa = value; }
+        }
+        [Column("tel_empresa")]
+        public string TelEmpresa
+        {
+            get { return _telEmpresa; }
+            set { _telEmpresa = value; }
+        }
+        [Column("redes_empresa")]
+        public string RedesEmpresa
+        {
+            get { return _redesEmpresa; }
+            set { _redesEmpresa = value; }
         }
     }
 }

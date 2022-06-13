@@ -246,34 +246,52 @@ namespace UI.Desktop
 
         private void btnAgregarPago_Click(object sender, EventArgs e)
         {
-            switch (Modos)
+            double pagoActual = double.Parse(this.txtImportePago.Text);
+            double dif = FacturaActual.Importe - TotalPagos();
+            if(pagoActual <= dif)
             {
-                case ModoForm.Alta:
-                    {
-                        GuardarCambios();
-                        this.txtImportePago.Text = "";
-                        TotalAPagar();
-                        //ListarPagos();
-                    };
-                    break;
-                case ModoForm.Modificacion:
-                    {
+                switch (Modos)
+                {
+                    case ModoForm.Alta:
+                        {
+                            GuardarCambios();
+                            this.txtImportePago.Text = "";
+                            TotalAPagar();
+                            if(this.txtApagar.Text == "0")
+                            {
+                                this.btnSaldarDeuda.Enabled = false;
+                            }
+                            //ListarPagos();
+                        };
+                        break;
+                    case ModoForm.Modificacion:
+                        {
 
-                        GuardarCambios();
-                        this.txtImportePago.Text = "";
-                        TotalAPagar();
-                        //ListarPagos();
-                    };
-                    break;
-                case ModoForm.Baja:
-                    //Eliminar();
-                    Close();
-                    break;
-                case ModoForm.Consulta:
-                    Close();
-                    break;
+                            GuardarCambios();
+                            this.txtImportePago.Text = "";
+                            TotalAPagar();
+                            if (this.txtApagar.Text == "0")
+                            {
+                                this.btnSaldarDeuda.Enabled = false;
+                            }
+                            //ListarPagos();
+                        };
+                        break;
+                    case ModoForm.Baja:
+                        //Eliminar();
+                        Close();
+                        break;
+                    case ModoForm.Consulta:
+                        Close();
+                        break;
 
+                }
             }
+            else
+            {
+                MessageBox.Show("El importe del pago ingresado supera el valor de la factura. Por favor, ingrese un importe valido.", "Pago", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void btnCancelarPago_Click(object sender, EventArgs e)
