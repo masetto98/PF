@@ -12,12 +12,13 @@ using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
 using Data.Database;
+using FluentValidation.Results;
 
 namespace UI.Desktop
 {
     public partial class OrdenDesktop : ApplicationForm
     {
-        
+
         private readonly LavanderiaContext _context;
         public Orden OrdenActual { set; get; }
         public Pago PagoActual { set; get; }
@@ -47,7 +48,7 @@ namespace UI.Desktop
 
             this.txtNombreApellidoRazonSocial.Enabled = false;
             this.txtIdCliente.Enabled = false;
-            
+
             _total = 0;
 
         }
@@ -63,9 +64,11 @@ namespace UI.Desktop
                 List<TipoPrenda> tipoPrendas = _tipoPrendaLogic.GetAll();
                 this.cmbTipoPrenda.DataSource = tipoPrendas;
                 this.cmbTipoPrenda.SelectedIndex = 0;
-                this.cmbEstado.DataSource = Enum.GetNames(typeof(Business.Entities.Orden.Estados));
-                this.cmbPrioridad.DataSource = Enum.GetNames(typeof(Business.Entities.Orden.Prioridades));
-                this.cmbTipoPrenda.SelectedIndex = 1;
+                this.cmbEstado.DataSource = Enum.GetNames(typeof(Orden.Estados));
+                this.cmbPrioridad.DataSource = Enum.GetNames(typeof(Orden.Prioridades));
+                this.cmbPrioridad.SelectedIndex = 1;
+                this.cmbEntregaDomicilio.DataSource= Enum.GetNames(typeof(Orden.EntregasDomicilio));
+                this.cmbEntregaDomicilio.SelectedIndex = 0;
             }
             catch (Exception e)
             {
@@ -89,6 +92,8 @@ namespace UI.Desktop
 
         public override void MapearDeDatos()
         {
+            this.cmbEstado.DataSource = Enum.GetNames(typeof(Business.Entities.Orden.Estados));
+            this.cmbPrioridad.DataSource = Enum.GetNames(typeof(Business.Entities.Orden.Prioridades));
             this.txtIdCliente.Text = OrdenActual.IdCliente.ToString();
             if (OrdenActual.Cliente.Nombre != "" && OrdenActual.Cliente.Apellido != "" && OrdenActual.Cliente.RazonSocial == "")
             {
@@ -103,12 +108,35 @@ namespace UI.Desktop
             this.cmbEstado.SelectedIndex = cmbEstado.FindStringExact(Enum.GetName(OrdenActual.Estado));
             this.dtpFechaIngreso.Value = OrdenActual.FechaEntrada.Date;
             this.txtTiempoFinalizacionEstimado.Text = OrdenActual.TiempofinalizacionEstimado.Hours.ToString() + " : " + OrdenActual.TiempofinalizacionEstimado.Minutes.ToString();
-            this.dtpFechaSalida.Value = OrdenActual.FechaSalida.Date;
+            if (OrdenActual.FechaSalida != DateTime.MinValue) { this.dtpFechaSalida.Value = OrdenActual.FechaSalida.Date; }
             this.cmbPrioridad.SelectedIndex = cmbEstado.FindStringExact(Enum.GetName(OrdenActual.Prioridad));
+            this.txtObservaciones.Text = OrdenActual.Observaciones;
+            this.cmbEntregaDomicilio.SelectedIndex = cmbEntregaDomicilio.FindStringExact(Enum.GetName(OrdenActual.EntregaDomicilio));
+            if (OrdenActual.Descuento != null)
+            {
+                if (OrdenActual.Descuento.StartsWith("%") == true)
+                {
+                    this.rbtnPorcentaje.Checked = true;
+                    this.txtDescuento.Text = OrdenActual.Descuento.Remove(0, 1);
+                }
+                else if (Decimal.Parse(OrdenActual.Descuento) != 0)
+                {
+                    this.rbtnValor.Checked = true;
+                    this.txtDescuento.Text = OrdenActual.Descuento;
+                }
+            }
+            if (OrdenActual.Factura is not null && OrdenActual.Factura.Pagos is not null) { 
+                Pago senia = OrdenActual.Factura.Pagos.Find(delegate (Pago p) { return p.FormaPago == Pago.FormasPago.Seña; });
+                if (senia is not null) 
+                { 
+                    this.txtSeniaOrden.Text = senia.Importe.ToString(); 
+                } 
+            }
             try
             {
                 _itemsServicio = OrdenActual.ItemsPedidos;
                 ListarItems();
+                CalcularImporte();
                 List<Servicio> servicios = _servicioLogic.GetAll();
                 List<TipoPrenda> tipoPrendas = _tipoPrendaLogic.GetAll();
                 this.cmbServicios.DataSource = servicios;
@@ -123,7 +151,7 @@ namespace UI.Desktop
                 case ModoForm.Alta:
                     this.dtpFechaSalida.Enabled = false;
                     this.cmbEstado.Enabled = false;
-                    
+
                     break;
                 case ModoForm.Modificacion:
                     this.txtCuit.Enabled = false;
@@ -141,8 +169,12 @@ namespace UI.Desktop
                     break;
                 case ModoForm.Consulta:
                     this.btnAceptar.Text = "Aceptar";
+                    this.btnAgregarItemOrden.Enabled = false;
+                    this.btnEliminarItemOrden.Enabled = false;
                     this.cmbServicios.Enabled = false;
                     this.cmbTipoPrenda.Enabled = false;
+                    this.btnBuscar.Enabled = false;
+                    this.btnAgregarCliente.Enabled = false;
                     ;
                     break;
             }
@@ -155,25 +187,25 @@ namespace UI.Desktop
                 OrdenActual = new Orden();
                 OrdenActual.Cliente = _clienteLogic.GetOne(Int32.Parse(this.txtIdCliente.Text));
                 OrdenActual.Empleado = Singleton.getInstance().EmpleadoLogged;
-                FacturaActual = new Factura();
-                FacturaActual.FechaFactura = DateTime.Now;
-                //FacturaActual.Importe = null;
-                if (txtSeniaOrden.Text != "")
-                {
-                    PagoActual = new Pago();
-                    PagoActual.FechaPago = DateTime.Now;
-                    PagoActual.FormaPago = (Pago.FormasPago)Enum.Parse(typeof(Business.Entities.Pago.FormasPago), "Seña");
-                    PagoActual.Importe = double.Parse(txtSeniaOrden.Text);
-                    FacturaActual.Pagos = new List<Pago>();
-                    FacturaActual.Pagos.Add(PagoActual);
-                }
-                
-                OrdenActual.Factura = FacturaActual;
-                //_facturaLogic.GetOne(1);
-                OrdenActual.FechaEntrada = DateTime.Now;
-                //OrdenActual.FechaSalida = (DateTime)dtpFechaSalida.MaxDate;
                 OrdenActual.Estado = Orden.Estados.Pendiente;
                 OrdenActual.Prioridad = (Business.Entities.Orden.Prioridades)Enum.Parse(typeof(Business.Entities.Orden.Prioridades), cmbPrioridad.SelectedItem.ToString());
+                OrdenActual.Observaciones = this.txtDireccion.Text;
+                OrdenActual.FechaEntrada = DateTime.Now;
+                Descuento();
+                OrdenActual.EntregaDomicilio= (Orden.EntregasDomicilio)Enum.Parse(typeof(Orden.EntregasDomicilio), cmbEntregaDomicilio.SelectedItem.ToString());
+                if (txtSeniaOrden.Text != "")
+                {
+                    FacturaActual = new Factura();
+                    FacturaActual.FechaFactura = DateTime.Now;
+                    FacturaActual.Pagos = new List<Pago>();
+                    PagoActual = new Pago();
+                    PagoActual.FechaPago = DateTime.Now;
+                    PagoActual.FormaPago = Pago.FormasPago.Seña;
+                    //PagoActual.FormaPago = (Pago.FormasPago)Enum.Parse(typeof(Business.Entities.Pago.FormasPago), "Seña");
+                    PagoActual.Importe = double.Parse(txtSeniaOrden.Text);
+                    FacturaActual.Pagos.Add(PagoActual);
+                }
+                OrdenActual.Factura = FacturaActual;
                 AsignarPrioridadItems();
                 OrdenActual.ItemsPedidos = _itemsServicio;
 
@@ -194,14 +226,48 @@ namespace UI.Desktop
             }
         }
 
-        
-
-        #region -------Cliente--------
-        /*
-        private void txtCuit_Leave(object sender, EventArgs e)
+        private void rbtnPorcentaje_CheckedChanged(object sender, EventArgs e)
         {
-            cargarCliente();
-        }*/
+            if (this.rbtnPorcentaje.Checked == true)
+            {
+                this.rbtnValor.Checked = false;
+            }
+            if (this.rbtnPorcentaje.Checked == true && this.txtDescuento.Text != "") 
+            {
+                CalcularImporte();
+            }
+        }
+
+        private void rbtnValor_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.rbtnValor.Checked == true)
+            {
+                this.rbtnPorcentaje.Checked = false;
+            }
+            if (this.rbtnValor.Checked == true && this.txtDescuento.Text != "")
+            {
+                CalcularImporte();
+            }
+        }
+
+        private void Descuento()
+        {
+            if (this.rbtnPorcentaje.Checked == true && this.txtDescuento.Text != "")
+            {
+                OrdenActual.Descuento = String.Concat("%", this.txtDescuento.Text);
+            }
+            else if (this.rbtnValor.Checked == true && this.txtDescuento.Text != "")
+            {
+                OrdenActual.Descuento = this.txtDescuento.Text;
+            }
+            else if (this.rbtnValor.Checked = false && this.rbtnValor.Checked == false && this.txtDescuento.Text == "")
+            {
+                OrdenActual.Descuento = "0";
+            }
+        }
+
+        
+        #region -------Cliente--------
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -246,7 +312,51 @@ namespace UI.Desktop
         }
         #endregion
 
-        #region ------manejo de items de la orden------
+        #region ------- Items Orden -------
+
+        public void ListarItems()
+        {
+            listItemsServicio.Items.Clear();
+            foreach (OrdenServicioTipoPrenda i in _itemsServicio)
+            {
+                Precio precioActual = i.ServicioTipoPrenda.HistoricoPrecios.FindLast(
+                    delegate (Precio p)
+                    {
+                        return p.FechaDesde <= DateTime.Today;
+                    });
+                ListViewItem item = new ListViewItem((listItemsServicio.Items.Count + 1).ToString());
+                item.SubItems.Add(i.ServicioTipoPrenda.Servicio.Descripcion);
+                item.SubItems.Add(i.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                item.SubItems.Add(precioActual.Valor.ToString());
+                item.SubItems.Add(i.Estado.ToString());
+                listItemsServicio.Items.Add(item);
+            }
+
+        }
+
+        private void btnAgregarItemOrden_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Business.Entities.ServicioTipoPrenda servicioTp = _servicioTipoPrendaLogic.GetOne((int)this.cmbServicios.SelectedValue, (int)this.cmbTipoPrenda.SelectedValue);
+                if (servicioTp is null)
+                {
+                    Exception r = new Exception("Error al recuperar el servicio tipo prenda.");
+                    throw r;
+                }
+                else
+                {
+                    AgregarItem(servicioTp);
+                    ListarItems();
+                    CalcularImporte();
+                }
+            }
+            catch (Exception r)
+            {
+                MessageBox.Show(r.Message, "ItemServicio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void AgregarItem(Business.Entities.ServicioTipoPrenda servicioTipoPrenda) 
         {
             OrdenServicioTipoPrenda itemActual = new OrdenServicioTipoPrenda();
@@ -254,14 +364,11 @@ namespace UI.Desktop
             itemActual.Estado = OrdenServicioTipoPrenda.Estados.Pendiente;
             itemActual.OrdenItem = ContarItems(servicioTipoPrenda.IdServicio,servicioTipoPrenda.IdTipoPrenda);
             itemActual.Prioridad = (OrdenServicioTipoPrenda.Prioridades)servicioTipoPrenda.Prioridad;
-            itemActual.FechaCambioPrioridad = DateTime.Now;
             _itemsServicio.Add(itemActual);
-            
         }
 
         private int ContarItems(int idServicio, int idTipoPrenda) 
         {
-            
             if( _itemsServicio is null)
             {
                 return 0;
@@ -275,6 +382,56 @@ namespace UI.Desktop
                 return items.Count;
             }
             
+        }
+
+        public void AsignarPrioridadItems()
+        {
+            foreach (OrdenServicioTipoPrenda o in _itemsServicio)
+            {
+                if ((Business.Entities.Orden.Prioridades)Enum.Parse(typeof(Business.Entities.Orden.Prioridades), cmbPrioridad.SelectedItem.ToString()) == Orden.Prioridades.Alta)
+                {
+                    o.Prioridad = OrdenServicioTipoPrenda.Prioridades.Alta;
+                }
+                else
+                {
+                    o.Prioridad = (OrdenServicioTipoPrenda.Prioridades)o.ServicioTipoPrenda.Prioridad;
+                }
+            }
+        }
+
+        private void CalcularImporte()
+        {
+            _total = 0;
+            foreach (OrdenServicioTipoPrenda i in _itemsServicio)
+            {
+                Precio precioActual = i.ServicioTipoPrenda.HistoricoPrecios.FindLast(
+                    delegate (Precio p)
+                    {
+                        return p.FechaDesde <= DateTime.Today;
+                    });
+                _total += precioActual.Valor;
+            }
+            if (this.rbtnPorcentaje.Checked == true && this.txtDescuento.Text != "")
+            {
+                _total *= (1 - (Double.Parse(this.txtDescuento.Text)/100.0)) ;
+            }
+            else if (this.rbtnValor.Checked == true && this.txtDescuento.Text != "")
+            {
+                _total -= Int32.Parse(this.txtDescuento.Text);
+            }
+            this.txtPrecioTotal.Text = _total.ToString();
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            EliminarItem();
+            CalcularImporte();
+        }
+
+        private void txtDescuento_TextChanged(object sender, EventArgs e)
+        {
+            CalcularImporte();
         }
 
         private void EliminarItem() 
@@ -295,13 +452,6 @@ namespace UI.Desktop
                     );
                     if (_itemDelete.Estado == OrdenServicioTipoPrenda.Estados.Pendiente)
                     {
-                        Precio precioActual = _itemDelete.ServicioTipoPrenda.HistoricoPrecios.FindLast(
-                        delegate (Precio p)
-                        {
-                            return p.FechaDesde < DateTime.Today;
-                        });
-                        _total -= precioActual.Valor;
-                        this.txtPrecioTotal.Text = _total.ToString();
                         _itemsServicio.Remove(_itemDelete);
                         listItemsServicio.Items.Remove(listItemsServicio.SelectedItems[0]);
                     }
@@ -310,98 +460,40 @@ namespace UI.Desktop
                         Exception r = new Exception("El item que quiere eliminar ya fue atendido o se encuentra en proceso de atencion");
                         throw r;
                     }
+                    
                 }
+                
             }
             catch (Exception r)
             {
                 MessageBox.Show(r.Message, "ItemServicio", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        public void ListarItems() 
-        {
-            listItemsServicio.Items.Clear();
-            foreach (OrdenServicioTipoPrenda i in _itemsServicio)
-            {
-                Precio precioActual = i.ServicioTipoPrenda.HistoricoPrecios.FindLast(
-                    delegate (Precio p)
-                    {
-                        return p.FechaDesde <= DateTime.Today;
-                    });
-                ListViewItem item = new ListViewItem((listItemsServicio.Items.Count + 1).ToString());
-                item.SubItems.Add(i.ServicioTipoPrenda.Servicio.Descripcion);
-                item.SubItems.Add(i.ServicioTipoPrenda.TipoPrenda.Descripcion);
-                item.SubItems.Add(precioActual.Valor.ToString());
-                item.SubItems.Add(i.Estado.ToString());
-                listItemsServicio.Items.Add(item);
-                _total += precioActual.Valor;
-                this.txtPrecioTotal.Text = _total.ToString();
-            }
-        }
-
-        public void AsignarPrioridadItems() 
-        {
-            foreach (OrdenServicioTipoPrenda o in _itemsServicio) 
-            {
-                if ((Business.Entities.Orden.Prioridades)Enum.Parse(typeof(Business.Entities.Orden.Prioridades), cmbPrioridad.SelectedItem.ToString()) == Orden.Prioridades.Alta)
-                {
-                    o.Prioridad = OrdenServicioTipoPrenda.Prioridades.Alta;
-                }
-                else 
-                {
-                    o.Prioridad =(OrdenServicioTipoPrenda.Prioridades)o.ServicioTipoPrenda.Prioridad;
-                }
-            }
-        }
-
-        private void btnAgregarItemOrden_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Business.Entities.ServicioTipoPrenda servicioTp = _servicioTipoPrendaLogic.GetOne((int)this.cmbServicios.SelectedValue, (int)this.cmbTipoPrenda.SelectedValue);
-                if (servicioTp == null)
-                {
-                    Exception r = new Exception("Error al recuperar el servicio tipo prenda.");
-                    throw r;
-                }
-                else 
-                {
-                    AgregarItem(servicioTp);
-                    Precio precioActual = servicioTp.HistoricoPrecios.FindLast(
-                    delegate (Precio p)
-                    {
-                        return p.FechaDesde <= DateTime.Today;
-                    });
-                    _total += precioActual.Valor;
-                    ListViewItem item = new ListViewItem((listItemsServicio.Items.Count+1).ToString());
-                    item.SubItems.Add(this.cmbServicios.Text);
-                    item.SubItems.Add(this.cmbTipoPrenda.Text);
-                    item.SubItems.Add(precioActual.Valor.ToString());
-                    item.SubItems.Add("Pendiente");
-                    listItemsServicio.Items.Add(item);
-                    this.txtPrecioTotal.Text = _total.ToString();
-                }
-            }
-            catch (Exception r)
-            {
-                MessageBox.Show(r.Message, "ItemServicio", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            EliminarItem();
         }
 
         #endregion
 
+        public override bool Validar()
+        {
+            ValidationResult result = new OrdenValidator().Validate(OrdenActual);
+            if (!result.IsValid)
+            {
+                string notificacion = string.Join(Environment.NewLine, result.Errors);
+                MessageBox.Show(notificacion);
+                return false;
+            }
+            return true;
+        }
+
         public override void GuardarCambios()
         {
             try
-            {
-                if (true)
+            {   if (this.txtDescuento.Text != "") 
                 {
-                    MapearADatos();
+                    Validaciones.ValidarNumeroEnteroDecimal(this.txtDescuento.Text);
+                }
+                MapearADatos();
+                if (Validar())
+                {
                     _ordenLogic.Save(OrdenActual);
                     Close();
                 }
@@ -463,5 +555,7 @@ namespace UI.Desktop
         {
             Close();
         }
+
+        
     }
 }

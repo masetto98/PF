@@ -13,7 +13,7 @@ namespace Business.Entities
         private int _idInsumo;
         private string _descripcion;
         private double _stock;
-        private List<InsumoProveedor> _insumosProveedores;// lista de proveedores que proveen ese insumo
+        private List<InsumoProveedor>? _insumosProveedores;// lista de proveedores que proveen ese insumo
         private List<InsumoServicioTipoPrenda> _insumosServicioTipoPrenda;//lista de serviciosTipoPrenda donde se utiliza ese insumo
         private Medidas _unidadMedida;
         

@@ -29,13 +29,15 @@ namespace UI.Desktop
             _maquinaLogic = new MaquinaLogic(new MaquinaAdapter(context));
         }
         #region ------- CLIENTE -------
-        private void txtCuit_Leave(object sender, EventArgs e)
+
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
             cargarCliente();
-            if (ClienteActual is not null) 
+            if (ClienteActual is not null)
             {
                 ListarOrdenes();
             }
+
         }
 
         private void cargarCliente()
@@ -251,5 +253,7 @@ namespace UI.Desktop
         {
             Close();
         }
+
+        
     }
 }

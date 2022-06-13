@@ -17,7 +17,6 @@ namespace UI.Desktop
     public partial class MaquinaOrdenServicioTipoPrendaDesktop : ApplicationForm
     {
         private readonly MaquinaLogic _maquinaLogic;
-        private readonly LavanderiaContext _context;
         private readonly OrdenServicioTipoPrendaLogic _ordenServicioTipoPrendaLogic;
         private readonly MaquinaOrdenServicioTipoPrendaLogic _maquinaOrdenServicioTipoPrendaLogic;
         public MaquinaOrdenServicioTipoPrenda TrabajoActual;
@@ -25,7 +24,6 @@ namespace UI.Desktop
         public MaquinaOrdenServicioTipoPrendaDesktop(LavanderiaContext context)
         {
             InitializeComponent();
-            _context = context;
             _maquinaLogic = new MaquinaLogic(new MaquinaAdapter(context));
             _maquinaOrdenServicioTipoPrendaLogic = new MaquinaOrdenServicioTipoPrendaLogic(new MaquinaOrdenServicioTipoPrendaAdapter(context));
             _ordenServicioTipoPrendaLogic = new OrdenServicioTipoPrendaLogic(new OrdenServicioTipoPrendaAdapter(context));
@@ -52,7 +50,7 @@ namespace UI.Desktop
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Maquina-Orden-Servicio-TipoPrenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Atender Item", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -63,12 +61,11 @@ namespace UI.Desktop
             {
                 TrabajoActual = _maquinaOrdenServicioTipoPrendaLogic.GetOne(idMaquina,fechaInicioServicio);
                 MapearDeDatos();
-                this.btnIniciar.Text = "Finalizar";
                 this.cmbMaquinas.Enabled = false;
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Atender Item", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -84,13 +81,11 @@ namespace UI.Desktop
                 List<Maquina> maquinas = _maquinaLogic.GetAll();
                 this.cmbMaquinas.DataSource = maquinas;
                 this.cmbMaquinas.SelectedIndex = cmbMaquinas.FindStringExact(TrabajoActual.Maquina.Descripcion);
-
-
             }
             catch (Exception e)
             {
                 this.btnIniciar.Enabled = false;
-                MessageBox.Show(e.Message, "Ingresos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Atender Item", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             switch (this.Modos)
             {
@@ -105,9 +100,19 @@ namespace UI.Desktop
                     this.btnIniciar.Text = "Eliminar";
                     this.cmbMaquinas.Enabled = false;
                     this.btnIniciar.Enabled = true;
+                    this.txtNroOrden.Enabled = false;
+                    this.txtOrdenItem.Enabled = false;
+                    this.txtServicio.Enabled = false;
+                    this.txtTipoPrenda.Enabled = false;
                     break;
                 case ModoForm.Consulta:
                     this.btnIniciar.Text = "Aceptar";
+                    this.cmbMaquinas.Enabled = false;
+                    this.btnIniciar.Enabled = true;
+                    this.txtNroOrden.Enabled = false;
+                    this.txtOrdenItem.Enabled = false;
+                    this.txtServicio.Enabled = false;
+                    this.txtTipoPrenda.Enabled = false;
                     break;
             }
         }
@@ -144,16 +149,34 @@ namespace UI.Desktop
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Ingresos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Atender Item", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        
+        private bool ValidarEstadoMaquina()
+        {
+            Maquina maquinaSelect = _maquinaLogic.GetOne((int)this.cmbMaquinas.SelectedValue);
+
+            List<MaquinaOrdenServicioTipoPrenda> ordenesAtendidas = maquinaSelect.itemsAtendidos;
+            MaquinaOrdenServicioTipoPrenda? itemEnAtencion = ordenesAtendidas.Find(delegate (MaquinaOrdenServicioTipoPrenda item)
+            {
+                return item.TiempoFinServicio == DateTime.MinValue;
+            });
+            if (itemEnAtencion is null || ordenesAtendidas is null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public override void GuardarCambios()
         {
             try
             {
-                if (ValidarEstadoMaquina() == true)
+                if (ValidarEstadoMaquina())
                 {
                     MapearADatos();
                     _ordenServicioTipoPrendaLogic.Save(OrdenServicioTipoPrendaActual);
@@ -166,7 +189,7 @@ namespace UI.Desktop
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Maquina-Orden-Servicio-TipoPrenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Atender Item", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -178,13 +201,8 @@ namespace UI.Desktop
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Atender Item", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         private void btnIniciar_Click(object sender, EventArgs e)
@@ -194,7 +212,6 @@ namespace UI.Desktop
                 case ModoForm.Alta:
                     {
                         GuardarCambios();
-                        
                     };
                     break;
                 case ModoForm.Modificacion:
@@ -210,28 +227,12 @@ namespace UI.Desktop
                     Close();
                     break;
             }
-
-            
         }
 
-        private bool ValidarEstadoMaquina() 
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-            Maquina maquinaSelect= _maquinaLogic.GetOne((int)this.cmbMaquinas.SelectedValue);
-
-            List<MaquinaOrdenServicioTipoPrenda> ordenesAtendidas = maquinaSelect.itemsAtendidos;
-            MaquinaOrdenServicioTipoPrenda? itemEnAtencion = ordenesAtendidas.Find(delegate (MaquinaOrdenServicioTipoPrenda item)
-            {
-                return item.TiempoFinServicio == DateTime.MinValue;
-            });
-            if (itemEnAtencion is null || ordenesAtendidas is null)
-            {
-                return true;
-
-            }
-            else
-            {
-                return false;
-            }
+            Close();
         }
+
     }
 }

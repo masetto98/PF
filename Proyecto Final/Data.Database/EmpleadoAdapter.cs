@@ -20,7 +20,7 @@ namespace Data.Database
             List<Empleado> empleados = new List<Empleado>();
             try
             {
-                empleados = _context.Empleados.ToList();
+                empleados = _context.Empleados.Include(i => i.Usuarios).ToList();
             }
             catch (Exception e)
             {
@@ -33,7 +33,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.Empleados.FirstOrDefault(e => e.IdEmpleado == idEmpleado);
+                return _context.Empleados.Include(i => i.Usuarios).FirstOrDefault(e => e.IdEmpleado == idEmpleado);
             }
             catch (Exception e)
             {

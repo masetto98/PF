@@ -33,11 +33,29 @@ namespace Data.Database
             modelBuilder.Entity<InsumoServicioTipoPrenda>()
                 .ToTable("insumos_servicios_tipoprendas");
 
-            modelBuilder.Entity<InsumoServicioTipoPrenda>()
+            modelBuilder.Entity<AtributosNegocio>()
                 .ToTable("atributos_negocio");
 
             modelBuilder.Entity<Mantenimiento>()
                 .ToTable("mantenimientos");
+
+            modelBuilder.Entity<Insumo>()
+                .ToTable("insumos");
+
+            /*
+            modelBuilder.Entity<Insumo>()
+                .HasMany(i => i.InsumosProveedores)
+                .WithOne(ip => ip.Insumo)
+                .HasForeignKey(i => new { i.IdProveedor,i.IdInsumo,i.FechaIngreso })
+                .OnDelete(DeleteBehavior.NoAction);
+            */
+            /*
+            modelBuilder.Entity<Insumo>()
+                .HasMany(i => i.InsumoServicioTipoPrenda)
+                .WithOne()
+                //.HasForeignKey(i => new {i.IdInsumo,i.IdServicio,i.IdTipoPrenda })
+                .OnDelete(DeleteBehavior.NoAction);
+            */
 
             modelBuilder.Entity<InsumoProveedor>()
                 .HasOne(ip => ip.Proveedor)
@@ -52,8 +70,8 @@ namespace Data.Database
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<InsumoProveedor>()
-                .HasKey(ip => new { ip.IdInsumo, ip.IdProveedor, ip.FechaIngreso });
-
+                .HasKey(ip => new { ip.IdProveedor, ip.IdInsumo, ip.FechaIngreso });
+            
             modelBuilder.Entity<InsumoServicioTipoPrenda>()
                 .HasOne(istp => istp.Insumo)
                 .WithMany(i => i.InsumoServicioTipoPrenda)
@@ -65,9 +83,9 @@ namespace Data.Database
                 .WithMany(stp => stp.InsumoServicioTipoPrenda)
                 .HasForeignKey(istp => new {istp.IdServicio,istp.IdTipoPrenda})
                 .OnDelete(DeleteBehavior.NoAction);
-
+            
             modelBuilder.Entity<InsumoServicioTipoPrenda>()
-                .HasKey(istp => new { istp.IdInsumo, istp.IdServicio, istp.IdTipoPrenda });
+                .HasKey(istp => new { istp.IdInsumo, istp.IdServicio, istp.IdTipoPrenda,istp.FechaDesde});
 
             modelBuilder.Entity<Mantenimiento>()
                 .HasOne(m => m.Maquina)

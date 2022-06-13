@@ -14,42 +14,49 @@ using FluentValidation.Results;
 
 namespace UI.Desktop
 {
-    public partial class MaquinaDesktop : ApplicationForm
+    public partial class ServicioDesktop : ApplicationForm
     {
-        private readonly MaquinaLogic _maquinaLogic;
-        public Maquina MaquinaActual { get; set; }
+        private readonly ServicioLogic _servicioLogic;
+        public Servicio ServicioActual { set; get; }
 
-        public MaquinaDesktop(LavanderiaContext context)
+        public ServicioDesktop(LavanderiaContext context)
         {
             InitializeComponent();
-            _maquinaLogic = new MaquinaLogic(new MaquinaAdapter(context));
+            _servicioLogic = new ServicioLogic(new ServicioAdapter(context));
         }
 
-        public MaquinaDesktop(ModoForm modo, LavanderiaContext context) : this(context) 
+        public ServicioDesktop(ModoForm modo, LavanderiaContext context) : this(context)
         {
             Modos = modo;
         }
 
-        public MaquinaDesktop(int idMaquina,ModoForm modo, LavanderiaContext context) : this(context)
+        public ServicioDesktop(int ID, ModoForm modo, LavanderiaContext context) : this(context)
         {
             Modos = modo;
-            try 
+            try
             {
-                MaquinaActual = _maquinaLogic.GetOne(idMaquina);
+                ServicioActual = _servicioLogic.GetOne(ID);
                 MapearDeDatos();
-
             }
-            catch(Exception e) 
+            catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Maquina", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Servicio", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
         }
 
         public override void MapearDeDatos()
         {
-            this.txtID.Text = MaquinaActual.IdMaquina.ToString();
-            this.txtDescripcion.Text = MaquinaActual.Descripcion;
+            this.txtID.Text = this.ServicioActual.IdServicio.ToString();
+            this.txtDescripcion.Text = this.ServicioActual.Descripcion;
+
+            try
+            {
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Servicio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             switch (this.Modos)
             {
                 case ModoForm.Alta:
@@ -60,44 +67,48 @@ namespace UI.Desktop
                     break;
                 case ModoForm.Baja:
                     this.btnAceptar.Text = "Eliminar";
-                    this.txtID.Enabled = false;
                     this.txtDescripcion.Enabled = false;
 
                     break;
                 case ModoForm.Consulta:
                     this.btnAceptar.Text = "Aceptar";
-                    this.txtID.Enabled = false;
                     this.txtDescripcion.Enabled = false;
+                    ;
                     break;
             }
         }
+
 
         public override void MapearADatos()
         {
             if (Modos == ModoForm.Alta)
             {
-                MaquinaActual = new Maquina();
-                MaquinaActual.Descripcion = this.txtDescripcion.Text;
+                ServicioActual = new Servicio();
+                ServicioActual.Descripcion = this.txtDescripcion.Text;
+
+
             }
             if (Modos == ModoForm.Modificacion)
             {
-                MaquinaActual.Descripcion = this.txtDescripcion.Text;
+                ServicioActual.Descripcion = this.txtDescripcion.Text;
+
             }
             switch (Modos)
             {
                 case ModoForm.Alta:
-                    MaquinaActual.State = BusinessEntity.States.New;
+                    ServicioActual.State = BusinessEntity.States.New;
                     break;
                 case ModoForm.Modificacion:
-                    MaquinaActual.State = BusinessEntity.States.Modified;
+                    ServicioActual.State = BusinessEntity.States.Modified;
                     break;
             }
-
         }
+
+
 
         public override bool Validar()
         {
-            ValidationResult result = new MaquinaValidator().Validate(MaquinaActual);
+            ValidationResult result = new ServicioValidator().Validate(ServicioActual);
             if (!result.IsValid)
             {
                 string notificacion = string.Join(Environment.NewLine, result.Errors);
@@ -111,19 +122,38 @@ namespace UI.Desktop
         {
             try
             {
-                MapearADatos();
+            
                 if (Validar())
                 {
-                    _maquinaLogic.Save(MaquinaActual);
-                    Close();
+                        MapearADatos();
+                        _servicioLogic.Save(ServicioActual);
+                        Close();
+
                 }
+                    
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Maquina", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Servicio", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        public virtual void Eliminar()
+        {
+            try
+            {
+                _servicioLogic.Delete(ServicioActual.IdServicio);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Servicio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -149,23 +179,6 @@ namespace UI.Desktop
 
             }
 
-        }
-
-        public virtual void Eliminar()
-        {
-            try
-            {
-                _maquinaLogic.Delete(MaquinaActual.IdMaquina);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "Maquina", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }

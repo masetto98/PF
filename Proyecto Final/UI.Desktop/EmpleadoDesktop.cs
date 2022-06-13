@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
 using Data.Database;
+using FluentValidation.Results;
 
 namespace UI.Desktop
 {
@@ -21,12 +22,12 @@ namespace UI.Desktop
         public Empleado EmpleadoActual { set; get; }
         private readonly EmpleadoLogic _empleadoLogic;
 
-
         public EmpleadoDesktop(LavanderiaContext context)
         {
             InitializeComponent();
             _empleadoLogic = new EmpleadoLogic(new EmpleadoAdapter(context));
             this.cbTipoEmpleado.DataSource = Enum.GetNames(typeof(Empleado.TiposEmpleado));
+            this.cbTipoEmpleado.SelectedIndex = 2;
             
         }
 
@@ -51,6 +52,7 @@ namespace UI.Desktop
 
         public override void MapearDeDatos()
         {
+            this.txtID.Text = EmpleadoActual.IdEmpleado.ToString();
             this.txtCuit.Text= EmpleadoActual.Cuit ;
             this.txtNombre.Text = EmpleadoActual.Nombre;
             this.txtApellido.Text = EmpleadoActual.Apellido;
@@ -69,10 +71,25 @@ namespace UI.Desktop
                     break;
                 case ModoForm.Baja:
                     this.btnAceptar.Text = "Eliminar";
-                    
+                    this.txtCuit.Enabled = false;
+                    this.txtNombre.Enabled = false;
+                    this.txtApellido.Enabled = false;
+                    this.txtTelefono.Enabled = false;
+                    this.txtEmail.Enabled = false;
+                    this.txtDireccion.Enabled = false;
+                    this.dtpFechaInicio.Enabled = false;
+                    this.cbTipoEmpleado.Enabled = false;
                     break;
                 case ModoForm.Consulta:
                     this.btnAceptar.Text = "Aceptar";
+                    this.txtCuit.Enabled = false;
+                    this.txtNombre.Enabled = false;
+                    this.txtApellido.Enabled = false;
+                    this.txtTelefono.Enabled = false;
+                    this.txtEmail.Enabled = false;
+                    this.txtDireccion.Enabled = false;
+                    this.dtpFechaInicio.Enabled = false;
+                    this.cbTipoEmpleado.Enabled = false;
                     break;
             }
 
@@ -82,7 +99,7 @@ namespace UI.Desktop
         {
             if (Modos == ModoForm.Alta)
             {
-                EmpleadoActual = new Business.Entities.Empleado();
+                EmpleadoActual = new Empleado();
                 EmpleadoActual.Cuit = this.txtCuit.Text;
                 EmpleadoActual.Nombre = this.txtNombre.Text;
                 EmpleadoActual.Apellido = this.txtApellido.Text;
@@ -112,6 +129,19 @@ namespace UI.Desktop
                     EmpleadoActual.State = BusinessEntity.States.Modified;
                     break;
             }
+        }
+
+
+        public override bool Validar()
+        {
+            ValidationResult result = new EmpleadoValidator().Validate(EmpleadoActual);
+            if (!result.IsValid)
+            {
+                string notificacion = string.Join(Environment.NewLine, result.Errors);
+                MessageBox.Show(notificacion);
+                return false;
+            }
+            return true;
         }
 
         public override void GuardarCambios()

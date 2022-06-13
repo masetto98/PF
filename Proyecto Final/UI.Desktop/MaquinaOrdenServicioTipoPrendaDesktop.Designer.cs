@@ -40,6 +40,7 @@ namespace UI.Desktop
             // 
             // btnIniciar
             // 
+            this.btnIniciar.AutoSize = false;
             this.btnIniciar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnIniciar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.btnIniciar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
@@ -47,12 +48,12 @@ namespace UI.Desktop
             this.btnIniciar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnIniciar.HighEmphasis = true;
             this.btnIniciar.Icon = null;
-            this.btnIniciar.Location = new System.Drawing.Point(74, 342);
+            this.btnIniciar.Location = new System.Drawing.Point(121, 319);
             this.btnIniciar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnIniciar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnIniciar.Size = new System.Drawing.Size(73, 36);
+            this.btnIniciar.Size = new System.Drawing.Size(96, 36);
             this.btnIniciar.TabIndex = 0;
             this.btnIniciar.Text = "Iniciar";
             this.btnIniciar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -69,7 +70,7 @@ namespace UI.Desktop
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
-            this.btnCancelar.Location = new System.Drawing.Point(155, 342);
+            this.btnCancelar.Location = new System.Drawing.Point(225, 319);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -97,7 +98,7 @@ namespace UI.Desktop
             this.txtNroOrden.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNroOrden.Multiline = false;
             this.txtNroOrden.Name = "txtNroOrden";
-            this.txtNroOrden.Size = new System.Drawing.Size(104, 50);
+            this.txtNroOrden.Size = new System.Drawing.Size(148, 50);
             this.txtNroOrden.TabIndex = 2;
             this.txtNroOrden.Text = "";
             this.txtNroOrden.TrailingIcon = null;
@@ -117,7 +118,7 @@ namespace UI.Desktop
             this.txtServicio.MouseState = MaterialSkin.MouseState.OUT;
             this.txtServicio.Multiline = false;
             this.txtServicio.Name = "txtServicio";
-            this.txtServicio.Size = new System.Drawing.Size(224, 50);
+            this.txtServicio.Size = new System.Drawing.Size(306, 50);
             this.txtServicio.TabIndex = 3;
             this.txtServicio.Text = "";
             this.txtServicio.TrailingIcon = null;
@@ -132,12 +133,12 @@ namespace UI.Desktop
             this.txtOrdenItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.txtOrdenItem.Hint = "Orden Item";
             this.txtOrdenItem.LeadingIcon = null;
-            this.txtOrdenItem.Location = new System.Drawing.Point(125, 93);
+            this.txtOrdenItem.Location = new System.Drawing.Point(169, 93);
             this.txtOrdenItem.MaxLength = 50;
             this.txtOrdenItem.MouseState = MaterialSkin.MouseState.OUT;
             this.txtOrdenItem.Multiline = false;
             this.txtOrdenItem.Name = "txtOrdenItem";
-            this.txtOrdenItem.Size = new System.Drawing.Size(114, 50);
+            this.txtOrdenItem.Size = new System.Drawing.Size(152, 50);
             this.txtOrdenItem.TabIndex = 4;
             this.txtOrdenItem.Text = "";
             this.txtOrdenItem.TrailingIcon = null;
@@ -157,7 +158,7 @@ namespace UI.Desktop
             this.txtTipoPrenda.MouseState = MaterialSkin.MouseState.OUT;
             this.txtTipoPrenda.Multiline = false;
             this.txtTipoPrenda.Name = "txtTipoPrenda";
-            this.txtTipoPrenda.Size = new System.Drawing.Size(224, 50);
+            this.txtTipoPrenda.Size = new System.Drawing.Size(306, 50);
             this.txtTipoPrenda.TabIndex = 5;
             this.txtTipoPrenda.Text = "";
             this.txtTipoPrenda.TrailingIcon = null;
@@ -182,7 +183,7 @@ namespace UI.Desktop
             this.cmbMaquinas.MaxDropDownItems = 4;
             this.cmbMaquinas.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbMaquinas.Name = "cmbMaquinas";
-            this.cmbMaquinas.Size = new System.Drawing.Size(224, 49);
+            this.cmbMaquinas.Size = new System.Drawing.Size(306, 49);
             this.cmbMaquinas.StartIndex = 0;
             this.cmbMaquinas.TabIndex = 7;
             this.cmbMaquinas.ValueMember = "IdMaquina";
@@ -191,7 +192,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(258, 392);
+            this.ClientSize = new System.Drawing.Size(341, 371);
             this.Controls.Add(this.cmbMaquinas);
             this.Controls.Add(this.txtTipoPrenda);
             this.Controls.Add(this.txtOrdenItem);

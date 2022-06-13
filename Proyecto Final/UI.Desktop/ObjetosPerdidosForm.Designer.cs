@@ -81,6 +81,7 @@ namespace UI.Desktop
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.btnCerrar = new MaterialSkin.Controls.MaterialButton();
             this.txtNombreApellidoRazonSocial = new MaterialSkin.Controls.MaterialTextBox();
+            this.btnBuscar = new MaterialSkin.Controls.MaterialButton();
             this.materialCard1.SuspendLayout();
             this.materialCard2.SuspendLayout();
             this.SuspendLayout();
@@ -95,7 +96,7 @@ namespace UI.Desktop
             this.txtCuit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.txtCuit.Hint = "Cuit";
             this.txtCuit.LeadingIcon = null;
-            this.txtCuit.Location = new System.Drawing.Point(13, 97);
+            this.txtCuit.Location = new System.Drawing.Point(13, 84);
             this.txtCuit.MaxLength = 50;
             this.txtCuit.MouseState = MaterialSkin.MouseState.OUT;
             this.txtCuit.Multiline = false;
@@ -104,7 +105,6 @@ namespace UI.Desktop
             this.txtCuit.TabIndex = 0;
             this.txtCuit.Text = "";
             this.txtCuit.TrailingIcon = null;
-            this.txtCuit.Leave += new System.EventHandler(this.txtCuit_Leave);
             // 
             // listOrdenesCliente
             // 
@@ -149,12 +149,12 @@ namespace UI.Desktop
             this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.txtDireccion.Hint = "Dirección";
             this.txtDireccion.LeadingIcon = null;
-            this.txtDireccion.Location = new System.Drawing.Point(440, 97);
+            this.txtDireccion.Location = new System.Drawing.Point(399, 84);
             this.txtDireccion.MaxLength = 50;
             this.txtDireccion.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDireccion.Multiline = false;
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(214, 50);
+            this.txtDireccion.Size = new System.Drawing.Size(171, 50);
             this.txtDireccion.TabIndex = 5;
             this.txtDireccion.Text = "";
             this.txtDireccion.TrailingIcon = null;
@@ -961,21 +961,44 @@ namespace UI.Desktop
             this.txtNombreApellidoRazonSocial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.txtNombreApellidoRazonSocial.Hint = "Nombre y Apellido/ Razón Social";
             this.txtNombreApellidoRazonSocial.LeadingIcon = null;
-            this.txtNombreApellidoRazonSocial.Location = new System.Drawing.Point(171, 97);
+            this.txtNombreApellidoRazonSocial.Location = new System.Drawing.Point(171, 84);
             this.txtNombreApellidoRazonSocial.MaxLength = 50;
             this.txtNombreApellidoRazonSocial.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNombreApellidoRazonSocial.Multiline = false;
             this.txtNombreApellidoRazonSocial.Name = "txtNombreApellidoRazonSocial";
-            this.txtNombreApellidoRazonSocial.Size = new System.Drawing.Size(263, 50);
+            this.txtNombreApellidoRazonSocial.Size = new System.Drawing.Size(222, 50);
             this.txtNombreApellidoRazonSocial.TabIndex = 19;
             this.txtNombreApellidoRazonSocial.Text = "";
             this.txtNombreApellidoRazonSocial.TrailingIcon = null;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnBuscar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnBuscar.Depth = 0;
+            this.btnBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnBuscar.HighEmphasis = true;
+            this.btnBuscar.Icon = null;
+            this.btnBuscar.Location = new System.Drawing.Point(575, 97);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnBuscar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnBuscar.Size = new System.Drawing.Size(77, 36);
+            this.btnBuscar.TabIndex = 20;
+            this.btnBuscar.Text = "buscar";
+            this.btnBuscar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnBuscar.UseAccentColor = false;
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // ObjetosPerdidosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1362, 684);
+            this.ClientSize = new System.Drawing.Size(1378, 683);
+            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtNombreApellidoRazonSocial);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.materialLabel5);
@@ -1061,5 +1084,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialTextBox txtIDEmpleadoSiguiente;
         private MaterialSkin.Controls.MaterialLabel materialLabel7;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
+        private MaterialSkin.Controls.MaterialButton btnBuscar;
     }
 }

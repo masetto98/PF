@@ -47,18 +47,6 @@ namespace Business.Entities
             set { _tiempoRequerido = value; }
         }
 
-        public Servicio Servicio
-        {
-            get { return _servicio; }
-            set { _servicio = value; }
-        }
-
-        public TipoPrenda TipoPrenda
-        {
-            get { return _tipoPrenda; }
-         
-            set { _tipoPrenda = value; }
-        }
 
         [Column("tiempo_demora_max")]
         public string TiempoDemoraMax
@@ -72,6 +60,19 @@ namespace Business.Entities
         {
             get { return _prioridad; }
             set { _prioridad = value; }
+        }
+
+        public Servicio Servicio
+        {
+            get { return _servicio; }
+            set { _servicio = value; }
+        }
+
+        public TipoPrenda TipoPrenda
+        {
+            get { return _tipoPrenda; }
+
+            set { _tipoPrenda = value; }
         }
 
         public List<OrdenServicioTipoPrenda> ItemsPedidos

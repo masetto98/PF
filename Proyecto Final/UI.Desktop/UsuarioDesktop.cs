@@ -26,11 +26,9 @@ namespace UI.Desktop
         }
         public UsuarioDesktop(ModoForm modo, LavanderiaContext context) : this(context)
         {
-            // Este constructor es cuando doy de alta un nuevo usuario
+
             Modos = modo;
-            // Creo el nuevo usuario acá para después poder asignarle el ID de persona
             UsuarioActual = new Usuario();
-            // Está todo deshabilitado hasta que cargues un legajo que coincida con una persona
             this.txtNombreUsuario.ReadOnly = true;
             this.chkHabilitado.Enabled = false;
             this.txtClaveUser.ReadOnly = true;
@@ -42,9 +40,6 @@ namespace UI.Desktop
             try
             {
                 UsuarioActual = _usuarioLogic.GetOne(ID);
-                // Como estoy modificando o borrando el usuario, no tengo que poder modificar el legajo
-                // al cual está asociado
-                
                 MapearDeDatos();
             }
             catch (Exception e)
@@ -61,10 +56,10 @@ namespace UI.Desktop
             // Ahora tengo que cargar los datos de la persona también
             try
             {
-                Business.Entities.Empleado emp = _empleadoLogic.GetOne(UsuarioActual.IdEmpleado);
-                this.txtCuitEmpleado.Text = emp.Cuit.ToString();
-                this.txtNombreEmpleado.Text = emp.Nombre;
-                this.txtApellidoEmpleado.Text = emp.Apellido;
+                Empleado emp = _empleadoLogic.GetOne(UsuarioActual.IdEmpleado);
+                this.txtCuit.Text = emp.Cuit.ToString();
+                this.txtNombre.Text = emp.Nombre;
+                this.txtApellido.Text = emp.Apellido;
             }
             catch (Exception e)
             {
@@ -113,9 +108,8 @@ namespace UI.Desktop
                 MapearADatos();
                 if (this.txtConfirmarClave.Text == this.txtClaveUser.Text)
                 {
-                 _usuarioLogic.Save(UsuarioActual);
-                 Close();
-                    
+                    _usuarioLogic.Save(UsuarioActual);
+                    Close();
                 }
                 else
                 {
@@ -127,42 +121,31 @@ namespace UI.Desktop
                 MessageBox.Show(e.Message, "Usuario", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            cargarEmpleado();
+        }
+
         private void cargarEmpleado()
         {
             this.btnAceptarUsuario.Enabled = false;
-            List<Business.Entities.Empleado> empleados = _empleadoLogic.GetAll();
+            Empleado empleado = _empleadoLogic.GetAll().Find(delegate (Empleado em) { return em.Cuit == this.txtCuit.Text; });
             try
             {
-                // Esta validacion tiene q ser q no es vacio y q son solo numeros
-                // Metele regex a este if pa
-                if (this.txtCuitEmpleado.Text.Length == 0)
-                {
-                    Exception e = new Exception("Ingrese un cuit.");
-                    throw e;
-                }
-                var empleado = (from e in empleados
-                               where e.Cuit == this.txtCuitEmpleado.Text
-                               select e).ToList();
-                if (empleado.Count == 0)
+                if (empleado is null)
                 {
                     Exception e = new Exception("No existe empleado para el cuit ingresado.");
                     throw e;
                 }
-                Business.Entities.Empleado emp = _empleadoLogic.GetOne(empleado[0].IdEmpleado);
-                // Asigno los datos de la persona a los textbox
-                this.txtNombreEmpleado.Text = emp.Nombre;
-                this.txtApellidoEmpleado.Text = emp.Apellido;
-                // Verifico que no exista un usuario ya para esta persona
-                var usuarios = (from u in _usuarioLogic.GetAll()
-                                where u.IdEmpleado == emp.IdEmpleado
-                                select u);
-                if (usuarios.Any())
+                this.txtNombre.Text = empleado.Nombre;
+                this.txtApellido.Text = empleado.Apellido;
+                if (empleado.Usuarios.Count>0)
                 {
                     Exception e = new Exception("Ya existe un usuario para el empleado ingresado.");
                     throw e;
                 }
-                UsuarioActual.IdEmpleado = emp.IdEmpleado;
-                // Una vez que cargo la persona, vuelvo a habilitar el resto de los elementos
+                UsuarioActual.IdEmpleado = empleado.IdEmpleado;
                 this.btnAceptarUsuario.Enabled = true;
                 this.txtNombreUsuario.ReadOnly = false;
                 this.chkHabilitado.Enabled = true;
@@ -215,9 +198,6 @@ namespace UI.Desktop
             }
         }
 
-        private void txtCuitEmpleado_Leave(object sender, EventArgs e)
-        {
-            cargarEmpleado();
-        }
+        
     }
 }

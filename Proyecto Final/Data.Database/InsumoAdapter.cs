@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Data.Database
 {
@@ -19,8 +20,11 @@ namespace Data.Database
             List<Insumo> insumos = new List<Insumo>();
             try
             {
-                insumos = _context.Insumos.
-                    ToList();
+                insumos = _context.Insumos
+                                        .Include(i => i.InsumoServicioTipoPrenda)
+                                        .Include(i => i.InsumosProveedores)
+                                            .ThenInclude(p => p.Proveedor)
+                                        .ToList();
             }
             catch (Exception e)
             {
@@ -29,11 +33,15 @@ namespace Data.Database
             }
             return insumos;
         }
-        public Business.Entities.Insumo GetOne(int idInsumo)
+        public Insumo GetOne(int idInsumo)
         {
             try
             {
-                return _context.Insumos.FirstOrDefault(i => i.IdInsumo == idInsumo);
+                return _context.Insumos
+                                       //.Include(i => i.InsumoServicioTipoPrenda)
+                                       .Include(i => i.InsumosProveedores)
+                                            .ThenInclude(p => p.Proveedor)
+                                       .FirstOrDefault(i => i.IdInsumo == idInsumo);
             }
             catch (Exception e)
             {

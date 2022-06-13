@@ -29,11 +29,11 @@ namespace Business.Logic
                 throw ExceptionManejada;
             }
         }
-        public InsumoServicioTipoPrenda GetOne(int idServicio,int idTipoPrenda, int idInsumo)
+        public InsumoServicioTipoPrenda GetOne(int idInsumo,int idServicio,int idTipoPrenda,DateTime fechaDesde)
         {
             try
             {
-                return InsumoServicioTipoPrendaData.GetOne(idServicio,idTipoPrenda,idInsumo);
+                return InsumoServicioTipoPrendaData.GetOne(idInsumo, idServicio, idTipoPrenda,fechaDesde);
             }
             catch (Exception e)
             {
@@ -43,11 +43,11 @@ namespace Business.Logic
             }
         }
         
-        public void Delete(int idServicio, int idTipoPrenda, int idInsumo)
+        public void Delete(int idInsumo, int idServicio, int idTipoPrenda, DateTime fechaDesde)
         {
             try
             {
-                InsumoServicioTipoPrendaData.Delete(idServicio,idTipoPrenda,idInsumo);
+                InsumoServicioTipoPrendaData.Delete(idInsumo, idServicio, idTipoPrenda, fechaDesde);
             }
             catch (Exception e)
             {

@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FluentValidation.Results;
 
 namespace UI.Desktop
 {
@@ -20,7 +21,7 @@ namespace UI.Desktop
         private readonly InsumoLogic _insumoLogic;
         private readonly InsumoProveedorLogic _insumoProveedorLogic;
         public InsumoProveedor InsumoProveedorActual { set; get; }
-        private LavanderiaContext _context;
+        private readonly LavanderiaContext _context;
         public List<String> _unidadesMedida;
 
         public InsumoProveedorDesktop(LavanderiaContext context)
@@ -53,7 +54,7 @@ namespace UI.Desktop
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Insumos Proveedores", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Ingreso de insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public InsumoProveedorDesktop(int idProveedor,int idInsumo,DateTime fechaIngreso, ModoForm modo, LavanderiaContext context) : this(context)
@@ -66,7 +67,7 @@ namespace UI.Desktop
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Ingreso de insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -74,7 +75,7 @@ namespace UI.Desktop
         {
             this.cbProveedores.Text = this.InsumoProveedorActual.Proveedor.RazonSocial;
             this.cbInsumos.Text = InsumoProveedorActual.Insumo.Descripcion;
-            //this.dtpFechaIngreso.Value = (DateTime)InsumoProveedorActual.FechaIngreso;
+            this.dtpFechaIngreso.Value = InsumoProveedorActual.FechaIngreso;
             this.txtCantidad.Text = InsumoProveedorActual.Cantidad.ToString();
             this.cmbUnidadMedida.Text = InsumoProveedorActual.Insumo.UnidadMedida.ToString();
             // Tengo que cargar los cursos por si quiero seleccionar otro
@@ -108,12 +109,18 @@ namespace UI.Desktop
                     this.btnAceptarIngreso.Text = "Eliminar";
                     this.cbProveedores.Enabled = false;
                     this.cbInsumos.Enabled = false;
-                    // this.dtpFechaIngreso.Enabled = false;
+                    this.dtpFechaIngreso.Enabled = false;
                     this.txtCantidad.Enabled = false;
+                    this.cmbUnidadMedida.Enabled = false;
                     this.btnAceptarIngreso.Enabled = true;
                     break;
                 case ModoForm.Consulta:
                     this.btnAceptarIngreso.Text = "Aceptar";
+                    this.cbProveedores.Enabled = false;
+                    this.cbInsumos.Enabled = false;
+                    this.dtpFechaIngreso.Enabled = false;
+                    this.txtCantidad.Enabled = false;
+                    this.cmbUnidadMedida.Enabled = false;
                     break;
             }
         }
@@ -143,7 +150,7 @@ namespace UI.Desktop
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Ingresos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Ingreso de insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -194,7 +201,7 @@ namespace UI.Desktop
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Ingreso de insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -205,12 +212,8 @@ namespace UI.Desktop
                 case ModoForm.Alta:
                     {
                         GuardarCambios();
-                        int IdInsumo = (int)this.cbInsumos.SelectedValue;
-                        Insumo insumo = _insumoLogic.GetOne(IdInsumo);
-                        double stockAnterior = insumo.Stock;
-                        insumo.Stock = stockAnterior + InsumoProveedorActual.Cantidad;
-                        insumo.State = BusinessEntity.States.Modified;
-                        _insumoLogic.Save(insumo);
+                        ModificarStock();
+                        
                     };
                     break;
                 case ModoForm.Modificacion:
@@ -227,17 +230,32 @@ namespace UI.Desktop
                     break;
             }
         }
+
+        private void ModificarStock() 
+        {
+            int IdInsumo = (int)this.cbInsumos.SelectedValue;
+            Insumo insumo = _insumoLogic.GetOne(IdInsumo);
+            double stockAnterior = insumo.Stock;
+            insumo.Stock = stockAnterior + InsumoProveedorActual.Cantidad;
+            insumo.State = BusinessEntity.States.Modified;
+            _insumoLogic.Save(insumo);
+        }
+
         public override void GuardarCambios()
         {
             try
             {
                 MapearADatos();
-                _insumoProveedorLogic.Save(InsumoProveedorActual);
-                Close();
+                Validaciones.ValidarNumeroEnteroDecimal(this.txtCantidad.Text);
+                if (Validar())
+                {
+                    _insumoProveedorLogic.Save(InsumoProveedorActual);
+                    Close();
+                }
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Insumo Proveedor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Ingreso de insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
        

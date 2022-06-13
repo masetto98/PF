@@ -18,7 +18,7 @@ namespace UI.Desktop
 {
     public partial class frmMain : ApplicationForm
     {
-        readonly MaterialSkin.MaterialSkinManager materialSkinManager;
+
         private readonly LavanderiaContext _context;
         private readonly ClienteLogic _clienteLogic;
         private readonly AtributosNegocioLogic _atributosNegocioLogic;
@@ -33,7 +33,7 @@ namespace UI.Desktop
         public List<OrdenServicioTipoPrenda> _trabajosPendientes;
         public List<MaquinaOrdenServicioTipoPrenda> _trabajosEnProceso;
         public List<ItemTrabajo> _listaEspera;
-
+        public double _deudaCliente;
 
         public frmMain(LavanderiaContext context)
         {
@@ -50,8 +50,20 @@ namespace UI.Desktop
             _maquinaLogic = new MaquinaLogic(new MaquinaAdapter(context));
             _listaEspera = new List<ItemTrabajo>();
             //NegocioActual = _atributosNegocioLogic.GetOne(1);
+            RellenarComboBox(listClientes, cmbBuscarCliente);
+            RellenarComboBox(listOrdenes, cmbBuscarOrden);
             CargarOrdenes();
             Planificar();
+        }
+
+        private void RellenarComboBox(ListView listActual, ComboBox cbActual) 
+        {
+            List<string> columnas = new List<string>();
+            foreach (ColumnHeader c in listActual.Columns) 
+            {
+                columnas.Add(c.Text);
+            }
+            cbActual.DataSource = columnas;
         }
 
         private void btnNuevoCliente_Click(object sender, EventArgs e)
@@ -61,58 +73,47 @@ namespace UI.Desktop
 
         }
 
-        /*
-        private void mnuPrincipal_Selected(object sender, TabControlEventArgs e)
+        private void mnuPrincipal_SelectedIndexChanged(object sender, EventArgs e)
         {
-            while (mnuPrincipal.SelectedIndex == 0 || mnuPrincipal.SelectedIndex == 1 || mnuPrincipal.SelectedIndex == 2 || mnuPrincipal.SelectedIndex == 3)
+            switch (mnuPrincipal.SelectedIndex)
             {
-                if (mnuPrincipal.SelectedIndex == 0)
-                {
+                case 0:
                     CargarOrdenes();
-                }
-                else if (mnuPrincipal.SelectedIndex == 1)
-                {
+                    break;
+                case 1:
                     ListarClientes();
-                }
-                else if (mnuPrincipal.SelectedIndex == 2)
-                {
-                    if(tabControlInventario.SelectedIndex == 0)
-                    {
-                        ListarStock();
-                    }
-                    if(tabControlInventario.SelectedIndex == 1)
-                    {
-
-                        ListarProveedores();
-                    }
-                    if (tabControlInventario.SelectedIndex == 2)
-                    {
-                        ListarInsumos();
-                    }
-                    if (tabControlInventario.SelectedIndex == 3)
-                    {
-                        ListarIngresos();
-                    }
-
-                }
-                else if (mnuPrincipal.SelectedIndex == 3)
-                {
+                    break;
+                case 2:
+                    tabControlInventario_SelectedIndexChanged(sender, e);
+                    break;
+                case 3:
                     ListarOrdenesTrabajosPrendientes();
-                }
-
-
-            }
-            else if (mnuPrincipal.SelectedIndex == 3)
-            {
-                Planificar();
-                ListarOrdenesTrabajosPrendientes();
-                ListarEstadoMaquinas();
+                    break;
 
             }
-
-
         }
-        */
+
+        private void tabControlInventario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (tabControlInventario.SelectedIndex)
+            {
+                case 0:
+                    ListarStock();
+                    break;
+                case 1:
+                    //ListarProveedores();
+                    break;
+                case 2:
+                    //ListarInsumos();
+                    break;
+                case 3:
+                    //ListarIngresos();
+                    break;
+
+            }
+        }
+
+
         #region ------- CLIENTES -------
 
         private void ListarClientes()
@@ -127,8 +128,6 @@ namespace UI.Desktop
                 item.SubItems.Add(c.Apellido);
                 item.SubItems.Add(c.Direccion);
                 item.SubItems.Add(c.RazonSocial);
-                item.SubItems.Add(c.Email);
-                item.SubItems.Add(c.Telefono);
                 listClientes.Items.Add(item);
                 CargarOrdenes();
 
@@ -173,26 +172,88 @@ namespace UI.Desktop
             }
 
         }
-        private void buscarCliente()
-        {
-            ListViewItem foundItem = listClientes.FindItemWithText(txtBuscarCliente.Text, true, 0, true);
-            if (foundItem != null)
-            {
-                listClientes.Items.Clear();
-                listClientes.Items.Add(foundItem);
-            }
-        }
+        
 
         private void txtBuscarCliente_TextChanged(object sender, EventArgs e)
         {
-            if (txtBuscarCliente.Text == "")
+            listClientes.Items.Clear();
+            List<Cliente> clientes = _clienteLogic.GetAll();
+            if (this.cmbBuscarCliente.SelectedItem.ToString() == "ID")
             {
-                ListarClientes();
+                foreach (Cliente c in clientes)
+                {
+                    if (c.IdCliente.ToString() == this.txtBuscarCliente.Text)
+                    {
+                        ListViewItem item = new ListViewItem(c.IdCliente.ToString());
+                        item.SubItems.Add(c.Cuit);
+                        item.SubItems.Add(c.Nombre);
+                        item.SubItems.Add(c.Apellido);
+                        item.SubItems.Add(c.RazonSocial);
+                        listClientes.Items.Add(item);
+                    }
+                }
             }
-            else
+            if (this.cmbBuscarCliente.SelectedItem.ToString() == "Cuit")
             {
-                buscarCliente();
+                foreach (Cliente c in clientes)
+                {
+                    if (c.Cuit.ToLower().Contains(this.txtBuscarCliente.Text.ToLower()))
+                    {
+                        ListViewItem item = new ListViewItem(c.IdCliente.ToString());
+                        item.SubItems.Add(c.Cuit);
+                        item.SubItems.Add(c.Nombre);
+                        item.SubItems.Add(c.Apellido);
+                        item.SubItems.Add(c.RazonSocial);
+                        listClientes.Items.Add(item);
+                    }
+                }
             }
+            if (this.cmbBuscarCliente.SelectedItem.ToString() == "Nombre")
+            {
+                foreach (Cliente c in clientes)
+                {
+                    if (c.Nombre.ToLower().Contains(this.txtBuscarCliente.Text.ToLower()))
+                    {
+                        ListViewItem item = new ListViewItem(c.IdCliente.ToString());
+                        item.SubItems.Add(c.Cuit);
+                        item.SubItems.Add(c.Nombre);
+                        item.SubItems.Add(c.Apellido);
+                        item.SubItems.Add(c.RazonSocial);
+                        listClientes.Items.Add(item);
+                    }
+                }
+            }
+            if (this.cmbBuscarCliente.SelectedItem.ToString() == "Apellido")
+            {
+                foreach (Cliente c in clientes)
+                {
+                    if (c.Apellido.ToLower().Contains(this.txtBuscarCliente.Text.ToLower()))
+                    {
+                        ListViewItem item = new ListViewItem(c.IdCliente.ToString());
+                        item.SubItems.Add(c.Cuit);
+                        item.SubItems.Add(c.Nombre);
+                        item.SubItems.Add(c.Apellido);
+                        item.SubItems.Add(c.RazonSocial);
+                        listClientes.Items.Add(item);
+                    }
+                }
+            }
+            if (this.cmbBuscarCliente.SelectedItem.ToString() == "Razón Social")
+            {
+                foreach (Cliente c in clientes)
+                {
+                    if (c.RazonSocial.ToLower().Contains(this.txtBuscarCliente.Text.ToLower()))
+                    {
+                        ListViewItem item = new ListViewItem(c.IdCliente.ToString());
+                        item.SubItems.Add(c.Cuit);
+                        item.SubItems.Add(c.Nombre);
+                        item.SubItems.Add(c.Apellido);
+                        item.SubItems.Add(c.RazonSocial);
+                        listClientes.Items.Add(item);
+                    }
+                }
+            }
+            if (this.txtBuscarCliente.Text == "") { ListarClientes(); }
         }
 
         //evento para fixear columnas del listview
@@ -204,132 +265,160 @@ namespace UI.Desktop
 
         private void btnOrdenesCliente_Click(object sender, EventArgs e)
         {
+            ListarOrdenesCliente();
+            CalcularCuentaCorrienteCliente();
+        }
 
+        private void ListarOrdenesCliente() 
+        {
+            listOrdenesCliente.Items.Clear();
+            if (listClientes.SelectedItems.Count > 0)
+            {
+                Cliente clienteActual = _clienteLogic.GetOne(Int32.Parse(listClientes.SelectedItems[0].Text));
+                if (clienteActual.Ordenes is not null)
+                {
+                    foreach (Orden o in clienteActual.Ordenes)
+                    {
+                        ListViewItem item = new ListViewItem(o.NroOrden.ToString());
+                        item.SubItems.Add(o.FechaEntrada.ToString());
+                        double importe = CalcularImporteOrden(o);
+                        item.SubItems.Add(importe.ToString());
+                        double pagos = CalcularPagosOrden(o);
+                        double deudas = importe - pagos;
+                        item.SubItems.Add(deudas.ToString());
+                        listOrdenesCliente.Items.Add(item);
+                    }
+                }
+            }
+        }
+
+        private double CalcularImporteOrden(Orden ordenActual)
+        {
+            double importe = 0;
+            foreach (OrdenServicioTipoPrenda ostp in ordenActual.ItemsPedidos)
+            {
+                Precio precio = ostp.ServicioTipoPrenda.HistoricoPrecios.FindLast(delegate (Precio p)
+                {
+                    return p.FechaDesde < ordenActual.FechaEntrada;
+                });
+                if (precio is not null)
+                {
+                    importe += precio.Valor;
+                }
+            }
+            if (ordenActual.Descuento.StartsWith("%"))
+            {
+
+                importe = importe * (1 - Double.Parse(ordenActual.Descuento.Remove(0, 1)) / 100.0);
+            }
+            if (!ordenActual.Descuento.StartsWith("%"))
+            {
+                double resta = Double.Parse(ordenActual.Descuento);
+                importe = importe - Double.Parse(ordenActual.Descuento);
+            }
+            return importe;
+        }
+
+        private double CalcularPagosOrden(Orden ordenActual) 
+        {
+            double pagos = 0;
+            if (ordenActual.Factura is not null && ordenActual.Factura.Pagos is not null)
+            {
+                foreach (Pago p in ordenActual.Factura.Pagos)
+                {
+                    pagos += p.Importe;
+                }
+            }
+            return pagos;
+        }
+
+        private void ListarPagosOrden() 
+        {
+            listPagosOrden.Items.Clear();
+            if (listOrdenesCliente.SelectedItems.Count > 0)
+            {
+                int nroOrden = Int32.Parse(listOrdenesCliente.SelectedItems[0].Text);
+                Orden ordenActual = _ordenLogic.GetOne(nroOrden);
+                if (ordenActual.Factura is not null && ordenActual.Factura.Pagos is not null && ordenActual.Factura.Pagos.Count > 0)
+                {
+                    foreach (Pago p in ordenActual.Factura.Pagos)
+                    {
+                        ListViewItem item = new ListViewItem(p.FechaPago.ToString());
+                        item.SubItems.Add(p.Importe.ToString());
+                        item.SubItems.Add(p.FormaPago.ToString());
+                        listPagosOrden.Items.Add(item);
+                    }
+                }
+                else { MessageBox.Show("La orden no contiene ningun pago"); }
+            }
+        }
+
+        private void btnVerPagos_Click(object sender, EventArgs e)
+        {
+            ListarPagosOrden();
+        }
+
+        private void CalcularCuentaCorrienteCliente() 
+        {
+            _deudaCliente = 0;
+            if (listClientes.SelectedItems.Count > 0) 
+            {
+                Cliente clienteActual = _clienteLogic.GetOne(Int32.Parse(listClientes.SelectedItems[0].Text));
+                if (clienteActual is not null) 
+                {
+                    if (clienteActual.Ordenes is not null) 
+                    {
+                        foreach (Orden o in clienteActual.Ordenes) 
+                        {
+                            double importe = CalcularImporteOrden(o);
+                            double pagos = CalcularPagosOrden(o);
+                            _deudaCliente += (importe - pagos);
+                        }
+                    }
+                }
+                this.lblCuentaCorriente.Text = _deudaCliente.ToString();
+            }
+        }
+
+        private void listClientes_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
             if (listClientes.SelectedItems.Count > 0)
             {
                 int ID = Int32.Parse(this.listClientes.SelectedItems[0].Text);
-                ClienteOrdenDesktop oClientes = new ClienteOrdenDesktop(ID, _context);
-                oClientes.ShowDialog();
-                //listClientes.Items.Remove(listClientes.SelectedItems[0]); Otra forma de borrar de la lista
-                ListarClientes();
+                ClienteDesktop formCliente = new ClienteDesktop(ID, ApplicationForm.ModoForm.Consulta, _context);
+                formCliente.ShowDialog();
             }
-            else
-            {
-                MessageBox.Show("Seleccionar una fila en la lista para poder observar las ordenes");
-            }
+
         }
+
         #endregion
 
         #region ------- INVENTARIO -------
+
+        #region ------- Stock -------
+
         private void ListarStock()
         {
-            List<Insumo> insumos = _insumoLogic.GetAll();
-            listStock.Items.Clear();
-            foreach (Insumo i in insumos)
-            {
-                ListViewItem item = new ListViewItem(i.Descripcion);
-                item.SubItems.Add(i.Stock.ToString());
-                listStock.Items.Add(item);
-            }
-        }
-        private void ListarProveedores()
-        {
-            List<Proveedor> proveedores = _proveedorLogic.GetAll();
-            listProveedores.Items.Clear();
-            foreach (Proveedor p in proveedores)
-            {
-                ListViewItem item = new ListViewItem(p.IdProveedor.ToString());
-                item.SubItems.Add(p.Cuit);
-                item.SubItems.Add(p.RazonSocial);
-                item.SubItems.Add(p.Telefono);
-                item.SubItems.Add(p.Email);
-                item.SubItems.Add(p.Direccion);
-                listProveedores.Items.Add(item);
-            }
-        }
-
-        private void ListarInsumos()
-        {
-            List<Insumo> insumos = _insumoLogic.GetAll();
             listInsumos.Items.Clear();
-            foreach (Insumo i in insumos)
+            List<Insumo> insumos = _insumoLogic.GetAll();
+            if (insumos.Count > 0)
             {
-                ListViewItem item = new ListViewItem(i.IdInsumo.ToString());
-                item.SubItems.Add(i.Descripcion);
-                item.SubItems.Add(i.Stock.ToString());
-                item.SubItems.Add(i.UnidadMedida.ToString());
-
-                listInsumos.Items.Add(item);
+                foreach (Insumo i in insumos)
+                {
+                    ListViewItem item = new ListViewItem(i.IdInsumo.ToString());
+                    item.SubItems.Add(i.Descripcion);
+                    item.SubItems.Add(i.Stock.ToString());
+                    item.SubItems.Add(i.UnidadMedida.ToString());
+                    listInsumos.Items.Add(item);
+                }
             }
-
-        }
-
-        private void ListarIngresos()
-        {
-            List<InsumoProveedor> insumosproveedores = _insumoProveedorLogic.GetAll();
-            //insumosproveedores.OrderByDescending(ip => ip.FechaIngreso);
-            listIngresos.Items.Clear();
-            foreach (InsumoProveedor ip in insumosproveedores)
-            {
-                ListViewItem item = new ListViewItem(ip.Proveedor.IdProveedor.ToString());
-                item.SubItems.Add(ip.Proveedor.RazonSocial);
-                item.SubItems.Add(ip.Insumo.IdInsumo.ToString());
-                item.SubItems.Add(ip.Insumo.Descripcion);
-                item.SubItems.Add(ip.FechaIngreso.ToString("O"));
-                item.SubItems.Add(ip.Cantidad.ToString());
-                listIngresos.Items.Add(item);
-            }
-        }
-
-        private void btnAgregarProv_Click(object sender, EventArgs e)
-        {
-            ProveedorDesktop frmProveedor = new ProveedorDesktop(ApplicationForm.ModoForm.Alta, _context);
-            frmProveedor.ShowDialog();
-            ListarProveedores();
-        }
-
-        private void btnEditarProv_Click(object sender, EventArgs e)
-        {
-            if (listProveedores.SelectedItems.Count > 0)
-            {
-                int ID = Int32.Parse(this.listProveedores.SelectedItems[0].Text);
-                ProveedorDesktop formProveedor = new ProveedorDesktop(ID, ApplicationForm.ModoForm.Modificacion, _context);
-                formProveedor.ShowDialog();
-                ListarProveedores();
-            }
-            else
-            {
-                MessageBox.Show("Seleccionar una fila en la lista para poder editar");
-            }
-        }
-
-        private void btnEliminarProv_Click(object sender, EventArgs e)
-        {
-            if (listProveedores.SelectedItems.Count > 0)
-            {
-                int ID = Int32.Parse(this.listProveedores.SelectedItems[0].Text);
-                ProveedorDesktop formProveedor = new ProveedorDesktop(ID, ApplicationForm.ModoForm.Baja, _context);
-                formProveedor.ShowDialog();
-                //listClientes.Items.Remove(listClientes.SelectedItems[0]); Otra forma de borrar de la lista
-                ListarProveedores();
-            }
-            else
-            {
-                MessageBox.Show("Seleccionar una fila en la lista para poder eliminar");
-            }
-        }
-
-        private void listProveedores_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
-        {
-            e.Cancel = true;
-            e.NewWidth = listProveedores.Columns[e.ColumnIndex].Width;
         }
 
         private void btnAgregarInsumo_Click(object sender, EventArgs e)
         {
             InsumoDesktop frmInsumo = new InsumoDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmInsumo.ShowDialog();
-            ListarInsumos();
+            ListarStock();
         }
 
         private void btnEditarInsumo_Click(object sender, EventArgs e)
@@ -339,12 +428,12 @@ namespace UI.Desktop
                 int ID = Int32.Parse(this.listInsumos.SelectedItems[0].Text);
                 InsumoDesktop formInsumo = new InsumoDesktop(ID, ApplicationForm.ModoForm.Modificacion, _context);
                 formInsumo.ShowDialog();
-                ListarInsumos();
             }
             else
             {
                 MessageBox.Show("Seleccionar una fila en la lista para poder editar");
             }
+            ListarStock();
         }
 
         private void btnEliminarInsumo_Click(object sender, EventArgs e)
@@ -354,33 +443,148 @@ namespace UI.Desktop
                 int ID = Int32.Parse(this.listInsumos.SelectedItems[0].Text);
                 InsumoDesktop formInsumo = new InsumoDesktop(ID, ApplicationForm.ModoForm.Baja, _context);
                 formInsumo.ShowDialog();
-                //listClientes.Items.Remove(listClientes.SelectedItems[0]); Otra forma de borrar de la lista
-                ListarInsumos();
+
             }
             else
             {
                 MessageBox.Show("Seleccionar una fila en la lista para poder eliminar");
             }
+            ListarStock();
         }
+
+        private void btnDetalles_Click(object sender, EventArgs e)
+        {
+            ListarIngresosInsumo();
+        }
+
+        private void ListarIngresosInsumo()
+        {
+            listIngresosInsumos.Items.Clear();
+            if (listInsumos.SelectedItems.Count > 0)
+            {
+                Insumo insumoActual = _insumoLogic.GetOne(Int32.Parse(listInsumos.SelectedItems[0].Text));
+                if (insumoActual is not null && insumoActual.InsumosProveedores.Count > 0)
+                {
+                    foreach (InsumoProveedor ip in insumoActual.InsumosProveedores)
+                    {
+                        ListViewItem item = new ListViewItem(ip.Proveedor.RazonSocial);
+                        item.SubItems.Add(ip.FechaIngreso.ToString("O"));
+                        item.SubItems.Add(ip.Cantidad.ToString());
+                        item.SubItems.Add(ip.Insumo.UnidadMedida.ToString());
+                        listIngresosInsumos.Items.Add(item);
+                    }
+                }
+            }
+        }
+
+        private void btnIngresoInsumo_Click(object sender, EventArgs e)
+        {
+            InsumoProveedorDesktop frmInsumoProveedor = new InsumoProveedorDesktop(ApplicationForm.ModoForm.Alta, _context);
+            frmInsumoProveedor.ShowDialog();
+            //ListarIngresos();
+
+        }
+
+        private void btnEditarIngresoInsumo_Click(object sender, EventArgs e)
+        {
+            if (listIngresosInsumos.SelectedItems.Count > 0)
+            {
+                InsumoProveedor ipActual = _insumoProveedorLogic.GetAll().Find(delegate (InsumoProveedor ip)
+                {
+                    return ip.Proveedor.RazonSocial == listIngresosInsumos.SelectedItems[0].Text &&
+                           ip.IdInsumo == Int32.Parse(listInsumos.SelectedItems[0].Text) &&
+                           ip.FechaIngreso == DateTime.Parse(listIngresosInsumos.SelectedItems[0].SubItems[1].Text);
+                });
+                if (ipActual is not null)
+                {
+                    InsumoProveedorDesktop frmInsumoProveedor = new InsumoProveedorDesktop(ipActual.IdProveedor, ipActual.IdInsumo, ipActual.FechaIngreso, ApplicationForm.ModoForm.Modificacion, _context);
+                    frmInsumoProveedor.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Seleccionar una fila en la lista para poder editar");
+                }
+                //ListarIngresos();
+
+            }
+
+        }
+
+        private void btnEliminarIngresoInsumo_Click(object sender, EventArgs e)
+        {
+            if (listIngresosInsumos.SelectedItems.Count > 0)
+            {
+                InsumoProveedor ipActual = _insumoProveedorLogic.GetAll().Find(delegate (InsumoProveedor ip)
+                {
+                    return ip.Proveedor.RazonSocial == listIngresosInsumos.SelectedItems[0].Text &&
+                           ip.IdInsumo == Int32.Parse(listInsumos.SelectedItems[0].Text) &&
+                           ip.FechaIngreso == DateTime.Parse(listIngresosInsumos.SelectedItems[0].SubItems[1].Text);
+                });
+                if (ipActual is not null)
+                {
+                    InsumoProveedorDesktop frmInsumoProveedor = new InsumoProveedorDesktop(ipActual.IdProveedor, ipActual.IdInsumo, ipActual.FechaIngreso, ApplicationForm.ModoForm.Baja, _context);
+                    frmInsumoProveedor.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Seleccionar una fila en la lista para poder editar");
+                }
+
+            }
+            //ListarIngresos();
+        }
+
+        private void dtpFiltrarFechaIngreso_CloseUp(object sender, EventArgs e)
+        {
+            DateTime fechaFiltro = dtpFiltroFechaIngreso.Value;
+            List<InsumoProveedor> insumosproveedores = _insumoProveedorLogic.GetAll();
+            List<InsumoProveedor> ipFecha = insumosproveedores.FindAll(ip => ip.FechaIngreso.ToString("yyyy/MM/dd") == fechaFiltro.ToString("yyyy/MM/dd"));
+            listIngresosInsumos.Items.Clear();
+            foreach (InsumoProveedor ip in ipFecha)
+            {
+                ListViewItem item = new ListViewItem(ip.Proveedor.RazonSocial);
+                item.SubItems.Add(ip.FechaIngreso.ToString());
+                item.SubItems.Add(ip.Cantidad.ToString());
+                listIngresosInsumos.Items.Add(item);
+            }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            ListarIngresosInsumo();
+        }
+
+        #endregion
+
+
+
+
+        private void listProveedores_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {/*
+            e.Cancel = true;
+            e.NewWidth = listProveedores.Columns[e.ColumnIndex].Width;*/
+        }
+
+
 
         private void btnNuevoIngreso_Click(object sender, EventArgs e)
         {
             InsumoProveedorDesktop frmInsumoProveedor = new InsumoProveedorDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmInsumoProveedor.ShowDialog();
-            ListarIngresos();
+            //ListarIngresos();
         }
 
         private void btnEditarIngreso_Click(object sender, EventArgs e)
         {
             if (listIngresos.SelectedItems.Count > 0)
             {
-              
+
                 int IDProv = Int32.Parse(this.listIngresos.SelectedItems[0].Text);
                 int IDIns = Int32.Parse(this.listIngresos.SelectedItems[0].SubItems[2].Text);
                 DateTime fechaIngreso = DateTime.Parse(this.listIngresos.SelectedItems[0].SubItems[4].Text);
                 InsumoProveedorDesktop formInsumoProveedor = new InsumoProveedorDesktop(IDProv, IDIns, fechaIngreso, ApplicationForm.ModoForm.Modificacion, _context);
                 formInsumoProveedor.ShowDialog();
-                ListarIngresos();
+                //ListarIngresos();
             }
             else
             {
@@ -399,7 +603,7 @@ namespace UI.Desktop
                 InsumoProveedorDesktop formInsumoProveedor = new InsumoProveedorDesktop(IDProv, IDIns, fechaIngreso, ApplicationForm.ModoForm.Baja, _context);
                 formInsumoProveedor.ShowDialog();
                 //listClientes.Items.Remove(listClientes.SelectedItems[0]); Otra forma de borrar de la lista
-                ListarIngresos();
+                //ListarIngresos();
             }
             else
             {
@@ -407,6 +611,7 @@ namespace UI.Desktop
             }
 
         }
+        /*
         private void dtpFiltrarFechaIngreso_CloseUp(object sender, EventArgs e)
         {
             DateTime fechaFiltro = dtpFiltrarFechaIngreso.Value;
@@ -424,7 +629,7 @@ namespace UI.Desktop
                 listIngresos.Items.Add(item);
             }
 
-        }
+        }*/
 
         private void listIngresos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
@@ -433,13 +638,13 @@ namespace UI.Desktop
         }
 
         private void listInsumos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
-        {
+        {/*
             e.Cancel = true;
-            e.NewWidth = listInsumos.Columns[e.ColumnIndex].Width;
+            e.NewWidth = listInsumos1.Columns[e.ColumnIndex].Width;*/
         }
         private void btnActualizarIngresos_Click(object sender, EventArgs e)
         {
-            ListarIngresos();
+            //ListarIngresos();
         }
         #endregion
 
@@ -452,44 +657,154 @@ namespace UI.Desktop
             foreach (Orden o in ordenes)
             {
                 ListViewItem item = new ListViewItem(o.NroOrden.ToString());
-                item.SubItems.Add(o.IdCliente.ToString());
-                item.SubItems.Add(o.IdEmpleado.ToString());
-                item.SubItems.Add(o.NroFactura.ToString());
+                item.SubItems.Add(String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
                 item.SubItems.Add(o.Prioridad.ToString());
                 item.SubItems.Add(o.FechaEntrada.ToString());
-                //item.SubItems.Add(o.TiempofinalizacionEstimado.ToString());
-                //item.SubItems.Add(o.TiempoFinalizacionReal.ToString());
-                item.SubItems.Add(o.FechaSalida.ToString());
+                if (o.FechaSalida == DateTime.MinValue)
+                {
+                    item.SubItems.Add("No Retirado");
+                }
+                else { item.SubItems.Add(o.FechaSalida.ToString()); }
                 item.SubItems.Add(o.Estado.ToString());
                 listOrdenes.Items.Add(item);
             }
         }
-        private void buscarOrdenes()
-        {
-            ListViewItem foundItem = listOrdenes.FindItemWithText(txtBuscarOrdenes.Text, true, 0, true);
-            if (foundItem != null)
-            {
-                listOrdenes.Items.Clear();
-                listOrdenes.Items.Add(foundItem);
-            }
-        }
+        #region --- Buscar orden ---
         private void txtBuscarOrdenes_TextChanged(object sender, EventArgs e)
         {
+            listOrdenes.Items.Clear();
+            List<Orden> ordenes = _ordenLogic.GetAll();
+            if (this.cmbBuscarOrden.SelectedItem.ToString() == "N° Orden")
+            {
+                foreach (Orden o in ordenes)
+                {
+                    if (o.NroOrden.ToString() == this.txtBuscarOrdenes.Text)
+                    {
+                        ListViewItem item = new ListViewItem(o.NroOrden.ToString());
+                        item.SubItems.Add(String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
+                        item.SubItems.Add(o.Prioridad.ToString());
+                        item.SubItems.Add(o.FechaEntrada.ToString());
+                        if (o.FechaSalida == DateTime.MinValue)
+                        {
+                            item.SubItems.Add("No Retirado");
+                        }
+                        else { item.SubItems.Add(o.FechaSalida.ToString()); }
+                        item.SubItems.Add(o.Estado.ToString());
+                        listOrdenes.Items.Add(item);
+                    }
+                }
+            }
+            if (this.cmbBuscarOrden.SelectedItem.ToString() == "Cliente")
+            {
+                foreach (Orden o in ordenes)
+                {
+                    if (o.Cliente.Nombre.ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()) || o.Cliente.Apellido.ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()) || o.Cliente.RazonSocial.ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()))
+                    {
+                        ListViewItem item = new ListViewItem(o.NroOrden.ToString());
+                        item.SubItems.Add(String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
+                        item.SubItems.Add(o.Prioridad.ToString());
+                        item.SubItems.Add(o.FechaEntrada.ToString());
+                        if (o.FechaSalida == DateTime.MinValue)
+                        {
+                            item.SubItems.Add("No Retirado");
+                        }
+                        else { item.SubItems.Add(o.FechaSalida.ToString()); }
+                        item.SubItems.Add(o.Estado.ToString());
+                        listOrdenes.Items.Add(item);
+                    }
+                }
+            }
+            if (this.cmbBuscarOrden.SelectedItem.ToString() == "Prioridad")
+            {
+                foreach (Orden o in ordenes)
+                {
+                    if (o.Prioridad.ToString().ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()))
+                    {
+                        ListViewItem item = new ListViewItem(o.NroOrden.ToString());
+                        item.SubItems.Add(String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
+                        item.SubItems.Add(o.Prioridad.ToString());
+                        item.SubItems.Add(o.FechaEntrada.ToString());
+                        if (o.FechaSalida == DateTime.MinValue)
+                        {
+                            item.SubItems.Add("No Retirado");
+                        }
+                        else { item.SubItems.Add(o.FechaSalida.ToString()); }
+                        item.SubItems.Add(o.Estado.ToString());
+                        listOrdenes.Items.Add(item);
+                    }
+                }
+            }
+            if (this.cmbBuscarOrden.SelectedItem.ToString() == "Fecha Ingreso")
+            {
+                foreach (Orden o in ordenes)
+                {
+                    if (o.FechaEntrada.ToString().ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()))
+                    {
+                        ListViewItem item = new ListViewItem(o.NroOrden.ToString());
+                        item.SubItems.Add(String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
+                        item.SubItems.Add(o.Prioridad.ToString());
+                        item.SubItems.Add(o.FechaEntrada.ToString());
+                        if (o.FechaSalida == DateTime.MinValue)
+                        {
+                            item.SubItems.Add("No Retirado");
+                        }
+                        else { item.SubItems.Add(o.FechaSalida.ToString()); }
+                        item.SubItems.Add(o.Estado.ToString());
+                        listOrdenes.Items.Add(item);
+                    }
+                }
+            }
+            if (this.cmbBuscarOrden.SelectedItem.ToString() == "Fecha Salida")
+            {
+                foreach (Orden o in ordenes)
+                {
+                    if (o.FechaSalida.ToString().ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()))
+                    {
+                        ListViewItem item = new ListViewItem(o.NroOrden.ToString());
+                        item.SubItems.Add(String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
+                        item.SubItems.Add(o.Prioridad.ToString());
+                        item.SubItems.Add(o.FechaEntrada.ToString());
+                        if (o.FechaSalida == DateTime.MinValue)
+                        {
+                            item.SubItems.Add("No Retirado");
+                        }
+                        else { item.SubItems.Add(o.FechaSalida.ToString()); }
+                        item.SubItems.Add(o.Estado.ToString());
+                        listOrdenes.Items.Add(item);
+                    }
+                }
+            }
+            if (this.cmbBuscarOrden.SelectedItem.ToString() == "Estado")
+            {
+                foreach (Orden o in ordenes)
+                {
+                    if (o.Estado.ToString().ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()))
+                    {
+                        ListViewItem item = new ListViewItem(o.NroOrden.ToString());
+                        item.SubItems.Add(String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
+                        item.SubItems.Add(o.Prioridad.ToString());
+                        item.SubItems.Add(o.FechaEntrada.ToString());
+                        if (o.FechaSalida == DateTime.MinValue)
+                        {
+                            item.SubItems.Add("No Retirado");
+                        }
+                        else { item.SubItems.Add(o.FechaSalida.ToString()); }
+                        item.SubItems.Add(o.Estado.ToString());
+                        listOrdenes.Items.Add(item);
+                    }
+                }
+            }
+            if (this.txtBuscarOrdenes.Text == "") { CargarOrdenes(); }
 
-            if (txtBuscarOrdenes.Text == "")
-            {
-                CargarOrdenes();
-            }
-            else
-            {
-                buscarOrdenes();
-            }
         }
+        #endregion
+
         private void btnNuevaOrden_Click(object sender, EventArgs e)
         {
             OrdenDesktop frmOrden = new OrdenDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmOrden.ShowDialog();
             CargarOrdenes();
+            Planificar();
         }
 
         private void btnEliminarOrden_Click(object sender, EventArgs e)
@@ -500,6 +815,7 @@ namespace UI.Desktop
                 OrdenDesktop frmOrden = new OrdenDesktop(nroOrden, ApplicationForm.ModoForm.Baja, _context);
                 frmOrden.ShowDialog();
                 CargarOrdenes();
+                Planificar();
             }
 
         }
@@ -512,14 +828,46 @@ namespace UI.Desktop
                 OrdenDesktop frmOrden = new OrdenDesktop(nroOrden, ApplicationForm.ModoForm.Modificacion, _context);
                 frmOrden.ShowDialog();
                 CargarOrdenes();
+                Planificar();
             }
 
+        }
+
+        private void btnRetirarOrden_Click(object sender, EventArgs e)
+        {
+            if (listOrdenes.SelectedItems.Count > 0)
+            {
+                int nroOrden = Int32.Parse(this.listOrdenes.SelectedItems[0].Text);
+                RetirarOrdenDesktop frmRetirarOrden = new RetirarOrdenDesktop(nroOrden, ApplicationForm.ModoForm.Modificacion, _context);
+                frmRetirarOrden.ShowDialog();
+                CargarOrdenes();
+            }
+        }
+
+        private void btnVerDetalles_Click(object sender, EventArgs e)
+        {
+            if (listOrdenes.SelectedItems.Count > 0)
+            {
+                int nroOrden = Int32.Parse(this.listOrdenes.SelectedItems[0].Text);
+                OrdenDesktop frmOrden = new OrdenDesktop(nroOrden, ApplicationForm.ModoForm.Consulta, _context);
+                frmOrden.ShowDialog();
+            }
         }
 
         private void listOrdenes_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             e.Cancel = true;
             e.NewWidth = listOrdenes.Columns[e.ColumnIndex].Width;
+        }
+
+        private void listOrdenes_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listOrdenes.SelectedItems.Count > 0)
+            {
+                int nroOrden = Int32.Parse(this.listOrdenes.SelectedItems[0].Text);
+                OrdenDesktop frmOrden = new OrdenDesktop(nroOrden, ApplicationForm.ModoForm.Consulta, _context);
+                frmOrden.ShowDialog();
+            }
         }
 
         #endregion
@@ -538,8 +886,8 @@ namespace UI.Desktop
 
             this.mnuPrincipal.Visible = true;
             this.epUser.Visible = true;
-
             this.epUser.Title = $"{Singleton.getInstance().UserLogged.NombreUsuario}";
+            ConfiguracionAdministrador();
 
         }
 
@@ -711,17 +1059,33 @@ namespace UI.Desktop
                     t.Estado = OrdenServicioTipoPrenda.Estados.Finalizado;
                     t.State = BusinessEntity.States.Modified;
                     _ordenServicioTipoPrendaLogic.Save(t);
+                    ValidarTerminacionOrden(t.NroOrden);
                 }
             }
             Planificar();
             ListarOrdenesTrabajosPrendientes();
+
         }
+
+        private void ValidarTerminacionOrden(int nroOrden)
+        {
+            Orden ordenActual = _ordenLogic.GetOne(nroOrden);
+            List<OrdenServicioTipoPrenda> ordenesPendientes = ordenActual.ItemsPedidos.FindAll(delegate (OrdenServicioTipoPrenda ostp)
+            { return ostp.Estado != OrdenServicioTipoPrenda.Estados.Finalizado; });
+            if (ordenesPendientes.Count == 0)
+            {
+                ordenActual.Estado = Orden.Estados.Finalizado;
+                ordenActual.State = BusinessEntity.States.Modified;
+                _ordenLogic.Save(ordenActual);
+            }
+        }
+
         #endregion
 
         #region ------- TRABAJOS EN PROCESO -------
         private void ListarTrabajosEnProceso()
         {
-            _trabajosEnProceso = _maquinaOrdenServicioTipoPrendaLogic.GetAll().FindAll(delegate (MaquinaOrdenServicioTipoPrenda m) { return m.TiempoFinServicio == DateTime.MinValue; }); 
+            _trabajosEnProceso = _maquinaOrdenServicioTipoPrendaLogic.GetAll().FindAll(delegate (MaquinaOrdenServicioTipoPrenda m) { return m.TiempoFinServicio == DateTime.MinValue; });
             listTrabajosEnProceso.Items.Clear();
             foreach (MaquinaOrdenServicioTipoPrenda i in _trabajosEnProceso)
             {
@@ -734,7 +1098,7 @@ namespace UI.Desktop
                 item.SubItems.Add(i.OrdenServicioTipoPrenda.Estado.ToString());
                 listTrabajosEnProceso.Items.Add(item);
             }
-            
+
         }
 
         private void btnTerminarServicio_Click(object sender, EventArgs e)
@@ -743,7 +1107,7 @@ namespace UI.Desktop
             {
                 if (MessageBox.Show("Quieres terminar este trabajo?", "Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    
+
                     MaquinaOrdenServicioTipoPrenda mostpActual = _trabajosEnProceso.Find(delegate (MaquinaOrdenServicioTipoPrenda mostp)
                     {
                         return mostp.Maquina.Descripcion == this.listTrabajosEnProceso.SelectedItems[0].Text &&
@@ -755,7 +1119,9 @@ namespace UI.Desktop
                     _maquinaOrdenServicioTipoPrendaLogic.Save(mostpActual);
                 }
             }
+            ListarOrdenesTrabajosPrendientes();
             ListarTrabajosEnProceso();
+            ListarEstadoMaquinas();
         }
 
         #endregion
@@ -763,65 +1129,20 @@ namespace UI.Desktop
         #endregion
 
         #region ------- UTILIDADES -------
-        
+
+        private void ConfiguracionAdministrador() 
+        {
+            if(Singleton.getInstance().EmpleadoLogged.TipoEmpleado != Empleado.TiposEmpleado.Admin) 
+            {
+                this.btnUsuarios.Enabled = false;
+                this.btnEmpleados.Enabled = false;
+            }
+        }
+
         private void btnObjetosPerdidos_Click(object sender, EventArgs e)
         {
             ObjetosPerdidosForm frmObjetosPerdidos = new ObjetosPerdidosForm(_context);
             frmObjetosPerdidos.ShowDialog();
-        }
-
-
-        #endregion
-
-        private void mnuPrincipal_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch(mnuPrincipal.SelectedIndex)
-            {
-                case 0:
-                    CargarOrdenes();
-                    break;
-                case 1:
-                    ListarClientes();
-                    break;
-                case 2:
-                    tabControlInventario_SelectedIndexChanged(sender, e);
-                    break;
-                case 3:
-                    ListarOrdenesTrabajosPrendientes();
-                    break;
-
-            }
-        }
-
-        private void tabControlInventario_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (tabControlInventario.SelectedIndex)
-            {
-                case 0:
-                    ListarStock();
-                    break;
-                case 1:
-                    ListarProveedores();
-                    break;
-                case 2:
-                    ListarInsumos();
-                    break;
-                case 3:
-                    ListarIngresos();
-                    break;
-
-            }
-        }
-
-        private void btnRetirarOrden_Click(object sender, EventArgs e)
-        {
-            if (listOrdenes.SelectedItems.Count > 0)
-            {
-                int nroOrden = Int32.Parse(this.listOrdenes.SelectedItems[0].Text);
-                RetirarOrdenDesktop frmRetirarOrden = new RetirarOrdenDesktop(nroOrden, ApplicationForm.ModoForm.Modificacion, _context);
-                frmRetirarOrden.ShowDialog();
-                CargarOrdenes();
-            }
         }
 
         private void btnServicioTipoPrenda_Click(object sender, EventArgs e)
@@ -847,5 +1168,38 @@ namespace UI.Desktop
             Maquinas frmMaquinas = new Maquinas(_context);
             frmMaquinas.ShowDialog();
         }
+
+        private void btnProveedores_Click(object sender, EventArgs e)
+        {
+            Proveedores frmProveedores = new Proveedores(_context);
+            frmProveedores.ShowDialog();
+        }
+
+        private void btnServicio_Click(object sender, EventArgs e)
+        {
+            Servicios frmServicios = new Servicios(_context);
+            frmServicios.ShowDialog();
+        }
+
+        private void btnTipoPrenda_Click(object sender, EventArgs e)
+        {
+            TipoPrendas frmTipoPrendas = new TipoPrendas(_context);
+            frmTipoPrendas.ShowDialog();
+        }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            Usuarios frmUsuarios = new Usuarios(_context);
+            frmUsuarios.ShowDialog();
+        }
+
+
+
+
+
+
+        #endregion
+
+        
     }
 }

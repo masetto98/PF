@@ -66,7 +66,7 @@ namespace UI.Desktop
             this.txtNroFactura.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNroFactura.Multiline = false;
             this.txtNroFactura.Name = "txtNroFactura";
-            this.txtNroFactura.Size = new System.Drawing.Size(65, 50);
+            this.txtNroFactura.Size = new System.Drawing.Size(84, 50);
             this.txtNroFactura.TabIndex = 0;
             this.txtNroFactura.Text = "";
             this.txtNroFactura.TrailingIcon = null;
@@ -376,7 +376,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(845, 630);
+            this.ClientSize = new System.Drawing.Size(861, 669);
             this.Controls.Add(this.btnSaldarDeuda);
             this.Controls.Add(this.materialLabel5);
             this.Controls.Add(this.txtApagar);

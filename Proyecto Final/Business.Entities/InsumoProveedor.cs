@@ -31,8 +31,8 @@ namespace Business.Entities
             get { return _idInsumo; }
             set { _idInsumo = value; }
         }
+
         [Column("fecha_ingreso")]
-        
         public DateTime FechaIngreso
         {
             get { return _fechaIngreso; }
