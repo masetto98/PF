@@ -20,6 +20,9 @@ namespace Business.Entities
         private TimeSpan _tiempoFinalizacionReal;
         private Estados _estado;
         private Prioridades _prioridad;
+        private EntregasDomicilio _entregaDomicilio;
+        private string _observaciones;
+        private string _descuento;
         private Cliente _cliente;
         private Empleado _empleado;
         private Factura? _factura;
@@ -38,6 +41,12 @@ namespace Business.Entities
         {
             Estandar = 1,
             Alta = 2,
+        }
+
+        public enum EntregasDomicilio 
+        {
+            No=0,
+            si=1
         }
 
         [Key]
@@ -104,6 +113,27 @@ namespace Business.Entities
         {
             get { return _estado; }
             set { _estado = value; }
+        }
+
+        [Column("observaciones")]
+        public string Observaciones 
+        {
+            get { return _observaciones; }
+            set { _observaciones = value; }
+        }
+
+        [Column("descuento")]
+        public string Descuento
+        {
+            get { return _descuento; }
+            set { _descuento = value; }
+        }
+
+        [Column("entrega_domicilio")]
+        public EntregasDomicilio EntregaDomicilio
+        {
+            get { return _entregaDomicilio; }
+            set { _entregaDomicilio = value; }
         }
 
         public Cliente Cliente

@@ -86,9 +86,10 @@ namespace UI.Desktop
         {
             this.nudHoras.Value = ServicioTipoPrendaActual.TiempoRequerido.Hours;
             this.nudMinutos.Value = ServicioTipoPrendaActual.TiempoRequerido.Minutes;
-            //this.nudDias.Value = ServicioTipoPrendaActual.TiempoDemoraMax.Days;
-            //this.nudHoras2.Value = ServicioTipoPrendaActual.TiempoDemoraMax.Hours;
-            //this.nudMinutos2.Value = ServicioTipoPrendaActual.TiempoDemoraMax.Minutes;
+            TimeSpan TiempoMax = TimeSpan.Parse(ServicioTipoPrendaActual.TiempoDemoraMax);
+            this.nudDias.Value = TiempoMax.Days;
+            this.nudHoras2.Value = TiempoMax.Hours;
+            this.nudMinutos2.Value = TiempoMax.Minutes;
             
             this.txtPrecio.Text = PrecioActual.Valor.ToString();
             try
@@ -123,7 +124,11 @@ namespace UI.Desktop
                     this.nudHoras.Enabled = false;
                     this.nudMinutos.Enabled = false;
                     this.txtPrecio.Enabled = false;
-
+                    this.nudDias.Enabled = false;
+                    this.nudHoras2.Enabled = false;
+                    this.nudMinutos2.Enabled = false;
+                    this.btnAgregarConsumo.Enabled = false;
+                    this.btnEliminarConsumo.Enabled = false;
                     break;
                 case ModoForm.Consulta:
                     this.btnAceptar.Text = "Aceptar";
@@ -131,6 +136,12 @@ namespace UI.Desktop
                     this.cmbTipoPrendas.Enabled = false;
                     this.nudHoras.Enabled = false;
                     this.nudMinutos.Enabled = false;
+                    this.txtPrecio.Enabled = false;
+                    this.nudDias.Enabled = false;
+                    this.nudHoras2.Enabled = false;
+                    this.nudMinutos2.Enabled = false;
+                    this.btnAgregarConsumo.Enabled = false;
+                    this.btnEliminarConsumo.Enabled = false;
                     ;
                     break;
             }
@@ -183,13 +194,10 @@ namespace UI.Desktop
         {
             try
             {
-                if (true)
-                {
-                    MapearADatos();
-                    _servicioTipoPrendaLogic.Save(ServicioTipoPrendaActual);
-                    Close();
-                }
-            
+                Validaciones.ValidarNumeroEnteroDecimal(this.txtPrecio.Text);
+                MapearADatos();
+                _servicioTipoPrendaLogic.Save(ServicioTipoPrendaActual);
+                Close();
             }
             catch (Exception e)
             {
@@ -257,17 +265,21 @@ namespace UI.Desktop
         #region ------ CONSUMOS -------
         private void btnAgregarConsumo_Click(object sender, EventArgs e)
         {
-            InsumoServicioTipoPrenda insumoServicioTipoPrenda = _insumoServicioTipoPrendaLogic.GetOne((int)this.cmbServicios.SelectedValue, (int)this.cmbTipoPrendas.SelectedValue,(int) this.cmbInsumos.SelectedValue);
-            if (insumoServicioTipoPrenda is null)
+            try
             {
-                insumoServicioTipoPrenda = new InsumoServicioTipoPrenda();
-                insumoServicioTipoPrenda.ServicioTipoPrenda = _servicioTipoPrendaLogic.GetOne((int)this.cmbServicios.SelectedValue, (int)this.cmbTipoPrendas.SelectedValue);
-                
-                insumoServicioTipoPrenda.Insumo = InsumoActual ;
-                insumoServicioTipoPrenda.Cantidad = ConvertirUnidadesConsumo(Int32.Parse(this.txtCantidad.Text));
-                _consumos.Add(insumoServicioTipoPrenda);
+                InsumoServicioTipoPrenda consumoActual = new InsumoServicioTipoPrenda();
+                consumoActual.ServicioTipoPrenda = _servicioTipoPrendaLogic.GetOne((int)this.cmbServicios.SelectedValue, (int)this.cmbTipoPrendas.SelectedValue);
+                consumoActual.Insumo = InsumoActual;
+                Validaciones.ValidarNumeroEnteroDecimal(this.txtCantidad.Text);
+                consumoActual.Cantidad = ConvertirUnidadesConsumo(Int32.Parse(this.txtCantidad.Text));
+                consumoActual.FechaDesde = DateTime.Now;
+                _consumos.Add(consumoActual);
+                ListarConsumos();
             }
-            ListarConsumos();
+            catch (Exception f) 
+            {
+                MessageBox.Show(f.Message, "Servicio-TipoPrenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         #region ------- UNIDADES DE MEDIDA -------
         private void SetearMedidas(int unidad) 

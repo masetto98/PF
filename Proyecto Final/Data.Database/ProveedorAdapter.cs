@@ -20,7 +20,10 @@ namespace Data.Database
             List<Proveedor> proveedores = new List<Proveedor>();
             try
             {
-                proveedores = _context.Proveedores.ToList();
+                proveedores = _context.Proveedores
+                                                .Include(i => i.InsumosProveedor)
+                                                    .ThenInclude(x =>x.Insumo)
+                                                .ToList();
             }
             catch (Exception e)
             {
@@ -33,7 +36,10 @@ namespace Data.Database
         {
             try
             {
-                return _context.Proveedores.FirstOrDefault(c => c.IdProveedor == idProveedor);
+                return _context.Proveedores
+                                           .Include(i => i.InsumosProveedor)
+                                                .ThenInclude(x => x.Insumo)
+                                           .FirstOrDefault(c => c.IdProveedor == idProveedor);
             }
             catch (Exception e)
             {

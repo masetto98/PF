@@ -11,28 +11,28 @@ using Data.Database;
 using Business.Logic;
 using Business.Entities;
 using MaterialSkin;
+using FluentValidation.Results;
 
 namespace UI.Desktop
 {
     public partial class ProveedorDesktop : ApplicationForm
     {
-        readonly MaterialSkin.MaterialSkinManager materialSkinManager;
+        
         public Proveedor ProveedorActual { set; get; }
         private readonly ProveedorLogic _proveedorLogic;
         public ProveedorDesktop(LavanderiaContext context)
         {
             InitializeComponent();
             _proveedorLogic = new ProveedorLogic(new ProveedorAdapter(context));
-            materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+            
         }
+
         public ProveedorDesktop(ModoForm modo, LavanderiaContext context) : this(context)
         {
             Modos = modo;
         }
-        // Este es el constructor cuando se edita o elimina algo, ya que tiene 3 args
+
+        
         public ProveedorDesktop(int ID, ModoForm modo, LavanderiaContext context) : this(context)
         {
             Modos = modo;
@@ -73,12 +73,13 @@ namespace UI.Desktop
                     this.txtDireccionProv.Enabled = false;
                     break;
                 case ModoForm.Consulta:
-                    /*this.btnAceptar.Text = "Aceptar";
-                    this.cbMateria.Enabled = false;
-                    this.cbComision.Enabled = false;
-                    this.txtDescripcion.Enabled = false;
-                    this.nudAnoCalendario.Enabled = false;
-                    this.nudCupo.Enabled = false;*/
+                    this.btnAceptar.Text = "Aceptar";
+                    this.txtIDProv.Enabled = false;
+                    this.txtCuitProv.Enabled = false;
+                    this.txtRazonSocialProv.Enabled = false;
+                    this.txtTelProv.Enabled = false;
+                    this.txtEmailProv.Enabled = false;
+                    this.txtDireccionProv.Enabled = false;
                     break;
             }
         }
@@ -112,24 +113,47 @@ namespace UI.Desktop
                     break;
             }
         }
+
+        public override bool Validar()
+        {
+            ValidationResult result = new ProveedorValidator().Validate(ProveedorActual);
+            if (!result.IsValid)
+            {
+                string notificacion = string.Join(Environment.NewLine, result.Errors);
+                MessageBox.Show(notificacion);
+                return false;
+            }
+            return true;
+        }
+
         public override void GuardarCambios()
         {
-            //            try
-            //            {
-            MapearADatos();
-            _proveedorLogic.Save(ProveedorActual);
-            Close();
-
-            //            }
-            /*            catch (Exception e)
-                        {
-                            MessageBox.Show(e.Message, "Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-            */
+            try
+            {
+                MapearADatos();
+                if (Validar())
+                {
+                    _proveedorLogic.Save(ProveedorActual);
+                    Close();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Proveedor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
-        private void btnCancelar_Click(object sender, EventArgs e)
+
+        public virtual void Eliminar()
         {
-            Close();
+            try
+            {
+                _proveedorLogic.Delete(ProveedorActual.IdProveedor);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Proveedor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -157,16 +181,10 @@ namespace UI.Desktop
             }
 
         }
-        public virtual void Eliminar()
+        
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                _proveedorLogic.Delete(ProveedorActual.IdProveedor);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "Proveedor", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            Close();
         }
     }
 }

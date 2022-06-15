@@ -52,7 +52,7 @@ namespace UI.Desktop
             this.lblIdProv.Depth = 0;
             this.lblIdProv.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblIdProv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblIdProv.Location = new System.Drawing.Point(75, 110);
+            this.lblIdProv.Location = new System.Drawing.Point(12, 102);
             this.lblIdProv.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblIdProv.Name = "lblIdProv";
             this.lblIdProv.Size = new System.Drawing.Size(16, 19);
@@ -68,8 +68,9 @@ namespace UI.Desktop
             this.txtIDProv.Enabled = false;
             this.txtIDProv.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtIDProv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtIDProv.Hint = "ID";
             this.txtIDProv.LeadingIcon = null;
-            this.txtIDProv.Location = new System.Drawing.Point(204, 96);
+            this.txtIDProv.Location = new System.Drawing.Point(124, 88);
             this.txtIDProv.MaxLength = 50;
             this.txtIDProv.MouseState = MaterialSkin.MouseState.OUT;
             this.txtIDProv.Multiline = false;
@@ -87,8 +88,9 @@ namespace UI.Desktop
             this.txtCuitProv.Depth = 0;
             this.txtCuitProv.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtCuitProv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtCuitProv.Hint = "Cuit";
             this.txtCuitProv.LeadingIcon = null;
-            this.txtCuitProv.Location = new System.Drawing.Point(204, 152);
+            this.txtCuitProv.Location = new System.Drawing.Point(124, 144);
             this.txtCuitProv.MaxLength = 50;
             this.txtCuitProv.MouseState = MaterialSkin.MouseState.OUT;
             this.txtCuitProv.Multiline = false;
@@ -105,7 +107,7 @@ namespace UI.Desktop
             this.lblCuitProv.Depth = 0;
             this.lblCuitProv.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblCuitProv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblCuitProv.Location = new System.Drawing.Point(75, 165);
+            this.lblCuitProv.Location = new System.Drawing.Point(12, 160);
             this.lblCuitProv.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblCuitProv.Name = "lblCuitProv";
             this.lblCuitProv.Size = new System.Drawing.Size(29, 19);
@@ -120,8 +122,9 @@ namespace UI.Desktop
             this.txtRazonSocialProv.Depth = 0;
             this.txtRazonSocialProv.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtRazonSocialProv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtRazonSocialProv.Hint = "Razón Social";
             this.txtRazonSocialProv.LeadingIcon = null;
-            this.txtRazonSocialProv.Location = new System.Drawing.Point(204, 208);
+            this.txtRazonSocialProv.Location = new System.Drawing.Point(124, 200);
             this.txtRazonSocialProv.MaxLength = 50;
             this.txtRazonSocialProv.MouseState = MaterialSkin.MouseState.OUT;
             this.txtRazonSocialProv.Multiline = false;
@@ -138,12 +141,12 @@ namespace UI.Desktop
             this.lblRazonSocial.Depth = 0;
             this.lblRazonSocial.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblRazonSocial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblRazonSocial.Location = new System.Drawing.Point(75, 221);
+            this.lblRazonSocial.Location = new System.Drawing.Point(12, 212);
             this.lblRazonSocial.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblRazonSocial.Name = "lblRazonSocial";
             this.lblRazonSocial.Size = new System.Drawing.Size(94, 19);
             this.lblRazonSocial.TabIndex = 4;
-            this.lblRazonSocial.Text = "Razon Social";
+            this.lblRazonSocial.Text = "Razón Social";
             // 
             // txtTelProv
             // 
@@ -153,8 +156,9 @@ namespace UI.Desktop
             this.txtTelProv.Depth = 0;
             this.txtTelProv.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtTelProv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtTelProv.Hint = "Teléfono";
             this.txtTelProv.LeadingIcon = null;
-            this.txtTelProv.Location = new System.Drawing.Point(204, 264);
+            this.txtTelProv.Location = new System.Drawing.Point(124, 256);
             this.txtTelProv.MaxLength = 50;
             this.txtTelProv.MouseState = MaterialSkin.MouseState.OUT;
             this.txtTelProv.Multiline = false;
@@ -171,7 +175,7 @@ namespace UI.Desktop
             this.lblTelefonoProv.Depth = 0;
             this.lblTelefonoProv.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblTelefonoProv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblTelefonoProv.Location = new System.Drawing.Point(75, 277);
+            this.lblTelefonoProv.Location = new System.Drawing.Point(12, 267);
             this.lblTelefonoProv.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblTelefonoProv.Name = "lblTelefonoProv";
             this.lblTelefonoProv.Size = new System.Drawing.Size(64, 19);
@@ -186,8 +190,9 @@ namespace UI.Desktop
             this.txtEmailProv.Depth = 0;
             this.txtEmailProv.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtEmailProv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtEmailProv.Hint = "Email";
             this.txtEmailProv.LeadingIcon = null;
-            this.txtEmailProv.Location = new System.Drawing.Point(204, 320);
+            this.txtEmailProv.Location = new System.Drawing.Point(124, 312);
             this.txtEmailProv.MaxLength = 50;
             this.txtEmailProv.MouseState = MaterialSkin.MouseState.OUT;
             this.txtEmailProv.Multiline = false;
@@ -204,7 +209,7 @@ namespace UI.Desktop
             this.lblEmailProv.Depth = 0;
             this.lblEmailProv.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblEmailProv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblEmailProv.Location = new System.Drawing.Point(75, 334);
+            this.lblEmailProv.Location = new System.Drawing.Point(12, 326);
             this.lblEmailProv.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblEmailProv.Name = "lblEmailProv";
             this.lblEmailProv.Size = new System.Drawing.Size(41, 19);
@@ -219,8 +224,9 @@ namespace UI.Desktop
             this.txtDireccionProv.Depth = 0;
             this.txtDireccionProv.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtDireccionProv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtDireccionProv.Hint = "Dirección";
             this.txtDireccionProv.LeadingIcon = null;
-            this.txtDireccionProv.Location = new System.Drawing.Point(204, 376);
+            this.txtDireccionProv.Location = new System.Drawing.Point(124, 368);
             this.txtDireccionProv.MaxLength = 50;
             this.txtDireccionProv.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDireccionProv.Multiline = false;
@@ -237,7 +243,7 @@ namespace UI.Desktop
             this.lblDireccion.Depth = 0;
             this.lblDireccion.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblDireccion.Location = new System.Drawing.Point(75, 390);
+            this.lblDireccion.Location = new System.Drawing.Point(12, 382);
             this.lblDireccion.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblDireccion.Name = "lblDireccion";
             this.lblDireccion.Size = new System.Drawing.Size(67, 19);
@@ -253,7 +259,7 @@ namespace UI.Desktop
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
-            this.btnCancelar.Location = new System.Drawing.Point(405, 461);
+            this.btnCancelar.Location = new System.Drawing.Point(325, 427);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -268,6 +274,7 @@ namespace UI.Desktop
             // 
             // btnAceptar
             // 
+            this.btnAceptar.AutoSize = false;
             this.btnAceptar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnAceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.btnAceptar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
@@ -275,12 +282,12 @@ namespace UI.Desktop
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnAceptar.HighEmphasis = true;
             this.btnAceptar.Icon = null;
-            this.btnAceptar.Location = new System.Drawing.Point(204, 461);
+            this.btnAceptar.Location = new System.Drawing.Point(221, 427);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnAceptar.Size = new System.Drawing.Size(86, 36);
+            this.btnAceptar.Size = new System.Drawing.Size(96, 36);
             this.btnAceptar.TabIndex = 13;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -292,7 +299,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(607, 531);
+            this.ClientSize = new System.Drawing.Size(431, 475);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtDireccionProv);

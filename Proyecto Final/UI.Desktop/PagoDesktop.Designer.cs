@@ -66,7 +66,7 @@ namespace UI.Desktop
             this.txtNroFactura.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNroFactura.Multiline = false;
             this.txtNroFactura.Name = "txtNroFactura";
-            this.txtNroFactura.Size = new System.Drawing.Size(65, 50);
+            this.txtNroFactura.Size = new System.Drawing.Size(84, 50);
             this.txtNroFactura.TabIndex = 0;
             this.txtNroFactura.Text = "";
             this.txtNroFactura.TrailingIcon = null;

@@ -34,16 +34,18 @@ namespace Data.Database
             }
             return insumosServicioTipoPrendas;
         }
-        public Business.Entities.InsumoServicioTipoPrenda GetOne(int idServicio, int idTipoPrenda,int idInsumo)
+        public Business.Entities.InsumoServicioTipoPrenda GetOne(int idInsumo,int idServicio, int idTipoPrenda,DateTime fechaDesde)
         {
             try
             {
                 return _context.InsumosServiciosTipoPrendas
                     .Include(i => i.ServicioTipoPrenda)
                     .Include(i => i.Insumo)
-                    .FirstOrDefault(i => i.IdTipoPrenda == idTipoPrenda && 
+                    .FirstOrDefault(i => i.IdInsumo == idInsumo &&
                                          i.IdServicio == idServicio &&
-                                         i.IdInsumo == idInsumo);
+                                         i.IdTipoPrenda == idTipoPrenda && 
+                                         i.FechaDesde == fechaDesde
+                                         );
             }
             catch (Exception e)
             {
@@ -78,12 +80,12 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
-        public void Delete(int idServicio, int idTipoPrenda, int idInsumo)
+        public void Delete(int idServicio, int idTipoPrenda, int idInsumo, DateTime fechaDesde)
         {
             InsumoServicioTipoPrenda insumoServicioTipoPrenda = new InsumoServicioTipoPrenda();
             try
             {
-                insumoServicioTipoPrenda = _context.InsumosServiciosTipoPrendas.Find(idServicio, idTipoPrenda,idInsumo);
+                insumoServicioTipoPrenda = _context.InsumosServiciosTipoPrendas.Find(idInsumo,idServicio, idTipoPrenda,fechaDesde);
                 _context.InsumosServiciosTipoPrendas.Remove(insumoServicioTipoPrenda);
                 _context.SaveChanges();
             }
@@ -102,7 +104,7 @@ namespace Data.Database
             }
             else if (insumoServicioTipoPrenda.State == BusinessEntity.States.Deleted)
             {
-                this.Delete(insumoServicioTipoPrenda.IdServicio, insumoServicioTipoPrenda.IdTipoPrenda, insumoServicioTipoPrenda.IdInsumo);
+                this.Delete(insumoServicioTipoPrenda.IdInsumo,insumoServicioTipoPrenda.IdServicio, insumoServicioTipoPrenda.IdTipoPrenda,insumoServicioTipoPrenda.FechaDesde);
             }
             else if (insumoServicioTipoPrenda.State == BusinessEntity.States.Modified)
             {

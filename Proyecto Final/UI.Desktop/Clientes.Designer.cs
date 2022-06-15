@@ -35,9 +35,6 @@ namespace UI.Desktop
             this.columnNombre = new System.Windows.Forms.ColumnHeader();
             this.columnApellido = new System.Windows.Forms.ColumnHeader();
             this.columnRazonSocial = new System.Windows.Forms.ColumnHeader();
-            this.columnTelefono = new System.Windows.Forms.ColumnHeader();
-            this.columnEmail = new System.Windows.Forms.ColumnHeader();
-            this.columnDireccion = new System.Windows.Forms.ColumnHeader();
             this.btnEditar = new MaterialSkin.Controls.MaterialButton();
             this.btnEliminar = new MaterialSkin.Controls.MaterialButton();
             this.btnAgregar = new MaterialSkin.Controls.MaterialButton();
@@ -49,9 +46,19 @@ namespace UI.Desktop
             this.listOrdenes = new MaterialSkin.Controls.MaterialListView();
             this.columnNroOrden = new System.Windows.Forms.ColumnHeader();
             this.columnFechaEntrada = new System.Windows.Forms.ColumnHeader();
+            this.columnValor = new System.Windows.Forms.ColumnHeader();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.btnVerOrden = new MaterialSkin.Controls.MaterialButton();
             this.btnCerrar = new MaterialSkin.Controls.MaterialButton();
+            this.listPagos = new MaterialSkin.Controls.MaterialListView();
+            this.columnFecha = new System.Windows.Forms.ColumnHeader();
+            this.columnImporte = new System.Windows.Forms.ColumnHeader();
+            this.columnTipoPago = new System.Windows.Forms.ColumnHeader();
+            this.btnPagos = new MaterialSkin.Controls.MaterialButton();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.cmbBuscar = new MaterialSkin.Controls.MaterialComboBox();
+            this.txtBuscar = new MaterialSkin.Controls.MaterialTextBox();
             this.materialCard1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,10 +72,7 @@ namespace UI.Desktop
             this.columnCuit,
             this.columnNombre,
             this.columnApellido,
-            this.columnRazonSocial,
-            this.columnTelefono,
-            this.columnEmail,
-            this.columnDireccion});
+            this.columnRazonSocial});
             this.listClientes.Depth = 0;
             this.listClientes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.listClientes.FullRowSelect = true;
@@ -79,10 +83,12 @@ namespace UI.Desktop
             this.listClientes.MouseState = MaterialSkin.MouseState.OUT;
             this.listClientes.Name = "listClientes";
             this.listClientes.OwnerDraw = true;
-            this.listClientes.Size = new System.Drawing.Size(810, 334);
+            this.listClientes.Size = new System.Drawing.Size(511, 406);
             this.listClientes.TabIndex = 0;
             this.listClientes.UseCompatibleStateImageBehavior = false;
             this.listClientes.View = System.Windows.Forms.View.Details;
+            this.listClientes.DoubleClick += new System.EventHandler(this.listClientes_DoubleClick);
+            this.listClientes.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listClientes_MouseClick);
             // 
             // columnID
             // 
@@ -107,21 +113,6 @@ namespace UI.Desktop
             // 
             this.columnRazonSocial.Text = "Razón Social";
             this.columnRazonSocial.Width = 150;
-            // 
-            // columnTelefono
-            // 
-            this.columnTelefono.Text = "Teléfono";
-            this.columnTelefono.Width = 100;
-            // 
-            // columnEmail
-            // 
-            this.columnEmail.Text = "Email";
-            this.columnEmail.Width = 100;
-            // 
-            // columnDireccion
-            // 
-            this.columnDireccion.Text = "Dirección";
-            this.columnDireccion.Width = 100;
             // 
             // btnEditar
             // 
@@ -196,10 +187,11 @@ namespace UI.Desktop
             this.btnDetalles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.btnDetalles.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnDetalles.Depth = 0;
+            this.btnDetalles.Enabled = false;
             this.btnDetalles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnDetalles.HighEmphasis = true;
             this.btnDetalles.Icon = null;
-            this.btnDetalles.Location = new System.Drawing.Point(735, 476);
+            this.btnDetalles.Location = new System.Drawing.Point(544, 133);
             this.btnDetalles.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnDetalles.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnDetalles.Name = "btnDetalles";
@@ -220,12 +212,12 @@ namespace UI.Desktop
             this.materialCard1.Controls.Add(this.materialLabel1);
             this.materialCard1.Depth = 0;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialCard1.Location = new System.Drawing.Point(843, 94);
+            this.materialCard1.Location = new System.Drawing.Point(944, 88);
             this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(293, 128);
+            this.materialCard1.Size = new System.Drawing.Size(351, 134);
             this.materialCard1.TabIndex = 13;
             // 
             // lblOrdenesRealizadas
@@ -277,21 +269,23 @@ namespace UI.Desktop
             this.listOrdenes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listOrdenes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnNroOrden,
-            this.columnFechaEntrada});
+            this.columnFechaEntrada,
+            this.columnValor});
             this.listOrdenes.Depth = 0;
             this.listOrdenes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.listOrdenes.FullRowSelect = true;
             this.listOrdenes.HideSelection = false;
-            this.listOrdenes.Location = new System.Drawing.Point(843, 253);
+            this.listOrdenes.Location = new System.Drawing.Point(544, 197);
             this.listOrdenes.MinimumSize = new System.Drawing.Size(200, 100);
             this.listOrdenes.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listOrdenes.MouseState = MaterialSkin.MouseState.OUT;
             this.listOrdenes.Name = "listOrdenes";
             this.listOrdenes.OwnerDraw = true;
-            this.listOrdenes.Size = new System.Drawing.Size(293, 169);
+            this.listOrdenes.Size = new System.Drawing.Size(392, 295);
             this.listOrdenes.TabIndex = 14;
             this.listOrdenes.UseCompatibleStateImageBehavior = false;
             this.listOrdenes.View = System.Windows.Forms.View.Details;
+            this.listOrdenes.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listOrdenes_MouseClick);
             // 
             // columnNroOrden
             // 
@@ -303,6 +297,11 @@ namespace UI.Desktop
             this.columnFechaEntrada.Text = "FechaEntrada";
             this.columnFechaEntrada.Width = 190;
             // 
+            // columnValor
+            // 
+            this.columnValor.Text = "Valor";
+            this.columnValor.Width = 100;
+            // 
             // materialLabel3
             // 
             this.materialLabel3.AutoSize = true;
@@ -310,7 +309,7 @@ namespace UI.Desktop
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialLabel3.Location = new System.Drawing.Point(843, 228);
+            this.materialLabel3.Location = new System.Drawing.Point(546, 175);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Size = new System.Drawing.Size(59, 19);
@@ -323,10 +322,11 @@ namespace UI.Desktop
             this.btnVerOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.btnVerOrden.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnVerOrden.Depth = 0;
+            this.btnVerOrden.Enabled = false;
             this.btnVerOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnVerOrden.HighEmphasis = true;
             this.btnVerOrden.Icon = null;
-            this.btnVerOrden.Location = new System.Drawing.Point(1036, 431);
+            this.btnVerOrden.Location = new System.Drawing.Point(837, 503);
             this.btnVerOrden.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnVerOrden.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVerOrden.Name = "btnVerOrden";
@@ -348,7 +348,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(1059, 476);
+            this.btnCerrar.Location = new System.Drawing.Point(1218, 548);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -361,11 +361,149 @@ namespace UI.Desktop
             this.btnCerrar.UseVisualStyleBackColor = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
+            // listPagos
+            // 
+            this.listPagos.AutoSizeTable = false;
+            this.listPagos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.listPagos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listPagos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnFecha,
+            this.columnImporte,
+            this.columnTipoPago});
+            this.listPagos.Depth = 0;
+            this.listPagos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listPagos.FullRowSelect = true;
+            this.listPagos.HideSelection = false;
+            this.listPagos.Location = new System.Drawing.Point(944, 298);
+            this.listPagos.MinimumSize = new System.Drawing.Size(200, 100);
+            this.listPagos.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listPagos.MouseState = MaterialSkin.MouseState.OUT;
+            this.listPagos.Name = "listPagos";
+            this.listPagos.OwnerDraw = true;
+            this.listPagos.Size = new System.Drawing.Size(351, 241);
+            this.listPagos.TabIndex = 18;
+            this.listPagos.UseCompatibleStateImageBehavior = false;
+            this.listPagos.View = System.Windows.Forms.View.Details;
+            // 
+            // columnFecha
+            // 
+            this.columnFecha.Text = "Fecha";
+            this.columnFecha.Width = 150;
+            // 
+            // columnImporte
+            // 
+            this.columnImporte.Text = "Importe";
+            this.columnImporte.Width = 100;
+            // 
+            // columnTipoPago
+            // 
+            this.columnTipoPago.Text = "Tipo";
+            this.columnTipoPago.Width = 100;
+            // 
+            // btnPagos
+            // 
+            this.btnPagos.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnPagos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnPagos.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnPagos.Depth = 0;
+            this.btnPagos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnPagos.HighEmphasis = true;
+            this.btnPagos.Icon = null;
+            this.btnPagos.Location = new System.Drawing.Point(944, 231);
+            this.btnPagos.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnPagos.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnPagos.Name = "btnPagos";
+            this.btnPagos.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnPagos.Size = new System.Drawing.Size(100, 36);
+            this.btnPagos.TabIndex = 19;
+            this.btnPagos.Text = "Ver Pagos";
+            this.btnPagos.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnPagos.UseAccentColor = false;
+            this.btnPagos.UseVisualStyleBackColor = false;
+            this.btnPagos.Click += new System.EventHandler(this.btnPagos_Click);
+            // 
+            // materialLabel4
+            // 
+            this.materialLabel4.AutoSize = true;
+            this.materialLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel4.Location = new System.Drawing.Point(944, 273);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(128, 19);
+            this.materialLabel4.TabIndex = 20;
+            this.materialLabel4.Text = "Pagos de la orden";
+            // 
+            // materialLabel5
+            // 
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel5.Location = new System.Drawing.Point(16, 558);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(58, 19);
+            this.materialLabel5.TabIndex = 21;
+            this.materialLabel5.Text = "Buscar: ";
+            // 
+            // cmbBuscar
+            // 
+            this.cmbBuscar.AutoResize = false;
+            this.cmbBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.cmbBuscar.Depth = 0;
+            this.cmbBuscar.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cmbBuscar.DropDownHeight = 174;
+            this.cmbBuscar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBuscar.DropDownWidth = 121;
+            this.cmbBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cmbBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cmbBuscar.FormattingEnabled = true;
+            this.cmbBuscar.IntegralHeight = false;
+            this.cmbBuscar.ItemHeight = 43;
+            this.cmbBuscar.Location = new System.Drawing.Point(81, 546);
+            this.cmbBuscar.MaxDropDownItems = 4;
+            this.cmbBuscar.MouseState = MaterialSkin.MouseState.OUT;
+            this.cmbBuscar.Name = "cmbBuscar";
+            this.cmbBuscar.Size = new System.Drawing.Size(170, 49);
+            this.cmbBuscar.StartIndex = 0;
+            this.cmbBuscar.TabIndex = 22;
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.AnimateReadOnly = false;
+            this.txtBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBuscar.Depth = 0;
+            this.txtBuscar.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtBuscar.Hint = "Buscar";
+            this.txtBuscar.LeadingIcon = null;
+            this.txtBuscar.Location = new System.Drawing.Point(257, 546);
+            this.txtBuscar.MaxLength = 50;
+            this.txtBuscar.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtBuscar.Multiline = false;
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(270, 50);
+            this.txtBuscar.TabIndex = 23;
+            this.txtBuscar.Text = "";
+            this.txtBuscar.TrailingIcon = null;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            // 
             // Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1153, 521);
+            this.ClientSize = new System.Drawing.Size(1357, 643);
+            this.Controls.Add(this.txtBuscar);
+            this.Controls.Add(this.cmbBuscar);
+            this.Controls.Add(this.materialLabel5);
+            this.Controls.Add(this.materialLabel4);
+            this.Controls.Add(this.btnPagos);
+            this.Controls.Add(this.listPagos);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnVerOrden);
             this.Controls.Add(this.materialLabel3);
@@ -377,6 +515,7 @@ namespace UI.Desktop
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.listClientes);
             this.Name = "Clientes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
             this.materialCard1.ResumeLayout(false);
             this.materialCard1.PerformLayout();
@@ -393,9 +532,6 @@ namespace UI.Desktop
         private System.Windows.Forms.ColumnHeader columnNombre;
         private System.Windows.Forms.ColumnHeader columnApellido;
         private System.Windows.Forms.ColumnHeader columnRazonSocial;
-        private System.Windows.Forms.ColumnHeader columnTelefono;
-        private System.Windows.Forms.ColumnHeader columnEmail;
-        private System.Windows.Forms.ColumnHeader columnDireccion;
         private MaterialSkin.Controls.MaterialButton btnEditar;
         private MaterialSkin.Controls.MaterialButton btnEliminar;
         private MaterialSkin.Controls.MaterialButton btnAgregar;
@@ -410,5 +546,15 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnVerOrden;
         private MaterialSkin.Controls.MaterialButton btnCerrar;
         private MaterialSkin.Controls.MaterialLabel lblOrdenesRealizadas;
+        private MaterialSkin.Controls.MaterialListView listPagos;
+        private MaterialSkin.Controls.MaterialButton btnPagos;
+        private MaterialSkin.Controls.MaterialLabel materialLabel4;
+        private System.Windows.Forms.ColumnHeader columnFecha;
+        private System.Windows.Forms.ColumnHeader columnImporte;
+        private System.Windows.Forms.ColumnHeader columnTipoPago;
+        private System.Windows.Forms.ColumnHeader columnValor;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private MaterialSkin.Controls.MaterialComboBox cmbBuscar;
+        private MaterialSkin.Controls.MaterialTextBox txtBuscar;
     }
 }

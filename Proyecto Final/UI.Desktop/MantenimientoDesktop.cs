@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
 using Data.Database;
+using FluentValidation.Results;
 
 namespace UI.Desktop
 {
@@ -39,16 +40,15 @@ namespace UI.Desktop
         public MantenimientoDesktop(int idMaquina,DateTime fechaMantenimiento,ModoForm modo, LavanderiaContext context) : this(context)
         {
             Modos = modo;
-            //try
-            //{
-
+            try
+            {
                 MantenimientoActual = _mantenimientoLogic.GetOne(idMaquina, fechaMantenimiento);
                 MapearDeDatos();
-            //}
-            //catch (Exception e) 
-            //{
-
-            //}
+            }
+            catch (Exception e) 
+            {
+                MessageBox.Show(e.Message, "Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public override void MapearDeDatos()
@@ -66,10 +66,15 @@ namespace UI.Desktop
                     break;
                 case ModoForm.Baja:
                     this.btnAceptar.Text = "Eliminar";
-
+                    this.dtpFechaRealizacion.Enabled = false;
+                    this.txtDescripcion.Enabled = false;
+                    this.txtCosto.Enabled = false;
                     break;
                 case ModoForm.Consulta:
                     this.btnAceptar.Text = "Aceptar";
+                    this.dtpFechaRealizacion.Enabled = false;
+                    this.txtDescripcion.Enabled = false;
+                    this.txtCosto.Enabled = false;
                     break;
             }
 
@@ -102,22 +107,35 @@ namespace UI.Desktop
             }
         }
 
+        public override bool Validar()
+        {
+            ValidationResult result = new MantenimientoValidator().Validate(MantenimientoActual);
+            if (!result.IsValid)
+            {
+                string notificacion = string.Join(Environment.NewLine, result.Errors);
+                MessageBox.Show(notificacion);
+                return false;
+            }
+            return true;
+        }
+
         public override void GuardarCambios()
         {
-            //try
-            //{
+            try
+            {
                 
                 MapearADatos();
-                if (true)
+                Validaciones.ValidarNumeroEnteroDecimal(this.txtCosto.Text);
+                if (Validar())
                 {
                     _mantenimientoLogic.Save(MantenimientoActual);
                     Close();
                 }
-            //}
-            //catch (Exception e)
-            //{
-            //    MessageBox.Show(e.Message, "Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public virtual void Eliminar()

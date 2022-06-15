@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FluentValidation.Results;
 
 namespace UI.Desktop
 {
@@ -31,7 +32,7 @@ namespace UI.Desktop
             this.cmbUnidadMedida.DataSource= Enum.GetNames(typeof(Business.Entities.Insumo.Medidas));
         }
 
-        // Este es el constructor cuando se edita o elimina algo, ya que tiene 3 args
+        
         public InsumoDesktop(int ID, ModoForm modo, LavanderiaContext context) : this(context)
         {
             Modos = modo;
@@ -67,15 +68,12 @@ namespace UI.Desktop
                     this.txtDescInsumo.Enabled = false;
                     this.txtExistenciaInsumo.Enabled = false;
                     this.cmbUnidadMedida.Enabled = false;
-                    
                     break;
                 case ModoForm.Consulta:
-                    /*this.btnAceptar.Text = "Aceptar";
-                    this.cbMateria.Enabled = false;
-                    this.cbComision.Enabled = false;
-                    this.txtDescripcion.Enabled = false;
-                    this.nudAnoCalendario.Enabled = false;
-                    this.nudCupo.Enabled = false;*/
+                    this.btnAceptarInsumo.Text = "Aceptar";
+                    this.txtDescInsumo.Enabled = false;
+                    this.txtExistenciaInsumo.Enabled = false;
+                    this.cmbUnidadMedida.Enabled = false;
                     break;
             }
         }
@@ -86,14 +84,14 @@ namespace UI.Desktop
             {
                 InsumoActual = new Insumo();
                 InsumoActual.Descripcion = this.txtDescInsumo.Text;
-                InsumoActual.Stock = Int32.Parse(this.txtExistenciaInsumo.Text);
+                InsumoActual.Stock = Double.Parse(this.txtExistenciaInsumo.Text);
                 InsumoActual.UnidadMedida = (Business.Entities.Insumo.Medidas)Enum.Parse(typeof(Business.Entities.Insumo.Medidas), cmbUnidadMedida.SelectedItem.ToString());
                 
             }
             if (Modos == ModoForm.Modificacion)
             {
                 InsumoActual.Descripcion = this.txtDescInsumo.Text;
-                InsumoActual.Stock = Int32.Parse(this.txtExistenciaInsumo.Text);
+                InsumoActual.Stock = Double.Parse(this.txtExistenciaInsumo.Text);
                 InsumoActual.UnidadMedida = (Business.Entities.Insumo.Medidas)Enum.Parse(typeof(Business.Entities.Insumo.Medidas), cmbUnidadMedida.SelectedItem.ToString());
             }
             switch (Modos)
@@ -107,14 +105,28 @@ namespace UI.Desktop
             }
         }
 
+        public override bool Validar()
+        {
+            ValidationResult result = new InsumoValidator().Validate(InsumoActual);
+            if (!result.IsValid)
+            {
+                string notificacion = string.Join(Environment.NewLine, result.Errors);
+                MessageBox.Show(notificacion);
+                return false;
+            }
+            return true;
+        }
+
         public override void GuardarCambios()
         {
             try
             {
-            MapearADatos();
-            _insumoLogic.Save(InsumoActual);
-            Close();
-
+                MapearADatos();
+                if (Validar())
+                {
+                    _insumoLogic.Save(InsumoActual);
+                    Close();
+                }
             }
             catch (Exception e)
             {

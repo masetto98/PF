@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
 using Data.Database;
+using FluentValidation.Results;
 
 namespace UI.Desktop
 {
@@ -77,12 +78,14 @@ namespace UI.Desktop
                     this.txtTelefono.Enabled = false;
                     break;
                 case ModoForm.Consulta:
-                    /*this.btnAceptar.Text = "Aceptar";
-                    this.cbMateria.Enabled = false;
-                    this.cbComision.Enabled = false;
-                    this.txtDescripcion.Enabled = false;
-                    this.nudAnoCalendario.Enabled = false;
-                    this.nudCupo.Enabled = false;*/
+                    this.btnAceptar.Text = "Aceptar";
+                    this.txtCuit.Enabled = false;
+                    this.txtApellido.Enabled = false;
+                    this.txtNombre.Enabled = false;
+                    this.txtRazonSocial.Enabled = false;
+                    this.txtEmail.Enabled = false;
+                    this.txtTelefono.Enabled = false;
+                    this.txtDireccion.Enabled = false;
                     break;
             }
         }
@@ -119,20 +122,35 @@ namespace UI.Desktop
                     break;
             }
         }
+
+        public override bool Validar()
+        {
+            ValidationResult result = new ClienteValidator().Validate(ClienteActual);
+            if (!result.IsValid)
+            {
+                string notificacion = string.Join(Environment.NewLine, result.Errors);
+                MessageBox.Show(notificacion);
+                return false;
+            }
+            return true;
+        }
+
         public override void GuardarCambios()
         {
-//            try
-//            {
+            try
+            {
                 MapearADatos();
-                _clienteLogic.Save(ClienteActual);
-                Close();
-                
-//            }
-/*            catch (Exception e)
+                if (Validar())
+                {
+                    _clienteLogic.Save(ClienteActual);
+                    Close();
+                }
+            }
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message, "Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-*/
+
         }
         private void btnAceptar_Click(object sender, EventArgs e)
         {

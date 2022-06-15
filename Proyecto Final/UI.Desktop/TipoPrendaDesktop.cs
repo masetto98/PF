@@ -12,12 +12,12 @@ using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
 using Data.Database;
+using FluentValidation.Results;
 
 namespace UI.Desktop
 {
     public partial class TipoPrendaDesktop : ApplicationForm
     {
-        readonly MaterialSkin.MaterialSkinManager materialSkinManager;
         private readonly TipoPrendaLogic _tipoPrendaLogic;
         public TipoPrenda TipoPrendaActual { set; get; }
 
@@ -25,18 +25,11 @@ namespace UI.Desktop
         {
             InitializeComponent();
             _tipoPrendaLogic = new TipoPrendaLogic(new TipoPrendaAdapter(context));
-
-
-            materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
 
         public TipoPrendaDesktop(ModoForm modo, LavanderiaContext context) : this(context)
         {
             Modos = modo;
-            this.txtID.Enabled = false;
         }
 
         public TipoPrendaDesktop(int ID, ModoForm modo, LavanderiaContext context) : this(context)
@@ -49,7 +42,7 @@ namespace UI.Desktop
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "TipoPrenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Tipo de Prenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -64,7 +57,7 @@ namespace UI.Desktop
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "TipoPrenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Tipo de Prenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             switch (this.Modos)
             {
@@ -115,27 +108,24 @@ namespace UI.Desktop
 
         public override void GuardarCambios()
         {
-            //try
-            //{
+            try
+            {
                 MapearADatos();
-                _tipoPrendaLogic.Save(TipoPrendaActual);
-                Close();
-                /*if (true)
+                if (Validar())
                 {
                     _tipoPrendaLogic.Save(TipoPrendaActual);
                     Close();
-                    
-                }*/
-            //}
-            //catch (Exception e)
-            //{
-            //    MessageBox.Show(e.Message, "TipoPrenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Tipo de Prenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        /*public override bool Validar()
+        public override bool Validar()
         {
-            ValidationResult result = new MateriaValidator().Validate(MateriaActual);
+            ValidationResult result = new TipoPrendaValidator().Validate(TipoPrendaActual);
             if (!result.IsValid)
             {
                 string notificacion = string.Join(Environment.NewLine, result.Errors);
@@ -143,7 +133,7 @@ namespace UI.Desktop
                 return false;
             }
             return true;
-        }*/
+        }
 
         public virtual void Eliminar()
         {
