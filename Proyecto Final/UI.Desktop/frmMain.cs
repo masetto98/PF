@@ -23,7 +23,7 @@ namespace UI.Desktop
 {
     public partial class frmMain : ApplicationForm
     {
-        
+        readonly MaterialSkin.MaterialSkinManager materialSkinManager;
         private readonly LavanderiaContext _context;
         private readonly ClienteLogic _clienteLogic;
         private readonly AtributosNegocioLogic _atributosNegocioLogic;
@@ -43,6 +43,10 @@ namespace UI.Desktop
         public frmMain(LavanderiaContext context)
         {
             InitializeComponent();
+            materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
             _context = context;
             _clienteLogic = new ClienteLogic(new ClienteAdapter(context));
             _atributosNegocioLogic = new AtributosNegocioLogic(new AtributosNegocioAdapter(context));
@@ -267,7 +271,18 @@ namespace UI.Desktop
             e.Cancel = true;
             e.NewWidth = listClientes.Columns[e.ColumnIndex].Width;
         }
+        private void listOrdenesCliente_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
 
+
+            e.Cancel = true;
+            e.NewWidth = listOrdenesCliente.Columns[e.ColumnIndex].Width;
+        }
+        private void listPagosOrden_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listPagosOrden.Columns[e.ColumnIndex].Width;
+        }
         private void btnOrdenesCliente_Click(object sender, EventArgs e)
         {
             ListarOrdenesCliente();
@@ -418,7 +433,22 @@ namespace UI.Desktop
                 }
             }
         }
+        private void listInsumos_ColumnWidthChanging_1(object sender, ColumnWidthChangingEventArgs e)
+        {
 
+            e.Cancel = true;
+            e.NewWidth = listInsumos.Columns[e.ColumnIndex].Width;
+
+        }
+        private void listIngresosInsumos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+
+
+            e.Cancel = true;
+            e.NewWidth = listIngresosInsumos.Columns[e.ColumnIndex].Width;
+
+
+        }
         private void btnAgregarInsumo_Click(object sender, EventArgs e)
         {
             InsumoDesktop frmInsumo = new InsumoDesktop(ApplicationForm.ModoForm.Alta, _context);
@@ -847,6 +877,10 @@ namespace UI.Desktop
                 frmRetirarOrden.ShowDialog();
                 CargarOrdenes();
             }
+            else
+            {
+                MessageBox.Show("Seleccionar una fila en la lista para poder retirar la orden");
+            }
         }
 
         private void btnVerDetalles_Click(object sender, EventArgs e)
@@ -950,6 +984,7 @@ namespace UI.Desktop
                 item.SubItems.Add(i.Trabajo.Estado.ToString());
                 item.SubItems.Add(i.Trabajo.Prioridad.ToString());
                 item.SubItems.Add(i.TiempoRestante.ToString());
+                //item.SubItems.Add(i.TiempoRestante.ToString(@"d\d\:h\h\:m\m\:s\s"));
                 listTrabajosPendientes.Items.Add(item);
             }
             ColorCeldaListView();
@@ -1150,20 +1185,7 @@ namespace UI.Desktop
             frmObjetosPerdidos.ShowDialog();
         }
 
-        private void btnRetirarOrden_Click(object sender, EventArgs e)
-        {
-            if (listOrdenes.SelectedItems.Count > 0)
-            {
-                int nroOrden = Int32.Parse(this.listOrdenes.SelectedItems[0].Text);
-                RetirarOrdenDesktop frmRetirarOrden = new RetirarOrdenDesktop(nroOrden, ApplicationForm.ModoForm.Modificacion, _context);
-                frmRetirarOrden.ShowDialog();
-                CargarOrdenes();
-            }
-            else
-            {
-                MessageBox.Show("Seleccionar una fila en la lista para poder retirar la orden");
-            }
-        }
+        
 
         private void btnServicioTipoPrenda_Click(object sender, EventArgs e)
         {
@@ -1313,5 +1335,16 @@ namespace UI.Desktop
             UsuarioDesktop frmUser = new UsuarioDesktop(ID, ApplicationForm.ModoForm.Modificacion, _context);
             frmUser.ShowDialog();
         }
+
+        
+        private void chkCambioColor_CheckedChanged(object sender, EventArgs e)
+        {
+           
+                CambiarColor(chkCambioColor.Checked);
+            
+            
+        }
+
+        
     }
 }

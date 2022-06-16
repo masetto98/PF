@@ -5,7 +5,20 @@
 	<style>
 		table.border {
 			border-collapse: collapse;
-			border: 2px solid black;
+			border: 1px solid black;
+			
+			
+		}
+		table thead{
+			background-color:teal;
+		}
+		table tbody{
+			border-collapse: collapse;
+			border: 1px solid black;
+			
+		}
+		table th {
+		    border:1px solid black;
 		}
 	</style>
 </head>
@@ -39,7 +52,7 @@
 				</table>
 				<table style="width:100%">
 					<tr>
-						<td>N° Factura:</td>
+						<td>NÂ° Factura:</td>
 						<td>@nrofactura</td>
 					</tr>
 					<tr>
@@ -69,7 +82,7 @@
 		</tr>
 		<tr>
 			<td colspan="3">
-				<table style="width:100%">
+				<table style="width:120%">
 					<tr>
 						<td align="left">Cuit:</td>
 						<td align="left">@cuit</td>
@@ -79,7 +92,7 @@
 					<tr>
 						<td align="left">Tel:</td>
 						<td align="left">@telcli</td>
-						<td align="right">Dirección:</td>
+						<td align="right">DirecciÃ³n:</td>
 						<td>@direcli</td>
 					</tr>
 				</table>
@@ -91,7 +104,7 @@
 		<tr>
 			<td colspan="3">
 				<table style="width:100%">
-					<thead bgcolor="red">
+					<thead>
 						<tr>
 							<th>Detalles Orden</th>
 						</tr>
@@ -103,7 +116,7 @@
 			<td colspan="3">
 				<table style="width:100%">
 					<tr>
-						<td align="left">N° Orden:</td>
+						<td align="left">NÂ° Orden:</td>
 						<td align="left">@nrorden</td>
 						<td align="right">Fecha entrada:</td>
 						<td align="right">@fechaentrada</td>
@@ -113,7 +126,7 @@
 		</tr>
 		<tr>
 			<td colspan="3">
-				<table class="border" style="width:80%" align="center">
+				<table  class="border"style="width:80%" align="center">
 					<thead style="background-color:#D8D8D8">
 						<tr>
 							<th>Nro Item</th>
@@ -139,7 +152,7 @@
 		</tr>
 		<tr>
 			<td colspan="3">
-				<table class="border" align="right" rules="all">
+				<table class="border" align="right">
 					<tr>
 						<td>Subtotal:</td>
 						<td>@totalitems</td>
@@ -149,8 +162,8 @@
 						<td>@Desc</td>
 					</tr>
 					<tr>
-						<td>Seña:</td>
-						<td>@Seña</td>
+						<td>SeÃ±a:</td>
+						<td>@SeÃ±a</td>
 					</tr>
 					<tr>
 						<td>TOTAL:</td>

@@ -42,7 +42,7 @@ namespace UI.Desktop
                 UsuarioActual = _usuarioLogic.GetOne(ID);
                 // Como estoy modificando o borrando el usuario, no tengo que poder modificar el cuit
                 // al cual está asociado
-                this.txtCuitEmpleado.Enabled = false;
+                this.txtCuit.Enabled = false;
                 /*
                 this.txtNombreUsuario.ReadOnly = true;
                 this.chkHabilitado.Enabled = false;

@@ -36,7 +36,7 @@ namespace UI.Desktop
             _ordenLogic = new OrdenLogic(new OrdenAdapter(context));
             _pagosFactura = new List<Pago>();
             _itemsServicio = new List<OrdenServicioTipoPrenda>();
-            
+            btnAgregarPago.Enabled = false;
 
         }
 
@@ -69,6 +69,18 @@ namespace UI.Desktop
                         return p.FechaDesde <= DateTime.Today;
                     });
                 _total += precioActual.Valor;
+            }
+            if (OrdenActual.Descuento != null)
+            {
+                if (OrdenActual.Descuento.Contains("%"))
+                {
+                    string desc = OrdenActual.Descuento.Substring(1, OrdenActual.Descuento.Length - 1);
+                    _total *= (1 - (Double.Parse(desc) / 100.0));
+                }
+                else
+                {
+                    _total -= Int32.Parse(OrdenActual.Descuento);
+                }
             }
             FacturaActual.Importe = _total;
         }
@@ -140,6 +152,7 @@ namespace UI.Desktop
         }
         public void TotalAPagar()
         {
+            
             double pagosActual = TotalPagos();
             if (pagosActual != 0)
             {
@@ -149,8 +162,10 @@ namespace UI.Desktop
             }
             else
             {
-                this.txtApagar.Text = FacturaActual.Importe.ToString();
+                _totalApagar = FacturaActual.Importe;
+                this.txtApagar.Text = _totalApagar.ToString();
             }
+           
         }
         public double TotalPagos()
         {
@@ -341,6 +356,28 @@ namespace UI.Desktop
             }
             ListarPagos();
             TotalAPagar();
+        }
+
+        private void txtApagar_TextChanged(object sender, EventArgs e)
+        {
+            if(txtApagar.Text == "0")
+            {
+                btnSaldarDeuda.Enabled = false;
+                btnAgregarPago.Enabled = false;
+            }
+        }
+
+        private void txtImportePago_TextChanged(object sender, EventArgs e)
+        {
+            if(txtImportePago.Text != "")
+            {
+                btnAgregarPago.Enabled = true;
+            }
+            else
+            {
+                btnAgregarPago.Enabled = false;
+            }
+            
         }
     }
 }

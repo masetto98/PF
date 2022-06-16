@@ -101,6 +101,77 @@ namespace UI.Desktop.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html&gt;
+        ///&lt;head&gt;
+        ///	&lt;title&gt;Comprobante lavado&lt;/title&gt;
+        ///	&lt;style&gt;
+        ///		table.border {
+        ///			border-collapse: collapse;
+        ///			border: 1px solid black;
+        ///		}
+        ///
+        ///	&lt;/style&gt;
+        ///&lt;/head&gt;
+        ///&lt;body&gt;
+        ///	&lt;font size=&quot;2&quot;&gt;
+        ///		&lt;table align=&quot;center&quot; cellspacing=1 cellpadding=1&gt;
+        ///			&lt;tr&gt;
+        ///				&lt;td&gt;
+        ///					&lt;table class=&quot;border&quot;&gt;
+        ///						&lt;tr&gt;
+        ///							&lt;td style=&quot;width:75%&quot;&gt;
+        ///								&lt;table&gt;
+        ///									&lt;tr&gt;&lt;td&gt;&lt;font size=&quot;5&quot;&gt;@NombreLavanderia&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;
+        ///									&lt;tr&gt;&lt;td&gt;@DireccionLav&lt;/td&gt;&lt;/tr&gt;
+        ///									&lt;tr&gt;&lt;td&gt;Tel:@TelLav&lt;/ [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string comprobanteorden2 {
+            get {
+                return ResourceManager.GetString("comprobanteorden2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html&gt;
+        ///&lt;head&gt;
+        ///	&lt;title&gt;Factura de Servicio&lt;/title&gt;
+        ///	&lt;style&gt;
+        ///		table.border {
+        ///			border-collapse: collapse;
+        ///			border: 1px solid black;
+        ///			
+        ///			
+        ///		}
+        ///		table thead{
+        ///			background-color:teal;
+        ///		}
+        ///		table tbody{
+        ///			border-collapse: collapse;
+        ///			border: 1px solid black;
+        ///			
+        ///		}
+        ///		table th {
+        ///		    border:1px solid black;
+        ///		}
+        ///	&lt;/style&gt;
+        ///&lt;/head&gt;
+        ///&lt;body&gt;
+        ///	&lt;table class=&quot;border&quot; style=&quot;width:100%&quot;&gt;
+        ///		&lt;tr&gt;
+        ///			&lt;td style=&quot;width:30%&quot;&gt;&lt;/td&gt;
+        ///			&lt;td&gt;
+        ///				&lt;table align=&quot;center&quot;&gt;
+        ///					&lt; [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string factura3 {
+            get {
+                return ResourceManager.GetString("factura3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap new_add_user_16734 {

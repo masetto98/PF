@@ -20,7 +20,7 @@ namespace UI.Desktop
             InitializeComponent();
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            //materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
         public enum ModoForm
@@ -42,6 +42,18 @@ namespace UI.Desktop
         public void Notificar(string mensaje, MessageBoxButtons botones,
         MessageBoxIcon icono)
         { this.Notificar(this.Text, mensaje, botones, icono); }
+        public void CambiarColor(bool yesno)
+        {
+            if (yesno)
+            {
+                materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            }
+            else
+            {
+                materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            }
+            
+        }
         private void ApplicationForm_Load(object sender, EventArgs e) {}
     }
 

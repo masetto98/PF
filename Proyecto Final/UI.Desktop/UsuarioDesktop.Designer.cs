@@ -47,8 +47,8 @@ namespace UI.Desktop
             this.btnAceptarUsuario = new MaterialSkin.Controls.MaterialButton();
             this.btnCancelarUsuario = new MaterialSkin.Controls.MaterialButton();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
-            this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
             this.btnBuscar = new MaterialSkin.Controls.MaterialButton();
+            this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
             this.materialCard1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -375,23 +375,13 @@ namespace UI.Desktop
             this.materialCard1.Size = new System.Drawing.Size(413, 216);
             this.materialCard1.TabIndex = 17;
             // 
-            // materialLabel8
-            // 
-            this.materialLabel8.AutoSize = true;
-            this.materialLabel8.Depth = 0;
-            this.materialLabel8.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel8.Location = new System.Drawing.Point(13, 14);
-            this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel8.Name = "materialLabel8";
-            this.materialLabel8.Size = new System.Drawing.Size(72, 19);
-            this.materialLabel8.TabIndex = 0;
-            this.materialLabel8.Text = "Empleado";
-            // 
             // btnBuscar
             // 
             this.btnBuscar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.btnBuscar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnBuscar.Depth = 0;
+            this.btnBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnBuscar.HighEmphasis = true;
             this.btnBuscar.Icon = null;
             this.btnBuscar.Location = new System.Drawing.Point(318, 46);
@@ -404,14 +394,28 @@ namespace UI.Desktop
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnBuscar.UseAccentColor = false;
-            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // materialLabel8
+            // 
+            this.materialLabel8.AutoSize = true;
+            this.materialLabel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel8.Depth = 0;
+            this.materialLabel8.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel8.Location = new System.Drawing.Point(13, 14);
+            this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel8.Name = "materialLabel8";
+            this.materialLabel8.Size = new System.Drawing.Size(72, 19);
+            this.materialLabel8.TabIndex = 0;
+            this.materialLabel8.Text = "Empleado";
             // 
             // UsuarioDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 636);
+            this.ClientSize = new System.Drawing.Size(457, 675);
             this.Controls.Add(this.materialCard1);
             this.Controls.Add(this.btnCancelarUsuario);
             this.Controls.Add(this.btnAceptarUsuario);

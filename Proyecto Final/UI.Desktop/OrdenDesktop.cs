@@ -195,7 +195,7 @@ namespace UI.Desktop
                 OrdenActual.Empleado = Singleton.getInstance().EmpleadoLogged;
                 OrdenActual.Estado = Orden.Estados.Pendiente;
                 OrdenActual.Prioridad = (Business.Entities.Orden.Prioridades)Enum.Parse(typeof(Business.Entities.Orden.Prioridades), cmbPrioridad.SelectedItem.ToString());
-                OrdenActual.Observaciones = this.txtDireccion.Text;
+                OrdenActual.Observaciones = this.txtObservaciones.Text;
                 OrdenActual.FechaEntrada = DateTime.Now;
                 Descuento();
                 OrdenActual.EntregaDomicilio= (Orden.EntregasDomicilio)Enum.Parse(typeof(Orden.EntregasDomicilio), cmbEntregaDomicilio.SelectedItem.ToString());
@@ -557,7 +557,7 @@ namespace UI.Desktop
                     break;
             }
         }
-
+        
         public void PrintComprobante()
         {
                 SaveFileDialog sfd = new SaveFileDialog();
@@ -596,6 +596,9 @@ namespace UI.Desktop
                         comprobanteorden = comprobanteorden.Replace("@cliente", OrdenActual.Cliente.Apellido + "," + OrdenActual.Cliente.Nombre);
                         comprobanteorden = comprobanteorden.Replace("@direccion", OrdenActual.Cliente.Direccion);
                         comprobanteorden = comprobanteorden.Replace("@telefono", OrdenActual.Cliente.Telefono);
+                        comprobanteorden = comprobanteorden.Replace("@obs", OrdenActual.Observaciones);
+                        comprobanteorden = comprobanteorden.Replace("@Desc", OrdenActual.Descuento);
+
                         string items = string.Empty;
                         foreach (OrdenServicioTipoPrenda row in _itemsServicio)
                         {
@@ -607,7 +610,8 @@ namespace UI.Desktop
                         }
                         comprobanteorden = comprobanteorden.Replace("@items", items);
                         // falta condicion de si es null el listado de pagos pq falla con el count cuando no hay seña
-                        if(OrdenActual.Factura.Pagos.Count > 0)
+                        FacturaActual = _facturaLogic.GetOne(OrdenActual.NroFactura);
+                        if(FacturaActual.Pagos.Count > 0)
                         {
                             comprobanteorden = comprobanteorden.Replace("@Seña", OrdenActual.Factura.Pagos[0].Importe.ToString());
                         }
@@ -619,7 +623,7 @@ namespace UI.Desktop
                             pdfTable.SetPadding(3);
                             pdfTable.SetWidth(UnitValue.CreatePercentValue(100));
                             pdfTable.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
-                        */
+                       */
 
 
                         using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
@@ -642,7 +646,7 @@ namespace UI.Desktop
                                 stream.Close();
                             }
 
-                            MessageBox.Show("Reporte exportado exitosamente", "Info");
+                            MessageBox.Show("Comprobante exportado exitosamente", "Info");
                         }
                         catch (Exception ex)
                         {
@@ -652,7 +656,7 @@ namespace UI.Desktop
                 }
             }
             
-        
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();

@@ -32,6 +32,7 @@ namespace UI.Desktop
         private readonly OrdenLogic _ordenLogic;
         public List<OrdenServicioTipoPrenda> _itemsServicio;
         public double _total;
+        public double _totalitems;
         public RetirarOrdenDesktop(LavanderiaContext context)
         {
             InitializeComponent();
@@ -63,6 +64,7 @@ namespace UI.Desktop
             this.txtNroOrdenRetiro.Text = OrdenActual.NroOrden.ToString();
             this.txtEstadoRetiro.Text = OrdenActual.Estado.ToString();
             this.txtFechaEntradaRetiro.Text = OrdenActual.FechaEntrada.Date.ToString();
+            this.txtDescuentoRetiro.Text = OrdenActual.Descuento;
             try
             {
                 _itemsServicio = OrdenActual.ItemsPedidos;
@@ -93,6 +95,7 @@ namespace UI.Desktop
                     this.txtNroOrdenRetiro.Enabled = false;
                     this.txtTotalFactura.Enabled = false;
                     this.txtRazonSocialRetiro.Enabled = false;
+                    this.txtDescuentoRetiro.Enabled = false;
                     break;
                 case ModoForm.Baja:
 
@@ -127,10 +130,24 @@ namespace UI.Desktop
                 item.SubItems.Add(i.Estado.ToString());
                 item.SubItems.Add(precioActual.Valor.ToString());
                 listItemsRetiro.Items.Add(item);
-                _total += precioActual.Valor;
-                this.txtTotalFactura.Text = _total.ToString();
+                _totalitems += precioActual.Valor;
             }
+            if (OrdenActual.Descuento != null)
+            {
+                if (OrdenActual.Descuento.Contains("%"))
+                {
+                    string desc = OrdenActual.Descuento.Substring(1, OrdenActual.Descuento.Length - 1);
+                    _total = _totalitems * (1 - (Double.Parse(desc) / 100.0));
+                }
+                else
+                {
+                    _total = _totalitems - Int32.Parse(OrdenActual.Descuento);
+                }
+            }
+            this.txtTotalFactura.Text = _total.ToString();
         }
+    
+        
 
         private void btnPagoRetirar_Click(object sender, EventArgs e)
         {
@@ -178,7 +195,7 @@ namespace UI.Desktop
         {
             Close();
         }
-
+        
         private void btnImpFactura_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
@@ -234,8 +251,15 @@ namespace UI.Desktop
                             items += "</tr>";
                         }
                         factura = factura.Replace("@items", items);
-                        factura = factura.Replace("@totalitems", _total.ToString());
-                        // falta condicion de si es null el listado de pagos pq falla con el count cuando no hay seña
+                        factura = factura.Replace("@totalitems", _totalitems.ToString());
+                        if(OrdenActual.Descuento != null)
+                        {
+                            factura = factura.Replace("@Desc", OrdenActual.Descuento);
+                        }
+                        else
+                        {
+                            factura = factura.Replace("@Desc", "0");
+                        }
                         double totalfactura;
                         FacturaActual = _facturaLogic.GetOne(OrdenActual.NroFactura);
                         if (FacturaActual.Pagos.Count > 0)
@@ -251,13 +275,6 @@ namespace UI.Desktop
                             totalfactura = _total;
                             factura = factura.Replace("@totalfact", totalfactura.ToString());
                         }
-
-                        /*Table pdfTable = new Table(4);
-                            pdfTable.SetPadding(3);
-                            pdfTable.SetWidth(UnitValue.CreatePercentValue(100));
-                            pdfTable.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
-                        */
-
                         
                         using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
                         {
@@ -278,10 +295,10 @@ namespace UI.Desktop
                                 ImageData imageData = ImageDataFactory.Create("D:\\Proyectos\\PF\\Proyecto Final\\UI.Desktop\\Resources\\logo_lavadero_elsol.png");
                                 iText.Layout.Element.Image logo = new iText.Layout.Element.Image(imageData);
                                // iText.Kernel.Geom.Rectangle pagesize = document.GetPdfDocument().GetDefaultPageSize().;
-                                logo.ScaleToFit(300, 170);
+                                logo.ScaleToFit(300, 160);
                                 //logo.SetRelativePosition(document.GetLeftMargin(), document.GetTopMargin() - 80,document.GetRightMargin(),document.GetBottomMargin());
                                 float top = document.GetPdfDocument().GetDefaultPageSize().GetTop();
-                                float dif = top - 170;
+                                float dif = top - 160;
                                 logo.SetFixedPosition(document.GetLeftMargin(), dif);
                                 document.Add(logo);
                                 document.Close();
@@ -295,8 +312,18 @@ namespace UI.Desktop
                     {
                         MessageBox.Show("Error: " + ex.Message);
                     }
+    
                 }
+
             }
+        }
+
+        private void listItemsRetiro_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            
+                e.Cancel = true;
+                e.NewWidth = listItemsRetiro.Columns[e.ColumnIndex].Width;
+            
         }
     }
 }
