@@ -662,6 +662,11 @@ namespace UI.Desktop
             Close();
         }
 
-        
+        private void listItemsServicio_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+
+            e.Cancel = true;
+            e.NewWidth = listItemsServicio.Columns[e.ColumnIndex].Width;
+        }
     }
 }

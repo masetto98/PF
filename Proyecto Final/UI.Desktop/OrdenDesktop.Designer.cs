@@ -118,13 +118,13 @@ namespace UI.Desktop
             this.dtpFechaIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.dtpFechaIngreso.CustomFormat = "dd/MM/yyyy hh:mm:ss";
             this.dtpFechaIngreso.Enabled = false;
-            this.dtpFechaIngreso.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dtpFechaIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpFechaIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dtpFechaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFechaIngreso.Location = new System.Drawing.Point(651, 88);
             this.dtpFechaIngreso.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.dtpFechaIngreso.Name = "dtpFechaIngreso";
-            this.dtpFechaIngreso.Size = new System.Drawing.Size(279, 24);
+            this.dtpFechaIngreso.Size = new System.Drawing.Size(279, 23);
             this.dtpFechaIngreso.TabIndex = 12;
             this.dtpFechaIngreso.Value = new System.DateTime(2022, 6, 10, 15, 13, 24, 0);
             // 
@@ -133,13 +133,13 @@ namespace UI.Desktop
             this.dtpFechaSalida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.dtpFechaSalida.CustomFormat = "dd/MM/yyyy hh:mm:ss";
             this.dtpFechaSalida.Enabled = false;
-            this.dtpFechaSalida.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dtpFechaSalida.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpFechaSalida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dtpFechaSalida.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFechaSalida.Location = new System.Drawing.Point(651, 128);
             this.dtpFechaSalida.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.dtpFechaSalida.Name = "dtpFechaSalida";
-            this.dtpFechaSalida.Size = new System.Drawing.Size(279, 24);
+            this.dtpFechaSalida.Size = new System.Drawing.Size(279, 23);
             this.dtpFechaSalida.TabIndex = 12;
             this.dtpFechaSalida.Value = new System.DateTime(2022, 6, 10, 15, 10, 13, 0);
             // 
@@ -190,10 +190,11 @@ namespace UI.Desktop
             this.listItemsServicio.MouseState = MaterialSkin.MouseState.OUT;
             this.listItemsServicio.Name = "listItemsServicio";
             this.listItemsServicio.OwnerDraw = true;
-            this.listItemsServicio.Size = new System.Drawing.Size(607, 135);
+            this.listItemsServicio.Size = new System.Drawing.Size(606, 135);
             this.listItemsServicio.TabIndex = 14;
             this.listItemsServicio.UseCompatibleStateImageBehavior = false;
             this.listItemsServicio.View = System.Windows.Forms.View.Details;
+            this.listItemsServicio.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listItemsServicio_ColumnWidthChanging);
             // 
             // columnNro
             // 
@@ -202,12 +203,12 @@ namespace UI.Desktop
             // columnServicio
             // 
             this.columnServicio.Text = "Servicio";
-            this.columnServicio.Width = 150;
+            this.columnServicio.Width = 170;
             // 
             // columnTipoPrenda
             // 
             this.columnTipoPrenda.Text = "Tipo de Prenda";
-            this.columnTipoPrenda.Width = 150;
+            this.columnTipoPrenda.Width = 170;
             // 
             // columnPrecio
             // 
@@ -847,6 +848,7 @@ namespace UI.Desktop
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.MaximizeBox = false;
             this.Name = "OrdenDesktop";
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

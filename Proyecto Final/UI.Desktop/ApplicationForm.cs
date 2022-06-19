@@ -19,6 +19,8 @@ namespace UI.Desktop
         {
             InitializeComponent();
             materialSkinManager = MaterialSkinManager.Instance;
+           
+            materialSkinManager.EnforceBackcolorOnAllComponents = false;
             materialSkinManager.AddFormToManage(this);
             //materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
@@ -54,6 +56,7 @@ namespace UI.Desktop
             }
             
         }
+        
         private void ApplicationForm_Load(object sender, EventArgs e) {}
     }
 

@@ -40,7 +40,7 @@ namespace UI.Desktop
             // listOrdenesCliente
             // 
             this.listOrdenesCliente.AutoSizeTable = false;
-            this.listOrdenesCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.listOrdenesCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.listOrdenesCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listOrdenesCliente.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnNroOrden,
@@ -49,17 +49,16 @@ namespace UI.Desktop
             this.columnFechaSalida,
             this.columnTiempoFinalizacion});
             this.listOrdenesCliente.Depth = 0;
-            this.listOrdenesCliente.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listOrdenesCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listOrdenesCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listOrdenesCliente.FullRowSelect = true;
             this.listOrdenesCliente.HideSelection = false;
-            this.listOrdenesCliente.Location = new System.Drawing.Point(3, 80);
+            this.listOrdenesCliente.Location = new System.Drawing.Point(90, 116);
             this.listOrdenesCliente.MinimumSize = new System.Drawing.Size(200, 100);
             this.listOrdenesCliente.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listOrdenesCliente.MouseState = MaterialSkin.MouseState.OUT;
             this.listOrdenesCliente.Name = "listOrdenesCliente";
             this.listOrdenesCliente.OwnerDraw = true;
-            this.listOrdenesCliente.Size = new System.Drawing.Size(916, 430);
+            this.listOrdenesCliente.Size = new System.Drawing.Size(772, 351);
             this.listOrdenesCliente.TabIndex = 0;
             this.listOrdenesCliente.UseCompatibleStateImageBehavior = false;
             this.listOrdenesCliente.View = System.Windows.Forms.View.Details;
@@ -93,7 +92,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(922, 513);
+            this.ClientSize = new System.Drawing.Size(938, 552);
             this.Controls.Add(this.listOrdenesCliente);
             this.Name = "ClienteOrdenDesktop";
             this.Text = "";

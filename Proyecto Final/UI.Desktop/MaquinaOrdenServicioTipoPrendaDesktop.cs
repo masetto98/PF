@@ -17,6 +17,7 @@ namespace UI.Desktop
     public partial class MaquinaOrdenServicioTipoPrendaDesktop : ApplicationForm
     {
         private readonly MaquinaLogic _maquinaLogic;
+        private readonly InsumoLogic _insumoLogic;
         private readonly OrdenServicioTipoPrendaLogic _ordenServicioTipoPrendaLogic;
         private readonly MaquinaOrdenServicioTipoPrendaLogic _maquinaOrdenServicioTipoPrendaLogic;
         public MaquinaOrdenServicioTipoPrenda TrabajoActual;
@@ -27,6 +28,7 @@ namespace UI.Desktop
             _maquinaLogic = new MaquinaLogic(new MaquinaAdapter(context));
             _maquinaOrdenServicioTipoPrendaLogic = new MaquinaOrdenServicioTipoPrendaLogic(new MaquinaOrdenServicioTipoPrendaAdapter(context));
             _ordenServicioTipoPrendaLogic = new OrdenServicioTipoPrendaLogic(new OrdenServicioTipoPrendaAdapter(context));
+            _insumoLogic = new InsumoLogic(new InsumoAdapter(context));
         }
 
         public MaquinaOrdenServicioTipoPrendaDesktop(int nroOrden,int idServicio ,int idTipoPrenda,int ordenItem, ModoForm modo, LavanderiaContext context) : this(context)
@@ -212,6 +214,7 @@ namespace UI.Desktop
                 case ModoForm.Alta:
                     {
                         GuardarCambios();
+                        ModificarStock();
                     };
                     break;
                 case ModoForm.Modificacion:
@@ -233,6 +236,29 @@ namespace UI.Desktop
         {
             Close();
         }
+        
+        private void ModificarStock()
+        {
+            List<InsumoServicioTipoPrenda> insumosItem = OrdenServicioTipoPrendaActual.ServicioTipoPrenda.InsumoServicioTipoPrenda;
+            
+            foreach(InsumoServicioTipoPrenda ins in insumosItem)
+            {
+                InsumoServicioTipoPrenda actual = insumosItem.FindLast(
+                    delegate (InsumoServicioTipoPrenda istp)
+                    {
+                        return istp.FechaDesde <= DateTime.Today;
+                    });
+                double stockAnterior = ins.Insumo.Stock;
+                double consumoActual = actual.Cantidad;
+                ins.Insumo.Stock = stockAnterior - consumoActual;
+                ins.Insumo.State = BusinessEntity.States.Modified;
+                _insumoLogic.Save(ins.Insumo);
+
+            }
+            
+        
+        }
+        
 
     }
 }

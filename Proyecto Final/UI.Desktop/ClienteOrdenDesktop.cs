@@ -10,17 +10,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using MaterialSkin;
+using MaterialSkin.Controls;
 namespace UI.Desktop
 {
-    public partial class ClienteOrdenDesktop : ApplicationForm
+    public partial class ClienteOrdenDesktop : Form
     {
+        
         public Cliente ClienteActual { set; get; }
         private readonly ClienteLogic _clienteLogic;
         private readonly LavanderiaContext _context;
         public ClienteOrdenDesktop(LavanderiaContext context)
         {
             InitializeComponent();
+            
             _context = context;
             _clienteLogic = new ClienteLogic(new ClienteAdapter(context));
         }

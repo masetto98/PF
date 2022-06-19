@@ -47,7 +47,7 @@ namespace UI.Desktop
             // cbProveedores
             // 
             this.cbProveedores.AutoResize = false;
-            this.cbProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.cbProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.cbProveedores.Depth = 0;
             this.cbProveedores.DisplayMember = "RazonSocial";
             this.cbProveedores.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
@@ -55,12 +55,12 @@ namespace UI.Desktop
             this.cbProveedores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProveedores.DropDownWidth = 121;
             this.cbProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cbProveedores.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cbProveedores.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cbProveedores.FormattingEnabled = true;
             this.cbProveedores.Hint = "Proveedor";
             this.cbProveedores.IntegralHeight = false;
             this.cbProveedores.ItemHeight = 43;
-            this.cbProveedores.Location = new System.Drawing.Point(163, 88);
+            this.cbProveedores.Location = new System.Drawing.Point(152, 87);
             this.cbProveedores.MaxDropDownItems = 4;
             this.cbProveedores.MouseState = MaterialSkin.MouseState.OUT;
             this.cbProveedores.Name = "cbProveedores";
@@ -72,7 +72,7 @@ namespace UI.Desktop
             // cbInsumos
             // 
             this.cbInsumos.AutoResize = false;
-            this.cbInsumos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.cbInsumos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.cbInsumos.Depth = 0;
             this.cbInsumos.DisplayMember = "Descripcion";
             this.cbInsumos.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
@@ -80,12 +80,12 @@ namespace UI.Desktop
             this.cbInsumos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbInsumos.DropDownWidth = 121;
             this.cbInsumos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cbInsumos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cbInsumos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cbInsumos.FormattingEnabled = true;
             this.cbInsumos.Hint = "Insumo";
             this.cbInsumos.IntegralHeight = false;
             this.cbInsumos.ItemHeight = 43;
-            this.cbInsumos.Location = new System.Drawing.Point(163, 143);
+            this.cbInsumos.Location = new System.Drawing.Point(152, 142);
             this.cbInsumos.MaxDropDownItems = 4;
             this.cbInsumos.MouseState = MaterialSkin.MouseState.OUT;
             this.cbInsumos.Name = "cbInsumos";
@@ -98,14 +98,14 @@ namespace UI.Desktop
             // txtCantidad
             // 
             this.txtCantidad.AnimateReadOnly = false;
-            this.txtCantidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtCantidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtCantidad.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCantidad.Depth = 0;
             this.txtCantidad.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtCantidad.Hint = "Cantidad";
             this.txtCantidad.LeadingIcon = null;
-            this.txtCantidad.Location = new System.Drawing.Point(163, 253);
+            this.txtCantidad.Location = new System.Drawing.Point(152, 252);
             this.txtCantidad.MaxLength = 50;
             this.txtCantidad.MouseState = MaterialSkin.MouseState.OUT;
             this.txtCantidad.Multiline = false;
@@ -118,55 +118,55 @@ namespace UI.Desktop
             // lblProveedor
             // 
             this.lblProveedor.AutoSize = true;
-            this.lblProveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lblProveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.lblProveedor.Depth = 0;
             this.lblProveedor.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblProveedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblProveedor.Location = new System.Drawing.Point(29, 105);
+            this.lblProveedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblProveedor.Location = new System.Drawing.Point(18, 104);
             this.lblProveedor.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblProveedor.Name = "lblProveedor";
-            this.lblProveedor.Size = new System.Drawing.Size(72, 19);
+            this.lblProveedor.Size = new System.Drawing.Size(76, 19);
             this.lblProveedor.TabIndex = 4;
-            this.lblProveedor.Text = "Proveedor";
+            this.lblProveedor.Text = "Proveedor:";
             // 
             // lblInsumo
             // 
             this.lblInsumo.AutoSize = true;
-            this.lblInsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lblInsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.lblInsumo.Depth = 0;
             this.lblInsumo.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblInsumo.Location = new System.Drawing.Point(29, 169);
+            this.lblInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblInsumo.Location = new System.Drawing.Point(18, 161);
             this.lblInsumo.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblInsumo.Name = "lblInsumo";
-            this.lblInsumo.Size = new System.Drawing.Size(54, 19);
+            this.lblInsumo.Size = new System.Drawing.Size(58, 19);
             this.lblInsumo.TabIndex = 5;
-            this.lblInsumo.Text = "Insumo";
+            this.lblInsumo.Text = "Insumo:";
             // 
             // lblCantidad
             // 
             this.lblCantidad.AutoSize = true;
-            this.lblCantidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lblCantidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.lblCantidad.Depth = 0;
             this.lblCantidad.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblCantidad.Location = new System.Drawing.Point(29, 276);
+            this.lblCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblCantidad.Location = new System.Drawing.Point(18, 267);
             this.lblCantidad.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(65, 19);
+            this.lblCantidad.Size = new System.Drawing.Size(69, 19);
             this.lblCantidad.TabIndex = 7;
-            this.lblCantidad.Text = "Cantidad";
+            this.lblCantidad.Text = "Cantidad:";
             // 
             // btnAceptarIngreso
             // 
             this.btnAceptarIngreso.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAceptarIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnAceptarIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnAceptarIngreso.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnAceptarIngreso.Depth = 0;
-            this.btnAceptarIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnAceptarIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAceptarIngreso.HighEmphasis = true;
             this.btnAceptarIngreso.Icon = null;
-            this.btnAceptarIngreso.Location = new System.Drawing.Point(346, 311);
+            this.btnAceptarIngreso.Location = new System.Drawing.Point(340, 330);
             this.btnAceptarIngreso.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptarIngreso.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptarIngreso.Name = "btnAceptarIngreso";
@@ -182,13 +182,13 @@ namespace UI.Desktop
             // btnCancelarIngreso
             // 
             this.btnCancelarIngreso.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnCancelarIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnCancelarIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnCancelarIngreso.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnCancelarIngreso.Depth = 0;
-            this.btnCancelarIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnCancelarIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelarIngreso.HighEmphasis = true;
             this.btnCancelarIngreso.Icon = null;
-            this.btnCancelarIngreso.Location = new System.Drawing.Point(440, 311);
+            this.btnCancelarIngreso.Location = new System.Drawing.Point(434, 330);
             this.btnCancelarIngreso.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelarIngreso.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelarIngreso.Name = "btnCancelarIngreso";
@@ -205,13 +205,13 @@ namespace UI.Desktop
             // 
             this.btnNewProvIngreso.AutoSize = false;
             this.btnNewProvIngreso.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnNewProvIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnNewProvIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnNewProvIngreso.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnNewProvIngreso.Depth = 0;
-            this.btnNewProvIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnNewProvIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnNewProvIngreso.HighEmphasis = true;
             this.btnNewProvIngreso.Icon = global::UI.Desktop.Properties.Resources.plus_icon_icons_com_70890;
-            this.btnNewProvIngreso.Location = new System.Drawing.Point(500, 95);
+            this.btnNewProvIngreso.Location = new System.Drawing.Point(489, 94);
             this.btnNewProvIngreso.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnNewProvIngreso.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNewProvIngreso.Name = "btnNewProvIngreso";
@@ -227,13 +227,13 @@ namespace UI.Desktop
             // 
             this.btnNewInsumoIngreso.AutoSize = false;
             this.btnNewInsumoIngreso.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnNewInsumoIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnNewInsumoIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnNewInsumoIngreso.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnNewInsumoIngreso.Depth = 0;
-            this.btnNewInsumoIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnNewInsumoIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnNewInsumoIngreso.HighEmphasis = true;
             this.btnNewInsumoIngreso.Icon = global::UI.Desktop.Properties.Resources.plus_icon_icons_com_70890;
-            this.btnNewInsumoIngreso.Location = new System.Drawing.Point(500, 152);
+            this.btnNewInsumoIngreso.Location = new System.Drawing.Point(489, 151);
             this.btnNewInsumoIngreso.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnNewInsumoIngreso.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNewInsumoIngreso.Name = "btnNewInsumoIngreso";
@@ -248,19 +248,19 @@ namespace UI.Desktop
             // cmbUnidadMedida
             // 
             this.cmbUnidadMedida.AutoResize = false;
-            this.cmbUnidadMedida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.cmbUnidadMedida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.cmbUnidadMedida.Depth = 0;
             this.cmbUnidadMedida.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.cmbUnidadMedida.DropDownHeight = 174;
             this.cmbUnidadMedida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUnidadMedida.DropDownWidth = 121;
             this.cmbUnidadMedida.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cmbUnidadMedida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cmbUnidadMedida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cmbUnidadMedida.FormattingEnabled = true;
             this.cmbUnidadMedida.Hint = "Unidad de medida";
             this.cmbUnidadMedida.IntegralHeight = false;
             this.cmbUnidadMedida.ItemHeight = 43;
-            this.cmbUnidadMedida.Location = new System.Drawing.Point(288, 253);
+            this.cmbUnidadMedida.Location = new System.Drawing.Point(277, 252);
             this.cmbUnidadMedida.MaxDropDownItems = 4;
             this.cmbUnidadMedida.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbUnidadMedida.Name = "cmbUnidadMedida";
@@ -271,25 +271,25 @@ namespace UI.Desktop
             // materialLabel1
             // 
             this.materialLabel1.AutoSize = true;
-            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialLabel1.Location = new System.Drawing.Point(29, 215);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(18, 208);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(123, 19);
+            this.materialLabel1.Size = new System.Drawing.Size(127, 19);
             this.materialLabel1.TabIndex = 13;
-            this.materialLabel1.Text = "Fecha de entrada";
+            this.materialLabel1.Text = "Fecha de entrada:";
             // 
             // dtpFechaIngreso
             // 
-            this.dtpFechaIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.dtpFechaIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.dtpFechaIngreso.CustomFormat = "dd/MM/yyyy hh:mm:ss";
             this.dtpFechaIngreso.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dtpFechaIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dtpFechaIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dtpFechaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaIngreso.Location = new System.Drawing.Point(162, 209);
+            this.dtpFechaIngreso.Location = new System.Drawing.Point(151, 208);
             this.dtpFechaIngreso.Name = "dtpFechaIngreso";
             this.dtpFechaIngreso.Size = new System.Drawing.Size(331, 24);
             this.dtpFechaIngreso.TabIndex = 14;
@@ -298,7 +298,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 401);
+            this.ClientSize = new System.Drawing.Size(564, 393);
             this.Controls.Add(this.dtpFechaIngreso);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.cmbUnidadMedida);
@@ -312,9 +312,11 @@ namespace UI.Desktop
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.cbInsumos);
             this.Controls.Add(this.cbProveedores);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "InsumoProveedorDesktop";
             this.Sizable = false;
-            this.Text = "Ingreso de insumos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Ingreso";
             this.ResumeLayout(false);
             this.PerformLayout();
 

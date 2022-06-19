@@ -42,10 +42,10 @@ namespace UI.Desktop
             // 
             this.btnIniciar.AutoSize = false;
             this.btnIniciar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnIniciar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnIniciar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnIniciar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnIniciar.Depth = 0;
-            this.btnIniciar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnIniciar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnIniciar.HighEmphasis = true;
             this.btnIniciar.Icon = null;
             this.btnIniciar.Location = new System.Drawing.Point(121, 319);
@@ -64,10 +64,10 @@ namespace UI.Desktop
             // btnCancelar
             // 
             this.btnCancelar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnCancelar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnCancelar.Depth = 0;
-            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
             this.btnCancelar.Location = new System.Drawing.Point(225, 319);
@@ -86,11 +86,11 @@ namespace UI.Desktop
             // txtNroOrden
             // 
             this.txtNroOrden.AnimateReadOnly = false;
-            this.txtNroOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtNroOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtNroOrden.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNroOrden.Depth = 0;
             this.txtNroOrden.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtNroOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtNroOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtNroOrden.Hint = "Nro Orden";
             this.txtNroOrden.LeadingIcon = null;
             this.txtNroOrden.Location = new System.Drawing.Point(15, 93);
@@ -106,11 +106,11 @@ namespace UI.Desktop
             // txtServicio
             // 
             this.txtServicio.AnimateReadOnly = false;
-            this.txtServicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtServicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtServicio.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtServicio.Depth = 0;
             this.txtServicio.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtServicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtServicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtServicio.Hint = "Servicio";
             this.txtServicio.LeadingIcon = null;
             this.txtServicio.Location = new System.Drawing.Point(15, 149);
@@ -126,11 +126,11 @@ namespace UI.Desktop
             // txtOrdenItem
             // 
             this.txtOrdenItem.AnimateReadOnly = false;
-            this.txtOrdenItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtOrdenItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtOrdenItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtOrdenItem.Depth = 0;
             this.txtOrdenItem.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtOrdenItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtOrdenItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtOrdenItem.Hint = "Orden Item";
             this.txtOrdenItem.LeadingIcon = null;
             this.txtOrdenItem.Location = new System.Drawing.Point(169, 93);
@@ -146,11 +146,11 @@ namespace UI.Desktop
             // txtTipoPrenda
             // 
             this.txtTipoPrenda.AnimateReadOnly = false;
-            this.txtTipoPrenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtTipoPrenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtTipoPrenda.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTipoPrenda.Depth = 0;
             this.txtTipoPrenda.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtTipoPrenda.Hint = "Tipo de Prenda";
             this.txtTipoPrenda.LeadingIcon = null;
             this.txtTipoPrenda.Location = new System.Drawing.Point(15, 205);
@@ -166,7 +166,7 @@ namespace UI.Desktop
             // cmbMaquinas
             // 
             this.cmbMaquinas.AutoResize = false;
-            this.cmbMaquinas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.cmbMaquinas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.cmbMaquinas.Depth = 0;
             this.cmbMaquinas.DisplayMember = "Descripcion";
             this.cmbMaquinas.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
@@ -174,9 +174,9 @@ namespace UI.Desktop
             this.cmbMaquinas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMaquinas.DropDownWidth = 121;
             this.cmbMaquinas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cmbMaquinas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cmbMaquinas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cmbMaquinas.FormattingEnabled = true;
-            this.cmbMaquinas.Hint = "Maquinas";
+            this.cmbMaquinas.Hint = "Máquinas";
             this.cmbMaquinas.IntegralHeight = false;
             this.cmbMaquinas.ItemHeight = 43;
             this.cmbMaquinas.Location = new System.Drawing.Point(15, 261);
@@ -192,7 +192,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 371);
+            this.ClientSize = new System.Drawing.Size(341, 373);
             this.Controls.Add(this.cmbMaquinas);
             this.Controls.Add(this.txtTipoPrenda);
             this.Controls.Add(this.txtOrdenItem);
@@ -200,7 +200,11 @@ namespace UI.Desktop
             this.Controls.Add(this.txtNroOrden);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnIniciar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
             this.Name = "MaquinaOrdenServicioTipoPrendaDesktop";
+            this.Sizable = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Iniciar Trabajo";
             this.ResumeLayout(false);
             this.PerformLayout();

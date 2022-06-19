@@ -89,11 +89,11 @@ namespace UI.Desktop
             // txtCuit
             // 
             this.txtCuit.AnimateReadOnly = false;
-            this.txtCuit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtCuit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtCuit.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCuit.Depth = 0;
             this.txtCuit.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtCuit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtCuit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtCuit.Hint = "Cuit";
             this.txtCuit.LeadingIcon = null;
             this.txtCuit.Location = new System.Drawing.Point(13, 84);
@@ -109,13 +109,13 @@ namespace UI.Desktop
             // listOrdenesCliente
             // 
             this.listOrdenesCliente.AutoSizeTable = false;
-            this.listOrdenesCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.listOrdenesCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.listOrdenesCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listOrdenesCliente.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ColumnOrden,
             this.ColumnFecha});
             this.listOrdenesCliente.Depth = 0;
-            this.listOrdenesCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listOrdenesCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listOrdenesCliente.FullRowSelect = true;
             this.listOrdenesCliente.HideSelection = false;
             this.listOrdenesCliente.Location = new System.Drawing.Point(13, 172);
@@ -142,11 +142,11 @@ namespace UI.Desktop
             // txtDireccion
             // 
             this.txtDireccion.AnimateReadOnly = false;
-            this.txtDireccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtDireccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDireccion.Depth = 0;
             this.txtDireccion.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtDireccion.Hint = "Dirección";
             this.txtDireccion.LeadingIcon = null;
             this.txtDireccion.Location = new System.Drawing.Point(399, 84);
@@ -162,7 +162,7 @@ namespace UI.Desktop
             // listItemsPedidos
             // 
             this.listItemsPedidos.AutoSizeTable = false;
-            this.listItemsPedidos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.listItemsPedidos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.listItemsPedidos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listItemsPedidos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ColumnServicio,
@@ -170,7 +170,7 @@ namespace UI.Desktop
             this.columnItem,
             this.columnEstado});
             this.listItemsPedidos.Depth = 0;
-            this.listItemsPedidos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listItemsPedidos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listItemsPedidos.FullRowSelect = true;
             this.listItemsPedidos.HideSelection = false;
             this.listItemsPedidos.Location = new System.Drawing.Point(219, 249);
@@ -207,10 +207,10 @@ namespace UI.Desktop
             // btnVerItems
             // 
             this.btnVerItems.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnVerItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnVerItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnVerItems.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnVerItems.Depth = 0;
-            this.btnVerItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnVerItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnVerItems.HighEmphasis = true;
             this.btnVerItems.Icon = null;
             this.btnVerItems.Location = new System.Drawing.Point(327, 178);
@@ -228,7 +228,7 @@ namespace UI.Desktop
             // 
             // materialCard1
             // 
-            this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.materialCard1.Controls.Add(this.materialLabel9);
             this.materialCard1.Controls.Add(this.txtNombreApellidoEmpleadoAnterior);
             this.materialCard1.Controls.Add(this.txtIdEmpleadoAnterior);
@@ -243,7 +243,7 @@ namespace UI.Desktop
             this.materialCard1.Controls.Add(this.txtOrdenItemAnterior);
             this.materialCard1.Controls.Add(this.txtNroOrdenAnterior);
             this.materialCard1.Depth = 0;
-            this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialCard1.Location = new System.Drawing.Point(668, 108);
             this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -255,10 +255,10 @@ namespace UI.Desktop
             // materialLabel9
             // 
             this.materialLabel9.AutoSize = true;
-            this.materialLabel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.materialLabel9.Depth = 0;
             this.materialLabel9.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel9.Location = new System.Drawing.Point(5, 6);
             this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel9.Name = "materialLabel9";
@@ -269,11 +269,11 @@ namespace UI.Desktop
             // txtNombreApellidoEmpleadoAnterior
             // 
             this.txtNombreApellidoEmpleadoAnterior.AnimateReadOnly = false;
-            this.txtNombreApellidoEmpleadoAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtNombreApellidoEmpleadoAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtNombreApellidoEmpleadoAnterior.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNombreApellidoEmpleadoAnterior.Depth = 0;
             this.txtNombreApellidoEmpleadoAnterior.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtNombreApellidoEmpleadoAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtNombreApellidoEmpleadoAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtNombreApellidoEmpleadoAnterior.Hint = "Nombre y Apellido";
             this.txtNombreApellidoEmpleadoAnterior.LeadingIcon = null;
             this.txtNombreApellidoEmpleadoAnterior.Location = new System.Drawing.Point(71, 111);
@@ -289,11 +289,11 @@ namespace UI.Desktop
             // txtIdEmpleadoAnterior
             // 
             this.txtIdEmpleadoAnterior.AnimateReadOnly = false;
-            this.txtIdEmpleadoAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtIdEmpleadoAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtIdEmpleadoAnterior.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtIdEmpleadoAnterior.Depth = 0;
             this.txtIdEmpleadoAnterior.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtIdEmpleadoAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtIdEmpleadoAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtIdEmpleadoAnterior.Hint = "ID";
             this.txtIdEmpleadoAnterior.LeadingIcon = null;
             this.txtIdEmpleadoAnterior.Location = new System.Drawing.Point(6, 111);
@@ -309,10 +309,10 @@ namespace UI.Desktop
             // materialLabel8
             // 
             this.materialLabel8.AutoSize = true;
-            this.materialLabel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.materialLabel8.Depth = 0;
             this.materialLabel8.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel8.Location = new System.Drawing.Point(6, 87);
             this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel8.Name = "materialLabel8";
@@ -323,11 +323,11 @@ namespace UI.Desktop
             // txtNombreApellidoRazonSocialAnterior
             // 
             this.txtNombreApellidoRazonSocialAnterior.AnimateReadOnly = false;
-            this.txtNombreApellidoRazonSocialAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtNombreApellidoRazonSocialAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtNombreApellidoRazonSocialAnterior.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNombreApellidoRazonSocialAnterior.Depth = 0;
             this.txtNombreApellidoRazonSocialAnterior.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtNombreApellidoRazonSocialAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtNombreApellidoRazonSocialAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtNombreApellidoRazonSocialAnterior.Hint = "Nombre y Apellido / Razón Social";
             this.txtNombreApellidoRazonSocialAnterior.LeadingIcon = null;
             this.txtNombreApellidoRazonSocialAnterior.Location = new System.Drawing.Point(145, 188);
@@ -343,11 +343,11 @@ namespace UI.Desktop
             // txtServicioTipoPrendaAnterior
             // 
             this.txtServicioTipoPrendaAnterior.AnimateReadOnly = false;
-            this.txtServicioTipoPrendaAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtServicioTipoPrendaAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtServicioTipoPrendaAnterior.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtServicioTipoPrendaAnterior.Depth = 0;
             this.txtServicioTipoPrendaAnterior.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtServicioTipoPrendaAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtServicioTipoPrendaAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtServicioTipoPrendaAnterior.Hint = "Servicio - Tipo de Prenda";
             this.txtServicioTipoPrendaAnterior.LeadingIcon = null;
             this.txtServicioTipoPrendaAnterior.Location = new System.Drawing.Point(80, 28);
@@ -363,10 +363,10 @@ namespace UI.Desktop
             // materialLabel1
             // 
             this.materialLabel1.AutoSize = true;
-            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel1.Location = new System.Drawing.Point(7, 164);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
@@ -377,11 +377,11 @@ namespace UI.Desktop
             // txtDireccionAnterior
             // 
             this.txtDireccionAnterior.AnimateReadOnly = false;
-            this.txtDireccionAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtDireccionAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtDireccionAnterior.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDireccionAnterior.Depth = 0;
             this.txtDireccionAnterior.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtDireccionAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtDireccionAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtDireccionAnterior.Hint = "Direccion";
             this.txtDireccionAnterior.LeadingIcon = null;
             this.txtDireccionAnterior.Location = new System.Drawing.Point(530, 188);
@@ -397,11 +397,11 @@ namespace UI.Desktop
             // txtTelefonoAnterior
             // 
             this.txtTelefonoAnterior.AnimateReadOnly = false;
-            this.txtTelefonoAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtTelefonoAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtTelefonoAnterior.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTelefonoAnterior.Depth = 0;
             this.txtTelefonoAnterior.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtTelefonoAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtTelefonoAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtTelefonoAnterior.Hint = "Telefono";
             this.txtTelefonoAnterior.LeadingIcon = null;
             this.txtTelefonoAnterior.Location = new System.Drawing.Point(354, 188);
@@ -417,11 +417,11 @@ namespace UI.Desktop
             // txtEstado
             // 
             this.txtEstado.AnimateReadOnly = false;
-            this.txtEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtEstado.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtEstado.Depth = 0;
             this.txtEstado.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtEstado.Hint = "Estado";
             this.txtEstado.LeadingIcon = null;
             this.txtEstado.Location = new System.Drawing.Point(450, 28);
@@ -437,11 +437,11 @@ namespace UI.Desktop
             // txtCuitClienteAnterior
             // 
             this.txtCuitClienteAnterior.AnimateReadOnly = false;
-            this.txtCuitClienteAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtCuitClienteAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtCuitClienteAnterior.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCuitClienteAnterior.Depth = 0;
             this.txtCuitClienteAnterior.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtCuitClienteAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtCuitClienteAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtCuitClienteAnterior.Hint = "Cuit";
             this.txtCuitClienteAnterior.LeadingIcon = null;
             this.txtCuitClienteAnterior.Location = new System.Drawing.Point(5, 188);
@@ -457,11 +457,11 @@ namespace UI.Desktop
             // txtOrdenItemAnterior
             // 
             this.txtOrdenItemAnterior.AnimateReadOnly = false;
-            this.txtOrdenItemAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtOrdenItemAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtOrdenItemAnterior.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtOrdenItemAnterior.Depth = 0;
             this.txtOrdenItemAnterior.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtOrdenItemAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtOrdenItemAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtOrdenItemAnterior.Hint = "Nro Item";
             this.txtOrdenItemAnterior.LeadingIcon = null;
             this.txtOrdenItemAnterior.Location = new System.Drawing.Point(354, 28);
@@ -477,11 +477,11 @@ namespace UI.Desktop
             // txtNroOrdenAnterior
             // 
             this.txtNroOrdenAnterior.AnimateReadOnly = false;
-            this.txtNroOrdenAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtNroOrdenAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtNroOrdenAnterior.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNroOrdenAnterior.Depth = 0;
             this.txtNroOrdenAnterior.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtNroOrdenAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtNroOrdenAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtNroOrdenAnterior.Hint = "Orden";
             this.txtNroOrdenAnterior.LeadingIcon = null;
             this.txtNroOrdenAnterior.Location = new System.Drawing.Point(5, 28);
@@ -497,10 +497,10 @@ namespace UI.Desktop
             // lblPedidoAnterior
             // 
             this.lblPedidoAnterior.AutoSize = true;
-            this.lblPedidoAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lblPedidoAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.lblPedidoAnterior.Depth = 0;
             this.lblPedidoAnterior.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblPedidoAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblPedidoAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblPedidoAnterior.Location = new System.Drawing.Point(668, 84);
             this.lblPedidoAnterior.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblPedidoAnterior.Name = "lblPedidoAnterior";
@@ -510,7 +510,7 @@ namespace UI.Desktop
             // 
             // materialCard2
             // 
-            this.materialCard2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.materialCard2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.materialCard2.Controls.Add(this.txtNombreApellidoEmpleadoSiguiente);
             this.materialCard2.Controls.Add(this.txtIDEmpleadoSiguiente);
             this.materialCard2.Controls.Add(this.materialLabel7);
@@ -525,7 +525,7 @@ namespace UI.Desktop
             this.materialCard2.Controls.Add(this.txtCuitClienteSiguiente);
             this.materialCard2.Controls.Add(this.txtNroOrdenSiguiente);
             this.materialCard2.Depth = 0;
-            this.materialCard2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialCard2.Location = new System.Drawing.Point(668, 391);
             this.materialCard2.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
@@ -537,11 +537,11 @@ namespace UI.Desktop
             // txtNombreApellidoEmpleadoSiguiente
             // 
             this.txtNombreApellidoEmpleadoSiguiente.AnimateReadOnly = false;
-            this.txtNombreApellidoEmpleadoSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtNombreApellidoEmpleadoSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtNombreApellidoEmpleadoSiguiente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNombreApellidoEmpleadoSiguiente.Depth = 0;
             this.txtNombreApellidoEmpleadoSiguiente.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtNombreApellidoEmpleadoSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtNombreApellidoEmpleadoSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtNombreApellidoEmpleadoSiguiente.Hint = "Nombre y Apellido";
             this.txtNombreApellidoEmpleadoSiguiente.LeadingIcon = null;
             this.txtNombreApellidoEmpleadoSiguiente.Location = new System.Drawing.Point(70, 106);
@@ -557,11 +557,11 @@ namespace UI.Desktop
             // txtIDEmpleadoSiguiente
             // 
             this.txtIDEmpleadoSiguiente.AnimateReadOnly = false;
-            this.txtIDEmpleadoSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtIDEmpleadoSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtIDEmpleadoSiguiente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtIDEmpleadoSiguiente.Depth = 0;
             this.txtIDEmpleadoSiguiente.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtIDEmpleadoSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtIDEmpleadoSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtIDEmpleadoSiguiente.Hint = "ID";
             this.txtIDEmpleadoSiguiente.LeadingIcon = null;
             this.txtIDEmpleadoSiguiente.Location = new System.Drawing.Point(5, 106);
@@ -577,10 +577,10 @@ namespace UI.Desktop
             // materialLabel7
             // 
             this.materialLabel7.AutoSize = true;
-            this.materialLabel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.materialLabel7.Depth = 0;
             this.materialLabel7.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel7.Location = new System.Drawing.Point(4, 84);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
@@ -591,10 +591,10 @@ namespace UI.Desktop
             // materialLabel6
             // 
             this.materialLabel6.AutoSize = true;
-            this.materialLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.materialLabel6.Depth = 0;
             this.materialLabel6.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel6.Location = new System.Drawing.Point(5, 6);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
@@ -605,11 +605,11 @@ namespace UI.Desktop
             // txtNombreApellidoRazonSocialSiguiente
             // 
             this.txtNombreApellidoRazonSocialSiguiente.AnimateReadOnly = false;
-            this.txtNombreApellidoRazonSocialSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtNombreApellidoRazonSocialSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtNombreApellidoRazonSocialSiguiente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNombreApellidoRazonSocialSiguiente.Depth = 0;
             this.txtNombreApellidoRazonSocialSiguiente.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtNombreApellidoRazonSocialSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtNombreApellidoRazonSocialSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtNombreApellidoRazonSocialSiguiente.Hint = "Nombre y Apellido / Razón Social";
             this.txtNombreApellidoRazonSocialSiguiente.LeadingIcon = null;
             this.txtNombreApellidoRazonSocialSiguiente.Location = new System.Drawing.Point(144, 181);
@@ -625,11 +625,11 @@ namespace UI.Desktop
             // txtServicioTipoPrendaSiguiente
             // 
             this.txtServicioTipoPrendaSiguiente.AnimateReadOnly = false;
-            this.txtServicioTipoPrendaSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtServicioTipoPrendaSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtServicioTipoPrendaSiguiente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtServicioTipoPrendaSiguiente.Depth = 0;
             this.txtServicioTipoPrendaSiguiente.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtServicioTipoPrendaSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtServicioTipoPrendaSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtServicioTipoPrendaSiguiente.Hint = "Servicio - Tipo de Prenda";
             this.txtServicioTipoPrendaSiguiente.LeadingIcon = null;
             this.txtServicioTipoPrendaSiguiente.Location = new System.Drawing.Point(79, 28);
@@ -645,10 +645,10 @@ namespace UI.Desktop
             // materialLabel2
             // 
             this.materialLabel2.AutoSize = true;
-            this.materialLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel2.Location = new System.Drawing.Point(4, 159);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
@@ -659,11 +659,11 @@ namespace UI.Desktop
             // txtDireccionSiguiente
             // 
             this.txtDireccionSiguiente.AnimateReadOnly = false;
-            this.txtDireccionSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtDireccionSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtDireccionSiguiente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDireccionSiguiente.Depth = 0;
             this.txtDireccionSiguiente.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtDireccionSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtDireccionSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtDireccionSiguiente.Hint = "Direccion";
             this.txtDireccionSiguiente.LeadingIcon = null;
             this.txtDireccionSiguiente.Location = new System.Drawing.Point(529, 181);
@@ -679,11 +679,11 @@ namespace UI.Desktop
             // txtEstadoSiguiente
             // 
             this.txtEstadoSiguiente.AnimateReadOnly = false;
-            this.txtEstadoSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtEstadoSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtEstadoSiguiente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtEstadoSiguiente.Depth = 0;
             this.txtEstadoSiguiente.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtEstadoSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtEstadoSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtEstadoSiguiente.Hint = "Estado";
             this.txtEstadoSiguiente.LeadingIcon = null;
             this.txtEstadoSiguiente.Location = new System.Drawing.Point(449, 28);
@@ -699,11 +699,11 @@ namespace UI.Desktop
             // txtTelefonoSiguiente
             // 
             this.txtTelefonoSiguiente.AnimateReadOnly = false;
-            this.txtTelefonoSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtTelefonoSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtTelefonoSiguiente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTelefonoSiguiente.Depth = 0;
             this.txtTelefonoSiguiente.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtTelefonoSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtTelefonoSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtTelefonoSiguiente.Hint = "Telefono";
             this.txtTelefonoSiguiente.LeadingIcon = null;
             this.txtTelefonoSiguiente.Location = new System.Drawing.Point(353, 182);
@@ -719,11 +719,11 @@ namespace UI.Desktop
             // txtOrdenItemSiguiente
             // 
             this.txtOrdenItemSiguiente.AnimateReadOnly = false;
-            this.txtOrdenItemSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtOrdenItemSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtOrdenItemSiguiente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtOrdenItemSiguiente.Depth = 0;
             this.txtOrdenItemSiguiente.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtOrdenItemSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtOrdenItemSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtOrdenItemSiguiente.Hint = "Nro Item";
             this.txtOrdenItemSiguiente.LeadingIcon = null;
             this.txtOrdenItemSiguiente.Location = new System.Drawing.Point(353, 28);
@@ -739,11 +739,11 @@ namespace UI.Desktop
             // txtCuitClienteSiguiente
             // 
             this.txtCuitClienteSiguiente.AnimateReadOnly = false;
-            this.txtCuitClienteSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtCuitClienteSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtCuitClienteSiguiente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCuitClienteSiguiente.Depth = 0;
             this.txtCuitClienteSiguiente.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtCuitClienteSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtCuitClienteSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtCuitClienteSiguiente.Hint = "Cuit";
             this.txtCuitClienteSiguiente.LeadingIcon = null;
             this.txtCuitClienteSiguiente.Location = new System.Drawing.Point(5, 181);
@@ -759,11 +759,11 @@ namespace UI.Desktop
             // txtNroOrdenSiguiente
             // 
             this.txtNroOrdenSiguiente.AnimateReadOnly = false;
-            this.txtNroOrdenSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtNroOrdenSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtNroOrdenSiguiente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNroOrdenSiguiente.Depth = 0;
             this.txtNroOrdenSiguiente.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtNroOrdenSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtNroOrdenSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtNroOrdenSiguiente.Hint = "Orden";
             this.txtNroOrdenSiguiente.LeadingIcon = null;
             this.txtNroOrdenSiguiente.Location = new System.Drawing.Point(5, 29);
@@ -779,10 +779,10 @@ namespace UI.Desktop
             // lblItemPosterior
             // 
             this.lblItemPosterior.AutoSize = true;
-            this.lblItemPosterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lblItemPosterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.lblItemPosterior.Depth = 0;
             this.lblItemPosterior.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblItemPosterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblItemPosterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblItemPosterior.Location = new System.Drawing.Point(668, 368);
             this.lblItemPosterior.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblItemPosterior.Name = "lblItemPosterior";
@@ -793,11 +793,11 @@ namespace UI.Desktop
             // txtNroOrden
             // 
             this.txtNroOrden.AnimateReadOnly = false;
-            this.txtNroOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtNroOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtNroOrden.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNroOrden.Depth = 0;
             this.txtNroOrden.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtNroOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtNroOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtNroOrden.Hint = "Nro Orden";
             this.txtNroOrden.LeadingIcon = null;
             this.txtNroOrden.Location = new System.Drawing.Point(219, 172);
@@ -813,10 +813,10 @@ namespace UI.Desktop
             // btnTrazarPedidos
             // 
             this.btnTrazarPedidos.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnTrazarPedidos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnTrazarPedidos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnTrazarPedidos.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnTrazarPedidos.Depth = 0;
-            this.btnTrazarPedidos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnTrazarPedidos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnTrazarPedidos.HighEmphasis = true;
             this.btnTrazarPedidos.Icon = null;
             this.btnTrazarPedidos.Location = new System.Drawing.Point(537, 640);
@@ -835,13 +835,13 @@ namespace UI.Desktop
             // listMaquinasItems
             // 
             this.listMaquinasItems.AutoSizeTable = false;
-            this.listMaquinasItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.listMaquinasItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.listMaquinasItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listMaquinasItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnMaquina,
             this.columnFechaHora});
             this.listMaquinasItems.Depth = 0;
-            this.listMaquinasItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listMaquinasItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listMaquinasItems.FullRowSelect = true;
             this.listMaquinasItems.HideSelection = false;
             this.listMaquinasItems.Location = new System.Drawing.Point(217, 467);
@@ -868,10 +868,10 @@ namespace UI.Desktop
             // btnVerServiciosRealizados
             // 
             this.btnVerServiciosRealizados.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnVerServiciosRealizados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnVerServiciosRealizados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnVerServiciosRealizados.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnVerServiciosRealizados.Depth = 0;
-            this.btnVerServiciosRealizados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnVerServiciosRealizados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnVerServiciosRealizados.HighEmphasis = true;
             this.btnVerServiciosRealizados.Icon = null;
             this.btnVerServiciosRealizados.Location = new System.Drawing.Point(525, 396);
@@ -890,10 +890,10 @@ namespace UI.Desktop
             // materialLabel3
             // 
             this.materialLabel3.AutoSize = true;
-            this.materialLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel3.Location = new System.Drawing.Point(219, 436);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
@@ -904,10 +904,10 @@ namespace UI.Desktop
             // materialLabel4
             // 
             this.materialLabel4.AutoSize = true;
-            this.materialLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel4.Location = new System.Drawing.Point(219, 225);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
@@ -918,10 +918,10 @@ namespace UI.Desktop
             // materialLabel5
             // 
             this.materialLabel5.AutoSize = true;
-            this.materialLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.materialLabel5.Depth = 0;
             this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel5.Location = new System.Drawing.Point(13, 150);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
@@ -932,10 +932,10 @@ namespace UI.Desktop
             // btnCerrar
             // 
             this.btnCerrar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnCerrar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnCerrar.Depth = 0;
-            this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
             this.btnCerrar.Location = new System.Drawing.Point(1265, 640);
@@ -954,11 +954,11 @@ namespace UI.Desktop
             // txtNombreApellidoRazonSocial
             // 
             this.txtNombreApellidoRazonSocial.AnimateReadOnly = false;
-            this.txtNombreApellidoRazonSocial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtNombreApellidoRazonSocial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtNombreApellidoRazonSocial.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNombreApellidoRazonSocial.Depth = 0;
             this.txtNombreApellidoRazonSocial.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtNombreApellidoRazonSocial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtNombreApellidoRazonSocial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtNombreApellidoRazonSocial.Hint = "Nombre y Apellido/ Razón Social";
             this.txtNombreApellidoRazonSocial.LeadingIcon = null;
             this.txtNombreApellidoRazonSocial.Location = new System.Drawing.Point(171, 84);
@@ -974,10 +974,10 @@ namespace UI.Desktop
             // btnBuscar
             // 
             this.btnBuscar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnBuscar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnBuscar.Depth = 0;
-            this.btnBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnBuscar.HighEmphasis = true;
             this.btnBuscar.Icon = null;
             this.btnBuscar.Location = new System.Drawing.Point(575, 97);
@@ -997,7 +997,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1378, 683);
+            this.ClientSize = new System.Drawing.Size(1394, 722);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtNombreApellidoRazonSocial);
             this.Controls.Add(this.btnCerrar);
@@ -1017,7 +1017,9 @@ namespace UI.Desktop
             this.Controls.Add(this.txtDireccion);
             this.Controls.Add(this.listOrdenesCliente);
             this.Controls.Add(this.txtCuit);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ObjetosPerdidosForm";
+            this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Objetos Perdidos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

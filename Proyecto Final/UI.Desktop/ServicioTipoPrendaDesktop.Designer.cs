@@ -71,7 +71,7 @@ namespace UI.Desktop
             // cmbServicios
             // 
             this.cmbServicios.AutoResize = false;
-            this.cmbServicios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.cmbServicios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.cmbServicios.Depth = 0;
             this.cmbServicios.DisplayMember = "Descripcion";
             this.cmbServicios.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
@@ -79,7 +79,7 @@ namespace UI.Desktop
             this.cmbServicios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbServicios.DropDownWidth = 121;
             this.cmbServicios.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cmbServicios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cmbServicios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cmbServicios.FormattingEnabled = true;
             this.cmbServicios.Hint = "Servicio";
             this.cmbServicios.IntegralHeight = false;
@@ -96,7 +96,7 @@ namespace UI.Desktop
             // cmbTipoPrendas
             // 
             this.cmbTipoPrendas.AutoResize = false;
-            this.cmbTipoPrendas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.cmbTipoPrendas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.cmbTipoPrendas.Depth = 0;
             this.cmbTipoPrendas.DisplayMember = "Descripcion";
             this.cmbTipoPrendas.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
@@ -104,7 +104,7 @@ namespace UI.Desktop
             this.cmbTipoPrendas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoPrendas.DropDownWidth = 121;
             this.cmbTipoPrendas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cmbTipoPrendas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cmbTipoPrendas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cmbTipoPrendas.FormattingEnabled = true;
             this.cmbTipoPrendas.Hint = "Tipo de prenda";
             this.cmbTipoPrendas.IntegralHeight = false;
@@ -121,10 +121,10 @@ namespace UI.Desktop
             // btnAceptar
             // 
             this.btnAceptar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnAceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnAceptar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnAceptar.Depth = 0;
-            this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAceptar.HighEmphasis = true;
             this.btnAceptar.Icon = null;
             this.btnAceptar.Location = new System.Drawing.Point(391, 543);
@@ -143,10 +143,10 @@ namespace UI.Desktop
             // btnCancelar
             // 
             this.btnCancelar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnCancelar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnCancelar.Depth = 0;
-            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
             this.btnCancelar.Location = new System.Drawing.Point(493, 543);
@@ -165,11 +165,11 @@ namespace UI.Desktop
             // lblTiempoRequerido
             // 
             this.lblTiempoRequerido.AutoSize = true;
-            this.lblTiempoRequerido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lblTiempoRequerido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.lblTiempoRequerido.Depth = 0;
             this.lblTiempoRequerido.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblTiempoRequerido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblTiempoRequerido.Location = new System.Drawing.Point(20, 218);
+            this.lblTiempoRequerido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblTiempoRequerido.Location = new System.Drawing.Point(20, 223);
             this.lblTiempoRequerido.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblTiempoRequerido.Name = "lblTiempoRequerido";
             this.lblTiempoRequerido.Size = new System.Drawing.Size(133, 19);
@@ -179,11 +179,11 @@ namespace UI.Desktop
             // lblHoras
             // 
             this.lblHoras.AutoSize = true;
-            this.lblHoras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lblHoras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.lblHoras.Depth = 0;
             this.lblHoras.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblHoras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblHoras.Location = new System.Drawing.Point(163, 220);
+            this.lblHoras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblHoras.Location = new System.Drawing.Point(159, 223);
             this.lblHoras.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblHoras.Name = "lblHoras";
             this.lblHoras.Size = new System.Drawing.Size(47, 19);
@@ -193,11 +193,11 @@ namespace UI.Desktop
             // lblMinutos
             // 
             this.lblMinutos.AutoSize = true;
-            this.lblMinutos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lblMinutos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.lblMinutos.Depth = 0;
             this.lblMinutos.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblMinutos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblMinutos.Location = new System.Drawing.Point(265, 220);
+            this.lblMinutos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblMinutos.Location = new System.Drawing.Point(261, 223);
             this.lblMinutos.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblMinutos.Name = "lblMinutos";
             this.lblMinutos.Size = new System.Drawing.Size(63, 19);
@@ -206,10 +206,10 @@ namespace UI.Desktop
             // 
             // nudHoras
             // 
-            this.nudHoras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.nudHoras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.nudHoras.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.nudHoras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.nudHoras.Location = new System.Drawing.Point(216, 218);
+            this.nudHoras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.nudHoras.Location = new System.Drawing.Point(212, 218);
             this.nudHoras.Maximum = new decimal(new int[] {
             23,
             0,
@@ -221,10 +221,10 @@ namespace UI.Desktop
             // 
             // nudMinutos
             // 
-            this.nudMinutos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.nudMinutos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.nudMinutos.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.nudMinutos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.nudMinutos.Location = new System.Drawing.Point(334, 218);
+            this.nudMinutos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.nudMinutos.Location = new System.Drawing.Point(330, 218);
             this.nudMinutos.Maximum = new decimal(new int[] {
             59,
             0,
@@ -237,11 +237,11 @@ namespace UI.Desktop
             // txtPrecio
             // 
             this.txtPrecio.AnimateReadOnly = false;
-            this.txtPrecio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtPrecio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtPrecio.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPrecio.Depth = 0;
             this.txtPrecio.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtPrecio.Hint = "Precio";
             this.txtPrecio.LeadingIcon = null;
             this.txtPrecio.Location = new System.Drawing.Point(71, 150);
@@ -256,7 +256,7 @@ namespace UI.Desktop
             // 
             // materialCard1
             // 
-            this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.materialCard1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.materialCard1.Controls.Add(this.lblConsumo);
             this.materialCard1.Controls.Add(this.btnEliminarConsumo);
@@ -266,7 +266,7 @@ namespace UI.Desktop
             this.materialCard1.Controls.Add(this.txtCantidad);
             this.materialCard1.Controls.Add(this.cmbInsumos);
             this.materialCard1.Depth = 0;
-            this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialCard1.Location = new System.Drawing.Point(10, 307);
             this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -278,10 +278,10 @@ namespace UI.Desktop
             // lblConsumo
             // 
             this.lblConsumo.AutoSize = true;
-            this.lblConsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lblConsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.lblConsumo.Depth = 0;
             this.lblConsumo.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblConsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblConsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblConsumo.Location = new System.Drawing.Point(13, 8);
             this.lblConsumo.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblConsumo.Name = "lblConsumo";
@@ -292,10 +292,10 @@ namespace UI.Desktop
             // btnEliminarConsumo
             // 
             this.btnEliminarConsumo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEliminarConsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnEliminarConsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnEliminarConsumo.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnEliminarConsumo.Depth = 0;
-            this.btnEliminarConsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnEliminarConsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEliminarConsumo.HighEmphasis = true;
             this.btnEliminarConsumo.Icon = null;
             this.btnEliminarConsumo.Location = new System.Drawing.Point(482, 137);
@@ -314,10 +314,10 @@ namespace UI.Desktop
             // btnAgregarConsumo
             // 
             this.btnAgregarConsumo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAgregarConsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnAgregarConsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnAgregarConsumo.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnAgregarConsumo.Depth = 0;
-            this.btnAgregarConsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnAgregarConsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregarConsumo.HighEmphasis = true;
             this.btnAgregarConsumo.Icon = null;
             this.btnAgregarConsumo.Location = new System.Drawing.Point(482, 89);
@@ -336,14 +336,14 @@ namespace UI.Desktop
             // cmbUnidadMedida
             // 
             this.cmbUnidadMedida.AutoResize = false;
-            this.cmbUnidadMedida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.cmbUnidadMedida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.cmbUnidadMedida.Depth = 0;
             this.cmbUnidadMedida.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.cmbUnidadMedida.DropDownHeight = 174;
             this.cmbUnidadMedida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUnidadMedida.DropDownWidth = 121;
             this.cmbUnidadMedida.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cmbUnidadMedida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cmbUnidadMedida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cmbUnidadMedida.FormattingEnabled = true;
             this.cmbUnidadMedida.Hint = "Unidad de medida";
             this.cmbUnidadMedida.IntegralHeight = false;
@@ -359,7 +359,7 @@ namespace UI.Desktop
             // listConsumos
             // 
             this.listConsumos.AutoSizeTable = false;
-            this.listConsumos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.listConsumos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.listConsumos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listConsumos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnNro,
@@ -367,7 +367,7 @@ namespace UI.Desktop
             this.columnCantidad,
             this.columnUnidad});
             this.listConsumos.Depth = 0;
-            this.listConsumos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listConsumos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listConsumos.FullRowSelect = true;
             this.listConsumos.HideSelection = false;
             this.listConsumos.Location = new System.Drawing.Point(13, 89);
@@ -404,11 +404,11 @@ namespace UI.Desktop
             // txtCantidad
             // 
             this.txtCantidad.AnimateReadOnly = false;
-            this.txtCantidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtCantidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtCantidad.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCantidad.Depth = 0;
             this.txtCantidad.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtCantidad.Hint = "Cantidad";
             this.txtCantidad.LeadingIcon = null;
             this.txtCantidad.Location = new System.Drawing.Point(223, 32);
@@ -424,7 +424,7 @@ namespace UI.Desktop
             // cmbInsumos
             // 
             this.cmbInsumos.AutoResize = false;
-            this.cmbInsumos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.cmbInsumos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.cmbInsumos.Depth = 0;
             this.cmbInsumos.DisplayMember = "Descripcion";
             this.cmbInsumos.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
@@ -432,7 +432,7 @@ namespace UI.Desktop
             this.cmbInsumos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbInsumos.DropDownWidth = 121;
             this.cmbInsumos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cmbInsumos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cmbInsumos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cmbInsumos.FormattingEnabled = true;
             this.cmbInsumos.Hint = "Insumos";
             this.cmbInsumos.IntegralHeight = false;
@@ -450,14 +450,14 @@ namespace UI.Desktop
             // materialComboBox1
             // 
             this.materialComboBox1.AutoResize = false;
-            this.materialComboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialComboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.materialComboBox1.Depth = 0;
             this.materialComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.materialComboBox1.DropDownHeight = 174;
             this.materialComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.materialComboBox1.DropDownWidth = 121;
             this.materialComboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.materialComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialComboBox1.FormattingEnabled = true;
             this.materialComboBox1.Hint = "Prioridad";
             this.materialComboBox1.IntegralHeight = false;
@@ -472,9 +472,9 @@ namespace UI.Desktop
             // 
             // nudMinutos2
             // 
-            this.nudMinutos2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.nudMinutos2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.nudMinutos2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.nudMinutos2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.nudMinutos2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.nudMinutos2.Location = new System.Drawing.Point(334, 272);
             this.nudMinutos2.Maximum = new decimal(new int[] {
             59,
@@ -487,9 +487,9 @@ namespace UI.Desktop
             // 
             // nudHoras2
             // 
-            this.nudHoras2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.nudHoras2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.nudHoras2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.nudHoras2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.nudHoras2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.nudHoras2.Location = new System.Drawing.Point(216, 272);
             this.nudHoras2.Maximum = new decimal(new int[] {
             23,
@@ -503,10 +503,10 @@ namespace UI.Desktop
             // lblMinutos2
             // 
             this.lblMinutos2.AutoSize = true;
-            this.lblMinutos2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lblMinutos2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.lblMinutos2.Depth = 0;
             this.lblMinutos2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblMinutos2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblMinutos2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblMinutos2.Location = new System.Drawing.Point(265, 274);
             this.lblMinutos2.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblMinutos2.Name = "lblMinutos2";
@@ -517,10 +517,10 @@ namespace UI.Desktop
             // lblHoras2
             // 
             this.lblHoras2.AutoSize = true;
-            this.lblHoras2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lblHoras2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.lblHoras2.Depth = 0;
             this.lblHoras2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblHoras2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblHoras2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblHoras2.Location = new System.Drawing.Point(163, 274);
             this.lblHoras2.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblHoras2.Name = "lblHoras2";
@@ -531,22 +531,22 @@ namespace UI.Desktop
             // lblPlazoMaximo
             // 
             this.lblPlazoMaximo.AutoSize = true;
-            this.lblPlazoMaximo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lblPlazoMaximo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.lblPlazoMaximo.Depth = 0;
             this.lblPlazoMaximo.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblPlazoMaximo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblPlazoMaximo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblPlazoMaximo.Location = new System.Drawing.Point(20, 250);
             this.lblPlazoMaximo.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblPlazoMaximo.Name = "lblPlazoMaximo";
             this.lblPlazoMaximo.Size = new System.Drawing.Size(346, 19);
             this.lblPlazoMaximo.TabIndex = 18;
-            this.lblPlazoMaximo.Text = "Plazo maximo de espera para atender el servicio:";
+            this.lblPlazoMaximo.Text = "Plazo máximo de espera para atender el servicio:";
             // 
             // nudDias
             // 
-            this.nudDias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.nudDias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.nudDias.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.nudDias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.nudDias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.nudDias.Location = new System.Drawing.Point(110, 272);
             this.nudDias.Maximum = new decimal(new int[] {
             23,
@@ -560,24 +560,24 @@ namespace UI.Desktop
             // lblDias
             // 
             this.lblDias.AutoSize = true;
-            this.lblDias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lblDias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.lblDias.Depth = 0;
             this.lblDias.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblDias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblDias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblDias.Location = new System.Drawing.Point(67, 274);
             this.lblDias.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblDias.Name = "lblDias";
             this.lblDias.Size = new System.Drawing.Size(37, 19);
             this.lblDias.TabIndex = 23;
-            this.lblDias.Text = "Dias:";
+            this.lblDias.Text = "Días:";
             // 
             // materialLabel1
             // 
             this.materialLabel1.AutoSize = true;
-            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel1.Location = new System.Drawing.Point(20, 167);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
@@ -589,7 +589,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 589);
+            this.ClientSize = new System.Drawing.Size(620, 605);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.nudDias);
             this.Controls.Add(this.lblDias);
@@ -610,7 +610,11 @@ namespace UI.Desktop
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.cmbTipoPrendas);
             this.Controls.Add(this.cmbServicios);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
             this.Name = "ServicioTipoPrendaDesktop";
+            this.Sizable = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Servicio-TipoPrenda";
             ((System.ComponentModel.ISupportInitialize)(this.nudHoras)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMinutos)).EndInit();

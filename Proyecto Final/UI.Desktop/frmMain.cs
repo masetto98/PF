@@ -135,7 +135,6 @@ namespace UI.Desktop
                 item.SubItems.Add(c.Cuit);
                 item.SubItems.Add(c.Nombre);
                 item.SubItems.Add(c.Apellido);
-                item.SubItems.Add(c.Direccion);
                 item.SubItems.Add(c.RazonSocial);
                 listClientes.Items.Add(item);
                 CargarOrdenes();
@@ -952,7 +951,23 @@ namespace UI.Desktop
             ListarEstadoMaquinas();
             ListarTrabajosEnProceso();
         }
+        private void listEstadoMaquinas_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listEstadoMaquinas.Columns[e.ColumnIndex].Width;
+        }
 
+        private void listTrabajosPendientes_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listTrabajosPendientes.Columns[e.ColumnIndex].Width;
+        }
+
+        private void listMaquinasItem_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listMaquinasItem.Columns[e.ColumnIndex].Width;
+        }
         #region ------- TRABAJOS PENDIENTES -------
 
         private void CargarListaEspera()
@@ -992,11 +1007,13 @@ namespace UI.Desktop
 
         private void ColorCeldaListView()
         {
+           
             for (int i = 0; i <= listTrabajosPendientes.Items.Count - 1; i++)
             {
                 if (listTrabajosPendientes.Items[i].SubItems[4].Text == OrdenServicioTipoPrenda.Estados.Iniciado.ToString())
                 {
-                    listTrabajosPendientes.Items[i].BackColor = Color.Green;
+                    listTrabajosPendientes.Items[i].UseItemStyleForSubItems = false;
+                    listTrabajosPendientes.Items[i].SubItems[4].ForeColor = System.Drawing.Color.Green;
                 }
                 else { listTrabajosPendientes.Items[i].BackColor = Color.White; }
             }

@@ -83,6 +83,16 @@ namespace UI.Desktop.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _3706883_control_music_pause_stop_stop_music_108702 {
+            get {
+                object obj = ResourceManager.GetObject("3706883-control-music-pause-stop-stop-music_108702", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap addthelist_añadir_3477 {
             get {
                 object obj = ResourceManager.GetObject("addthelist_añadir_3477", resourceCulture);
@@ -129,6 +139,16 @@ namespace UI.Desktop.Properties {
         internal static string comprobanteorden2 {
             get {
                 return ResourceManager.GetString("comprobanteorden2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap document_3530 {
+            get {
+                object obj = ResourceManager.GetObject("document_3530", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -187,6 +207,36 @@ namespace UI.Desktop.Properties {
         internal static System.Drawing.Bitmap off_log_icon_214125 {
             get {
                 object obj = ResourceManager.GetObject("off_log_icon_214125", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap play_circle_icon_icons_com_69988 {
+            get {
+                object obj = ResourceManager.GetObject("play-circle_icon-icons.com_69988", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap play_circle_icon_icons1 {
+            get {
+                object obj = ResourceManager.GetObject("play-circle_icon-icons1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap playwithcircularbuttonwithrightarrowofboldroundedfilledtriangle_80162 {
+            get {
+                object obj = ResourceManager.GetObject("playwithcircularbuttonwithrightarrowofboldroundedfilledtriangle_80162", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -257,6 +307,16 @@ namespace UI.Desktop.Properties {
         internal static System.Drawing.Bitmap searcher_magnifyng_glass_search_locate_find_icon_123813 {
             get {
                 object obj = ResourceManager.GetObject("searcher_magnifyng_glass_search_locate_find_icon_123813", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap stop_button_icon_icons_com_71563 {
+            get {
+                object obj = ResourceManager.GetObject("stop-button_icon-icons.com_71563", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

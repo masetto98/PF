@@ -42,7 +42,8 @@ namespace Data.Database
                 return _context.OrdenesServiciosTipoPrendas
                     .Include(i => i.Orden)
                     .Include(i => i.ServicioTipoPrenda)
-                        .ThenInclude(stp => stp.Servicio)
+                        .ThenInclude(stp => stp.InsumoServicioTipoPrenda)
+                            .ThenInclude(stp => stp.Insumo)
                     .Include(i => i.ServicioTipoPrenda)
                         .ThenInclude(stp => stp.TipoPrenda)
                     .FirstOrDefault(o => o.NroOrden == nroOrden && o.IdServicio==idServicio && o.IdTipoPrenda==idTipoPrenda && o.OrdenItem==ordenItem);
