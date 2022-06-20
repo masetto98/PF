@@ -117,7 +117,7 @@ namespace Data.Database
         {
             try
             {
-                var consulta = from items in GetAll() where items.Estado == OrdenServicioTipoPrenda.Estados.Pendiente || items.Estado == OrdenServicioTipoPrenda.Estados.Iniciado
+                var consulta = from items in GetAll() where items.Estado != OrdenServicioTipoPrenda.Estados.Finalizado
                                orderby items.Orden.FechaEntrada descending
                                select items;
                                

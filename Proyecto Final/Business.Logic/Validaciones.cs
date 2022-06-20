@@ -240,4 +240,14 @@ namespace Business.Logic
         }
     }
 
+    public class GastoValidator : AbstractValidator<Gasto>
+    {
+        public GastoValidator()
+        {
+            RuleFor(x => x.TipoGasto).NotEmpty();
+            RuleFor(x => x.Importe).NotNull();
+            RuleFor(x => x.Descripcion).NotNull().MaximumLength(200);
+        }
+    }
+
 }

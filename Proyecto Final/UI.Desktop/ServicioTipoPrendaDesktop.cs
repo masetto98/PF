@@ -26,7 +26,7 @@ namespace UI.Desktop
         private readonly ServicioLogic _servicioLogic;
         private readonly TipoPrendaLogic _tipoPrendaLogic;
         private readonly InsumoLogic _insumoLogic;
-        private readonly InsumoServicioTipoPrendaLogic _insumoServicioTipoPrendaLogic;
+        
         public List<String> _unidadesMedida;
 
         public ServicioTipoPrendaDesktop(LavanderiaContext context)
@@ -36,7 +36,7 @@ namespace UI.Desktop
             _servicioLogic = new ServicioLogic(new ServicioAdapter(context));
             _tipoPrendaLogic = new TipoPrendaLogic(new TipoPrendaAdapter(context));
             _insumoLogic = new InsumoLogic(new InsumoAdapter(context));
-            _insumoServicioTipoPrendaLogic = new InsumoServicioTipoPrendaLogic(new InsumoServicioTipoPrendaAdapter(context));
+            
             _consumos = new List<InsumoServicioTipoPrenda>();
             _unidadesMedida = new List<string>();
 
@@ -66,6 +66,15 @@ namespace UI.Desktop
         public ServicioTipoPrendaDesktop(int idServicio,int IdTipoPrenda, ModoForm modo, LavanderiaContext context) : this(context)
         {
             Modos = modo;
+            List<Servicio> servicios = _servicioLogic.GetAll();
+            List<TipoPrenda> tipoPrendas = _tipoPrendaLogic.GetAll();
+            List<Insumo> insumos = _insumoLogic.GetAll();
+            this.cmbServicios.DataSource = servicios;
+            this.cmbServicios.SelectedIndex = 0;
+            this.cmbTipoPrendas.DataSource = tipoPrendas;
+            this.cmbTipoPrendas.SelectedIndex = 0;
+            this.cmbInsumos.DataSource = insumos;
+            this.cmbInsumos.SelectedIndex = 0;
             try
             {
                 ServicioTipoPrendaActual = _servicioTipoPrendaLogic.GetOne(idServicio,IdTipoPrenda);
@@ -90,8 +99,12 @@ namespace UI.Desktop
             this.nudDias.Value = TiempoMax.Days;
             this.nudHoras2.Value = TiempoMax.Hours;
             this.nudMinutos2.Value = TiempoMax.Minutes;
-            
             this.txtPrecio.Text = PrecioActual.Valor.ToString();
+            if (ServicioTipoPrendaActual.InsumoServicioTipoPrenda is not null)
+            {
+                _consumos = ServicioTipoPrendaActual.InsumoServicioTipoPrenda;
+                ListarConsumos();
+            }
             try
             { 
                 List<Servicio> servicios = _servicioLogic.GetAll();
@@ -100,8 +113,6 @@ namespace UI.Desktop
                 this.cmbTipoPrendas.DataSource = tipoPrendas;
                 this.cmbServicios.SelectedIndex = cmbServicios.FindStringExact(ServicioTipoPrendaActual.Servicio.Descripcion);
                 this.cmbTipoPrendas.SelectedIndex = cmbTipoPrendas.FindStringExact(ServicioTipoPrendaActual.TipoPrenda.Descripcion);
-                _consumos = ServicioTipoPrendaActual.InsumoServicioTipoPrenda;
-                ListarConsumos();
             }
             catch (Exception e)
             {
@@ -161,7 +172,8 @@ namespace UI.Desktop
                 precioActual.FechaDesde = DateTime.Today;
                 ServicioTipoPrendaActual.HistoricoPrecios = new List<Precio>();
                 ServicioTipoPrendaActual.HistoricoPrecios.Add(precioActual);
-
+                ServicioTipoPrendaActual.InsumoServicioTipoPrenda = _consumos;
+                
             }
             if (Modos == ModoForm.Modificacion)
             {
@@ -178,6 +190,7 @@ namespace UI.Desktop
                     nuevoPrecio.FechaDesde = DateTime.Today;
                     ServicioTipoPrendaActual.HistoricoPrecios.Add(nuevoPrecio);
                 }
+                ServicioTipoPrendaActual.InsumoServicioTipoPrenda = _consumos;
             }
             switch (Modos)
             {
@@ -273,13 +286,30 @@ namespace UI.Desktop
                 Validaciones.ValidarNumeroEnteroDecimal(this.txtCantidad.Text);
                 consumoActual.Cantidad = ConvertirUnidadesConsumo(Int32.Parse(this.txtCantidad.Text));
                 consumoActual.FechaDesde = DateTime.Now;
-                _consumos.Add(consumoActual);
+                if (ValidarExistencia())
+                {
+                    _consumos.Add(consumoActual);
+                }
                 ListarConsumos();
             }
             catch (Exception f) 
             {
                 MessageBox.Show(f.Message, "Servicio-TipoPrenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private bool ValidarExistencia() 
+        {   InsumoServicioTipoPrenda insumo = _consumos.Find(delegate (InsumoServicioTipoPrenda istp)
+            {
+                return istp.Insumo.IdInsumo == InsumoActual.IdInsumo;
+            });
+            if (insumo is not null)
+            {
+                MessageBox.Show("El insumo seleccionado ya se encuentra incluido, si desea modificarlo entoces debe eliminarlo y agregarlo con los nuevos valores");
+                return false;
+            }
+            else { return true; }
+            
         }
         #region ------- UNIDADES DE MEDIDA -------
         private void SetearMedidas(int unidad) 
@@ -314,15 +344,10 @@ namespace UI.Desktop
         {
             if (listConsumos.SelectedItems.Count > 0)
             {
-                var _itemDelete = _consumos.FindLast(
+                var _itemDelete = _consumos.Find(
                     delegate (InsumoServicioTipoPrenda item)
                     {
-                        return
-                            item.ServicioTipoPrenda.Servicio.IdServicio == (int)this.cmbServicios.SelectedValue
-                            &&
-                            item.ServicioTipoPrenda.TipoPrenda.IdTipoPrenda == (int)this.cmbTipoPrendas.SelectedValue
-                            &&
-                            item.Insumo.IdInsumo == (int)this.cmbInsumos.SelectedValue;
+                        return item.Insumo.Descripcion == listConsumos.SelectedItems[0].SubItems[1].Text;
                     }
                 );
                 _consumos.Remove(_itemDelete);

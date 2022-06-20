@@ -130,6 +130,10 @@ namespace UI.Desktop
                     TrabajoActual.Empleado = Singleton.getInstance().EmpleadoLogged;
                     OrdenServicioTipoPrendaActual.MaquinaOrdenServicioTipoPrenda.Add(TrabajoActual);
                     OrdenServicioTipoPrendaActual.Estado = OrdenServicioTipoPrenda.Estados.Procesando;
+                    if (OrdenServicioTipoPrendaActual.Orden.Estado == Orden.Estados.Pendiente)
+                    {
+                        OrdenServicioTipoPrendaActual.Orden.Estado = Orden.Estados.Procesando;
+                    }
                 }
                 if (Modos == ModoForm.Modificacion)
                 {
@@ -171,6 +175,8 @@ namespace UI.Desktop
                 return false;
             }
         }
+
+        
 
         public override void GuardarCambios()
         {
