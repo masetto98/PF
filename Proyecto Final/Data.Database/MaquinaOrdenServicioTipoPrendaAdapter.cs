@@ -28,6 +28,8 @@ namespace Data.Database
                     .Include(i => i.OrdenServicioTipoPrenda)
                         .ThenInclude(o => o.ServicioTipoPrenda)
                             .ThenInclude(st => st.TipoPrenda)
+                    .Include(i => i.OrdenServicioTipoPrenda)
+                        .ThenInclude(o => o.Orden)
                     .Include(i => i.Empleado)
                     .ToList();
             }

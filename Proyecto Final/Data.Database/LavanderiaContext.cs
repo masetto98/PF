@@ -42,20 +42,8 @@ namespace Data.Database
             modelBuilder.Entity<Insumo>()
                 .ToTable("insumos");
 
-            /*
-            modelBuilder.Entity<Insumo>()
-                .HasMany(i => i.InsumosProveedores)
-                .WithOne(ip => ip.Insumo)
-                .HasForeignKey(i => new { i.IdProveedor,i.IdInsumo,i.FechaIngreso })
-                .OnDelete(DeleteBehavior.NoAction);
-            */
-            /*
-            modelBuilder.Entity<Insumo>()
-                .HasMany(i => i.InsumoServicioTipoPrenda)
-                .WithOne()
-                //.HasForeignKey(i => new {i.IdInsumo,i.IdServicio,i.IdTipoPrenda })
-                .OnDelete(DeleteBehavior.NoAction);
-            */
+            modelBuilder.Entity<Gasto>()
+                .ToTable("gastos");
 
             modelBuilder.Entity<InsumoProveedor>()
                 .HasOne(ip => ip.Proveedor)
@@ -206,6 +194,7 @@ namespace Data.Database
         public DbSet<ServicioTipoPrenda>? ServiciosTipoPrendas { get; set; }
         public DbSet<Usuario>? Usuarios { get; set; }
         public DbSet<AtributosNegocio> AtributosNegocio { get; set; }
+        public DbSet<Gasto>? Gastos { get; set; }
         public LavanderiaContext() {}
         public LavanderiaContext(DbContextOptions<LavanderiaContext> options) : base(options) {}
     }

@@ -61,6 +61,8 @@ namespace UI.Desktop
             //NegocioActual = _atributosNegocioLogic.GetOne(1);
             RellenarComboBox(listClientes, cmbBuscarCliente);
             RellenarComboBox(listOrdenes, cmbBuscarOrden);
+            RellenarComboBox(listInsumos, cmbInsumos);
+            RellenarComboBox(listTrabajosPendientes, cmbTrabajosPendientes);
             CargarOrdenes();
             Planificar();
         }
@@ -96,7 +98,7 @@ namespace UI.Desktop
                     tabControlInventario_SelectedIndexChanged(sender, e);
                     break;
                 case 3:
-                    ListarOrdenesTrabajosPrendientes();
+                    ListarOrdenesTrabajosPendientes();
                     break;
 
             }
@@ -665,6 +667,73 @@ namespace UI.Desktop
 
         }*/
 
+        private void txtBuscarInsumos_TextChanged(object sender, EventArgs e)
+        {
+            listInsumos.Items.Clear();
+            List<Insumo> insumos = _insumoLogic.GetAll();
+            if (this.cmbInsumos.SelectedItem.ToString() == "ID")
+            {
+                foreach (Insumo i in insumos)
+                {
+                    if (i.IdInsumo.ToString().ToLower().Contains(this.txtBuscarInsumos.Text.ToLower()))
+                    {
+                        ListViewItem item = new ListViewItem(i.IdInsumo.ToString());
+                        item.SubItems.Add(i.Descripcion);
+                        item.SubItems.Add(i.Stock.ToString());
+                        item.SubItems.Add(i.UnidadMedida.ToString());
+                        listInsumos.Items.Add(item);
+                    }
+                }
+                
+            }
+            if (this.cmbInsumos.SelectedItem.ToString() == "Descripción")
+            {
+                foreach (Insumo i in insumos)
+                {
+                    if (i.Descripcion.ToLower().Contains(this.txtBuscarInsumos.Text.ToLower()))
+                    {
+                        ListViewItem item = new ListViewItem(i.IdInsumo.ToString());
+                        item.SubItems.Add(i.Descripcion);
+                        item.SubItems.Add(i.Stock.ToString());
+                        item.SubItems.Add(i.UnidadMedida.ToString());
+                        listInsumos.Items.Add(item);
+                    }
+                }
+
+            }
+            if (this.cmbInsumos.SelectedItem.ToString() == "Stock")
+            {
+                foreach (Insumo i in insumos)
+                {
+                    if (i.Stock.ToString().ToLower().Contains(this.txtBuscarInsumos.Text.ToLower()))
+                    {
+                        ListViewItem item = new ListViewItem(i.IdInsumo.ToString());
+                        item.SubItems.Add(i.Descripcion);
+                        item.SubItems.Add(i.Stock.ToString());
+                        item.SubItems.Add(i.UnidadMedida.ToString());
+                        listInsumos.Items.Add(item);
+                    }
+                }
+
+            }
+            if (this.cmbInsumos.SelectedItem.ToString() == "Unidad")
+            {
+                foreach (Insumo i in insumos)
+                {
+                    if (i.UnidadMedida.ToString().ToLower().Contains(this.txtBuscarInsumos.Text.ToLower()))
+                    {
+                        ListViewItem item = new ListViewItem(i.IdInsumo.ToString());
+                        item.SubItems.Add(i.Descripcion);
+                        item.SubItems.Add(i.Stock.ToString());
+                        item.SubItems.Add(i.UnidadMedida.ToString());
+                        listInsumos.Items.Add(item);
+                    }
+                }
+
+            }
+            if (this.txtBuscarInsumos.Text == "") { ListarStock();}
+        }
+
         private void listIngresos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             e.Cancel = true;
@@ -682,11 +751,11 @@ namespace UI.Desktop
         }
         #endregion
 
-
         #region ------- ORDENES -------
         private void CargarOrdenes()
         {
             List<Orden> ordenes = _ordenLogic.GetAll();
+            ordenes.Sort((x, y) => y.NroOrden.CompareTo(x.NroOrden));
             listOrdenes.Items.Clear();
             foreach (Orden o in ordenes)
             {
@@ -987,7 +1056,7 @@ namespace UI.Desktop
             _listaEspera.Clear();
             _listaEspera = orderList;
         }
-        public void ListarOrdenesTrabajosPrendientes()
+        public void ListarOrdenesTrabajosPendientes()
         {
             listTrabajosPendientes.Items.Clear();
             foreach (ItemTrabajo i in _listaEspera)
@@ -1094,10 +1163,9 @@ namespace UI.Desktop
                 frmTrabajos.ShowDialog();
             }
             Planificar();
-            ListarOrdenesTrabajosPrendientes();
+            ListarOrdenesTrabajosPendientes();
             ListarTrabajosEnProceso();
             ListarEstadoMaquinas();
-
         }
 
         private void btnFinalizarTrabajo_Click_1(object sender, EventArgs e)
@@ -1114,16 +1182,19 @@ namespace UI.Desktop
                                item.OrdenItem == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].SubItems[3].Text);
                     });
                     t.Estado = OrdenServicioTipoPrenda.Estados.Finalizado;
+                    if (ValidarFinalizacionOrden(t.NroOrden)) 
+                    {
+                        t.Orden.Estado = Orden.Estados.Finalizado;
+                    }
                     t.State = BusinessEntity.States.Modified;
                     _ordenServicioTipoPrendaLogic.Save(t);
-                    ValidarTerminacionOrden(t.NroOrden);
                 }
             }
             Planificar();
-            ListarOrdenesTrabajosPrendientes();
+            ListarOrdenesTrabajosPendientes();
 
         }
-
+        /*
         private void ValidarTerminacionOrden(int nroOrden)
         {
             Orden ordenActual = _ordenLogic.GetOne(nroOrden);
@@ -1135,6 +1206,137 @@ namespace UI.Desktop
                 ordenActual.State = BusinessEntity.States.Modified;
                 _ordenLogic.Save(ordenActual);
             }
+        }*/
+
+        private bool ValidarFinalizacionOrden(int nroOrden)
+        {
+            Orden ordenActual = _ordenLogic.GetOne(nroOrden);
+            if (ordenActual is not null)
+            {
+                if (ordenActual.ItemsPedidos is not null)
+                {
+                    OrdenServicioTipoPrenda ostp = ordenActual.ItemsPedidos.Find(delegate (OrdenServicioTipoPrenda o)
+                    {
+                        return o.Estado != OrdenServicioTipoPrenda.Estados.Finalizado;
+                    });
+                    if (ostp is null)
+                    {
+                        return true;
+                    }
+                    else { return false; }
+                }
+                else { return false; }
+            }
+            else { return false; }
+        }
+
+        private void txtBuscarTrabajosPendientes_TextChanged(object sender, EventArgs e)
+        {
+            listTrabajosPendientes.Items.Clear();
+            if (this.cmbTrabajosPendientes.SelectedItem.ToString() == "Orden")
+            {
+                foreach (ItemTrabajo i in _listaEspera)
+                {
+                    if (i.Trabajo.Orden.NroOrden.ToString().Contains(this.txtBuscarTrabajosPendientes.Text))
+                    {
+                        ListViewItem item = new ListViewItem(i.Trabajo.Orden.NroOrden.ToString());
+                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.Servicio.Descripcion);
+                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                        item.SubItems.Add(i.Trabajo.OrdenItem.ToString());
+                        item.SubItems.Add(i.Trabajo.Estado.ToString());
+                        item.SubItems.Add(i.Trabajo.Prioridad.ToString());
+                        item.SubItems.Add(i.TiempoRestante.ToString());
+                        listTrabajosPendientes.Items.Add(item);
+                    }
+                }
+
+            }
+            if (this.cmbTrabajosPendientes.SelectedItem.ToString() == "Servicio")
+            {
+                foreach (ItemTrabajo i in _listaEspera)
+                {
+                    if (i.Trabajo.ServicioTipoPrenda.Servicio.Descripcion.Contains(this.txtBuscarTrabajosPendientes.Text))
+                    {
+                        ListViewItem item = new ListViewItem(i.Trabajo.Orden.NroOrden.ToString());
+                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.Servicio.Descripcion);
+                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                        item.SubItems.Add(i.Trabajo.OrdenItem.ToString());
+                        item.SubItems.Add(i.Trabajo.Estado.ToString());
+                        item.SubItems.Add(i.Trabajo.Prioridad.ToString());
+                        item.SubItems.Add(i.TiempoRestante.ToString());
+                        listTrabajosPendientes.Items.Add(item);
+                    }
+                }
+            }
+            if (this.cmbTrabajosPendientes.SelectedItem.ToString() == "Tipo de Prenda")
+            {
+                foreach (ItemTrabajo i in _listaEspera)
+                {
+                    if (i.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion.Contains(this.txtBuscarTrabajosPendientes.Text))
+                    {
+                        ListViewItem item = new ListViewItem(i.Trabajo.Orden.NroOrden.ToString());
+                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.Servicio.Descripcion);
+                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                        item.SubItems.Add(i.Trabajo.OrdenItem.ToString());
+                        item.SubItems.Add(i.Trabajo.Estado.ToString());
+                        item.SubItems.Add(i.Trabajo.Prioridad.ToString());
+                        item.SubItems.Add(i.TiempoRestante.ToString());
+                        listTrabajosPendientes.Items.Add(item);
+                    }
+                }
+            }
+            if (this.cmbTrabajosPendientes.SelectedItem.ToString() == "Item")
+            {
+                foreach (ItemTrabajo i in _listaEspera)
+                {
+                    if (i.Trabajo.OrdenItem.ToString().Contains(this.txtBuscarTrabajosPendientes.Text))
+                    {
+                        ListViewItem item = new ListViewItem(i.Trabajo.Orden.NroOrden.ToString());
+                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.Servicio.Descripcion);
+                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                        item.SubItems.Add(i.Trabajo.OrdenItem.ToString());
+                        item.SubItems.Add(i.Trabajo.Estado.ToString());
+                        item.SubItems.Add(i.Trabajo.Prioridad.ToString());
+                        item.SubItems.Add(i.TiempoRestante.ToString());
+                        listTrabajosPendientes.Items.Add(item);
+                    }
+                }
+            }
+            if (this.cmbTrabajosPendientes.SelectedItem.ToString() == "Estado")
+            {
+                foreach (ItemTrabajo i in _listaEspera)
+                {
+                    if (i.Trabajo.Estado.ToString().Contains(this.txtBuscarTrabajosPendientes.Text))
+                    {
+                        ListViewItem item = new ListViewItem(i.Trabajo.Orden.NroOrden.ToString());
+                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.Servicio.Descripcion);
+                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                        item.SubItems.Add(i.Trabajo.OrdenItem.ToString());
+                        item.SubItems.Add(i.Trabajo.Estado.ToString());
+                        item.SubItems.Add(i.Trabajo.Prioridad.ToString());
+                        item.SubItems.Add(i.TiempoRestante.ToString());
+                        listTrabajosPendientes.Items.Add(item);
+                    }
+                }
+            }
+            if (this.cmbTrabajosPendientes.SelectedItem.ToString() == "Prioridad")
+            {
+                foreach (ItemTrabajo i in _listaEspera)
+                {
+                    if (i.Trabajo.Prioridad.ToString().Contains(this.txtBuscarTrabajosPendientes.Text))
+                    {
+                        ListViewItem item = new ListViewItem(i.Trabajo.Orden.NroOrden.ToString());
+                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.Servicio.Descripcion);
+                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                        item.SubItems.Add(i.Trabajo.OrdenItem.ToString());
+                        item.SubItems.Add(i.Trabajo.Estado.ToString());
+                        item.SubItems.Add(i.Trabajo.Prioridad.ToString());
+                        item.SubItems.Add(i.TiempoRestante.ToString());
+                        listTrabajosPendientes.Items.Add(item);
+                    }
+                }
+            }
+            if (this.txtBuscarTrabajosPendientes.Text == "") { ListarOrdenesTrabajosPendientes(); }
         }
 
         #endregion
@@ -1176,10 +1378,12 @@ namespace UI.Desktop
                     _maquinaOrdenServicioTipoPrendaLogic.Save(mostpActual);
                 }
             }
-            ListarOrdenesTrabajosPrendientes();
+            ListarOrdenesTrabajosPendientes();
             ListarTrabajosEnProceso();
             ListarEstadoMaquinas();
         }
+
+       
 
         #endregion
 
@@ -1252,14 +1456,21 @@ namespace UI.Desktop
             frmUsuarios.ShowDialog();
         }
 
+        private void btnCaja_Click(object sender, EventArgs e)
+        {
+            Caja frmCaja = new Caja(_context);
+            frmCaja.ShowDialog();
+        }
 
-
-
-
+        private void btnGastos_Click(object sender, EventArgs e)
+        {
+            Gastos frmGastos = new Gastos(_context);
+            frmGastos.ShowDialog();
+        }
 
         #endregion
 
-        
+
 
         private void btnReporte_Click(object sender, EventArgs e)
         {

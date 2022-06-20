@@ -26,6 +26,7 @@ namespace Data.Database
                     .Include(i => i.TipoPrenda)
                     .Include(i => i.ItemsPedidos)
                     .Include(i =>i.HistoricoPrecios)
+                    .Include(i =>i.InsumoServicioTipoPrenda)
                     .ToList();
             }
             catch (Exception e)
