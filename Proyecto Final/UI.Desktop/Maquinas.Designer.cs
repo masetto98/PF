@@ -57,13 +57,13 @@ namespace UI.Desktop
             // listMaquinas
             // 
             this.listMaquinas.AutoSizeTable = false;
-            this.listMaquinas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.listMaquinas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.listMaquinas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listMaquinas.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnID,
             this.columnDescripcion});
             this.listMaquinas.Depth = 0;
-            this.listMaquinas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listMaquinas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listMaquinas.FullRowSelect = true;
             this.listMaquinas.HideSelection = false;
             this.listMaquinas.Location = new System.Drawing.Point(19, 140);
@@ -89,10 +89,10 @@ namespace UI.Desktop
             // btnEditarMaquina
             // 
             this.btnEditarMaquina.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEditarMaquina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnEditarMaquina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnEditarMaquina.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnEditarMaquina.Depth = 0;
-            this.btnEditarMaquina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnEditarMaquina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEditarMaquina.HighEmphasis = true;
             this.btnEditarMaquina.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
             this.btnEditarMaquina.Location = new System.Drawing.Point(142, 95);
@@ -111,10 +111,10 @@ namespace UI.Desktop
             // btnEliminarMaquina
             // 
             this.btnEliminarMaquina.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEliminarMaquina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnEliminarMaquina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnEliminarMaquina.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnEliminarMaquina.Depth = 0;
-            this.btnEliminarMaquina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnEliminarMaquina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEliminarMaquina.HighEmphasis = true;
             this.btnEliminarMaquina.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
             this.btnEliminarMaquina.Location = new System.Drawing.Point(249, 95);
@@ -134,10 +134,10 @@ namespace UI.Desktop
             // 
             this.btnAgregarMaquina.AutoSize = false;
             this.btnAgregarMaquina.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAgregarMaquina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnAgregarMaquina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnAgregarMaquina.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnAgregarMaquina.Depth = 0;
-            this.btnAgregarMaquina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnAgregarMaquina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregarMaquina.HighEmphasis = true;
             this.btnAgregarMaquina.Icon = global::UI.Desktop.Properties.Resources.plus_icon_icons_com_70890;
             this.btnAgregarMaquina.Location = new System.Drawing.Point(19, 95);
@@ -156,14 +156,14 @@ namespace UI.Desktop
             // listMantenimientos
             // 
             this.listMantenimientos.AutoSizeTable = false;
-            this.listMantenimientos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.listMantenimientos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.listMantenimientos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listMantenimientos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnFechaRealizacion,
             this.columnDescripcion2,
             this.columnCosto});
             this.listMantenimientos.Depth = 0;
-            this.listMantenimientos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listMantenimientos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listMantenimientos.FullRowSelect = true;
             this.listMantenimientos.HideSelection = false;
             this.listMantenimientos.Location = new System.Drawing.Point(481, 322);
@@ -195,10 +195,10 @@ namespace UI.Desktop
             // btnDetalles
             // 
             this.btnDetalles.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnDetalles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnDetalles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnDetalles.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnDetalles.Depth = 0;
-            this.btnDetalles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnDetalles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDetalles.HighEmphasis = true;
             this.btnDetalles.Icon = null;
             this.btnDetalles.Location = new System.Drawing.Point(372, 140);
@@ -216,14 +216,14 @@ namespace UI.Desktop
             // 
             // materialCard1
             // 
-            this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.materialCard1.Controls.Add(this.lblMantenimientosRealizados);
             this.materialCard1.Controls.Add(this.lblOrdenesAtendidas);
             this.materialCard1.Controls.Add(this.materialLabel3);
             this.materialCard1.Controls.Add(this.materialLabel2);
             this.materialCard1.Controls.Add(this.materialLabel1);
             this.materialCard1.Depth = 0;
-            this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialCard1.Location = new System.Drawing.Point(481, 94);
             this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -235,10 +235,10 @@ namespace UI.Desktop
             // lblMantenimientosRealizados
             // 
             this.lblMantenimientosRealizados.AutoSize = true;
-            this.lblMantenimientosRealizados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lblMantenimientosRealizados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.lblMantenimientosRealizados.Depth = 0;
             this.lblMantenimientosRealizados.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblMantenimientosRealizados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblMantenimientosRealizados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblMantenimientosRealizados.Location = new System.Drawing.Point(302, 62);
             this.lblMantenimientosRealizados.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblMantenimientosRealizados.Name = "lblMantenimientosRealizados";
@@ -249,10 +249,10 @@ namespace UI.Desktop
             // lblOrdenesAtendidas
             // 
             this.lblOrdenesAtendidas.AutoSize = true;
-            this.lblOrdenesAtendidas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lblOrdenesAtendidas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.lblOrdenesAtendidas.Depth = 0;
             this.lblOrdenesAtendidas.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblOrdenesAtendidas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblOrdenesAtendidas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblOrdenesAtendidas.Location = new System.Drawing.Point(249, 32);
             this.lblOrdenesAtendidas.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblOrdenesAtendidas.Name = "lblOrdenesAtendidas";
@@ -263,10 +263,10 @@ namespace UI.Desktop
             // materialLabel3
             // 
             this.materialLabel3.AutoSize = true;
-            this.materialLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel3.Location = new System.Drawing.Point(9, 62);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
@@ -277,10 +277,10 @@ namespace UI.Desktop
             // materialLabel2
             // 
             this.materialLabel2.AutoSize = true;
-            this.materialLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel2.Location = new System.Drawing.Point(9, 32);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
@@ -291,10 +291,10 @@ namespace UI.Desktop
             // materialLabel1
             // 
             this.materialLabel1.AutoSize = true;
-            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel1.Location = new System.Drawing.Point(9, 9);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
@@ -306,10 +306,10 @@ namespace UI.Desktop
             // 
             this.btnEditarMantenimiento.AutoSize = false;
             this.btnEditarMantenimiento.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEditarMantenimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnEditarMantenimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnEditarMantenimiento.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnEditarMantenimiento.Depth = 0;
-            this.btnEditarMantenimiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnEditarMantenimiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEditarMantenimiento.HighEmphasis = true;
             this.btnEditarMantenimiento.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
             this.btnEditarMantenimiento.Location = new System.Drawing.Point(894, 370);
@@ -328,10 +328,10 @@ namespace UI.Desktop
             // btnEliminarMantenimiento
             // 
             this.btnEliminarMantenimiento.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEliminarMantenimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnEliminarMantenimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnEliminarMantenimiento.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnEliminarMantenimiento.Depth = 0;
-            this.btnEliminarMantenimiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnEliminarMantenimiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEliminarMantenimiento.HighEmphasis = true;
             this.btnEliminarMantenimiento.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
             this.btnEliminarMantenimiento.Location = new System.Drawing.Point(894, 418);
@@ -351,10 +351,10 @@ namespace UI.Desktop
             // 
             this.btnAgregarMantenimiento.AutoSize = false;
             this.btnAgregarMantenimiento.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAgregarMantenimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnAgregarMantenimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnAgregarMantenimiento.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnAgregarMantenimiento.Depth = 0;
-            this.btnAgregarMantenimiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnAgregarMantenimiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregarMantenimiento.HighEmphasis = true;
             this.btnAgregarMantenimiento.Icon = global::UI.Desktop.Properties.Resources.plus_icon_icons_com_70890;
             this.btnAgregarMantenimiento.Location = new System.Drawing.Point(894, 322);
@@ -373,10 +373,10 @@ namespace UI.Desktop
             // materialLabel4
             // 
             this.materialLabel4.AutoSize = true;
-            this.materialLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel4.Location = new System.Drawing.Point(481, 293);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
@@ -387,13 +387,13 @@ namespace UI.Desktop
             // btnCerrar
             // 
             this.btnCerrar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnCerrar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnCerrar.Depth = 0;
-            this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(933, 516);
+            this.btnCerrar.Location = new System.Drawing.Point(933, 526);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -410,7 +410,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1017, 561);
+            this.ClientSize = new System.Drawing.Size(1033, 600);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.materialLabel4);
             this.Controls.Add(this.btnEditarMantenimiento);
@@ -423,7 +423,11 @@ namespace UI.Desktop
             this.Controls.Add(this.btnEliminarMaquina);
             this.Controls.Add(this.btnAgregarMaquina);
             this.Controls.Add(this.listMaquinas);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
             this.Name = "Maquinas";
+            this.Sizable = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Maquinas";
             this.materialCard1.ResumeLayout(false);
             this.materialCard1.PerformLayout();

@@ -113,11 +113,19 @@ namespace UI.Desktop
             {
                 ListarItemsOrden(Int32.Parse(this.txtNroOrden.Text));
             }
+            else if(this.txtNroOrden.Text == "" && ClienteActual is null)
+            {
+                MessageBox.Show("Debe ingresar un número de orden o buscar un cliente a través de su cuit para poder observar los detalles", "Orden",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
             if (ClienteActual is not null)
             {
                 if (listOrdenesCliente.SelectedItems.Count > 0)
                 {
                     ListarItemsOrden(Int32.Parse(listOrdenesCliente.SelectedItems[0].Text));
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar una orden en la lista \"Ordenes del cliente\" para poder observar los detalles", "Orden", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             
@@ -127,25 +135,38 @@ namespace UI.Desktop
         {
             listMaquinasItems.Items.Clear();
             LimpiarItems();
-            if (OrdenActual.ItemsPedidos is not null)
+            try
             {
-                OrdenServicioTipoPrenda ostpActual = OrdenActual.ItemsPedidos.Find(delegate (OrdenServicioTipoPrenda ostp)
+                if (OrdenActual.ItemsPedidos is not null)
                 {
-                    return
-                               ostp.ServicioTipoPrenda.Servicio.Descripcion == this.listItemsPedidos.SelectedItems[0].Text &&
-                               ostp.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listItemsPedidos.SelectedItems[0].SubItems[1].Text &&
-                               ostp.OrdenItem == Int32.Parse(this.listItemsPedidos.SelectedItems[0].SubItems[2].Text);
-                });
-                if (ostpActual.MaquinaOrdenServicioTipoPrenda is not null)
-                {
-                    
-                    foreach (MaquinaOrdenServicioTipoPrenda mi in ostpActual.MaquinaOrdenServicioTipoPrenda)
+                    OrdenServicioTipoPrenda ostpActual = OrdenActual.ItemsPedidos.Find(delegate (OrdenServicioTipoPrenda ostp)
                     {
-                        ListViewItem mir = new ListViewItem(mi.Maquina.Descripcion);
-                        mir.SubItems.Add(mi.TiempoInicioServicio.ToString("O"));
-                        listMaquinasItems.Items.Add(mir);
+                        return
+                                   ostp.ServicioTipoPrenda.Servicio.Descripcion == this.listItemsPedidos.SelectedItems[0].Text &&
+                                   ostp.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listItemsPedidos.SelectedItems[0].SubItems[1].Text &&
+                                   ostp.OrdenItem == Int32.Parse(this.listItemsPedidos.SelectedItems[0].SubItems[2].Text);
+                    });
+                    if (ostpActual.MaquinaOrdenServicioTipoPrenda is not null)
+                    {
+
+                        foreach (MaquinaOrdenServicioTipoPrenda mi in ostpActual.MaquinaOrdenServicioTipoPrenda)
+                        {
+                            ListViewItem mir = new ListViewItem(mi.Maquina.Descripcion);
+                            mir.SubItems.Add(mi.TiempoInicioServicio.ToString("O"));
+                            listMaquinasItems.Items.Add(mir);
+                        }
+                    }
+                    else if (ostpActual.MaquinaOrdenServicioTipoPrenda is null)
+                    {
+                        MessageBox.Show("Debe seleccionar un item en la lista \"Items de la orden\" para poder observar los detalles", "Items", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                
+                MessageBox.Show("Debe ingresar un número de orden o buscar un cliente a través de su cuit para poder observar los detalles", "Items", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
         }
 
@@ -219,6 +240,11 @@ namespace UI.Desktop
 
 
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una máquina en la lista \"Máquinas utilizadas\" para poder trazar los items", "Máquina", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
 
         }
         private void LimpiarItems() 
@@ -254,6 +280,22 @@ namespace UI.Desktop
             Close();
         }
 
-        
+        private void listOrdenesCliente_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listOrdenesCliente.Columns[e.ColumnIndex].Width;
+        }
+
+        private void listItemsPedidos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listItemsPedidos.Columns[e.ColumnIndex].Width;
+        }
+
+        private void listMaquinasItems_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listMaquinasItems.Columns[e.ColumnIndex].Width;
+        }
     }
 }

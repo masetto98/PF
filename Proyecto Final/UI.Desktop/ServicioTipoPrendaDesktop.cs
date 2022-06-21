@@ -284,7 +284,7 @@ namespace UI.Desktop
                 consumoActual.ServicioTipoPrenda = _servicioTipoPrendaLogic.GetOne((int)this.cmbServicios.SelectedValue, (int)this.cmbTipoPrendas.SelectedValue);
                 consumoActual.Insumo = InsumoActual;
                 Validaciones.ValidarNumeroEnteroDecimal(this.txtCantidad.Text);
-                consumoActual.Cantidad = ConvertirUnidadesConsumo(Int32.Parse(this.txtCantidad.Text));
+                consumoActual.Cantidad = ConvertirUnidadesConsumo(Int32.Parse(this.txtCantidad.Text), _unidadesMedida[this.cmbUnidadMedida.SelectedIndex]);
                 consumoActual.FechaDesde = DateTime.Now;
                 if (ValidarExistencia())
                 {
@@ -312,31 +312,41 @@ namespace UI.Desktop
             
         }
         #region ------- UNIDADES DE MEDIDA -------
-        private void SetearMedidas(int unidad) 
+        private List<String> SetearMedidas(int unidad, List<string> unidadesMedida)
         {
-            
-            _unidadesMedida.Clear();
+
+            unidadesMedida.Clear();
             if (unidad == 1)
             {
-                _unidadesMedida.Add("Litros(1L/1000Cm3/1000ml");
-                _unidadesMedida.Add("Mililitros / Cm3");
+                unidadesMedida.Add("Litros(1L/1000Cm3/1000ml");
+                unidadesMedida.Add("Mililitros / Cm3");
+                return unidadesMedida;
             }
             if (unidad == 2)
             {
-                _unidadesMedida.Add("Kilogramos(1Kg / 1000gr)");
-                _unidadesMedida.Add("Gramos(gr)");
+                unidadesMedida.Add("Kilogramos(1Kg / 1000gr)");
+                unidadesMedida.Add("Gramos(gr)");
+                return unidadesMedida;
             }
             if (unidad == 3)
             {
-                _unidadesMedida.Add("Unidades");
+                unidadesMedida.Add("Unidades");
+                return unidadesMedida;
             }
+            return null;
         }
 
-        private double ConvertirUnidadesConsumo(int _cantidad) 
+        private double ConvertirUnidadesConsumo(double _cantidad, string unidadSelect)
         {
-            string _medida = this.cmbUnidadMedida.SelectedItem.ToString();
-            if (_medida == "Mililitros / Cm3" || _medida == "Gramos(gr)"){return (double)_cantidad/1000;}
-            else{return _cantidad;}
+
+            if (unidadSelect == "Mililitros / Cm3" || unidadSelect == "Gramos(gr)")
+            {
+                return _cantidad / 1000;
+            }
+            else
+            {
+                return _cantidad;
+            }
         }
         #endregion
 
@@ -360,7 +370,8 @@ namespace UI.Desktop
         private void cmbInsumos_SelectionChangeCommitted(object sender, EventArgs e)
         {
             InsumoActual = _insumoLogic.GetOne(Int32.Parse(this.cmbInsumos.SelectedValue.ToString()));
-            SetearMedidas((int)InsumoActual.UnidadMedida);
+            List<string> unidadesMedida = new List<string>();
+            _unidadesMedida = SetearMedidas((int)InsumoActual.UnidadMedida, unidadesMedida);
             this.cmbUnidadMedida.DataSource = _unidadesMedida;
 
         }

@@ -30,14 +30,14 @@ namespace UI.Desktop
         private void InitializeComponent()
         {
             this.listGastos = new MaterialSkin.Controls.MaterialListView();
-            this.btnEditar = new MaterialSkin.Controls.MaterialButton();
-            this.btnEliminar = new MaterialSkin.Controls.MaterialButton();
-            this.btnAgregar = new MaterialSkin.Controls.MaterialButton();
             this.columnID = new System.Windows.Forms.ColumnHeader();
+            this.columnTipoGasto = new System.Windows.Forms.ColumnHeader();
             this.columnDescripcion = new System.Windows.Forms.ColumnHeader();
             this.columnFechaRealizado = new System.Windows.Forms.ColumnHeader();
             this.columnImporte = new System.Windows.Forms.ColumnHeader();
-            this.columnTipoGasto = new System.Windows.Forms.ColumnHeader();
+            this.btnEditar = new MaterialSkin.Controls.MaterialButton();
+            this.btnEliminar = new MaterialSkin.Controls.MaterialButton();
+            this.btnAgregar = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.cmbFiltro = new MaterialSkin.Controls.MaterialComboBox();
             this.txtBuscar = new MaterialSkin.Controls.MaterialTextBox();
@@ -47,7 +47,7 @@ namespace UI.Desktop
             // listGastos
             // 
             this.listGastos.AutoSizeTable = false;
-            this.listGastos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.listGastos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.listGastos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listGastos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnID,
@@ -56,7 +56,7 @@ namespace UI.Desktop
             this.columnFechaRealizado,
             this.columnImporte});
             this.listGastos.Depth = 0;
-            this.listGastos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listGastos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listGastos.FullRowSelect = true;
             this.listGastos.HideSelection = false;
             this.listGastos.Location = new System.Drawing.Point(13, 136);
@@ -70,13 +70,37 @@ namespace UI.Desktop
             this.listGastos.UseCompatibleStateImageBehavior = false;
             this.listGastos.View = System.Windows.Forms.View.Details;
             // 
+            // columnID
+            // 
+            this.columnID.Text = "ID";
+            // 
+            // columnTipoGasto
+            // 
+            this.columnTipoGasto.Text = "Tipo Gasto";
+            this.columnTipoGasto.Width = 150;
+            // 
+            // columnDescripcion
+            // 
+            this.columnDescripcion.Text = "Descripción";
+            this.columnDescripcion.Width = 150;
+            // 
+            // columnFechaRealizado
+            // 
+            this.columnFechaRealizado.Text = "Fecha";
+            this.columnFechaRealizado.Width = 150;
+            // 
+            // columnImporte
+            // 
+            this.columnImporte.Text = "Importe";
+            this.columnImporte.Width = 100;
+            // 
             // btnEditar
             // 
             this.btnEditar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEditar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnEditar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnEditar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnEditar.Depth = 0;
-            this.btnEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEditar.HighEmphasis = true;
             this.btnEditar.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
             this.btnEditar.Location = new System.Drawing.Point(136, 91);
@@ -95,10 +119,10 @@ namespace UI.Desktop
             // btnEliminar
             // 
             this.btnEliminar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnEliminar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnEliminar.Depth = 0;
-            this.btnEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEliminar.HighEmphasis = true;
             this.btnEliminar.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
             this.btnEliminar.Location = new System.Drawing.Point(243, 91);
@@ -118,10 +142,10 @@ namespace UI.Desktop
             // 
             this.btnAgregar.AutoSize = false;
             this.btnAgregar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnAgregar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnAgregar.Depth = 0;
-            this.btnAgregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnAgregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregar.HighEmphasis = true;
             this.btnAgregar.Icon = global::UI.Desktop.Properties.Resources.plus_icon_icons_com_70890;
             this.btnAgregar.Location = new System.Drawing.Point(13, 91);
@@ -137,37 +161,13 @@ namespace UI.Desktop
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // columnID
-            // 
-            this.columnID.Text = "ID";
-            // 
-            // columnDescripcion
-            // 
-            this.columnDescripcion.Text = "Descripción";
-            this.columnDescripcion.Width = 150;
-            // 
-            // columnFechaRealizado
-            // 
-            this.columnFechaRealizado.Text = "Fecha";
-            this.columnFechaRealizado.Width = 150;
-            // 
-            // columnImporte
-            // 
-            this.columnImporte.Text = "Importe";
-            this.columnImporte.Width = 100;
-            // 
-            // columnTipoGasto
-            // 
-            this.columnTipoGasto.Text = "Tipo Gasto";
-            this.columnTipoGasto.Width = 150;
-            // 
             // materialLabel1
             // 
             this.materialLabel1.AutoSize = true;
-            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel1.Location = new System.Drawing.Point(12, 553);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
@@ -178,14 +178,14 @@ namespace UI.Desktop
             // cmbFiltro
             // 
             this.cmbFiltro.AutoResize = false;
-            this.cmbFiltro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.cmbFiltro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.cmbFiltro.Depth = 0;
             this.cmbFiltro.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.cmbFiltro.DropDownHeight = 174;
             this.cmbFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFiltro.DropDownWidth = 121;
-            this.cmbFiltro.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cmbFiltro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cmbFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cmbFiltro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cmbFiltro.FormattingEnabled = true;
             this.cmbFiltro.Hint = "Filtro";
             this.cmbFiltro.IntegralHeight = false;
@@ -201,11 +201,11 @@ namespace UI.Desktop
             // txtBuscar
             // 
             this.txtBuscar.AnimateReadOnly = false;
-            this.txtBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBuscar.Depth = 0;
             this.txtBuscar.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtBuscar.Hint = "Buscar gasto ....";
             this.txtBuscar.LeadingIcon = null;
             this.txtBuscar.Location = new System.Drawing.Point(252, 540);
@@ -222,10 +222,10 @@ namespace UI.Desktop
             // btnCerrar
             // 
             this.btnCerrar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnCerrar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnCerrar.Depth = 0;
-            this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
             this.btnCerrar.Location = new System.Drawing.Point(546, 599);
@@ -245,7 +245,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 645);
+            this.ClientSize = new System.Drawing.Size(639, 648);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.cmbFiltro);
@@ -254,7 +254,10 @@ namespace UI.Desktop
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.listGastos);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
             this.Name = "Gastos";
+            this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gastos";
             this.ResumeLayout(false);

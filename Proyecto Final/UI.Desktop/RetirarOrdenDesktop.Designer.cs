@@ -444,19 +444,20 @@ namespace UI.Desktop
             // 
             // btnPagoRetirar
             // 
+            this.btnPagoRetirar.AutoSize = false;
             this.btnPagoRetirar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnPagoRetirar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnPagoRetirar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnPagoRetirar.Depth = 0;
             this.btnPagoRetirar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnPagoRetirar.HighEmphasis = true;
-            this.btnPagoRetirar.Icon = null;
-            this.btnPagoRetirar.Location = new System.Drawing.Point(279, 18);
+            this.btnPagoRetirar.Icon = global::UI.Desktop.Properties.Resources.payment_tax_invoice_document_calculator_icon_188684__1_;
+            this.btnPagoRetirar.Location = new System.Drawing.Point(296, 8);
             this.btnPagoRetirar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnPagoRetirar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnPagoRetirar.Name = "btnPagoRetirar";
             this.btnPagoRetirar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnPagoRetirar.Size = new System.Drawing.Size(131, 36);
+            this.btnPagoRetirar.Size = new System.Drawing.Size(113, 51);
             this.btnPagoRetirar.TabIndex = 4;
             this.btnPagoRetirar.Text = "Agregar Pago";
             this.btnPagoRetirar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -544,19 +545,20 @@ namespace UI.Desktop
             // 
             // btnImpFactura
             // 
+            this.btnImpFactura.AutoSize = false;
             this.btnImpFactura.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnImpFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnImpFactura.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnImpFactura.Depth = 0;
             this.btnImpFactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnImpFactura.HighEmphasis = true;
-            this.btnImpFactura.Icon = null;
+            this.btnImpFactura.Icon = global::UI.Desktop.Properties.Resources.mbriprint_99560;
             this.btnImpFactura.Location = new System.Drawing.Point(14, 589);
             this.btnImpFactura.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnImpFactura.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnImpFactura.Name = "btnImpFactura";
             this.btnImpFactura.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnImpFactura.Size = new System.Drawing.Size(156, 36);
+            this.btnImpFactura.Size = new System.Drawing.Size(131, 36);
             this.btnImpFactura.TabIndex = 5;
             this.btnImpFactura.Text = "Imprimir Factura";
             this.btnImpFactura.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;

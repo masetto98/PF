@@ -78,6 +78,7 @@ namespace UI.Desktop
             this.btnAceptar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnAceptar.UseAccentColor = false;
             this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // txtID
             // 
@@ -150,8 +151,10 @@ namespace UI.Desktop
             // 
             // ServicioDesktop
             // 
+            this.AcceptButton = this.btnAceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(419, 272);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.materialLabel1);

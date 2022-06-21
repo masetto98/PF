@@ -29,6 +29,7 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtNroFactura = new MaterialSkin.Controls.MaterialTextBox();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.cbFormaPago = new MaterialSkin.Controls.MaterialComboBox();
@@ -49,6 +50,7 @@ namespace UI.Desktop
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.txtApagar = new MaterialSkin.Controls.MaterialTextBox();
             this.btnSaldarDeuda = new MaterialSkin.Controls.MaterialButton();
+            this.ayudaPago = new System.Windows.Forms.ToolTip(this.components);
             this.materialCard1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -183,6 +185,7 @@ namespace UI.Desktop
             this.txtImportePago.Size = new System.Drawing.Size(128, 50);
             this.txtImportePago.TabIndex = 5;
             this.txtImportePago.Text = "";
+            this.ayudaPago.SetToolTip(this.txtImportePago, "Recuerde seleccionar la forma de pago antes de ingresar un importe.\r\n");
             this.txtImportePago.TrailingIcon = null;
             this.txtImportePago.TextChanged += new System.EventHandler(this.txtImportePago_TextChanged);
             // 
@@ -271,13 +274,13 @@ namespace UI.Desktop
             this.btnAgregarPago.Depth = 0;
             this.btnAgregarPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregarPago.HighEmphasis = true;
-            this.btnAgregarPago.Icon = null;
+            this.btnAgregarPago.Icon = global::UI.Desktop.Properties.Resources.pay_payment_bill_dollar_cash_icon_143281;
             this.btnAgregarPago.Location = new System.Drawing.Point(582, 24);
             this.btnAgregarPago.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAgregarPago.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAgregarPago.Name = "btnAgregarPago";
             this.btnAgregarPago.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnAgregarPago.Size = new System.Drawing.Size(88, 36);
+            this.btnAgregarPago.Size = new System.Drawing.Size(116, 36);
             this.btnAgregarPago.TabIndex = 7;
             this.btnAgregarPago.Text = "Agregar";
             this.btnAgregarPago.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -354,25 +357,32 @@ namespace UI.Desktop
             // 
             // btnSaldarDeuda
             // 
+            this.btnSaldarDeuda.AutoSize = false;
             this.btnSaldarDeuda.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSaldarDeuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnSaldarDeuda.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnSaldarDeuda.Depth = 0;
             this.btnSaldarDeuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnSaldarDeuda.HighEmphasis = true;
-            this.btnSaldarDeuda.Icon = null;
-            this.btnSaldarDeuda.Location = new System.Drawing.Point(29, 173);
+            this.btnSaldarDeuda.Icon = global::UI.Desktop.Properties.Resources.paying_money_invoice_payment_your_bill_icon_220368;
+            this.btnSaldarDeuda.Location = new System.Drawing.Point(29, 163);
             this.btnSaldarDeuda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnSaldarDeuda.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSaldarDeuda.Name = "btnSaldarDeuda";
             this.btnSaldarDeuda.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnSaldarDeuda.Size = new System.Drawing.Size(127, 36);
+            this.btnSaldarDeuda.Size = new System.Drawing.Size(119, 51);
             this.btnSaldarDeuda.TabIndex = 14;
             this.btnSaldarDeuda.Text = "Saldar Deuda";
+            this.ayudaPago.SetToolTip(this.btnSaldarDeuda, "Al presionar se añadirá un pago en \"efectivo\" con un importe igual al total a pag" +
+        "ar. \r\nPor favor, utilizar si desea cancelar el total de una deuda.");
             this.btnSaldarDeuda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnSaldarDeuda.UseAccentColor = false;
             this.btnSaldarDeuda.UseVisualStyleBackColor = false;
             this.btnSaldarDeuda.Click += new System.EventHandler(this.btnSaldarDeuda_Click);
+            // 
+            // ayudaPago
+            // 
+            this.ayudaPago.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
             // PagoDesktop
             // 
@@ -424,5 +434,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialTextBox txtApagar;
         private MaterialSkin.Controls.MaterialButton btnSaldarDeuda;
+        private System.Windows.Forms.ToolTip ayudaPago;
     }
 }

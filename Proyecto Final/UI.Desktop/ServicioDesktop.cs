@@ -122,10 +122,10 @@ namespace UI.Desktop
         {
             try
             {
-            
+                MapearADatos();
                 if (Validar())
                 {
-                        MapearADatos();
+                        
                         _servicioLogic.Save(ServicioActual);
                         Close();
 
@@ -180,5 +180,7 @@ namespace UI.Desktop
             }
 
         }
+
+        
     }
 }

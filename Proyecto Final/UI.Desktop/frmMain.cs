@@ -327,17 +327,24 @@ namespace UI.Desktop
                     importe += precio.Valor;
                 }
             }
-            if (ordenActual.Descuento.StartsWith("%"))
+            if(ordenActual.Descuento != null)
             {
+                if (ordenActual.Descuento.StartsWith("%"))
+                {
 
-                importe = importe * (1 - Double.Parse(ordenActual.Descuento.Remove(0, 1)) / 100.0);
+                    importe = importe * (1 - Double.Parse(ordenActual.Descuento.Remove(0, 1)) / 100.0);
+                }
+                if (!ordenActual.Descuento.StartsWith("%"))
+                {
+                    double resta = Double.Parse(ordenActual.Descuento);
+                    importe = importe - Double.Parse(ordenActual.Descuento);
+                }
+                return importe;
             }
-            if (!ordenActual.Descuento.StartsWith("%"))
+            else
             {
-                double resta = Double.Parse(ordenActual.Descuento);
-                importe = importe - Double.Parse(ordenActual.Descuento);
+                return importe;
             }
-            return importe;
         }
 
         private double CalcularPagosOrden(Orden ordenActual) 
@@ -410,6 +417,33 @@ namespace UI.Desktop
                 formCliente.ShowDialog();
             }
 
+        }
+        private void btnAgregarPago_Click(object sender, EventArgs e)
+        {
+            if (listOrdenesCliente.SelectedItems.Count > 0)
+            {
+                int ID = Int32.Parse(this.listOrdenesCliente.SelectedItems[0].Text);
+                Orden OrdenActual = _ordenLogic.GetOne(ID);
+                if (OrdenActual.Factura.Pagos.Count > 0)
+                {
+                    PagoDesktop frmPago = new PagoDesktop(OrdenActual, ApplicationForm.ModoForm.Modificacion, _context);
+                    frmPago.ShowDialog();
+                }
+                else
+                {
+                    PagoDesktop frmPago = new PagoDesktop(OrdenActual, ApplicationForm.ModoForm.Alta, _context);
+                    frmPago.ShowDialog();
+                }
+                ListarOrdenesCliente();
+                CalcularCuentaCorrienteCliente();
+                ListarPagosOrden();
+            }
+            
+            else
+            {
+                MessageBox.Show("Debe seleccionar una orden de la lista \"Ordenes del cliente\" para poder agregar pagos","Pago",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
+                
         }
 
         #endregion
@@ -575,6 +609,20 @@ namespace UI.Desktop
             DateTime fechaFiltro = dtpFiltroFechaIngreso.Value;
             List<InsumoProveedor> insumosproveedores = _insumoProveedorLogic.GetAll();
             List<InsumoProveedor> ipFecha = insumosproveedores.FindAll(ip => ip.FechaIngreso.ToString("yyyy/MM/dd") == fechaFiltro.ToString("yyyy/MM/dd"));
+            listIngresos.Items.Clear();
+            foreach (InsumoProveedor ip in ipFecha)
+            {
+                ListViewItem item = new ListViewItem(ip.Proveedor.RazonSocial);
+                item.SubItems.Add(ip.FechaIngreso.ToString());
+                item.SubItems.Add(ip.Cantidad.ToString());
+                listIngresos.Items.Add(item);
+            }
+        }
+        private void dtpFiltroFechaIngreso_CloseUp(object sender, EventArgs e)
+        {
+            DateTime fechaFiltro = dtpFiltroFechaIngreso.Value;
+            List<InsumoProveedor> insumosproveedores = _insumoProveedorLogic.GetAll();
+            List<InsumoProveedor> ipFecha = insumosproveedores.FindAll(ip => ip.FechaIngreso.ToString("yyyy/MM/dd") == fechaFiltro.ToString("yyyy/MM/dd"));
             listIngresosInsumos.Items.Clear();
             foreach (InsumoProveedor ip in ipFecha)
             {
@@ -584,7 +632,6 @@ namespace UI.Desktop
                 listIngresosInsumos.Items.Add(item);
             }
         }
-
         private void btnReset_Click(object sender, EventArgs e)
         {
             ListarIngresosInsumo();
@@ -1471,7 +1518,7 @@ namespace UI.Desktop
         #endregion
 
 
-
+        // NO ESTA IMPLEMENTADO LOS REPORTES DE LOS LISTVIEW
         private void btnReporte_Click(object sender, EventArgs e)
         {
             if (Singleton.getInstance().ListActual != null && Singleton.getInstance().ListActual.SelectedItems.Count > 0)

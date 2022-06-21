@@ -151,8 +151,10 @@ namespace UI.Desktop
             // 
             // TipoPrendaDesktop
             // 
+            this.AcceptButton = this.btnAceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(394, 267);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);

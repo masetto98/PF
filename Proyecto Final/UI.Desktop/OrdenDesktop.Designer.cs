@@ -108,7 +108,7 @@ namespace UI.Desktop
             this.txtIdCliente.MouseState = MaterialSkin.MouseState.OUT;
             this.txtIdCliente.Multiline = false;
             this.txtIdCliente.Name = "txtIdCliente";
-            this.txtIdCliente.Size = new System.Drawing.Size(51, 50);
+            this.txtIdCliente.Size = new System.Drawing.Size(65, 50);
             this.txtIdCliente.TabIndex = 4;
             this.txtIdCliente.Text = "";
             this.txtIdCliente.TrailingIcon = null;
@@ -444,7 +444,7 @@ namespace UI.Desktop
             this.txtNombreApellidoRazonSocial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtNombreApellidoRazonSocial.Hint = "Nombre y Apellido / Razón Social";
             this.txtNombreApellidoRazonSocial.LeadingIcon = null;
-            this.txtNombreApellidoRazonSocial.Location = new System.Drawing.Point(66, 70);
+            this.txtNombreApellidoRazonSocial.Location = new System.Drawing.Point(82, 70);
             this.txtNombreApellidoRazonSocial.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.txtNombreApellidoRazonSocial.MaxLength = 50;
             this.txtNombreApellidoRazonSocial.MouseState = MaterialSkin.MouseState.OUT;
@@ -457,6 +457,7 @@ namespace UI.Desktop
             // 
             // btnAgregarCliente
             // 
+            this.btnAgregarCliente.AutoSize = false;
             this.btnAgregarCliente.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnAgregarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnAgregarCliente.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
@@ -464,14 +465,14 @@ namespace UI.Desktop
             this.btnAgregarCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregarCliente.HighEmphasis = true;
             this.btnAgregarCliente.Icon = null;
-            this.btnAgregarCliente.Location = new System.Drawing.Point(390, 80);
+            this.btnAgregarCliente.Location = new System.Drawing.Point(407, 84);
             this.btnAgregarCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAgregarCliente.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAgregarCliente.Name = "btnAgregarCliente";
             this.btnAgregarCliente.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnAgregarCliente.Size = new System.Drawing.Size(88, 36);
+            this.btnAgregarCliente.Size = new System.Drawing.Size(71, 36);
             this.btnAgregarCliente.TabIndex = 30;
-            this.btnAgregarCliente.Text = "Agregar ";
+            this.btnAgregarCliente.Text = "Nuevo";
             this.btnAgregarCliente.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnAgregarCliente.UseAccentColor = false;
             this.btnAgregarCliente.UseVisualStyleBackColor = false;
@@ -860,7 +861,6 @@ namespace UI.Desktop
             this.materialCard3.ResumeLayout(false);
             this.materialCard3.PerformLayout();
             this.materialCard4.ResumeLayout(false);
-            this.materialCard4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

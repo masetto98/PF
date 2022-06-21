@@ -329,7 +329,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(847, 477);
+            this.btnCerrar.Location = new System.Drawing.Point(847, 500);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -346,7 +346,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(989, 639);
+            this.ClientSize = new System.Drawing.Size(941, 556);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.materialCard1);
             this.Controls.Add(this.btnEditarServicioTipoPrenda);
@@ -354,7 +354,11 @@ namespace UI.Desktop
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.btnDetalles);
             this.Controls.Add(this.listServiciosTipoPrendas);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
             this.Name = "ServicioTipoPrenda";
+            this.Sizable = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Servicio - TipoPrenda";
             this.materialCard1.ResumeLayout(false);
             this.materialCard1.PerformLayout();

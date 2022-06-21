@@ -48,7 +48,10 @@ namespace UI.Desktop
                 this.txtOrdenItem.Text = OrdenServicioTipoPrendaActual.OrdenItem.ToString();
                 this.txtServicio.Text = OrdenServicioTipoPrendaActual.ServicioTipoPrenda.Servicio.Descripcion;
                 this.txtTipoPrenda.Text = OrdenServicioTipoPrendaActual.ServicioTipoPrenda.TipoPrenda.Descripcion;
-
+                txtNroOrden.Enabled = false;
+                txtOrdenItem.Enabled = false;
+                txtServicio.Enabled = false;
+                txtTipoPrenda.Enabled = false;
             }
             catch (Exception e)
             {
@@ -147,6 +150,8 @@ namespace UI.Desktop
                 {
                     case ModoForm.Alta:
                         OrdenServicioTipoPrendaActual.State = BusinessEntity.States.Modified;
+                        
+
                         break;
                     case ModoForm.Modificacion:
                         TrabajoActual.State = BusinessEntity.States.Modified;
@@ -219,13 +224,15 @@ namespace UI.Desktop
             {
                 case ModoForm.Alta:
                     {
-                        GuardarCambios();
                         ModificarStock();
+                        //GuardarCambios();
+
                     };
                     break;
                 case ModoForm.Modificacion:
                     {
-                        GuardarCambios();
+                        ModificarStock();
+                        //GuardarCambios();
                     };
                     break;
                 case ModoForm.Baja:
@@ -242,27 +249,53 @@ namespace UI.Desktop
         {
             Close();
         }
+        private bool ComprobarExistencia()
+        {
+            List<InsumoServicioTipoPrenda> insumosItem = OrdenServicioTipoPrendaActual.ServicioTipoPrenda.InsumoServicioTipoPrenda;
+            bool ok = true;
+            foreach (InsumoServicioTipoPrenda ins in insumosItem)
+            {
+                double stockAnterior = ins.Insumo.Stock;
+                double consumoActual = ins.Cantidad;
+                if (stockAnterior < consumoActual)
+                {
+                    ok = false;
+                }
+            }
+            return ok;
+        }
         
         private void ModificarStock()
         {
             List<InsumoServicioTipoPrenda> insumosItem = OrdenServicioTipoPrendaActual.ServicioTipoPrenda.InsumoServicioTipoPrenda;
-            
-            foreach(InsumoServicioTipoPrenda ins in insumosItem)
+            if (ComprobarExistencia())
             {
-                InsumoServicioTipoPrenda actual = insumosItem.FindLast(
-                    delegate (InsumoServicioTipoPrenda istp)
-                    {
-                        return istp.FechaDesde <= DateTime.Today;
-                    });
-                double stockAnterior = ins.Insumo.Stock;
-                double consumoActual = actual.Cantidad;
-                ins.Insumo.Stock = stockAnterior - consumoActual;
-                ins.Insumo.State = BusinessEntity.States.Modified;
-                _insumoLogic.Save(ins.Insumo);
-
+                foreach (InsumoServicioTipoPrenda ins in insumosItem)
+                {
+                    double stockAnterior = ins.Insumo.Stock;
+                    double consumoActual = ins.Cantidad;
+                    ins.Insumo.Stock = stockAnterior - consumoActual;
+                    ins.Insumo.State = BusinessEntity.States.Modified;
+                    _insumoLogic.Save(ins.Insumo);
+                }
+                GuardarCambios();
             }
-            
-        
+            else if (MessageBox.Show($"¡Atención! El consumo actual de uno o varios insumos supera la existencia disponible ¿Desea continuar igualmente?", "Consumo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                foreach (InsumoServicioTipoPrenda ins in insumosItem)
+                {
+                    double stockAnterior = ins.Insumo.Stock;
+                    double consumoActual = ins.Cantidad;
+                    ins.Insumo.Stock = stockAnterior - consumoActual;
+                    ins.Insumo.State = BusinessEntity.States.Modified;
+                    _insumoLogic.Save(ins.Insumo);
+                }
+                GuardarCambios();
+            }
+            else
+            {
+                this.Dispose();
+            }
         }
         
 
