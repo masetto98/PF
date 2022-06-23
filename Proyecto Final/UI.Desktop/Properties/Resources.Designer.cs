@@ -254,6 +254,16 @@ namespace UI.Desktop.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hide_icon_183908 {
+            get {
+                object obj = ResourceManager.GetObject("hide_icon_183908", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mbriprint_99560 {
             get {
                 object obj = ResourceManager.GetObject("mbriprint_99560", resourceCulture);
@@ -474,6 +484,16 @@ namespace UI.Desktop.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap show_icon_215343 {
+            get {
+                object obj = ResourceManager.GetObject("show_icon_215343", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap squareinsideacircle_120602 {
             get {
                 object obj = ResourceManager.GetObject("squareinsideacircle_120602", resourceCulture);
@@ -517,6 +537,16 @@ namespace UI.Desktop.Properties {
         internal static System.Drawing.Bitmap tshirt_120689 {
             get {
                 object obj = ResourceManager.GetObject("tshirt_120689", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap view_show_icon_124811 {
+            get {
+                object obj = ResourceManager.GetObject("view_show_icon_124811", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

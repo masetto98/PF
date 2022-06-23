@@ -135,13 +135,17 @@ namespace UI.Desktop
                     };
                     break;
                 case ModoForm.Modificacion:
+                    if (MessageBox.Show($"¿Está seguro que desea modificar la máquina {MaquinaActual.Descripcion}?", "Máquina", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
                         GuardarCambios();
-                    };
+                    }
                     break;
                 case ModoForm.Baja:
-                    Eliminar();
-                    Close();
+                    if (MessageBox.Show($"¿Está seguro que desea eliminar la máquina {MaquinaActual.Descripcion}?", "Máquina", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        Eliminar();
+                        Close();
+                    }
                     break;
                 case ModoForm.Consulta:
                     Close();

@@ -294,12 +294,12 @@ namespace UI.Desktop
             // dtpFechaInicio
             // 
             this.dtpFechaInicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.dtpFechaInicio.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dtpFechaInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpFechaInicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFechaInicio.Location = new System.Drawing.Point(137, 484);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
-            this.dtpFechaInicio.Size = new System.Drawing.Size(361, 24);
+            this.dtpFechaInicio.Size = new System.Drawing.Size(361, 23);
             this.dtpFechaInicio.TabIndex = 17;
             // 
             // lblTipoEmpleado
@@ -400,7 +400,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 620);
+            this.ClientSize = new System.Drawing.Size(540, 620);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.btnCancelar);

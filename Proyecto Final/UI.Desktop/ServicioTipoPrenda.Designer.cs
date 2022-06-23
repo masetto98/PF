@@ -62,42 +62,44 @@ namespace UI.Desktop
             this.listServiciosTipoPrendas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listServiciosTipoPrendas.FullRowSelect = true;
             this.listServiciosTipoPrendas.HideSelection = false;
-            this.listServiciosTipoPrendas.Location = new System.Drawing.Point(15, 138);
+            this.listServiciosTipoPrendas.Location = new System.Drawing.Point(15, 141);
             this.listServiciosTipoPrendas.MinimumSize = new System.Drawing.Size(200, 100);
             this.listServiciosTipoPrendas.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listServiciosTipoPrendas.MouseState = MaterialSkin.MouseState.OUT;
             this.listServiciosTipoPrendas.Name = "listServiciosTipoPrendas";
             this.listServiciosTipoPrendas.OwnerDraw = true;
-            this.listServiciosTipoPrendas.Size = new System.Drawing.Size(346, 368);
+            this.listServiciosTipoPrendas.Size = new System.Drawing.Size(358, 365);
             this.listServiciosTipoPrendas.TabIndex = 0;
             this.listServiciosTipoPrendas.UseCompatibleStateImageBehavior = false;
             this.listServiciosTipoPrendas.View = System.Windows.Forms.View.Details;
+            this.listServiciosTipoPrendas.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listServiciosTipoPrendas_ColumnWidthChanging);
             // 
             // columnServicio
             // 
             this.columnServicio.Text = "Servicio";
-            this.columnServicio.Width = 150;
+            this.columnServicio.Width = 158;
             // 
             // columnTipoPrenda
             // 
             this.columnTipoPrenda.Text = "Tipo de Prenda";
-            this.columnTipoPrenda.Width = 196;
+            this.columnTipoPrenda.Width = 200;
             // 
             // btnDetalles
             // 
+            this.btnDetalles.AutoSize = false;
             this.btnDetalles.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnDetalles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnDetalles.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnDetalles.Depth = 0;
             this.btnDetalles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDetalles.HighEmphasis = true;
-            this.btnDetalles.Icon = null;
-            this.btnDetalles.Location = new System.Drawing.Point(368, 138);
+            this.btnDetalles.Icon = global::UI.Desktop.Properties.Resources.document_3530;
+            this.btnDetalles.Location = new System.Drawing.Point(380, 141);
             this.btnDetalles.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnDetalles.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnDetalles.Name = "btnDetalles";
             this.btnDetalles.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnDetalles.Size = new System.Drawing.Size(91, 36);
+            this.btnDetalles.Size = new System.Drawing.Size(114, 51);
             this.btnDetalles.TabIndex = 1;
             this.btnDetalles.Text = "Detalles";
             this.btnDetalles.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -115,12 +117,12 @@ namespace UI.Desktop
             this.btnAgregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregar.HighEmphasis = true;
             this.btnAgregar.Icon = global::UI.Desktop.Properties.Resources.plus_icon_icons_com_70890;
-            this.btnAgregar.Location = new System.Drawing.Point(15, 93);
+            this.btnAgregar.Location = new System.Drawing.Point(15, 86);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAgregar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnAgregar.Size = new System.Drawing.Size(115, 36);
+            this.btnAgregar.Size = new System.Drawing.Size(114, 51);
             this.btnAgregar.TabIndex = 2;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -130,6 +132,7 @@ namespace UI.Desktop
             // 
             // btnEditarServicioTipoPrenda
             // 
+            this.btnEditarServicioTipoPrenda.AutoSize = false;
             this.btnEditarServicioTipoPrenda.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnEditarServicioTipoPrenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnEditarServicioTipoPrenda.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
@@ -137,12 +140,12 @@ namespace UI.Desktop
             this.btnEditarServicioTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEditarServicioTipoPrenda.HighEmphasis = true;
             this.btnEditarServicioTipoPrenda.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
-            this.btnEditarServicioTipoPrenda.Location = new System.Drawing.Point(138, 93);
+            this.btnEditarServicioTipoPrenda.Location = new System.Drawing.Point(137, 86);
             this.btnEditarServicioTipoPrenda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEditarServicioTipoPrenda.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEditarServicioTipoPrenda.Name = "btnEditarServicioTipoPrenda";
             this.btnEditarServicioTipoPrenda.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEditarServicioTipoPrenda.Size = new System.Drawing.Size(99, 36);
+            this.btnEditarServicioTipoPrenda.Size = new System.Drawing.Size(114, 51);
             this.btnEditarServicioTipoPrenda.TabIndex = 5;
             this.btnEditarServicioTipoPrenda.Text = "Editar";
             this.btnEditarServicioTipoPrenda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -152,6 +155,7 @@ namespace UI.Desktop
             // 
             // btnEliminarServicioTipoPrenda
             // 
+            this.btnEliminarServicioTipoPrenda.AutoSize = false;
             this.btnEliminarServicioTipoPrenda.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnEliminarServicioTipoPrenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnEliminarServicioTipoPrenda.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
@@ -159,12 +163,12 @@ namespace UI.Desktop
             this.btnEliminarServicioTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEliminarServicioTipoPrenda.HighEmphasis = true;
             this.btnEliminarServicioTipoPrenda.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
-            this.btnEliminarServicioTipoPrenda.Location = new System.Drawing.Point(245, 93);
+            this.btnEliminarServicioTipoPrenda.Location = new System.Drawing.Point(259, 86);
             this.btnEliminarServicioTipoPrenda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminarServicioTipoPrenda.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminarServicioTipoPrenda.Name = "btnEliminarServicioTipoPrenda";
             this.btnEliminarServicioTipoPrenda.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEliminarServicioTipoPrenda.Size = new System.Drawing.Size(116, 36);
+            this.btnEliminarServicioTipoPrenda.Size = new System.Drawing.Size(114, 51);
             this.btnEliminarServicioTipoPrenda.TabIndex = 4;
             this.btnEliminarServicioTipoPrenda.Text = "Eliminar";
             this.btnEliminarServicioTipoPrenda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -186,12 +190,12 @@ namespace UI.Desktop
             this.materialCard1.Controls.Add(this.materialLabel1);
             this.materialCard1.Depth = 0;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(477, 94);
+            this.materialCard1.Location = new System.Drawing.Point(502, 86);
             this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(447, 169);
+            this.materialCard1.Size = new System.Drawing.Size(422, 169);
             this.materialCard1.TabIndex = 6;
             // 
             // lblIngresoTotalObtenido

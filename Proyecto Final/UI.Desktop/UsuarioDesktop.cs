@@ -18,21 +18,25 @@ namespace UI.Desktop
         private readonly UsuarioLogic _usuarioLogic;
         private readonly EmpleadoLogic _empleadoLogic;
         private Usuario UsuarioActual { set; get; }
+        private Usuario UsuarioModif { set; get; }
         public UsuarioDesktop(LavanderiaContext context)
         {
             InitializeComponent();
             _usuarioLogic = new UsuarioLogic(new UsuarioAdapter(context));
             _empleadoLogic = new EmpleadoLogic(new EmpleadoAdapter(context));
+            
         }
         public UsuarioDesktop(ModoForm modo, LavanderiaContext context) : this(context)
         {
 
             Modos = modo;
             UsuarioActual = new Usuario();
-            this.txtNombreUsuario.ReadOnly = true;
+            
+            this.txtNombreUsuario.Enabled = false;
             this.chkHabilitado.Enabled = false;
-            this.txtClaveUser.ReadOnly = true;
-            this.txtConfirmarClave.ReadOnly = true;
+            this.txtClaveUser.Enabled = false;
+            this.txtConfirmarClave.Enabled = false;
+            this.btnAceptarUsuario.Enabled = false;
         }
         public UsuarioDesktop(int ID, ModoForm modo, LavanderiaContext context) : this(context)
         {
@@ -86,6 +90,8 @@ namespace UI.Desktop
                 case ModoForm.Baja:
                     this.btnAceptarUsuario.Text = "Eliminar";
                     this.txtNombreUsuario.Enabled = false;
+                    this.txtClaveUser.Enabled = false;
+                    this.txtConfirmarClave.Enabled = false;
                     break;
                 case ModoForm.Consulta:
                     this.btnAceptarUsuario.Text = "Aceptar";
@@ -95,19 +101,36 @@ namespace UI.Desktop
         }
         public override void MapearADatos()
         {
-            UsuarioActual.Habilitado = this.chkHabilitado.Checked;
-            if (this.txtClaveUser.Text != "")
+            if(Modos == ModoForm.Alta)
             {
-                UsuarioActual.Clave = this.txtClaveUser.Text;
+                UsuarioActual.Habilitado = this.chkHabilitado.Checked;
+                UsuarioActual.NombreUsuario = this.txtNombreUsuario.Text;
+                if (this.txtClaveUser.Text != "")
+                {
+                    UsuarioActual.Clave = this.txtClaveUser.Text;
+                }
+                
             }
-            UsuarioActual.NombreUsuario = this.txtNombreUsuario.Text;
+            else if(Modos == ModoForm.Modificacion)
+            {
+                UsuarioModif = new Usuario();
+                UsuarioModif.IdUsuario = UsuarioActual.IdUsuario;
+                UsuarioModif.IdEmpleado = UsuarioActual.IdEmpleado;
+                UsuarioModif.Empleado = UsuarioActual.Empleado;
+                UsuarioModif.Habilitado = this.chkHabilitado.Checked;
+                UsuarioModif.NombreUsuario = this.txtNombreUsuario.Text;
+                if(this.txtClaveUser.Text != "")
+                {
+                    UsuarioModif.Clave = this.txtClaveUser.Text;
+                }
+            }
             switch (Modos)
             {
                 case ModoForm.Alta:
                     UsuarioActual.State = BusinessEntity.States.New;
                     break;
                 case ModoForm.Modificacion:
-                    UsuarioActual.State = BusinessEntity.States.Modified;
+                    UsuarioModif.State = BusinessEntity.States.Modified;
                     break;
             }
         }
@@ -118,7 +141,15 @@ namespace UI.Desktop
                 MapearADatos();
                 if (this.txtConfirmarClave.Text == this.txtClaveUser.Text)
                 {
-                    _usuarioLogic.Save(UsuarioActual);
+                    if(Modos == ModoForm.Alta)
+                    {
+                        _usuarioLogic.Save(UsuarioActual);
+                        
+                    }
+                    else if(Modos == ModoForm.Modificacion)
+                    {
+                        _usuarioLogic.Save(UsuarioModif);
+                    }
                     Close();
                 }
                 else
@@ -157,10 +188,10 @@ namespace UI.Desktop
                 }
                 UsuarioActual.IdEmpleado = empleado.IdEmpleado;
                 this.btnAceptarUsuario.Enabled = true;
-                this.txtNombreUsuario.ReadOnly = false;
+                this.txtNombreUsuario.Enabled = true;
                 this.chkHabilitado.Enabled = true;
-                this.txtClaveUser.ReadOnly = false;
-                this.txtConfirmarClave.ReadOnly = false;
+                this.txtClaveUser.Enabled = true;
+                this.txtConfirmarClave.Enabled = true;
             }
             catch (Exception e)
             {
@@ -179,12 +210,21 @@ namespace UI.Desktop
                     break;
                 case ModoForm.Modificacion:
                     {
-                        GuardarCambios();
+                        if (MessageBox.Show($"¿Está seguro que desea modificar el usuario {UsuarioActual.NombreUsuario}?", "Usuario", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            GuardarCambios();
+                        }
                     };
                     break;
                 case ModoForm.Baja:
-                    Eliminar();
-                    Close();
+                    {
+                        if (MessageBox.Show($"¿Está seguro que desea eliminar el usuario {UsuarioActual.NombreUsuario}?", "Usuario", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            Eliminar();
+                            Close();
+                        }
+                    };
+                        
                     break;
                 case ModoForm.Consulta:
                     Close();
@@ -208,6 +248,32 @@ namespace UI.Desktop
             }
         }
 
-        
+        private void showPass1_Click(object sender, EventArgs e)
+        {
+           
+                hidePass1.BringToFront();
+                txtClaveUser.UseSystemPasswordChar = false;
+                txtClaveUser.PasswordChar = '\0';
+            
+        }
+
+        private void hidePass1_Click(object sender, EventArgs e)
+        {
+            txtClaveUser.UseSystemPasswordChar = true;
+            showPass1.BringToFront();
+        }
+
+        private void showPass2_Click(object sender, EventArgs e)
+        {
+            hidePass2.BringToFront();
+            txtConfirmarClave.UseSystemPasswordChar = false;
+            txtConfirmarClave.PasswordChar = '\0';
+        }
+
+        private void hidePass2_Click(object sender, EventArgs e)
+        {
+            txtConfirmarClave.UseSystemPasswordChar = true;
+            showPass2.BringToFront();
+        }
     }
 }

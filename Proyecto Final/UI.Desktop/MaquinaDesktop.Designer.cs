@@ -53,7 +53,7 @@ namespace UI.Desktop
             this.txtID.MouseState = MaterialSkin.MouseState.OUT;
             this.txtID.Multiline = false;
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(314, 50);
+            this.txtID.Size = new System.Drawing.Size(99, 50);
             this.txtID.TabIndex = 0;
             this.txtID.Text = "";
             this.txtID.TrailingIcon = null;

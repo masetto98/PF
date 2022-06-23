@@ -28,7 +28,7 @@ namespace UI.Desktop
         {
             try
             {
-                Usuario usr = _usuarioLogic.Login(this.txtNombreUsuario.Text.ToLower(), this.txtContrasenia.Text.ToLower());
+                Usuario usr = _usuarioLogic.Login(this.txtNombreUsuario.Text, this.txtContrasenia.Text);
                 if (usr != null)
                 {
                     if (usr.Habilitado == true)

@@ -55,6 +55,7 @@ namespace UI.Desktop
             this.columnApellido,
             this.columnTipoEmpleado});
             this.listUsuarios.Depth = 0;
+            this.listUsuarios.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listUsuarios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listUsuarios.FullRowSelect = true;
             this.listUsuarios.HideSelection = false;
@@ -68,6 +69,7 @@ namespace UI.Desktop
             this.listUsuarios.TabIndex = 0;
             this.listUsuarios.UseCompatibleStateImageBehavior = false;
             this.listUsuarios.View = System.Windows.Forms.View.Details;
+            this.listUsuarios.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listUsuarios_ColumnWidthChanging);
             // 
             // columnID
             // 
@@ -108,12 +110,12 @@ namespace UI.Desktop
             this.btnEditarCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEditarCliente.HighEmphasis = true;
             this.btnEditarCliente.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
-            this.btnEditarCliente.Location = new System.Drawing.Point(136, 98);
+            this.btnEditarCliente.Location = new System.Drawing.Point(136, 83);
             this.btnEditarCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEditarCliente.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEditarCliente.Name = "btnEditarCliente";
             this.btnEditarCliente.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEditarCliente.Size = new System.Drawing.Size(116, 36);
+            this.btnEditarCliente.Size = new System.Drawing.Size(114, 51);
             this.btnEditarCliente.TabIndex = 6;
             this.btnEditarCliente.Text = "Editar";
             this.btnEditarCliente.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -123,6 +125,7 @@ namespace UI.Desktop
             // 
             // btnEliminarCliente
             // 
+            this.btnEliminarCliente.AutoSize = false;
             this.btnEliminarCliente.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnEliminarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnEliminarCliente.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
@@ -130,12 +133,12 @@ namespace UI.Desktop
             this.btnEliminarCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEliminarCliente.HighEmphasis = true;
             this.btnEliminarCliente.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
-            this.btnEliminarCliente.Location = new System.Drawing.Point(260, 98);
+            this.btnEliminarCliente.Location = new System.Drawing.Point(258, 83);
             this.btnEliminarCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminarCliente.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminarCliente.Name = "btnEliminarCliente";
             this.btnEliminarCliente.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEliminarCliente.Size = new System.Drawing.Size(116, 36);
+            this.btnEliminarCliente.Size = new System.Drawing.Size(114, 51);
             this.btnEliminarCliente.TabIndex = 5;
             this.btnEliminarCliente.Text = "Eliminar";
             this.btnEliminarCliente.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -145,6 +148,7 @@ namespace UI.Desktop
             // 
             // btnAgregarCliente
             // 
+            this.btnAgregarCliente.AutoSize = false;
             this.btnAgregarCliente.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnAgregarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnAgregarCliente.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
@@ -152,12 +156,12 @@ namespace UI.Desktop
             this.btnAgregarCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregarCliente.HighEmphasis = true;
             this.btnAgregarCliente.Icon = global::UI.Desktop.Properties.Resources.adduser_añadir_3553;
-            this.btnAgregarCliente.Location = new System.Drawing.Point(12, 98);
+            this.btnAgregarCliente.Location = new System.Drawing.Point(14, 83);
             this.btnAgregarCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAgregarCliente.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAgregarCliente.Name = "btnAgregarCliente";
             this.btnAgregarCliente.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnAgregarCliente.Size = new System.Drawing.Size(116, 36);
+            this.btnAgregarCliente.Size = new System.Drawing.Size(114, 51);
             this.btnAgregarCliente.TabIndex = 4;
             this.btnAgregarCliente.Text = "Agregar";
             this.btnAgregarCliente.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;

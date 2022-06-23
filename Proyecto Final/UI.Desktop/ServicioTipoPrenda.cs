@@ -58,6 +58,10 @@ namespace UI.Desktop
                 ServicioTipoPrendaDesktop frmServicioTipoPrenda = new ServicioTipoPrendaDesktop(ServicioTipoPrendaActual.IdServicio, ServicioTipoPrendaActual.IdTipoPrenda,ApplicationForm.ModoForm.Modificacion, _context);
                 frmServicioTipoPrenda.ShowDialog();
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder editar", "Servicios Tipo Prenda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             ListarServicioTipoPrenda();
         }
 
@@ -72,6 +76,10 @@ namespace UI.Desktop
                 });
                 ServicioTipoPrendaDesktop frmServicioTipoPrenda = new ServicioTipoPrendaDesktop(ServicioTipoPrendaActual.IdServicio, ServicioTipoPrendaActual.IdTipoPrenda, ApplicationForm.ModoForm.Baja, _context);
                 frmServicioTipoPrenda.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder eliminar", "Servicios Tipo Prenda", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             ListarServicioTipoPrenda();
 
@@ -91,6 +99,10 @@ namespace UI.Desktop
                 this.lblCantidadSolicitudes.Text = ServicioTipoPrendaActual.ItemsPedidos.Count.ToString();
                 CalcularTiempoPromedio(ServicioTipoPrendaActual);
                 CalcularIngresos(ServicioTipoPrendaActual);
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para observar los detalles", "Servicios Tipo Prenda", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -152,6 +164,12 @@ namespace UI.Desktop
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void listServiciosTipoPrendas_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listServiciosTipoPrendas.Columns[e.ColumnIndex].Width;
         }
     }
 }

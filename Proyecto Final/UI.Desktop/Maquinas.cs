@@ -57,6 +57,10 @@ namespace UI.Desktop
                 MaquinaDesktop frmMaquinaDesktop = new MaquinaDesktop(idMaquina,ApplicationForm.ModoForm.Modificacion, _context);
                 frmMaquinaDesktop.ShowDialog();
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder editar", "Máquina", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             ListarMaquinas();
         }
 
@@ -67,6 +71,10 @@ namespace UI.Desktop
                 int idMaquina = Int32.Parse(listMaquinas.SelectedItems[0].Text);
                 MaquinaDesktop frmMaquinaDesktop = new MaquinaDesktop(idMaquina, ApplicationForm.ModoForm.Baja, _context);
                 frmMaquinaDesktop.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder eliminar", "Máquina", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             ListarMaquinas();
 
@@ -90,6 +98,10 @@ namespace UI.Desktop
                 }
                 
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder observar los detalles", "Máquina Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             ListarMantenimientos();
         }
 
@@ -104,7 +116,7 @@ namespace UI.Desktop
                 {
                     foreach (Mantenimiento ma in MaquinaActual.Mantenimientos)
                     {
-                        ListViewItem item = new ListViewItem(ma.FechaRealizado.ToString());
+                        ListViewItem item = new ListViewItem(ma.FechaRealizado.ToString("yyyy-MM-dd HH:mm:ss.fffffff"));
                         item.SubItems.Add(ma.Descripcion);
                         item.SubItems.Add(ma.Costo.ToString());
                         listMantenimientos.Items.Add(item);
@@ -122,6 +134,10 @@ namespace UI.Desktop
                 MantenimientoDesktop frmMantenimientoDesktop = new MantenimientoDesktop(idMaquina,ApplicationForm.ModoForm.Alta,_context);
                 frmMantenimientoDesktop.ShowDialog();
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista de \"Máquinas\" para poder agregar un mantenimiento", "Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             ListarMantenimientos();
         }
 
@@ -136,6 +152,14 @@ namespace UI.Desktop
                     MantenimientoDesktop frmMantenimientoDesktop = new MantenimientoDesktop(idMaquina,fechaRealizacion, ApplicationForm.ModoForm.Modificacion, _context);
                     frmMantenimientoDesktop.ShowDialog();
                 }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar una fila en la lista para poder editar un mantenimiento", "Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista de \"Máquinas\" para poder editar un mantenimiento", "Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             ListarMantenimientos();
 
@@ -152,6 +176,14 @@ namespace UI.Desktop
                     MantenimientoDesktop frmMantenimientoDesktop = new MantenimientoDesktop(idMaquina, fechaRealizacion, ApplicationForm.ModoForm.Baja, _context);
                     frmMantenimientoDesktop.ShowDialog();
                 }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar una fila en la lista para poder eliminar un mantenimiento", "Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista de \"Máquinas\" para poder eliminar un mantenimiento", "Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             ListarMantenimientos();
         }
@@ -159,6 +191,18 @@ namespace UI.Desktop
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void listMaquinas_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listMaquinas.Columns[e.ColumnIndex].Width;
+        }
+
+        private void listMantenimientos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listMantenimientos.Columns[e.ColumnIndex].Width;
         }
     }
 }

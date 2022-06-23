@@ -57,6 +57,10 @@ namespace UI.Desktop
                 ServicioDesktop frmServicio = new ServicioDesktop(idServicio,ModoForm.Modificacion, _context);
                 frmServicio.ShowDialog();
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder editar", "Servicio", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             ListarServicios();
         }
 
@@ -67,6 +71,10 @@ namespace UI.Desktop
                 int idServicio = Int32.Parse(listServicios.SelectedItems[0].Text);
                 ServicioDesktop frmServicio = new ServicioDesktop(idServicio, ModoForm.Baja, _context);
                 frmServicio.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder eliminar", "Servicio", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             ListarServicios();
         }
@@ -79,6 +87,12 @@ namespace UI.Desktop
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void listServicios_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listServicios.Columns[e.ColumnIndex].Width;
         }
     }
 }

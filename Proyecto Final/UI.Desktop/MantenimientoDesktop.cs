@@ -63,6 +63,7 @@ namespace UI.Desktop
                     break;
                 case ModoForm.Modificacion:
                     this.btnAceptar.Text = "Guardar";
+                    this.dtpFechaRealizacion.Enabled = false;
                     break;
                 case ModoForm.Baja:
                     this.btnAceptar.Text = "Eliminar";
@@ -162,13 +163,20 @@ namespace UI.Desktop
                     break;
                 case ModoForm.Modificacion:
                     {
-                        GuardarCambios();
-                        Close();
+                        if (MessageBox.Show($"¿Está seguro que desea modificar el mantenimiento {MantenimientoActual.Descripcion}?", "Mantenimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            GuardarCambios();
+                        }
+
                     };
+                    
                     break;
                 case ModoForm.Baja:
-                    Eliminar();
-                    Close();
+                    if (MessageBox.Show($"¿Está seguro que desea eliminar el mantenimiento {MantenimientoActual.Descripcion}?", "Mantenimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        Eliminar();
+                        Close();
+                    }
                     break;
                 case ModoForm.Consulta:
                     Close();

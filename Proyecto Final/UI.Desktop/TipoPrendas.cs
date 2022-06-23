@@ -57,6 +57,10 @@ namespace UI.Desktop
                 TipoPrendaDesktop frmTipoPrenda = new TipoPrendaDesktop(idTipoPrenda,ModoForm.Modificacion, _context);
                 frmTipoPrenda.ShowDialog();
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder editar", "Tipo Prenda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             ListarTipoPrendas();
         }
 
@@ -67,6 +71,10 @@ namespace UI.Desktop
                 int idTipoPrenda = Int32.Parse(listTipoPrendas.SelectedItems[0].Text);
                 TipoPrendaDesktop frmTipoPrenda = new TipoPrendaDesktop(idTipoPrenda, ModoForm.Baja, _context);
                 frmTipoPrenda.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder eliminar", "Tipo Prenda", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             ListarTipoPrendas();
         }
@@ -81,6 +89,12 @@ namespace UI.Desktop
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void listTipoPrendas_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listTipoPrendas.Columns[e.ColumnIndex].Width;
         }
     }
 }

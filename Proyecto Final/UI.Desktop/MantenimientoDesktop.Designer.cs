@@ -57,12 +57,12 @@ namespace UI.Desktop
             // 
             this.dtpFechaRealizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.dtpFechaRealizacion.CustomFormat = "dd/MM/yyy hh:mm:ss";
-            this.dtpFechaRealizacion.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dtpFechaRealizacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpFechaRealizacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dtpFechaRealizacion.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFechaRealizacion.Location = new System.Drawing.Point(182, 105);
             this.dtpFechaRealizacion.Name = "dtpFechaRealizacion";
-            this.dtpFechaRealizacion.Size = new System.Drawing.Size(357, 24);
+            this.dtpFechaRealizacion.Size = new System.Drawing.Size(357, 23);
             this.dtpFechaRealizacion.TabIndex = 1;
             // 
             // materialLabel2
@@ -128,7 +128,7 @@ namespace UI.Desktop
             this.txtCosto.MouseState = MaterialSkin.MouseState.OUT;
             this.txtCosto.Multiline = false;
             this.txtCosto.Name = "txtCosto";
-            this.txtCosto.Size = new System.Drawing.Size(357, 50);
+            this.txtCosto.Size = new System.Drawing.Size(202, 50);
             this.txtCosto.TabIndex = 5;
             this.txtCosto.Text = "";
             this.txtCosto.TrailingIcon = null;
@@ -181,7 +181,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 308);
+            this.ClientSize = new System.Drawing.Size(575, 308);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtCosto);

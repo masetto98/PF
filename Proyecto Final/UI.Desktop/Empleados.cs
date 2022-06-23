@@ -47,6 +47,7 @@ namespace UI.Desktop
         {
             EmpleadoDesktop frmEmpleado = new EmpleadoDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmEmpleado.ShowDialog();
+            ListarEmpleados();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -56,8 +57,12 @@ namespace UI.Desktop
                 int idEmpleado = Int32.Parse(listEmpleados.SelectedItems[0].Text);
                 EmpleadoDesktop frmEmpleado = new EmpleadoDesktop(idEmpleado,ApplicationForm.ModoForm.Modificacion, _context) ;
                 frmEmpleado.ShowDialog();
-
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder editar", "Empleado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            ListarEmpleados();
 
         }
 
@@ -68,8 +73,12 @@ namespace UI.Desktop
                 int idEmpleado = Int32.Parse(listEmpleados.SelectedItems[0].Text);
                 EmpleadoDesktop frmEmpleado = new EmpleadoDesktop(idEmpleado, ApplicationForm.ModoForm.Baja, _context);
                 frmEmpleado.ShowDialog();
-
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder eliminar", "Empleado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            ListarEmpleados();
 
         }
 
@@ -92,11 +101,21 @@ namespace UI.Desktop
                     }
                 }
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder observar los detalles", "Empleado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void listEmpleados_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listEmpleados.Columns[e.ColumnIndex].Width;
         }
     }
 }

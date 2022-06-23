@@ -27,7 +27,7 @@ namespace UI.Desktop
             InitializeComponent();
             _empleadoLogic = new EmpleadoLogic(new EmpleadoAdapter(context));
             this.cbTipoEmpleado.DataSource = Enum.GetNames(typeof(Empleado.TiposEmpleado));
-            this.cbTipoEmpleado.SelectedIndex = 2;
+            //this.cbTipoEmpleado.SelectedIndex = 2;
             
         }
 
@@ -172,12 +172,21 @@ namespace UI.Desktop
                     break;
                 case ModoForm.Modificacion:
                     {
-                        GuardarCambios();
+                        if (MessageBox.Show($"¿Está seguro que desea modificar el empleado {EmpleadoActual.Nombre}-{EmpleadoActual.Apellido}?", "Empleado", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            GuardarCambios();
+                        }
                     };
                     break;
                 case ModoForm.Baja:
-                    Eliminar();
-                    Close();
+                    {
+                        if (MessageBox.Show($"¿Está seguro que desea eliminar el empleado {EmpleadoActual.Nombre}-{EmpleadoActual.Apellido}?", "Empleado", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            Eliminar();
+                            Close();
+                        }
+                    };
+                    
                     break;
                 case ModoForm.Consulta:
                     Close();

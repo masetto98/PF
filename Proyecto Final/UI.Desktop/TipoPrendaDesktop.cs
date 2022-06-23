@@ -30,6 +30,7 @@ namespace UI.Desktop
         public TipoPrendaDesktop(ModoForm modo, LavanderiaContext context) : this(context)
         {
             Modos = modo;
+            this.txtID.Enabled = false;
         }
 
         public TipoPrendaDesktop(int ID, ModoForm modo, LavanderiaContext context) : this(context)
@@ -66,9 +67,11 @@ namespace UI.Desktop
                     break;
                 case ModoForm.Modificacion:
                     this.btnAceptar.Text = "Guardar";
+                    this.txtID.Enabled = false;
                     break;
                 case ModoForm.Baja:
                     this.btnAceptar.Text = "Eliminar";
+                    this.txtID.Enabled = false;
                     this.txtDescripcion.Enabled = false;
                     
                     break;
@@ -163,12 +166,20 @@ namespace UI.Desktop
                     break;
                 case ModoForm.Modificacion:
                     {
-                        GuardarCambios();
+                        if (MessageBox.Show($"¿Está seguro que desea modificar el tipo prenda {TipoPrendaActual.Descripcion}?", "Tipo Prenda", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            GuardarCambios();
+                        }
                     };
                     break;
                 case ModoForm.Baja:
-                    Eliminar();
-                    Close();
+                    {
+                        if (MessageBox.Show($"¿Está seguro que desea eliminar el tipo prenda {TipoPrendaActual.Descripcion}?", "Tipo Prenda", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            Eliminar();
+                            Close();
+                        }
+                    };
                     break;
                 case ModoForm.Consulta:
                     Close();

@@ -58,10 +58,8 @@ namespace UI.Desktop
                     
                     break;
                 case ModoForm.Modificacion:
-                    this.cmbTipoGasto.Enabled = false;
-                    this.txtDescripcion.Enabled = false;
+                    this.txtId.Enabled = false;
                     this.dtpFechaRealizacion.Enabled = false;
-                    this.txtImporte.Enabled = false;
                     break;
                 case ModoForm.Baja:
                     this.cmbTipoGasto.Enabled = false;

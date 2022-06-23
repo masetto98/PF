@@ -71,9 +71,13 @@ namespace UI.Desktop
                 int idGasto = Int32.Parse(listGastos.SelectedItems[0].Text);
                 GastoDesktop frmGastoDesktop = new GastoDesktop(idGasto,ModoForm.Modificacion, _context);
                 frmGastoDesktop.ShowDialog();
-                ListarGastos();
+                
             }
-
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder editar", "Gasto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            ListarGastos();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -83,8 +87,13 @@ namespace UI.Desktop
                 int idGasto = Int32.Parse(listGastos.SelectedItems[0].Text);
                 GastoDesktop frmGastoDesktop = new GastoDesktop(idGasto, ModoForm.Baja, _context);
                 frmGastoDesktop.ShowDialog();
-                ListarGastos();
+                
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder eliminar", "Gasto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            ListarGastos();
 
         }
 
@@ -174,6 +183,12 @@ namespace UI.Desktop
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void listGastos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listGastos.Columns[e.ColumnIndex].Width;
         }
     }
 }

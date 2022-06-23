@@ -246,12 +246,20 @@ namespace UI.Desktop
                     break;
                 case ModoForm.Modificacion:
                     {
-                        GuardarCambios();
+                        if (MessageBox.Show($"¿Está seguro que desea modificar el servicio tipo prenda {ServicioTipoPrendaActual.Servicio.Descripcion}-{ServicioTipoPrendaActual.TipoPrenda.Descripcion}?", "Servicio Tipo Prenda", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            GuardarCambios();
+                        }
                     };
                     break;
                 case ModoForm.Baja:
-                    Eliminar();
-                    Close();
+                    {
+                        if (MessageBox.Show($"¿Está seguro que desea eliminar el servicio tipo prenda {ServicioTipoPrendaActual.Servicio.Descripcion}-{ServicioTipoPrendaActual.TipoPrenda.Descripcion}?", "Servicio Tipo Prenda", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            Eliminar();
+                            Close();
+                        }
+                    };
                     break;
                 case ModoForm.Consulta:
                     Close();

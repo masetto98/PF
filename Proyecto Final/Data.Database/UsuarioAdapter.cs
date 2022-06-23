@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Security.Cryptography;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace Data.Database
 {
@@ -53,9 +54,19 @@ namespace Data.Database
 
         protected void Update(Usuario usuario)
         {
+            
+            Usuario userAnterior = GetOne(usuario.IdUsuario);
+            if (usuario.Clave != null && usuario.Clave != userAnterior.Clave)
+            {
+                userAnterior.Clave = new Hasher().GenerateHash(usuario.Clave, userAnterior.Salt);
+            }
+            else
+            {
+                userAnterior.Clave = usuario.Clave;
+            }
             try
             {
-                _context.Usuarios.Update(usuario);
+                _context.Usuarios.Update(userAnterior);
                 _context.SaveChanges();
             }
             catch (Exception e)
@@ -66,20 +77,33 @@ namespace Data.Database
         }
         protected void Insert(Usuario usuario)
         {
+            usuario.Salt = new Hasher().GenerateSalt();
+            usuario.Clave = new Hasher().GenerateHash(usuario.Clave, usuario.Salt);
             try
             {
-                _context.Usuarios.Add(usuario);
-                _context.SaveChanges();
+            _context.Usuarios.Add(usuario);
+            _context.SaveChanges();
             }
             catch (Exception e)
             {
-                Exception ExceptionManejada = new Exception("Error al crear cliente", e);
-                throw ExceptionManejada;
+            Exception ExceptionManejada = new Exception("Error al crear usuario", e);
+            throw ExceptionManejada;
             }
         }
         public void Delete(int ID)
         {
-           
+            Usuario usuario = new Usuario();
+            try
+            {
+                usuario = _context.Usuarios.Find(ID);
+                _context.Usuarios.Remove(usuario);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al eliminar usuario", e);
+                throw ExceptionManejada;
+            }
         }
 
         public void Save(Usuario usuario)
@@ -104,7 +128,7 @@ namespace Data.Database
             {
                 Usuario usr = _context.Usuarios.Include(u => u.Empleado).FirstOrDefault(u => u.NombreUsuario == usuario);
                 if (usr == null) return null;
-                //contrasenia = new Hasher().GenerateHash(contrasenia, usr.Salt);
+                contrasenia = new Hasher().GenerateHash(contrasenia, usr.Salt);
                 if (usr.Clave != contrasenia) return null;
                 return usr;
             }

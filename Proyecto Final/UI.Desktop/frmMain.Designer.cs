@@ -546,7 +546,7 @@ namespace UI.Desktop
             this.lblCuentaCorriente.Depth = 0;
             this.lblCuentaCorriente.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblCuentaCorriente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblCuentaCorriente.Location = new System.Drawing.Point(143, 31);
+            this.lblCuentaCorriente.Location = new System.Drawing.Point(143, 28);
             this.lblCuentaCorriente.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblCuentaCorriente.Name = "lblCuentaCorriente";
             this.lblCuentaCorriente.Size = new System.Drawing.Size(5, 19);
@@ -560,7 +560,7 @@ namespace UI.Desktop
             this.materialLabel12.Depth = 0;
             this.materialLabel12.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel12.Location = new System.Drawing.Point(17, 31);
+            this.materialLabel12.Location = new System.Drawing.Point(17, 28);
             this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel12.Name = "materialLabel12";
             this.materialLabel12.Size = new System.Drawing.Size(120, 19);
@@ -1808,7 +1808,7 @@ namespace UI.Desktop
             // columnFin
             // 
             this.columnFin.Text = "Fin";
-            this.columnFin.Width = 100;
+            this.columnFin.Width = 102;
             // 
             // btnMostrarServicios
             // 
@@ -2044,7 +2044,7 @@ namespace UI.Desktop
             this.tabSelectorPlanificacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabSelectorPlanificacion.MouseState = MaterialSkin.MouseState.HOVER;
             this.tabSelectorPlanificacion.Name = "tabSelectorPlanificacion";
-            this.tabSelectorPlanificacion.Size = new System.Drawing.Size(1372, 47);
+            this.tabSelectorPlanificacion.Size = new System.Drawing.Size(1394, 47);
             this.tabSelectorPlanificacion.TabIndex = 0;
             this.tabSelectorPlanificacion.Text = "tabSelectorPlanificacion";
             // 

@@ -29,6 +29,7 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.txtIdUsuario = new MaterialSkin.Controls.MaterialTextBox();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
@@ -37,9 +38,7 @@ namespace UI.Desktop
             this.txtNombre = new MaterialSkin.Controls.MaterialTextBox();
             this.txtApellido = new MaterialSkin.Controls.MaterialTextBox();
             this.txtNombreUsuario = new MaterialSkin.Controls.MaterialTextBox();
-            this.txtClaveUser = new MaterialSkin.Controls.MaterialTextBox();
             this.chkHabilitado = new MaterialSkin.Controls.MaterialCheckbox();
-            this.txtConfirmarClave = new MaterialSkin.Controls.MaterialTextBox();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
@@ -49,7 +48,18 @@ namespace UI.Desktop
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.btnBuscar = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
+            this.toolTipUsuario = new System.Windows.Forms.ToolTip(this.components);
+            this.txtClaveUser = new MaterialSkin.Controls.MaterialTextBox2();
+            this.txtConfirmarClave = new MaterialSkin.Controls.MaterialTextBox2();
+            this.showPass1 = new System.Windows.Forms.PictureBox();
+            this.hidePass1 = new System.Windows.Forms.PictureBox();
+            this.showPass2 = new System.Windows.Forms.PictureBox();
+            this.hidePass2 = new System.Windows.Forms.PictureBox();
             this.materialCard1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.showPass1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hidePass1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.showPass2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hidePass2)).BeginInit();
             this.SuspendLayout();
             // 
             // materialLabel1
@@ -72,6 +82,7 @@ namespace UI.Desktop
             this.txtIdUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtIdUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtIdUsuario.Depth = 0;
+            this.txtIdUsuario.Enabled = false;
             this.txtIdUsuario.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtIdUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtIdUsuario.Hint = "ID";
@@ -82,7 +93,7 @@ namespace UI.Desktop
             this.txtIdUsuario.Multiline = false;
             this.txtIdUsuario.Name = "txtIdUsuario";
             this.txtIdUsuario.Size = new System.Drawing.Size(76, 50);
-            this.txtIdUsuario.TabIndex = 1;
+            this.txtIdUsuario.TabIndex = 4;
             this.txtIdUsuario.Text = "";
             this.txtIdUsuario.TrailingIcon = null;
             // 
@@ -130,8 +141,10 @@ namespace UI.Desktop
             this.txtCuit.Multiline = false;
             this.txtCuit.Name = "txtCuit";
             this.txtCuit.Size = new System.Drawing.Size(237, 50);
-            this.txtCuit.TabIndex = 4;
+            this.txtCuit.TabIndex = 0;
             this.txtCuit.Text = "";
+            this.toolTipUsuario.SetToolTip(this.txtCuit, "Ingrese un cuit de empleado y presiona buscar antes\r\nde ingresar los datos del us" +
+        "uario.");
             this.txtCuit.TrailingIcon = null;
             // 
             // txtNombre
@@ -151,7 +164,7 @@ namespace UI.Desktop
             this.txtNombre.Multiline = false;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(237, 50);
-            this.txtNombre.TabIndex = 5;
+            this.txtNombre.TabIndex = 2;
             this.txtNombre.Text = "";
             this.txtNombre.TrailingIcon = null;
             // 
@@ -172,7 +185,7 @@ namespace UI.Desktop
             this.txtApellido.Multiline = false;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(237, 50);
-            this.txtApellido.TabIndex = 6;
+            this.txtApellido.TabIndex = 3;
             this.txtApellido.Text = "";
             this.txtApellido.TrailingIcon = null;
             // 
@@ -192,29 +205,9 @@ namespace UI.Desktop
             this.txtNombreUsuario.Multiline = false;
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.Size = new System.Drawing.Size(237, 50);
-            this.txtNombreUsuario.TabIndex = 7;
+            this.txtNombreUsuario.TabIndex = 5;
             this.txtNombreUsuario.Text = "";
             this.txtNombreUsuario.TrailingIcon = null;
-            // 
-            // txtClaveUser
-            // 
-            this.txtClaveUser.AnimateReadOnly = false;
-            this.txtClaveUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.txtClaveUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtClaveUser.Depth = 0;
-            this.txtClaveUser.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtClaveUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtClaveUser.Hint = "Contraseña";
-            this.txtClaveUser.LeadingIcon = null;
-            this.txtClaveUser.Location = new System.Drawing.Point(189, 427);
-            this.txtClaveUser.MaxLength = 50;
-            this.txtClaveUser.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtClaveUser.Multiline = false;
-            this.txtClaveUser.Name = "txtClaveUser";
-            this.txtClaveUser.Size = new System.Drawing.Size(237, 50);
-            this.txtClaveUser.TabIndex = 8;
-            this.txtClaveUser.Text = "";
-            this.txtClaveUser.TrailingIcon = null;
             // 
             // chkHabilitado
             // 
@@ -230,29 +223,9 @@ namespace UI.Desktop
             this.chkHabilitado.ReadOnly = false;
             this.chkHabilitado.Ripple = true;
             this.chkHabilitado.Size = new System.Drawing.Size(108, 37);
-            this.chkHabilitado.TabIndex = 9;
+            this.chkHabilitado.TabIndex = 8;
             this.chkHabilitado.Text = "Habilitado";
             this.chkHabilitado.UseVisualStyleBackColor = false;
-            // 
-            // txtConfirmarClave
-            // 
-            this.txtConfirmarClave.AnimateReadOnly = false;
-            this.txtConfirmarClave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.txtConfirmarClave.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtConfirmarClave.Depth = 0;
-            this.txtConfirmarClave.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtConfirmarClave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtConfirmarClave.Hint = "Confirmar contraseña";
-            this.txtConfirmarClave.LeadingIcon = null;
-            this.txtConfirmarClave.Location = new System.Drawing.Point(189, 483);
-            this.txtConfirmarClave.MaxLength = 50;
-            this.txtConfirmarClave.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtConfirmarClave.Multiline = false;
-            this.txtConfirmarClave.Name = "txtConfirmarClave";
-            this.txtConfirmarClave.Size = new System.Drawing.Size(237, 50);
-            this.txtConfirmarClave.TabIndex = 10;
-            this.txtConfirmarClave.Text = "";
-            this.txtConfirmarClave.TrailingIcon = null;
             // 
             // materialLabel4
             // 
@@ -303,7 +276,7 @@ namespace UI.Desktop
             this.materialLabel7.Depth = 0;
             this.materialLabel7.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel7.Location = new System.Drawing.Point(26, 443);
+            this.materialLabel7.Location = new System.Drawing.Point(24, 449);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
             this.materialLabel7.Size = new System.Drawing.Size(86, 19);
@@ -367,7 +340,7 @@ namespace UI.Desktop
             this.materialCard1.Controls.Add(this.txtApellido);
             this.materialCard1.Depth = 0;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(13, 92);
+            this.materialCard1.Location = new System.Drawing.Point(26, 92);
             this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
@@ -411,23 +384,141 @@ namespace UI.Desktop
             this.materialLabel8.TabIndex = 0;
             this.materialLabel8.Text = "Empleado";
             // 
+            // toolTipUsuario
+            // 
+            this.toolTipUsuario.AutoPopDelay = 5000;
+            this.toolTipUsuario.InitialDelay = 300;
+            this.toolTipUsuario.ReshowDelay = 100;
+            this.toolTipUsuario.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipUsuario.ToolTipTitle = "Info";
+            // 
+            // txtClaveUser
+            // 
+            this.txtClaveUser.AnimateReadOnly = false;
+            this.txtClaveUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.txtClaveUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.txtClaveUser.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtClaveUser.Depth = 0;
+            this.txtClaveUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtClaveUser.HideSelection = true;
+            this.txtClaveUser.Hint = "Contraseña";
+            this.txtClaveUser.LeadingIcon = null;
+            this.txtClaveUser.Location = new System.Drawing.Point(189, 429);
+            this.txtClaveUser.MaxLength = 32767;
+            this.txtClaveUser.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtClaveUser.Name = "txtClaveUser";
+            this.txtClaveUser.PasswordChar = '●';
+            this.txtClaveUser.PrefixSuffixText = null;
+            this.txtClaveUser.ReadOnly = false;
+            this.txtClaveUser.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtClaveUser.SelectedText = "";
+            this.txtClaveUser.SelectionLength = 0;
+            this.txtClaveUser.SelectionStart = 0;
+            this.txtClaveUser.ShortcutsEnabled = true;
+            this.txtClaveUser.Size = new System.Drawing.Size(237, 48);
+            this.txtClaveUser.TabIndex = 18;
+            this.txtClaveUser.TabStop = false;
+            this.txtClaveUser.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtClaveUser.TrailingIcon = null;
+            this.txtClaveUser.UseSystemPasswordChar = true;
+            // 
+            // txtConfirmarClave
+            // 
+            this.txtConfirmarClave.AnimateReadOnly = false;
+            this.txtConfirmarClave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.txtConfirmarClave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.txtConfirmarClave.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtConfirmarClave.Depth = 0;
+            this.txtConfirmarClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtConfirmarClave.HideSelection = true;
+            this.txtConfirmarClave.Hint = "Confirmar contraseña";
+            this.txtConfirmarClave.LeadingIcon = null;
+            this.txtConfirmarClave.Location = new System.Drawing.Point(189, 485);
+            this.txtConfirmarClave.MaxLength = 32767;
+            this.txtConfirmarClave.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtConfirmarClave.Name = "txtConfirmarClave";
+            this.txtConfirmarClave.PasswordChar = '●';
+            this.txtConfirmarClave.PrefixSuffixText = null;
+            this.txtConfirmarClave.ReadOnly = false;
+            this.txtConfirmarClave.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtConfirmarClave.SelectedText = "";
+            this.txtConfirmarClave.SelectionLength = 0;
+            this.txtConfirmarClave.SelectionStart = 0;
+            this.txtConfirmarClave.ShortcutsEnabled = true;
+            this.txtConfirmarClave.Size = new System.Drawing.Size(237, 48);
+            this.txtConfirmarClave.TabIndex = 19;
+            this.txtConfirmarClave.TabStop = false;
+            this.txtConfirmarClave.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtConfirmarClave.TrailingIcon = null;
+            this.txtConfirmarClave.UseSystemPasswordChar = true;
+            // 
+            // showPass1
+            // 
+            this.showPass1.BackColor = System.Drawing.Color.Transparent;
+            this.showPass1.Image = global::UI.Desktop.Properties.Resources.show_icon_215343;
+            this.showPass1.Location = new System.Drawing.Point(432, 438);
+            this.showPass1.Name = "showPass1";
+            this.showPass1.Size = new System.Drawing.Size(33, 30);
+            this.showPass1.TabIndex = 20;
+            this.showPass1.TabStop = false;
+            this.showPass1.Click += new System.EventHandler(this.showPass1_Click);
+            // 
+            // hidePass1
+            // 
+            this.hidePass1.BackColor = System.Drawing.Color.Transparent;
+            this.hidePass1.Image = global::UI.Desktop.Properties.Resources.hide_icon_183908;
+            this.hidePass1.Location = new System.Drawing.Point(432, 438);
+            this.hidePass1.Name = "hidePass1";
+            this.hidePass1.Size = new System.Drawing.Size(33, 30);
+            this.hidePass1.TabIndex = 21;
+            this.hidePass1.TabStop = false;
+            this.hidePass1.Click += new System.EventHandler(this.hidePass1_Click);
+            // 
+            // showPass2
+            // 
+            this.showPass2.BackColor = System.Drawing.Color.Transparent;
+            this.showPass2.Image = global::UI.Desktop.Properties.Resources.show_icon_215343;
+            this.showPass2.Location = new System.Drawing.Point(432, 497);
+            this.showPass2.Name = "showPass2";
+            this.showPass2.Size = new System.Drawing.Size(33, 30);
+            this.showPass2.TabIndex = 23;
+            this.showPass2.TabStop = false;
+            this.showPass2.Click += new System.EventHandler(this.showPass2_Click);
+            // 
+            // hidePass2
+            // 
+            this.hidePass2.BackColor = System.Drawing.Color.Transparent;
+            this.hidePass2.Image = global::UI.Desktop.Properties.Resources.hide_icon_183908;
+            this.hidePass2.Location = new System.Drawing.Point(432, 497);
+            this.hidePass2.Name = "hidePass2";
+            this.hidePass2.Size = new System.Drawing.Size(33, 30);
+            this.hidePass2.TabIndex = 24;
+            this.hidePass2.TabStop = false;
+            this.hidePass2.Click += new System.EventHandler(this.hidePass2_Click);
+            // 
             // UsuarioDesktop
             // 
+            this.AcceptButton = this.btnAceptarUsuario;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(440, 622);
+            this.CancelButton = this.btnCancelarUsuario;
+            this.ClientSize = new System.Drawing.Size(471, 622);
+            this.Controls.Add(this.showPass2);
+            this.Controls.Add(this.showPass1);
+            this.Controls.Add(this.hidePass1);
+            this.Controls.Add(this.txtConfirmarClave);
+            this.Controls.Add(this.txtClaveUser);
             this.Controls.Add(this.materialCard1);
             this.Controls.Add(this.btnCancelarUsuario);
             this.Controls.Add(this.btnAceptarUsuario);
             this.Controls.Add(this.materialLabel7);
             this.Controls.Add(this.materialLabel6);
             this.Controls.Add(this.materialLabel5);
-            this.Controls.Add(this.txtConfirmarClave);
             this.Controls.Add(this.chkHabilitado);
-            this.Controls.Add(this.txtClaveUser);
             this.Controls.Add(this.txtNombreUsuario);
             this.Controls.Add(this.txtIdUsuario);
             this.Controls.Add(this.materialLabel1);
+            this.Controls.Add(this.hidePass2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "UsuarioDesktop";
@@ -436,6 +527,10 @@ namespace UI.Desktop
             this.Text = "Usuario";
             this.materialCard1.ResumeLayout(false);
             this.materialCard1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.showPass1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hidePass1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.showPass2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hidePass2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -451,9 +546,7 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialTextBox txtNombre;
         private MaterialSkin.Controls.MaterialTextBox txtApellido;
         private MaterialSkin.Controls.MaterialTextBox txtNombreUsuario;
-        private MaterialSkin.Controls.MaterialTextBox txtClaveUser;
         private MaterialSkin.Controls.MaterialCheckbox chkHabilitado;
-        private MaterialSkin.Controls.MaterialTextBox txtConfirmarClave;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
@@ -463,5 +556,12 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialCard materialCard1;
         private MaterialSkin.Controls.MaterialButton btnBuscar;
         private MaterialSkin.Controls.MaterialLabel materialLabel8;
+        private System.Windows.Forms.ToolTip toolTipUsuario;
+        private MaterialSkin.Controls.MaterialTextBox2 txtClaveUser;
+        private MaterialSkin.Controls.MaterialTextBox2 txtConfirmarClave;
+        private System.Windows.Forms.PictureBox showPass1;
+        private System.Windows.Forms.PictureBox hidePass1;
+        private System.Windows.Forms.PictureBox showPass2;
+        private System.Windows.Forms.PictureBox hidePass2;
     }
 }

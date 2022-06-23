@@ -61,6 +61,10 @@ namespace UI.Desktop
                 UsuarioDesktop frmUsuario = new UsuarioDesktop(idUsuario,ApplicationForm.ModoForm.Modificacion, _context);
                 frmUsuario.ShowDialog();
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder editar", "Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             ListarUsuarios();
         }
 
@@ -72,6 +76,10 @@ namespace UI.Desktop
                 UsuarioDesktop frmUsuario = new UsuarioDesktop(idUsuario, ApplicationForm.ModoForm.Baja, _context);
                 frmUsuario.ShowDialog();
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder eliminar", "Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             ListarUsuarios();
 
         }
@@ -81,6 +89,10 @@ namespace UI.Desktop
             Close();
         }
 
-        
+        private void listUsuarios_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listUsuarios.Columns[e.ColumnIndex].Width;
+        }
     }
 }

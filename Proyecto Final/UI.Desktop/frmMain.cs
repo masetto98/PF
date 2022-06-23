@@ -1028,7 +1028,8 @@ namespace UI.Desktop
 
         #region ------- LOGIN -------
         private void frmMain_Shown(object sender, EventArgs e)
-        {
+        { 
+            
             this.mnuPrincipal.Visible = false;
 
             this.epUser.Visible = false;
@@ -1042,6 +1043,7 @@ namespace UI.Desktop
             this.epUser.Visible = true;
             this.epUser.Title = $"{Singleton.getInstance().UserLogged.NombreUsuario}";
             ConfiguracionAdministrador();
+            
 
         }
 
