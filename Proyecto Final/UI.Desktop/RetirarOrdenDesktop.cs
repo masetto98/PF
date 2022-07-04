@@ -35,6 +35,7 @@ namespace UI.Desktop
         public double _totalitems;
         public RetirarOrdenDesktop(LavanderiaContext context)
         {
+            
             InitializeComponent();
             _context = context;
             _ordenLogic = new OrdenLogic(new OrdenAdapter(context));
@@ -49,6 +50,8 @@ namespace UI.Desktop
             {
                 OrdenActual = _ordenLogic.GetOne(nroOrden);
                 MapearDeDatos();
+                
+                
             }
             catch (Exception e)
             {
@@ -143,8 +146,13 @@ namespace UI.Desktop
                 {
                     _total = _totalitems - Int32.Parse(OrdenActual.Descuento);
                 }
+                this.txtTotalFactura.Text = _total.ToString();
             }
-            this.txtTotalFactura.Text = _total.ToString();
+            else
+            {
+                this.txtTotalFactura.Text = _totalitems.ToString();
+            }
+            
         }
     
         
@@ -182,6 +190,10 @@ namespace UI.Desktop
             }
             else if(MessageBox.Show("Aún no se han completado los pagos correspondientes ¿Desea continuar con el retiro de la orden?", "Retirar Orden", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
+                if(OrdenActual.Factura.Importe == 0)
+                {
+                    OrdenActual.Factura.Importe = double.Parse(this.txtTotalFactura.Text);
+                }
                 OrdenActual.Estado = Orden.Estados.Retirado;
                 OrdenActual.FechaSalida = DateTime.Now;
                 OrdenActual.State = BusinessEntity.States.Modified;
@@ -228,6 +240,10 @@ namespace UI.Desktop
                         factura = factura.Replace("@telempresa", negocio.TelEmpresa);
                         factura = factura.Replace("@redes", negocio.RedesEmpresa);
                         factura = factura.Replace("@nrofactura", OrdenActual.NroFactura.ToString());
+                        if (OrdenActual.Factura.FechaFactura.ToString("yyyy/MM/dd") == "0001/01/01")
+                        {
+                            OrdenActual.Factura.FechaFactura = DateTime.Now;
+                        }
                         factura = factura.Replace("@fechafactura", OrdenActual.Factura.FechaFactura.ToString("dd/MM/yyyy"));
                         factura = factura.Replace("@hsfactura", OrdenActual.Factura.FechaFactura.ToString("HH:mm:ss"));
                         factura = factura.Replace("@fechaentrada", OrdenActual.FechaEntrada.ToString("dd/MM/yyyy"));
@@ -324,6 +340,21 @@ namespace UI.Desktop
                 e.Cancel = true;
                 e.NewWidth = listItemsRetiro.Columns[e.ColumnIndex].Width;
             
+        }
+
+        public bool VerificarEstadoItems()
+        {
+            List<OrdenServicioTipoPrenda> itemsOrden = OrdenActual.ItemsPedidos;
+            bool ok=true;
+            foreach(OrdenServicioTipoPrenda item in itemsOrden)
+            {
+                if(item.Estado != OrdenServicioTipoPrenda.Estados.Finalizado)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }

@@ -70,6 +70,7 @@ namespace UI.Desktop
             this.listMaquinas.MinimumSize = new System.Drawing.Size(200, 100);
             this.listMaquinas.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listMaquinas.MouseState = MaterialSkin.MouseState.OUT;
+            this.listMaquinas.MultiSelect = false;
             this.listMaquinas.Name = "listMaquinas";
             this.listMaquinas.OwnerDraw = true;
             this.listMaquinas.Size = new System.Drawing.Size(359, 391);
@@ -174,6 +175,7 @@ namespace UI.Desktop
             this.listMantenimientos.MinimumSize = new System.Drawing.Size(200, 100);
             this.listMantenimientos.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listMantenimientos.MouseState = MaterialSkin.MouseState.OUT;
+            this.listMantenimientos.MultiSelect = false;
             this.listMantenimientos.Name = "listMantenimientos";
             this.listMantenimientos.OwnerDraw = true;
             this.listMantenimientos.Size = new System.Drawing.Size(502, 209);

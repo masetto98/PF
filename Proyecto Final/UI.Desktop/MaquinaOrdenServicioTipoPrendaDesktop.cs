@@ -231,9 +231,12 @@ namespace UI.Desktop
                     break;
                 case ModoForm.Modificacion:
                     {
-                        ModificarStock();
-                        //GuardarCambios();
+                        if (MessageBox.Show($"¿Está seguro que desea modificar?", "Iniciar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            ModificarStock();
+                        }
                     };
+
                     break;
                 case ModoForm.Baja:
                     Eliminar();

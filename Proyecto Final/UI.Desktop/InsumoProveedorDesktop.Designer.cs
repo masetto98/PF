@@ -286,19 +286,19 @@ namespace UI.Desktop
             // 
             this.dtpFechaIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.dtpFechaIngreso.CustomFormat = "dd/MM/yyyy hh:mm:ss";
-            this.dtpFechaIngreso.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dtpFechaIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpFechaIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dtpFechaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFechaIngreso.Location = new System.Drawing.Point(151, 208);
             this.dtpFechaIngreso.Name = "dtpFechaIngreso";
-            this.dtpFechaIngreso.Size = new System.Drawing.Size(331, 24);
+            this.dtpFechaIngreso.Size = new System.Drawing.Size(331, 23);
             this.dtpFechaIngreso.TabIndex = 14;
             // 
             // InsumoProveedorDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 393);
+            this.ClientSize = new System.Drawing.Size(552, 385);
             this.Controls.Add(this.dtpFechaIngreso);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.cmbUnidadMedida);

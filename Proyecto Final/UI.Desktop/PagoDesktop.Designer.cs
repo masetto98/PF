@@ -141,6 +141,7 @@ namespace UI.Desktop
             this.listPagos.MinimumSize = new System.Drawing.Size(200, 100);
             this.listPagos.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listPagos.MouseState = MaterialSkin.MouseState.OUT;
+            this.listPagos.MultiSelect = false;
             this.listPagos.Name = "listPagos";
             this.listPagos.OwnerDraw = true;
             this.listPagos.Size = new System.Drawing.Size(520, 129);

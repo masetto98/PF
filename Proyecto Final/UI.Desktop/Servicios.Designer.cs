@@ -59,6 +59,7 @@ namespace UI.Desktop
             this.listServicios.MinimumSize = new System.Drawing.Size(200, 100);
             this.listServicios.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listServicios.MouseState = MaterialSkin.MouseState.OUT;
+            this.listServicios.MultiSelect = false;
             this.listServicios.Name = "listServicios";
             this.listServicios.OwnerDraw = true;
             this.listServicios.Size = new System.Drawing.Size(360, 377);

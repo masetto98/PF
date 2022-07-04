@@ -190,7 +190,7 @@ namespace UI.Desktop
             listPagos.Items.Clear();
             foreach (Pago p in _pagosFactura)
             {
-                ListViewItem item = new ListViewItem(p.NroFactura.ToString());
+                ListViewItem item = new ListViewItem(FacturaActual.NroFactura.ToString());
                 item.SubItems.Add(p.FechaPago.ToString());
                 item.SubItems.Add(p.FormaPago.ToString());
                 item.SubItems.Add(p.Importe.ToString());
@@ -205,8 +205,10 @@ namespace UI.Desktop
                 PagoActual.FechaPago = DateTime.Now;
                 PagoActual.FormaPago = (Business.Entities.Pago.FormasPago)Enum.Parse(typeof(Business.Entities.Pago.FormasPago), cbFormaPago.SelectedItem.ToString());
                 PagoActual.Importe = double.Parse(txtImportePago.Text);
-                /*FacturaActual = new Factura();
-                FacturaActual.FechaFactura = DateTime.Now;*/
+                if (FacturaActual.FechaFactura.ToString("yyyy/MM/dd") == "0001/01/01")
+                {
+                    FacturaActual.FechaFactura = DateTime.Now;
+                }
                 FacturaActual.Pagos = new List<Pago>();
                 FacturaActual.Pagos.Add(PagoActual);
                 OrdenActual.Factura = FacturaActual;
@@ -269,25 +271,30 @@ namespace UI.Desktop
                 {
                     case ModoForm.Alta:
                         {
-                            GuardarCambios();
-                            this.txtImportePago.Text = "";
-                            TotalAPagar();
-                            if(this.txtApagar.Text == "0")
+                            if (MessageBox.Show($"¿Está seguro que desea agregar el pago?", "Orden", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                             {
-                                this.btnSaldarDeuda.Enabled = false;
+                                GuardarCambios();
+                                this.txtImportePago.Text = "";
+                                TotalAPagar();
+                                if (this.txtApagar.Text == "0")
+                                {
+                                    this.btnSaldarDeuda.Enabled = false;
+                                }
                             }
                             //ListarPagos();
                         };
                         break;
                     case ModoForm.Modificacion:
                         {
-
-                            GuardarCambios();
-                            this.txtImportePago.Text = "";
-                            TotalAPagar();
-                            if (this.txtApagar.Text == "0")
+                            if (MessageBox.Show($"¿Está seguro que desea agregar el pago?", "Pago", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                             {
-                                this.btnSaldarDeuda.Enabled = false;
+                                GuardarCambios();
+                                this.txtImportePago.Text = "";
+                                TotalAPagar();
+                                if (this.txtApagar.Text == "0")
+                                {
+                                    this.btnSaldarDeuda.Enabled = false;
+                                }
                             }
                             //ListarPagos();
                         };
@@ -326,7 +333,11 @@ namespace UI.Desktop
                 PagoActual.Importe = FacturaActual.Importe - totalActual;
                 /*FacturaActual = new Factura();
                 FacturaActual.FechaFactura = DateTime.Now;*/
-                FacturaActual.Pagos = new List<Pago>();
+                //FacturaActual.Pagos = new List<Pago>();
+                if(FacturaActual.FechaFactura.ToString("yyyy/MM/dd") == "0001/01/01")
+                {
+                    FacturaActual.FechaFactura = DateTime.Now;
+                }
                 FacturaActual.Pagos.Add(PagoActual);
                 OrdenActual.Factura = FacturaActual;
             }

@@ -158,12 +158,20 @@ namespace UI.Desktop
                     break;
                 case ModoForm.Modificacion:
                     {
-                        GuardarCambios();
+                        if (MessageBox.Show($"¿Está seguro que desea modificar el insumo {InsumoActual.Descripcion}?", "Insumo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            GuardarCambios();
+                        }
                     };
                     break;
                 case ModoForm.Baja:
-                    Eliminar();
-                    Close();
+                    {
+                        if (MessageBox.Show($"¿Está seguro que desea eliminar el insumo - {InsumoActual.Descripcion}?", "Insumo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            Eliminar();
+                            Close();
+                        }
+                    };
                     break;
                 case ModoForm.Consulta:
                     Close();

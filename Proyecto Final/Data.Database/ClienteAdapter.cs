@@ -34,7 +34,9 @@ namespace Data.Database
         {
             try
             {
-                return _context.Clientes.FirstOrDefault(c => c.IdCliente == idCliente);
+                return _context.Clientes.
+                    Include(c => c.Ordenes).
+                    FirstOrDefault(c => c.IdCliente == idCliente);
             }
             catch (Exception e)
             {

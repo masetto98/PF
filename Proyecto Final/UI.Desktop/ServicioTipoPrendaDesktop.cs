@@ -384,5 +384,11 @@ namespace UI.Desktop
 
         }
         #endregion
+
+        private void listConsumos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listConsumos.Columns[e.ColumnIndex].Width;
+        }
     }
 }

@@ -370,7 +370,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(469, 597);
+            this.ClientSize = new System.Drawing.Size(467, 595);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.lbID);
@@ -389,6 +389,7 @@ namespace UI.Desktop
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.btnAceptar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "ClienteDesktop";
             this.Sizable = false;

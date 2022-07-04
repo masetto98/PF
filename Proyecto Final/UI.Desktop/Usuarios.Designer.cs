@@ -63,6 +63,7 @@ namespace UI.Desktop
             this.listUsuarios.MinimumSize = new System.Drawing.Size(200, 100);
             this.listUsuarios.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listUsuarios.MouseState = MaterialSkin.MouseState.OUT;
+            this.listUsuarios.MultiSelect = false;
             this.listUsuarios.Name = "listUsuarios";
             this.listUsuarios.OwnerDraw = true;
             this.listUsuarios.Size = new System.Drawing.Size(660, 390);

@@ -75,6 +75,7 @@ namespace UI.Desktop
                 this.cmbPrioridad.SelectedIndex = 1;
                 this.cmbEntregaDomicilio.DataSource= Enum.GetNames(typeof(Orden.EntregasDomicilio));
                 this.cmbEntregaDomicilio.SelectedIndex = 0;
+                this.txtDescuento.Enabled = false;
             }
             catch (Exception e)
             {
@@ -210,6 +211,11 @@ namespace UI.Desktop
                     //PagoActual.FormaPago = (Pago.FormasPago)Enum.Parse(typeof(Business.Entities.Pago.FormasPago), "Seña");
                     PagoActual.Importe = double.Parse(txtSeniaOrden.Text);
                     FacturaActual.Pagos.Add(PagoActual);
+                    
+                }
+                else
+                {
+                    FacturaActual = new Factura();
                 }
                 OrdenActual.Factura = FacturaActual;
                 AsignarPrioridadItems();
@@ -234,6 +240,7 @@ namespace UI.Desktop
 
         private void rbtnPorcentaje_CheckedChanged(object sender, EventArgs e)
         {
+            this.txtDescuento.Enabled = true;
             if (this.rbtnPorcentaje.Checked == true)
             {
                 this.rbtnValor.Checked = false;
@@ -246,6 +253,7 @@ namespace UI.Desktop
 
         private void rbtnValor_CheckedChanged(object sender, EventArgs e)
         {
+            this.txtDescuento.Enabled = true;
             if (this.rbtnValor.Checked == true)
             {
                 this.rbtnPorcentaje.Checked = false;
@@ -520,7 +528,7 @@ namespace UI.Desktop
                 }
                 else
                 {
-                    Exception r = new Exception("La orden que quiere eliminar ya esta finalizada o se encuentra en proceso de atencion");
+                    Exception r = new Exception("La orden que quiere eliminar ya esta finalizada o se encuentra en proceso de atención");
                     throw r;
                 }
             }
@@ -543,14 +551,20 @@ namespace UI.Desktop
                     break;
                 case ModoForm.Modificacion:
                     {
-                        GuardarCambios();
+                        if (MessageBox.Show($"¿Está seguro que desea modificar la Orden?", "Orden", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            GuardarCambios();
+                        }
                     };
                     break;
                 case ModoForm.Baja:
                     {
-                        Eliminar();
-                        Close();
-                    }
+                        if (MessageBox.Show($"¿Está seguro que desea eliminar la Orden - {OrdenActual.NroOrden}?", "Orden", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            Eliminar();
+                            Close();
+                        }
+                    };
                     break;
                 case ModoForm.Consulta:
                     Close();
@@ -610,41 +624,35 @@ namespace UI.Desktop
                         }
                         comprobanteorden = comprobanteorden.Replace("@items", items);
                         // falta condicion de si es null el listado de pagos pq falla con el count cuando no hay seña
-                        FacturaActual = _facturaLogic.GetOne(OrdenActual.NroFactura);
-                        if(FacturaActual.Pagos.Count > 0)
+                        if(OrdenActual.Factura is not null)
                         {
-                            comprobanteorden = comprobanteorden.Replace("@Seña", OrdenActual.Factura.Pagos[0].Importe.ToString());
+                            FacturaActual = _facturaLogic.GetOne(OrdenActual.NroFactura);
+                            if (FacturaActual.Pagos.Count > 0)
+                            {
+                                comprobanteorden = comprobanteorden.Replace("@Seña", OrdenActual.Factura.Pagos[0].Importe.ToString());
+                            }
                         }
                         else
                         {
                             comprobanteorden = comprobanteorden.Replace("@Seña", "0");
                         }
-                        /*Table pdfTable = new Table(4);
-                            pdfTable.SetPadding(3);
-                            pdfTable.SetWidth(UnitValue.CreatePercentValue(100));
-                            pdfTable.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
-                       */
+                       
 
 
                         using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
-                            {
-                                PdfWriter writer = new PdfWriter(stream);
-                                PdfDocument pdf = new PdfDocument(writer);
-                                pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4);
-                            //document.SetMargins(10f, 20f, 20f, 10f);
-                            //Paragraph p = new Paragraph();
-                            //p.SetTextAlignment(TextAlignment.CENTER);
-                            //p.Add($"Reporte de {Singleton.getInstance().ModuloActual} \n");
-                            //p.SetBold();
-                            //p.SetUnderline();
-                            //p.SetFontSize(18);
+                        {
+
+                            PdfWriter writer = new PdfWriter(stream);
+                            PdfDocument pdf = new PdfDocument(writer);
+                            pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4);
+                            
                             using (StringReader sr = new StringReader(comprobanteorden))
                             {
                                 Document document =  HtmlConverter.ConvertToDocument(comprobanteorden, writer);
                                 document.Close();
                             }
-                                stream.Close();
-                            }
+                            stream.Close();
+                        }
 
                             MessageBox.Show("Comprobante exportado exitosamente", "Info");
                         }

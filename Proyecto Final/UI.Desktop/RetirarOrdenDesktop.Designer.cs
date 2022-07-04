@@ -384,6 +384,7 @@ namespace UI.Desktop
             this.listItemsRetiro.MinimumSize = new System.Drawing.Size(200, 100);
             this.listItemsRetiro.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listItemsRetiro.MouseState = MaterialSkin.MouseState.OUT;
+            this.listItemsRetiro.MultiSelect = false;
             this.listItemsRetiro.Name = "listItemsRetiro";
             this.listItemsRetiro.OwnerDraw = true;
             this.listItemsRetiro.Size = new System.Drawing.Size(736, 143);

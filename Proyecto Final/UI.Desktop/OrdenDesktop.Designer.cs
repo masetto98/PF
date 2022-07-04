@@ -188,6 +188,7 @@ namespace UI.Desktop
             this.listItemsServicio.MinimumSize = new System.Drawing.Size(200, 99);
             this.listItemsServicio.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listItemsServicio.MouseState = MaterialSkin.MouseState.OUT;
+            this.listItemsServicio.MultiSelect = false;
             this.listItemsServicio.Name = "listItemsServicio";
             this.listItemsServicio.OwnerDraw = true;
             this.listItemsServicio.Size = new System.Drawing.Size(606, 135);
@@ -503,6 +504,7 @@ namespace UI.Desktop
             this.txtPrecioTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtPrecioTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPrecioTotal.Depth = 0;
+            this.txtPrecioTotal.Enabled = false;
             this.txtPrecioTotal.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtPrecioTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtPrecioTotal.Hint = "Total";
@@ -574,7 +576,7 @@ namespace UI.Desktop
             this.txtDireccion.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDireccion.Multiline = false;
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(374, 50);
+            this.txtDireccion.Size = new System.Drawing.Size(390, 50);
             this.txtDireccion.TabIndex = 35;
             this.txtDireccion.Text = "";
             this.txtDireccion.TrailingIcon = null;

@@ -59,5 +59,18 @@ namespace UI.Desktop
 
 
         }
+
+        private void showPass1_Click(object sender, EventArgs e)
+        {
+            hidePass1.BringToFront();
+            txtContrasenia.UseSystemPasswordChar = false;
+            txtContrasenia.PasswordChar = '\0';
+        }
+
+        private void hidePass1_Click(object sender, EventArgs e)
+        {
+            txtContrasenia.UseSystemPasswordChar = true;
+            showPass1.BringToFront();
+        }
     }
 }

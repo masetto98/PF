@@ -66,8 +66,7 @@ namespace UI.Desktop
             {
                 foreach (Gasto g in gastos)
                 {
-                    ListViewItem item = new ListViewItem(g.IdGasto.ToString());
-                    item.SubItems.Add(g.TipoGasto.ToString());
+                    ListViewItem item = new ListViewItem(g.TipoGasto.ToString());
                     item.SubItems.Add(g.Descripcion);
                     item.SubItems.Add(g.FechaRealizado.ToString());
                     item.SubItems.Add(g.Importe.ToString());
@@ -151,6 +150,12 @@ namespace UI.Desktop
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void listOrdenes_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listOrdenes.Columns[e.ColumnIndex].Width;
         }
     }
 }

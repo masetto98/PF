@@ -118,8 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="round-account-button-with-user-inside_icon-icons.com_72596" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\round-account-button-with-user-inside_icon-icons.com_72596.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="laundry_washing_machine_clothes_clean_wash_icon_196839 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\laundry_washing_machine_clothes_clean_wash_icon_196839 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="search_find_user_16727" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\search_find_user_16727.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,6 +136,9 @@
   <data name="3706883-control-music-pause-stop-stop-music_108702" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\3706883-control-music-pause-stop-stop-music_108702.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="electric_appliances_waching_machine_laundry_icon_124437" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\electric_appliances_waching_machine_laundry_icon_124437.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="worker_form_document_icon_208910" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\worker_form_document_icon_208910.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -145,14 +148,11 @@
   <data name="pay_payment_bill_dollar_cash_icon_143281" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pay_payment_bill_dollar_cash_icon_143281.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mbriprint_99560" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mbriprint_99560.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="play-button_icon-icons.com_70891" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\play-button_icon-icons.com_70891.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="playbutton_120627" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\playbutton_120627.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="laundry_washing_machine_clothes_clean_wash_icon_196779" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\laundry_washing_machine_clothes_clean_wash_icon_196779.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="power_on_off_log_out_exit_icon_141949" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\power_on_off_log_out_exit_icon_141949.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,8 +166,8 @@
   <data name="productapplication_producto_3010" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\productapplication_producto_3010.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="electric_appliances_waching_machine_laundry_icon_124437" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\electric_appliances_waching_machine_laundry_icon_124437.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="playbutton_120627" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\playbutton_120627.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="hide_icon_183908" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hide_icon_183908.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,6 +187,9 @@
   <data name="multimediamusicplayerplaybutton_85798" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\multimediamusicplayerplaybutton_85798.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="document_3530" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\document_3530.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="customer_service_icon_194124" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\customer_service_icon_194124.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -202,23 +205,32 @@
   <data name="product_delivery_icon_152013" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\product_delivery_icon_152013.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="laundry_washing_machine_clothes_clean_wash_icon_196809" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\laundry_washing_machine_clothes_clean_wash_icon_196809.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="tshirt_120689" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tshirt_120689.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="addthelist_añadir_3477" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\addthelist_añadir_3477.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="play-circle_icon-icons1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\play-circle_icon-icons.com_699881.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="3925411-cashbox-cashier-shop-icon_111535" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\3925411-cashbox-cashier-shop-icon_111535.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="play-circle_icon-icons.com_69988" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\play-circle_icon-icons.com_69988.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="document_3530" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\document_3530.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="play-circle_icon-icons1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\play-circle_icon-icons.com_699881.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="round-account-button-with-user-inside_icon-icons.com_72596" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\round-account-button-with-user-inside_icon-icons.com_72596.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="thefreeforty_withdraw_icon-icons.com_66307" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\thefreeforty_withdraw_icon-icons.com_66307.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="payment_tax_invoice_document_calculator_icon_188684" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\payment_tax_invoice_document_calculator_icon_188684.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="view_show_icon_124811" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\view_show_icon_124811.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,14 +238,14 @@
   <data name="plus_icon-icons.com_70890" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\plus_icon-icons.com_70890.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="new_add_user_16734" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\new_add_user_16734.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="3925411-cashbox-cashier-shop-icon_111535" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\3925411-cashbox-cashier-shop-icon_111535.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mbriprint_99560" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mbriprint_99560.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="comprobanteorden2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\comprobanteorden2.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="laundry_washing_machine_clothes_clean_wash_icon_196839" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\laundry_washing_machine_clothes_clean_wash_icon_196839.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="search_find_look_zoom_in_icon-icons.com_59897" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\search_find_look_zoom_in_icon-icons.com_59897.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -241,8 +253,11 @@
   <data name="stop-button_icon-icons.com_71563" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stop-button_icon-icons.com_71563.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="payment_tax_invoice_document_calculator_icon_188684" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\payment_tax_invoice_document_calculator_icon_188684.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="new_add_user_16734" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\new_add_user_16734.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="show_icon_215343" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\show_icon_215343.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="1486564394-edit_81508" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1486564394-edit_81508.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -253,7 +268,7 @@
   <data name="adduser_añadir_3553" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\adduser_añadir_3553.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="show_icon_215343" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\show_icon_215343.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="report_document_finance_business_analysis_analytics_chart_icon_188615" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\report_document_finance_business_analysis_analytics_chart_icon_188615.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

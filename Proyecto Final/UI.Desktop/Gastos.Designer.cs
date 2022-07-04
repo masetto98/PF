@@ -59,10 +59,11 @@ namespace UI.Desktop
             this.listGastos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listGastos.FullRowSelect = true;
             this.listGastos.HideSelection = false;
-            this.listGastos.Location = new System.Drawing.Point(13, 143);
+            this.listGastos.Location = new System.Drawing.Point(14, 155);
             this.listGastos.MinimumSize = new System.Drawing.Size(200, 100);
             this.listGastos.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listGastos.MouseState = MaterialSkin.MouseState.OUT;
+            this.listGastos.MultiSelect = false;
             this.listGastos.Name = "listGastos";
             this.listGastos.OwnerDraw = true;
             this.listGastos.Size = new System.Drawing.Size(610, 390);
@@ -88,12 +89,12 @@ namespace UI.Desktop
             // columnFechaRealizado
             // 
             this.columnFechaRealizado.Text = "Fecha";
-            this.columnFechaRealizado.Width = 150;
+            this.columnFechaRealizado.Width = 152;
             // 
             // columnImporte
             // 
             this.columnImporte.Text = "Importe";
-            this.columnImporte.Width = 100;
+            this.columnImporte.Width = 98;
             // 
             // btnEditar
             // 
@@ -105,7 +106,7 @@ namespace UI.Desktop
             this.btnEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEditar.HighEmphasis = true;
             this.btnEditar.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
-            this.btnEditar.Location = new System.Drawing.Point(136, 83);
+            this.btnEditar.Location = new System.Drawing.Point(136, 95);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEditar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEditar.Name = "btnEditar";
@@ -128,7 +129,7 @@ namespace UI.Desktop
             this.btnEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEliminar.HighEmphasis = true;
             this.btnEliminar.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
-            this.btnEliminar.Location = new System.Drawing.Point(258, 83);
+            this.btnEliminar.Location = new System.Drawing.Point(258, 95);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminar.Name = "btnEliminar";
@@ -151,7 +152,7 @@ namespace UI.Desktop
             this.btnAgregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregar.HighEmphasis = true;
             this.btnAgregar.Icon = global::UI.Desktop.Properties.Resources.plus_icon_icons_com_70890;
-            this.btnAgregar.Location = new System.Drawing.Point(12, 83);
+            this.btnAgregar.Location = new System.Drawing.Point(14, 95);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAgregar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAgregar.Name = "btnAgregar";
@@ -171,7 +172,7 @@ namespace UI.Desktop
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(13, 553);
+            this.materialLabel1.Location = new System.Drawing.Point(14, 565);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(54, 19);
@@ -193,7 +194,7 @@ namespace UI.Desktop
             this.cmbFiltro.Hint = "Filtro";
             this.cmbFiltro.IntegralHeight = false;
             this.cmbFiltro.ItemHeight = 43;
-            this.cmbFiltro.Location = new System.Drawing.Point(74, 540);
+            this.cmbFiltro.Location = new System.Drawing.Point(75, 552);
             this.cmbFiltro.MaxDropDownItems = 4;
             this.cmbFiltro.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbFiltro.Name = "cmbFiltro";
@@ -211,7 +212,7 @@ namespace UI.Desktop
             this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtBuscar.Hint = "Buscar gasto ....";
             this.txtBuscar.LeadingIcon = null;
-            this.txtBuscar.Location = new System.Drawing.Point(252, 540);
+            this.txtBuscar.Location = new System.Drawing.Point(253, 552);
             this.txtBuscar.MaxLength = 50;
             this.txtBuscar.MouseState = MaterialSkin.MouseState.OUT;
             this.txtBuscar.Multiline = false;
@@ -231,7 +232,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(546, 599);
+            this.btnCerrar.Location = new System.Drawing.Point(547, 611);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -248,7 +249,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 648);
+            this.ClientSize = new System.Drawing.Size(639, 660);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.cmbFiltro);

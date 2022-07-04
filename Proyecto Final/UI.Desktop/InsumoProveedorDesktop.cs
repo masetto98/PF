@@ -213,17 +213,24 @@ namespace UI.Desktop
                     {
                         GuardarCambios();
                         ModificarStock();
-                        
                     };
                     break;
                 case ModoForm.Modificacion:
                     {
-                        GuardarCambios();
+                        if (MessageBox.Show($"¿Está seguro que desea modificar el ingreso?", "Ingreso", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            GuardarCambios();
+                        }
                     };
                     break;
                 case ModoForm.Baja:
-                    Eliminar();
-                    Close();
+                    {
+                        if (MessageBox.Show($"¿Está seguro que desea eliminar el ingreso?", "Ingreso", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            Eliminar();
+                            Close();
+                        }
+                    };
                     break;
                 case ModoForm.Consulta:
                     Close();
@@ -247,11 +254,9 @@ namespace UI.Desktop
             {
                 MapearADatos();
                 Validaciones.ValidarNumeroEnteroDecimal(this.txtCantidad.Text);
-                if (Validar())
-                {
-                    _insumoProveedorLogic.Save(InsumoProveedorActual);
-                    Close();
-                }
+                _insumoProveedorLogic.Save(InsumoProveedorActual);
+                Close();
+                
             }
             catch (Exception e)
             {

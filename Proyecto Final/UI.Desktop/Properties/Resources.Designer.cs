@@ -264,6 +264,46 @@ namespace UI.Desktop.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap laundry_washing_machine_clothes_clean_wash_icon_196779 {
+            get {
+                object obj = ResourceManager.GetObject("laundry_washing_machine_clothes_clean_wash_icon_196779", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap laundry_washing_machine_clothes_clean_wash_icon_196809 {
+            get {
+                object obj = ResourceManager.GetObject("laundry_washing_machine_clothes_clean_wash_icon_196809", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap laundry_washing_machine_clothes_clean_wash_icon_196839 {
+            get {
+                object obj = ResourceManager.GetObject("laundry_washing_machine_clothes_clean_wash_icon_196839", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap laundry_washing_machine_clothes_clean_wash_icon_196839__1_ {
+            get {
+                object obj = ResourceManager.GetObject("laundry_washing_machine_clothes_clean_wash_icon_196839 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mbriprint_99560 {
             get {
                 object obj = ResourceManager.GetObject("mbriprint_99560", resourceCulture);
@@ -437,6 +477,16 @@ namespace UI.Desktop.Properties {
         internal static System.Drawing.Bitmap productapplication_producto_3010 {
             get {
                 object obj = ResourceManager.GetObject("productapplication_producto_3010", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap report_document_finance_business_analysis_analytics_chart_icon_188615 {
+            get {
+                object obj = ResourceManager.GetObject("report_document_finance_business_analysis_analytics_chart_icon_188615", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -77,6 +77,7 @@ namespace UI.Desktop
             this.listProveedores.MinimumSize = new System.Drawing.Size(200, 100);
             this.listProveedores.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listProveedores.MouseState = MaterialSkin.MouseState.OUT;
+            this.listProveedores.MultiSelect = false;
             this.listProveedores.Name = "listProveedores";
             this.listProveedores.OwnerDraw = true;
             this.listProveedores.Size = new System.Drawing.Size(611, 511);
@@ -320,6 +321,7 @@ namespace UI.Desktop
             this.listIngresosInsumos.MinimumSize = new System.Drawing.Size(200, 100);
             this.listIngresosInsumos.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listIngresosInsumos.MouseState = MaterialSkin.MouseState.OUT;
+            this.listIngresosInsumos.MultiSelect = false;
             this.listIngresosInsumos.Name = "listIngresosInsumos";
             this.listIngresosInsumos.OwnerDraw = true;
             this.listIngresosInsumos.Size = new System.Drawing.Size(401, 359);
@@ -446,8 +448,8 @@ namespace UI.Desktop
             this.MaximizeBox = false;
             this.Name = "Proveedores";
             this.Sizable = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Proveedores";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.materialCard1.ResumeLayout(false);
             this.materialCard1.PerformLayout();
             this.ResumeLayout(false);

@@ -66,6 +66,7 @@ namespace UI.Desktop
             this.listServiciosTipoPrendas.MinimumSize = new System.Drawing.Size(200, 100);
             this.listServiciosTipoPrendas.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listServiciosTipoPrendas.MouseState = MaterialSkin.MouseState.OUT;
+            this.listServiciosTipoPrendas.MultiSelect = false;
             this.listServiciosTipoPrendas.Name = "listServiciosTipoPrendas";
             this.listServiciosTipoPrendas.OwnerDraw = true;
             this.listServiciosTipoPrendas.Size = new System.Drawing.Size(358, 365);

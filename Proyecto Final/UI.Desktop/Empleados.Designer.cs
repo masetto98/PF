@@ -67,6 +67,7 @@ namespace UI.Desktop
             this.listEmpleados.MinimumSize = new System.Drawing.Size(200, 100);
             this.listEmpleados.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listEmpleados.MouseState = MaterialSkin.MouseState.OUT;
+            this.listEmpleados.MultiSelect = false;
             this.listEmpleados.Name = "listEmpleados";
             this.listEmpleados.OwnerDraw = true;
             this.listEmpleados.Size = new System.Drawing.Size(364, 390);
@@ -83,17 +84,17 @@ namespace UI.Desktop
             // columnCuit
             // 
             this.columnCuit.Text = "Cuit";
-            this.columnCuit.Width = 105;
+            this.columnCuit.Width = 106;
             // 
             // columnNombre
             // 
             this.columnNombre.Text = "Nombre";
-            this.columnNombre.Width = 100;
+            this.columnNombre.Width = 102;
             // 
             // columnApellido
             // 
             this.columnApellido.Text = "Apellido";
-            this.columnApellido.Width = 110;
+            this.columnApellido.Width = 111;
             // 
             // btnEditar
             // 

@@ -391,7 +391,7 @@ namespace UI.Desktop
             this.txtID.MouseState = MaterialSkin.MouseState.OUT;
             this.txtID.Multiline = false;
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(361, 50);
+            this.txtID.Size = new System.Drawing.Size(118, 50);
             this.txtID.TabIndex = 22;
             this.txtID.Text = "";
             this.txtID.TrailingIcon = null;
@@ -400,7 +400,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 620);
+            this.ClientSize = new System.Drawing.Size(531, 626);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.btnCancelar);

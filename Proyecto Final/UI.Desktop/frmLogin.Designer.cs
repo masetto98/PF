@@ -34,6 +34,12 @@ namespace UI.Desktop
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.txtContrasenia = new MaterialSkin.Controls.MaterialTextBox2();
+            this.showPass1 = new System.Windows.Forms.PictureBox();
+            this.hidePass1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.showPass1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hidePass1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnIngresar
@@ -45,7 +51,7 @@ namespace UI.Desktop
             this.btnIngresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnIngresar.HighEmphasis = true;
             this.btnIngresar.Icon = null;
-            this.btnIngresar.Location = new System.Drawing.Point(175, 277);
+            this.btnIngresar.Location = new System.Drawing.Point(348, 289);
             this.btnIngresar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnIngresar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnIngresar.Name = "btnIngresar";
@@ -68,7 +74,7 @@ namespace UI.Desktop
             this.txtNombreUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtNombreUsuario.Hint = "Nombre de usuario";
             this.txtNombreUsuario.LeadingIcon = null;
-            this.txtNombreUsuario.Location = new System.Drawing.Point(29, 113);
+            this.txtNombreUsuario.Location = new System.Drawing.Point(202, 120);
             this.txtNombreUsuario.MaxLength = 50;
             this.txtNombreUsuario.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNombreUsuario.Multiline = false;
@@ -85,7 +91,7 @@ namespace UI.Desktop
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(29, 91);
+            this.materialLabel1.Location = new System.Drawing.Point(202, 98);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(136, 19);
@@ -99,7 +105,7 @@ namespace UI.Desktop
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(29, 166);
+            this.materialLabel2.Location = new System.Drawing.Point(202, 173);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(82, 19);
@@ -118,7 +124,7 @@ namespace UI.Desktop
             this.txtContrasenia.HideSelection = true;
             this.txtContrasenia.Hint = "Password";
             this.txtContrasenia.LeadingIcon = null;
-            this.txtContrasenia.Location = new System.Drawing.Point(29, 193);
+            this.txtContrasenia.Location = new System.Drawing.Point(202, 200);
             this.txtContrasenia.MaxLength = 32767;
             this.txtContrasenia.MouseState = MaterialSkin.MouseState.OUT;
             this.txtContrasenia.Name = "txtContrasenia";
@@ -138,17 +144,52 @@ namespace UI.Desktop
             this.txtContrasenia.TrailingIcon = null;
             this.txtContrasenia.UseSystemPasswordChar = true;
             // 
+            // showPass1
+            // 
+            this.showPass1.BackColor = System.Drawing.Color.Transparent;
+            this.showPass1.Image = global::UI.Desktop.Properties.Resources.show_icon_215343;
+            this.showPass1.Location = new System.Drawing.Point(445, 209);
+            this.showPass1.Name = "showPass1";
+            this.showPass1.Size = new System.Drawing.Size(33, 30);
+            this.showPass1.TabIndex = 21;
+            this.showPass1.TabStop = false;
+            this.showPass1.Click += new System.EventHandler(this.showPass1_Click);
+            // 
+            // hidePass1
+            // 
+            this.hidePass1.BackColor = System.Drawing.Color.Transparent;
+            this.hidePass1.Image = global::UI.Desktop.Properties.Resources.hide_icon_183908;
+            this.hidePass1.Location = new System.Drawing.Point(445, 209);
+            this.hidePass1.Name = "hidePass1";
+            this.hidePass1.Size = new System.Drawing.Size(33, 30);
+            this.hidePass1.TabIndex = 22;
+            this.hidePass1.TabStop = false;
+            this.hidePass1.Click += new System.EventHandler(this.hidePass1_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::UI.Desktop.Properties.Resources.laundry_washing_machine_clothes_clean_wash_icon_196839__1_;
+            this.pictureBox1.Location = new System.Drawing.Point(37, 120);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(128, 131);
+            this.pictureBox1.TabIndex = 23;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmLogin
             // 
             this.AcceptButton = this.btnIngresar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(294, 340);
+            this.ClientSize = new System.Drawing.Size(490, 340);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.showPass1);
             this.Controls.Add(this.txtContrasenia);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.txtNombreUsuario);
             this.Controls.Add(this.btnIngresar);
+            this.Controls.Add(this.hidePass1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -156,6 +197,9 @@ namespace UI.Desktop
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ingresar";
+            ((System.ComponentModel.ISupportInitialize)(this.showPass1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hidePass1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,5 +212,8 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialTextBox2 txtContrasenia;
+        private System.Windows.Forms.PictureBox showPass1;
+        private System.Windows.Forms.PictureBox hidePass1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -118,7 +118,7 @@ namespace UI.Desktop
                     //ListarInsumos();
                     break;
                 case 3:
-                    //ListarIngresos();
+                    ListarIngresos();
                     break;
 
             }
@@ -162,7 +162,7 @@ namespace UI.Desktop
             }
             else
             {
-                MessageBox.Show("Seleccionar una fila en la lista para poder editar");
+                MessageBox.Show("Seleccionar una fila en la lista para poder editar","Cliente",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
         }
 
@@ -178,7 +178,7 @@ namespace UI.Desktop
             }
             else
             {
-                MessageBox.Show("Seleccionar una fila en la lista para poder eliminar");
+                MessageBox.Show("Seleccionar una fila en la lista para poder eliminar", "Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -311,6 +311,10 @@ namespace UI.Desktop
                     }
                 }
             }
+            else
+            {
+                MessageBox.Show("Seleccionar una fila en la lista para poder observar los detalles", "Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private double CalcularImporteOrden(Orden ordenActual)
@@ -377,7 +381,11 @@ namespace UI.Desktop
                         listPagosOrden.Items.Add(item);
                     }
                 }
-                else { MessageBox.Show("La orden no contiene ningun pago"); }
+                else { MessageBox.Show("La orden no contiene ningún pago","Pago",MessageBoxButtons.OK,MessageBoxIcon.Information); }
+            }
+            else
+            {
+                MessageBox.Show("Seleccionar una fila en la lista de \"Ordenes del cliente\" para poder ver los pagos", "Pago", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -406,6 +414,7 @@ namespace UI.Desktop
                 }
                 this.lblCuentaCorriente.Text = _deudaCliente.ToString();
             }
+            
         }
 
         private void listClientes_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -449,7 +458,21 @@ namespace UI.Desktop
         #endregion
 
         #region ------- INVENTARIO -------
-
+        private void ListarIngresos()
+        {
+            listIngresos.Items.Clear();
+            List<InsumoProveedor> ingresos = _insumoProveedorLogic.GetAll();
+            foreach(InsumoProveedor ig in ingresos)
+            {
+                ListViewItem item = new ListViewItem(ig.IdProveedor.ToString());
+                item.SubItems.Add(ig.Proveedor.RazonSocial);
+                item.SubItems.Add(ig.IdInsumo.ToString());
+                item.SubItems.Add(ig.Insumo.Descripcion);
+                item.SubItems.Add(ig.FechaIngreso.ToString("yyyy-MM-dd HH:mm:ss.fffffff"));
+                item.SubItems.Add(ig.Cantidad.ToString());
+                listIngresos.Items.Add(item);
+            }
+        }
         #region ------- Stock -------
 
         private void ListarStock()
@@ -501,7 +524,7 @@ namespace UI.Desktop
             }
             else
             {
-                MessageBox.Show("Seleccionar una fila en la lista para poder editar");
+                MessageBox.Show("Seleccionar una fila en la lista para poder editar","Insumo",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             ListarStock();
         }
@@ -517,7 +540,7 @@ namespace UI.Desktop
             }
             else
             {
-                MessageBox.Show("Seleccionar una fila en la lista para poder eliminar");
+                MessageBox.Show("Seleccionar una fila en la lista para poder eliminar", "Insumo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             ListarStock();
         }
@@ -544,6 +567,10 @@ namespace UI.Desktop
                         listIngresosInsumos.Items.Add(item);
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Seleccionar una fila en la lista para poder observar los detalles", "Insumo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -572,10 +599,13 @@ namespace UI.Desktop
                 }
                 else
                 {
-                    MessageBox.Show("Seleccionar una fila en la lista para poder editar");
+                    MessageBox.Show("Seleccionar una fila en la lista para poder editar","Ingreso",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
                 //ListarIngresos();
-
+            }
+            else
+            {
+                MessageBox.Show("Seleccionar una fila en la lista de \"Movimientos del insumo\" para editar un ingreso", "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -599,21 +629,32 @@ namespace UI.Desktop
                 {
                     MessageBox.Show("Seleccionar una fila en la lista para poder editar");
                 }
-
+            }
+            else
+            {
+                MessageBox.Show("Seleccionar una fila en la lista de \"Movimientos del insumo\" para eliminar un ingreso", "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             //ListarIngresos();
         }
 
         private void dtpFiltrarFechaIngreso_CloseUp(object sender, EventArgs e)
         {
-            DateTime fechaFiltro = dtpFiltroFechaIngreso.Value;
+            DateTime fechaFiltro = dtpFiltrarFechaIngreso.Value;
             List<InsumoProveedor> insumosproveedores = _insumoProveedorLogic.GetAll();
-            List<InsumoProveedor> ipFecha = insumosproveedores.FindAll(ip => ip.FechaIngreso.ToString("yyyy/MM/dd") == fechaFiltro.ToString("yyyy/MM/dd"));
+            List<InsumoProveedor> ipFecha = insumosproveedores.FindAll(
+                delegate(InsumoProveedor ip) {
+                    return ip.FechaIngreso.Date >= fechaFiltro.Date;
+                }
+                );
             listIngresos.Items.Clear();
             foreach (InsumoProveedor ip in ipFecha)
             {
-                ListViewItem item = new ListViewItem(ip.Proveedor.RazonSocial);
-                item.SubItems.Add(ip.FechaIngreso.ToString());
+
+                ListViewItem item = new ListViewItem(ip.IdProveedor.ToString());
+                item.SubItems.Add(ip.Proveedor.RazonSocial);
+                item.SubItems.Add(ip.IdInsumo.ToString());
+                item.SubItems.Add(ip.Insumo.Descripcion);
+                item.SubItems.Add(ip.FechaIngreso.ToString("yyyy-MM-dd HH:mm:ss.fffffff"));
                 item.SubItems.Add(ip.Cantidad.ToString());
                 listIngresos.Items.Add(item);
             }
@@ -654,7 +695,7 @@ namespace UI.Desktop
         {
             InsumoProveedorDesktop frmInsumoProveedor = new InsumoProveedorDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmInsumoProveedor.ShowDialog();
-            //ListarIngresos();
+            ListarIngresos();
         }
 
         private void btnEditarIngreso_Click(object sender, EventArgs e)
@@ -671,7 +712,7 @@ namespace UI.Desktop
             }
             else
             {
-                MessageBox.Show("Seleccionar una fila en la lista para poder editar");
+                MessageBox.Show("Seleccionar una fila en la lista para poder editar","Ingreso",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
         }
 
@@ -690,7 +731,7 @@ namespace UI.Desktop
             }
             else
             {
-                MessageBox.Show("Seleccionar una fila en la lista para poder eliminar");
+                MessageBox.Show("Seleccionar una fila en la lista para poder eliminar", "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -967,6 +1008,10 @@ namespace UI.Desktop
                 CargarOrdenes();
                 Planificar();
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder eliminar una Orden", "Orden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
 
@@ -980,21 +1025,46 @@ namespace UI.Desktop
                 CargarOrdenes();
                 Planificar();
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder editar una Orden", "Orden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
-
+        public bool VerificarEstadoItems(Orden ordenActual)
+        {
+            List<OrdenServicioTipoPrenda> itemsOrden = ordenActual.ItemsPedidos;
+            bool ok = true;
+            foreach (OrdenServicioTipoPrenda item in itemsOrden)
+            {
+                if (item.Estado != OrdenServicioTipoPrenda.Estados.Finalizado)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
         private void btnRetirarOrden_Click(object sender, EventArgs e)
         {
             if (listOrdenes.SelectedItems.Count > 0)
             {
                 int nroOrden = Int32.Parse(this.listOrdenes.SelectedItems[0].Text);
-                RetirarOrdenDesktop frmRetirarOrden = new RetirarOrdenDesktop(nroOrden, ApplicationForm.ModoForm.Modificacion, _context);
-                frmRetirarOrden.ShowDialog();
-                CargarOrdenes();
+                Orden ordenActual = _ordenLogic.GetOne(nroOrden);
+                if (!VerificarEstadoItems(ordenActual))
+                {
+                    MessageBox.Show("¡Atención! No todos los items de la Orden se encuentran finalizados. Por favor, finalice todos los items necesarios para proceder con el retiro.", "Retiro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    RetirarOrdenDesktop frmRetirarOrden = new RetirarOrdenDesktop(nroOrden, ApplicationForm.ModoForm.Modificacion, _context);
+                    frmRetirarOrden.ShowDialog();
+                    CargarOrdenes();
+                }
             }
             else
             {
-                MessageBox.Show("Seleccionar una fila en la lista para poder retirar la orden");
+                MessageBox.Show("Seleccionar una fila en la lista para poder retirar la Orden","Orden",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
         }
 
@@ -1005,6 +1075,10 @@ namespace UI.Desktop
                 int nroOrden = Int32.Parse(this.listOrdenes.SelectedItems[0].Text);
                 OrdenDesktop frmOrden = new OrdenDesktop(nroOrden, ApplicationForm.ModoForm.Consulta, _context);
                 frmOrden.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder observar los detalles", "Orden", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -1116,8 +1190,15 @@ namespace UI.Desktop
                 item.SubItems.Add(i.Trabajo.OrdenItem.ToString());
                 item.SubItems.Add(i.Trabajo.Estado.ToString());
                 item.SubItems.Add(i.Trabajo.Prioridad.ToString());
-                item.SubItems.Add(i.TiempoRestante.ToString());
-                //item.SubItems.Add(i.TiempoRestante.ToString(@"d\d\:h\h\:m\m\:s\s"));
+                if (i.TiempoRestante.ToString().Contains("-"))
+                {
+                    item.SubItems.Add("-" + i.TiempoRestante.ToString(@"d\d\:h\h\:m\m\:s\s"));
+                }
+                else
+                {
+                    item.SubItems.Add(i.TiempoRestante.ToString(@"d\d\:h\h\:m\m\:s\s"));
+                }
+                
                 listTrabajosPendientes.Items.Add(item);
             }
             ColorCeldaListView();
@@ -1179,6 +1260,10 @@ namespace UI.Desktop
                            item.OrdenItem == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].SubItems[3].Text);
                 });
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un trabajo en la lista para poder observar los detalles", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             if (maquinasItem is not null)
             {
                 listMaquinasItem.Items.Clear();
@@ -1211,6 +1296,10 @@ namespace UI.Desktop
                 MaquinaOrdenServicioTipoPrendaDesktop frmTrabajos = new MaquinaOrdenServicioTipoPrendaDesktop(t.NroOrden, t.IdServicio, t.IdTipoPrenda, t.OrdenItem, ApplicationForm.ModoForm.Alta, _context);
                 frmTrabajos.ShowDialog();
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un trabajo en la lista para poder iniciarlo", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             Planificar();
             ListarOrdenesTrabajosPendientes();
             ListarTrabajosEnProceso();
@@ -1221,7 +1310,7 @@ namespace UI.Desktop
         {
             if (listTrabajosPendientes.SelectedItems.Count > 0)
             {
-                if (MessageBox.Show("Quieres terminar este trabajo?", "Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("¿Esta seguro que desea finalizar este trabajo?", "Message", MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     OrdenServicioTipoPrenda t = _trabajosPendientes.Find(delegate (OrdenServicioTipoPrenda item)
                     {
@@ -1238,6 +1327,10 @@ namespace UI.Desktop
                     t.State = BusinessEntity.States.Modified;
                     _ordenServicioTipoPrendaLogic.Save(t);
                 }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un trabajo en la lista para poder finalizarlo", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             Planificar();
             ListarOrdenesTrabajosPendientes();
@@ -1413,7 +1506,7 @@ namespace UI.Desktop
         {
             if (listTrabajosEnProceso.SelectedItems.Count > 0)
             {
-                if (MessageBox.Show("Quieres terminar este trabajo?", "Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("¿Esta seguro que desea detener el servicio a este trabajo?", "Message", MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
                     MaquinaOrdenServicioTipoPrenda mostpActual = _trabajosEnProceso.Find(delegate (MaquinaOrdenServicioTipoPrenda mostp)
@@ -1426,6 +1519,10 @@ namespace UI.Desktop
                     mostpActual.State = BusinessEntity.States.Modified;
                     _maquinaOrdenServicioTipoPrendaLogic.Save(mostpActual);
                 }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder detener un trabajo", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             ListarOrdenesTrabajosPendientes();
             ListarTrabajosEnProceso();
@@ -1622,6 +1719,16 @@ namespace UI.Desktop
             
         }
 
-        
+        private void btnDeudas_Click(object sender, EventArgs e)
+        {
+            ReporteDeudas frmDeuda = new ReporteDeudas(_context);
+            frmDeuda.ShowDialog();
+        }
+
+        private void btnReporteGastos_Click(object sender, EventArgs e)
+        {
+            ReporteGastos frmGasto = new ReporteGastos(_context);
+            frmGasto.ShowDialog();
+        }
     }
 }

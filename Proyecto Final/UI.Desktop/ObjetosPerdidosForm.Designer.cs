@@ -122,6 +122,7 @@ namespace UI.Desktop
             this.listOrdenesCliente.MinimumSize = new System.Drawing.Size(200, 100);
             this.listOrdenesCliente.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listOrdenesCliente.MouseState = MaterialSkin.MouseState.OUT;
+            this.listOrdenesCliente.MultiSelect = false;
             this.listOrdenesCliente.Name = "listOrdenesCliente";
             this.listOrdenesCliente.OwnerDraw = true;
             this.listOrdenesCliente.Size = new System.Drawing.Size(200, 459);
@@ -179,6 +180,7 @@ namespace UI.Desktop
             this.listItemsPedidos.MinimumSize = new System.Drawing.Size(200, 100);
             this.listItemsPedidos.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listItemsPedidos.MouseState = MaterialSkin.MouseState.OUT;
+            this.listItemsPedidos.MultiSelect = false;
             this.listItemsPedidos.Name = "listItemsPedidos";
             this.listItemsPedidos.OwnerDraw = true;
             this.listItemsPedidos.Size = new System.Drawing.Size(435, 138);
@@ -873,6 +875,7 @@ namespace UI.Desktop
             this.listMaquinasItems.MinimumSize = new System.Drawing.Size(200, 100);
             this.listMaquinasItems.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listMaquinasItems.MouseState = MaterialSkin.MouseState.OUT;
+            this.listMaquinasItems.MultiSelect = false;
             this.listMaquinasItems.Name = "listMaquinasItems";
             this.listMaquinasItems.OwnerDraw = true;
             this.listMaquinasItems.Size = new System.Drawing.Size(435, 164);
@@ -884,12 +887,12 @@ namespace UI.Desktop
             // columnMaquina
             // 
             this.columnMaquina.Text = "Maquina";
-            this.columnMaquina.Width = 170;
+            this.columnMaquina.Width = 171;
             // 
             // columnFechaHora
             // 
             this.columnFechaHora.Text = "Fecha y hora inicio";
-            this.columnFechaHora.Width = 260;
+            this.columnFechaHora.Width = 261;
             // 
             // btnVerServiciosRealizados
             // 
