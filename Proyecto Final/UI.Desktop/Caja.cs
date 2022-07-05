@@ -83,7 +83,7 @@ namespace UI.Desktop
             Gasto ultimoGasto = _gastoLogic.GetAll().FindLast(delegate (Gasto g) { return g.FechaRealizado > this.dtpFecha.Value.Date; });
             if (ultimoGasto is null ||ultimaOrden.FechaSalida.Date >= ultimoGasto.FechaRealizado.Date) { FechaUltimaActividad = ultimaOrden.FechaSalida.Date; }
             else if (ultimaOrden is null ||ultimaOrden.FechaSalida.Date < ultimoGasto.FechaRealizado.Date) { FechaUltimaActividad = ultimoGasto.FechaRealizado.Date; }
-            else { MessageBox.Show("No existen Ingresos o Gastos en esa fecha"); }
+            else { MessageBox.Show("No existen Ingresos o Gastos en esa fecha","Caja",MessageBoxButtons.OK,MessageBoxIcon.Information); }
             if (FechaUltimaActividad != DateTime.MinValue ) 
             {
                 List<Orden> ordenesUltimoDia = _ordenLogic.GetAll().FindAll(delegate (Orden o) { return o.FechaSalida == FechaUltimaActividad; });
@@ -156,6 +156,12 @@ namespace UI.Desktop
         {
             e.Cancel = true;
             e.NewWidth = listOrdenes.Columns[e.ColumnIndex].Width;
+        }
+
+        private void listGastos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listGastos.Columns[e.ColumnIndex].Width;
         }
     }
 }

@@ -79,7 +79,7 @@ namespace UI.Desktop
             // columnTipoGasto
             // 
             this.columnTipoGasto.Text = "Tipo Gasto";
-            this.columnTipoGasto.Width = 150;
+            this.columnTipoGasto.Width = 147;
             // 
             // columnDescripcion
             // 
@@ -89,12 +89,12 @@ namespace UI.Desktop
             // columnFechaRealizado
             // 
             this.columnFechaRealizado.Text = "Fecha";
-            this.columnFechaRealizado.Width = 152;
+            this.columnFechaRealizado.Width = 156;
             // 
             // columnImporte
             // 
             this.columnImporte.Text = "Importe";
-            this.columnImporte.Width = 98;
+            this.columnImporte.Width = 97;
             // 
             // btnEditar
             // 

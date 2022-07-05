@@ -148,9 +148,9 @@ namespace UI.Desktop
             this.materialLabel5.Location = new System.Drawing.Point(17, 105);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(92, 19);
+            this.materialLabel5.Size = new System.Drawing.Size(113, 19);
             this.materialLabel5.TabIndex = 6;
-            this.materialLabel5.Text = "Balance hoy:";
+            this.materialLabel5.Text = "Balance de hoy:";
             // 
             // lblSalidasDia
             // 
@@ -178,7 +178,7 @@ namespace UI.Desktop
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Size = new System.Drawing.Size(106, 19);
             this.materialLabel6.TabIndex = 4;
-            this.materialLabel6.Text = "Gastos del dia:";
+            this.materialLabel6.Text = "Gastos del día:";
             // 
             // lblIngresosDia
             // 
@@ -220,7 +220,7 @@ namespace UI.Desktop
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(116, 19);
             this.materialLabel2.TabIndex = 1;
-            this.materialLabel2.Text = "Ingresos del dia:";
+            this.materialLabel2.Text = "Ingresos del día:";
             // 
             // materialLabel3
             // 
@@ -311,6 +311,7 @@ namespace UI.Desktop
             this.listGastos.TabIndex = 6;
             this.listGastos.UseCompatibleStateImageBehavior = false;
             this.listGastos.View = System.Windows.Forms.View.Details;
+            this.listGastos.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listGastos_ColumnWidthChanging);
             // 
             // columnTipoGasto
             // 
@@ -344,7 +345,7 @@ namespace UI.Desktop
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(106, 19);
             this.materialLabel4.TabIndex = 7;
-            this.materialLabel4.Text = "Gastos del dia:";
+            this.materialLabel4.Text = "Gastos del día:";
             // 
             // Caja
             // 

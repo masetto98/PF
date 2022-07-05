@@ -405,7 +405,7 @@ namespace UI.Desktop
             this.Name = "PagoDesktop";
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Nuevo Pago";
+            this.Text = "Pagos";
             this.materialCard1.ResumeLayout(false);
             this.materialCard1.PerformLayout();
             this.ResumeLayout(false);

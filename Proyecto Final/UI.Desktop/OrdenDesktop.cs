@@ -298,8 +298,10 @@ namespace UI.Desktop
                 Cliente cli = _clienteLogic.GetOneConCuit(this.txtCuit.Text);
                 if (cli == null)
                 {
+                   
                     Exception e = new Exception("No existe cliente para el cuit ingresado.");
                     throw e;
+                    
                 }
                 if (cli.Nombre != "" && cli.Apellido != "" && cli.RazonSocial == "") 
                 {
@@ -315,7 +317,7 @@ namespace UI.Desktop
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show(e.Message,"Cliente",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
 
@@ -355,8 +357,11 @@ namespace UI.Desktop
                 Business.Entities.ServicioTipoPrenda servicioTp = _servicioTipoPrendaLogic.GetOne((int)this.cmbServicios.SelectedValue, (int)this.cmbTipoPrenda.SelectedValue);
                 if (servicioTp is null)
                 {
+                    MessageBox.Show("El servicio para el tipo de prenda seleccionado no es válido", "Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    /*
                     Exception r = new Exception("Error al recuperar el servicio tipo prenda.");
                     throw r;
+                    */
                 }
                 else
                 {
@@ -471,7 +476,7 @@ namespace UI.Desktop
                     }
                     else 
                     {
-                        Exception r = new Exception("El item que quiere eliminar ya fue atendido o se encuentra en proceso de atencion");
+                        Exception r = new Exception("El item que quiere eliminar ya fue atendido o se encuentra en proceso de atención");
                         throw r;
                     }
                     
@@ -492,7 +497,7 @@ namespace UI.Desktop
             if (!result.IsValid)
             {
                 string notificacion = string.Join(Environment.NewLine, result.Errors);
-                MessageBox.Show(notificacion);
+                MessageBox.Show(notificacion,"Orden",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -546,7 +551,7 @@ namespace UI.Desktop
                 case ModoForm.Alta:
                     {
                         GuardarCambios();
-                        PrintComprobante();
+                        //PrintComprobante();
                     };
                     break;
                 case ModoForm.Modificacion:
@@ -611,7 +616,14 @@ namespace UI.Desktop
                         comprobanteorden = comprobanteorden.Replace("@direccion", OrdenActual.Cliente.Direccion);
                         comprobanteorden = comprobanteorden.Replace("@telefono", OrdenActual.Cliente.Telefono);
                         comprobanteorden = comprobanteorden.Replace("@obs", OrdenActual.Observaciones);
-                        comprobanteorden = comprobanteorden.Replace("@Desc", OrdenActual.Descuento);
+                        if(OrdenActual.Descuento is not null)
+                        {
+                            comprobanteorden = comprobanteorden.Replace("@Desc", OrdenActual.Descuento);
+                        }
+                        else
+                        {
+                            comprobanteorden = comprobanteorden.Replace("@Desc", "0");
+                        }
 
                         string items = string.Empty;
                         foreach (OrdenServicioTipoPrenda row in _itemsServicio)
@@ -630,6 +642,10 @@ namespace UI.Desktop
                             if (FacturaActual.Pagos.Count > 0)
                             {
                                 comprobanteorden = comprobanteorden.Replace("@Seña", OrdenActual.Factura.Pagos[0].Importe.ToString());
+                            }
+                            else
+                            {
+                                comprobanteorden = comprobanteorden.Replace("@Seña", "0");
                             }
                         }
                         else

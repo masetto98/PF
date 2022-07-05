@@ -106,8 +106,6 @@ namespace UI.Desktop
             this.btnEditarInsumo = new MaterialSkin.Controls.MaterialButton();
             this.btnEliminarInsumo = new MaterialSkin.Controls.MaterialButton();
             this.btnAgregarInsumo = new MaterialSkin.Controls.MaterialButton();
-            this.TabProveedor = new System.Windows.Forms.TabPage();
-            this.TabInsumo = new System.Windows.Forms.TabPage();
             this.TabMovimientos = new System.Windows.Forms.TabPage();
             this.btnActualizarIngresos = new MaterialSkin.Controls.MaterialButton();
             this.lblFiltrarFecha = new MaterialSkin.Controls.MaterialLabel();
@@ -956,8 +954,6 @@ namespace UI.Desktop
             // tabControlInventario
             // 
             this.tabControlInventario.Controls.Add(this.TabStock);
-            this.tabControlInventario.Controls.Add(this.TabProveedor);
-            this.tabControlInventario.Controls.Add(this.TabInsumo);
             this.tabControlInventario.Controls.Add(this.TabMovimientos);
             this.tabControlInventario.Depth = 0;
             this.tabControlInventario.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1068,7 +1064,7 @@ namespace UI.Desktop
             this.btnReset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnReset.HighEmphasis = true;
             this.btnReset.Icon = null;
-            this.btnReset.Location = new System.Drawing.Point(1083, 260);
+            this.btnReset.Location = new System.Drawing.Point(1084, 260);
             this.btnReset.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnReset.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnReset.Name = "btnReset";
@@ -1144,7 +1140,7 @@ namespace UI.Desktop
             this.btnEliminarIngresoInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEliminarIngresoInsumo.HighEmphasis = true;
             this.btnEliminarIngresoInsumo.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
-            this.btnEliminarIngresoInsumo.Location = new System.Drawing.Point(1155, 431);
+            this.btnEliminarIngresoInsumo.Location = new System.Drawing.Point(1156, 431);
             this.btnEliminarIngresoInsumo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminarIngresoInsumo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminarIngresoInsumo.Name = "btnEliminarIngresoInsumo";
@@ -1179,7 +1175,7 @@ namespace UI.Desktop
             this.listIngresosInsumos.MultiSelect = false;
             this.listIngresosInsumos.Name = "listIngresosInsumos";
             this.listIngresosInsumos.OwnerDraw = true;
-            this.listIngresosInsumos.Size = new System.Drawing.Size(601, 255);
+            this.listIngresosInsumos.Size = new System.Drawing.Size(602, 255);
             this.listIngresosInsumos.TabIndex = 16;
             this.listIngresosInsumos.UseCompatibleStateImageBehavior = false;
             this.listIngresosInsumos.View = System.Windows.Forms.View.Details;
@@ -1193,17 +1189,17 @@ namespace UI.Desktop
             // columnFechaInput
             // 
             this.columnFechaInput.Text = "Fecha Ingreso";
-            this.columnFechaInput.Width = 200;
+            this.columnFechaInput.Width = 205;
             // 
             // columnCantidad
             // 
             this.columnCantidad.Text = "Cantidad";
-            this.columnCantidad.Width = 100;
+            this.columnCantidad.Width = 95;
             // 
             // columnUniMed
             // 
             this.columnUniMed.Text = "Unidad";
-            this.columnUniMed.Width = 101;
+            this.columnUniMed.Width = 102;
             // 
             // btnEditarIngresoInsumo
             // 
@@ -1215,7 +1211,7 @@ namespace UI.Desktop
             this.btnEditarIngresoInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEditarIngresoInsumo.HighEmphasis = true;
             this.btnEditarIngresoInsumo.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
-            this.btnEditarIngresoInsumo.Location = new System.Drawing.Point(1155, 368);
+            this.btnEditarIngresoInsumo.Location = new System.Drawing.Point(1156, 368);
             this.btnEditarIngresoInsumo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEditarIngresoInsumo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEditarIngresoInsumo.Name = "btnEditarIngresoInsumo";
@@ -1238,7 +1234,7 @@ namespace UI.Desktop
             this.btnIngresoInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnIngresoInsumo.HighEmphasis = true;
             this.btnIngresoInsumo.Icon = global::UI.Desktop.Properties.Resources.product_delivery_icon_152013;
-            this.btnIngresoInsumo.Location = new System.Drawing.Point(1155, 305);
+            this.btnIngresoInsumo.Location = new System.Drawing.Point(1156, 305);
             this.btnIngresoInsumo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnIngresoInsumo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnIngresoInsumo.Name = "btnIngresoInsumo";
@@ -1390,27 +1386,6 @@ namespace UI.Desktop
             this.btnAgregarInsumo.UseAccentColor = false;
             this.btnAgregarInsumo.UseVisualStyleBackColor = false;
             this.btnAgregarInsumo.Click += new System.EventHandler(this.btnAgregarInsumo_Click);
-            // 
-            // TabProveedor
-            // 
-            this.TabProveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.TabProveedor.Location = new System.Drawing.Point(4, 24);
-            this.TabProveedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TabProveedor.Name = "TabProveedor";
-            this.TabProveedor.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TabProveedor.Size = new System.Drawing.Size(1345, 604);
-            this.TabProveedor.TabIndex = 1;
-            this.TabProveedor.Text = "Proveedor";
-            // 
-            // TabInsumo
-            // 
-            this.TabInsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.TabInsumo.Location = new System.Drawing.Point(4, 24);
-            this.TabInsumo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TabInsumo.Name = "TabInsumo";
-            this.TabInsumo.Size = new System.Drawing.Size(1345, 604);
-            this.TabInsumo.TabIndex = 2;
-            this.TabInsumo.Text = "Insumo";
             // 
             // TabMovimientos
             // 
@@ -1786,7 +1761,7 @@ namespace UI.Desktop
             this.columnInicio1,
             this.columnFin});
             this.listMaquinasItem.Depth = 0;
-            this.listMaquinasItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listMaquinasItem.Font = new System.Drawing.Font("Segoe UI", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listMaquinasItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listMaquinasItem.FullRowSelect = true;
             this.listMaquinasItem.HideSelection = false;
@@ -1964,7 +1939,7 @@ namespace UI.Desktop
             this.btnTerminarServicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnTerminarServicio.HighEmphasis = true;
             this.btnTerminarServicio.Icon = global::UI.Desktop.Properties.Resources._3706883_control_music_pause_stop_stop_music_108702;
-            this.btnTerminarServicio.Location = new System.Drawing.Point(1035, 6);
+            this.btnTerminarServicio.Location = new System.Drawing.Point(1065, 16);
             this.btnTerminarServicio.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnTerminarServicio.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnTerminarServicio.Name = "btnTerminarServicio";
@@ -1995,16 +1970,17 @@ namespace UI.Desktop
             this.listTrabajosEnProceso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listTrabajosEnProceso.FullRowSelect = true;
             this.listTrabajosEnProceso.HideSelection = false;
-            this.listTrabajosEnProceso.Location = new System.Drawing.Point(6, 6);
+            this.listTrabajosEnProceso.Location = new System.Drawing.Point(19, 16);
             this.listTrabajosEnProceso.MinimumSize = new System.Drawing.Size(200, 100);
             this.listTrabajosEnProceso.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listTrabajosEnProceso.MouseState = MaterialSkin.MouseState.OUT;
             this.listTrabajosEnProceso.Name = "listTrabajosEnProceso";
             this.listTrabajosEnProceso.OwnerDraw = true;
-            this.listTrabajosEnProceso.Size = new System.Drawing.Size(1010, 592);
+            this.listTrabajosEnProceso.Size = new System.Drawing.Size(1010, 570);
             this.listTrabajosEnProceso.TabIndex = 0;
             this.listTrabajosEnProceso.UseCompatibleStateImageBehavior = false;
             this.listTrabajosEnProceso.View = System.Windows.Forms.View.Details;
+            this.listTrabajosEnProceso.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listTrabajosEnProceso_ColumnWidthChanging);
             // 
             // columnMaquina
             // 
@@ -2731,9 +2707,7 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialTextBox txtBuscarCliente;
         private MaterialSkin.Controls.MaterialTabControl tabControlInventario;
         private System.Windows.Forms.TabPage TabStock;
-        private System.Windows.Forms.TabPage TabProveedor;
         private MaterialSkin.Controls.MaterialTabSelector tabSelectorInventario;
-        private System.Windows.Forms.TabPage TabInsumo;
         private System.Windows.Forms.TabPage TabMovimientos;
         private MaterialSkin.Controls.MaterialButton btnEditarIngreso;
         private MaterialSkin.Controls.MaterialButton btnEliminarIngreso;

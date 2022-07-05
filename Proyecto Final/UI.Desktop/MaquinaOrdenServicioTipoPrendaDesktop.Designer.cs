@@ -192,7 +192,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 373);
+            this.ClientSize = new System.Drawing.Size(338, 370);
             this.Controls.Add(this.cmbMaquinas);
             this.Controls.Add(this.txtTipoPrenda);
             this.Controls.Add(this.txtOrdenItem);

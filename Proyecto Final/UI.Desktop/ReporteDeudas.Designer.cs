@@ -78,7 +78,7 @@ namespace UI.Desktop
             // columnCliente
             // 
             this.columnCliente.Text = "Cliente";
-            this.columnCliente.Width = 205;
+            this.columnCliente.Width = 211;
             // 
             // columnNroOrden
             // 

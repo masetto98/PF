@@ -70,7 +70,7 @@ namespace UI.Desktop
             this.listEmpleados.MultiSelect = false;
             this.listEmpleados.Name = "listEmpleados";
             this.listEmpleados.OwnerDraw = true;
-            this.listEmpleados.Size = new System.Drawing.Size(364, 390);
+            this.listEmpleados.Size = new System.Drawing.Size(417, 390);
             this.listEmpleados.TabIndex = 0;
             this.listEmpleados.UseCompatibleStateImageBehavior = false;
             this.listEmpleados.View = System.Windows.Forms.View.Details;
@@ -79,22 +79,21 @@ namespace UI.Desktop
             // columnID
             // 
             this.columnID.Text = "ID";
-            this.columnID.Width = 45;
             // 
             // columnCuit
             // 
             this.columnCuit.Text = "Cuit";
-            this.columnCuit.Width = 106;
+            this.columnCuit.Width = 120;
             // 
             // columnNombre
             // 
             this.columnNombre.Text = "Nombre";
-            this.columnNombre.Width = 102;
+            this.columnNombre.Width = 130;
             // 
             // columnApellido
             // 
             this.columnApellido.Text = "Apellido";
-            this.columnApellido.Width = 111;
+            this.columnApellido.Width = 130;
             // 
             // btnEditar
             // 
@@ -175,7 +174,7 @@ namespace UI.Desktop
             this.btnDetalles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDetalles.HighEmphasis = true;
             this.btnDetalles.Icon = global::UI.Desktop.Properties.Resources.document_3530;
-            this.btnDetalles.Location = new System.Drawing.Point(388, 143);
+            this.btnDetalles.Location = new System.Drawing.Point(441, 143);
             this.btnDetalles.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnDetalles.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnDetalles.Name = "btnDetalles";
@@ -198,12 +197,12 @@ namespace UI.Desktop
             this.materialCard1.Controls.Add(this.materialLabel1);
             this.materialCard1.Depth = 0;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(508, 86);
+            this.materialCard1.Location = new System.Drawing.Point(562, 86);
             this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(334, 126);
+            this.materialCard1.Size = new System.Drawing.Size(368, 126);
             this.materialCard1.TabIndex = 10;
             // 
             // lblOrdenesAtendidas
@@ -285,7 +284,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(765, 499);
+            this.btnCerrar.Location = new System.Drawing.Point(853, 499);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -302,7 +301,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 555);
+            this.ClientSize = new System.Drawing.Size(956, 555);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.materialCard1);
             this.Controls.Add(this.btnDetalles);

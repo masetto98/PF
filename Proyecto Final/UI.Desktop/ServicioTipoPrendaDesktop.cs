@@ -313,7 +313,7 @@ namespace UI.Desktop
             });
             if (insumo is not null)
             {
-                MessageBox.Show("El insumo seleccionado ya se encuentra incluido, si desea modificarlo entoces debe eliminarlo y agregarlo con los nuevos valores");
+                MessageBox.Show("El insumo seleccionado ya se encuentra incluido, si desea modificarlo entoces debe eliminarlo y agregarlo con los nuevos valores","Consumo",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return false;
             }
             else { return true; }

@@ -620,7 +620,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 662);
+            this.ClientSize = new System.Drawing.Size(800, 638);
             this.Controls.Add(this.materialCard2);
             this.Controls.Add(this.btnImpFactura);
             this.Controls.Add(this.btnCancelarRetiro);

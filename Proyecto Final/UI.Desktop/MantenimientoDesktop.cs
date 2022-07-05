@@ -114,7 +114,7 @@ namespace UI.Desktop
             if (!result.IsValid)
             {
                 string notificacion = string.Join(Environment.NewLine, result.Errors);
-                MessageBox.Show(notificacion);
+                MessageBox.Show(notificacion,"Mantenimiento",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return false;
             }
             return true;

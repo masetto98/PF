@@ -390,7 +390,7 @@ namespace UI.Desktop
             // columnInsumo
             // 
             this.columnInsumo.Text = "Insumo";
-            this.columnInsumo.Width = 141;
+            this.columnInsumo.Width = 142;
             // 
             // columnCantidad
             // 

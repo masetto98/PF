@@ -112,13 +112,13 @@ namespace UI.Desktop
                     ListarStock();
                     break;
                 case 1:
-                    //ListarProveedores();
+                    ListarIngresos();
                     break;
                 case 2:
                     //ListarInsumos();
                     break;
                 case 3:
-                    ListarIngresos();
+                    
                     break;
 
             }
@@ -561,7 +561,7 @@ namespace UI.Desktop
                     foreach (InsumoProveedor ip in insumoActual.InsumosProveedores)
                     {
                         ListViewItem item = new ListViewItem(ip.Proveedor.RazonSocial);
-                        item.SubItems.Add(ip.FechaIngreso.ToString("O"));
+                        item.SubItems.Add(ip.FechaIngreso.ToString("yyyy-MM-dd HH:mm:ss.fffffff"));
                         item.SubItems.Add(ip.Cantidad.ToString());
                         item.SubItems.Add(ip.Insumo.UnidadMedida.ToString());
                         listIngresosInsumos.Items.Add(item);
@@ -661,6 +661,34 @@ namespace UI.Desktop
         }
         private void dtpFiltroFechaIngreso_CloseUp(object sender, EventArgs e)
         {
+
+            listIngresosInsumos.Items.Clear();
+            if (listInsumos.SelectedItems.Count > 0)
+            {
+                Insumo insumoActual = _insumoLogic.GetOne(Int32.Parse(listInsumos.SelectedItems[0].Text));
+                List<InsumoProveedor> ip = insumoActual.InsumosProveedores;
+                List<InsumoProveedor> ipFiltro = ip.FindAll(
+                    delegate (InsumoProveedor ip)
+                    {
+                        return ip.FechaIngreso.Date == dtpFiltroFechaIngreso.Value.Date;
+                    });
+                if (insumoActual is not null && ipFiltro.Count > 0)
+                {
+                    foreach (InsumoProveedor insP in ipFiltro)
+                    {
+                        ListViewItem item = new ListViewItem(insP.Proveedor.RazonSocial);
+                        item.SubItems.Add(insP.FechaIngreso.ToString("yyyy-MM-dd HH:mm:ss.fffffff"));
+                        item.SubItems.Add(insP.Cantidad.ToString());
+                        item.SubItems.Add(insP.Insumo.UnidadMedida.ToString());
+                        listIngresosInsumos.Items.Add(item);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccionar una fila en la lista para poder observar los detalles", "Insumo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            /*
             DateTime fechaFiltro = dtpFiltroFechaIngreso.Value;
             List<InsumoProveedor> insumosproveedores = _insumoProveedorLogic.GetAll();
             List<InsumoProveedor> ipFecha = insumosproveedores.FindAll(ip => ip.FechaIngreso.ToString("yyyy/MM/dd") == fechaFiltro.ToString("yyyy/MM/dd"));
@@ -672,6 +700,7 @@ namespace UI.Desktop
                 item.SubItems.Add(ip.Cantidad.ToString());
                 listIngresosInsumos.Items.Add(item);
             }
+            */
         }
         private void btnReset_Click(object sender, EventArgs e)
         {
@@ -885,7 +914,7 @@ namespace UI.Desktop
                     }
                 }
             }
-            if (this.cmbBuscarOrden.SelectedItem.ToString() == "Cliente")
+            if (this.cmbBuscarOrden.SelectedItem.ToString() == "Cliente(Nombre y Apellido/Razón Social)")
             {
                 foreach (Orden o in ordenes)
                 {
@@ -1529,7 +1558,11 @@ namespace UI.Desktop
             ListarEstadoMaquinas();
         }
 
-       
+        private void listTrabajosEnProceso_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listTrabajosEnProceso.Columns[e.ColumnIndex].Width;
+        }
 
         #endregion
 
@@ -1730,5 +1763,7 @@ namespace UI.Desktop
             ReporteGastos frmGasto = new ReporteGastos(_context);
             frmGasto.ShowDialog();
         }
+
+       
     }
 }

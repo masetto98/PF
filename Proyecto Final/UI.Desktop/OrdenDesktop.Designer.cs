@@ -433,6 +433,7 @@ namespace UI.Desktop
             this.txtTiempoFinalizacionEstimado.TabIndex = 28;
             this.txtTiempoFinalizacionEstimado.Text = "";
             this.txtTiempoFinalizacionEstimado.TrailingIcon = null;
+            this.txtTiempoFinalizacionEstimado.Visible = false;
             // 
             // txtNombreApellidoRazonSocial
             // 
@@ -466,7 +467,7 @@ namespace UI.Desktop
             this.btnAgregarCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregarCliente.HighEmphasis = true;
             this.btnAgregarCliente.Icon = null;
-            this.btnAgregarCliente.Location = new System.Drawing.Point(407, 84);
+            this.btnAgregarCliente.Location = new System.Drawing.Point(407, 80);
             this.btnAgregarCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAgregarCliente.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAgregarCliente.Name = "btnAgregarCliente";
@@ -702,7 +703,7 @@ namespace UI.Desktop
             this.materialCard3.Controls.Add(this.materialLabel2);
             this.materialCard3.Depth = 0;
             this.materialCard3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard3.Location = new System.Drawing.Point(241, 527);
+            this.materialCard3.Location = new System.Drawing.Point(245, 525);
             this.materialCard3.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard3.Name = "materialCard3";
@@ -737,7 +738,7 @@ namespace UI.Desktop
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(5, 9);
+            this.materialLabel2.Location = new System.Drawing.Point(4, 2);
             this.materialLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
@@ -829,7 +830,7 @@ namespace UI.Desktop
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancelar;
-            this.ClientSize = new System.Drawing.Size(955, 639);
+            this.ClientSize = new System.Drawing.Size(952, 630);
             this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.cmbEntregaDomicilio);
             this.Controls.Add(this.materialCard4);

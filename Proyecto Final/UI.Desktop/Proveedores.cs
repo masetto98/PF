@@ -60,6 +60,10 @@ namespace UI.Desktop
                 ProveedorDesktop frmProveedor = new ProveedorDesktop(IdProveedor,ModoForm.Modificacion,_context);
                 frmProveedor.ShowDialog();
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder editar", "Proveedor", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             ListarProveedores();
 
         }
@@ -71,6 +75,10 @@ namespace UI.Desktop
                 int IdProveedor = Int32.Parse(listProveedores.SelectedItems[0].Text);
                 ProveedorDesktop frmProveedor = new ProveedorDesktop(IdProveedor, ModoForm.Baja, _context);
                 frmProveedor.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder eliminar", "Proveedor", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             ListarProveedores();
 
@@ -95,12 +103,16 @@ namespace UI.Desktop
                     foreach (InsumoProveedor ip in proveedorActual.InsumosProveedor)
                     {
                         ListViewItem item = new ListViewItem(ip.Insumo.Descripcion);
-                        item.SubItems.Add(ip.FechaIngreso.ToString());
+                        item.SubItems.Add(ip.FechaIngreso.ToString("yyyy-MM-dd HH:mm:ss.fffffff"));
                         item.SubItems.Add(ip.Cantidad.ToString());
                         listIngresosInsumos.Items.Add(item);
                     }
                     this.lblCantidadIngresos.Text = proveedorActual.InsumosProveedor.Count.ToString();
                 }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder observar los detalles", "Proveedor", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -125,6 +137,10 @@ namespace UI.Desktop
                 InsumoProveedorDesktop frmIngresoInsumo = new InsumoProveedorDesktop(ipActual.IdProveedor,ipActual.IdInsumo,ipActual.FechaIngreso,ModoForm.Modificacion, _context);
                 frmIngresoInsumo.ShowDialog();
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder editar", "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             ListarIngresos();
 
         }
@@ -142,6 +158,10 @@ namespace UI.Desktop
                 });
                 InsumoProveedorDesktop frmIngresoInsumo = new InsumoProveedorDesktop(ipActual.IdProveedor, ipActual.IdInsumo, ipActual.FechaIngreso, ModoForm.Baja, _context);
                 frmIngresoInsumo.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder eliminar", "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             ListarIngresos();
         }
@@ -177,6 +197,18 @@ namespace UI.Desktop
                 }
             }
             if (this.txtBuscar.Text == "") { ListarProveedores(); }
+        }
+
+        private void listProveedores_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listProveedores.Columns[e.ColumnIndex].Width;
+        }
+
+        private void listIngresosInsumos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listIngresosInsumos.Columns[e.ColumnIndex].Width;
         }
     }
 
