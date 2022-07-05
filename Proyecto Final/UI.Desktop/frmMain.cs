@@ -23,7 +23,6 @@ namespace UI.Desktop
 {
     public partial class frmMain : ApplicationForm
     {
-        readonly MaterialSkin.MaterialSkinManager materialSkinManager;
         private readonly LavanderiaContext _context;
         private readonly ClienteLogic _clienteLogic;
         private readonly AtributosNegocioLogic _atributosNegocioLogic;
@@ -43,10 +42,7 @@ namespace UI.Desktop
         public frmMain(LavanderiaContext context)
         {
             InitializeComponent();
-            materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+            
             _context = context;
             _clienteLogic = new ClienteLogic(new ClienteAdapter(context));
             _atributosNegocioLogic = new AtributosNegocioLogic(new AtributosNegocioAdapter(context));
@@ -1192,11 +1188,11 @@ namespace UI.Desktop
                 item.SubItems.Add(i.Trabajo.Prioridad.ToString());
                 if (i.TiempoRestante.ToString().Contains("-"))
                 {
-                    item.SubItems.Add("-" + i.TiempoRestante.ToString(@"d\d\:h\h\:m\m\:s\s"));
+                    item.SubItems.Add("-" + i.TiempoRestante.ToString(@"d\d\:h\h\:m\m"));
                 }
                 else
                 {
-                    item.SubItems.Add(i.TiempoRestante.ToString(@"d\d\:h\h\:m\m\:s\s"));
+                    item.SubItems.Add(i.TiempoRestante.ToString(@"d\d\:h\h\:m\m"));
                 }
                 
                 listTrabajosPendientes.Items.Add(item);
@@ -1266,19 +1262,27 @@ namespace UI.Desktop
             }
             if (maquinasItem is not null)
             {
-                listMaquinasItem.Items.Clear();
-                foreach (MaquinaOrdenServicioTipoPrenda mi in maquinasItem)
+                if (maquinasItem.Count > 0)
                 {
-                    ListViewItem mir = new ListViewItem(mi.Maquina.Descripcion);
-                    mir.SubItems.Add(mi.TiempoInicioServicio.ToString());
-                    if (mi.TiempoFinServicio == DateTime.MinValue)
+                    listMaquinasItem.Items.Clear();
+                    foreach (MaquinaOrdenServicioTipoPrenda mi in maquinasItem)
                     {
-                        mir.SubItems.Add("");
+                        ListViewItem mir = new ListViewItem(mi.Maquina.Descripcion);
+                        mir.SubItems.Add(mi.TiempoInicioServicio.ToString());
+                        if (mi.TiempoFinServicio == DateTime.MinValue)
+                        {
+                            mir.SubItems.Add("");
+                        }
+                        else { mir.SubItems.Add(mi.TiempoFinServicio.ToString()); }
+                        listMaquinasItem.Items.Add(mir);
                     }
-                    else { mir.SubItems.Add(mi.TiempoFinServicio.ToString()); }
-                    listMaquinasItem.Items.Add(mir);
+                }
+                else
+                {
+                    MessageBox.Show("El item seleccionado no tiene servicios realizados", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+            
 
         }
 
@@ -1310,23 +1314,48 @@ namespace UI.Desktop
         {
             if (listTrabajosPendientes.SelectedItems.Count > 0)
             {
-                if (MessageBox.Show("¿Esta seguro que desea finalizar este trabajo?", "Message", MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                OrdenServicioTipoPrenda t = _trabajosPendientes.Find(delegate (OrdenServicioTipoPrenda item)
                 {
+                    return item.NroOrden == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].Text) &&
+                           item.ServicioTipoPrenda.Servicio.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[1].Text &&
+                           item.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[2].Text &&
+                           item.OrdenItem == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].SubItems[3].Text);
+                });
+                if (t.MaquinaOrdenServicioTipoPrenda is null || t.MaquinaOrdenServicioTipoPrenda.Count == 0)
+                {
+                    if (MessageBox.Show("Este trabajo NO contiene servicios realizados ¿Esta seguro que desea finalizarlo?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        t.Estado = OrdenServicioTipoPrenda.Estados.Finalizado;
+                        if (ValidarFinalizacionOrden(t.NroOrden))
+                        {
+                            t.Orden.Estado = Orden.Estados.Finalizado;
+                        }
+                        t.State = BusinessEntity.States.Modified;
+                        _ordenServicioTipoPrendaLogic.Save(t);
+                    }
+
+                }
+                else
+                {
+                    if (MessageBox.Show("¿Esta seguro que desea finalizar este trabajo?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    { /*
                     OrdenServicioTipoPrenda t = _trabajosPendientes.Find(delegate (OrdenServicioTipoPrenda item)
                     {
                         return item.NroOrden == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].Text) &&
                                item.ServicioTipoPrenda.Servicio.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[1].Text &&
                                item.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[2].Text &&
                                item.OrdenItem == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].SubItems[3].Text);
-                    });
-                    t.Estado = OrdenServicioTipoPrenda.Estados.Finalizado;
-                    if (ValidarFinalizacionOrden(t.NroOrden)) 
-                    {
-                        t.Orden.Estado = Orden.Estados.Finalizado;
+                    });*/
+                        t.Estado = OrdenServicioTipoPrenda.Estados.Finalizado;
+                        if (ValidarFinalizacionOrden(t.NroOrden))
+                        {
+                            t.Orden.Estado = Orden.Estados.Finalizado;
+                        }
+                        t.State = BusinessEntity.States.Modified;
+                        _ordenServicioTipoPrendaLogic.Save(t);
                     }
-                    t.State = BusinessEntity.States.Modified;
-                    _ordenServicioTipoPrendaLogic.Save(t);
                 }
+
             }
             else
             {

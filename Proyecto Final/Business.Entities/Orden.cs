@@ -39,14 +39,14 @@ namespace Business.Entities
 
         public enum Prioridades
         {
-            Estandar = 1,
+            Estándar = 1,
             Alta = 2,
         }
 
         public enum EntregasDomicilio 
         {
             No=0,
-            si=1
+            Si=1,
         }
 
         [Key]

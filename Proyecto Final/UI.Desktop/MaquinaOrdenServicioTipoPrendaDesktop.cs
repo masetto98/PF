@@ -29,6 +29,7 @@ namespace UI.Desktop
             _maquinaOrdenServicioTipoPrendaLogic = new MaquinaOrdenServicioTipoPrendaLogic(new MaquinaOrdenServicioTipoPrendaAdapter(context));
             _ordenServicioTipoPrendaLogic = new OrdenServicioTipoPrendaLogic(new OrdenServicioTipoPrendaAdapter(context));
             _insumoLogic = new InsumoLogic(new InsumoAdapter(context));
+            //ListarEstadoMaquinas();
         }
 
         public MaquinaOrdenServicioTipoPrendaDesktop(int nroOrden,int idServicio ,int idTipoPrenda,int ordenItem, ModoForm modo, LavanderiaContext context) : this(context)
@@ -183,7 +184,34 @@ namespace UI.Desktop
             }
         }
 
-        
+        /*private void ListarEstadoMaquinas()
+        {
+            List<Maquina> maquinas = _maquinaLogic.GetAll();
+            listEstadoMaquinas.Items.Clear();
+            foreach (Maquina m in maquinas)
+            {
+                List<MaquinaOrdenServicioTipoPrenda> ordenesAtendidas = m.itemsAtendidos;
+                if (m.itemsAtendidos is null) { ordenesAtendidas = new List<MaquinaOrdenServicioTipoPrenda>(); }
+                MaquinaOrdenServicioTipoPrenda? itemEnAtencion = ordenesAtendidas.Find(delegate (MaquinaOrdenServicioTipoPrenda item)
+                {
+                    return item.TiempoFinServicio == DateTime.MinValue;
+                });
+                if (itemEnAtencion is null)
+                {
+                    ListViewItem estadoMaquina = new ListViewItem(m.Descripcion);
+                    estadoMaquina.SubItems.Add("Disponible");
+                    listEstadoMaquinas.Items.Add(estadoMaquina);
+
+                }
+                else
+                {
+                    ListViewItem estadoMaquina = new ListViewItem(m.Descripcion);
+                    estadoMaquina.SubItems.Add("En servicio");
+                    listEstadoMaquinas.Items.Add(estadoMaquina);
+                }
+            }
+        }*/
+
 
         public override void GuardarCambios()
         {
@@ -224,9 +252,20 @@ namespace UI.Desktop
             {
                 case ModoForm.Alta:
                     {
-                        ModificarStock();
-                        //GuardarCambios();
+                        if (ValidarEstadoMaquina() == false)
+                        {
+                            ModificarStock();
+                            //GuardarCambios();
+                        }
+                        else 
+                        {
+                            if (MessageBox.Show("Este trabajo ya ha pasado por ésta maquina ¿Quieres volver a hacerlo?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
+                            {
+                                ModificarStock();
+                                //GuardarCambios();
+                            }
 
+                        }
                     };
                     break;
                 case ModoForm.Modificacion:
@@ -299,6 +338,18 @@ namespace UI.Desktop
             {
                 this.Dispose();
             }
+        }
+
+        private bool ValidarMismaMaquina() 
+        {
+            Maquina  maquinaSelected= _maquinaLogic.GetOne((int)this.cmbMaquinas.SelectedValue);
+            MaquinaOrdenServicioTipoPrenda maquinasItem = OrdenServicioTipoPrendaActual.MaquinaOrdenServicioTipoPrenda.Find(delegate (MaquinaOrdenServicioTipoPrenda m)
+            {
+                return m.Maquina.IdMaquina == maquinaSelected.IdMaquina;
+            });
+            if (maquinasItem is null) { return false; }
+            else { return true; }
+
         }
         
 

@@ -36,6 +36,9 @@ namespace UI.Desktop
             this.txtOrdenItem = new MaterialSkin.Controls.MaterialTextBox();
             this.txtTipoPrenda = new MaterialSkin.Controls.MaterialTextBox();
             this.cmbMaquinas = new MaterialSkin.Controls.MaterialComboBox();
+            this.listEstadoMaquinas = new MaterialSkin.Controls.MaterialListView();
+            this.columnMaquina = new System.Windows.Forms.ColumnHeader();
+            this.columnEstado = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // btnIniciar
@@ -188,11 +191,45 @@ namespace UI.Desktop
             this.cmbMaquinas.TabIndex = 7;
             this.cmbMaquinas.ValueMember = "IdMaquina";
             // 
+            // listEstadoMaquinas
+            // 
+            this.listEstadoMaquinas.AutoSizeTable = false;
+            this.listEstadoMaquinas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listEstadoMaquinas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listEstadoMaquinas.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnMaquina,
+            this.columnEstado});
+            this.listEstadoMaquinas.Depth = 0;
+            this.listEstadoMaquinas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.listEstadoMaquinas.FullRowSelect = true;
+            this.listEstadoMaquinas.HideSelection = false;
+            this.listEstadoMaquinas.Location = new System.Drawing.Point(328, 93);
+            this.listEstadoMaquinas.MinimumSize = new System.Drawing.Size(200, 100);
+            this.listEstadoMaquinas.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listEstadoMaquinas.MouseState = MaterialSkin.MouseState.OUT;
+            this.listEstadoMaquinas.Name = "listEstadoMaquinas";
+            this.listEstadoMaquinas.OwnerDraw = true;
+            this.listEstadoMaquinas.Size = new System.Drawing.Size(200, 217);
+            this.listEstadoMaquinas.TabIndex = 8;
+            this.listEstadoMaquinas.UseCompatibleStateImageBehavior = false;
+            this.listEstadoMaquinas.View = System.Windows.Forms.View.Details;
+            // 
+            // columnMaquina
+            // 
+            this.columnMaquina.Text = "Maquina";
+            this.columnMaquina.Width = 100;
+            // 
+            // columnEstado
+            // 
+            this.columnEstado.Text = "Estado";
+            this.columnEstado.Width = 100;
+            // 
             // MaquinaOrdenServicioTipoPrendaDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 373);
+            this.ClientSize = new System.Drawing.Size(539, 365);
+            this.Controls.Add(this.listEstadoMaquinas);
             this.Controls.Add(this.cmbMaquinas);
             this.Controls.Add(this.txtTipoPrenda);
             this.Controls.Add(this.txtOrdenItem);
@@ -220,5 +257,8 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialTextBox txtOrdenItem;
         private MaterialSkin.Controls.MaterialTextBox txtTipoPrenda;
         private MaterialSkin.Controls.MaterialComboBox cmbMaquinas;
+        private MaterialSkin.Controls.MaterialListView listEstadoMaquinas;
+        private System.Windows.Forms.ColumnHeader columnMaquina;
+        private System.Windows.Forms.ColumnHeader columnEstado;
     }
 }
