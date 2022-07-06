@@ -797,9 +797,6 @@ namespace UI.Desktop
             this.cmbEntregaDomicilio.Hint = "Entrega a Domicilio";
             this.cmbEntregaDomicilio.IntegralHeight = false;
             this.cmbEntregaDomicilio.ItemHeight = 43;
-            this.cmbEntregaDomicilio.Items.AddRange(new object[] {
-            "SI",
-            "NO"});
             this.cmbEntregaDomicilio.Location = new System.Drawing.Point(752, 225);
             this.cmbEntregaDomicilio.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.cmbEntregaDomicilio.MaxDropDownItems = 4;

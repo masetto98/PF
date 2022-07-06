@@ -59,7 +59,7 @@ namespace Business.Entities
             get{return _empleado;}
             set{_empleado = value;}
         }
-
+        [Column("Salt")]
         public string Salt { get; set; }
     }
 }

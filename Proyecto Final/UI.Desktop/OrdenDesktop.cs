@@ -72,7 +72,7 @@ namespace UI.Desktop
                 this.cmbTipoPrenda.SelectedIndex = 0;
                 this.cmbEstado.DataSource = Enum.GetNames(typeof(Orden.Estados));
                 this.cmbPrioridad.DataSource = Enum.GetNames(typeof(Orden.Prioridades));
-                this.cmbPrioridad.SelectedIndex = 1;
+                this.cmbPrioridad.SelectedIndex = 0;
                 this.cmbEntregaDomicilio.DataSource= Enum.GetNames(typeof(Orden.EntregasDomicilio));
                 this.cmbEntregaDomicilio.SelectedIndex = 0;
                 this.txtDescuento.Enabled = false;
@@ -88,6 +88,9 @@ namespace UI.Desktop
             Modos = modo;
             try
             {
+                this.cmbEstado.DataSource = Enum.GetNames(typeof(Business.Entities.Orden.Estados));
+                this.cmbPrioridad.DataSource = Enum.GetNames(typeof(Business.Entities.Orden.Prioridades));
+                this.cmbEntregaDomicilio.DataSource = Enum.GetNames(typeof(Orden.EntregasDomicilio));
                 OrdenActual = _ordenLogic.GetOne(nroOrden);
                 MapearDeDatos();
             }
@@ -98,9 +101,10 @@ namespace UI.Desktop
         }
 
         public override void MapearDeDatos()
-        {
-            this.cmbEstado.DataSource = Enum.GetNames(typeof(Business.Entities.Orden.Estados));
-            this.cmbPrioridad.DataSource = Enum.GetNames(typeof(Business.Entities.Orden.Prioridades));
+        { 
+            this.cmbEstado.SelectedIndex = cmbEstado.FindStringExact(Enum.GetName(OrdenActual.Estado));
+            this.cmbPrioridad.SelectedIndex = cmbPrioridad.FindStringExact(Enum.GetName(OrdenActual.Prioridad));
+            this.cmbEntregaDomicilio.SelectedIndex = cmbEntregaDomicilio.FindStringExact(Enum.GetName(OrdenActual.EntregaDomicilio));
             this.txtIdCliente.Text = OrdenActual.IdCliente.ToString();
             if (OrdenActual.Cliente.Nombre != "" && OrdenActual.Cliente.Apellido != "" && OrdenActual.Cliente.RazonSocial == "")
             {
@@ -112,13 +116,10 @@ namespace UI.Desktop
             }
             this.txtCuit.Text = OrdenActual.Cliente.Cuit;
             this.txtDireccion.Text = OrdenActual.Cliente.Direccion;
-            this.cmbEstado.SelectedIndex = cmbEstado.FindStringExact(Enum.GetName(OrdenActual.Estado));
             this.dtpFechaIngreso.Value = OrdenActual.FechaEntrada.Date;
             this.txtTiempoFinalizacionEstimado.Text = OrdenActual.TiempofinalizacionEstimado.Hours.ToString() + " : " + OrdenActual.TiempofinalizacionEstimado.Minutes.ToString();
             if (OrdenActual.FechaSalida != DateTime.MinValue) { this.dtpFechaSalida.Value = OrdenActual.FechaSalida.Date; }
-            this.cmbPrioridad.SelectedIndex = cmbEstado.FindStringExact(Enum.GetName(OrdenActual.Prioridad));
             this.txtObservaciones.Text = OrdenActual.Observaciones;
-            this.cmbEntregaDomicilio.SelectedIndex = cmbEntregaDomicilio.FindStringExact(Enum.GetName(OrdenActual.EntregaDomicilio));
             if (OrdenActual.Descuento != null)
             {
                 if (OrdenActual.Descuento.StartsWith("%") == true)
@@ -173,6 +174,13 @@ namespace UI.Desktop
                     this.txtCuit.Enabled = false;
                     this.btnAgregarItemOrden.Enabled = false;
                     this.btnEliminarItemOrden.Enabled = false;
+                    this.txtDescuento.Enabled = false;
+                    this.txtSeniaOrden.Enabled = false;
+                    this.rbtnPorcentaje.Enabled = false;
+                    this.rbtnValor.Enabled = false;
+                    this.cmbEntregaDomicilio.Enabled = false;
+                    this.cmbPrioridad.Enabled = false;
+                    this.cmbEstado.Enabled = false;
                     break;
                 case ModoForm.Consulta:
                     this.btnAceptar.Text = "Aceptar";
@@ -192,7 +200,8 @@ namespace UI.Desktop
             if (Modos == ModoForm.Alta)
             {
                 OrdenActual = new Orden();
-                OrdenActual.Cliente = _clienteLogic.GetOne(Int32.Parse(this.txtIdCliente.Text));
+                if (this.txtIdCliente.Text == "") { MessageBox.Show("La orden debe tener un cliente", "Orden", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                else { OrdenActual.Cliente = _clienteLogic.GetOne(Int32.Parse(this.txtIdCliente.Text)); }
                 OrdenActual.Empleado = Singleton.getInstance().EmpleadoLogged;
                 OrdenActual.Estado = Orden.Estados.Pendiente;
                 OrdenActual.Prioridad = (Business.Entities.Orden.Prioridades)Enum.Parse(typeof(Business.Entities.Orden.Prioridades), cmbPrioridad.SelectedItem.ToString());
@@ -224,8 +233,13 @@ namespace UI.Desktop
             }
             if (Modos == ModoForm.Modificacion)
             {
+                OrdenActual.Observaciones = this.txtObservaciones.Text;
+                OrdenActual.EntregaDomicilio = (Orden.EntregasDomicilio)Enum.Parse(typeof(Orden.EntregasDomicilio), cmbEntregaDomicilio.SelectedItem.ToString());
+                OrdenActual.Prioridad = (Business.Entities.Orden.Prioridades)Enum.Parse(typeof(Business.Entities.Orden.Prioridades), cmbPrioridad.SelectedItem.ToString());
+                Descuento();
+                AsignarPrioridadItems();
                 OrdenActual.ItemsPedidos = _itemsServicio;
-
+                
             }
             switch (Modos)
             {
@@ -413,7 +427,7 @@ namespace UI.Desktop
                 }
                 else
                 {
-                    o.Prioridad = (OrdenServicioTipoPrenda.Prioridades)o.ServicioTipoPrenda.Prioridad;
+                    o.Prioridad = OrdenServicioTipoPrenda.Prioridades.Estandar;
                 }
             }
         }
@@ -444,8 +458,15 @@ namespace UI.Desktop
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            EliminarItem();
-            CalcularImporte();
+            if (_itemsServicio.Count > 1)
+            {
+                EliminarItem();
+                CalcularImporte();
+            }
+            else 
+            {
+                MessageBox.Show("La orden debe contener por lo menos un servicio", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void txtDescuento_TextChanged(object sender, EventArgs e)
@@ -474,12 +495,16 @@ namespace UI.Desktop
                         _itemsServicio.Remove(_itemDelete);
                         listItemsServicio.Items.Remove(listItemsServicio.SelectedItems[0]);
                     }
-                    else 
+                    else
                     {
                         Exception r = new Exception("El item que quiere eliminar ya fue atendido o se encuentra en proceso de atención");
                         throw r;
                     }
-                    
+
+                }
+                else 
+                {
+                    MessageBox.Show("Seleccione un item de la lista para eliminar", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 
             }
@@ -506,15 +531,20 @@ namespace UI.Desktop
         public override void GuardarCambios()
         {
             try
-            {   if (this.txtDescuento.Text != "") 
+            {   
+                if (this.txtDescuento.Text != "") 
                 {
                     Validaciones.ValidarNumeroEnteroDecimal(this.txtDescuento.Text);
                 }
                 MapearADatos();
-                if (Validar())
+                if (Validar() && OrdenActual.Cliente is not null && OrdenActual.ItemsPedidos.Count > 0)
                 {
                     _ordenLogic.Save(OrdenActual);
                     Close();
+                }
+                else 
+                {
+                    MessageBox.Show("La orden debe tener por lo menos un servicio requerido", "Orden", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception e)
