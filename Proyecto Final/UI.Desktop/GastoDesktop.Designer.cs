@@ -267,6 +267,7 @@ namespace UI.Desktop
             this.Controls.Add(this.txtId);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "GastoDesktop";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gasto";
             this.ResumeLayout(false);
             this.PerformLayout();

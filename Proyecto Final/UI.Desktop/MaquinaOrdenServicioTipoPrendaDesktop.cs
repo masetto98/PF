@@ -29,7 +29,7 @@ namespace UI.Desktop
             _maquinaOrdenServicioTipoPrendaLogic = new MaquinaOrdenServicioTipoPrendaLogic(new MaquinaOrdenServicioTipoPrendaAdapter(context));
             _ordenServicioTipoPrendaLogic = new OrdenServicioTipoPrendaLogic(new OrdenServicioTipoPrendaAdapter(context));
             _insumoLogic = new InsumoLogic(new InsumoAdapter(context));
-            //ListarEstadoMaquinas();
+            ListarEstadoMaquinas();
         }
 
         public MaquinaOrdenServicioTipoPrendaDesktop(int nroOrden,int idServicio ,int idTipoPrenda,int ordenItem, ModoForm modo, LavanderiaContext context) : this(context)
@@ -184,7 +184,7 @@ namespace UI.Desktop
             }
         }
 
-        /*private void ListarEstadoMaquinas()
+        private void ListarEstadoMaquinas()
         {
             List<Maquina> maquinas = _maquinaLogic.GetAll();
             listEstadoMaquinas.Items.Clear();
@@ -210,7 +210,7 @@ namespace UI.Desktop
                     listEstadoMaquinas.Items.Add(estadoMaquina);
                 }
             }
-        }*/
+        }
 
 
         public override void GuardarCambios()
@@ -252,7 +252,7 @@ namespace UI.Desktop
             {
                 case ModoForm.Alta:
                     {
-                        if (ValidarEstadoMaquina() == false)
+                        if (ValidarMismaMaquina() == false)
                         {
                             ModificarStock();
                             //GuardarCambios();

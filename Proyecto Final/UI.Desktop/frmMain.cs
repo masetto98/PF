@@ -860,7 +860,7 @@ namespace UI.Desktop
         }
         private void btnActualizarIngresos_Click(object sender, EventArgs e)
         {
-            //ListarIngresos();
+            ListarIngresos();
         }
         #endregion
 

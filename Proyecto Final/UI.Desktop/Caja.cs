@@ -33,7 +33,7 @@ namespace UI.Desktop
         {
             ListarOrdenes();
             ListarGastos();
-            SaldoAnterior();
+            //SaldoAnterior();
             IngresosDelDia();
             GastosDelDia();
             double ingresos = Double.Parse(this.lblIngresosDia.Text.Remove(0, 2));
@@ -52,7 +52,7 @@ namespace UI.Desktop
                 foreach (Orden o in ordenes) 
                 {
                     ListViewItem item = new ListViewItem(o.NroFactura.ToString());
-                    item.SubItems.Add(o.FechaSalida.Date.ToString());
+                    item.SubItems.Add(o.FechaSalida.Date.ToString("yyyy-MM-dd"));
                     listOrdenes.Items.Add(item);
                 }
             }
@@ -74,7 +74,7 @@ namespace UI.Desktop
                 }
             }
         }
-
+        /*
         private void SaldoAnterior() 
         {
             double cajaUltimoDia = 0.0;
@@ -107,7 +107,8 @@ namespace UI.Desktop
                 }
                 this.lblSaldoAnterior.Text = String.Concat("$ ",cajaUltimoDia.ToString());
             }
-        }
+        }*/
+
         private void IngresosDelDia() 
         {
             double ingresosHoy = 0.0;

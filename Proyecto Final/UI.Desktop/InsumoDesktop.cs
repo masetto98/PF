@@ -36,6 +36,7 @@ namespace UI.Desktop
         public InsumoDesktop(int ID, ModoForm modo, LavanderiaContext context) : this(context)
         {
             Modos = modo;
+            this.cmbUnidadMedida.DataSource = Enum.GetNames(typeof(Business.Entities.Insumo.Medidas));
             try
             {
                 InsumoActual = _insumoLogic.GetOne(ID);
