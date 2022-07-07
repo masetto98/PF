@@ -110,7 +110,7 @@ namespace UI.Desktop
             this.btnAgregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregar.HighEmphasis = true;
             this.btnAgregar.Icon = global::UI.Desktop.Properties.Resources.plus_icon_icons_com_70890;
-            this.btnAgregar.Location = new System.Drawing.Point(13, 91);
+            this.btnAgregar.Location = new System.Drawing.Point(13, 85);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAgregar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAgregar.Name = "btnAgregar";
@@ -133,7 +133,7 @@ namespace UI.Desktop
             this.btnEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEditar.HighEmphasis = true;
             this.btnEditar.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
-            this.btnEditar.Location = new System.Drawing.Point(135, 91);
+            this.btnEditar.Location = new System.Drawing.Point(135, 83);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEditar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEditar.Name = "btnEditar";
@@ -156,7 +156,7 @@ namespace UI.Desktop
             this.btnEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEliminar.HighEmphasis = true;
             this.btnEliminar.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
-            this.btnEliminar.Location = new System.Drawing.Point(257, 91);
+            this.btnEliminar.Location = new System.Drawing.Point(257, 85);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminar.Name = "btnEliminar";

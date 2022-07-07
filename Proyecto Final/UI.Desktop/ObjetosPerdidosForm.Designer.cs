@@ -887,12 +887,12 @@ namespace UI.Desktop
             // columnMaquina
             // 
             this.columnMaquina.Text = "Maquina";
-            this.columnMaquina.Width = 171;
+            this.columnMaquina.Width = 173;
             // 
             // columnFechaHora
             // 
             this.columnFechaHora.Text = "Fecha y hora inicio";
-            this.columnFechaHora.Width = 261;
+            this.columnFechaHora.Width = 262;
             // 
             // btnVerServiciosRealizados
             // 

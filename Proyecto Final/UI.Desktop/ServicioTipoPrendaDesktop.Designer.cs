@@ -470,6 +470,7 @@ namespace UI.Desktop
             this.materialComboBox1.Size = new System.Drawing.Size(281, 49);
             this.materialComboBox1.StartIndex = 0;
             this.materialComboBox1.TabIndex = 17;
+            this.materialComboBox1.Visible = false;
             // 
             // nudMinutos2
             // 

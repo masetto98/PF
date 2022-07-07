@@ -1287,6 +1287,7 @@ namespace UI.Desktop
             // columnIDIns
             // 
             this.columnIDIns.Text = "ID";
+            this.columnIDIns.Width = 81;
             // 
             // columnDescripcionIns
             // 
@@ -1296,7 +1297,7 @@ namespace UI.Desktop
             // columnStock
             // 
             this.columnStock.Text = "Stock";
-            this.columnStock.Width = 100;
+            this.columnStock.Width = 101;
             // 
             // columnUniMedida
             // 
@@ -1901,7 +1902,7 @@ namespace UI.Desktop
             // columnTiempoRestante
             // 
             this.columnTiempoRestante.Text = "Tiempo Restante";
-            this.columnTiempoRestante.Width = 145;
+            this.columnTiempoRestante.Width = 146;
             // 
             // tabEnProceso
             // 

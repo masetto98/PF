@@ -44,6 +44,7 @@ namespace UI.Desktop
         {
             ServicioTipoPrendaDesktop frmServicioTipoPrenda = new ServicioTipoPrendaDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmServicioTipoPrenda.ShowDialog();
+            ListarServicioTipoPrenda();
         }
 
         private void btnEditarServicioTipoPrenda_Click(object sender, EventArgs e)
