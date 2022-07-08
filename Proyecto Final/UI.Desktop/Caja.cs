@@ -51,8 +51,20 @@ namespace UI.Desktop
                 listOrdenes.Items.Clear();
                 foreach (Orden o in ordenes) 
                 {
+                    double ingresos = 0;
+                    if (o.Factura is not null && o.Factura.Pagos is not null) 
+                    {
+                        foreach (Pago p in o.Factura.Pagos) 
+                        {
+                            if (p.FechaPago.Date == this.dtpFecha.Value.Date) 
+                            {
+                                ingresos += p.Importe;
+                            }
+                        }
+                    }
                     ListViewItem item = new ListViewItem(o.NroFactura.ToString());
                     item.SubItems.Add(o.FechaSalida.Date.ToString("yyyy-MM-dd"));
+                    item.SubItems.Add(ingresos.ToString());
                     listOrdenes.Items.Add(item);
                 }
             }
@@ -121,7 +133,10 @@ namespace UI.Desktop
                     {
                         foreach (Pago p in o.Factura.Pagos)
                         {
-                            ingresosHoy += p.Importe;
+                            if (p.FechaPago.Date == this.dtpFecha.Value.Date)
+                            {
+                                ingresosHoy += p.Importe;
+                            }
                         }
                     }
                 }

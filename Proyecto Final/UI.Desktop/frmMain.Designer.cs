@@ -1747,7 +1747,7 @@ namespace UI.Desktop
             this.columnInicio1,
             this.columnFin});
             this.listMaquinasItem.Depth = 0;
-            this.listMaquinasItem.Font = new System.Drawing.Font("Segoe UI", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listMaquinasItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listMaquinasItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listMaquinasItem.FullRowSelect = true;
             this.listMaquinasItem.HideSelection = false;
@@ -2281,7 +2281,7 @@ namespace UI.Desktop
             this.btnInsumos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnInsumos.HighEmphasis = true;
             this.btnInsumos.Icon = global::UI.Desktop.Properties.Resources.productapplication_producto_3010;
-            this.btnInsumos.Location = new System.Drawing.Point(43, 127);
+            this.btnInsumos.Location = new System.Drawing.Point(43, 81);
             this.btnInsumos.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnInsumos.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnInsumos.Name = "btnInsumos";
@@ -2304,7 +2304,7 @@ namespace UI.Desktop
             this.btnProveedores.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnProveedores.HighEmphasis = true;
             this.btnProveedores.Icon = global::UI.Desktop.Properties.Resources.product_delivery_icon_152013;
-            this.btnProveedores.Location = new System.Drawing.Point(43, 81);
+            this.btnProveedores.Location = new System.Drawing.Point(43, 35);
             this.btnProveedores.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnProveedores.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnProveedores.Name = "btnProveedores";
@@ -2327,7 +2327,7 @@ namespace UI.Desktop
             this.btnClientes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnClientes.HighEmphasis = true;
             this.btnClientes.Icon = global::UI.Desktop.Properties.Resources.customer_service_icon_194124;
-            this.btnClientes.Location = new System.Drawing.Point(43, 35);
+            this.btnClientes.Location = new System.Drawing.Point(43, 127);
             this.btnClientes.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnClientes.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnClientes.Name = "btnClientes";
@@ -2338,6 +2338,7 @@ namespace UI.Desktop
             this.btnClientes.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnClientes.UseAccentColor = false;
             this.btnClientes.UseVisualStyleBackColor = false;
+            this.btnClientes.Visible = false;
             this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
             // materialCard1

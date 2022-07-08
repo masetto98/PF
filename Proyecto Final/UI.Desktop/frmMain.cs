@@ -284,6 +284,7 @@ namespace UI.Desktop
         {
             ListarOrdenesCliente();
             CalcularCuentaCorrienteCliente();
+            listPagosOrden.Items.Clear();
         }
 
         private void ListarOrdenesCliente() 

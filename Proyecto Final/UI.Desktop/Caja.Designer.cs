@@ -51,6 +51,7 @@ namespace UI.Desktop
             this.columnFecha = new System.Windows.Forms.ColumnHeader();
             this.columnImporte = new System.Windows.Forms.ColumnHeader();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.columnIngresos = new System.Windows.Forms.ColumnHeader();
             this.materialCard1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +62,8 @@ namespace UI.Desktop
             this.listOrdenes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listOrdenes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnNro,
-            this.columnFechaSalida});
+            this.columnFechaSalida,
+            this.columnIngresos});
             this.listOrdenes.Depth = 0;
             this.listOrdenes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listOrdenes.FullRowSelect = true;
@@ -73,7 +75,7 @@ namespace UI.Desktop
             this.listOrdenes.MultiSelect = false;
             this.listOrdenes.Name = "listOrdenes";
             this.listOrdenes.OwnerDraw = true;
-            this.listOrdenes.Size = new System.Drawing.Size(251, 398);
+            this.listOrdenes.Size = new System.Drawing.Size(401, 398);
             this.listOrdenes.TabIndex = 0;
             this.listOrdenes.UseCompatibleStateImageBehavior = false;
             this.listOrdenes.View = System.Windows.Forms.View.Details;
@@ -116,12 +118,12 @@ namespace UI.Desktop
             this.materialCard1.Controls.Add(this.materialLabel3);
             this.materialCard1.Depth = 0;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(280, 95);
+            this.materialCard1.Location = new System.Drawing.Point(420, 95);
             this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(491, 141);
+            this.materialCard1.Size = new System.Drawing.Size(496, 141);
             this.materialCard1.TabIndex = 2;
             // 
             // lblBalanceHoy
@@ -273,7 +275,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(694, 568);
+            this.btnCerrar.Location = new System.Drawing.Point(839, 563);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -300,14 +302,14 @@ namespace UI.Desktop
             this.listGastos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listGastos.FullRowSelect = true;
             this.listGastos.HideSelection = false;
-            this.listGastos.Location = new System.Drawing.Point(280, 272);
+            this.listGastos.Location = new System.Drawing.Point(420, 272);
             this.listGastos.MinimumSize = new System.Drawing.Size(200, 100);
             this.listGastos.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listGastos.MouseState = MaterialSkin.MouseState.OUT;
             this.listGastos.MultiSelect = false;
             this.listGastos.Name = "listGastos";
             this.listGastos.OwnerDraw = true;
-            this.listGastos.Size = new System.Drawing.Size(491, 284);
+            this.listGastos.Size = new System.Drawing.Size(496, 284);
             this.listGastos.TabIndex = 6;
             this.listGastos.UseCompatibleStateImageBehavior = false;
             this.listGastos.View = System.Windows.Forms.View.Details;
@@ -340,18 +342,23 @@ namespace UI.Desktop
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(280, 250);
+            this.materialLabel4.Location = new System.Drawing.Point(420, 250);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(106, 19);
             this.materialLabel4.TabIndex = 7;
             this.materialLabel4.Text = "Gastos del día:";
             // 
+            // columnIngresos
+            // 
+            this.columnIngresos.Text = "Dinero ingresado";
+            this.columnIngresos.Width = 150;
+            // 
             // Caja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(785, 619);
+            this.ClientSize = new System.Drawing.Size(927, 608);
             this.Controls.Add(this.materialLabel4);
             this.Controls.Add(this.listGastos);
             this.Controls.Add(this.btnCerrar);
@@ -397,5 +404,6 @@ namespace UI.Desktop
         private System.Windows.Forms.ColumnHeader columnDesc;
         private System.Windows.Forms.ColumnHeader columnFecha;
         private System.Windows.Forms.ColumnHeader columnImporte;
+        private System.Windows.Forms.ColumnHeader columnIngresos;
     }
 }
