@@ -52,6 +52,7 @@ namespace UI.Desktop
             this.columnImporte = new System.Windows.Forms.ColumnHeader();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.columnIngresos = new System.Windows.Forms.ColumnHeader();
+            this.btnReporteCaja = new MaterialSkin.Controls.MaterialButton();
             this.materialCard1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -354,11 +355,34 @@ namespace UI.Desktop
             this.columnIngresos.Text = "Dinero ingresado";
             this.columnIngresos.Width = 150;
             // 
+            // btnReporteCaja
+            // 
+            this.btnReporteCaja.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnReporteCaja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnReporteCaja.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnReporteCaja.Depth = 0;
+            this.btnReporteCaja.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnReporteCaja.HighEmphasis = true;
+            this.btnReporteCaja.Icon = null;
+            this.btnReporteCaja.Location = new System.Drawing.Point(12, 568);
+            this.btnReporteCaja.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnReporteCaja.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnReporteCaja.Name = "btnReporteCaja";
+            this.btnReporteCaja.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnReporteCaja.Size = new System.Drawing.Size(158, 36);
+            this.btnReporteCaja.TabIndex = 8;
+            this.btnReporteCaja.Text = "Reporte caja";
+            this.btnReporteCaja.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnReporteCaja.UseAccentColor = false;
+            this.btnReporteCaja.UseVisualStyleBackColor = false;
+            this.btnReporteCaja.Click += new System.EventHandler(this.btnReporteCaja_Click);
+            // 
             // Caja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(927, 608);
+            this.Controls.Add(this.btnReporteCaja);
             this.Controls.Add(this.materialLabel4);
             this.Controls.Add(this.listGastos);
             this.Controls.Add(this.btnCerrar);
@@ -404,6 +428,7 @@ namespace UI.Desktop
         private System.Windows.Forms.ColumnHeader columnDesc;
         private System.Windows.Forms.ColumnHeader columnFecha;
         private System.Windows.Forms.ColumnHeader columnImporte;
+        private MaterialSkin.Controls.MaterialButton btnReporteCaja;
         private System.Windows.Forms.ColumnHeader columnIngresos;
     }
 }

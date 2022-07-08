@@ -51,6 +51,8 @@ namespace UI.Desktop
             this.txtApagar = new MaterialSkin.Controls.MaterialTextBox();
             this.btnSaldarDeuda = new MaterialSkin.Controls.MaterialButton();
             this.ayudaPago = new System.Windows.Forms.ToolTip(this.components);
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
+            this.txtSenia = new MaterialSkin.Controls.MaterialTextBox();
             this.materialCard1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -329,7 +331,7 @@ namespace UI.Desktop
             this.materialLabel5.Depth = 0;
             this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(495, 119);
+            this.materialLabel5.Location = new System.Drawing.Point(495, 179);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(100, 19);
@@ -345,7 +347,7 @@ namespace UI.Desktop
             this.txtApagar.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtApagar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtApagar.LeadingIcon = null;
-            this.txtApagar.Location = new System.Drawing.Point(601, 103);
+            this.txtApagar.Location = new System.Drawing.Point(601, 163);
             this.txtApagar.MaxLength = 50;
             this.txtApagar.MouseState = MaterialSkin.MouseState.OUT;
             this.txtApagar.Multiline = false;
@@ -385,11 +387,46 @@ namespace UI.Desktop
             // 
             this.ayudaPago.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // materialLabel6
+            // 
+            this.materialLabel6.AutoSize = true;
+            this.materialLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel6.Location = new System.Drawing.Point(554, 119);
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            this.materialLabel6.Size = new System.Drawing.Size(41, 19);
+            this.materialLabel6.TabIndex = 16;
+            this.materialLabel6.Text = "Seña:";
+            // 
+            // txtSenia
+            // 
+            this.txtSenia.AnimateReadOnly = false;
+            this.txtSenia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.txtSenia.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSenia.Depth = 0;
+            this.txtSenia.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtSenia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtSenia.LeadingIcon = null;
+            this.txtSenia.Location = new System.Drawing.Point(601, 103);
+            this.txtSenia.MaxLength = 50;
+            this.txtSenia.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtSenia.Multiline = false;
+            this.txtSenia.Name = "txtSenia";
+            this.txtSenia.Size = new System.Drawing.Size(163, 50);
+            this.txtSenia.TabIndex = 15;
+            this.txtSenia.Text = "";
+            this.txtSenia.TrailingIcon = null;
+            // 
             // PagoDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(796, 514);
+            this.Controls.Add(this.materialLabel6);
+            this.Controls.Add(this.txtSenia);
             this.Controls.Add(this.btnSaldarDeuda);
             this.Controls.Add(this.materialLabel5);
             this.Controls.Add(this.txtApagar);
@@ -436,5 +473,7 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialTextBox txtApagar;
         private MaterialSkin.Controls.MaterialButton btnSaldarDeuda;
         private System.Windows.Forms.ToolTip ayudaPago;
+        private MaterialSkin.Controls.MaterialLabel materialLabel6;
+        private MaterialSkin.Controls.MaterialTextBox txtSenia;
     }
 }

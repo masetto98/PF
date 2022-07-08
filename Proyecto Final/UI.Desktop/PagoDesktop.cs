@@ -104,7 +104,10 @@ namespace UI.Desktop
             this.txtNroFactura.Text = FacturaActual.NroFactura.ToString();
             this.cbFormaPago.DataSource = Enum.GetNames(typeof(Business.Entities.Pago.FormasPago));
             this.txtTotalFactura.Text = FacturaActual.Importe.ToString();
-            
+            if(OrdenActual.Senia == true)
+            {
+                this.txtSenia.Text = OrdenActual.Factura.Pagos[0].Importe.ToString();
+            }
             try
             {
 
@@ -128,6 +131,7 @@ namespace UI.Desktop
                     this.txtNroFactura.Enabled = false;
                     this.txtTotalFactura.Enabled = false;
                     this.txtApagar.Enabled = false;
+                    this.txtSenia.Enabled = false;
                     break;
                 case ModoForm.Modificacion:
                     if(this.txtApagar.Text == "0")
@@ -141,6 +145,7 @@ namespace UI.Desktop
                     this.txtTotalFactura.Enabled = false;
                     this.txtApagar.Enabled = false;
                     this.txtNroFactura.Enabled = false;
+                    this.txtSenia.Enabled = false;
                     break;
                 case ModoForm.Baja:
                     
@@ -251,7 +256,7 @@ namespace UI.Desktop
         private void btnAceptarPago_Click(object sender, EventArgs e)
         {
             double totalActual = TotalPagos();
-            if(totalActual == FacturaActual.Importe)
+            if(totalActual == FacturaActual.Importe && OrdenActual.Estado != Orden.Estados.Retirado)
             {
                 OrdenActual.Estado = Orden.Estados.Pagado;
                 OrdenActual.State = BusinessEntity.States.Modified;

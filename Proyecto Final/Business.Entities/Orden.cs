@@ -14,6 +14,7 @@ namespace Business.Entities
         private int _idCliente;
         private int _idEmpleado;
         private int? _nroFactura;
+        private bool _senia;
         private DateTime _fechaEntrada;
         private DateTime _fechaSalida;
         private TimeSpan _tiempoFinalizacionEstimado;
@@ -135,7 +136,11 @@ namespace Business.Entities
             get { return _entregaDomicilio; }
             set { _entregaDomicilio = value; }
         }
-
+        public bool Senia
+        {
+            get { return _senia; }
+            set { _senia = value; }
+        }
         public Cliente Cliente
         {
             get { return _cliente; }

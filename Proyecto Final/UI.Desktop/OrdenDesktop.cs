@@ -54,7 +54,7 @@ namespace UI.Desktop
 
             this.txtNombreApellidoRazonSocial.Enabled = false;
             this.txtIdCliente.Enabled = false;
-
+            this.cbFormaPago.Enabled = false;
             _total = 0;
 
         }
@@ -133,11 +133,12 @@ namespace UI.Desktop
                     this.txtDescuento.Text = OrdenActual.Descuento;
                 }
             }
-            if (OrdenActual.Factura is not null && OrdenActual.Factura.Pagos is not null) { 
-                Pago senia = OrdenActual.Factura.Pagos.Find(delegate (Pago p) { return p.FormaPago == Pago.FormasPago.Seña; });
+            if (OrdenActual.Senia == true) { 
+                Pago senia = OrdenActual.Factura.Pagos[0];
                 if (senia is not null) 
                 { 
                     this.txtSeniaOrden.Text = senia.Importe.ToString(); 
+                    this.cbFormaPago.SelectedIndex = cbFormaPago.FindStringExact(Enum.GetName(OrdenActual.Factura.Pagos[0].FormaPago));
                 } 
             }
             try
@@ -211,12 +212,13 @@ namespace UI.Desktop
                 OrdenActual.EntregaDomicilio= (Orden.EntregasDomicilio)Enum.Parse(typeof(Orden.EntregasDomicilio), cmbEntregaDomicilio.SelectedItem.ToString());
                 if (txtSeniaOrden.Text != "")
                 {
+                    OrdenActual.Senia = true;
                     FacturaActual = new Factura();
                     FacturaActual.FechaFactura = DateTime.Now;
                     FacturaActual.Pagos = new List<Pago>();
                     PagoActual = new Pago();
                     PagoActual.FechaPago = DateTime.Now;
-                    PagoActual.FormaPago = Pago.FormasPago.Seña;
+                    PagoActual.FormaPago = (Business.Entities.Pago.FormasPago)Enum.Parse(typeof(Business.Entities.Pago.FormasPago), cbFormaPago.SelectedItem.ToString()); ;
                     //PagoActual.FormaPago = (Pago.FormasPago)Enum.Parse(typeof(Business.Entities.Pago.FormasPago), "Seña");
                     PagoActual.Importe = double.Parse(txtSeniaOrden.Text);
                     FacturaActual.Pagos.Add(PagoActual);
@@ -225,6 +227,7 @@ namespace UI.Desktop
                 else
                 {
                     FacturaActual = new Factura();
+                    OrdenActual.Senia = false;
                 }
                 OrdenActual.Factura = FacturaActual;
                 AsignarPrioridadItems();
@@ -721,6 +724,15 @@ namespace UI.Desktop
 
             e.Cancel = true;
             e.NewWidth = listItemsServicio.Columns[e.ColumnIndex].Width;
+        }
+
+        private void txtSeniaOrden_TextChanged(object sender, EventArgs e)
+        {
+            if(this.txtSeniaOrden.Text != "")
+            {
+                this.cbFormaPago.Enabled = true;
+                this.cbFormaPago.DataSource = Enum.GetNames(typeof(Business.Entities.Pago.FormasPago));
+            }
         }
     }
 }

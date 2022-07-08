@@ -10,6 +10,11 @@ using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
 using Data.Database;
+using iText.Kernel.Pdf;
+using iText.Layout.Element;
+using iText.Layout.Properties;
+using iText.Layout;
+using System.IO;
 
 namespace UI.Desktop
 {
@@ -25,6 +30,9 @@ namespace UI.Desktop
             InitializeComponent();
             _ordenLogic = new OrdenLogic(new OrdenAdapter(context));
             _gastoLogic = new GastoLogic(new GastoAdapter(context));
+            Singleton.getInstance().ListActual = this.listOrdenes;
+            Singleton.getInstance().ListAlternativa = this.listGastos;
+            Singleton.getInstance().ModuloActual = "Caja";
             this.dtpFecha.Value = DateTime.Today;
             ActualizarInformacion();
         }
@@ -178,6 +186,130 @@ namespace UI.Desktop
         {
             e.Cancel = true;
             e.NewWidth = listGastos.Columns[e.ColumnIndex].Width;
+        }
+
+        private void btnReporteCaja_Click(object sender, EventArgs e)
+        {
+            if (Singleton.getInstance().ListActual != null && Singleton.getInstance().ListActual.SelectedItems.Count > 0)
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "PDF (*.pdf)|*.pdf";
+                sfd.FileName = $"Reporte de {Singleton.getInstance().ModuloActual} - {DateTime.Now.ToString("yyyyMMddHHmmss")}.pdf";
+                bool fileError = false;
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(sfd.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(sfd.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            MessageBox.Show("No fue posible escribir el archivo en el disco." + ex.Message);
+                        }
+                    }
+                    if (!fileError)
+                    {
+                        try
+                        {
+                            float[] pointColumnWidths = { 150F, 150F };
+                            Table tablacaja = new Table(pointColumnWidths);
+                            tablacaja.SetPadding(3);
+                            tablacaja.SetWidth(UnitValue.CreatePercentValue(100));
+                            tablacaja.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.LEFT);
+                            tablacaja.AddCell("Total Ingresos");
+                            tablacaja.AddCell(this.lblIngresosDia.Text);
+                            tablacaja.AddCell("Total Gastos");
+                            tablacaja.AddCell(this.lblSalidasDia.Text);
+                            tablacaja.AddCell("Balance Total");
+                            tablacaja.AddCell(this.lblBalanceHoy.Text);
+                            Table pdfTable = new Table(Singleton.getInstance().ListActual.Columns.Count);
+                            pdfTable.SetPadding(3);
+                            pdfTable.SetWidth(UnitValue.CreatePercentValue(100));
+                            pdfTable.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
+
+                            foreach (ColumnHeader column in Singleton.getInstance().ListActual.Columns)
+                            {
+
+                                Cell cell = new Cell().Add(new Paragraph(column.Text).SetBold());
+                                cell.SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+                                cell.SetTextAlignment(TextAlignment.CENTER);
+                                pdfTable.AddCell(cell);
+
+                            }
+
+                            foreach (ListViewItem row in Singleton.getInstance().ListActual.Items)
+                            {
+                                foreach (ListViewItem.ListViewSubItem cell in row.SubItems)
+                                {
+                                    pdfTable.AddCell(cell.Text);
+                                }
+
+                            }
+                            Table pdfTable2 = new Table(Singleton.getInstance().ListAlternativa.Columns.Count);
+                            pdfTable2.SetPadding(3);
+                            pdfTable2.SetWidth(UnitValue.CreatePercentValue(100));
+                            pdfTable2.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
+
+                            foreach (ColumnHeader column in Singleton.getInstance().ListAlternativa.Columns)
+                            {
+
+                                Cell cell = new Cell().Add(new Paragraph(column.Text).SetBold());
+                                cell.SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+                                cell.SetTextAlignment(TextAlignment.CENTER);
+                                pdfTable2.AddCell(cell);
+
+                            }
+
+                            foreach (ListViewItem row in Singleton.getInstance().ListAlternativa.Items)
+                            {
+                                foreach (ListViewItem.ListViewSubItem cell in row.SubItems)
+                                {
+                                    pdfTable2.AddCell(cell.Text);
+                                }
+
+                            }
+                            using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                            {
+                                PdfWriter writer = new PdfWriter(stream);
+                                PdfDocument pdf = new PdfDocument(writer);
+                                Document document = new Document(pdf);
+                                pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4);
+                                document.SetMargins(10f, 20f, 20f, 10f);
+                                Paragraph p = new Paragraph();
+                                p.SetTextAlignment(TextAlignment.CENTER);
+                                p.Add($"Reporte de {Singleton.getInstance().ModuloActual} \n");
+                                p.SetBold();
+                                p.SetUnderline();
+                                p.SetFontSize(18);
+                                document.Add(p);
+                                Paragraph fecha = new Paragraph();
+                                fecha.SetTextAlignment(TextAlignment.LEFT);
+                                fecha.Add($"Fecha de emisión: {DateTime.Now} \n");
+                                fecha.SetFontSize(9);
+                                document.Add(fecha);
+                                document.Add(tablacaja);
+                                document.Add(pdfTable);
+                                document.Add(pdfTable2);
+                                document.Close();
+                                stream.Close();
+                            }
+
+                            MessageBox.Show("Reporte exportado exitosamente", "Info");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error: " + ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay registros para exportar", "Info");
+            }
         }
     }
 }

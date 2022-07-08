@@ -14,12 +14,11 @@ namespace Business.Entities
         private double _importe;
         public enum FormasPago
         {
-            Seña = 0,
-            Efectivo = 1,
-            TarjetaCredito = 2,
-            TarjetaDebito = 3,
-            BilleteraElectronica = 4,
-            TransferenciaBancaria = 5,
+            Efectivo = 0,
+            TarjetaCredito = 1,
+            TarjetaDebito = 2,
+            BilleteraElectronica = 3,
+            TransferenciaBancaria = 4,
         }
         public FormasPago _formaPago;
         private Factura _factura;

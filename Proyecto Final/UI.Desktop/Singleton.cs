@@ -14,6 +14,7 @@ namespace UI.Desktop
         private Business.Entities.Empleado _empleadoActual;
         private Usuario _usuarioActual;
         private System.Windows.Forms.ListView _listActual;
+        private System.Windows.Forms.ListView _listAlternativa;
         private string _moduloActual;
         private static Singleton _instance;
         public static Singleton getInstance()
@@ -49,6 +50,17 @@ namespace UI.Desktop
             set
             {
                 _listActual = value;
+            }
+        }
+        public System.Windows.Forms.ListView ListAlternativa
+        {
+            get
+            {
+                return _listAlternativa;
+            }
+            set
+            {
+                _listAlternativa = value;
             }
         }
         public string ModuloActual

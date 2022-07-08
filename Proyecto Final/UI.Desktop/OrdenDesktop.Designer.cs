@@ -64,6 +64,7 @@ namespace UI.Desktop
             this.txtDescuento = new MaterialSkin.Controls.MaterialTextBox();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialCard3 = new MaterialSkin.Controls.MaterialCard();
+            this.cbFormaPago = new MaterialSkin.Controls.MaterialComboBox();
             this.txtSeniaOrden = new MaterialSkin.Controls.MaterialTextBox();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.txtObservaciones = new MaterialSkin.Controls.MaterialMultiLineTextBox();
@@ -510,7 +511,7 @@ namespace UI.Desktop
             this.txtPrecioTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtPrecioTotal.Hint = "Total";
             this.txtPrecioTotal.LeadingIcon = null;
-            this.txtPrecioTotal.Location = new System.Drawing.Point(495, 523);
+            this.txtPrecioTotal.Location = new System.Drawing.Point(608, 525);
             this.txtPrecioTotal.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.txtPrecioTotal.MaxLength = 50;
             this.txtPrecioTotal.MouseState = MaterialSkin.MouseState.OUT;
@@ -528,7 +529,7 @@ namespace UI.Desktop
             this.lblTotal.Depth = 0;
             this.lblTotal.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTotal.Location = new System.Drawing.Point(432, 536);
+            this.lblTotal.Location = new System.Drawing.Point(545, 538);
             this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotal.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblTotal.Name = "lblTotal";
@@ -699,6 +700,7 @@ namespace UI.Desktop
             // materialCard3
             // 
             this.materialCard3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard3.Controls.Add(this.cbFormaPago);
             this.materialCard3.Controls.Add(this.txtSeniaOrden);
             this.materialCard3.Controls.Add(this.materialLabel2);
             this.materialCard3.Depth = 0;
@@ -708,8 +710,30 @@ namespace UI.Desktop
             this.materialCard3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard3.Name = "materialCard3";
             this.materialCard3.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard3.Size = new System.Drawing.Size(122, 96);
+            this.materialCard3.Size = new System.Drawing.Size(293, 96);
             this.materialCard3.TabIndex = 36;
+            // 
+            // cbFormaPago
+            // 
+            this.cbFormaPago.AutoResize = false;
+            this.cbFormaPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.cbFormaPago.Depth = 0;
+            this.cbFormaPago.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cbFormaPago.DropDownHeight = 174;
+            this.cbFormaPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFormaPago.DropDownWidth = 121;
+            this.cbFormaPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cbFormaPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cbFormaPago.FormattingEnabled = true;
+            this.cbFormaPago.IntegralHeight = false;
+            this.cbFormaPago.ItemHeight = 43;
+            this.cbFormaPago.Location = new System.Drawing.Point(122, 37);
+            this.cbFormaPago.MaxDropDownItems = 4;
+            this.cbFormaPago.MouseState = MaterialSkin.MouseState.OUT;
+            this.cbFormaPago.Name = "cbFormaPago";
+            this.cbFormaPago.Size = new System.Drawing.Size(163, 49);
+            this.cbFormaPago.StartIndex = 0;
+            this.cbFormaPago.TabIndex = 2;
             // 
             // txtSeniaOrden
             // 
@@ -730,6 +754,7 @@ namespace UI.Desktop
             this.txtSeniaOrden.TabIndex = 1;
             this.txtSeniaOrden.Text = "";
             this.txtSeniaOrden.TrailingIcon = null;
+            this.txtSeniaOrden.TextChanged += new System.EventHandler(this.txtSeniaOrden_TextChanged);
             // 
             // materialLabel2
             // 
@@ -908,5 +933,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialCard materialCard4;
         private MaterialSkin.Controls.MaterialComboBox cmbEntregaDomicilio;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialComboBox cbFormaPago;
     }
 }
