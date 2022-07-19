@@ -164,6 +164,7 @@ namespace UI.Desktop
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.btnObjetosPerdidos = new MaterialSkin.Controls.MaterialButton();
             this.materialCard3 = new MaterialSkin.Controls.MaterialCard();
+            this.btnMovimientos = new MaterialSkin.Controls.MaterialButton();
             this.btnReporteGastos = new MaterialSkin.Controls.MaterialButton();
             this.btnDeudas = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
@@ -1961,6 +1962,7 @@ namespace UI.Desktop
             this.listTrabajosEnProceso.MinimumSize = new System.Drawing.Size(200, 100);
             this.listTrabajosEnProceso.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listTrabajosEnProceso.MouseState = MaterialSkin.MouseState.OUT;
+            this.listTrabajosEnProceso.MultiSelect = false;
             this.listTrabajosEnProceso.Name = "listTrabajosEnProceso";
             this.listTrabajosEnProceso.OwnerDraw = true;
             this.listTrabajosEnProceso.Size = new System.Drawing.Size(1010, 570);
@@ -2167,6 +2169,7 @@ namespace UI.Desktop
             // materialCard3
             // 
             this.materialCard3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard3.Controls.Add(this.btnMovimientos);
             this.materialCard3.Controls.Add(this.btnReporteGastos);
             this.materialCard3.Controls.Add(this.btnDeudas);
             this.materialCard3.Controls.Add(this.materialLabel3);
@@ -2179,6 +2182,29 @@ namespace UI.Desktop
             this.materialCard3.Padding = new System.Windows.Forms.Padding(14);
             this.materialCard3.Size = new System.Drawing.Size(279, 321);
             this.materialCard3.TabIndex = 3;
+            // 
+            // btnMovimientos
+            // 
+            this.btnMovimientos.AutoSize = false;
+            this.btnMovimientos.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnMovimientos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnMovimientos.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnMovimientos.Depth = 0;
+            this.btnMovimientos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnMovimientos.HighEmphasis = true;
+            this.btnMovimientos.Icon = global::UI.Desktop.Properties.Resources.report_document_finance_business_analysis_analytics_chart_icon_188615;
+            this.btnMovimientos.Location = new System.Drawing.Point(41, 129);
+            this.btnMovimientos.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnMovimientos.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnMovimientos.Name = "btnMovimientos";
+            this.btnMovimientos.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnMovimientos.Size = new System.Drawing.Size(196, 36);
+            this.btnMovimientos.TabIndex = 3;
+            this.btnMovimientos.Text = "Movimientos";
+            this.btnMovimientos.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnMovimientos.UseAccentColor = false;
+            this.btnMovimientos.UseVisualStyleBackColor = false;
+            this.btnMovimientos.Click += new System.EventHandler(this.btnMovimientos_Click);
             // 
             // btnReporteGastos
             // 
@@ -2292,7 +2318,7 @@ namespace UI.Desktop
             this.btnInsumos.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnInsumos.UseAccentColor = false;
             this.btnInsumos.UseVisualStyleBackColor = false;
-            this.btnInsumos.Visible = false;
+            this.btnInsumos.Click += new System.EventHandler(this.btnInsumos_Click);
             // 
             // btnProveedores
             // 
@@ -2843,6 +2869,7 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnGastos;
         private MaterialSkin.Controls.MaterialButton btnDeudas;
         private MaterialSkin.Controls.MaterialButton btnReporteGastos;
+        private MaterialSkin.Controls.MaterialButton btnMovimientos;
     }
 }
 

@@ -22,6 +22,7 @@ namespace Business.Entities
             Servicios = 2,
             Productos =3,
             Varios = 4,
+            Matenimientos =5,
         }
         [Key]
         [Column("id_gasto")]

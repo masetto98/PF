@@ -38,7 +38,9 @@ namespace Data.Database
             try
             {
                 return _context.Insumos
-                                       //.Include(i => i.InsumoServicioTipoPrenda)
+                                       .Include(i => i.InsumoServicioTipoPrenda)
+                                            .ThenInclude(stp => stp.ServicioTipoPrenda)
+                                                .ThenInclude(s => s.Servicio)
                                        .Include(i => i.InsumosProveedores)
                                             .ThenInclude(p => p.Proveedor)
                                        .FirstOrDefault(i => i.IdInsumo == idInsumo);

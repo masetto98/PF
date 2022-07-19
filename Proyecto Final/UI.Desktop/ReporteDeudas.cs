@@ -65,7 +65,7 @@ namespace UI.Desktop
                             pagos += p.Importe;
                         }
                     };
-                    return or.Estado == Orden.Estados.Retirado && or.Factura.Pagos.Count <= 1 && or.Factura.Importe > pagos;
+                    return or.Estado == Orden.Estados.Retirado && or.Factura.Importe > pagos;
                 });
         }
         private double CalcularPagosOrden(Orden ordenActual)

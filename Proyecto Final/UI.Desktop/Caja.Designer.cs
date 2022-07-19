@@ -32,6 +32,7 @@ namespace UI.Desktop
             this.listOrdenes = new MaterialSkin.Controls.MaterialListView();
             this.columnNro = new System.Windows.Forms.ColumnHeader();
             this.columnFechaSalida = new System.Windows.Forms.ColumnHeader();
+            this.columnIngresos = new System.Windows.Forms.ColumnHeader();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.lblBalanceHoy = new MaterialSkin.Controls.MaterialLabel();
@@ -51,8 +52,9 @@ namespace UI.Desktop
             this.columnFecha = new System.Windows.Forms.ColumnHeader();
             this.columnImporte = new System.Windows.Forms.ColumnHeader();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.columnIngresos = new System.Windows.Forms.ColumnHeader();
             this.btnReporteCaja = new MaterialSkin.Controls.MaterialButton();
+            this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
+            this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
             this.materialCard1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,7 +71,7 @@ namespace UI.Desktop
             this.listOrdenes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listOrdenes.FullRowSelect = true;
             this.listOrdenes.HideSelection = false;
-            this.listOrdenes.Location = new System.Drawing.Point(12, 158);
+            this.listOrdenes.Location = new System.Drawing.Point(12, 187);
             this.listOrdenes.MinimumSize = new System.Drawing.Size(200, 100);
             this.listOrdenes.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listOrdenes.MouseState = MaterialSkin.MouseState.OUT;
@@ -92,6 +94,11 @@ namespace UI.Desktop
             this.columnFechaSalida.Text = "Fecha Salida";
             this.columnFechaSalida.Width = 151;
             // 
+            // columnIngresos
+            // 
+            this.columnIngresos.Text = "Dinero ingresado";
+            this.columnIngresos.Width = 150;
+            // 
             // dtpFecha
             // 
             this.dtpFecha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -99,11 +106,11 @@ namespace UI.Desktop
             this.dtpFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpFecha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFecha.Location = new System.Drawing.Point(67, 95);
+            this.dtpFecha.Location = new System.Drawing.Point(112, 95);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(196, 23);
             this.dtpFecha.TabIndex = 1;
-            this.dtpFecha.Value = new System.DateTime(2022, 6, 18, 22, 9, 43, 0);
+            this.dtpFecha.Value = new System.DateTime(2022, 7, 11, 0, 0, 0, 0);
             this.dtpFecha.ValueChanged += new System.EventHandler(this.dtpFecha_ValueChanged);
             // 
             // materialCard1
@@ -151,9 +158,9 @@ namespace UI.Desktop
             this.materialLabel5.Location = new System.Drawing.Point(17, 105);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(113, 19);
+            this.materialLabel5.Size = new System.Drawing.Size(62, 19);
             this.materialLabel5.TabIndex = 6;
-            this.materialLabel5.Text = "Balance de hoy:";
+            this.materialLabel5.Text = "Balance:";
             // 
             // lblSalidasDia
             // 
@@ -179,9 +186,9 @@ namespace UI.Desktop
             this.materialLabel6.Location = new System.Drawing.Point(17, 72);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
-            this.materialLabel6.Size = new System.Drawing.Size(106, 19);
+            this.materialLabel6.Size = new System.Drawing.Size(96, 19);
             this.materialLabel6.TabIndex = 4;
-            this.materialLabel6.Text = "Gastos del día:";
+            this.materialLabel6.Text = "Total Gastos:";
             // 
             // lblIngresosDia
             // 
@@ -221,9 +228,9 @@ namespace UI.Desktop
             this.materialLabel2.Location = new System.Drawing.Point(17, 41);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(116, 19);
+            this.materialLabel2.Size = new System.Drawing.Size(106, 19);
             this.materialLabel2.TabIndex = 1;
-            this.materialLabel2.Text = "Ingresos del día:";
+            this.materialLabel2.Text = "Total Ingresos:";
             // 
             // materialLabel3
             // 
@@ -249,9 +256,9 @@ namespace UI.Desktop
             this.materialLabel1.Location = new System.Drawing.Point(13, 95);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(48, 19);
+            this.materialLabel1.Size = new System.Drawing.Size(94, 19);
             this.materialLabel1.TabIndex = 3;
-            this.materialLabel1.Text = "Fecha:";
+            this.materialLabel1.Text = "Fecha desde:";
             // 
             // materialLabel8
             // 
@@ -260,7 +267,7 @@ namespace UI.Desktop
             this.materialLabel8.Depth = 0;
             this.materialLabel8.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel8.Location = new System.Drawing.Point(13, 136);
+            this.materialLabel8.Location = new System.Drawing.Point(13, 165);
             this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel8.Name = "materialLabel8";
             this.materialLabel8.Size = new System.Drawing.Size(129, 19);
@@ -276,7 +283,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(839, 563);
+            this.btnCerrar.Location = new System.Drawing.Point(839, 603);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -310,7 +317,7 @@ namespace UI.Desktop
             this.listGastos.MultiSelect = false;
             this.listGastos.Name = "listGastos";
             this.listGastos.OwnerDraw = true;
-            this.listGastos.Size = new System.Drawing.Size(496, 284);
+            this.listGastos.Size = new System.Drawing.Size(496, 313);
             this.listGastos.TabIndex = 6;
             this.listGastos.UseCompatibleStateImageBehavior = false;
             this.listGastos.View = System.Windows.Forms.View.Details;
@@ -346,14 +353,9 @@ namespace UI.Desktop
             this.materialLabel4.Location = new System.Drawing.Point(420, 250);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(106, 19);
+            this.materialLabel4.Size = new System.Drawing.Size(55, 19);
             this.materialLabel4.TabIndex = 7;
-            this.materialLabel4.Text = "Gastos del día:";
-            // 
-            // columnIngresos
-            // 
-            this.columnIngresos.Text = "Dinero ingresado";
-            this.columnIngresos.Width = 150;
+            this.materialLabel4.Text = "Gastos:";
             // 
             // btnReporteCaja
             // 
@@ -364,12 +366,12 @@ namespace UI.Desktop
             this.btnReporteCaja.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnReporteCaja.HighEmphasis = true;
             this.btnReporteCaja.Icon = null;
-            this.btnReporteCaja.Location = new System.Drawing.Point(12, 568);
+            this.btnReporteCaja.Location = new System.Drawing.Point(12, 603);
             this.btnReporteCaja.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnReporteCaja.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnReporteCaja.Name = "btnReporteCaja";
             this.btnReporteCaja.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnReporteCaja.Size = new System.Drawing.Size(158, 36);
+            this.btnReporteCaja.Size = new System.Drawing.Size(126, 36);
             this.btnReporteCaja.TabIndex = 8;
             this.btnReporteCaja.Text = "Reporte caja";
             this.btnReporteCaja.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -377,11 +379,41 @@ namespace UI.Desktop
             this.btnReporteCaja.UseVisualStyleBackColor = false;
             this.btnReporteCaja.Click += new System.EventHandler(this.btnReporteCaja_Click);
             // 
+            // materialLabel7
+            // 
+            this.materialLabel7.AutoSize = true;
+            this.materialLabel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel7.Depth = 0;
+            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel7.Location = new System.Drawing.Point(13, 132);
+            this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel7.Name = "materialLabel7";
+            this.materialLabel7.Size = new System.Drawing.Size(92, 19);
+            this.materialLabel7.TabIndex = 10;
+            this.materialLabel7.Text = "Fecha hasta:";
+            // 
+            // dtpFechaHasta
+            // 
+            this.dtpFechaHasta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.dtpFechaHasta.CustomFormat = "dd/MM/yyyy";
+            this.dtpFechaHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dtpFechaHasta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dtpFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaHasta.Location = new System.Drawing.Point(112, 130);
+            this.dtpFechaHasta.Name = "dtpFechaHasta";
+            this.dtpFechaHasta.Size = new System.Drawing.Size(196, 23);
+            this.dtpFechaHasta.TabIndex = 9;
+            this.dtpFechaHasta.Value = new System.DateTime(2022, 7, 11, 0, 0, 0, 0);
+            this.dtpFechaHasta.ValueChanged += new System.EventHandler(this.dtpFechaHasta_ValueChanged);
+            // 
             // Caja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(927, 608);
+            this.ClientSize = new System.Drawing.Size(927, 654);
+            this.Controls.Add(this.materialLabel7);
+            this.Controls.Add(this.dtpFechaHasta);
             this.Controls.Add(this.btnReporteCaja);
             this.Controls.Add(this.materialLabel4);
             this.Controls.Add(this.listGastos);
@@ -430,5 +462,7 @@ namespace UI.Desktop
         private System.Windows.Forms.ColumnHeader columnImporte;
         private MaterialSkin.Controls.MaterialButton btnReporteCaja;
         private System.Windows.Forms.ColumnHeader columnIngresos;
+        private MaterialSkin.Controls.MaterialLabel materialLabel7;
+        private System.Windows.Forms.DateTimePicker dtpFechaHasta;
     }
 }

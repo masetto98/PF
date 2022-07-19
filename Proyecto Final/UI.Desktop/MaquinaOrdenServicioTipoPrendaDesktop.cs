@@ -254,12 +254,20 @@ namespace UI.Desktop
                     {
                         if (ValidarMismaMaquina() == false)
                         {
-                            ModificarStock();
+                            if(OrdenServicioTipoPrendaActual.MaquinaOrdenServicioTipoPrenda.Count > 0)
+                            {
+                                GuardarCambios();
+                            }
+                            else
+                            {
+                                ModificarStock();
+                            }
+                          
                             //GuardarCambios();
                         }
                         else 
                         {
-                            if (MessageBox.Show("Este trabajo ya ha pasado por ésta maquina ¿Quieres volver a hacerlo?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
+                            if (MessageBox.Show("Este trabajo ya ha pasado por ésta maquina ¿Quieres realizarlo nuevamente?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
                             {
                                 ModificarStock();
                                 //GuardarCambios();
@@ -272,7 +280,14 @@ namespace UI.Desktop
                     {
                         if (MessageBox.Show($"¿Está seguro que desea modificar?", "Iniciar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
-                            ModificarStock();
+                            if (OrdenServicioTipoPrendaActual.MaquinaOrdenServicioTipoPrenda.Count > 0)
+                            {
+                                GuardarCambios();
+                            }
+                            else
+                            {
+                                ModificarStock();
+                            }
                         }
                     };
 

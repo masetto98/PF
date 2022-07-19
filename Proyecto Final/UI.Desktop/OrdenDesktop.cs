@@ -210,10 +210,11 @@ namespace UI.Desktop
                 OrdenActual.FechaEntrada = DateTime.Now;
                 Descuento();
                 OrdenActual.EntregaDomicilio= (Orden.EntregasDomicilio)Enum.Parse(typeof(Orden.EntregasDomicilio), cmbEntregaDomicilio.SelectedItem.ToString());
+                FacturaActual = new Factura();
                 if (txtSeniaOrden.Text != "")
                 {
                     OrdenActual.Senia = true;
-                    FacturaActual = new Factura();
+                    
                     FacturaActual.FechaFactura = DateTime.Now;
                     FacturaActual.Pagos = new List<Pago>();
                     PagoActual = new Pago();
@@ -226,7 +227,7 @@ namespace UI.Desktop
                 }
                 else
                 {
-                    FacturaActual = new Factura();
+                    
                     OrdenActual.Senia = false;
                 }
                 OrdenActual.Factura = FacturaActual;
@@ -449,12 +450,28 @@ namespace UI.Desktop
             }
             if (this.rbtnPorcentaje.Checked == true && this.txtDescuento.Text != "")
             {
-                _total *= (1 - (Double.Parse(this.txtDescuento.Text)/100.0)) ;
+                if(Int32.Parse(this.txtDescuento.Text) > 0 && Int32.Parse(this.txtDescuento.Text) <= 100)
+                {
+                    _total *= (1 - (Double.Parse(this.txtDescuento.Text) / 100.0));
+                }
+                else
+                {
+                    MessageBox.Show("El porcentaje de descuento ingresado no se encuentra dentro del rango válido(0-100). Por favor, vuelva a ingresar un valor válido.", "Descuento", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else if (this.rbtnValor.Checked == true && this.txtDescuento.Text != "")
             {
-                _total -= Int32.Parse(this.txtDescuento.Text);
+                if(double.Parse(this.txtDescuento.Text) <= _total)
+                {
+                    _total -= Int32.Parse(this.txtDescuento.Text);
+                }
+                else
+                {
+                    MessageBox.Show("El valor de descuento ingresado supera el monto de la Orden. Por favor, vuelva a ingresar un valor válido.", "Descuento", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
+            
             this.txtPrecioTotal.Text = _total.ToString();
 
         }
@@ -538,6 +555,7 @@ namespace UI.Desktop
                 if (this.txtDescuento.Text != "") 
                 {
                     Validaciones.ValidarNumeroEnteroDecimal(this.txtDescuento.Text);
+
                 }
                 MapearADatos();
                 if (Validar() && OrdenActual.Cliente is not null && OrdenActual.ItemsPedidos.Count > 0)
@@ -728,10 +746,14 @@ namespace UI.Desktop
 
         private void txtSeniaOrden_TextChanged(object sender, EventArgs e)
         {
-            if(this.txtSeniaOrden.Text != "")
+            if(this.txtSeniaOrden.Text != "" && double.Parse(this.txtSeniaOrden.Text) <= _total)
             {
                 this.cbFormaPago.Enabled = true;
                 this.cbFormaPago.DataSource = Enum.GetNames(typeof(Business.Entities.Pago.FormasPago));
+            }
+            else
+            {
+                MessageBox.Show("El valor de la seña ingresado es mayor al total de la Orden. Por favor, ingrese un valor válido para continuar.", "Senia", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

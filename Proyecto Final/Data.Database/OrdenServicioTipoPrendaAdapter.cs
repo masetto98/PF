@@ -46,6 +46,7 @@ namespace Data.Database
                             .ThenInclude(stp => stp.Insumo)
                     .Include(i => i.ServicioTipoPrenda)
                         .ThenInclude(stp => stp.TipoPrenda)
+                    .Include(i => i.MaquinaOrdenServicioTipoPrenda)
                     .FirstOrDefault(o => o.NroOrden == nroOrden && o.IdServicio==idServicio && o.IdTipoPrenda==idTipoPrenda && o.OrdenItem==ordenItem);
             }
             catch (Exception e)

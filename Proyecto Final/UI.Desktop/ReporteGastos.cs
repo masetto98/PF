@@ -134,7 +134,7 @@ namespace UI.Desktop
                                 {
                                     Paragraph fechaDesde = new Paragraph();
                                     fechaDesde.SetTextAlignment(TextAlignment.CENTER);
-                                    fechaDesde.Add($"Gastos desde: {dtpFechaDesde.Value} - hasta: {dtpFechaHasta.Value}\n");
+                                    fechaDesde.Add($"Gastos desde: {dtpFechaDesde.Value.Date} - hasta: {dtpFechaHasta.Value.Date}\n");
                                     fechaDesde.SetFontSize(9);
                                     document.Add(fechaDesde);
                                 }

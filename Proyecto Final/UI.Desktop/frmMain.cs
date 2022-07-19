@@ -721,7 +721,7 @@ namespace UI.Desktop
         {
             InsumoProveedorDesktop frmInsumoProveedor = new InsumoProveedorDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmInsumoProveedor.ShowDialog();
-            ListarIngresos();
+            ListarIngresosInsumo();
         }
 
         private void btnEditarIngreso_Click(object sender, EventArgs e)
@@ -1554,7 +1554,7 @@ namespace UI.Desktop
                 item.SubItems.Add(i.OrdenServicioTipoPrenda.ServicioTipoPrenda.Servicio.Descripcion);
                 item.SubItems.Add(i.OrdenServicioTipoPrenda.ServicioTipoPrenda.TipoPrenda.Descripcion);
                 item.SubItems.Add(i.OrdenServicioTipoPrenda.OrdenItem.ToString());
-                item.SubItems.Add(i.TiempoInicioServicio.ToString("O"));
+                item.SubItems.Add(i.TiempoInicioServicio.ToString("yyyy-MM-dd HH:mm:ss.fffffff"));
                 item.SubItems.Add(i.OrdenServicioTipoPrenda.Estado.ToString());
                 listTrabajosEnProceso.Items.Add(item);
             }
@@ -1794,6 +1794,16 @@ namespace UI.Desktop
             frmGasto.ShowDialog();
         }
 
-       
+        private void btnInsumos_Click(object sender, EventArgs e)
+        {
+            Insumos frmInsumo = new Insumos(_context);
+            frmInsumo.ShowDialog();
+        }
+
+        private void btnMovimientos_Click(object sender, EventArgs e)
+        {
+            ReporteMovimientos frmMovimientos = new ReporteMovimientos(_context);
+            frmMovimientos.ShowDialog();
+        }
     }
 }

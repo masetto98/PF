@@ -18,9 +18,11 @@ namespace UI.Desktop
     {
         private readonly MantenimientoLogic _mantenimientoLogic;
         private readonly MaquinaLogic _maquinaLogic;
+        private readonly GastoLogic _gastoLogic;
         private readonly LavanderiaContext _context;
         public Maquina MaquinaActual { get; set; }
         public Mantenimiento MantenimientoActual { get; set; }
+        public Gasto GastoActual { get; set; }
 
         public MantenimientoDesktop(LavanderiaContext context)
         {
@@ -28,6 +30,7 @@ namespace UI.Desktop
             _context = context;
             _maquinaLogic = new MaquinaLogic(new MaquinaAdapter(context));
             _mantenimientoLogic = new MantenimientoLogic(new MantenimientoAdapter(context));
+            _gastoLogic = new GastoLogic(new GastoAdapter(context));
 
         }
         public MantenimientoDesktop(int idMaquina,ModoForm modo, LavanderiaContext context):this(context)
@@ -158,6 +161,7 @@ namespace UI.Desktop
                 case ModoForm.Alta:
                     {
                         GuardarCambios();
+                        AgregarGasto();
                         Close();
                     };
                     break;
@@ -166,6 +170,7 @@ namespace UI.Desktop
                         if (MessageBox.Show($"¿Está seguro que desea modificar el mantenimiento {MantenimientoActual.Descripcion}?", "Mantenimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             GuardarCambios();
+                            AgregarGasto();
                         }
 
                     };
@@ -184,7 +189,36 @@ namespace UI.Desktop
             }
 
         }
-
+        public void AgregarGasto()
+        {
+            switch (Modos)
+            {
+                case ModoForm.Alta:
+                    {
+                        GastoActual = new Gasto();
+                        GastoActual.Descripcion = MantenimientoActual.Descripcion;
+                        GastoActual.FechaRealizado = MantenimientoActual.FechaRealizado;
+                        GastoActual.Importe = MantenimientoActual.Costo;
+                        GastoActual.TipoGasto = Gasto.TiposGasto.Matenimientos;
+                        GastoActual.State = BusinessEntity.States.New;
+                        _gastoLogic.Save(GastoActual);
+                    };
+                    break;
+                case ModoForm.Modificacion:
+                    {
+                        GastoActual = _gastoLogic.GetAll().Find(
+                            delegate (Gasto g) {
+                                return g.Descripcion == MantenimientoActual.Descripcion && g.FechaRealizado == MantenimientoActual.FechaRealizado;
+                            });
+                        GastoActual.Descripcion = MantenimientoActual.Descripcion;
+                        GastoActual.Importe = MantenimientoActual.Costo;
+                        GastoActual.State = BusinessEntity.States.Modified;
+                        _gastoLogic.Save(GastoActual);
+                    };
+                    break;
+            }
+            
+        }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();

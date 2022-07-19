@@ -670,7 +670,7 @@ namespace UI.Desktop
             this.txtDescuento.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtDescuento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtDescuento.LeadingIcon = null;
-            this.txtDescuento.Location = new System.Drawing.Point(130, 36);
+            this.txtDescuento.Location = new System.Drawing.Point(128, 36);
             this.txtDescuento.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.txtDescuento.MaxLength = 50;
             this.txtDescuento.MouseState = MaterialSkin.MouseState.OUT;
