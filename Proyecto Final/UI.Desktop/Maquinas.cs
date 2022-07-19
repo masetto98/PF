@@ -16,6 +16,7 @@ namespace UI.Desktop
     public partial class Maquinas : ApplicationForm
     {
         private readonly MaquinaLogic _maquinaLogic;
+        private readonly TiposMaquinaLogic _tiposMaquinaLogic;
         private readonly LavanderiaContext _context;
         public Maquina MaquinaActual { get; set; }
 
@@ -24,9 +25,57 @@ namespace UI.Desktop
             InitializeComponent();
             _context = context;
             _maquinaLogic = new MaquinaLogic(new MaquinaAdapter(context));
+            _tiposMaquinaLogic = new TiposMaquinaLogic(new TiposMaquinaAdapter(context));
+            //ListarMaquinas();
+            ListarTiposMaquinas();
+        }
+
+        private void ListarTiposMaquinas() 
+        {
+            listTiposMaquina.Items.Clear();
+            List<TiposMaquina> tiposMaquinas = _tiposMaquinaLogic.GetAll();
+            if (tiposMaquinas is not null)
+            {
+                foreach (TiposMaquina m in tiposMaquinas)
+                {
+                    ListViewItem item = new ListViewItem(m.IdTipoMaquina.ToString());
+                    item.SubItems.Add(m.Descripcion);
+                    listTiposMaquina.Items.Add(item);
+                }
+            }
+        }
+
+        private void listTiposMaquina_SelectedIndexChanged(object sender, EventArgs e)
+        {
             ListarMaquinas();
         }
 
+        private void listMaquinas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listMantenimientos.Items.Clear();
+            if (listMaquinas.SelectedItems.Count > 0)
+            {
+                int idMaquina = Int32.Parse(listMaquinas.SelectedItems[0].Text);
+                MaquinaActual = _maquinaLogic.GetOne(idMaquina);
+                if (MaquinaActual.itemsAtendidos is not null)
+                {
+                    this.lblOrdenesAtendidas.Text = MaquinaActual.itemsAtendidos.Count.ToString();
+                }
+                if (MaquinaActual.Mantenimientos is not null)
+                {
+                    this.lblMantenimientosRealizados.Text = MaquinaActual.Mantenimientos.Count.ToString();
+
+                }
+
+            }
+            //else
+            //{
+            //    MessageBox.Show("Debe seleccionar una fila en la lista para poder observar los detalles", "Máquina Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            ListarMantenimientos();
+
+        }
+        /*
         private void ListarMaquinas() 
         {
             listMaquinas.Items.Clear();
@@ -38,6 +87,24 @@ namespace UI.Desktop
                     ListViewItem item = new ListViewItem(m.IdMaquina.ToString());
                     item.SubItems.Add(m.Descripcion);
                     listMaquinas.Items.Add(item);
+                }
+            }
+        }*/
+
+        private void ListarMaquinas() 
+        {
+            listMaquinas.Items.Clear();
+            if (listTiposMaquina.SelectedItems.Count > 0)
+            {
+                TiposMaquina tipoMaquinaActual = _tiposMaquinaLogic.GetOne(Int32.Parse(listTiposMaquina.SelectedItems[0].Text));
+                if (tipoMaquinaActual is not null && tipoMaquinaActual.Maquinas is not null)
+                {
+                    foreach (Maquina m in tipoMaquinaActual.Maquinas)
+                    {
+                        ListViewItem item = new ListViewItem(m.IdMaquina.ToString());
+                        item.SubItems.Add(m.Descripcion);
+                        listMaquinas.Items.Add(item);
+                    }
                 }
             }
         }
@@ -79,9 +146,9 @@ namespace UI.Desktop
             ListarMaquinas();
 
         }
-
+        
         private void btnDetalles_Click(object sender, EventArgs e)
-        {
+        {/*
             listMantenimientos.Items.Clear();
             if (listMaquinas.SelectedItems.Count > 0)
             {
@@ -102,7 +169,7 @@ namespace UI.Desktop
             {
                 MessageBox.Show("Debe seleccionar una fila en la lista para poder observar los detalles", "Máquina Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            ListarMantenimientos();
+            ListarMantenimientos();*/
         }
 
         public void ListarMantenimientos() 
@@ -204,5 +271,7 @@ namespace UI.Desktop
             e.Cancel = true;
             e.NewWidth = listMantenimientos.Columns[e.ColumnIndex].Width;
         }
+
+        
     }
 }

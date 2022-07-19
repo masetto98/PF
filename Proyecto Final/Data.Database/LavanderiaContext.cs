@@ -29,7 +29,7 @@ namespace Data.Database
 
             modelBuilder.Entity<OrdenServicioTipoPrenda>()
                 .ToTable("ordenes_servicios_tipoprendas");
-            
+
             modelBuilder.Entity<InsumoServicioTipoPrenda>()
                 .ToTable("insumos_servicios_tipoprendas");
 
@@ -45,10 +45,28 @@ namespace Data.Database
             modelBuilder.Entity<Gasto>()
                 .ToTable("gastos");
 
+            modelBuilder.Entity<TiposMaquina>()
+                .ToTable("tipos_maquina");
+
+            modelBuilder.Entity<Consumo>()
+                .ToTable("consumos");
+
             modelBuilder.Entity<InsumoProveedor>()
                 .HasOne(ip => ip.Proveedor)
                 .WithMany(p => p.InsumosProveedor)
                 .HasForeignKey(ip => ip.IdProveedor)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Consumo>()
+                .HasOne(ip => ip.Insumo)
+                .WithMany(p => p.Consumos)
+                .HasForeignKey(ip => ip.IdInsumo)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Maquina>()
+                .HasOne(ip => ip.TipoMaquina)
+                .WithMany(p => p.Maquinas)
+                .HasForeignKey(ip => ip.IdTipoMaquina)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<InsumoProveedor>()
@@ -59,7 +77,7 @@ namespace Data.Database
 
             modelBuilder.Entity<InsumoProveedor>()
                 .HasKey(ip => new { ip.IdProveedor, ip.IdInsumo, ip.FechaIngreso });
-            
+
             modelBuilder.Entity<InsumoServicioTipoPrenda>()
                 .HasOne(istp => istp.Insumo)
                 .WithMany(i => i.InsumoServicioTipoPrenda)
@@ -69,9 +87,15 @@ namespace Data.Database
             modelBuilder.Entity<InsumoServicioTipoPrenda>()
                 .HasOne(istp => istp.ServicioTipoPrenda)
                 .WithMany(stp => stp.InsumoServicioTipoPrenda)
-                .HasForeignKey(istp => new {istp.IdServicio,istp.IdTipoPrenda})
+                .HasForeignKey(istp => new { istp.IdServicio, istp.IdTipoPrenda })
                 .OnDelete(DeleteBehavior.NoAction);
-            
+
+            modelBuilder.Entity<InsumoServicioTipoPrenda>()
+                .HasOne(istp => istp.TipoMaquina)
+                .WithMany(stp => stp.InsumosServicioTipoPrendaTiposMaquina)
+                .HasForeignKey(istp => istp.IdTipoMaquina)
+                .OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<InsumoServicioTipoPrenda>()
                 .HasKey(istp => new { istp.IdInsumo, istp.IdServicio, istp.IdTipoPrenda,istp.FechaDesde});
 
@@ -84,11 +108,23 @@ namespace Data.Database
             modelBuilder.Entity<Mantenimiento>()
                 .HasKey(m => new { m.IdMaquina, m.FechaRealizado });
 
+            
+
             modelBuilder.Entity<MaquinaOrdenServicioTipoPrenda>()
                 .HasOne(m => m.Maquina)
                 .WithMany(ma => ma.itemsAtendidos)
                 .HasForeignKey(m => m.IdMaquina)
                 .OnDelete(DeleteBehavior.NoAction);
+            
+            modelBuilder.Entity<MaquinaOrdenServicioTipoPrenda>()
+                .HasMany(m => m.Consumos)
+                .WithOne(ma => ma.MaquinaOrdenServicioTipoPrenda)
+                .HasForeignKey(m => new { m.IdMaquina, m.FechaConsumo})
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Consumo>()
+                .HasKey(m => new { m.IdMaquina, m.FechaConsumo, m.IdInsumo });
+
 
             modelBuilder.Entity<MaquinaOrdenServicioTipoPrenda>()
                 .HasOne(m => m.OrdenServicioTipoPrenda)
@@ -195,6 +231,8 @@ namespace Data.Database
         public DbSet<Usuario>? Usuarios { get; set; }
         public DbSet<AtributosNegocio> AtributosNegocio { get; set; }
         public DbSet<Gasto>? Gastos { get; set; }
+        public DbSet<TiposMaquina>? TiposMaquinas { get; set; }
+        public DbSet<Consumo>? Consumos { get; set; }
         public LavanderiaContext() {}
         public LavanderiaContext(DbContextOptions<LavanderiaContext> options) : base(options) {}
     }

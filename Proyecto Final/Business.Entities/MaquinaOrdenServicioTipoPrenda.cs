@@ -20,6 +20,8 @@ namespace Business.Entities
         private Maquina _maquina;
         private OrdenServicioTipoPrenda _ordenServicioTipoPrenda;
         private Empleado _empleado;
+        private List<Consumo> _consumos;
+
 
         [Column("id_maquina")]
         public int IdMaquina
@@ -95,7 +97,12 @@ namespace Business.Entities
             set { _empleado = value; }
         }
 
-        
+        public List<Consumo> Consumos
+        {
+            get { return _consumos; }
+            set { _consumos = value; }
+        }
+
 
 
     }
