@@ -17,17 +17,20 @@ namespace UI.Desktop
     public partial class MaquinaDesktop : ApplicationForm
     {
         private readonly MaquinaLogic _maquinaLogic;
+        private readonly TiposMaquinaLogic _tiposMaquinaLogic;
         public Maquina MaquinaActual { get; set; }
 
         public MaquinaDesktop(LavanderiaContext context)
         {
             InitializeComponent();
             _maquinaLogic = new MaquinaLogic(new MaquinaAdapter(context));
+            _tiposMaquinaLogic = new TiposMaquinaLogic(new TiposMaquinaAdapter(context));
         }
 
         public MaquinaDesktop(ModoForm modo, LavanderiaContext context) : this(context) 
         {
             Modos = modo;
+            this.cmbTiposMaquina.DataSource = _tiposMaquinaLogic.GetAll();
         }
 
         public MaquinaDesktop(int idMaquina,ModoForm modo, LavanderiaContext context) : this(context)
@@ -35,6 +38,7 @@ namespace UI.Desktop
             Modos = modo;
             try 
             {
+                this.cmbTiposMaquina.DataSource = _tiposMaquinaLogic.GetAll();
                 MaquinaActual = _maquinaLogic.GetOne(idMaquina);
                 MapearDeDatos();
 
@@ -48,8 +52,10 @@ namespace UI.Desktop
 
         public override void MapearDeDatos()
         {
+            
             this.txtID.Text = MaquinaActual.IdMaquina.ToString();
             this.txtDescripcion.Text = MaquinaActual.Descripcion;
+            this.cmbTiposMaquina.SelectedIndex = cmbTiposMaquina.FindStringExact(MaquinaActual.TipoMaquina.Descripcion);
             switch (this.Modos)
             {
                 case ModoForm.Alta:
@@ -78,10 +84,12 @@ namespace UI.Desktop
             {
                 MaquinaActual = new Maquina();
                 MaquinaActual.Descripcion = this.txtDescripcion.Text;
+                MaquinaActual.TipoMaquina=_tiposMaquinaLogic.GetOne((int)this.cmbTiposMaquina.SelectedValue);
             }
             if (Modos == ModoForm.Modificacion)
             {
                 MaquinaActual.Descripcion = this.txtDescripcion.Text;
+                this.cmbTiposMaquina.FindStringExact(MaquinaActual.TipoMaquina.Descripcion);
             }
             switch (Modos)
             {

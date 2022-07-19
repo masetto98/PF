@@ -220,6 +220,7 @@ namespace UI.Desktop
                 if (ValidarEstadoMaquina())
                 {
                     MapearADatos();
+                    ModificarStock();
                     _ordenServicioTipoPrendaLogic.Save(OrdenServicioTipoPrendaActual);
                     Close();
                 }
@@ -254,23 +255,15 @@ namespace UI.Desktop
                     {
                         if (ValidarMismaMaquina() == false)
                         {
-                            if(OrdenServicioTipoPrendaActual.MaquinaOrdenServicioTipoPrenda.Count > 0)
-                            {
-                                GuardarCambios();
-                            }
-                            else
-                            {
-                                ModificarStock();
-                            }
-                          
-                            //GuardarCambios();
+                            //ModificarStock();
+                            GuardarCambios();
                         }
                         else 
                         {
                             if (MessageBox.Show("Este trabajo ya ha pasado por ésta maquina ¿Quieres realizarlo nuevamente?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
                             {
-                                ModificarStock();
-                                //GuardarCambios();
+                                //ModificarStock();
+                                GuardarCambios();
                             }
 
                         }
@@ -321,7 +314,7 @@ namespace UI.Desktop
             }
             return ok;
         }
-        
+        /*
         private void ModificarStock()
         {
             List<InsumoServicioTipoPrenda> insumosItem = OrdenServicioTipoPrendaActual.ServicioTipoPrenda.InsumoServicioTipoPrenda;
@@ -348,6 +341,47 @@ namespace UI.Desktop
                     _insumoLogic.Save(ins.Insumo);
                 }
                 GuardarCambios();
+            }
+            else
+            {
+                this.Dispose();
+            }
+        }*/
+
+        private void ModificarStock()
+        {
+            List<InsumoServicioTipoPrenda> consumosActuales = OrdenServicioTipoPrendaActual.ServicioTipoPrenda.InsumoServicioTipoPrenda
+                .FindAll(delegate (InsumoServicioTipoPrenda istp) { return istp.IdTipoMaquina == TrabajoActual.Maquina.IdTipoMaquina; });
+            TrabajoActual.Consumos = new List<Consumo>();
+            if (ComprobarExistencia())
+            {
+                
+                foreach (InsumoServicioTipoPrenda istp in consumosActuales)
+                {
+                    istp.Insumo.Stock -= istp.Cantidad;
+                    istp.Insumo.State = BusinessEntity.States.Modified;
+                    Consumo consumo = new Consumo();
+                    consumo.Insumo = istp.Insumo;
+                    consumo.Cantidad = istp.Cantidad;
+                    consumo.UnidadMedida = (int) istp.Insumo.UnidadMedida;
+                    TrabajoActual.Consumos.Add(consumo);
+                    _insumoLogic.Save(istp.Insumo);
+                }
+                
+            }
+            else if (MessageBox.Show($"¡Atención! El consumo actual de uno o varios insumos supera la existencia disponible ¿Desea continuar igualmente?", "Consumo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                foreach (InsumoServicioTipoPrenda istp in consumosActuales)
+                {
+                    istp.Insumo.Stock -= istp.Cantidad;
+                    istp.Insumo.State = BusinessEntity.States.Modified;
+                    Consumo consumo = new Consumo();
+                    consumo.Insumo = istp.Insumo;
+                    consumo.Cantidad = istp.Cantidad;
+                    consumo.UnidadMedida = (int)istp.Insumo.UnidadMedida;
+                    TrabajoActual.Consumos.Add(consumo);
+                    _insumoLogic.Save(istp.Insumo);
+                }
             }
             else
             {

@@ -26,6 +26,7 @@ namespace UI.Desktop
         private readonly ServicioLogic _servicioLogic;
         private readonly TipoPrendaLogic _tipoPrendaLogic;
         private readonly InsumoLogic _insumoLogic;
+        private readonly TiposMaquinaLogic _tiposMaquinaLogic;
         
         public List<String> _unidadesMedida;
 
@@ -36,6 +37,7 @@ namespace UI.Desktop
             _servicioLogic = new ServicioLogic(new ServicioAdapter(context));
             _tipoPrendaLogic = new TipoPrendaLogic(new TipoPrendaAdapter(context));
             _insumoLogic = new InsumoLogic(new InsumoAdapter(context));
+            _tiposMaquinaLogic = new TiposMaquinaLogic(new TiposMaquinaAdapter(context));
             
             _consumos = new List<InsumoServicioTipoPrenda>();
             _unidadesMedida = new List<string>();
@@ -47,15 +49,10 @@ namespace UI.Desktop
             Modos = modo;
             try
             {
-                List<Servicio> servicios = _servicioLogic.GetAll();
-                List<TipoPrenda> tipoPrendas = _tipoPrendaLogic.GetAll();
-                List<Insumo> insumos = _insumoLogic.GetAll();
-                this.cmbServicios.DataSource = servicios;
-                this.cmbServicios.SelectedIndex = 0;
-                this.cmbTipoPrendas.DataSource = tipoPrendas;
-                this.cmbTipoPrendas.SelectedIndex = 0;
-                this.cmbInsumos.DataSource = insumos;
-                this.cmbInsumos.SelectedIndex = 0;
+                this.cmbServicios.DataSource = _servicioLogic.GetAll();
+                this.cmbTipoPrendas.DataSource = _tipoPrendaLogic.GetAll();
+                this.cmbInsumos.DataSource = _insumoLogic.GetAll();
+                this.cmbTiposMaquina.DataSource = _tiposMaquinaLogic.GetAll();
             }
             catch (Exception e)
             {
@@ -66,15 +63,10 @@ namespace UI.Desktop
         public ServicioTipoPrendaDesktop(int idServicio,int IdTipoPrenda, ModoForm modo, LavanderiaContext context) : this(context)
         {
             Modos = modo;
-            List<Servicio> servicios = _servicioLogic.GetAll();
-            List<TipoPrenda> tipoPrendas = _tipoPrendaLogic.GetAll();
-            List<Insumo> insumos = _insumoLogic.GetAll();
-            this.cmbServicios.DataSource = servicios;
-            this.cmbServicios.SelectedIndex = 0;
-            this.cmbTipoPrendas.DataSource = tipoPrendas;
-            this.cmbTipoPrendas.SelectedIndex = 0;
-            this.cmbInsumos.DataSource = insumos;
-            this.cmbInsumos.SelectedIndex = 0;
+            this.cmbServicios.DataSource = _servicioLogic.GetAll();
+            this.cmbTipoPrendas.DataSource = _tipoPrendaLogic.GetAll();
+            this.cmbInsumos.DataSource = _insumoLogic.GetAll();
+            this.cmbTiposMaquina.DataSource = _tiposMaquinaLogic.GetAll();
             try
             {
                 ServicioTipoPrendaActual = _servicioTipoPrendaLogic.GetOne(idServicio,IdTipoPrenda);
@@ -279,6 +271,7 @@ namespace UI.Desktop
                     item.SubItems.Add(o.Insumo.Descripcion.ToString());
                     item.SubItems.Add(o.Cantidad.ToString());
                     item.SubItems.Add(o.Insumo.UnidadMedida.ToString());
+                    item.SubItems.Add(o.TipoMaquina.Descripcion);
                     listConsumos.Items.Add(item);
                 }
             }
@@ -294,6 +287,7 @@ namespace UI.Desktop
                 Validaciones.ValidarNumeroEnteroDecimal(this.txtCantidad.Text);
                 consumoActual.Cantidad = ConvertirUnidadesConsumo(Int32.Parse(this.txtCantidad.Text), _unidadesMedida[this.cmbUnidadMedida.SelectedIndex]);
                 consumoActual.FechaDesde = DateTime.Now;
+                consumoActual.TipoMaquina = _tiposMaquinaLogic.GetOne((int)this.cmbTiposMaquina.SelectedValue);
                 if (ValidarExistencia())
                 {
                     _consumos.Add(consumoActual);

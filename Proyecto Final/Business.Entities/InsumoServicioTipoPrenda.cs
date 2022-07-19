@@ -14,8 +14,10 @@ namespace Business.Entities
         private int _idTipoPrenda;
         private DateTime _fechaDesde;
         private double _cantidad;
+        private int _idTipoMaquina;
         private Insumo _insumo;
         private ServicioTipoPrenda _servicioTipoPrenda;
+        private TiposMaquina _tipoMaquina;
 
        
         [Column("id_insumo")]
@@ -53,6 +55,13 @@ namespace Business.Entities
             set { _cantidad = value; }
         }
 
+        [Column("id_tpm")]
+        public int IdTipoMaquina
+        {
+            get { return _idTipoMaquina; }
+            set { _idTipoMaquina = value; }
+        }
+
         public Insumo Insumo
         {
             get { return _insumo; }
@@ -63,6 +72,12 @@ namespace Business.Entities
         {
             get { return _servicioTipoPrenda; }
             set { _servicioTipoPrenda = value; }
+        }
+
+        public TiposMaquina TipoMaquina
+        {
+            get { return _tipoMaquina; }
+            set { _tipoMaquina = value; }
         }
     }
 

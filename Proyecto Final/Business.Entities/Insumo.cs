@@ -15,6 +15,7 @@ namespace Business.Entities
         private double _stock;
         private List<InsumoProveedor>? _insumosProveedores;// lista de proveedores que proveen ese insumo
         private List<InsumoServicioTipoPrenda> _insumosServicioTipoPrenda;//lista de serviciosTipoPrenda donde se utiliza ese insumo
+        private List<Consumo> _consumos;
         private Medidas _unidadMedida;
         
         public enum Medidas
@@ -63,6 +64,12 @@ namespace Business.Entities
         {
             get { return _insumosServicioTipoPrenda; }
             set { _insumosServicioTipoPrenda = value; }
+        }
+
+        public List<Consumo> Consumos
+        {
+            get { return _consumos; }
+            set { _consumos = value; }
         }
     }
 }
