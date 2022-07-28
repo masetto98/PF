@@ -1342,6 +1342,7 @@ namespace UI.Desktop
 
         private void btnFinalizarTrabajo_Click_1(object sender, EventArgs e)
         {
+            
             if (listTrabajosPendientes.SelectedItems.Count > 0)
             {
                 OrdenServicioTipoPrenda t = _trabajosPendientes.Find(delegate (OrdenServicioTipoPrenda item)
@@ -1351,24 +1352,26 @@ namespace UI.Desktop
                            item.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[2].Text &&
                            item.OrdenItem == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].SubItems[3].Text);
                 });
-                if (t.MaquinaOrdenServicioTipoPrenda is null || t.MaquinaOrdenServicioTipoPrenda.Count == 0)
+                if(t.Estado != OrdenServicioTipoPrenda.Estados.Procesando)
                 {
-                    if (MessageBox.Show("Este trabajo NO contiene servicios realizados ¿Esta seguro que desea finalizarlo?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (t.MaquinaOrdenServicioTipoPrenda is null || t.MaquinaOrdenServicioTipoPrenda.Count == 0)
                     {
-                        t.Estado = OrdenServicioTipoPrenda.Estados.Finalizado;
-                        if (ValidarFinalizacionOrden(t.NroOrden))
+                        if (MessageBox.Show("Este trabajo NO contiene servicios realizados ¿Esta seguro que desea finalizarlo?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            t.Orden.Estado = Orden.Estados.Finalizado;
+                            t.Estado = OrdenServicioTipoPrenda.Estados.Finalizado;
+                            if (ValidarFinalizacionOrden(t.NroOrden))
+                            {
+                                t.Orden.Estado = Orden.Estados.Finalizado;
+                            }
+                            t.State = BusinessEntity.States.Modified;
+                            _ordenServicioTipoPrendaLogic.Save(t);
                         }
-                        t.State = BusinessEntity.States.Modified;
-                        _ordenServicioTipoPrendaLogic.Save(t);
-                    }
 
-                }
-                else
-                {
-                    if (MessageBox.Show("¿Esta seguro que desea finalizar este trabajo?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    { /*
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("¿Esta seguro que desea finalizar este trabajo?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        { /*
                     OrdenServicioTipoPrenda t = _trabajosPendientes.Find(delegate (OrdenServicioTipoPrenda item)
                     {
                         return item.NroOrden == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].Text) &&
@@ -1376,14 +1379,19 @@ namespace UI.Desktop
                                item.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[2].Text &&
                                item.OrdenItem == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].SubItems[3].Text);
                     });*/
-                        t.Estado = OrdenServicioTipoPrenda.Estados.Finalizado;
-                        if (ValidarFinalizacionOrden(t.NroOrden))
-                        {
-                            t.Orden.Estado = Orden.Estados.Finalizado;
+                            t.Estado = OrdenServicioTipoPrenda.Estados.Finalizado;
+                            if (ValidarFinalizacionOrden(t.NroOrden))
+                            {
+                                t.Orden.Estado = Orden.Estados.Finalizado;
+                            }
+                            t.State = BusinessEntity.States.Modified;
+                            _ordenServicioTipoPrendaLogic.Save(t);
                         }
-                        t.State = BusinessEntity.States.Modified;
-                        _ordenServicioTipoPrendaLogic.Save(t);
                     }
+                }
+                else
+                {
+                    MessageBox.Show("El trabajo que desea finalizar se encuentra Procesando. Por favor, detenga el servicio actual del trabajo para poder continuar.", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }

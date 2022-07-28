@@ -83,6 +83,24 @@ namespace UI.Desktop
         }
         private void ListarEgresos()
         {
+            List<Consumo> consumosInsumo = insumoActual.Consumos;
+            double totalEgresos1 = 0;
+            if (consumosInsumo is not null)
+            {
+                listEgresos.Items.Clear();
+                foreach(Consumo c in consumosInsumo)
+                {
+                    ListViewItem item = new ListViewItem(c.MaquinaOrdenServicioTipoPrenda.NroOrden.ToString());
+                    item.SubItems.Add(c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda.Servicio.Descripcion + " " + c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                    item.SubItems.Add(c.MaquinaOrdenServicioTipoPrenda.Maquina.Descripcion);
+                    item.SubItems.Add(c.FechaConsumo.ToString());
+                    item.SubItems.Add(c.Cantidad.ToString());
+                    totalEgresos1 += c.Cantidad;
+                    listEgresos.Items.Add(item);
+                }
+                _totalEgresos = totalEgresos1;
+            }
+            /*
             ordenes = _ordenLogic.GetAll().FindAll(
                 delegate (Orden o)
                 {
@@ -113,7 +131,7 @@ namespace UI.Desktop
                 }
                 _totalEgresos = totalEgresos1;
             }
-            
+            */
         }
 
        
@@ -327,40 +345,22 @@ namespace UI.Desktop
             }
             _totalIngresos = totalIngresos2;
 
-            ordenes = _ordenLogic.GetAll().FindAll(
-               delegate (Orden o)
-               {
-                   return o.Estado != Orden.Estados.Pendiente;
-               });
+            List<Consumo> consumosInsumo = insumoActual.Consumos;
             double totalEgresos2 = 0;
-            if (ordenes is not null)
+            if (consumosInsumo is not null)
             {
                 listEgresos.Items.Clear();
-                foreach (Orden o in ordenes)
+                foreach (Consumo c in consumosInsumo)
                 {
-                    foreach (OrdenServicioTipoPrenda items in o.ItemsPedidos)
+                    if(c.FechaConsumo.Date >= dtpFechaDesde.Value.Date)
                     {
-                        List<MaquinaOrdenServicioTipoPrenda> servicios = items.MaquinaOrdenServicioTipoPrenda.FindAll(
-                            delegate (MaquinaOrdenServicioTipoPrenda mostp)
-                            {
-                                return mostp.TiempoInicioServicio.Date >= dtpFechaDesde.Value.Date;
-                            });
-                        if(servicios.Count > 0)
-                        {
-                            foreach (InsumoServicioTipoPrenda consumo in items.ServicioTipoPrenda.InsumoServicioTipoPrenda)
-                            {
-                                if (consumo.Insumo == insumoActual)
-                                {
-                                    ListViewItem item = new ListViewItem(o.NroOrden.ToString());
-                                    item.SubItems.Add(items.ServicioTipoPrenda.Servicio.Descripcion);
-                                    item.SubItems.Add(items.ServicioTipoPrenda.TipoPrenda.Descripcion);
-                                    item.SubItems.Add(consumo.Cantidad.ToString());
-                                    totalEgresos2 += consumo.Cantidad;
-                                    listEgresos.Items.Add(item);
-                                }
-                            }
-                        }
-                        
+                        ListViewItem item = new ListViewItem(c.MaquinaOrdenServicioTipoPrenda.NroOrden.ToString());
+                        item.SubItems.Add(c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda.Servicio.Descripcion + " " + c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                        item.SubItems.Add(c.MaquinaOrdenServicioTipoPrenda.Maquina.Descripcion);
+                        item.SubItems.Add(c.FechaConsumo.ToString());
+                        item.SubItems.Add(c.Cantidad.ToString());
+                        totalEgresos2 += c.Cantidad;
+                        listEgresos.Items.Add(item);
                     }
                 }
                 _totalEgresos = totalEgresos2;
@@ -387,40 +387,22 @@ namespace UI.Desktop
                     }
                 }
                 _totalIngresos = totalIngresos3;
-                ordenes = _ordenLogic.GetAll().FindAll(
-                   delegate (Orden o)
-                   {
-                       return o.Estado != Orden.Estados.Pendiente;
-                   });
+                List<Consumo> consumosInsumo = insumoActual.Consumos;
                 double totalEgresos3 = 0;
-                if (ordenes is not null)
+                if (consumosInsumo is not null)
                 {
                     listEgresos.Items.Clear();
-                    foreach (Orden o in ordenes)
+                    foreach (Consumo c in consumosInsumo)
                     {
-                        foreach (OrdenServicioTipoPrenda items in o.ItemsPedidos)
+                        if (c.FechaConsumo.Date >= dtpFechaDesde.Value.Date && c.FechaConsumo <= dtpFechaHasta.Value.Date)
                         {
-                            List<MaquinaOrdenServicioTipoPrenda> servicios = items.MaquinaOrdenServicioTipoPrenda.FindAll(
-                                delegate (MaquinaOrdenServicioTipoPrenda mostp)
-                                {
-                                    return mostp.TiempoInicioServicio.Date >= dtpFechaDesde.Value.Date && mostp.TiempoInicioServicio.Date <= dtpFechaHasta.Value.Date;
-                                });
-                            if (servicios.Count > 0)
-                            {
-                                foreach (InsumoServicioTipoPrenda consumo in items.ServicioTipoPrenda.InsumoServicioTipoPrenda)
-                                {
-                                    if (consumo.Insumo == insumoActual)
-                                    {
-                                        ListViewItem item = new ListViewItem(o.NroOrden.ToString());
-                                        item.SubItems.Add(items.ServicioTipoPrenda.Servicio.Descripcion);
-                                        item.SubItems.Add(items.ServicioTipoPrenda.TipoPrenda.Descripcion);
-                                        item.SubItems.Add(consumo.Cantidad.ToString());
-                                        totalEgresos3 += consumo.Cantidad;
-                                        listEgresos.Items.Add(item);
-                                    }
-                                }
-                            }
-
+                            ListViewItem item = new ListViewItem(c.MaquinaOrdenServicioTipoPrenda.NroOrden.ToString());
+                            item.SubItems.Add(c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda.Servicio.Descripcion + " " + c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                            item.SubItems.Add(c.MaquinaOrdenServicioTipoPrenda.Maquina.Descripcion);
+                            item.SubItems.Add(c.FechaConsumo.ToString());
+                            item.SubItems.Add(c.Cantidad.ToString());
+                            totalEgresos3 += c.Cantidad;
+                            listEgresos.Items.Add(item);
                         }
                     }
                     _totalEgresos = totalEgresos3;
@@ -444,40 +426,22 @@ namespace UI.Desktop
                 }
                 _totalIngresos = totalIngresos4;
 
-                ordenes = _ordenLogic.GetAll().FindAll(
-                   delegate (Orden o)
-                   {
-                       return o.Estado != Orden.Estados.Pendiente;
-                   });
+                List<Consumo> consumosInsumo = insumoActual.Consumos;
                 double totalEgresos4 = 0;
-                if (ordenes is not null)
+                if (consumosInsumo is not null)
                 {
                     listEgresos.Items.Clear();
-                    foreach (Orden o in ordenes)
+                    foreach (Consumo c in consumosInsumo)
                     {
-                        foreach (OrdenServicioTipoPrenda items in o.ItemsPedidos)
+                        if (c.FechaConsumo.Date <= dtpFechaHasta.Value.Date)
                         {
-                            List<MaquinaOrdenServicioTipoPrenda> servicios = items.MaquinaOrdenServicioTipoPrenda.FindAll(
-                                delegate (MaquinaOrdenServicioTipoPrenda mostp)
-                                {
-                                    return mostp.TiempoInicioServicio.Date <= dtpFechaHasta.Value.Date;
-                                });
-                            if (servicios.Count > 0)
-                            {
-                                foreach (InsumoServicioTipoPrenda consumo in items.ServicioTipoPrenda.InsumoServicioTipoPrenda)
-                                {
-                                    if (consumo.Insumo == insumoActual)
-                                    {
-                                        ListViewItem item = new ListViewItem(o.NroOrden.ToString());
-                                        item.SubItems.Add(items.ServicioTipoPrenda.Servicio.Descripcion);
-                                        item.SubItems.Add(items.ServicioTipoPrenda.TipoPrenda.Descripcion);
-                                        item.SubItems.Add(consumo.Cantidad.ToString());
-                                        totalEgresos4 += consumo.Cantidad;
-                                        listEgresos.Items.Add(item);
-                                    }
-                                }
-                            }
-
+                            ListViewItem item = new ListViewItem(c.MaquinaOrdenServicioTipoPrenda.NroOrden.ToString());
+                            item.SubItems.Add(c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda.Servicio.Descripcion + " " + c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                            item.SubItems.Add(c.MaquinaOrdenServicioTipoPrenda.Maquina.Descripcion);
+                            item.SubItems.Add(c.FechaConsumo.ToString());
+                            item.SubItems.Add(c.Cantidad.ToString());
+                            totalEgresos4 += c.Cantidad;
+                            listEgresos.Items.Add(item);
                         }
                     }
                     _totalEgresos = totalEgresos4;

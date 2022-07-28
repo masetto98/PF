@@ -39,8 +39,9 @@ namespace UI.Desktop
             this.listEgresos = new MaterialSkin.Controls.MaterialListView();
             this.columnNroOrden = new System.Windows.Forms.ColumnHeader();
             this.columnServicio = new System.Windows.Forms.ColumnHeader();
-            this.columntp = new System.Windows.Forms.ColumnHeader();
-            this.columnCantidad = new System.Windows.Forms.ColumnHeader();
+            this.columnMaq = new System.Windows.Forms.ColumnHeader();
+            this.columnFechaE = new System.Windows.Forms.ColumnHeader();
+            this.columnCantCons = new System.Windows.Forms.ColumnHeader();
             this.btnDetalles = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
@@ -136,8 +137,9 @@ namespace UI.Desktop
             this.listEgresos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnNroOrden,
             this.columnServicio,
-            this.columntp,
-            this.columnCantidad});
+            this.columnMaq,
+            this.columnFechaE,
+            this.columnCantCons});
             this.listEgresos.Depth = 0;
             this.listEgresos.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listEgresos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -149,7 +151,7 @@ namespace UI.Desktop
             this.listEgresos.MouseState = MaterialSkin.MouseState.OUT;
             this.listEgresos.Name = "listEgresos";
             this.listEgresos.OwnerDraw = true;
-            this.listEgresos.Size = new System.Drawing.Size(650, 200);
+            this.listEgresos.Size = new System.Drawing.Size(780, 200);
             this.listEgresos.TabIndex = 2;
             this.listEgresos.UseCompatibleStateImageBehavior = false;
             this.listEgresos.View = System.Windows.Forms.View.Details;
@@ -162,18 +164,23 @@ namespace UI.Desktop
             // 
             // columnServicio
             // 
-            this.columnServicio.Text = "Servicio";
-            this.columnServicio.Width = 200;
+            this.columnServicio.Text = "Servicio Tipo Prenda";
+            this.columnServicio.Width = 250;
             // 
-            // columntp
+            // columnMaq
             // 
-            this.columntp.Text = "Tipo Prenda";
-            this.columntp.Width = 200;
+            this.columnMaq.Text = "Máquina";
+            this.columnMaq.Width = 150;
             // 
-            // columnCantidad
+            // columnFechaE
             // 
-            this.columnCantidad.Text = "Consumo";
-            this.columnCantidad.Width = 120;
+            this.columnFechaE.Text = "Fecha";
+            this.columnFechaE.Width = 160;
+            // 
+            // columnCantCons
+            // 
+            this.columnCantCons.Text = "Cantidad";
+            this.columnCantCons.Width = 100;
             // 
             // btnDetalles
             // 
@@ -222,9 +229,9 @@ namespace UI.Desktop
             this.materialLabel2.Location = new System.Drawing.Point(464, 405);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(61, 19);
+            this.materialLabel2.Size = new System.Drawing.Size(81, 19);
             this.materialLabel2.TabIndex = 5;
-            this.materialLabel2.Text = "Egresos:";
+            this.materialLabel2.Text = "Consumos:";
             // 
             // dtpFechaDesde
             // 
@@ -281,7 +288,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(1037, 643);
+            this.btnCerrar.Location = new System.Drawing.Point(1165, 643);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -320,7 +327,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1126, 694);
+            this.ClientSize = new System.Drawing.Size(1255, 688);
             this.Controls.Add(this.btnReporteMovimientos);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.materialLabel4);
@@ -363,9 +370,10 @@ namespace UI.Desktop
         private System.Windows.Forms.ColumnHeader columnCant;
         private System.Windows.Forms.ColumnHeader columnNroOrden;
         private System.Windows.Forms.ColumnHeader columnServicio;
-        private System.Windows.Forms.ColumnHeader columntp;
+        private System.Windows.Forms.ColumnHeader columnMaq;
         private MaterialSkin.Controls.MaterialButton btnCerrar;
         private MaterialSkin.Controls.MaterialButton btnReporteMovimientos;
-        private System.Windows.Forms.ColumnHeader columnCantidad;
+        private System.Windows.Forms.ColumnHeader columnFechaE;
+        private System.Windows.Forms.ColumnHeader columnCantCons;
     }
 }
