@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
 using Data.Database;
+using FastReport.DataVisualization.Charting;
 
 namespace UI.Desktop
 {
@@ -24,8 +25,52 @@ namespace UI.Desktop
             _context = context;
             _empleadoLogic = new EmpleadoLogic(new EmpleadoAdapter(context));
             ListarEmpleados();
+            CargarSeriesGrafico();
         }
 
+        private void CargarSeriesGrafico()
+        {
+            List<Empleado> empleados = _empleadoLogic.GetAll().FindAll(
+                delegate(Empleado em)
+                {
+                    return em.TipoEmpleado == Empleado.TiposEmpleado.Usuario;
+                });
+            Series serie = chartEmpleados.Series.Add("Ordenes Registradas");
+            Series serie2 = chartEmpleados.Series.Add("Ordenes Atendidas");
+            foreach (Empleado ep in empleados)
+            {
+                double cantOrdenesReg = 0;
+                double cantOrdenesTotalReg = 0;
+                cantOrdenesReg = ep.OrdenesRegistradas.Count;
+                cantOrdenesTotalReg = CalcularOrdRegTotal(empleados);
+                double mostrar = Math.Round((cantOrdenesReg / cantOrdenesTotalReg) * 100, 2);
+                chartEmpleados.Series["Ordenes Registradas"].Points.AddXY(ep.Nombre + "\n" + ep.Apellido, mostrar);
+                double cantOrdenesAten = 0;
+                double cantOrdenesTotalAten = 0;
+                cantOrdenesAten = ep.OrdenesAtendidas.Count;
+                cantOrdenesTotalAten = CalcularOrdAtenTotal(empleados);
+                double mostrar2 = Math.Round((cantOrdenesAten / cantOrdenesTotalAten) * 100, 2);
+                chartEmpleados.Series["Ordenes Atendidas"].Points.AddXY(ep.Nombre + "\n" + ep.Apellido, mostrar);
+            }
+        }
+        private double CalcularOrdAtenTotal(List<Empleado> empleados)
+        {
+            double cantOrdAtenTotal = 0;
+            foreach(Empleado e in empleados)
+            {
+                cantOrdAtenTotal += e.OrdenesAtendidas.Count;
+            }
+            return cantOrdAtenTotal;
+        }
+        private double CalcularOrdRegTotal(List<Empleado> empleados)
+        {
+            double cantOrdenRegTotal = 0;
+            foreach(Empleado e in empleados)
+            {
+                cantOrdenRegTotal += e.OrdenesRegistradas.Count;
+            }
+            return cantOrdenRegTotal;
+        }
         private void ListarEmpleados() 
         {
             listEmpleados.Items.Clear();

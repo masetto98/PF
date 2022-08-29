@@ -29,6 +29,8 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
+            FastReport.DataVisualization.Charting.ChartArea chartArea1 = new FastReport.DataVisualization.Charting.ChartArea();
+            FastReport.DataVisualization.Charting.Legend legend1 = new FastReport.DataVisualization.Charting.Legend();
             this.listServicios = new MaterialSkin.Controls.MaterialListView();
             this.columnID = new System.Windows.Forms.ColumnHeader();
             this.columnDescripcion = new System.Windows.Forms.ColumnHeader();
@@ -36,10 +38,9 @@ namespace UI.Desktop
             this.btnEditar = new MaterialSkin.Controls.MaterialButton();
             this.btnAgregar = new MaterialSkin.Controls.MaterialButton();
             this.btnDetalles = new MaterialSkin.Controls.MaterialButton();
-            this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.btnCerrar = new MaterialSkin.Controls.MaterialButton();
-            this.materialCard1.SuspendLayout();
+            this.chartServicios = new FastReport.DataVisualization.Charting.Chart();
+            ((System.ComponentModel.ISupportInitialize)(this.chartServicios)).BeginInit();
             this.SuspendLayout();
             // 
             // listServicios
@@ -170,34 +171,6 @@ namespace UI.Desktop
             this.btnDetalles.UseVisualStyleBackColor = false;
             this.btnDetalles.Click += new System.EventHandler(this.btnDetalles_Click);
             // 
-            // materialCard1
-            // 
-            this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialCard1.Controls.Add(this.materialLabel1);
-            this.materialCard1.Depth = 0;
-            this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(517, 88);
-            this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
-            this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCard1.Name = "materialCard1";
-            this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(312, 170);
-            this.materialCard1.TabIndex = 9;
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(9, 9);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(91, 19);
-            this.materialLabel1.TabIndex = 0;
-            this.materialLabel1.Text = "Estadisticas:";
-            // 
             // btnCerrar
             // 
             this.btnCerrar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -207,7 +180,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(732, 519);
+            this.btnCerrar.Location = new System.Drawing.Point(852, 537);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -220,13 +193,27 @@ namespace UI.Desktop
             this.btnCerrar.UseVisualStyleBackColor = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
+            // chartServicios
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chartServicios.ChartAreas.Add(chartArea1);
+            legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            this.chartServicios.Legends.Add(legend1);
+            this.chartServicios.Location = new System.Drawing.Point(431, 211);
+            this.chartServicios.Name = "chartServicios";
+            this.chartServicios.Size = new System.Drawing.Size(498, 317);
+            this.chartServicios.TabIndex = 11;
+            this.chartServicios.Text = "chart1";
+            // 
             // Servicios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(852, 575);
+            this.ClientSize = new System.Drawing.Size(954, 582);
+            this.Controls.Add(this.chartServicios);
             this.Controls.Add(this.btnCerrar);
-            this.Controls.Add(this.materialCard1);
             this.Controls.Add(this.btnDetalles);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnEditar);
@@ -238,8 +225,7 @@ namespace UI.Desktop
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Servicios";
-            this.materialCard1.ResumeLayout(false);
-            this.materialCard1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartServicios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,8 +240,7 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnEditar;
         private MaterialSkin.Controls.MaterialButton btnAgregar;
         private MaterialSkin.Controls.MaterialButton btnDetalles;
-        private MaterialSkin.Controls.MaterialCard materialCard1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialButton btnCerrar;
+        private FastReport.DataVisualization.Charting.Chart chartServicios;
     }
 }

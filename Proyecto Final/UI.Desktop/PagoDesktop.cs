@@ -329,12 +329,13 @@ namespace UI.Desktop
         private void btnSaldarDeuda_Click(object sender, EventArgs e)
         {
             double totalActual = TotalPagos();
-
+            FormaPagoDesktop fp = new FormaPagoDesktop();
+            fp.ShowDialog();
             if (Modos == ModoForm.Alta)
             {
                 PagoActual = new Pago();
                 PagoActual.FechaPago = DateTime.Now;
-                PagoActual.FormaPago = (Pago.FormasPago)Enum.Parse(typeof(Business.Entities.Pago.FormasPago), "Efectivo");
+                PagoActual.FormaPago = fp.GetFormaPago();
                 PagoActual.Importe = FacturaActual.Importe - totalActual;
                 /*FacturaActual = new Factura();
                 FacturaActual.FechaFactura = DateTime.Now;*/
@@ -350,7 +351,7 @@ namespace UI.Desktop
             {
                 PagoActual = new Pago();
                 PagoActual.FechaPago = DateTime.Now;
-                PagoActual.FormaPago = (Pago.FormasPago)Enum.Parse(typeof(Business.Entities.Pago.FormasPago), "Efectivo"); ;
+                PagoActual.FormaPago = fp.GetFormaPago();
                 PagoActual.Importe = FacturaActual.Importe - totalActual;
                 FacturaActual.Pagos.Add(PagoActual);
                 OrdenActual.Factura = FacturaActual;

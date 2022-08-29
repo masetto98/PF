@@ -16,8 +16,11 @@ namespace UI.Desktop
     public partial class Maquinas : ApplicationForm
     {
         private readonly MaquinaLogic _maquinaLogic;
+        private readonly MaquinaOrdenServicioTipoPrendaLogic _itemServidos;
         private readonly TiposMaquinaLogic _tiposMaquinaLogic;
         private readonly LavanderiaContext _context;
+        public TiposMaquina tipoMaqActual;
+
         public Maquina MaquinaActual { get; set; }
 
         public Maquinas(LavanderiaContext context)
@@ -26,8 +29,10 @@ namespace UI.Desktop
             _context = context;
             _maquinaLogic = new MaquinaLogic(new MaquinaAdapter(context));
             _tiposMaquinaLogic = new TiposMaquinaLogic(new TiposMaquinaAdapter(context));
+            _itemServidos = new MaquinaOrdenServicioTipoPrendaLogic(new MaquinaOrdenServicioTipoPrendaAdapter(context));
             //ListarMaquinas();
             ListarTiposMaquinas();
+            CargarSerieGrafico();
         }
 
         private void ListarTiposMaquinas() 
@@ -44,7 +49,64 @@ namespace UI.Desktop
                 }
             }
         }
+        private double CalcularUsoMaquina(Maquina m)
+        {
+            List<MaquinaOrdenServicioTipoPrenda> itemsServidos = _itemServidos.GetAll().FindAll(
+                delegate (MaquinaOrdenServicioTipoPrenda items) { return items.Maquina == m; });
+            if(itemsServidos is not null)
+            {
+                return itemsServidos.Count;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        private double CalcularTotalTipoMaq(TiposMaquina tm)
+        {
+            double cantAtendidosTotal = 0;
+            foreach(Maquina m in tm.Maquinas)
+            {
+                cantAtendidosTotal += m.itemsAtendidos.Count;
+            }
+            return cantAtendidosTotal;
+        }
+        private void CargarSerieGrafico()
+        {
+            
+            double cantAtendidosTotal = 0;
+            double cantAtendidosxMaq = 0;
+            List<TiposMaquina> tiposMaq = _tiposMaquinaLogic.GetAll();
+            tipoMaqActual = tiposMaq[0];
+            foreach(TiposMaquina tm in tiposMaq)
+            {
+                if(tipoMaqActual != tm)
+                {
+                    cantAtendidosTotal = CalcularTotalTipoMaq(tm);
+                    foreach (Maquina m in tm.Maquinas)
+                    {
+                        cantAtendidosxMaq = CalcularUsoMaquina(m);
+                        double mostrar = Math.Round((cantAtendidosxMaq / cantAtendidosTotal) * 100, 2);
+                        chartUsoMaq.Series["Series1"].Points.AddXY(m.Descripcion + "\n" + mostrar.ToString() + "%", cantAtendidosxMaq / cantAtendidosTotal);
+                        
+                        
+                    }
+                }
+                else
+                {
+                    cantAtendidosTotal = CalcularTotalTipoMaq(tm);
+                    foreach (Maquina m in tm.Maquinas)
+                    {
+                        cantAtendidosxMaq = CalcularUsoMaquina(m);
+                        double mostrar = Math.Round((cantAtendidosxMaq / cantAtendidosTotal)*100,2);
 
+                        chartUsoMaq.Series["UsoMaq"].Points.AddXY(m.Descripcion + "\n" + mostrar.ToString()+"%", cantAtendidosxMaq / cantAtendidosTotal);
+                    }
+                }
+               
+            }
+
+        }
         private void listTiposMaquina_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListarMaquinas();

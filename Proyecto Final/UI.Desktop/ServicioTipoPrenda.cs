@@ -10,20 +10,44 @@ using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
 using Data.Database;
+
 namespace UI.Desktop
 {
     public partial class ServicioTipoPrenda : ApplicationForm
     {
         private readonly ServicioTipoPrendaLogic _servicioTipoPrendaLogic;
         private readonly LavanderiaContext _context;
+        public ServicioTipoPrenda servicioTipoPrendaActual;
+        private readonly OrdenServicioTipoPrendaLogic _ordenItems;
         public ServicioTipoPrenda(LavanderiaContext context)
         {
             InitializeComponent();
             _context = context;
             _servicioTipoPrendaLogic = new ServicioTipoPrendaLogic(new ServicioTipoPrendaAdapter(context));
+            _ordenItems = new OrdenServicioTipoPrendaLogic(new OrdenServicioTipoPrendaAdapter(context));
             ListarServicioTipoPrenda();
+            CargarSerieGrafico();
         }
+        private void CargarSerieGrafico()
+        {
+            List<Business.Entities.ServicioTipoPrenda> stp = _servicioTipoPrendaLogic.GetAll();
+            List<OrdenServicioTipoPrenda> ordenItems = _ordenItems.GetAll();
+            double totalItems = ordenItems.Count;
+            foreach (Business.Entities.ServicioTipoPrenda item in stp)
+            {
+                double cantxItem = 0;
+                foreach (OrdenServicioTipoPrenda oi in ordenItems)
+                {
+                    if (oi.ServicioTipoPrenda == item)
+                    {
+                        cantxItem += 1;
+                    }
+                }
+                double mostrar = Math.Round((cantxItem / totalItems) * 100, 2);
+                chartItem.Series["Series1"].Points.AddXY(item.Servicio.Descripcion +" "+ item.TipoPrenda.Descripcion, mostrar);
 
+            }
+        }
         private void ListarServicioTipoPrenda() 
         {
             listServiciosTipoPrendas.Items.Clear();

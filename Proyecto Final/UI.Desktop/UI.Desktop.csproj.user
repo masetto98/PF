@@ -7,6 +7,12 @@
     <Compile Update="ClienteDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ReporteEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormaPagoDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Insumos.cs">
       <SubType>Form</SubType>
     </Compile>

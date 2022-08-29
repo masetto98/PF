@@ -29,6 +29,7 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
+            FastReport.DataVisualization.Charting.ChartArea chartArea2 = new FastReport.DataVisualization.Charting.ChartArea();
             this.listEmpleados = new MaterialSkin.Controls.MaterialListView();
             this.columnID = new System.Windows.Forms.ColumnHeader();
             this.columnCuit = new System.Windows.Forms.ColumnHeader();
@@ -45,7 +46,9 @@ namespace UI.Desktop
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.btnCerrar = new MaterialSkin.Controls.MaterialButton();
+            this.chartEmpleados = new FastReport.DataVisualization.Charting.Chart();
             this.materialCard1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartEmpleados)).BeginInit();
             this.SuspendLayout();
             // 
             // listEmpleados
@@ -284,7 +287,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(853, 499);
+            this.btnCerrar.Location = new System.Drawing.Point(853, 516);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -297,11 +300,21 @@ namespace UI.Desktop
             this.btnCerrar.UseVisualStyleBackColor = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
+            // chartEmpleados
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chartEmpleados.ChartAreas.Add(chartArea2);
+            this.chartEmpleados.Location = new System.Drawing.Point(441, 229);
+            this.chartEmpleados.Name = "chartEmpleados";
+            this.chartEmpleados.Size = new System.Drawing.Size(489, 259);
+            this.chartEmpleados.TabIndex = 12;
+            // 
             // Empleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(956, 555);
+            this.Controls.Add(this.chartEmpleados);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.materialCard1);
             this.Controls.Add(this.btnDetalles);
@@ -317,6 +330,7 @@ namespace UI.Desktop
             this.Text = "Empleados";
             this.materialCard1.ResumeLayout(false);
             this.materialCard1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartEmpleados)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,5 +354,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialButton btnCerrar;
+        private FastReport.DataVisualization.Charting.Chart chartEmpleados;
     }
 }

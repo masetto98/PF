@@ -164,6 +164,8 @@ namespace UI.Desktop
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.btnObjetosPerdidos = new MaterialSkin.Controls.MaterialButton();
             this.materialCard3 = new MaterialSkin.Controls.MaterialCard();
+            this.btnReporteEmpleados = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
             this.btnMovimientos = new MaterialSkin.Controls.MaterialButton();
             this.btnReporteGastos = new MaterialSkin.Controls.MaterialButton();
             this.btnDeudas = new MaterialSkin.Controls.MaterialButton();
@@ -362,7 +364,7 @@ namespace UI.Desktop
             this.txtBuscarOrdenes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtBuscarOrdenes.Hint = "Buscar ordenes...";
             this.txtBuscarOrdenes.LeadingIcon = null;
-            this.txtBuscarOrdenes.Location = new System.Drawing.Point(315, 552);
+            this.txtBuscarOrdenes.Location = new System.Drawing.Point(315, 550);
             this.txtBuscarOrdenes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBuscarOrdenes.MaxLength = 50;
             this.txtBuscarOrdenes.MouseState = MaterialSkin.MouseState.OUT;
@@ -2169,6 +2171,8 @@ namespace UI.Desktop
             // materialCard3
             // 
             this.materialCard3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard3.Controls.Add(this.btnReporteEmpleados);
+            this.materialCard3.Controls.Add(this.materialButton1);
             this.materialCard3.Controls.Add(this.btnMovimientos);
             this.materialCard3.Controls.Add(this.btnReporteGastos);
             this.materialCard3.Controls.Add(this.btnDeudas);
@@ -2182,6 +2186,51 @@ namespace UI.Desktop
             this.materialCard3.Padding = new System.Windows.Forms.Padding(14);
             this.materialCard3.Size = new System.Drawing.Size(279, 321);
             this.materialCard3.TabIndex = 3;
+            // 
+            // btnReporteEmpleados
+            // 
+            this.btnReporteEmpleados.AutoSize = false;
+            this.btnReporteEmpleados.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnReporteEmpleados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnReporteEmpleados.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnReporteEmpleados.Depth = 0;
+            this.btnReporteEmpleados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnReporteEmpleados.HighEmphasis = true;
+            this.btnReporteEmpleados.Icon = global::UI.Desktop.Properties.Resources.report_document_finance_business_analysis_analytics_chart_icon_188615;
+            this.btnReporteEmpleados.Location = new System.Drawing.Point(41, 223);
+            this.btnReporteEmpleados.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnReporteEmpleados.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnReporteEmpleados.Name = "btnReporteEmpleados";
+            this.btnReporteEmpleados.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnReporteEmpleados.Size = new System.Drawing.Size(196, 36);
+            this.btnReporteEmpleados.TabIndex = 5;
+            this.btnReporteEmpleados.Text = "Empleados";
+            this.btnReporteEmpleados.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnReporteEmpleados.UseAccentColor = false;
+            this.btnReporteEmpleados.UseVisualStyleBackColor = false;
+            this.btnReporteEmpleados.Click += new System.EventHandler(this.btnReporteEmpleados_Click);
+            // 
+            // materialButton1
+            // 
+            this.materialButton1.AutoSize = false;
+            this.materialButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton1.Depth = 0;
+            this.materialButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialButton1.HighEmphasis = true;
+            this.materialButton1.Icon = global::UI.Desktop.Properties.Resources.report_document_finance_business_analysis_analytics_chart_icon_188615;
+            this.materialButton1.Location = new System.Drawing.Point(41, 175);
+            this.materialButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton1.Name = "materialButton1";
+            this.materialButton1.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton1.Size = new System.Drawing.Size(196, 36);
+            this.materialButton1.TabIndex = 4;
+            this.materialButton1.Text = "Movimientos";
+            this.materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton1.UseAccentColor = false;
+            this.materialButton1.UseVisualStyleBackColor = false;
             // 
             // btnMovimientos
             // 
@@ -2870,6 +2919,8 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnDeudas;
         private MaterialSkin.Controls.MaterialButton btnReporteGastos;
         private MaterialSkin.Controls.MaterialButton btnMovimientos;
+        private MaterialSkin.Controls.MaterialButton materialButton1;
+        private MaterialSkin.Controls.MaterialButton btnReporteEmpleados;
     }
 }
 

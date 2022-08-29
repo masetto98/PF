@@ -1813,5 +1813,13 @@ namespace UI.Desktop
             ReporteMovimientos frmMovimientos = new ReporteMovimientos(_context);
             frmMovimientos.ShowDialog();
         }
+
+        
+
+        private void btnReporteEmpleados_Click(object sender, EventArgs e)
+        {
+            ReporteEmpleado frmEmpleados = new ReporteEmpleado(_context);
+            frmEmpleados.ShowDialog();
+        }
     }
 }

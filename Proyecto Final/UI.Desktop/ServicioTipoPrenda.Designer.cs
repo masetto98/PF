@@ -29,6 +29,9 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
+            FastReport.DataVisualization.Charting.ChartArea chartArea1 = new FastReport.DataVisualization.Charting.ChartArea();
+            FastReport.DataVisualization.Charting.Series series1 = new FastReport.DataVisualization.Charting.Series();
+            FastReport.DataVisualization.Charting.Title title1 = new FastReport.DataVisualization.Charting.Title();
             this.listServiciosTipoPrendas = new MaterialSkin.Controls.MaterialListView();
             this.columnServicio = new System.Windows.Forms.ColumnHeader();
             this.columnTipoPrenda = new System.Windows.Forms.ColumnHeader();
@@ -47,7 +50,9 @@ namespace UI.Desktop
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.btnCerrar = new MaterialSkin.Controls.MaterialButton();
+            this.chartItem = new FastReport.DataVisualization.Charting.Chart();
             this.materialCard1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartItem)).BeginInit();
             this.SuspendLayout();
             // 
             // listServiciosTipoPrendas
@@ -334,7 +339,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(847, 500);
+            this.btnCerrar.Location = new System.Drawing.Point(847, 515);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -347,11 +352,31 @@ namespace UI.Desktop
             this.btnCerrar.UseVisualStyleBackColor = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
+            // chartItem
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chartItem.ChartAreas.Add(chartArea1);
+            this.chartItem.Location = new System.Drawing.Point(502, 272);
+            this.chartItem.Name = "chartItem";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.StackedBar;
+            series1.IsValueShownAsLabel = true;
+            series1.Name = "Series1";
+            series1.YValuesPerPoint = 6;
+            this.chartItem.Series.Add(series1);
+            this.chartItem.Size = new System.Drawing.Size(422, 234);
+            this.chartItem.TabIndex = 8;
+            this.chartItem.Text = "chart1";
+            title1.Name = "Title1";
+            title1.Text = "Porcentaje de Servicios brindados por Tipo de Prenda";
+            this.chartItem.Titles.Add(title1);
+            // 
             // ServicioTipoPrenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(941, 556);
+            this.Controls.Add(this.chartItem);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.materialCard1);
             this.Controls.Add(this.btnEditarServicioTipoPrenda);
@@ -367,6 +392,7 @@ namespace UI.Desktop
             this.Text = "Servicio - TipoPrenda";
             this.materialCard1.ResumeLayout(false);
             this.materialCard1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartItem)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,5 +418,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialButton btnCerrar;
+        private FastReport.DataVisualization.Charting.Chart chartItem;
     }
 }
