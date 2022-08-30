@@ -144,7 +144,7 @@ namespace UI.Desktop
                         foreach (Factura f in facturasHoy)
                         {
                             double ingresosHoy = 0;
-                            if (f.Pagos.Count > 1)
+                            if (f.Pagos is not null && f.Pagos.Count > 1)
                             {
                                 for (int x = 0; x < f.Pagos.Count; x++)
                                 {
@@ -214,7 +214,7 @@ namespace UI.Desktop
                     foreach (Factura f in facturasHoy)
                     {
                         double ingresosHoy = 0;
-                        if (f.Pagos.Count > 1)
+                        if (f.Pagos is not null && f.Pagos.Count > 1)
                         {
                             for (int x = 0; x < f.Pagos.Count; x++)
                             {
@@ -245,10 +245,11 @@ namespace UI.Desktop
                         }
                         else
                         {
-                            if (f.Pagos[0].FechaPago.Date >= this.dtpFecha.Value.Date)
+                            if (f.Pagos is not null && f.Pagos[0].FechaPago.Date >= this.dtpFecha.Value.Date)
                             {
                                 chartIngresos.Series["Ingresos"].Points.AddXY(f.Pagos[0].FechaPago.Date, f.Pagos[0].Importe);
                             }
+                            
                         }
                     }
 
