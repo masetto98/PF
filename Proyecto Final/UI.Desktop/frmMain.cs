@@ -1363,6 +1363,7 @@ namespace UI.Desktop
                             {
                                 t.Orden.Estado = Orden.Estados.Finalizado;
                             }
+                            if (ValidarOrdenSaldada(t.NroOrden)) {t.Orden.Estado = Orden.Estados.Pagado; }
                             t.State = BusinessEntity.States.Modified;
                             _ordenServicioTipoPrendaLogic.Save(t);
                         }
@@ -1384,6 +1385,7 @@ namespace UI.Desktop
                             {
                                 t.Orden.Estado = Orden.Estados.Finalizado;
                             }
+                            if (ValidarOrdenSaldada(t.NroOrden)) { t.Orden.Estado = Orden.Estados.Pagado; }
                             t.State = BusinessEntity.States.Modified;
                             _ordenServicioTipoPrendaLogic.Save(t);
                         }
@@ -1435,6 +1437,22 @@ namespace UI.Desktop
                     else { return false; }
                 }
                 else { return false; }
+            }
+            else { return false; }
+        }
+
+        private bool ValidarOrdenSaldada(int nroOrden) 
+        {
+            Orden ordenActual = _ordenLogic.GetOne(nroOrden);
+            if (ordenActual.Factura is not null && ordenActual.Factura.Pagos is not null)
+            {
+                double pagos = 0.0;
+                foreach (Pago p in ordenActual.Factura.Pagos)
+                {
+                    pagos += p.Importe;
+                }
+                if (ordenActual.Factura.Importe == pagos) { return true; }
+                else return false;
             }
             else { return false; }
         }
@@ -1614,6 +1632,7 @@ namespace UI.Desktop
             {
                 this.btnUsuarios.Enabled = false;
                 this.btnEmpleados.Enabled = false;
+                this.btnEliminarOrden.Enabled = false;
             }
         }
 

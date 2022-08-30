@@ -258,7 +258,7 @@ namespace UI.Desktop
             double totalActual = TotalPagos();
             if(totalActual == FacturaActual.Importe && OrdenActual.Estado != Orden.Estados.Retirado)
             {
-                OrdenActual.Estado = Orden.Estados.Pagado;
+                if (OrdenActual.Estado == Orden.Estados.Finalizado) { OrdenActual.Estado = Orden.Estados.Pagado;}
                 OrdenActual.State = BusinessEntity.States.Modified;
                 _ordenLogic.Save(OrdenActual);
             }
