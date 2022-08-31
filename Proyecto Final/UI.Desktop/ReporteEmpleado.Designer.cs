@@ -76,6 +76,7 @@ namespace UI.Desktop
             this.listEmpleados.TabIndex = 0;
             this.listEmpleados.UseCompatibleStateImageBehavior = false;
             this.listEmpleados.View = System.Windows.Forms.View.Details;
+            this.listEmpleados.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listEmpleados_ColumnWidthChanging);
             // 
             // columnID
             // 
@@ -178,6 +179,7 @@ namespace UI.Desktop
             this.listRegistradas.TabIndex = 6;
             this.listRegistradas.UseCompatibleStateImageBehavior = false;
             this.listRegistradas.View = System.Windows.Forms.View.Details;
+            this.listRegistradas.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listRegistradas_ColumnWidthChanging);
             // 
             // columnNroOrden
             // 
@@ -187,7 +189,7 @@ namespace UI.Desktop
             // columnFechaEntrada
             // 
             this.columnFechaEntrada.Text = "Fecha Registro";
-            this.columnFechaEntrada.Width = 200;
+            this.columnFechaEntrada.Width = 204;
             // 
             // columnCliente
             // 
@@ -224,6 +226,7 @@ namespace UI.Desktop
             this.listAtendidas.TabIndex = 7;
             this.listAtendidas.UseCompatibleStateImageBehavior = false;
             this.listAtendidas.View = System.Windows.Forms.View.Details;
+            this.listAtendidas.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listAtendidas_ColumnWidthChanging);
             // 
             // columnOrden
             // 

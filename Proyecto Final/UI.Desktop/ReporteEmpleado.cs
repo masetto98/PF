@@ -397,5 +397,23 @@ namespace UI.Desktop
                 MessageBox.Show("No hay registros para exportar", "Info");
             }
         }
+
+        private void listEmpleados_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listEmpleados.Columns[e.ColumnIndex].Width;
+        }
+
+        private void listRegistradas_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listRegistradas.Columns[e.ColumnIndex].Width;
+        }
+
+        private void listAtendidas_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listAtendidas.Columns[e.ColumnIndex].Width;
+        }
     }
 }

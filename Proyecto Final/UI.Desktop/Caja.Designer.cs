@@ -120,7 +120,7 @@ namespace UI.Desktop
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(196, 23);
             this.dtpFecha.TabIndex = 1;
-            this.dtpFecha.Value = new System.DateTime(2022, 8, 2, 18, 7, 4, 0);
+            this.dtpFecha.Value = new System.DateTime(2022, 8, 31, 0, 0, 0, 0);
             this.dtpFecha.ValueChanged += new System.EventHandler(this.dtpFecha_ValueChanged);
             // 
             // materialCard1
@@ -414,7 +414,7 @@ namespace UI.Desktop
             this.dtpFechaHasta.Name = "dtpFechaHasta";
             this.dtpFechaHasta.Size = new System.Drawing.Size(196, 23);
             this.dtpFechaHasta.TabIndex = 9;
-            this.dtpFechaHasta.Value = new System.DateTime(2022, 8, 2, 0, 0, 0, 0);
+            this.dtpFechaHasta.Value = new System.DateTime(2022, 8, 31, 0, 0, 0, 0);
             this.dtpFechaHasta.ValueChanged += new System.EventHandler(this.dtpFechaHasta_ValueChanged);
             // 
             // chartGastos

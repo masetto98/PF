@@ -29,7 +29,8 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            FastReport.DataVisualization.Charting.ChartArea chartArea2 = new FastReport.DataVisualization.Charting.ChartArea();
+            FastReport.DataVisualization.Charting.ChartArea chartArea1 = new FastReport.DataVisualization.Charting.ChartArea();
+            FastReport.DataVisualization.Charting.Legend legend1 = new FastReport.DataVisualization.Charting.Legend();
             this.listEmpleados = new MaterialSkin.Controls.MaterialListView();
             this.columnID = new System.Windows.Forms.ColumnHeader();
             this.columnCuit = new System.Windows.Forms.ColumnHeader();
@@ -302,8 +303,10 @@ namespace UI.Desktop
             // 
             // chartEmpleados
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartEmpleados.ChartAreas.Add(chartArea2);
+            chartArea1.Name = "ChartArea1";
+            this.chartEmpleados.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartEmpleados.Legends.Add(legend1);
             this.chartEmpleados.Location = new System.Drawing.Point(441, 229);
             this.chartEmpleados.Name = "chartEmpleados";
             this.chartEmpleados.Size = new System.Drawing.Size(489, 259);

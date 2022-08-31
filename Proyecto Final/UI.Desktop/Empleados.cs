@@ -36,7 +36,7 @@ namespace UI.Desktop
                     return em.TipoEmpleado == Empleado.TiposEmpleado.Usuario;
                 });
             Series serie = chartEmpleados.Series.Add("Ordenes Registradas");
-            Series serie2 = chartEmpleados.Series.Add("Ordenes Atendidas");
+            Series serie2 = chartEmpleados.Series.Add("Trabajos Atendidos");
             foreach (Empleado ep in empleados)
             {
                 double cantOrdenesReg = 0;
@@ -45,13 +45,17 @@ namespace UI.Desktop
                 cantOrdenesTotalReg = CalcularOrdRegTotal(empleados);
                 double mostrar = Math.Round((cantOrdenesReg / cantOrdenesTotalReg) * 100, 2);
                 chartEmpleados.Series["Ordenes Registradas"].Points.AddXY(ep.Nombre + "\n" + ep.Apellido, mostrar);
+                chartEmpleados.Series["Ordenes Registradas"].IsValueShownAsLabel = true;
                 double cantOrdenesAten = 0;
                 double cantOrdenesTotalAten = 0;
                 cantOrdenesAten = ep.OrdenesAtendidas.Count;
                 cantOrdenesTotalAten = CalcularOrdAtenTotal(empleados);
                 double mostrar2 = Math.Round((cantOrdenesAten / cantOrdenesTotalAten) * 100, 2);
-                chartEmpleados.Series["Ordenes Atendidas"].Points.AddXY(ep.Nombre + "\n" + ep.Apellido, mostrar);
+                chartEmpleados.Series["Trabajos Atendidos"].Points.AddXY(ep.Nombre + "\n" + ep.Apellido, mostrar2);
+                chartEmpleados.Series["Trabajos Atendidos"].IsValueShownAsLabel = true;
             }
+            serie.IsVisibleInLegend = true;
+            serie2.IsVisibleInLegend = true;
         }
         private double CalcularOrdAtenTotal(List<Empleado> empleados)
         {
