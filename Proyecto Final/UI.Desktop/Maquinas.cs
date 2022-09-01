@@ -334,6 +334,10 @@ namespace UI.Desktop
             e.NewWidth = listMantenimientos.Columns[e.ColumnIndex].Width;
         }
 
-        
+        private void listTiposMaquina_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listTiposMaquina.Columns[e.ColumnIndex].Width;
+        }
     }
 }

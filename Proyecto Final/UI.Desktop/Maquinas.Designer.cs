@@ -44,7 +44,6 @@ namespace UI.Desktop
             this.columnFechaRealizacion = new System.Windows.Forms.ColumnHeader();
             this.columnDescripcion2 = new System.Windows.Forms.ColumnHeader();
             this.columnCosto = new System.Windows.Forms.ColumnHeader();
-            this.btnDetalles = new MaterialSkin.Controls.MaterialButton();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.lblMantenimientosRealizados = new MaterialSkin.Controls.MaterialLabel();
             this.lblOrdenesAtendidas = new MaterialSkin.Controls.MaterialLabel();
@@ -103,7 +102,7 @@ namespace UI.Desktop
             // columnDescripcion
             // 
             this.columnDescripcion.Text = "Descripción";
-            this.columnDescripcion.Width = 289;
+            this.columnDescripcion.Width = 290;
             // 
             // btnEditarMaquina
             // 
@@ -213,30 +212,7 @@ namespace UI.Desktop
             // columnCosto
             // 
             this.columnCosto.Text = "Costo";
-            this.columnCosto.Width = 92;
-            // 
-            // btnDetalles
-            // 
-            this.btnDetalles.AutoSize = false;
-            this.btnDetalles.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnDetalles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.btnDetalles.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnDetalles.Depth = 0;
-            this.btnDetalles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnDetalles.HighEmphasis = true;
-            this.btnDetalles.Icon = global::UI.Desktop.Properties.Resources.document_3530;
-            this.btnDetalles.Location = new System.Drawing.Point(547, 104);
-            this.btnDetalles.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnDetalles.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnDetalles.Name = "btnDetalles";
-            this.btnDetalles.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnDetalles.Size = new System.Drawing.Size(114, 51);
-            this.btnDetalles.TabIndex = 16;
-            this.btnDetalles.Text = "Detalles";
-            this.btnDetalles.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnDetalles.UseAccentColor = false;
-            this.btnDetalles.UseVisualStyleBackColor = false;
-            this.btnDetalles.Click += new System.EventHandler(this.btnDetalles_Click);
+            this.columnCosto.Width = 94;
             // 
             // materialCard1
             // 
@@ -449,10 +425,11 @@ namespace UI.Desktop
             this.listTiposMaquina.MouseState = MaterialSkin.MouseState.OUT;
             this.listTiposMaquina.Name = "listTiposMaquina";
             this.listTiposMaquina.OwnerDraw = true;
-            this.listTiposMaquina.Size = new System.Drawing.Size(355, 303);
+            this.listTiposMaquina.Size = new System.Drawing.Size(280, 303);
             this.listTiposMaquina.TabIndex = 23;
             this.listTiposMaquina.UseCompatibleStateImageBehavior = false;
             this.listTiposMaquina.View = System.Windows.Forms.View.Details;
+            this.listTiposMaquina.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listTiposMaquina_ColumnWidthChanging);
             this.listTiposMaquina.SelectedIndexChanged += new System.EventHandler(this.listTiposMaquina_SelectedIndexChanged);
             // 
             // columnIdTpm
@@ -557,7 +534,7 @@ namespace UI.Desktop
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Size = new System.Drawing.Size(72, 19);
             this.materialLabel6.TabIndex = 28;
-            this.materialLabel6.Text = "Maquinas";
+            this.materialLabel6.Text = "Máquinas";
             // 
             // chartUsoMaq
             // 
@@ -616,7 +593,6 @@ namespace UI.Desktop
             this.Controls.Add(this.btnEliminarMantenimiento);
             this.Controls.Add(this.btnAgregarMantenimiento);
             this.Controls.Add(this.materialCard1);
-            this.Controls.Add(this.btnDetalles);
             this.Controls.Add(this.listMantenimientos);
             this.Controls.Add(this.btnEditarMaquina);
             this.Controls.Add(this.btnEliminarMaquina);
@@ -646,7 +622,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnAgregarMaquina;
         private MaterialSkin.Controls.MaterialListView listMantenimientos;
         private System.Windows.Forms.ColumnHeader columnFechaRealizacion;
-        private MaterialSkin.Controls.MaterialButton btnDetalles;
         private MaterialSkin.Controls.MaterialCard materialCard1;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
