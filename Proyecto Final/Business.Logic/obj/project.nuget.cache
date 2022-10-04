@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "QCDs2kw0BMIpivvhQl3k20tOqO1usIbFu8/VqHQ51QxZzrPTOzsGFz6FpvSm+66XjovwhqhoQI+CuSnCGEbAxA==",
+  "dgSpecHash": "TwmxakO/TJJcA7ihyd+UoIeyY0sgW9DWb4wf0ybkKdKxeNuvz0MuDRr4yA5kmcH+ufA/YKavs33sF8kf2yh4/g==",
   "success": true,
   "projectFilePath": "D:\\Proyectos\\PF\\Proyecto Final\\Business.Logic\\Business.Logic.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\SANTI-PC\\.nuget\\packages\\fluentvalidation\\11.0.2\\fluentvalidation.11.0.2.nupkg.sha512",
     "C:\\Users\\SANTI-PC\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\SANTI-PC\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\SANTI-PC\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",

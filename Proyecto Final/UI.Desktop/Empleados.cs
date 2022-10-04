@@ -25,9 +25,10 @@ namespace UI.Desktop
             _context = context;
             _empleadoLogic = new EmpleadoLogic(new EmpleadoAdapter(context));
             ListarEmpleados();
+            
             CargarSeriesGrafico();
         }
-
+        
         private void CargarSeriesGrafico()
         {
             List<Empleado> empleados = _empleadoLogic.GetAll().FindAll(

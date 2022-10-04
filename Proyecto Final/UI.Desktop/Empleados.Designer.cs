@@ -303,6 +303,7 @@ namespace UI.Desktop
             // 
             // chartEmpleados
             // 
+            this.chartEmpleados.BackColor = System.Drawing.Color.Transparent;
             chartArea1.Name = "ChartArea1";
             this.chartEmpleados.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";

@@ -737,7 +737,7 @@ namespace UI.Desktop
         {
             InsumoProveedorDesktop frmInsumoProveedor = new InsumoProveedorDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmInsumoProveedor.ShowDialog();
-            ListarIngresosInsumo();
+            ListarIngresos();
         }
 
         private void btnEditarIngreso_Click(object sender, EventArgs e)

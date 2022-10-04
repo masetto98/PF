@@ -195,6 +195,7 @@ namespace UI.Desktop
             // 
             // chartServicios
             // 
+            this.chartServicios.BackColor = System.Drawing.Color.Transparent;
             chartArea1.Name = "ChartArea1";
             this.chartServicios.ChartAreas.Add(chartArea1);
             legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);

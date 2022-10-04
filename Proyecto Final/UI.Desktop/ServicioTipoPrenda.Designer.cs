@@ -354,6 +354,7 @@ namespace UI.Desktop
             // 
             // chartItem
             // 
+            this.chartItem.BackColor = System.Drawing.Color.Transparent;
             chartArea1.Name = "ChartArea1";
             this.chartItem.ChartAreas.Add(chartArea1);
             this.chartItem.Location = new System.Drawing.Point(502, 272);

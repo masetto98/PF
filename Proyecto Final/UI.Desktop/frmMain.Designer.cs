@@ -1559,12 +1559,12 @@ namespace UI.Desktop
             // columnInsumoIngreso
             // 
             this.columnInsumoIngreso.Text = "Insumo";
-            this.columnInsumoIngreso.Width = 185;
+            this.columnInsumoIngreso.Width = 210;
             // 
             // columnFechaIngreso
             // 
             this.columnFechaIngreso.Text = "Fecha Ingreso";
-            this.columnFechaIngreso.Width = 215;
+            this.columnFechaIngreso.Width = 190;
             // 
             // columnCantIngreso
             // 

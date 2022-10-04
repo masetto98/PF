@@ -15,6 +15,7 @@ namespace UI.Desktop
     public partial class ApplicationForm : MaterialForm
     {
         readonly MaterialSkin.MaterialSkinManager materialSkinManager;
+        public bool color;
         public ApplicationForm()
         {
             InitializeComponent();
@@ -53,7 +54,7 @@ namespace UI.Desktop
             {
                 materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             }
-            
+            color = yesno;
         }
         
         private void ApplicationForm_Load(object sender, EventArgs e) {}
