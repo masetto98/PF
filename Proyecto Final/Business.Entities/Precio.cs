@@ -12,7 +12,7 @@ namespace Business.Entities
     {
         private int _idServicio;
         private int _idTipoPrenda;
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         private DateTime _fechaDesde;
         private double _valor;
         private ServicioTipoPrenda _servicioTipoPrenda;

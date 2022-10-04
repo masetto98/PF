@@ -31,7 +31,6 @@ namespace UI.Desktop
         {
             this.components = new System.ComponentModel.Container();
             this.txtNroFactura = new MaterialSkin.Controls.MaterialTextBox();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.cbFormaPago = new MaterialSkin.Controls.MaterialComboBox();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.listPagos = new MaterialSkin.Controls.MaterialListView();
@@ -45,13 +44,10 @@ namespace UI.Desktop
             this.btnAceptarPago = new MaterialSkin.Controls.MaterialButton();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.btnAgregarPago = new MaterialSkin.Controls.MaterialButton();
-            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.txtTotalFactura = new MaterialSkin.Controls.MaterialTextBox();
-            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.txtApagar = new MaterialSkin.Controls.MaterialTextBox();
             this.btnSaldarDeuda = new MaterialSkin.Controls.MaterialButton();
             this.ayudaPago = new System.Windows.Forms.ToolTip(this.components);
-            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.txtSenia = new MaterialSkin.Controls.MaterialTextBox();
             this.materialCard1.SuspendLayout();
             this.SuspendLayout();
@@ -64,30 +60,17 @@ namespace UI.Desktop
             this.txtNroFactura.Depth = 0;
             this.txtNroFactura.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtNroFactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtNroFactura.Hint = "N° Factura";
             this.txtNroFactura.LeadingIcon = null;
-            this.txtNroFactura.Location = new System.Drawing.Point(126, 104);
+            this.txtNroFactura.Location = new System.Drawing.Point(29, 103);
             this.txtNroFactura.MaxLength = 50;
             this.txtNroFactura.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNroFactura.Multiline = false;
             this.txtNroFactura.Name = "txtNroFactura";
-            this.txtNroFactura.Size = new System.Drawing.Size(84, 50);
+            this.txtNroFactura.Size = new System.Drawing.Size(119, 50);
             this.txtNroFactura.TabIndex = 0;
             this.txtNroFactura.Text = "";
             this.txtNroFactura.TrailingIcon = null;
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(29, 119);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(88, 19);
-            this.materialLabel1.TabIndex = 1;
-            this.materialLabel1.Text = "Nro Factura:";
             // 
             // cbFormaPago
             // 
@@ -139,14 +122,14 @@ namespace UI.Desktop
             this.listPagos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listPagos.FullRowSelect = true;
             this.listPagos.HideSelection = false;
-            this.listPagos.Location = new System.Drawing.Point(103, 74);
+            this.listPagos.Location = new System.Drawing.Point(98, 74);
             this.listPagos.MinimumSize = new System.Drawing.Size(200, 100);
             this.listPagos.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listPagos.MouseState = MaterialSkin.MouseState.OUT;
             this.listPagos.MultiSelect = false;
             this.listPagos.Name = "listPagos";
             this.listPagos.OwnerDraw = true;
-            this.listPagos.Size = new System.Drawing.Size(520, 129);
+            this.listPagos.Size = new System.Drawing.Size(525, 129);
             this.listPagos.TabIndex = 4;
             this.listPagos.UseCompatibleStateImageBehavior = false;
             this.listPagos.View = System.Windows.Forms.View.Details;
@@ -215,7 +198,7 @@ namespace UI.Desktop
             this.btnCancelarPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelarPago.HighEmphasis = true;
             this.btnCancelarPago.Icon = null;
-            this.btnCancelarPago.Location = new System.Drawing.Point(668, 462);
+            this.btnCancelarPago.Location = new System.Drawing.Point(668, 387);
             this.btnCancelarPago.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelarPago.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelarPago.Name = "btnCancelarPago";
@@ -237,7 +220,7 @@ namespace UI.Desktop
             this.btnAceptarPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAceptarPago.HighEmphasis = true;
             this.btnAceptarPago.Icon = null;
-            this.btnAceptarPago.Location = new System.Drawing.Point(566, 462);
+            this.btnAceptarPago.Location = new System.Drawing.Point(574, 387);
             this.btnAceptarPago.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptarPago.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptarPago.Name = "btnAceptarPago";
@@ -261,7 +244,7 @@ namespace UI.Desktop
             this.materialCard1.Controls.Add(this.cbFormaPago);
             this.materialCard1.Depth = 0;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(29, 222);
+            this.materialCard1.Location = new System.Drawing.Point(29, 160);
             this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
@@ -291,20 +274,6 @@ namespace UI.Desktop
             this.btnAgregarPago.UseVisualStyleBackColor = false;
             this.btnAgregarPago.Click += new System.EventHandler(this.btnAgregarPago_Click);
             // 
-            // materialLabel4
-            // 
-            this.materialLabel4.AutoSize = true;
-            this.materialLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel4.Depth = 0;
-            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(229, 119);
-            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(100, 19);
-            this.materialLabel4.TabIndex = 11;
-            this.materialLabel4.Text = "Total Factura:";
-            // 
             // txtTotalFactura
             // 
             this.txtTotalFactura.AnimateReadOnly = false;
@@ -313,8 +282,9 @@ namespace UI.Desktop
             this.txtTotalFactura.Depth = 0;
             this.txtTotalFactura.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtTotalFactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtTotalFactura.Hint = "Total Factura";
             this.txtTotalFactura.LeadingIcon = null;
-            this.txtTotalFactura.Location = new System.Drawing.Point(335, 103);
+            this.txtTotalFactura.Location = new System.Drawing.Point(154, 103);
             this.txtTotalFactura.MaxLength = 50;
             this.txtTotalFactura.MouseState = MaterialSkin.MouseState.OUT;
             this.txtTotalFactura.Multiline = false;
@@ -324,20 +294,6 @@ namespace UI.Desktop
             this.txtTotalFactura.Text = "";
             this.txtTotalFactura.TrailingIcon = null;
             // 
-            // materialLabel5
-            // 
-            this.materialLabel5.AutoSize = true;
-            this.materialLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel5.Depth = 0;
-            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(495, 179);
-            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(100, 19);
-            this.materialLabel5.TabIndex = 13;
-            this.materialLabel5.Text = "Total a pagar:";
-            // 
             // txtApagar
             // 
             this.txtApagar.AnimateReadOnly = false;
@@ -346,8 +302,9 @@ namespace UI.Desktop
             this.txtApagar.Depth = 0;
             this.txtApagar.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtApagar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtApagar.Hint = "Total a pagar";
             this.txtApagar.LeadingIcon = null;
-            this.txtApagar.Location = new System.Drawing.Point(601, 163);
+            this.txtApagar.Location = new System.Drawing.Point(472, 103);
             this.txtApagar.MaxLength = 50;
             this.txtApagar.MouseState = MaterialSkin.MouseState.OUT;
             this.txtApagar.Multiline = false;
@@ -368,7 +325,7 @@ namespace UI.Desktop
             this.btnSaldarDeuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnSaldarDeuda.HighEmphasis = true;
             this.btnSaldarDeuda.Icon = global::UI.Desktop.Properties.Resources.paying_money_invoice_payment_your_bill_icon_220368;
-            this.btnSaldarDeuda.Location = new System.Drawing.Point(29, 163);
+            this.btnSaldarDeuda.Location = new System.Drawing.Point(645, 102);
             this.btnSaldarDeuda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnSaldarDeuda.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSaldarDeuda.Name = "btnSaldarDeuda";
@@ -387,20 +344,6 @@ namespace UI.Desktop
             // 
             this.ayudaPago.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // materialLabel6
-            // 
-            this.materialLabel6.AutoSize = true;
-            this.materialLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel6.Depth = 0;
-            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel6.Location = new System.Drawing.Point(554, 119);
-            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel6.Name = "materialLabel6";
-            this.materialLabel6.Size = new System.Drawing.Size(41, 19);
-            this.materialLabel6.TabIndex = 16;
-            this.materialLabel6.Text = "Seña:";
-            // 
             // txtSenia
             // 
             this.txtSenia.AnimateReadOnly = false;
@@ -409,8 +352,9 @@ namespace UI.Desktop
             this.txtSenia.Depth = 0;
             this.txtSenia.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtSenia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtSenia.Hint = "Seña";
             this.txtSenia.LeadingIcon = null;
-            this.txtSenia.Location = new System.Drawing.Point(601, 103);
+            this.txtSenia.Location = new System.Drawing.Point(303, 103);
             this.txtSenia.MaxLength = 50;
             this.txtSenia.MouseState = MaterialSkin.MouseState.OUT;
             this.txtSenia.Multiline = false;
@@ -425,16 +369,12 @@ namespace UI.Desktop
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(796, 514);
-            this.Controls.Add(this.materialLabel6);
             this.Controls.Add(this.txtSenia);
             this.Controls.Add(this.btnSaldarDeuda);
-            this.Controls.Add(this.materialLabel5);
             this.Controls.Add(this.txtApagar);
-            this.Controls.Add(this.materialLabel4);
             this.Controls.Add(this.txtTotalFactura);
             this.Controls.Add(this.btnAceptarPago);
             this.Controls.Add(this.btnCancelarPago);
-            this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.txtNroFactura);
             this.Controls.Add(this.materialCard1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -453,7 +393,6 @@ namespace UI.Desktop
         #endregion
 
         private MaterialSkin.Controls.MaterialTextBox txtNroFactura;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialComboBox cbFormaPago;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialListView listPagos;
@@ -467,13 +406,10 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnAceptarPago;
         private MaterialSkin.Controls.MaterialCard materialCard1;
         private MaterialSkin.Controls.MaterialButton btnAgregarPago;
-        private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialTextBox txtTotalFactura;
-        private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialTextBox txtApagar;
         private MaterialSkin.Controls.MaterialButton btnSaldarDeuda;
         private System.Windows.Forms.ToolTip ayudaPago;
-        private MaterialSkin.Controls.MaterialLabel materialLabel6;
         private MaterialSkin.Controls.MaterialTextBox txtSenia;
     }
 }

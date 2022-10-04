@@ -73,7 +73,7 @@ namespace UI.Desktop
                 PrecioActual = ServicioTipoPrendaActual.HistoricoPrecios.FindLast(
                     delegate (Precio p)
                     {
-                        return p.FechaDesde <= DateTime.Today;
+                        return p.FechaDesde <= DateTime.Now;
                     });
                 MapearDeDatos();
             }
@@ -161,7 +161,7 @@ namespace UI.Desktop
                 ServicioTipoPrendaActual.TiempoRequerido = new TimeSpan(((int)this.nudHoras.Value),((int)this.nudMinutos.Value),00);
                 ServicioTipoPrendaActual.TiempoDemoraMax = new TimeSpan((int)this.nudDias.Value,(int)this.nudHoras2.Value,(int)this.nudMinutos2.Value,00).ToString();
                 precioActual.Valor = double.Parse(this.txtPrecio.Text);
-                precioActual.FechaDesde = DateTime.Today;
+                precioActual.FechaDesde = DateTime.Now;
                 ServicioTipoPrendaActual.HistoricoPrecios = new List<Precio>();
                 ServicioTipoPrendaActual.HistoricoPrecios.Add(precioActual);
                 ServicioTipoPrendaActual.InsumoServicioTipoPrenda = _consumos;
@@ -179,7 +179,7 @@ namespace UI.Desktop
                 {
                     Precio nuevoPrecio = new Precio();
                     nuevoPrecio.Valor = double.Parse(this.txtPrecio.Text);
-                    nuevoPrecio.FechaDesde = DateTime.Today;
+                    nuevoPrecio.FechaDesde = DateTime.Now;
                     ServicioTipoPrendaActual.HistoricoPrecios.Add(nuevoPrecio);
                 }
                 ServicioTipoPrendaActual.InsumoServicioTipoPrenda = _consumos;

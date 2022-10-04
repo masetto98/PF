@@ -17,7 +17,7 @@ namespace Business.Entities
         private bool _senia;
         private DateTime _fechaEntrada;
         private DateTime _fechaSalida;
-        private TimeSpan _tiempoFinalizacionEstimado;
+        private DateTime _fechaHoraEntregaIngresada;
         private TimeSpan _tiempoFinalizacionReal;
         private Estados _estado;
         private Prioridades _prioridad;
@@ -90,11 +90,11 @@ namespace Business.Entities
             get { return _fechaEntrada; }
             set { _fechaEntrada = value; }
         }
-        [Column("tiempo_finalizacion_estimado")]
-        public TimeSpan TiempofinalizacionEstimado
+        [Column("fecha_hora_entrega")]
+        public DateTime FechaHoraEntregaIngresada
         {
-            get { return _tiempoFinalizacionEstimado; }
-            set { _tiempoFinalizacionEstimado = value; }
+            get { return _fechaHoraEntregaIngresada; }
+            set { _fechaHoraEntregaIngresada = value; }
         }
         [Column("tiempo_finalizacion_real")]
         public TimeSpan TiempoFinalizacionReal

@@ -49,7 +49,6 @@ namespace UI.Desktop
             this.cmbTipoPrenda = new MaterialSkin.Controls.MaterialComboBox();
             this.lblItemsOrden = new MaterialSkin.Controls.MaterialLabel();
             this.lblFechaSalida = new MaterialSkin.Controls.MaterialLabel();
-            this.txtTiempoFinalizacionEstimado = new MaterialSkin.Controls.MaterialTextBox();
             this.txtNombreApellidoRazonSocial = new MaterialSkin.Controls.MaterialTextBox();
             this.btnAgregarCliente = new MaterialSkin.Controls.MaterialButton();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
@@ -71,10 +70,15 @@ namespace UI.Desktop
             this.materialCard4 = new MaterialSkin.Controls.MaterialCard();
             this.cmbEntregaDomicilio = new MaterialSkin.Controls.MaterialComboBox();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.dtpFechaEntrega = new System.Windows.Forms.DateTimePicker();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.nudHoraEntrega = new System.Windows.Forms.NumericUpDown();
             this.materialCard1.SuspendLayout();
             this.materialCard2.SuspendLayout();
             this.materialCard3.SuspendLayout();
             this.materialCard4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHoraEntrega)).BeginInit();
             this.SuspendLayout();
             // 
             // lblFechaEntrada
@@ -137,7 +141,7 @@ namespace UI.Desktop
             this.dtpFechaSalida.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpFechaSalida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dtpFechaSalida.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaSalida.Location = new System.Drawing.Point(651, 128);
+            this.dtpFechaSalida.Location = new System.Drawing.Point(651, 144);
             this.dtpFechaSalida.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.dtpFechaSalida.Name = "dtpFechaSalida";
             this.dtpFechaSalida.Size = new System.Drawing.Size(279, 23);
@@ -165,7 +169,7 @@ namespace UI.Desktop
             this.cmbEstado.MaxDropDownItems = 4;
             this.cmbEstado.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(233, 49);
+            this.cmbEstado.Size = new System.Drawing.Size(235, 49);
             this.cmbEstado.StartIndex = 0;
             this.cmbEstado.TabIndex = 13;
             // 
@@ -184,7 +188,7 @@ namespace UI.Desktop
             this.listItemsServicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listItemsServicio.FullRowSelect = true;
             this.listItemsServicio.HideSelection = false;
-            this.listItemsServicio.Location = new System.Drawing.Point(10, 83);
+            this.listItemsServicio.Location = new System.Drawing.Point(9, 80);
             this.listItemsServicio.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.listItemsServicio.MinimumSize = new System.Drawing.Size(200, 99);
             this.listItemsServicio.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -192,7 +196,7 @@ namespace UI.Desktop
             this.listItemsServicio.MultiSelect = false;
             this.listItemsServicio.Name = "listItemsServicio";
             this.listItemsServicio.OwnerDraw = true;
-            this.listItemsServicio.Size = new System.Drawing.Size(606, 135);
+            this.listItemsServicio.Size = new System.Drawing.Size(607, 135);
             this.listItemsServicio.TabIndex = 14;
             this.listItemsServicio.UseCompatibleStateImageBehavior = false;
             this.listItemsServicio.View = System.Windows.Forms.View.Details;
@@ -257,7 +261,7 @@ namespace UI.Desktop
             this.btnAgregarItemOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregarItemOrden.HighEmphasis = true;
             this.btnAgregarItemOrden.Icon = null;
-            this.btnAgregarItemOrden.Location = new System.Drawing.Point(433, 36);
+            this.btnAgregarItemOrden.Location = new System.Drawing.Point(429, 36);
             this.btnAgregarItemOrden.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAgregarItemOrden.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAgregarItemOrden.Name = "btnAgregarItemOrden";
@@ -378,7 +382,7 @@ namespace UI.Desktop
             this.cmbTipoPrenda.MaxDropDownItems = 4;
             this.cmbTipoPrenda.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbTipoPrenda.Name = "cmbTipoPrenda";
-            this.cmbTipoPrenda.Size = new System.Drawing.Size(204, 49);
+            this.cmbTipoPrenda.Size = new System.Drawing.Size(199, 49);
             this.cmbTipoPrenda.StartIndex = 0;
             this.cmbTipoPrenda.TabIndex = 24;
             this.cmbTipoPrenda.ValueMember = "IdTipoPrenda";
@@ -405,36 +409,13 @@ namespace UI.Desktop
             this.lblFechaSalida.Depth = 0;
             this.lblFechaSalida.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblFechaSalida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblFechaSalida.Location = new System.Drawing.Point(513, 133);
+            this.lblFechaSalida.Location = new System.Drawing.Point(513, 148);
             this.lblFechaSalida.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFechaSalida.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblFechaSalida.Name = "lblFechaSalida";
             this.lblFechaSalida.Size = new System.Drawing.Size(120, 19);
             this.lblFechaSalida.TabIndex = 26;
             this.lblFechaSalida.Text = "Fecha de salida: ";
-            // 
-            // txtTiempoFinalizacionEstimado
-            // 
-            this.txtTiempoFinalizacionEstimado.AnimateReadOnly = false;
-            this.txtTiempoFinalizacionEstimado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.txtTiempoFinalizacionEstimado.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTiempoFinalizacionEstimado.Depth = 0;
-            this.txtTiempoFinalizacionEstimado.Enabled = false;
-            this.txtTiempoFinalizacionEstimado.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtTiempoFinalizacionEstimado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtTiempoFinalizacionEstimado.Hint = "Tiempo estimado";
-            this.txtTiempoFinalizacionEstimado.LeadingIcon = null;
-            this.txtTiempoFinalizacionEstimado.Location = new System.Drawing.Point(752, 165);
-            this.txtTiempoFinalizacionEstimado.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.txtTiempoFinalizacionEstimado.MaxLength = 50;
-            this.txtTiempoFinalizacionEstimado.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtTiempoFinalizacionEstimado.Multiline = false;
-            this.txtTiempoFinalizacionEstimado.Name = "txtTiempoFinalizacionEstimado";
-            this.txtTiempoFinalizacionEstimado.Size = new System.Drawing.Size(178, 50);
-            this.txtTiempoFinalizacionEstimado.TabIndex = 28;
-            this.txtTiempoFinalizacionEstimado.Text = "";
-            this.txtTiempoFinalizacionEstimado.TrailingIcon = null;
-            this.txtTiempoFinalizacionEstimado.Visible = false;
             // 
             // txtNombreApellidoRazonSocial
             // 
@@ -497,7 +478,7 @@ namespace UI.Desktop
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(624, 233);
+            this.materialCard1.Size = new System.Drawing.Size(629, 233);
             this.materialCard1.TabIndex = 31;
             // 
             // txtPrecioTotal
@@ -511,7 +492,7 @@ namespace UI.Desktop
             this.txtPrecioTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtPrecioTotal.Hint = "Total";
             this.txtPrecioTotal.LeadingIcon = null;
-            this.txtPrecioTotal.Location = new System.Drawing.Point(608, 525);
+            this.txtPrecioTotal.Location = new System.Drawing.Point(801, 525);
             this.txtPrecioTotal.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.txtPrecioTotal.MaxLength = 50;
             this.txtPrecioTotal.MouseState = MaterialSkin.MouseState.OUT;
@@ -529,7 +510,7 @@ namespace UI.Desktop
             this.lblTotal.Depth = 0;
             this.lblTotal.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTotal.Location = new System.Drawing.Point(545, 538);
+            this.lblTotal.Location = new System.Drawing.Point(738, 546);
             this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotal.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblTotal.Name = "lblTotal";
@@ -552,7 +533,7 @@ namespace UI.Desktop
             this.cmbPrioridad.Hint = "Prioridad";
             this.cmbPrioridad.IntegralHeight = false;
             this.cmbPrioridad.ItemHeight = 43;
-            this.cmbPrioridad.Location = new System.Drawing.Point(513, 165);
+            this.cmbPrioridad.Location = new System.Drawing.Point(513, 172);
             this.cmbPrioridad.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.cmbPrioridad.MaxDropDownItems = 4;
             this.cmbPrioridad.MouseState = MaterialSkin.MouseState.OUT;
@@ -779,12 +760,12 @@ namespace UI.Desktop
             this.txtObservaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtObservaciones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtObservaciones.Hint = "Observaciones";
-            this.txtObservaciones.Location = new System.Drawing.Point(639, 308);
+            this.txtObservaciones.Location = new System.Drawing.Point(651, 308);
             this.txtObservaciones.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.txtObservaciones.MaxLength = 500;
             this.txtObservaciones.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtObservaciones.Name = "txtObservaciones";
-            this.txtObservaciones.Size = new System.Drawing.Size(303, 204);
+            this.txtObservaciones.Size = new System.Drawing.Size(291, 204);
             this.txtObservaciones.TabIndex = 37;
             this.txtObservaciones.Text = "";
             // 
@@ -822,7 +803,7 @@ namespace UI.Desktop
             this.cmbEntregaDomicilio.Hint = "Entrega a Domicilio";
             this.cmbEntregaDomicilio.IntegralHeight = false;
             this.cmbEntregaDomicilio.ItemHeight = 43;
-            this.cmbEntregaDomicilio.Location = new System.Drawing.Point(752, 225);
+            this.cmbEntregaDomicilio.Location = new System.Drawing.Point(752, 172);
             this.cmbEntregaDomicilio.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.cmbEntregaDomicilio.MaxDropDownItems = 4;
             this.cmbEntregaDomicilio.MouseState = MaterialSkin.MouseState.OUT;
@@ -838,13 +819,67 @@ namespace UI.Desktop
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(639, 280);
+            this.materialLabel3.Location = new System.Drawing.Point(651, 279);
             this.materialLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Size = new System.Drawing.Size(109, 19);
             this.materialLabel3.TabIndex = 40;
             this.materialLabel3.Text = "Observaciones:";
+            // 
+            // dtpFechaEntrega
+            // 
+            this.dtpFechaEntrega.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.dtpFechaEntrega.CustomFormat = "dd/MM/yyyy";
+            this.dtpFechaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dtpFechaEntrega.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dtpFechaEntrega.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaEntrega.Location = new System.Drawing.Point(651, 117);
+            this.dtpFechaEntrega.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.dtpFechaEntrega.Name = "dtpFechaEntrega";
+            this.dtpFechaEntrega.Size = new System.Drawing.Size(97, 23);
+            this.dtpFechaEntrega.TabIndex = 41;
+            this.dtpFechaEntrega.Value = new System.DateTime(2022, 6, 10, 15, 13, 24, 0);
+            // 
+            // materialLabel4
+            // 
+            this.materialLabel4.AutoSize = true;
+            this.materialLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel4.Location = new System.Drawing.Point(513, 120);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(105, 19);
+            this.materialLabel4.TabIndex = 42;
+            this.materialLabel4.Text = "Fecha entrega:";
+            // 
+            // materialLabel5
+            // 
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel5.Location = new System.Drawing.Point(781, 120);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(96, 19);
+            this.materialLabel5.TabIndex = 43;
+            this.materialLabel5.Text = "Hora entrega:";
+            // 
+            // nudHoraEntrega
+            // 
+            this.nudHoraEntrega.Location = new System.Drawing.Point(883, 117);
+            this.nudHoraEntrega.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+            this.nudHoraEntrega.Name = "nudHoraEntrega";
+            this.nudHoraEntrega.Size = new System.Drawing.Size(47, 23);
+            this.nudHoraEntrega.TabIndex = 44;
             // 
             // OrdenDesktop
             // 
@@ -853,6 +888,10 @@ namespace UI.Desktop
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(952, 630);
+            this.Controls.Add(this.nudHoraEntrega);
+            this.Controls.Add(this.materialLabel5);
+            this.Controls.Add(this.materialLabel4);
+            this.Controls.Add(this.dtpFechaEntrega);
             this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.cmbEntregaDomicilio);
             this.Controls.Add(this.materialCard4);
@@ -863,7 +902,6 @@ namespace UI.Desktop
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.txtPrecioTotal);
             this.Controls.Add(this.materialCard1);
-            this.Controls.Add(this.txtTiempoFinalizacionEstimado);
             this.Controls.Add(this.lblFechaSalida);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
@@ -886,6 +924,7 @@ namespace UI.Desktop
             this.materialCard3.ResumeLayout(false);
             this.materialCard3.PerformLayout();
             this.materialCard4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nudHoraEntrega)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -910,7 +949,6 @@ namespace UI.Desktop
         private System.Windows.Forms.ColumnHeader columnTipoPrenda;
         private MaterialSkin.Controls.MaterialLabel lblItemsOrden;
         private MaterialSkin.Controls.MaterialLabel lblFechaSalida;
-        private MaterialSkin.Controls.MaterialTextBox txtTiempoFinalizacionEstimado;
         private MaterialSkin.Controls.MaterialTextBox txtNombreApellidoRazonSocial;
         private MaterialSkin.Controls.MaterialButton btnAgregarCliente;
         private System.Windows.Forms.ColumnHeader columnPrecio;
@@ -934,5 +972,9 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialComboBox cmbEntregaDomicilio;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialComboBox cbFormaPago;
+        private System.Windows.Forms.DateTimePicker dtpFechaEntrega;
+        private MaterialSkin.Controls.MaterialLabel materialLabel4;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private System.Windows.Forms.NumericUpDown nudHoraEntrega;
     }
 }

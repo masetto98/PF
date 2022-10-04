@@ -317,17 +317,33 @@ namespace UI.Desktop
         private double CalcularImporteOrden(Orden ordenActual)
         {
             double importe = 0;
-            foreach (OrdenServicioTipoPrenda ostp in ordenActual.ItemsPedidos)
+            if (ordenActual.Estado == Orden.Estados.Pagado)
             {
-                Precio precio = ostp.ServicioTipoPrenda.HistoricoPrecios.FindLast(delegate (Precio p)
+                Pago pago = ordenActual.Factura.Pagos.FindLast(delegate (Pago p) { return p.FechaPago <= DateTime.Now; });
+                foreach (OrdenServicioTipoPrenda ostp in ordenActual.ItemsPedidos)
                 {
-                    return p.FechaDesde < ordenActual.FechaEntrada;
-                });
-                if (precio is not null)
-                {
-                    importe += precio.Valor;
+                    Precio pre = ostp.ServicioTipoPrenda.HistoricoPrecios.FindLast(delegate (Precio p)
+                    {
+                        return p.FechaDesde < pago.FechaPago;
+                    });
+                    importe += pre.Valor;
                 }
             }
+            else
+            {
+                foreach (OrdenServicioTipoPrenda ostp in ordenActual.ItemsPedidos)
+                {
+                    Precio precio = ostp.ServicioTipoPrenda.HistoricoPrecios.FindLast(delegate (Precio p)
+                    {
+                        return p.FechaDesde < DateTime.Now;
+                    });
+                    if (precio is not null)
+                    {
+                        importe += precio.Valor;
+                    }
+                }
+            }
+
             if(ordenActual.Descuento != null)
             {
                 if (ordenActual.Descuento.StartsWith("%"))
@@ -915,7 +931,9 @@ namespace UI.Desktop
             {
                 foreach (Orden o in ordenes)
                 {
-                    if (o.Cliente.Nombre.ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()) || o.Cliente.Apellido.ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()) || o.Cliente.RazonSocial.ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()))
+                    string cliente = String.Concat(o.Cliente.Nombre," ", o.Cliente.Apellido," / ", o.Cliente.RazonSocial);
+                    //if (o.Cliente.Nombre.ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()) || o.Cliente.Apellido.ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()) || o.Cliente.RazonSocial.ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()))
+                    if(cliente.ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()))
                     {
                         ListViewItem item = new ListViewItem(o.NroOrden.ToString());
                         item.SubItems.Add(String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
@@ -1451,7 +1469,7 @@ namespace UI.Desktop
                 {
                     pagos += p.Importe;
                 }
-                if (ordenActual.Factura.Importe == pagos) { return true; }
+                if (ordenActual.Factura.Importe != 0 && ordenActual.Factura.Importe == pagos) { return true; }
                 else return false;
             }
             else { return false; }
@@ -1633,6 +1651,12 @@ namespace UI.Desktop
                 this.btnUsuarios.Enabled = false;
                 this.btnEmpleados.Enabled = false;
                 this.btnEliminarOrden.Enabled = false;
+            }
+            if (Singleton.getInstance().EmpleadoLogged.TipoEmpleado == Empleado.TiposEmpleado.Admin)
+            {
+                this.btnUsuarios.Enabled = true;
+                this.btnEmpleados.Enabled = true;
+                this.btnEliminarOrden.Enabled = true;
             }
         }
 

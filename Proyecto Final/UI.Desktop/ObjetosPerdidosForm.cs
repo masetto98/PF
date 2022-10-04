@@ -15,15 +15,19 @@ namespace UI.Desktop
 {
     public partial class ObjetosPerdidosForm : ApplicationForm
     {
+        private readonly LavanderiaContext _context;
         private readonly ClienteLogic _clienteLogic;
         private readonly OrdenLogic _ordenLogic;
         private readonly MaquinaLogic _maquinaLogic;
         public Cliente ClienteActual;
+        public int _clienteAnterior;
+        public int _clienteSiguiente;
         public Orden OrdenActual;
 
         public ObjetosPerdidosForm(LavanderiaContext context)
         {
             InitializeComponent();
+            _context = context;
             _clienteLogic = new ClienteLogic(new ClienteAdapter(context));
             _ordenLogic = new OrdenLogic(new OrdenAdapter(context));
             _maquinaLogic = new MaquinaLogic(new MaquinaAdapter(context));
@@ -59,8 +63,6 @@ namespace UI.Desktop
                 {
                     this.txtNombreApellidoRazonSocial.Text = String.Concat(ClienteActual.Nombre, " ", ClienteActual.Apellido," / ",ClienteActual.RazonSocial);
                 }
-                
-                this.txtDireccion.Text = ClienteActual.Direccion;
 
             }
             catch (Exception e)
@@ -193,19 +195,20 @@ namespace UI.Desktop
                         this.txtServicioTipoPrendaAnterior.Text = String.Concat(itemAnterior.OrdenServicioTipoPrenda.ServicioTipoPrenda.Servicio.Descripcion, " - ", itemAnterior.OrdenServicioTipoPrenda.ServicioTipoPrenda.TipoPrenda.Descripcion);
                         this.txtOrdenItemAnterior.Text = itemAnterior.OrdenItem.ToString();
                         this.txtEstado.Text = itemAnterior.OrdenServicioTipoPrenda.Estado.ToString();
-                        this.txtCuitClienteAnterior.Text = itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Cuit;
-                        this.txtIdEmpleadoAnterior.Text = itemAnterior.Empleado.IdEmpleado.ToString();
+                        //this.txtCuitClienteAnterior.Text = itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Cuit;
+                        //this.txtIdEmpleadoAnterior.Text = itemAnterior.Empleado.IdEmpleado.ToString();
                         this.txtNombreApellidoEmpleadoAnterior.Text = String.Concat(itemAnterior.Empleado.Nombre, " ", itemAnterior.Empleado.Apellido);
-                        if (itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Nombre != "" && itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Apellido != "" && itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.RazonSocial == "")
-                        {
-                            this.txtNombreApellidoRazonSocialAnterior.Text = String.Concat(itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Nombre, " ", itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Apellido);
-                        }
-                        else if (itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Nombre != "" && itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Apellido != "" && itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.RazonSocial != "")
-                        {
-                            this.txtNombreApellidoRazonSocialAnterior.Text = String.Concat(itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Nombre, " ", itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Apellido, " / ", itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.RazonSocial);
-                        }
-                        this.txtTelefonoAnterior.Text = itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Telefono;
-                        this.txtDireccionAnterior.Text = itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Direccion;
+                        _clienteAnterior = itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.IdCliente;
+                        //if (itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Nombre != "" && itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Apellido != "" && itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.RazonSocial == "")
+                        //{
+                        //    this.txtNombreApellidoRazonSocialAnterior.Text = String.Concat(itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Nombre, " ", itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Apellido);
+                        //}
+                        //else if (itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Nombre != "" && itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Apellido != "" && itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.RazonSocial != "")
+                        //{
+                        //    this.txtNombreApellidoRazonSocialAnterior.Text = String.Concat(itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Nombre, " ", itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Apellido, " / ", itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.RazonSocial);
+                        //}
+                        //this.txtTelefonoAnterior.Text = itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Telefono;
+                        //this.txtDireccionAnterior.Text = itemAnterior.OrdenServicioTipoPrenda.Orden.Cliente.Direccion;
                         //this.txtIdAnterior.Text = itemAnterior.OrdenServicioTipoPrenda.Orden.IdCliente.ToString();
                     }
                     MaquinaOrdenServicioTipoPrenda itemPosterior = maquinaActual.itemsAtendidos.Find(delegate (MaquinaOrdenServicioTipoPrenda mostp)
@@ -218,19 +221,20 @@ namespace UI.Desktop
                         this.txtServicioTipoPrendaSiguiente.Text = String.Concat(itemPosterior.OrdenServicioTipoPrenda.ServicioTipoPrenda.Servicio.Descripcion, " - ", itemPosterior.OrdenServicioTipoPrenda.ServicioTipoPrenda.TipoPrenda.Descripcion);
                         this.txtOrdenItemSiguiente.Text = itemPosterior.OrdenItem.ToString();
                         this.txtEstadoSiguiente.Text = itemPosterior.OrdenServicioTipoPrenda.Estado.ToString();
-                        this.txtIDEmpleadoSiguiente.Text = itemPosterior.Empleado.IdEmpleado.ToString();
+                        //this.txtIDEmpleadoSiguiente.Text = itemPosterior.Empleado.IdEmpleado.ToString();
                         this.txtNombreApellidoEmpleadoSiguiente.Text = String.Concat(itemPosterior.Empleado.Nombre, " ", itemPosterior.Empleado.Apellido);
-                        this.txtCuitClienteSiguiente.Text = itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Cuit;
-                        if (itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Nombre != "" && itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Apellido != "" && itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.RazonSocial == "")
-                        {
-                            this.txtNombreApellidoRazonSocialSiguiente.Text = String.Concat(itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Nombre, " ", itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Apellido);
-                        }
-                        else if (itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Nombre != "" && itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Apellido != "" && itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.RazonSocial != "")
-                        {
-                            this.txtNombreApellidoRazonSocialSiguiente.Text = String.Concat(itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Nombre, " ", itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Apellido, " / ", itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.RazonSocial);
-                        }
-                        this.txtTelefonoSiguiente.Text = itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Telefono;
-                        this.txtDireccionSiguiente.Text = itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Direccion;
+                        _clienteSiguiente = itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.IdCliente;
+                        //this.txtCuitClienteSiguiente.Text = itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Cuit;
+                        //if (itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Nombre != "" && itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Apellido != "" && itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.RazonSocial == "")
+                        //{
+                        //    this.txtNombreApellidoRazonSocialSiguiente.Text = String.Concat(itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Nombre, " ", itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Apellido);
+                        //}
+                        //else if (itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Nombre != "" && itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Apellido != "" && itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.RazonSocial != "")
+                        //{
+                        //    this.txtNombreApellidoRazonSocialSiguiente.Text = String.Concat(itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Nombre, " ", itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Apellido, " / ", itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.RazonSocial);
+                        //}
+                        //this.txtTelefonoSiguiente.Text = itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Telefono;
+                        //this.txtDireccionSiguiente.Text = itemPosterior.OrdenServicioTipoPrenda.Orden.Cliente.Direccion;
                         //this.txtIdSiguiente.Text = itemPosterior.OrdenServicioTipoPrenda.Orden.IdCliente.ToString();
                     }
                 }
@@ -253,12 +257,12 @@ namespace UI.Desktop
             this.txtServicioTipoPrendaAnterior.Text = "";
             this.txtOrdenItemAnterior.Text = "";
             this.txtEstado.Text = "";
-            this.txtIdEmpleadoAnterior.Text = "";
+            //this.txtIdEmpleadoAnterior.Text = "";
             this.txtNombreApellidoEmpleadoAnterior.Text = "";
-            this.txtCuitClienteAnterior.Text = "";
-            this.txtNombreApellidoRazonSocialAnterior.Text = "";
-            this.txtTelefonoAnterior.Text = "";
-            this.txtDireccionAnterior.Text = "";
+            //this.txtCuitClienteAnterior.Text = "";
+            //this.txtNombreApellidoRazonSocialAnterior.Text = "";
+            //this.txtTelefonoAnterior.Text = "";
+            //this.txtDireccionAnterior.Text = "";
             //this.txtIdAnterior.Text = "";
 
             //Item Siguiente
@@ -266,12 +270,12 @@ namespace UI.Desktop
             this.txtServicioTipoPrendaSiguiente.Text = "";
             this.txtOrdenItemSiguiente.Text = "";
             this.txtEstadoSiguiente.Text = "";
-            this.txtIDEmpleadoSiguiente.Text = "";
+            //this.txtIDEmpleadoSiguiente.Text = "";
             this.txtNombreApellidoEmpleadoSiguiente.Text = "";
-            this.txtCuitClienteSiguiente.Text = "";
-            this.txtNombreApellidoRazonSocialSiguiente.Text = "";
-            this.txtTelefonoSiguiente.Text = "";
-            this.txtDireccionSiguiente.Text = "";
+            //this.txtCuitClienteSiguiente.Text = "";
+            //this.txtNombreApellidoRazonSocialSiguiente.Text = "";
+            //this.txtTelefonoSiguiente.Text = "";
+            //this.txtDireccionSiguiente.Text = "";
             //this.txtIdSiguiente.Text = "";
         }
 
@@ -296,6 +300,27 @@ namespace UI.Desktop
         {
             e.Cancel = true;
             e.NewWidth = listMaquinasItems.Columns[e.ColumnIndex].Width;
+        }
+
+        private void btnDatosClienteAnterior_Click(object sender, EventArgs e)
+        {
+            if (_clienteAnterior != 0)
+            {
+
+                ClienteDesktop frmCliente = new ClienteDesktop(_clienteAnterior, ApplicationForm.ModoForm.Consulta, _context);
+                frmCliente.ShowDialog();
+            }
+            else { MessageBox.Show("Item no encontrado", "Máquina", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+        }
+
+        private void btnDatosClienteSiguiente_Click(object sender, EventArgs e)
+        {
+            if (_clienteSiguiente != 0)
+            {
+                ClienteDesktop frmCliente = new ClienteDesktop(_clienteSiguiente, ApplicationForm.ModoForm.Consulta, _context);
+                frmCliente.ShowDialog();
+            }
+            else { MessageBox.Show("Item no encontrado", "Máquina", MessageBoxButtons.OK, MessageBoxIcon.Information); }
         }
     }
 }

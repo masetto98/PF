@@ -106,6 +106,8 @@ namespace UI.Desktop
             this.cmbPrioridad.SelectedIndex = cmbPrioridad.FindStringExact(Enum.GetName(OrdenActual.Prioridad));
             this.cmbEntregaDomicilio.SelectedIndex = cmbEntregaDomicilio.FindStringExact(Enum.GetName(OrdenActual.EntregaDomicilio));
             this.txtIdCliente.Text = OrdenActual.IdCliente.ToString();
+            this.dtpFechaEntrega.Value = OrdenActual.FechaHoraEntregaIngresada.Date;
+            this.nudHoraEntrega.Value = (decimal)OrdenActual.FechaHoraEntregaIngresada.Hour;
             if (OrdenActual.Cliente.Nombre != "" && OrdenActual.Cliente.Apellido != "" && OrdenActual.Cliente.RazonSocial == "")
             {
                 this.txtNombreApellidoRazonSocial.Text = String.Concat(OrdenActual.Cliente.Nombre, " ", OrdenActual.Cliente.Apellido);
@@ -117,7 +119,8 @@ namespace UI.Desktop
             this.txtCuit.Text = OrdenActual.Cliente.Cuit;
             this.txtDireccion.Text = OrdenActual.Cliente.Direccion;
             this.dtpFechaIngreso.Value = OrdenActual.FechaEntrada.Date;
-            this.txtTiempoFinalizacionEstimado.Text = OrdenActual.TiempofinalizacionEstimado.Hours.ToString() + " : " + OrdenActual.TiempofinalizacionEstimado.Minutes.ToString();
+            //this.txtTiempoFinalizacionEstimado.Text = OrdenActual.TiempofinalizacionEstimado.Hours.ToString() + " : " + OrdenActual.TiempofinalizacionEstimado.Minutes.ToString();
+
             if (OrdenActual.FechaSalida != DateTime.MinValue) { this.dtpFechaSalida.Value = OrdenActual.FechaSalida.Date; }
             this.txtObservaciones.Text = OrdenActual.Observaciones;
             if (OrdenActual.Descuento != null)
@@ -208,6 +211,9 @@ namespace UI.Desktop
                 OrdenActual.Prioridad = (Business.Entities.Orden.Prioridades)Enum.Parse(typeof(Business.Entities.Orden.Prioridades), cmbPrioridad.SelectedItem.ToString());
                 OrdenActual.Observaciones = this.txtObservaciones.Text;
                 OrdenActual.FechaEntrada = DateTime.Now;
+                double HoraEntrega = ((double)nudHoraEntrega.Value);
+                DateTime FechaHoraEntrega = dtpFechaEntrega.Value.Date;
+                OrdenActual.FechaHoraEntregaIngresada = FechaHoraEntrega.AddHours(HoraEntrega);
                 Descuento();
                 OrdenActual.EntregaDomicilio= (Orden.EntregasDomicilio)Enum.Parse(typeof(Orden.EntregasDomicilio), cmbEntregaDomicilio.SelectedItem.ToString());
                 FacturaActual = new Factura();
@@ -351,21 +357,42 @@ namespace UI.Desktop
         public void ListarItems()
         {
             listItemsServicio.Items.Clear();
-            foreach (OrdenServicioTipoPrenda i in _itemsServicio)
-            {
-                Precio precioActual = i.ServicioTipoPrenda.HistoricoPrecios.FindLast(
-                    delegate (Precio p)
-                    {
-                        return p.FechaDesde <= DateTime.Today;
-                    });
-                ListViewItem item = new ListViewItem((listItemsServicio.Items.Count + 1).ToString());
-                item.SubItems.Add(i.ServicioTipoPrenda.Servicio.Descripcion);
-                item.SubItems.Add(i.ServicioTipoPrenda.TipoPrenda.Descripcion);
-                item.SubItems.Add(precioActual.Valor.ToString());
-                item.SubItems.Add(i.Estado.ToString());
-                listItemsServicio.Items.Add(item);
-            }
 
+            if (OrdenActual is not null && OrdenActual.Estado == Orden.Estados.Pagado)
+            {
+                Pago pago = OrdenActual.Factura.Pagos.FindLast(delegate (Pago p) { return p.FechaPago <= DateTime.Now; });
+                foreach (OrdenServicioTipoPrenda i in _itemsServicio)
+                {
+                    Precio precioActual = i.ServicioTipoPrenda.HistoricoPrecios.FindLast(
+                        delegate (Precio p)
+                        {
+                            return p.FechaDesde <= pago.FechaPago;
+                        });
+                    ListViewItem item = new ListViewItem((listItemsServicio.Items.Count + 1).ToString());
+                    item.SubItems.Add(i.ServicioTipoPrenda.Servicio.Descripcion);
+                    item.SubItems.Add(i.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                    item.SubItems.Add(precioActual.Valor.ToString());
+                    item.SubItems.Add(i.Estado.ToString());
+                    listItemsServicio.Items.Add(item);
+                }
+            }
+            else
+            {
+                foreach (OrdenServicioTipoPrenda i in _itemsServicio)
+                {
+                    Precio precioActual = i.ServicioTipoPrenda.HistoricoPrecios.FindLast(
+                        delegate (Precio p)
+                        {
+                            return p.FechaDesde <= DateTime.Now;
+                        });
+                    ListViewItem item = new ListViewItem((listItemsServicio.Items.Count + 1).ToString());
+                    item.SubItems.Add(i.ServicioTipoPrenda.Servicio.Descripcion);
+                    item.SubItems.Add(i.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                    item.SubItems.Add(precioActual.Valor.ToString());
+                    item.SubItems.Add(i.Estado.ToString());
+                    listItemsServicio.Items.Add(item);
+                }
+            }
         }
 
         private void btnAgregarItemOrden_Click(object sender, EventArgs e)
@@ -439,14 +466,29 @@ namespace UI.Desktop
         private void CalcularImporte()
         {
             _total = 0;
-            foreach (OrdenServicioTipoPrenda i in _itemsServicio)
+            if (OrdenActual is not null && OrdenActual.Estado == Orden.Estados.Pagado)
             {
-                Precio precioActual = i.ServicioTipoPrenda.HistoricoPrecios.FindLast(
-                    delegate (Precio p)
+                Pago pago = OrdenActual.Factura.Pagos.FindLast(delegate (Pago p) { return p.FechaPago <= DateTime.Now; });
+                foreach (OrdenServicioTipoPrenda ostp in _itemsServicio)
+                {
+                    Precio pre = ostp.ServicioTipoPrenda.HistoricoPrecios.FindLast(delegate (Precio p)
                     {
-                        return p.FechaDesde <= DateTime.Today;
+                        return p.FechaDesde < pago.FechaPago;
                     });
-                _total += precioActual.Valor;
+                    _total += pre.Valor;
+                }
+            }
+            else 
+            {
+                foreach (OrdenServicioTipoPrenda ostp in _itemsServicio)
+                {
+                    Precio precioActual = ostp.ServicioTipoPrenda.HistoricoPrecios.FindLast(
+                        delegate (Precio p)
+                        {
+                            return p.FechaDesde <= DateTime.Now;
+                        });
+                    _total += precioActual.Valor;
+                }
             }
             if (this.rbtnPorcentaje.Checked == true && this.txtDescuento.Text != "")
             {

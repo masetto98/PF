@@ -108,7 +108,7 @@ namespace UI.Desktop
                             }
                             else
                             {
-                                if (f.Pagos[0].FechaPago.Date >= this.dtpFecha.Value.Date && f.Pagos[0].FechaPago.Date <= this.dtpFechaHasta.Value.Date)
+                                if (f.Pagos.Count!=0 && f.Pagos[0].FechaPago.Date >= this.dtpFecha.Value.Date && f.Pagos[0].FechaPago.Date <= this.dtpFechaHasta.Value.Date)
                                 {
                                     chartIngresos.Series["Ingresos"].Points.AddXY(f.Pagos[0].FechaPago.Date, f.Pagos[0].Importe);
                                 }
