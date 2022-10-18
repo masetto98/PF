@@ -30,7 +30,21 @@ namespace Business.Logic
                 throw ExceptionManejada;
             }
         }
-        
+
+        public List<AtributosNegocio> GetAll()
+        {
+            try
+            {
+                return AtributosNegocioData.GetAll();
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al recuperar lista de atributos del negocio", e);
+                Logger.Log(ExceptionManejada.Message);
+                throw ExceptionManejada;
+            }
+        }
+
         public void Delete(int id)
         {
             try

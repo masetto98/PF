@@ -161,6 +161,7 @@ namespace UI.Desktop
             this.btnCaja = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.materialCard4 = new MaterialSkin.Controls.MaterialCard();
+            this.btnAtributos = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.btnObjetosPerdidos = new MaterialSkin.Controls.MaterialButton();
             this.materialCard3 = new MaterialSkin.Controls.MaterialCard();
@@ -2047,12 +2048,12 @@ namespace UI.Desktop
             this.materialCard5.Controls.Add(this.materialLabel6);
             this.materialCard5.Depth = 0;
             this.materialCard5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard5.Location = new System.Drawing.Point(17, 357);
+            this.materialCard5.Location = new System.Drawing.Point(17, 375);
             this.materialCard5.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard5.Name = "materialCard5";
             this.materialCard5.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard5.Size = new System.Drawing.Size(276, 284);
+            this.materialCard5.Size = new System.Drawing.Size(276, 268);
             this.materialCard5.TabIndex = 5;
             // 
             // btnGastos
@@ -2118,17 +2119,41 @@ namespace UI.Desktop
             // materialCard4
             // 
             this.materialCard4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard4.Controls.Add(this.btnAtributos);
             this.materialCard4.Controls.Add(this.materialLabel4);
             this.materialCard4.Controls.Add(this.btnObjetosPerdidos);
             this.materialCard4.Depth = 0;
             this.materialCard4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard4.Location = new System.Drawing.Point(309, 220);
+            this.materialCard4.Location = new System.Drawing.Point(309, 214);
             this.materialCard4.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard4.Name = "materialCard4";
             this.materialCard4.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard4.Size = new System.Drawing.Size(279, 121);
+            this.materialCard4.Size = new System.Drawing.Size(279, 146);
             this.materialCard4.TabIndex = 4;
+            // 
+            // btnAtributos
+            // 
+            this.btnAtributos.AutoSize = false;
+            this.btnAtributos.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAtributos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnAtributos.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnAtributos.Depth = 0;
+            this.btnAtributos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnAtributos.HighEmphasis = true;
+            this.btnAtributos.Icon = global::UI.Desktop.Properties.Resources.effective_employees_users_team_group_icon_152042;
+            this.btnAtributos.Location = new System.Drawing.Point(43, 87);
+            this.btnAtributos.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAtributos.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAtributos.Name = "btnAtributos";
+            this.btnAtributos.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnAtributos.Size = new System.Drawing.Size(196, 36);
+            this.btnAtributos.TabIndex = 5;
+            this.btnAtributos.Text = "Atributos del negocio";
+            this.btnAtributos.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnAtributos.UseAccentColor = false;
+            this.btnAtributos.UseVisualStyleBackColor = false;
+            this.btnAtributos.Click += new System.EventHandler(this.btnAtributos_Click);
             // 
             // materialLabel4
             // 
@@ -2137,7 +2162,7 @@ namespace UI.Desktop
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(18, 18);
+            this.materialLabel4.Location = new System.Drawing.Point(17, 14);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(71, 19);
@@ -2154,7 +2179,7 @@ namespace UI.Desktop
             this.btnObjetosPerdidos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnObjetosPerdidos.HighEmphasis = true;
             this.btnObjetosPerdidos.Icon = global::UI.Desktop.Properties.Resources.search_find_look_zoom_in_icon_icons_com_59897;
-            this.btnObjetosPerdidos.Location = new System.Drawing.Point(43, 43);
+            this.btnObjetosPerdidos.Location = new System.Drawing.Point(43, 39);
             this.btnObjetosPerdidos.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnObjetosPerdidos.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnObjetosPerdidos.Name = "btnObjetosPerdidos";
@@ -2182,7 +2207,7 @@ namespace UI.Desktop
             this.materialCard3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard3.Name = "materialCard3";
             this.materialCard3.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard3.Size = new System.Drawing.Size(279, 321);
+            this.materialCard3.Size = new System.Drawing.Size(279, 340);
             this.materialCard3.TabIndex = 3;
             // 
             // btnReporteEmpleados
@@ -2409,7 +2434,7 @@ namespace UI.Desktop
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(276, 321);
+            this.materialCard1.Size = new System.Drawing.Size(276, 340);
             this.materialCard1.TabIndex = 1;
             // 
             // btnUsuarios
@@ -2896,6 +2921,7 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnReporteGastos;
         private MaterialSkin.Controls.MaterialButton btnMovimientos;
         private MaterialSkin.Controls.MaterialButton btnReporteEmpleados;
+        private MaterialSkin.Controls.MaterialButton btnAtributos;
     }
 }
 

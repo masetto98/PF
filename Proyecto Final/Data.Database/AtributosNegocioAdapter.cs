@@ -28,7 +28,23 @@ namespace Data.Database
             //  throw ExceptionManejada;
         }
         //return null;
-    
+
+        public List<AtributosNegocio> GetAll()
+        {
+            List<AtributosNegocio> atributosNegocio = new List<AtributosNegocio>();
+            try
+            {
+                atributosNegocio = _context.AtributosNegocio.
+                    ToList();
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al recuperar listado de atributos del negocio", e);
+                throw ExceptionManejada;
+            }
+            return atributosNegocio;
+        }
+
         protected void Update(AtributosNegocio an)
         {
             try

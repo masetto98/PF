@@ -76,6 +76,9 @@ namespace UI.Desktop
                 this.cmbEntregaDomicilio.DataSource= Enum.GetNames(typeof(Orden.EntregasDomicilio));
                 this.cmbEntregaDomicilio.SelectedIndex = 0;
                 this.txtDescuento.Enabled = false;
+                this.dtpFechaIngreso.Value = DateTime.Now;
+                this.dtpFechaSalida.Value = DateTime.Now;
+                this.dtpFechaEntrega.Value = DateTime.Today;
             }
             catch (Exception e)
             {
@@ -602,8 +605,19 @@ namespace UI.Desktop
                 MapearADatos();
                 if (Validar() && OrdenActual.Cliente is not null && OrdenActual.ItemsPedidos.Count > 0)
                 {
-                    _ordenLogic.Save(OrdenActual);
-                    Close();
+                    if (MessageBox.Show("DATOS  DE LA ORDEN:" + "\n" 
+                        + "Cuit: " + OrdenActual.Cliente.Cuit + "\n"
+                        + "Cliente: " + OrdenActual.Cliente.Nombre + " " + OrdenActual.Cliente.Apellido + " | " + OrdenActual.Cliente.RazonSocial + "\n"
+                        + "Fecha y hora de entrega: " + OrdenActual.FechaHoraEntregaIngresada + "\n"
+                        + "Prioridad: " + OrdenActual.Prioridad + "\n"
+                        + "Entrega a domicilio: " + OrdenActual.EntregaDomicilio.ToString() + "\n"
+                        + "Descuento: " + OrdenActual.Descuento + "\n"
+                        + "Total: " + _total
+                        , "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        _ordenLogic.Save(OrdenActual);
+                        Close();
+                    }
                 }
                 else 
                 {
@@ -643,8 +657,10 @@ namespace UI.Desktop
             {
                 case ModoForm.Alta:
                     {
-                        GuardarCambios();
-                        //PrintComprobante();
+                        
+                            GuardarCambios();
+                            //PrintComprobante();
+                        
                     };
                     break;
                 case ModoForm.Modificacion:

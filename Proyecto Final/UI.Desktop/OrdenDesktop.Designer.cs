@@ -131,7 +131,7 @@ namespace UI.Desktop
             this.dtpFechaIngreso.Name = "dtpFechaIngreso";
             this.dtpFechaIngreso.Size = new System.Drawing.Size(279, 23);
             this.dtpFechaIngreso.TabIndex = 12;
-            this.dtpFechaIngreso.Value = new System.DateTime(2022, 6, 10, 15, 13, 24, 0);
+            this.dtpFechaIngreso.Value = new System.DateTime(2022, 10, 17, 0, 0, 0, 0);
             // 
             // dtpFechaSalida
             // 
@@ -146,7 +146,7 @@ namespace UI.Desktop
             this.dtpFechaSalida.Name = "dtpFechaSalida";
             this.dtpFechaSalida.Size = new System.Drawing.Size(279, 23);
             this.dtpFechaSalida.TabIndex = 12;
-            this.dtpFechaSalida.Value = new System.DateTime(2022, 6, 10, 15, 10, 13, 0);
+            this.dtpFechaSalida.Value = new System.DateTime(2022, 10, 17, 0, 0, 0, 0);
             // 
             // cmbEstado
             // 
@@ -839,7 +839,7 @@ namespace UI.Desktop
             this.dtpFechaEntrega.Name = "dtpFechaEntrega";
             this.dtpFechaEntrega.Size = new System.Drawing.Size(97, 23);
             this.dtpFechaEntrega.TabIndex = 41;
-            this.dtpFechaEntrega.Value = new System.DateTime(2022, 6, 10, 15, 13, 24, 0);
+            this.dtpFechaEntrega.Value = new System.DateTime(2022, 10, 17, 0, 0, 0, 0);
             // 
             // materialLabel4
             // 
