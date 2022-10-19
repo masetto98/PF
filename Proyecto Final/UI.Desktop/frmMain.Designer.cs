@@ -50,6 +50,7 @@ namespace UI.Desktop
             this.columnEstado = new System.Windows.Forms.ColumnHeader();
             this.mnuTabClientes = new System.Windows.Forms.TabPage();
             this.materialCard7 = new MaterialSkin.Controls.MaterialCard();
+            this.btnSaldarDeuda = new MaterialSkin.Controls.MaterialButton();
             this.lblCuentaCorriente = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
             this.btnAgregarPago = new MaterialSkin.Controls.MaterialButton();
@@ -529,17 +530,40 @@ namespace UI.Desktop
             // materialCard7
             // 
             this.materialCard7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard7.Controls.Add(this.btnSaldarDeuda);
             this.materialCard7.Controls.Add(this.lblCuentaCorriente);
             this.materialCard7.Controls.Add(this.materialLabel12);
             this.materialCard7.Depth = 0;
             this.materialCard7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard7.Location = new System.Drawing.Point(964, 16);
+            this.materialCard7.Location = new System.Drawing.Point(844, 16);
             this.materialCard7.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard7.Name = "materialCard7";
             this.materialCard7.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard7.Size = new System.Drawing.Size(283, 72);
+            this.materialCard7.Size = new System.Drawing.Size(403, 72);
             this.materialCard7.TabIndex = 14;
+            // 
+            // btnSaldarDeuda
+            // 
+            this.btnSaldarDeuda.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSaldarDeuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnSaldarDeuda.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnSaldarDeuda.Depth = 0;
+            this.btnSaldarDeuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnSaldarDeuda.HighEmphasis = true;
+            this.btnSaldarDeuda.Icon = null;
+            this.btnSaldarDeuda.Location = new System.Drawing.Point(263, 18);
+            this.btnSaldarDeuda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnSaldarDeuda.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnSaldarDeuda.Name = "btnSaldarDeuda";
+            this.btnSaldarDeuda.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnSaldarDeuda.Size = new System.Drawing.Size(127, 36);
+            this.btnSaldarDeuda.TabIndex = 3;
+            this.btnSaldarDeuda.Text = "Saldar deuda";
+            this.btnSaldarDeuda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnSaldarDeuda.UseAccentColor = false;
+            this.btnSaldarDeuda.UseVisualStyleBackColor = false;
+            this.btnSaldarDeuda.Click += new System.EventHandler(this.btnSaldarDeuda_Click);
             // 
             // lblCuentaCorriente
             // 
@@ -2922,6 +2946,7 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnMovimientos;
         private MaterialSkin.Controls.MaterialButton btnReporteEmpleados;
         private MaterialSkin.Controls.MaterialButton btnAtributos;
+        private MaterialSkin.Controls.MaterialButton btnSaldarDeuda;
     }
 }
 

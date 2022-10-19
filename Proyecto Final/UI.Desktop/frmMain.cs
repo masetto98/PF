@@ -422,6 +422,7 @@ namespace UI.Desktop
                             double importe = CalcularImporteOrden(o);
                             double pagos = CalcularPagosOrden(o);
                             _deudaCliente += (importe - pagos);
+                            
                         }
                     }
                 }
@@ -467,6 +468,51 @@ namespace UI.Desktop
             }
 
         }
+
+        private void btnSaldarDeuda_Click(object sender, EventArgs e)
+        {
+            
+            if (listClientes.SelectedItems.Count > 0) 
+            {
+                CalcularCuentaCorrienteCliente();
+                FormaPagoDesktop fp = new FormaPagoDesktop();
+                fp.ShowDialog();
+                Pago.FormasPago formaPago = fp.GetFormaPago();
+                if (MessageBox.Show("¿DESEA SALDAR LA DUEUDA DEL SIGUENTE CLIENTE:" + "\n"
+                       + "Cuit: " + listClientes.SelectedItems[0].SubItems[1].Text + "\n"
+                       + "Cliente: " + listClientes.SelectedItems[0].SubItems[2].Text + " " + listClientes.SelectedItems[0].SubItems[3].Text + " | " + listClientes.SelectedItems[0].SubItems[4].Text + "\n"
+                       + "Forma de pago: " + formaPago + "\n"
+                       + "Total: " + this.lblCuentaCorriente.Text
+                       , "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Cliente clienteActual = _clienteLogic.GetOne(Int32.Parse(listClientes.SelectedItems[0].Text));
+                    if (clienteActual is not null)
+                    {
+                        if (clienteActual.Ordenes is not null)
+                        {
+                            foreach (Orden o in clienteActual.Ordenes)
+                            {
+                                double importe = CalcularImporteOrden(o);
+                                double pagos = CalcularPagosOrden(o);
+                                if (importe != pagos)
+                                {
+                                    Pago pagoActual = new Pago();
+                                    pagoActual.FechaPago = DateTime.Now;
+                                    pagoActual.FormaPago = formaPago;
+                                    pagoActual.Importe = importe - pagos;
+                                    o.Factura.Pagos.Add(pagoActual);
+                                }
+                            }
+                            clienteActual.State = BusinessEntity.States.Modified;
+                            _clienteLogic.Save(clienteActual);
+                        }
+                    }
+                }
+                CalcularCuentaCorrienteCliente();
+                ListarOrdenesCliente();
+            }
+        }
+
 
         #endregion
 
@@ -1900,8 +1946,6 @@ namespace UI.Desktop
             
             
         }
-
-        
 
         
     }
