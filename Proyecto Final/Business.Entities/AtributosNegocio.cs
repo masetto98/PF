@@ -11,8 +11,8 @@ namespace Business.Entities
     public class AtributosNegocio:BusinessEntity
     {
         private int _id;
-        private TimeSpan _horasLaboralesDiarias;
-        private string _diasLaborales;
+        //private TimeSpan _horasLaboralesDiarias;
+        private string _logo_negocio;
         private string _nombreEmpresa;
         private string _direccionEmpresa;
         private string _telEmpresa;
@@ -25,19 +25,20 @@ namespace Business.Entities
             set { _id = value; }
         }
 
-        [Column("horas_laborales_diarias")]
+        /*[Column("horas_laborales_diarias")]
         public TimeSpan HorasLaboralesDiarias 
         {
             get {return _horasLaboralesDiarias; }
             set {_horasLaboralesDiarias = value; }
+        }*/
+
+        [Column("logo_negocio")]
+        public string LogoNegocio
+        {
+            get { return _logo_negocio;}
+            set { _logo_negocio = value; }
         }
 
-        [Column("dias_laborables")]
-        public string DiasLaborales 
-        {
-            get { return _diasLaborales;}
-            set { _diasLaborales = value; }
-        }
         [Column("nombre_empresa")]
         public string NombreEmpresa
         {

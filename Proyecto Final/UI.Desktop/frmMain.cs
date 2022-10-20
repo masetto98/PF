@@ -42,7 +42,7 @@ namespace UI.Desktop
         public frmMain(LavanderiaContext context)
         {
             InitializeComponent();
-            
+
             _context = context;
             _clienteLogic = new ClienteLogic(new ClienteAdapter(context));
             _atributosNegocioLogic = new AtributosNegocioLogic(new AtributosNegocioAdapter(context));
@@ -63,22 +63,22 @@ namespace UI.Desktop
             Planificar();
         }
 
-        private void RellenarComboBox(ListView listActual, ComboBox cbActual) 
+        private void RellenarComboBox(ListView listActual, ComboBox cbActual)
         {
             List<string> columnas = new List<string>();
-            foreach (ColumnHeader c in listActual.Columns) 
+            foreach (ColumnHeader c in listActual.Columns)
             {
                 columnas.Add(c.Text);
             }
             cbActual.DataSource = columnas;
         }
-
+        /*
         private void btnNuevoCliente_Click(object sender, EventArgs e)
         {
             ClienteDesktop frmCliente = new ClienteDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmCliente.ShowDialog();
 
-        }
+        }*/
 
         private void mnuPrincipal_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -114,7 +114,7 @@ namespace UI.Desktop
                     //ListarInsumos();
                     break;
                 case 3:
-                    
+
                     break;
 
             }
@@ -158,7 +158,7 @@ namespace UI.Desktop
             }
             else
             {
-                MessageBox.Show("Seleccionar una fila en la lista para poder editar","Cliente",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Seleccionar una fila en la lista para poder editar", "Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -178,7 +178,7 @@ namespace UI.Desktop
             }
 
         }
-        
+
 
         private void txtBuscarCliente_TextChanged(object sender, EventArgs e)
         {
@@ -287,7 +287,7 @@ namespace UI.Desktop
             listPagosOrden.Items.Clear();
         }
 
-        private void ListarOrdenesCliente() 
+        private void ListarOrdenesCliente()
         {
             listOrdenesCliente.Items.Clear();
             if (listClientes.SelectedItems.Count > 0)
@@ -344,7 +344,7 @@ namespace UI.Desktop
                 }
             }
 
-            if(ordenActual.Descuento != null)
+            if (ordenActual.Descuento != null)
             {
                 if (ordenActual.Descuento.StartsWith("%"))
                 {
@@ -364,7 +364,7 @@ namespace UI.Desktop
             }
         }
 
-        private double CalcularPagosOrden(Orden ordenActual) 
+        private double CalcularPagosOrden(Orden ordenActual)
         {
             double pagos = 0;
             if (ordenActual.Factura is not null && ordenActual.Factura.Pagos is not null)
@@ -377,7 +377,7 @@ namespace UI.Desktop
             return pagos;
         }
 
-        private void ListarPagosOrden() 
+        private void ListarPagosOrden()
         {
             listPagosOrden.Items.Clear();
             if (listOrdenesCliente.SelectedItems.Count > 0)
@@ -394,7 +394,7 @@ namespace UI.Desktop
                         listPagosOrden.Items.Add(item);
                     }
                 }
-                else { MessageBox.Show("La orden no contiene ningún pago","Pago",MessageBoxButtons.OK,MessageBoxIcon.Information); }
+                else { MessageBox.Show("La orden no contiene ningún pago", "Pago", MessageBoxButtons.OK, MessageBoxIcon.Information); }
             }
             else
             {
@@ -407,27 +407,28 @@ namespace UI.Desktop
             ListarPagosOrden();
         }
 
-        private void CalcularCuentaCorrienteCliente() 
+        private void CalcularCuentaCorrienteCliente()
         {
             _deudaCliente = 0;
-            if (listClientes.SelectedItems.Count > 0) 
+            if (listClientes.SelectedItems.Count > 0)
             {
                 Cliente clienteActual = _clienteLogic.GetOne(Int32.Parse(listClientes.SelectedItems[0].Text));
-                if (clienteActual is not null) 
+                if (clienteActual is not null)
                 {
-                    if (clienteActual.Ordenes is not null) 
+                    if (clienteActual.Ordenes is not null)
                     {
-                        foreach (Orden o in clienteActual.Ordenes) 
+                        foreach (Orden o in clienteActual.Ordenes)
                         {
                             double importe = CalcularImporteOrden(o);
                             double pagos = CalcularPagosOrden(o);
                             _deudaCliente += (importe - pagos);
+                            
                         }
                     }
                 }
                 this.lblCuentaCorriente.Text = _deudaCliente.ToString();
             }
-            
+
         }
 
         private void listClientes_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -460,13 +461,58 @@ namespace UI.Desktop
                 CalcularCuentaCorrienteCliente();
                 ListarPagosOrden();
             }
-            
+
             else
             {
-                MessageBox.Show("Debe seleccionar una orden de la lista \"Ordenes del cliente\" para poder agregar pagos","Pago",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Debe seleccionar una orden de la lista \"Ordenes del cliente\" para poder agregar pagos", "Pago", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-                
+
         }
+
+        private void btnSaldarDeuda_Click(object sender, EventArgs e)
+        {
+            
+            if (listClientes.SelectedItems.Count > 0) 
+            {
+                CalcularCuentaCorrienteCliente();
+                FormaPagoDesktop fp = new FormaPagoDesktop();
+                fp.ShowDialog();
+                Pago.FormasPago formaPago = fp.GetFormaPago();
+                if (MessageBox.Show("¿DESEA SALDAR LA DUEUDA DEL SIGUENTE CLIENTE:" + "\n"
+                       + "Cuit: " + listClientes.SelectedItems[0].SubItems[1].Text + "\n"
+                       + "Cliente: " + listClientes.SelectedItems[0].SubItems[2].Text + " " + listClientes.SelectedItems[0].SubItems[3].Text + " | " + listClientes.SelectedItems[0].SubItems[4].Text + "\n"
+                       + "Forma de pago: " + formaPago + "\n"
+                       + "Total: " + this.lblCuentaCorriente.Text
+                       , "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Cliente clienteActual = _clienteLogic.GetOne(Int32.Parse(listClientes.SelectedItems[0].Text));
+                    if (clienteActual is not null)
+                    {
+                        if (clienteActual.Ordenes is not null)
+                        {
+                            foreach (Orden o in clienteActual.Ordenes)
+                            {
+                                double importe = CalcularImporteOrden(o);
+                                double pagos = CalcularPagosOrden(o);
+                                if (importe != pagos)
+                                {
+                                    Pago pagoActual = new Pago();
+                                    pagoActual.FechaPago = DateTime.Now;
+                                    pagoActual.FormaPago = formaPago;
+                                    pagoActual.Importe = importe - pagos;
+                                    o.Factura.Pagos.Add(pagoActual);
+                                }
+                            }
+                            clienteActual.State = BusinessEntity.States.Modified;
+                            _clienteLogic.Save(clienteActual);
+                        }
+                    }
+                }
+                CalcularCuentaCorrienteCliente();
+                ListarOrdenesCliente();
+            }
+        }
+
 
         #endregion
 
@@ -475,7 +521,7 @@ namespace UI.Desktop
         {
             listIngresos.Items.Clear();
             List<InsumoProveedor> ingresos = _insumoProveedorLogic.GetAll();
-            foreach(InsumoProveedor ig in ingresos)
+            foreach (InsumoProveedor ig in ingresos)
             {
                 ListViewItem item = new ListViewItem(ig.IdProveedor.ToString());
                 item.SubItems.Add(ig.Proveedor.RazonSocial);
@@ -537,7 +583,7 @@ namespace UI.Desktop
             }
             else
             {
-                MessageBox.Show("Seleccionar una fila en la lista para poder editar","Insumo",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Seleccionar una fila en la lista para poder editar", "Insumo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             ListarStock();
         }
@@ -612,7 +658,7 @@ namespace UI.Desktop
                 }
                 else
                 {
-                    MessageBox.Show("Seleccionar una fila en la lista para poder editar","Ingreso",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    MessageBox.Show("Seleccionar una fila en la lista para poder editar", "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 //ListarIngresos();
             }
@@ -683,7 +729,7 @@ namespace UI.Desktop
             DateTime fechaFiltro = dtpFiltrarFechaIngreso.Value;
             List<InsumoProveedor> insumosproveedores = _insumoProveedorLogic.GetAll();
             List<InsumoProveedor> ipFecha = insumosproveedores.FindAll(
-                delegate(InsumoProveedor ip) {
+                delegate (InsumoProveedor ip) {
                     return ip.FechaIngreso.Date >= fechaFiltro.Date;
                 }
                 );
@@ -784,7 +830,7 @@ namespace UI.Desktop
             }
             else
             {
-                MessageBox.Show("Seleccionar una fila en la lista para poder editar","Ingreso",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Seleccionar una fila en la lista para poder editar", "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -844,7 +890,7 @@ namespace UI.Desktop
                         listInsumos.Items.Add(item);
                     }
                 }
-                
+
             }
             if (this.cmbInsumos.SelectedItem.ToString() == "Descripción")
             {
@@ -891,7 +937,7 @@ namespace UI.Desktop
                 }
 
             }
-            if (this.txtBuscarInsumos.Text == "") { ListarStock();}
+            if (this.txtBuscarInsumos.Text == "") { ListarStock(); }
         }
 
         private void listIngresos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
@@ -961,9 +1007,9 @@ namespace UI.Desktop
             {
                 foreach (Orden o in ordenes)
                 {
-                    string cliente = String.Concat(o.Cliente.Nombre," ", o.Cliente.Apellido," / ", o.Cliente.RazonSocial);
+                    string cliente = String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial);
                     //if (o.Cliente.Nombre.ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()) || o.Cliente.Apellido.ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()) || o.Cliente.RazonSocial.ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()))
-                    if(cliente.ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()))
+                    if (cliente.ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()))
                     {
                         ListViewItem item = new ListViewItem(o.NroOrden.ToString());
                         item.SubItems.Add(String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
@@ -1138,7 +1184,7 @@ namespace UI.Desktop
             }
             else
             {
-                MessageBox.Show("Seleccionar una fila en la lista para poder retirar la Orden","Orden",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Seleccionar una fila en la lista para poder retirar la Orden", "Orden", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -1176,8 +1222,8 @@ namespace UI.Desktop
 
         #region ------- LOGIN -------
         private void frmMain_Shown(object sender, EventArgs e)
-        { 
-            
+        {
+
             this.mnuPrincipal.Visible = false;
 
             this.epUser.Visible = false;
@@ -1191,7 +1237,7 @@ namespace UI.Desktop
             this.epUser.Visible = true;
             this.epUser.Title = $"{Singleton.getInstance().UserLogged.NombreUsuario}";
             ConfiguracionAdministrador();
-            
+
 
         }
 
@@ -1236,7 +1282,7 @@ namespace UI.Desktop
         }
         #region ------- TRABAJOS PENDIENTES -------
 
-        private void CargarListaEspera()
+        private void CargarListaEspera2()
         {
 
             foreach (OrdenServicioTipoPrenda item in _trabajosPendientes)
@@ -1253,6 +1299,26 @@ namespace UI.Desktop
             _listaEspera.Clear();
             _listaEspera = orderList;
         }
+
+        private void CargarListaEspera()
+        {
+
+            foreach (OrdenServicioTipoPrenda item in _trabajosPendientes)
+            {
+                ItemTrabajo trabajo = new ItemTrabajo();
+                trabajo.Trabajo = item;
+                //TimeSpan tiempoTranscurrido = DateTime.Today - item.Orden.FechaEntrada;
+                //TimeSpan tiempoRestante = TimeSpan.Parse(item.ServicioTipoPrenda.TiempoDemoraMax) - tiempoTranscurrido - item.ServicioTipoPrenda.TiempoRequerido;
+                TimeSpan tiempoRestante = item.Orden.FechaHoraEntregaIngresada - DateTime.Now;
+                trabajo.TiempoRestante = tiempoRestante;
+                _listaEspera.Add(trabajo);
+
+            }
+            List<ItemTrabajo> orderList = _listaEspera.OrderByDescending(i => i.Trabajo.Prioridad).ThenBy(i => i.Trabajo.Estado).ThenBy(i => i.TiempoRestante).ToList();
+            _listaEspera.Clear();
+            _listaEspera = orderList;
+        }
+
         public void ListarOrdenesTrabajosPendientes()
         {
             listTrabajosPendientes.Items.Clear();
@@ -1690,14 +1756,29 @@ namespace UI.Desktop
             }
         }
 
+        //Utilidades
         private void btnObjetosPerdidos_Click(object sender, EventArgs e)
         {
             ObjetosPerdidosForm frmObjetosPerdidos = new ObjetosPerdidosForm(_context);
             frmObjetosPerdidos.ShowDialog();
         }
 
-        
+        private void btnAtributos_Click(object sender, EventArgs e)
+        {
+            List<AtributosNegocio> atributosNegocio = _atributosNegocioLogic.GetAll();
+            if (atributosNegocio is null)
+            {
+                frmAtributosNegocio frmAtributosnegocio = new frmAtributosNegocio(ModoForm.Alta, _context);
+                frmAtributosnegocio.ShowDialog();
+            }
+            else 
+            {
+                frmAtributosNegocio frmAtributosnegocio = new frmAtributosNegocio(atributosNegocio.FirstOrDefault().ID,ModoForm.Modificacion, _context);
+                frmAtributosnegocio.ShowDialog();
+            }
+        }
 
+        //Administrar negocio
         private void btnServicioTipoPrenda_Click(object sender, EventArgs e)
         {
             ServicioTipoPrenda frmServicioTipoPrenda = new ServicioTipoPrenda(_context);
@@ -1710,22 +1791,10 @@ namespace UI.Desktop
             frmEmpleados.ShowDialog();
         }
 
-        private void btnClientes_Click(object sender, EventArgs e)
-        {
-            Clientes frmClientes = new Clientes(_context);
-            frmClientes.ShowDialog();
-        }
-
         private void btnMaquinas_Click(object sender, EventArgs e)
         {
             Maquinas frmMaquinas = new Maquinas(_context);
             frmMaquinas.ShowDialog();
-        }
-
-        private void btnProveedores_Click(object sender, EventArgs e)
-        {
-            Proveedores frmProveedores = new Proveedores(_context);
-            frmProveedores.ShowDialog();
         }
 
         private void btnServicio_Click(object sender, EventArgs e)
@@ -1746,6 +1815,8 @@ namespace UI.Desktop
             frmUsuarios.ShowDialog();
         }
 
+        //Finanzas
+
         private void btnCaja_Click(object sender, EventArgs e)
         {
             Caja frmCaja = new Caja(_context);
@@ -1756,6 +1827,50 @@ namespace UI.Desktop
         {
             Gastos frmGastos = new Gastos(_context);
             frmGastos.ShowDialog();
+        }
+
+        //Administracion externa 
+        private void btnProveedores_Click(object sender, EventArgs e)
+        {
+            Proveedores frmProveedores = new Proveedores(_context);
+            frmProveedores.ShowDialog();
+        }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            Clientes frmClientes = new Clientes(_context);
+            frmClientes.ShowDialog();
+        }
+
+        private void btnInsumos_Click(object sender, EventArgs e)
+        {
+            Insumos frmInsumo = new Insumos(_context);
+            frmInsumo.ShowDialog();
+        }
+
+        //Reportes
+        private void btnDeudas_Click(object sender, EventArgs e)
+        {
+            ReporteDeudas frmDeuda = new ReporteDeudas(_context);
+            frmDeuda.ShowDialog();
+        }
+
+        private void btnReporteGastos_Click(object sender, EventArgs e)
+        {
+            ReporteGastos frmGasto = new ReporteGastos(_context);
+            frmGasto.ShowDialog();
+        }
+
+        private void btnMovimientos_Click(object sender, EventArgs e)
+        {
+            ReporteMovimientos frmMovimientos = new ReporteMovimientos(_context);
+            frmMovimientos.ShowDialog();
+        }
+
+        private void btnReporteEmpleados_Click(object sender, EventArgs e)
+        {
+            ReporteEmpleado frmEmpleados = new ReporteEmpleado(_context);
+            frmEmpleados.ShowDialog();
         }
 
         #endregion
@@ -1854,45 +1969,12 @@ namespace UI.Desktop
             frmUser.ShowDialog();
         }
 
-        
         private void chkCambioColor_CheckedChanged(object sender, EventArgs e)
         {
            
                 CambiarColor(chkCambioColor.Checked);
             
             
-        }
-
-        private void btnDeudas_Click(object sender, EventArgs e)
-        {
-            ReporteDeudas frmDeuda = new ReporteDeudas(_context);
-            frmDeuda.ShowDialog();
-        }
-
-        private void btnReporteGastos_Click(object sender, EventArgs e)
-        {
-            ReporteGastos frmGasto = new ReporteGastos(_context);
-            frmGasto.ShowDialog();
-        }
-
-        private void btnInsumos_Click(object sender, EventArgs e)
-        {
-            Insumos frmInsumo = new Insumos(_context);
-            frmInsumo.ShowDialog();
-        }
-
-        private void btnMovimientos_Click(object sender, EventArgs e)
-        {
-            ReporteMovimientos frmMovimientos = new ReporteMovimientos(_context);
-            frmMovimientos.ShowDialog();
-        }
-
-        
-
-        private void btnReporteEmpleados_Click(object sender, EventArgs e)
-        {
-            ReporteEmpleado frmEmpleados = new ReporteEmpleado(_context);
-            frmEmpleados.ShowDialog();
         }
 
         
