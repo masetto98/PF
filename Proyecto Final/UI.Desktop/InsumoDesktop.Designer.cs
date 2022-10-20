@@ -30,10 +30,7 @@ namespace UI.Desktop
         private void InitializeComponent()
         {
             this.txtIDInsumo = new MaterialSkin.Controls.MaterialTextBox();
-            this.lblIdInsumo = new MaterialSkin.Controls.MaterialLabel();
-            this.lblDescInsumo = new MaterialSkin.Controls.MaterialLabel();
             this.txtDescInsumo = new MaterialSkin.Controls.MaterialTextBox();
-            this.lblExistenciaInsumo = new MaterialSkin.Controls.MaterialLabel();
             this.txtExistenciaInsumo = new MaterialSkin.Controls.MaterialTextBox();
             this.btnAceptarInsumo = new MaterialSkin.Controls.MaterialButton();
             this.btnCancelar = new MaterialSkin.Controls.MaterialButton();
@@ -51,43 +48,15 @@ namespace UI.Desktop
             this.txtIDInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtIDInsumo.Hint = "ID";
             this.txtIDInsumo.LeadingIcon = null;
-            this.txtIDInsumo.Location = new System.Drawing.Point(109, 89);
+            this.txtIDInsumo.Location = new System.Drawing.Point(46, 90);
             this.txtIDInsumo.MaxLength = 50;
             this.txtIDInsumo.MouseState = MaterialSkin.MouseState.OUT;
             this.txtIDInsumo.Multiline = false;
             this.txtIDInsumo.Name = "txtIDInsumo";
-            this.txtIDInsumo.Size = new System.Drawing.Size(302, 50);
+            this.txtIDInsumo.Size = new System.Drawing.Size(119, 50);
             this.txtIDInsumo.TabIndex = 0;
             this.txtIDInsumo.Text = "";
             this.txtIDInsumo.TrailingIcon = null;
-            // 
-            // lblIdInsumo
-            // 
-            this.lblIdInsumo.AutoSize = true;
-            this.lblIdInsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.lblIdInsumo.Depth = 0;
-            this.lblIdInsumo.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblIdInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblIdInsumo.Location = new System.Drawing.Point(19, 105);
-            this.lblIdInsumo.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblIdInsumo.Name = "lblIdInsumo";
-            this.lblIdInsumo.Size = new System.Drawing.Size(20, 19);
-            this.lblIdInsumo.TabIndex = 1;
-            this.lblIdInsumo.Text = "ID:";
-            // 
-            // lblDescInsumo
-            // 
-            this.lblDescInsumo.AutoSize = true;
-            this.lblDescInsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.lblDescInsumo.Depth = 0;
-            this.lblDescInsumo.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblDescInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblDescInsumo.Location = new System.Drawing.Point(19, 160);
-            this.lblDescInsumo.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblDescInsumo.Name = "lblDescInsumo";
-            this.lblDescInsumo.Size = new System.Drawing.Size(88, 19);
-            this.lblDescInsumo.TabIndex = 2;
-            this.lblDescInsumo.Text = "Descripción:";
             // 
             // txtDescInsumo
             // 
@@ -99,29 +68,15 @@ namespace UI.Desktop
             this.txtDescInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtDescInsumo.Hint = "Descripción";
             this.txtDescInsumo.LeadingIcon = null;
-            this.txtDescInsumo.Location = new System.Drawing.Point(109, 145);
+            this.txtDescInsumo.Location = new System.Drawing.Point(46, 146);
             this.txtDescInsumo.MaxLength = 50;
             this.txtDescInsumo.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDescInsumo.Multiline = false;
             this.txtDescInsumo.Name = "txtDescInsumo";
-            this.txtDescInsumo.Size = new System.Drawing.Size(302, 50);
+            this.txtDescInsumo.Size = new System.Drawing.Size(344, 50);
             this.txtDescInsumo.TabIndex = 3;
             this.txtDescInsumo.Text = "";
             this.txtDescInsumo.TrailingIcon = null;
-            // 
-            // lblExistenciaInsumo
-            // 
-            this.lblExistenciaInsumo.AutoSize = true;
-            this.lblExistenciaInsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.lblExistenciaInsumo.Depth = 0;
-            this.lblExistenciaInsumo.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblExistenciaInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblExistenciaInsumo.Location = new System.Drawing.Point(19, 218);
-            this.lblExistenciaInsumo.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblExistenciaInsumo.Name = "lblExistenciaInsumo";
-            this.lblExistenciaInsumo.Size = new System.Drawing.Size(77, 19);
-            this.lblExistenciaInsumo.TabIndex = 4;
-            this.lblExistenciaInsumo.Text = "Existencia:";
             // 
             // txtExistenciaInsumo
             // 
@@ -133,7 +88,7 @@ namespace UI.Desktop
             this.txtExistenciaInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtExistenciaInsumo.Hint = "Existencia";
             this.txtExistenciaInsumo.LeadingIcon = null;
-            this.txtExistenciaInsumo.Location = new System.Drawing.Point(109, 200);
+            this.txtExistenciaInsumo.Location = new System.Drawing.Point(46, 201);
             this.txtExistenciaInsumo.MaxLength = 50;
             this.txtExistenciaInsumo.MouseState = MaterialSkin.MouseState.OUT;
             this.txtExistenciaInsumo.Multiline = false;
@@ -142,6 +97,7 @@ namespace UI.Desktop
             this.txtExistenciaInsumo.TabIndex = 5;
             this.txtExistenciaInsumo.Text = "";
             this.txtExistenciaInsumo.TrailingIcon = null;
+            this.txtExistenciaInsumo.TextChanged += new System.EventHandler(this.txtExistenciaInsumo_TextChanged);
             // 
             // btnAceptarInsumo
             // 
@@ -152,7 +108,7 @@ namespace UI.Desktop
             this.btnAceptarInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAceptarInsumo.HighEmphasis = true;
             this.btnAceptarInsumo.Icon = null;
-            this.btnAceptarInsumo.Location = new System.Drawing.Point(221, 259);
+            this.btnAceptarInsumo.Location = new System.Drawing.Point(200, 273);
             this.btnAceptarInsumo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptarInsumo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptarInsumo.Name = "btnAceptarInsumo";
@@ -174,7 +130,7 @@ namespace UI.Desktop
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
-            this.btnCancelar.Location = new System.Drawing.Point(315, 259);
+            this.btnCancelar.Location = new System.Drawing.Point(294, 273);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -202,11 +158,11 @@ namespace UI.Desktop
             this.cmbUnidadMedida.Hint = "Unidad de medida";
             this.cmbUnidadMedida.IntegralHeight = false;
             this.cmbUnidadMedida.ItemHeight = 43;
-            this.cmbUnidadMedida.Location = new System.Drawing.Point(232, 200);
+            this.cmbUnidadMedida.Location = new System.Drawing.Point(169, 201);
             this.cmbUnidadMedida.MaxDropDownItems = 4;
             this.cmbUnidadMedida.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbUnidadMedida.Name = "cmbUnidadMedida";
-            this.cmbUnidadMedida.Size = new System.Drawing.Size(177, 49);
+            this.cmbUnidadMedida.Size = new System.Drawing.Size(221, 49);
             this.cmbUnidadMedida.StartIndex = 0;
             this.cmbUnidadMedida.TabIndex = 9;
             // 
@@ -214,15 +170,12 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 324);
+            this.ClientSize = new System.Drawing.Size(434, 324);
             this.Controls.Add(this.cmbUnidadMedida);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptarInsumo);
             this.Controls.Add(this.txtExistenciaInsumo);
-            this.Controls.Add(this.lblExistenciaInsumo);
             this.Controls.Add(this.txtDescInsumo);
-            this.Controls.Add(this.lblDescInsumo);
-            this.Controls.Add(this.lblIdInsumo);
             this.Controls.Add(this.txtIDInsumo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -238,10 +191,7 @@ namespace UI.Desktop
         #endregion
 
         private MaterialSkin.Controls.MaterialTextBox txtIDInsumo;
-        private MaterialSkin.Controls.MaterialLabel lblIdInsumo;
-        private MaterialSkin.Controls.MaterialLabel lblDescInsumo;
         private MaterialSkin.Controls.MaterialTextBox txtDescInsumo;
-        private MaterialSkin.Controls.MaterialLabel lblExistenciaInsumo;
         private MaterialSkin.Controls.MaterialTextBox txtExistenciaInsumo;
         private MaterialSkin.Controls.MaterialButton btnAceptarInsumo;
         private MaterialSkin.Controls.MaterialButton btnCancelar;

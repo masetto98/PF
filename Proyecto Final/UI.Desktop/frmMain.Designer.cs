@@ -1042,7 +1042,7 @@ namespace UI.Desktop
             this.txtBuscarInsumos.Depth = 0;
             this.txtBuscarInsumos.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtBuscarInsumos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtBuscarInsumos.Hint = "Buscar insumo ..";
+            this.txtBuscarInsumos.Hint = "Buscar insumo...";
             this.txtBuscarInsumos.LeadingIcon = null;
             this.txtBuscarInsumos.Location = new System.Drawing.Point(262, 510);
             this.txtBuscarInsumos.MaxLength = 50;
@@ -1087,7 +1087,7 @@ namespace UI.Desktop
             this.dtpFiltroFechaIngreso.Name = "dtpFiltroFechaIngreso";
             this.dtpFiltroFechaIngreso.Size = new System.Drawing.Size(118, 23);
             this.dtpFiltroFechaIngreso.TabIndex = 23;
-            this.dtpFiltroFechaIngreso.CloseUp += new System.EventHandler(this.dtpFiltroFechaIngreso_CloseUp);
+            this.dtpFiltroFechaIngreso.ValueChanged += new System.EventHandler(this.dtpFiltroFechaIngreso_ValueChanged);
             // 
             // materialLabel8
             // 
@@ -1096,12 +1096,12 @@ namespace UI.Desktop
             this.materialLabel8.Depth = 0;
             this.materialLabel8.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel8.Location = new System.Drawing.Point(842, 147);
+            this.materialLabel8.Location = new System.Drawing.Point(865, 145);
             this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel8.Name = "materialLabel8";
-            this.materialLabel8.Size = new System.Drawing.Size(117, 19);
+            this.materialLabel8.Size = new System.Drawing.Size(94, 19);
             this.materialLabel8.TabIndex = 22;
-            this.materialLabel8.Text = "Filtrar por fecha:";
+            this.materialLabel8.Text = "Fecha desde:";
             // 
             // materialLabel7
             // 
@@ -1294,12 +1294,12 @@ namespace UI.Desktop
             // columnDescripcionIns
             // 
             this.columnDescripcionIns.Text = "Descripción";
-            this.columnDescripcionIns.Width = 250;
+            this.columnDescripcionIns.Width = 251;
             // 
             // columnStock
             // 
             this.columnStock.Text = "Stock";
-            this.columnStock.Width = 101;
+            this.columnStock.Width = 100;
             // 
             // columnUniMedida
             // 
@@ -1350,7 +1350,7 @@ namespace UI.Desktop
             this.btnEliminarInsumo.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnEliminarInsumo.UseAccentColor = false;
             this.btnEliminarInsumo.UseVisualStyleBackColor = false;
-            this.btnEliminarInsumo.Click += new System.EventHandler(this.btnEditarInsumo_Click);
+            this.btnEliminarInsumo.Click += new System.EventHandler(this.btnEliminarInsumo_Click);
             // 
             // btnAgregarInsumo
             // 
@@ -1422,12 +1422,12 @@ namespace UI.Desktop
             this.lblFiltrarFecha.Depth = 0;
             this.lblFiltrarFecha.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblFiltrarFecha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblFiltrarFecha.Location = new System.Drawing.Point(757, 37);
+            this.lblFiltrarFecha.Location = new System.Drawing.Point(780, 37);
             this.lblFiltrarFecha.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblFiltrarFecha.Name = "lblFiltrarFecha";
-            this.lblFiltrarFecha.Size = new System.Drawing.Size(117, 19);
+            this.lblFiltrarFecha.Size = new System.Drawing.Size(94, 19);
             this.lblFiltrarFecha.TabIndex = 14;
-            this.lblFiltrarFecha.Text = "Filtrar por fecha:";
+            this.lblFiltrarFecha.Text = "Fecha desde:";
             // 
             // dtpFiltrarFechaIngreso
             // 

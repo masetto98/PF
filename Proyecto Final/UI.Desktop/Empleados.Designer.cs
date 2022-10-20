@@ -31,6 +31,7 @@ namespace UI.Desktop
         {
             FastReport.DataVisualization.Charting.ChartArea chartArea1 = new FastReport.DataVisualization.Charting.ChartArea();
             FastReport.DataVisualization.Charting.Legend legend1 = new FastReport.DataVisualization.Charting.Legend();
+            FastReport.DataVisualization.Charting.Title title1 = new FastReport.DataVisualization.Charting.Title();
             this.listEmpleados = new MaterialSkin.Controls.MaterialListView();
             this.columnID = new System.Windows.Forms.ColumnHeader();
             this.columnCuit = new System.Windows.Forms.ColumnHeader();
@@ -312,6 +313,9 @@ namespace UI.Desktop
             this.chartEmpleados.Name = "chartEmpleados";
             this.chartEmpleados.Size = new System.Drawing.Size(489, 259);
             this.chartEmpleados.TabIndex = 12;
+            title1.Name = "Title1";
+            title1.Text = "Porcentaje de Ordenes Registradas y Trabajos Atendidos por Empleado";
+            this.chartEmpleados.Titles.Add(title1);
             // 
             // Empleados
             // 

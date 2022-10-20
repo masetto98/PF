@@ -261,7 +261,7 @@ namespace UI.Desktop
             this.btnAgregarPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregarPago.HighEmphasis = true;
             this.btnAgregarPago.Icon = global::UI.Desktop.Properties.Resources.pay_payment_bill_dollar_cash_icon_143281;
-            this.btnAgregarPago.Location = new System.Drawing.Point(582, 24);
+            this.btnAgregarPago.Location = new System.Drawing.Point(601, 26);
             this.btnAgregarPago.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAgregarPago.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAgregarPago.Name = "btnAgregarPago";
@@ -368,7 +368,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(796, 514);
+            this.ClientSize = new System.Drawing.Size(793, 434);
             this.Controls.Add(this.txtSenia);
             this.Controls.Add(this.btnSaldarDeuda);
             this.Controls.Add(this.txtApagar);

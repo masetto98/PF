@@ -128,6 +128,7 @@ namespace UI.Desktop
                         this.txtImportePago.Enabled = false;
                         this.btnSaldarDeuda.Enabled = false;
                     }
+                    
                     this.txtNroFactura.Enabled = false;
                     this.txtTotalFactura.Enabled = false;
                     this.txtApagar.Enabled = false;
@@ -142,6 +143,7 @@ namespace UI.Desktop
                         this.txtImportePago.Enabled = false;
                         this.btnSaldarDeuda.Enabled = false;
                     }
+                    
                     this.txtTotalFactura.Enabled = false;
                     this.txtApagar.Enabled = false;
                     this.txtNroFactura.Enabled = false;
@@ -262,6 +264,7 @@ namespace UI.Desktop
                 OrdenActual.State = BusinessEntity.States.Modified;
                 _ordenLogic.Save(OrdenActual);
             }
+            FacturaActual.State = BusinessEntity.States.Modified;
             _facturaLogic.Save(FacturaActual);
             Close();
         }
@@ -396,5 +399,53 @@ namespace UI.Desktop
             }
             
         }
+
+        
+        /* SE QUITÓ LA FUNCIONALIDAD DE ELIMINAR PAGO
+        private void btnEliminarPago_Click(object sender, EventArgs e)
+        {
+            if (FacturaActual.Pagos.Count > 0)
+            {
+                EliminarPago();
+                //CalcularImporte();
+            }
+            else
+            {
+                MessageBox.Show("La factura debe contener por lo menos un pago", "Pago", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private void EliminarPago()
+        {
+            try
+            {
+
+                if (listPagos.SelectedItems.Count > 0)
+                {
+                    var _itemDelete = FacturaActual.Pagos.FindLast(
+                        delegate (Pago item)
+                        {
+                            return
+                                item.FechaPago.ToString("yyyy/MM/dd HH:mm:ss") == DateTime.Parse(this.listPagos.SelectedItems[0].SubItems[1].Text).ToString("yyyy/MM/dd HH:mm:ss")
+                                ;
+                        }
+                    );
+                    if(MessageBox.Show("¿Esta seguro que desea eliminar el pago seleccionado?", "Eliminar Pago", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        _pagoLogic.Delete(_itemDelete.NroFactura, _itemDelete.FechaPago);
+                        listPagos.Items.Remove(listPagos.SelectedItems[0]);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un pago de la lista para eliminar", "Pago", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+            catch (Exception r)
+            {
+                MessageBox.Show(r.Message, "ItemServicio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        */
     }
 }

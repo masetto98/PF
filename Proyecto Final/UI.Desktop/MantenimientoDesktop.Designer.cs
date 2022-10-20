@@ -31,8 +31,6 @@ namespace UI.Desktop
         {
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.dtpFechaRealizacion = new System.Windows.Forms.DateTimePicker();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.txtDescripcion = new MaterialSkin.Controls.MaterialTextBox();
             this.txtCosto = new MaterialSkin.Controls.MaterialTextBox();
             this.btnCancelar = new MaterialSkin.Controls.MaterialButton();
@@ -65,34 +63,6 @@ namespace UI.Desktop
             this.dtpFechaRealizacion.Size = new System.Drawing.Size(357, 23);
             this.dtpFechaRealizacion.TabIndex = 1;
             // 
-            // materialLabel2
-            // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(22, 148);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(88, 19);
-            this.materialLabel2.TabIndex = 2;
-            this.materialLabel2.Text = "Descripción:";
-            // 
-            // materialLabel3
-            // 
-            this.materialLabel3.AutoSize = true;
-            this.materialLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel3.Depth = 0;
-            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(22, 206);
-            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(46, 19);
-            this.materialLabel3.TabIndex = 3;
-            this.materialLabel3.Text = "Costo:";
-            // 
             // txtDescripcion
             // 
             this.txtDescripcion.AnimateReadOnly = false;
@@ -103,12 +73,12 @@ namespace UI.Desktop
             this.txtDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtDescripcion.Hint = "Descripción";
             this.txtDescripcion.LeadingIcon = null;
-            this.txtDescripcion.Location = new System.Drawing.Point(182, 135);
+            this.txtDescripcion.Location = new System.Drawing.Point(22, 135);
             this.txtDescripcion.MaxLength = 50;
             this.txtDescripcion.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDescripcion.Multiline = false;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(357, 50);
+            this.txtDescripcion.Size = new System.Drawing.Size(517, 50);
             this.txtDescripcion.TabIndex = 4;
             this.txtDescripcion.Text = "";
             this.txtDescripcion.TrailingIcon = null;
@@ -123,7 +93,7 @@ namespace UI.Desktop
             this.txtCosto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtCosto.Hint = "Costo";
             this.txtCosto.LeadingIcon = null;
-            this.txtCosto.Location = new System.Drawing.Point(182, 191);
+            this.txtCosto.Location = new System.Drawing.Point(22, 191);
             this.txtCosto.MaxLength = 50;
             this.txtCosto.MouseState = MaterialSkin.MouseState.OUT;
             this.txtCosto.Multiline = false;
@@ -186,8 +156,6 @@ namespace UI.Desktop
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtCosto);
             this.Controls.Add(this.txtDescripcion);
-            this.Controls.Add(this.materialLabel3);
-            this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.dtpFechaRealizacion);
             this.Controls.Add(this.materialLabel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -205,8 +173,6 @@ namespace UI.Desktop
 
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.DateTimePicker dtpFechaRealizacion;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialTextBox txtDescripcion;
         private MaterialSkin.Controls.MaterialTextBox txtCosto;
         private MaterialSkin.Controls.MaterialButton btnCancelar;

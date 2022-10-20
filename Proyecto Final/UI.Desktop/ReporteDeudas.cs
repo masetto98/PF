@@ -65,7 +65,7 @@ namespace UI.Desktop
                             pagos += p.Importe;
                         }
                     };
-                    return or.Estado == Orden.Estados.Retirado && or.Factura.Importe > pagos;
+                    return (or.Estado == Orden.Estados.Retirado && or.Factura.Importe > pagos) || (or.FechaHoraEntregaIngresada < DateTime.Now && or.FechaSalida.Date.ToString() == "0001-01-01");
                 });
         }
         private double CalcularPagosOrden(Orden ordenActual)

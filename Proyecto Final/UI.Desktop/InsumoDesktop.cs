@@ -131,7 +131,7 @@ namespace UI.Desktop
             }
             catch (Exception e)
             {
-              MessageBox.Show(e.Message, "Insumo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+              MessageBox.Show("Alguno de los datos ingresados no son válidos. Por favor, ingrese datos válidos para poder continuar.", "Insumo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -184,6 +184,14 @@ namespace UI.Desktop
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void txtExistenciaInsumo_TextChanged(object sender, EventArgs e)
+        {
+            if(this.txtExistenciaInsumo.Text.Contains("-"))
+            {
+                MessageBox.Show("La cantidad de existencia ingresada no es válida. Por favor, vuelva a ingresar una cantidad válida para continuar.","Info",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
         }
     }
 }

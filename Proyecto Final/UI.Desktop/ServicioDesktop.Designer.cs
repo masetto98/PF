@@ -33,8 +33,6 @@ namespace UI.Desktop
             this.btnAceptar = new MaterialSkin.Controls.MaterialButton();
             this.txtID = new MaterialSkin.Controls.MaterialTextBox();
             this.txtDescripcion = new MaterialSkin.Controls.MaterialTextBox();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -46,7 +44,7 @@ namespace UI.Desktop
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
-            this.btnCancelar.Location = new System.Drawing.Point(300, 210);
+            this.btnCancelar.Location = new System.Drawing.Point(275, 215);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -67,7 +65,7 @@ namespace UI.Desktop
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAceptar.HighEmphasis = true;
             this.btnAceptar.Icon = null;
-            this.btnAceptar.Location = new System.Drawing.Point(206, 210);
+            this.btnAceptar.Location = new System.Drawing.Point(181, 215);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptar.Name = "btnAceptar";
@@ -91,7 +89,7 @@ namespace UI.Desktop
             this.txtID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtID.Hint = "ID";
             this.txtID.LeadingIcon = null;
-            this.txtID.Location = new System.Drawing.Point(106, 95);
+            this.txtID.Location = new System.Drawing.Point(49, 95);
             this.txtID.MaxLength = 50;
             this.txtID.MouseState = MaterialSkin.MouseState.OUT;
             this.txtID.Multiline = false;
@@ -111,43 +109,15 @@ namespace UI.Desktop
             this.txtDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtDescripcion.Hint = "Descripción";
             this.txtDescripcion.LeadingIcon = null;
-            this.txtDescripcion.Location = new System.Drawing.Point(106, 151);
+            this.txtDescripcion.Location = new System.Drawing.Point(49, 151);
             this.txtDescripcion.MaxLength = 50;
             this.txtDescripcion.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDescripcion.Multiline = false;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(290, 50);
+            this.txtDescripcion.Size = new System.Drawing.Size(322, 50);
             this.txtDescripcion.TabIndex = 3;
             this.txtDescripcion.Text = "";
             this.txtDescripcion.TrailingIcon = null;
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(12, 108);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(20, 19);
-            this.materialLabel1.TabIndex = 4;
-            this.materialLabel1.Text = "ID:";
-            // 
-            // materialLabel2
-            // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(12, 164);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(88, 19);
-            this.materialLabel2.TabIndex = 5;
-            this.materialLabel2.Text = "Descripción:";
             // 
             // ServicioDesktop
             // 
@@ -156,8 +126,6 @@ namespace UI.Desktop
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(419, 266);
-            this.Controls.Add(this.materialLabel2);
-            this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.btnAceptar);
@@ -179,7 +147,5 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnAceptar;
         private MaterialSkin.Controls.MaterialTextBox txtID;
         private MaterialSkin.Controls.MaterialTextBox txtDescripcion;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
     }
 }

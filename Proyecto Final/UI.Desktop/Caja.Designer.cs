@@ -35,6 +35,7 @@ namespace UI.Desktop
             FastReport.DataVisualization.Charting.Title title1 = new FastReport.DataVisualization.Charting.Title();
             FastReport.DataVisualization.Charting.ChartArea chartArea2 = new FastReport.DataVisualization.Charting.ChartArea();
             FastReport.DataVisualization.Charting.Series series2 = new FastReport.DataVisualization.Charting.Series();
+            FastReport.DataVisualization.Charting.Title title2 = new FastReport.DataVisualization.Charting.Title();
             this.listOrdenes = new MaterialSkin.Controls.MaterialListView();
             this.columnNro = new System.Windows.Forms.ColumnHeader();
             this.columnFechaSalida = new System.Windows.Forms.ColumnHeader();
@@ -120,7 +121,7 @@ namespace UI.Desktop
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(196, 23);
             this.dtpFecha.TabIndex = 1;
-            this.dtpFecha.Value = new System.DateTime(2022, 8, 31, 0, 0, 0, 0);
+            this.dtpFecha.Value = new System.DateTime(2022, 10, 4, 0, 0, 0, 0);
             this.dtpFecha.ValueChanged += new System.EventHandler(this.dtpFecha_ValueChanged);
             // 
             // materialCard1
@@ -414,7 +415,7 @@ namespace UI.Desktop
             this.dtpFechaHasta.Name = "dtpFechaHasta";
             this.dtpFechaHasta.Size = new System.Drawing.Size(196, 23);
             this.dtpFechaHasta.TabIndex = 9;
-            this.dtpFechaHasta.Value = new System.DateTime(2022, 8, 31, 0, 0, 0, 0);
+            this.dtpFechaHasta.Value = new System.DateTime(2022, 10, 4, 0, 0, 0, 0);
             this.dtpFechaHasta.ValueChanged += new System.EventHandler(this.dtpFechaHasta_ValueChanged);
             // 
             // chartGastos
@@ -449,7 +450,7 @@ namespace UI.Desktop
             this.chartIngresos.Location = new System.Drawing.Point(923, 334);
             this.chartIngresos.Name = "chartIngresos";
             series2.ChartArea = "ChartArea1";
-            series2.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Line;
             series2.Name = "Ingresos";
             series2.XValueType = FastReport.DataVisualization.Charting.ChartValueType.Date;
             series2.YValuesPerPoint = 3;
@@ -457,6 +458,9 @@ namespace UI.Desktop
             this.chartIngresos.Size = new System.Drawing.Size(382, 251);
             this.chartIngresos.TabIndex = 12;
             this.chartIngresos.Text = "chart1";
+            title2.Name = "Title1";
+            title2.Text = "Evolución de los Ingresos en el Periodo seleccionado";
+            this.chartIngresos.Titles.Add(title2);
             // 
             // Caja
             // 

@@ -29,15 +29,15 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            FastReport.DataVisualization.Charting.ChartArea chartArea1 = new FastReport.DataVisualization.Charting.ChartArea();
-            FastReport.DataVisualization.Charting.Legend legend1 = new FastReport.DataVisualization.Charting.Legend();
+            FastReport.DataVisualization.Charting.ChartArea chartArea2 = new FastReport.DataVisualization.Charting.ChartArea();
+            FastReport.DataVisualization.Charting.Legend legend2 = new FastReport.DataVisualization.Charting.Legend();
+            FastReport.DataVisualization.Charting.Title title2 = new FastReport.DataVisualization.Charting.Title();
             this.listServicios = new MaterialSkin.Controls.MaterialListView();
             this.columnID = new System.Windows.Forms.ColumnHeader();
             this.columnDescripcion = new System.Windows.Forms.ColumnHeader();
             this.btnEliminar = new MaterialSkin.Controls.MaterialButton();
             this.btnEditar = new MaterialSkin.Controls.MaterialButton();
             this.btnAgregar = new MaterialSkin.Controls.MaterialButton();
-            this.btnDetalles = new MaterialSkin.Controls.MaterialButton();
             this.btnCerrar = new MaterialSkin.Controls.MaterialButton();
             this.chartServicios = new FastReport.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.chartServicios)).BeginInit();
@@ -148,29 +148,6 @@ namespace UI.Desktop
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // btnDetalles
-            // 
-            this.btnDetalles.AutoSize = false;
-            this.btnDetalles.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnDetalles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.btnDetalles.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnDetalles.Depth = 0;
-            this.btnDetalles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnDetalles.HighEmphasis = true;
-            this.btnDetalles.Icon = global::UI.Desktop.Properties.Resources.document_3530;
-            this.btnDetalles.Location = new System.Drawing.Point(396, 151);
-            this.btnDetalles.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnDetalles.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnDetalles.Name = "btnDetalles";
-            this.btnDetalles.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnDetalles.Size = new System.Drawing.Size(114, 51);
-            this.btnDetalles.TabIndex = 8;
-            this.btnDetalles.Text = "Detalles";
-            this.btnDetalles.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnDetalles.UseAccentColor = false;
-            this.btnDetalles.UseVisualStyleBackColor = false;
-            this.btnDetalles.Click += new System.EventHandler(this.btnDetalles_Click);
-            // 
             // btnCerrar
             // 
             this.btnCerrar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -196,17 +173,21 @@ namespace UI.Desktop
             // chartServicios
             // 
             this.chartServicios.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            this.chartServicios.ChartAreas.Add(chartArea1);
-            legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            legend1.IsTextAutoFit = false;
-            legend1.Name = "Legend1";
-            this.chartServicios.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            chartArea2.ShadowColor = System.Drawing.Color.Transparent;
+            this.chartServicios.ChartAreas.Add(chartArea2);
+            legend2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            legend2.IsTextAutoFit = false;
+            legend2.Name = "Legend1";
+            this.chartServicios.Legends.Add(legend2);
             this.chartServicios.Location = new System.Drawing.Point(431, 211);
             this.chartServicios.Name = "chartServicios";
             this.chartServicios.Size = new System.Drawing.Size(498, 317);
             this.chartServicios.TabIndex = 11;
             this.chartServicios.Text = "chart1";
+            title2.Name = "Title1";
+            title2.Text = "Porcentaje de Tipos de Prenda atentidos por Servicios";
+            this.chartServicios.Titles.Add(title2);
             // 
             // Servicios
             // 
@@ -215,7 +196,6 @@ namespace UI.Desktop
             this.ClientSize = new System.Drawing.Size(954, 582);
             this.Controls.Add(this.chartServicios);
             this.Controls.Add(this.btnCerrar);
-            this.Controls.Add(this.btnDetalles);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnAgregar);
@@ -240,7 +220,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnEliminar;
         private MaterialSkin.Controls.MaterialButton btnEditar;
         private MaterialSkin.Controls.MaterialButton btnAgregar;
-        private MaterialSkin.Controls.MaterialButton btnDetalles;
         private MaterialSkin.Controls.MaterialButton btnCerrar;
         private FastReport.DataVisualization.Charting.Chart chartServicios;
     }

@@ -188,7 +188,7 @@ namespace UI.Desktop
                 Close();
 
             }
-            else if(MessageBox.Show("Aún no se han completado los pagos correspondientes ¿Desea continuar con el retiro de la orden?", "Retirar Orden", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            else if(MessageBox.Show("Aún no se han completado los pagos correspondientes ¿Desea continuar con el retiro de la orden?", "Retirar Orden", MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 if(OrdenActual.Factura.Importe == 0)
                 {

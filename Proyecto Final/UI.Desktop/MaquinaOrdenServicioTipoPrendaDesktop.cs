@@ -400,7 +400,11 @@ namespace UI.Desktop
             else { return true; }
 
         }
-        
 
+        private void listEstadoMaquinas_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listEstadoMaquinas.Columns[e.ColumnIndex].Width;
+        }
     }
 }

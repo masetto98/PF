@@ -40,12 +40,13 @@ namespace UI.Desktop
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(35, 93);
+            this.materialLabel1.Location = new System.Drawing.Point(35, 85);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(217, 63);
+            this.materialLabel1.Size = new System.Drawing.Size(228, 88);
             this.materialLabel1.TabIndex = 0;
-            this.materialLabel1.Text = "Por favor, seleccione una \r\nforma de pago para continuar!";
+            this.materialLabel1.Text = "Por favor, seleccione una \r\nforma de pago para continuar\r\n\r\n";
+            this.materialLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cbFormaPago
             // 

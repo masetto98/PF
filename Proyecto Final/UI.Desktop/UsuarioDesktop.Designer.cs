@@ -30,19 +30,12 @@ namespace UI.Desktop
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.txtIdUsuario = new MaterialSkin.Controls.MaterialTextBox();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.txtCuit = new MaterialSkin.Controls.MaterialTextBox();
             this.txtNombre = new MaterialSkin.Controls.MaterialTextBox();
             this.txtApellido = new MaterialSkin.Controls.MaterialTextBox();
             this.txtNombreUsuario = new MaterialSkin.Controls.MaterialTextBox();
             this.chkHabilitado = new MaterialSkin.Controls.MaterialCheckbox();
-            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
             this.btnAceptarUsuario = new MaterialSkin.Controls.MaterialButton();
             this.btnCancelarUsuario = new MaterialSkin.Controls.MaterialButton();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
@@ -62,20 +55,6 @@ namespace UI.Desktop
             ((System.ComponentModel.ISupportInitialize)(this.hidePass2)).BeginInit();
             this.SuspendLayout();
             // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(26, 336);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(20, 19);
-            this.materialLabel1.TabIndex = 0;
-            this.materialLabel1.Text = "ID:";
-            // 
             // txtIdUsuario
             // 
             this.txtIdUsuario.AnimateReadOnly = false;
@@ -87,7 +66,7 @@ namespace UI.Desktop
             this.txtIdUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtIdUsuario.Hint = "ID";
             this.txtIdUsuario.LeadingIcon = null;
-            this.txtIdUsuario.Location = new System.Drawing.Point(189, 315);
+            this.txtIdUsuario.Location = new System.Drawing.Point(66, 313);
             this.txtIdUsuario.MaxLength = 50;
             this.txtIdUsuario.MouseState = MaterialSkin.MouseState.OUT;
             this.txtIdUsuario.Multiline = false;
@@ -96,34 +75,6 @@ namespace UI.Desktop
             this.txtIdUsuario.TabIndex = 4;
             this.txtIdUsuario.Text = "";
             this.txtIdUsuario.TrailingIcon = null;
-            // 
-            // materialLabel2
-            // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(13, 56);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(33, 19);
-            this.materialLabel2.TabIndex = 2;
-            this.materialLabel2.Text = "Cuit:";
-            // 
-            // materialLabel3
-            // 
-            this.materialLabel3.AutoSize = true;
-            this.materialLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel3.Depth = 0;
-            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(11, 112);
-            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(61, 19);
-            this.materialLabel3.TabIndex = 3;
-            this.materialLabel3.Text = "Nombre:";
             // 
             // txtCuit
             // 
@@ -135,7 +86,7 @@ namespace UI.Desktop
             this.txtCuit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtCuit.Hint = "Cuit";
             this.txtCuit.LeadingIcon = null;
-            this.txtCuit.Location = new System.Drawing.Point(78, 40);
+            this.txtCuit.Location = new System.Drawing.Point(40, 40);
             this.txtCuit.MaxLength = 50;
             this.txtCuit.MouseState = MaterialSkin.MouseState.OUT;
             this.txtCuit.Multiline = false;
@@ -158,7 +109,7 @@ namespace UI.Desktop
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtNombre.Hint = "Nombre";
             this.txtNombre.LeadingIcon = null;
-            this.txtNombre.Location = new System.Drawing.Point(78, 96);
+            this.txtNombre.Location = new System.Drawing.Point(40, 96);
             this.txtNombre.MaxLength = 50;
             this.txtNombre.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNombre.Multiline = false;
@@ -179,7 +130,7 @@ namespace UI.Desktop
             this.txtApellido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtApellido.Hint = "Apellido";
             this.txtApellido.LeadingIcon = null;
-            this.txtApellido.Location = new System.Drawing.Point(78, 152);
+            this.txtApellido.Location = new System.Drawing.Point(40, 152);
             this.txtApellido.MaxLength = 50;
             this.txtApellido.MouseState = MaterialSkin.MouseState.OUT;
             this.txtApellido.Multiline = false;
@@ -199,12 +150,12 @@ namespace UI.Desktop
             this.txtNombreUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtNombreUsuario.Hint = "Nombre de usuario";
             this.txtNombreUsuario.LeadingIcon = null;
-            this.txtNombreUsuario.Location = new System.Drawing.Point(189, 371);
+            this.txtNombreUsuario.Location = new System.Drawing.Point(66, 369);
             this.txtNombreUsuario.MaxLength = 50;
             this.txtNombreUsuario.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNombreUsuario.Multiline = false;
             this.txtNombreUsuario.Name = "txtNombreUsuario";
-            this.txtNombreUsuario.Size = new System.Drawing.Size(237, 50);
+            this.txtNombreUsuario.Size = new System.Drawing.Size(322, 50);
             this.txtNombreUsuario.TabIndex = 5;
             this.txtNombreUsuario.Text = "";
             this.txtNombreUsuario.TrailingIcon = null;
@@ -215,7 +166,7 @@ namespace UI.Desktop
             this.chkHabilitado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.chkHabilitado.Depth = 0;
             this.chkHabilitado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.chkHabilitado.Location = new System.Drawing.Point(189, 536);
+            this.chkHabilitado.Location = new System.Drawing.Point(66, 534);
             this.chkHabilitado.Margin = new System.Windows.Forms.Padding(0);
             this.chkHabilitado.MouseLocation = new System.Drawing.Point(-1, -1);
             this.chkHabilitado.MouseState = MaterialSkin.MouseState.HOVER;
@@ -227,62 +178,6 @@ namespace UI.Desktop
             this.chkHabilitado.Text = "Habilitado";
             this.chkHabilitado.UseVisualStyleBackColor = false;
             // 
-            // materialLabel4
-            // 
-            this.materialLabel4.AutoSize = true;
-            this.materialLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel4.Depth = 0;
-            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(13, 167);
-            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(62, 19);
-            this.materialLabel4.TabIndex = 11;
-            this.materialLabel4.Text = "Apellido:";
-            // 
-            // materialLabel5
-            // 
-            this.materialLabel5.AutoSize = true;
-            this.materialLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel5.Depth = 0;
-            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(26, 497);
-            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(161, 19);
-            this.materialLabel5.TabIndex = 12;
-            this.materialLabel5.Text = "Confirmar Contraseña:";
-            // 
-            // materialLabel6
-            // 
-            this.materialLabel6.AutoSize = true;
-            this.materialLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel6.Depth = 0;
-            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel6.Location = new System.Drawing.Point(26, 391);
-            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel6.Name = "materialLabel6";
-            this.materialLabel6.Size = new System.Drawing.Size(59, 19);
-            this.materialLabel6.TabIndex = 13;
-            this.materialLabel6.Text = "Usuario:";
-            // 
-            // materialLabel7
-            // 
-            this.materialLabel7.AutoSize = true;
-            this.materialLabel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel7.Depth = 0;
-            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel7.Location = new System.Drawing.Point(24, 449);
-            this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel7.Name = "materialLabel7";
-            this.materialLabel7.Size = new System.Drawing.Size(86, 19);
-            this.materialLabel7.TabIndex = 14;
-            this.materialLabel7.Text = "Contraseña:";
-            // 
             // btnAceptarUsuario
             // 
             this.btnAceptarUsuario.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -292,7 +187,7 @@ namespace UI.Desktop
             this.btnAceptarUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAceptarUsuario.HighEmphasis = true;
             this.btnAceptarUsuario.Icon = null;
-            this.btnAceptarUsuario.Location = new System.Drawing.Point(238, 576);
+            this.btnAceptarUsuario.Location = new System.Drawing.Point(239, 571);
             this.btnAceptarUsuario.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptarUsuario.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptarUsuario.Name = "btnAceptarUsuario";
@@ -314,7 +209,7 @@ namespace UI.Desktop
             this.btnCancelarUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelarUsuario.HighEmphasis = true;
             this.btnCancelarUsuario.Icon = null;
-            this.btnCancelarUsuario.Location = new System.Drawing.Point(330, 576);
+            this.btnCancelarUsuario.Location = new System.Drawing.Point(331, 571);
             this.btnCancelarUsuario.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelarUsuario.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelarUsuario.Name = "btnCancelarUsuario";
@@ -332,11 +227,8 @@ namespace UI.Desktop
             this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.materialCard1.Controls.Add(this.btnBuscar);
             this.materialCard1.Controls.Add(this.materialLabel8);
-            this.materialCard1.Controls.Add(this.materialLabel2);
             this.materialCard1.Controls.Add(this.txtCuit);
-            this.materialCard1.Controls.Add(this.materialLabel3);
             this.materialCard1.Controls.Add(this.txtNombre);
-            this.materialCard1.Controls.Add(this.materialLabel4);
             this.materialCard1.Controls.Add(this.txtApellido);
             this.materialCard1.Depth = 0;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -356,13 +248,13 @@ namespace UI.Desktop
             this.btnBuscar.Depth = 0;
             this.btnBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnBuscar.HighEmphasis = true;
-            this.btnBuscar.Icon = null;
-            this.btnBuscar.Location = new System.Drawing.Point(327, 46);
+            this.btnBuscar.Icon = global::UI.Desktop.Properties.Resources.searcher_magnifyng_glass_search_locate_find_icon_123813;
+            this.btnBuscar.Location = new System.Drawing.Point(296, 54);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnBuscar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnBuscar.Size = new System.Drawing.Size(77, 36);
+            this.btnBuscar.Size = new System.Drawing.Size(105, 36);
             this.btnBuscar.TabIndex = 12;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -403,7 +295,7 @@ namespace UI.Desktop
             this.txtClaveUser.HideSelection = true;
             this.txtClaveUser.Hint = "Contraseña";
             this.txtClaveUser.LeadingIcon = null;
-            this.txtClaveUser.Location = new System.Drawing.Point(189, 429);
+            this.txtClaveUser.Location = new System.Drawing.Point(66, 427);
             this.txtClaveUser.MaxLength = 32767;
             this.txtClaveUser.MouseState = MaterialSkin.MouseState.OUT;
             this.txtClaveUser.Name = "txtClaveUser";
@@ -415,7 +307,7 @@ namespace UI.Desktop
             this.txtClaveUser.SelectionLength = 0;
             this.txtClaveUser.SelectionStart = 0;
             this.txtClaveUser.ShortcutsEnabled = true;
-            this.txtClaveUser.Size = new System.Drawing.Size(237, 48);
+            this.txtClaveUser.Size = new System.Drawing.Size(322, 48);
             this.txtClaveUser.TabIndex = 18;
             this.txtClaveUser.TabStop = false;
             this.txtClaveUser.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -433,7 +325,7 @@ namespace UI.Desktop
             this.txtConfirmarClave.HideSelection = true;
             this.txtConfirmarClave.Hint = "Confirmar contraseña";
             this.txtConfirmarClave.LeadingIcon = null;
-            this.txtConfirmarClave.Location = new System.Drawing.Point(189, 485);
+            this.txtConfirmarClave.Location = new System.Drawing.Point(66, 483);
             this.txtConfirmarClave.MaxLength = 32767;
             this.txtConfirmarClave.MouseState = MaterialSkin.MouseState.OUT;
             this.txtConfirmarClave.Name = "txtConfirmarClave";
@@ -445,7 +337,7 @@ namespace UI.Desktop
             this.txtConfirmarClave.SelectionLength = 0;
             this.txtConfirmarClave.SelectionStart = 0;
             this.txtConfirmarClave.ShortcutsEnabled = true;
-            this.txtConfirmarClave.Size = new System.Drawing.Size(237, 48);
+            this.txtConfirmarClave.Size = new System.Drawing.Size(322, 48);
             this.txtConfirmarClave.TabIndex = 19;
             this.txtConfirmarClave.TabStop = false;
             this.txtConfirmarClave.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -456,7 +348,7 @@ namespace UI.Desktop
             // 
             this.showPass1.BackColor = System.Drawing.Color.Transparent;
             this.showPass1.Image = global::UI.Desktop.Properties.Resources.show_icon_215343;
-            this.showPass1.Location = new System.Drawing.Point(432, 438);
+            this.showPass1.Location = new System.Drawing.Point(394, 436);
             this.showPass1.Name = "showPass1";
             this.showPass1.Size = new System.Drawing.Size(33, 30);
             this.showPass1.TabIndex = 20;
@@ -467,7 +359,7 @@ namespace UI.Desktop
             // 
             this.hidePass1.BackColor = System.Drawing.Color.Transparent;
             this.hidePass1.Image = global::UI.Desktop.Properties.Resources.hide_icon_183908;
-            this.hidePass1.Location = new System.Drawing.Point(432, 438);
+            this.hidePass1.Location = new System.Drawing.Point(394, 436);
             this.hidePass1.Name = "hidePass1";
             this.hidePass1.Size = new System.Drawing.Size(33, 30);
             this.hidePass1.TabIndex = 21;
@@ -478,7 +370,7 @@ namespace UI.Desktop
             // 
             this.showPass2.BackColor = System.Drawing.Color.Transparent;
             this.showPass2.Image = global::UI.Desktop.Properties.Resources.show_icon_215343;
-            this.showPass2.Location = new System.Drawing.Point(432, 497);
+            this.showPass2.Location = new System.Drawing.Point(394, 495);
             this.showPass2.Name = "showPass2";
             this.showPass2.Size = new System.Drawing.Size(33, 30);
             this.showPass2.TabIndex = 23;
@@ -489,7 +381,7 @@ namespace UI.Desktop
             // 
             this.hidePass2.BackColor = System.Drawing.Color.Transparent;
             this.hidePass2.Image = global::UI.Desktop.Properties.Resources.hide_icon_183908;
-            this.hidePass2.Location = new System.Drawing.Point(432, 497);
+            this.hidePass2.Location = new System.Drawing.Point(394, 495);
             this.hidePass2.Name = "hidePass2";
             this.hidePass2.Size = new System.Drawing.Size(33, 30);
             this.hidePass2.TabIndex = 24;
@@ -502,7 +394,7 @@ namespace UI.Desktop
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancelarUsuario;
-            this.ClientSize = new System.Drawing.Size(471, 622);
+            this.ClientSize = new System.Drawing.Size(467, 622);
             this.Controls.Add(this.showPass2);
             this.Controls.Add(this.showPass1);
             this.Controls.Add(this.hidePass1);
@@ -511,13 +403,9 @@ namespace UI.Desktop
             this.Controls.Add(this.materialCard1);
             this.Controls.Add(this.btnCancelarUsuario);
             this.Controls.Add(this.btnAceptarUsuario);
-            this.Controls.Add(this.materialLabel7);
-            this.Controls.Add(this.materialLabel6);
-            this.Controls.Add(this.materialLabel5);
             this.Controls.Add(this.chkHabilitado);
             this.Controls.Add(this.txtNombreUsuario);
             this.Controls.Add(this.txtIdUsuario);
-            this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.hidePass2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -537,20 +425,12 @@ namespace UI.Desktop
         }
 
         #endregion
-
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialTextBox txtIdUsuario;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialTextBox txtCuit;
         private MaterialSkin.Controls.MaterialTextBox txtNombre;
         private MaterialSkin.Controls.MaterialTextBox txtApellido;
         private MaterialSkin.Controls.MaterialTextBox txtNombreUsuario;
         private MaterialSkin.Controls.MaterialCheckbox chkHabilitado;
-        private MaterialSkin.Controls.MaterialLabel materialLabel4;
-        private MaterialSkin.Controls.MaterialLabel materialLabel5;
-        private MaterialSkin.Controls.MaterialLabel materialLabel6;
-        private MaterialSkin.Controls.MaterialLabel materialLabel7;
         private MaterialSkin.Controls.MaterialButton btnAceptarUsuario;
         private MaterialSkin.Controls.MaterialButton btnCancelarUsuario;
         private MaterialSkin.Controls.MaterialCard materialCard1;

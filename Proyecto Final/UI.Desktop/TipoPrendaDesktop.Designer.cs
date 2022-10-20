@@ -29,27 +29,11 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblIdTipoPrenda = new MaterialSkin.Controls.MaterialLabel();
             this.txtID = new MaterialSkin.Controls.MaterialTextBox();
-            this.lblDescripcion = new MaterialSkin.Controls.MaterialLabel();
             this.txtDescripcion = new MaterialSkin.Controls.MaterialTextBox();
             this.btnAceptar = new MaterialSkin.Controls.MaterialButton();
             this.btnCancelar = new MaterialSkin.Controls.MaterialButton();
             this.SuspendLayout();
-            // 
-            // lblIdTipoPrenda
-            // 
-            this.lblIdTipoPrenda.AutoSize = true;
-            this.lblIdTipoPrenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.lblIdTipoPrenda.Depth = 0;
-            this.lblIdTipoPrenda.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblIdTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblIdTipoPrenda.Location = new System.Drawing.Point(12, 109);
-            this.lblIdTipoPrenda.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblIdTipoPrenda.Name = "lblIdTipoPrenda";
-            this.lblIdTipoPrenda.Size = new System.Drawing.Size(20, 19);
-            this.lblIdTipoPrenda.TabIndex = 0;
-            this.lblIdTipoPrenda.Text = "ID:";
             // 
             // txtID
             // 
@@ -61,7 +45,7 @@ namespace UI.Desktop
             this.txtID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtID.Hint = "ID";
             this.txtID.LeadingIcon = null;
-            this.txtID.Location = new System.Drawing.Point(110, 92);
+            this.txtID.Location = new System.Drawing.Point(46, 92);
             this.txtID.MaxLength = 50;
             this.txtID.MouseState = MaterialSkin.MouseState.OUT;
             this.txtID.Multiline = false;
@@ -70,20 +54,6 @@ namespace UI.Desktop
             this.txtID.TabIndex = 1;
             this.txtID.Text = "";
             this.txtID.TrailingIcon = null;
-            // 
-            // lblDescripcion
-            // 
-            this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.lblDescripcion.Depth = 0;
-            this.lblDescripcion.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblDescripcion.Location = new System.Drawing.Point(12, 164);
-            this.lblDescripcion.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(92, 19);
-            this.lblDescripcion.TabIndex = 2;
-            this.lblDescripcion.Text = "Descripción: ";
             // 
             // txtDescripcion
             // 
@@ -95,12 +65,12 @@ namespace UI.Desktop
             this.txtDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtDescripcion.Hint = "Descripción";
             this.txtDescripcion.LeadingIcon = null;
-            this.txtDescripcion.Location = new System.Drawing.Point(110, 148);
+            this.txtDescripcion.Location = new System.Drawing.Point(46, 148);
             this.txtDescripcion.MaxLength = 50;
             this.txtDescripcion.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDescripcion.Multiline = false;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(261, 50);
+            this.txtDescripcion.Size = new System.Drawing.Size(303, 50);
             this.txtDescripcion.TabIndex = 3;
             this.txtDescripcion.Text = "";
             this.txtDescripcion.TrailingIcon = null;
@@ -114,7 +84,7 @@ namespace UI.Desktop
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAceptar.HighEmphasis = true;
             this.btnAceptar.Icon = null;
-            this.btnAceptar.Location = new System.Drawing.Point(181, 207);
+            this.btnAceptar.Location = new System.Drawing.Point(159, 213);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptar.Name = "btnAceptar";
@@ -136,7 +106,7 @@ namespace UI.Desktop
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
-            this.btnCancelar.Location = new System.Drawing.Point(275, 207);
+            this.btnCancelar.Location = new System.Drawing.Point(253, 213);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -159,9 +129,7 @@ namespace UI.Desktop
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtDescripcion);
-            this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.txtID);
-            this.Controls.Add(this.lblIdTipoPrenda);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "TipoPrendaDesktop";
@@ -174,10 +142,7 @@ namespace UI.Desktop
         }
 
         #endregion
-
-        private MaterialSkin.Controls.MaterialLabel lblIdTipoPrenda;
         private MaterialSkin.Controls.MaterialTextBox txtID;
-        private MaterialSkin.Controls.MaterialLabel lblDescripcion;
         private MaterialSkin.Controls.MaterialTextBox txtDescripcion;
         private MaterialSkin.Controls.MaterialButton btnAceptar;
         private MaterialSkin.Controls.MaterialButton btnCancelar;

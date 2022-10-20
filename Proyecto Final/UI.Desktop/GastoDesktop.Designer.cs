@@ -36,11 +36,6 @@ namespace UI.Desktop
             this.txtDescripcion = new MaterialSkin.Controls.MaterialMultiLineTextBox();
             this.txtImporte = new MaterialSkin.Controls.MaterialTextBox();
             this.dtpFechaRealizacion = new System.Windows.Forms.DateTimePicker();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
             // 
             // txtId
@@ -54,7 +49,7 @@ namespace UI.Desktop
             this.txtId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtId.Hint = "ID";
             this.txtId.LeadingIcon = null;
-            this.txtId.Location = new System.Drawing.Point(169, 93);
+            this.txtId.Location = new System.Drawing.Point(49, 95);
             this.txtId.MaxLength = 50;
             this.txtId.MouseState = MaterialSkin.MouseState.OUT;
             this.txtId.Multiline = false;
@@ -73,7 +68,7 @@ namespace UI.Desktop
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAceptar.HighEmphasis = true;
             this.btnAceptar.Icon = null;
-            this.btnAceptar.Location = new System.Drawing.Point(222, 395);
+            this.btnAceptar.Location = new System.Drawing.Point(190, 397);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptar.Name = "btnAceptar";
@@ -95,7 +90,7 @@ namespace UI.Desktop
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
-            this.btnCancelar.Location = new System.Drawing.Point(316, 395);
+            this.btnCancelar.Location = new System.Drawing.Point(284, 397);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -123,11 +118,11 @@ namespace UI.Desktop
             this.cmbTipoGasto.Hint = "Tipo de gasto";
             this.cmbTipoGasto.IntegralHeight = false;
             this.cmbTipoGasto.ItemHeight = 43;
-            this.cmbTipoGasto.Location = new System.Drawing.Point(169, 149);
+            this.cmbTipoGasto.Location = new System.Drawing.Point(49, 151);
             this.cmbTipoGasto.MaxDropDownItems = 4;
             this.cmbTipoGasto.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbTipoGasto.Name = "cmbTipoGasto";
-            this.cmbTipoGasto.Size = new System.Drawing.Size(241, 49);
+            this.cmbTipoGasto.Size = new System.Drawing.Size(331, 49);
             this.cmbTipoGasto.StartIndex = 0;
             this.cmbTipoGasto.TabIndex = 3;
             // 
@@ -138,11 +133,11 @@ namespace UI.Desktop
             this.txtDescripcion.Depth = 0;
             this.txtDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtDescripcion.Hint = "Descipción";
-            this.txtDescripcion.Location = new System.Drawing.Point(169, 204);
+            this.txtDescripcion.Hint = "Descripción";
+            this.txtDescripcion.Location = new System.Drawing.Point(49, 206);
             this.txtDescripcion.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(241, 96);
+            this.txtDescripcion.Size = new System.Drawing.Size(331, 96);
             this.txtDescripcion.TabIndex = 4;
             this.txtDescripcion.Text = "";
             // 
@@ -156,7 +151,7 @@ namespace UI.Desktop
             this.txtImporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtImporte.Hint = "Importe";
             this.txtImporte.LeadingIcon = null;
-            this.txtImporte.Location = new System.Drawing.Point(169, 336);
+            this.txtImporte.Location = new System.Drawing.Point(49, 338);
             this.txtImporte.MaxLength = 50;
             this.txtImporte.MouseState = MaterialSkin.MouseState.OUT;
             this.txtImporte.Multiline = false;
@@ -173,91 +168,16 @@ namespace UI.Desktop
             this.dtpFechaRealizacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpFechaRealizacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dtpFechaRealizacion.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaRealizacion.Location = new System.Drawing.Point(169, 306);
+            this.dtpFechaRealizacion.Location = new System.Drawing.Point(49, 308);
             this.dtpFechaRealizacion.Name = "dtpFechaRealizacion";
             this.dtpFechaRealizacion.Size = new System.Drawing.Size(241, 23);
             this.dtpFechaRealizacion.TabIndex = 6;
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(13, 110);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(20, 19);
-            this.materialLabel1.TabIndex = 7;
-            this.materialLabel1.Text = "ID:";
-            // 
-            // materialLabel2
-            // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(13, 162);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(102, 19);
-            this.materialLabel2.TabIndex = 8;
-            this.materialLabel2.Text = "Tipo de gasto:";
-            // 
-            // materialLabel3
-            // 
-            this.materialLabel3.AutoSize = true;
-            this.materialLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel3.Depth = 0;
-            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(13, 204);
-            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(88, 19);
-            this.materialLabel3.TabIndex = 9;
-            this.materialLabel3.Text = "Descripción:";
-            // 
-            // materialLabel4
-            // 
-            this.materialLabel4.AutoSize = true;
-            this.materialLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel4.Depth = 0;
-            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(13, 306);
-            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(150, 19);
-            this.materialLabel4.TabIndex = 10;
-            this.materialLabel4.Text = "Fecha de realización:";
-            // 
-            // materialLabel5
-            // 
-            this.materialLabel5.AutoSize = true;
-            this.materialLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel5.Depth = 0;
-            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(13, 355);
-            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(59, 19);
-            this.materialLabel5.TabIndex = 11;
-            this.materialLabel5.Text = "Importe:";
             // 
             // GastoDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(429, 446);
-            this.Controls.Add(this.materialLabel5);
-            this.Controls.Add(this.materialLabel4);
-            this.Controls.Add(this.materialLabel3);
-            this.Controls.Add(this.materialLabel2);
-            this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.dtpFechaRealizacion);
             this.Controls.Add(this.txtImporte);
             this.Controls.Add(this.txtDescripcion);
@@ -283,10 +203,5 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialMultiLineTextBox txtDescripcion;
         private MaterialSkin.Controls.MaterialTextBox txtImporte;
         private System.Windows.Forms.DateTimePicker dtpFechaRealizacion;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel3;
-        private MaterialSkin.Controls.MaterialLabel materialLabel4;
-        private MaterialSkin.Controls.MaterialLabel materialLabel5;
     }
 }

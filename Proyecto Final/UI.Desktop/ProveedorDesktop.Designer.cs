@@ -29,35 +29,15 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblIdProv = new MaterialSkin.Controls.MaterialLabel();
             this.txtIDProv = new MaterialSkin.Controls.MaterialTextBox();
             this.txtCuitProv = new MaterialSkin.Controls.MaterialTextBox();
-            this.lblCuitProv = new MaterialSkin.Controls.MaterialLabel();
             this.txtRazonSocialProv = new MaterialSkin.Controls.MaterialTextBox();
-            this.lblRazonSocial = new MaterialSkin.Controls.MaterialLabel();
             this.txtTelProv = new MaterialSkin.Controls.MaterialTextBox();
-            this.lblTelefonoProv = new MaterialSkin.Controls.MaterialLabel();
             this.txtEmailProv = new MaterialSkin.Controls.MaterialTextBox();
-            this.lblEmailProv = new MaterialSkin.Controls.MaterialLabel();
             this.txtDireccionProv = new MaterialSkin.Controls.MaterialTextBox();
-            this.lblDireccion = new MaterialSkin.Controls.MaterialLabel();
             this.btnCancelar = new MaterialSkin.Controls.MaterialButton();
             this.btnAceptar = new MaterialSkin.Controls.MaterialButton();
             this.SuspendLayout();
-            // 
-            // lblIdProv
-            // 
-            this.lblIdProv.AutoSize = true;
-            this.lblIdProv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.lblIdProv.Depth = 0;
-            this.lblIdProv.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblIdProv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblIdProv.Location = new System.Drawing.Point(12, 102);
-            this.lblIdProv.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblIdProv.Name = "lblIdProv";
-            this.lblIdProv.Size = new System.Drawing.Size(20, 19);
-            this.lblIdProv.TabIndex = 0;
-            this.lblIdProv.Text = "ID:";
             // 
             // txtIDProv
             // 
@@ -70,12 +50,12 @@ namespace UI.Desktop
             this.txtIDProv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtIDProv.Hint = "ID";
             this.txtIDProv.LeadingIcon = null;
-            this.txtIDProv.Location = new System.Drawing.Point(124, 88);
+            this.txtIDProv.Location = new System.Drawing.Point(36, 89);
             this.txtIDProv.MaxLength = 50;
             this.txtIDProv.MouseState = MaterialSkin.MouseState.OUT;
             this.txtIDProv.Multiline = false;
             this.txtIDProv.Name = "txtIDProv";
-            this.txtIDProv.Size = new System.Drawing.Size(297, 50);
+            this.txtIDProv.Size = new System.Drawing.Size(88, 50);
             this.txtIDProv.TabIndex = 1;
             this.txtIDProv.Text = "";
             this.txtIDProv.TrailingIcon = null;
@@ -90,29 +70,15 @@ namespace UI.Desktop
             this.txtCuitProv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtCuitProv.Hint = "Cuit";
             this.txtCuitProv.LeadingIcon = null;
-            this.txtCuitProv.Location = new System.Drawing.Point(124, 144);
+            this.txtCuitProv.Location = new System.Drawing.Point(36, 145);
             this.txtCuitProv.MaxLength = 50;
             this.txtCuitProv.MouseState = MaterialSkin.MouseState.OUT;
             this.txtCuitProv.Multiline = false;
             this.txtCuitProv.Name = "txtCuitProv";
-            this.txtCuitProv.Size = new System.Drawing.Size(297, 50);
+            this.txtCuitProv.Size = new System.Drawing.Size(329, 50);
             this.txtCuitProv.TabIndex = 3;
             this.txtCuitProv.Text = "";
             this.txtCuitProv.TrailingIcon = null;
-            // 
-            // lblCuitProv
-            // 
-            this.lblCuitProv.AutoSize = true;
-            this.lblCuitProv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.lblCuitProv.Depth = 0;
-            this.lblCuitProv.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblCuitProv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblCuitProv.Location = new System.Drawing.Point(12, 160);
-            this.lblCuitProv.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblCuitProv.Name = "lblCuitProv";
-            this.lblCuitProv.Size = new System.Drawing.Size(33, 19);
-            this.lblCuitProv.TabIndex = 2;
-            this.lblCuitProv.Text = "Cuit:";
             // 
             // txtRazonSocialProv
             // 
@@ -124,29 +90,15 @@ namespace UI.Desktop
             this.txtRazonSocialProv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtRazonSocialProv.Hint = "Razón Social";
             this.txtRazonSocialProv.LeadingIcon = null;
-            this.txtRazonSocialProv.Location = new System.Drawing.Point(124, 200);
+            this.txtRazonSocialProv.Location = new System.Drawing.Point(36, 201);
             this.txtRazonSocialProv.MaxLength = 50;
             this.txtRazonSocialProv.MouseState = MaterialSkin.MouseState.OUT;
             this.txtRazonSocialProv.Multiline = false;
             this.txtRazonSocialProv.Name = "txtRazonSocialProv";
-            this.txtRazonSocialProv.Size = new System.Drawing.Size(297, 50);
+            this.txtRazonSocialProv.Size = new System.Drawing.Size(329, 50);
             this.txtRazonSocialProv.TabIndex = 5;
             this.txtRazonSocialProv.Text = "";
             this.txtRazonSocialProv.TrailingIcon = null;
-            // 
-            // lblRazonSocial
-            // 
-            this.lblRazonSocial.AutoSize = true;
-            this.lblRazonSocial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.lblRazonSocial.Depth = 0;
-            this.lblRazonSocial.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblRazonSocial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblRazonSocial.Location = new System.Drawing.Point(12, 212);
-            this.lblRazonSocial.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblRazonSocial.Name = "lblRazonSocial";
-            this.lblRazonSocial.Size = new System.Drawing.Size(98, 19);
-            this.lblRazonSocial.TabIndex = 4;
-            this.lblRazonSocial.Text = "Razón Social:";
             // 
             // txtTelProv
             // 
@@ -158,29 +110,15 @@ namespace UI.Desktop
             this.txtTelProv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtTelProv.Hint = "Teléfono";
             this.txtTelProv.LeadingIcon = null;
-            this.txtTelProv.Location = new System.Drawing.Point(124, 256);
+            this.txtTelProv.Location = new System.Drawing.Point(36, 257);
             this.txtTelProv.MaxLength = 50;
             this.txtTelProv.MouseState = MaterialSkin.MouseState.OUT;
             this.txtTelProv.Multiline = false;
             this.txtTelProv.Name = "txtTelProv";
-            this.txtTelProv.Size = new System.Drawing.Size(297, 50);
+            this.txtTelProv.Size = new System.Drawing.Size(329, 50);
             this.txtTelProv.TabIndex = 7;
             this.txtTelProv.Text = "";
             this.txtTelProv.TrailingIcon = null;
-            // 
-            // lblTelefonoProv
-            // 
-            this.lblTelefonoProv.AutoSize = true;
-            this.lblTelefonoProv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.lblTelefonoProv.Depth = 0;
-            this.lblTelefonoProv.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblTelefonoProv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTelefonoProv.Location = new System.Drawing.Point(12, 267);
-            this.lblTelefonoProv.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblTelefonoProv.Name = "lblTelefonoProv";
-            this.lblTelefonoProv.Size = new System.Drawing.Size(68, 19);
-            this.lblTelefonoProv.TabIndex = 6;
-            this.lblTelefonoProv.Text = "Teléfono:";
             // 
             // txtEmailProv
             // 
@@ -192,29 +130,15 @@ namespace UI.Desktop
             this.txtEmailProv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtEmailProv.Hint = "Email";
             this.txtEmailProv.LeadingIcon = null;
-            this.txtEmailProv.Location = new System.Drawing.Point(124, 312);
+            this.txtEmailProv.Location = new System.Drawing.Point(36, 313);
             this.txtEmailProv.MaxLength = 50;
             this.txtEmailProv.MouseState = MaterialSkin.MouseState.OUT;
             this.txtEmailProv.Multiline = false;
             this.txtEmailProv.Name = "txtEmailProv";
-            this.txtEmailProv.Size = new System.Drawing.Size(297, 50);
+            this.txtEmailProv.Size = new System.Drawing.Size(329, 50);
             this.txtEmailProv.TabIndex = 9;
             this.txtEmailProv.Text = "";
             this.txtEmailProv.TrailingIcon = null;
-            // 
-            // lblEmailProv
-            // 
-            this.lblEmailProv.AutoSize = true;
-            this.lblEmailProv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.lblEmailProv.Depth = 0;
-            this.lblEmailProv.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblEmailProv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblEmailProv.Location = new System.Drawing.Point(12, 326);
-            this.lblEmailProv.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblEmailProv.Name = "lblEmailProv";
-            this.lblEmailProv.Size = new System.Drawing.Size(45, 19);
-            this.lblEmailProv.TabIndex = 8;
-            this.lblEmailProv.Text = "Email:";
             // 
             // txtDireccionProv
             // 
@@ -226,29 +150,15 @@ namespace UI.Desktop
             this.txtDireccionProv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtDireccionProv.Hint = "Dirección";
             this.txtDireccionProv.LeadingIcon = null;
-            this.txtDireccionProv.Location = new System.Drawing.Point(124, 368);
+            this.txtDireccionProv.Location = new System.Drawing.Point(36, 369);
             this.txtDireccionProv.MaxLength = 50;
             this.txtDireccionProv.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDireccionProv.Multiline = false;
             this.txtDireccionProv.Name = "txtDireccionProv";
-            this.txtDireccionProv.Size = new System.Drawing.Size(297, 50);
+            this.txtDireccionProv.Size = new System.Drawing.Size(329, 50);
             this.txtDireccionProv.TabIndex = 11;
             this.txtDireccionProv.Text = "";
             this.txtDireccionProv.TrailingIcon = null;
-            // 
-            // lblDireccion
-            // 
-            this.lblDireccion.AutoSize = true;
-            this.lblDireccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.lblDireccion.Depth = 0;
-            this.lblDireccion.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblDireccion.Location = new System.Drawing.Point(12, 382);
-            this.lblDireccion.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblDireccion.Name = "lblDireccion";
-            this.lblDireccion.Size = new System.Drawing.Size(71, 19);
-            this.lblDireccion.TabIndex = 10;
-            this.lblDireccion.Text = "Dirección:";
             // 
             // btnCancelar
             // 
@@ -259,7 +169,7 @@ namespace UI.Desktop
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
-            this.btnCancelar.Location = new System.Drawing.Point(325, 427);
+            this.btnCancelar.Location = new System.Drawing.Point(269, 431);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -282,7 +192,7 @@ namespace UI.Desktop
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAceptar.HighEmphasis = true;
             this.btnAceptar.Icon = null;
-            this.btnAceptar.Location = new System.Drawing.Point(221, 427);
+            this.btnAceptar.Location = new System.Drawing.Point(165, 431);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptar.Name = "btnAceptar";
@@ -299,21 +209,15 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(440, 482);
+            this.ClientSize = new System.Drawing.Size(399, 482);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtDireccionProv);
-            this.Controls.Add(this.lblDireccion);
             this.Controls.Add(this.txtEmailProv);
-            this.Controls.Add(this.lblEmailProv);
             this.Controls.Add(this.txtTelProv);
-            this.Controls.Add(this.lblTelefonoProv);
             this.Controls.Add(this.txtRazonSocialProv);
-            this.Controls.Add(this.lblRazonSocial);
             this.Controls.Add(this.txtCuitProv);
-            this.Controls.Add(this.lblCuitProv);
             this.Controls.Add(this.txtIDProv);
-            this.Controls.Add(this.lblIdProv);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "ProveedorDesktop";
@@ -326,19 +230,12 @@ namespace UI.Desktop
         }
 
         #endregion
-
-        private MaterialSkin.Controls.MaterialLabel lblIdProv;
         private MaterialSkin.Controls.MaterialTextBox txtIDProv;
         private MaterialSkin.Controls.MaterialTextBox txtCuitProv;
-        private MaterialSkin.Controls.MaterialLabel lblCuitProv;
         private MaterialSkin.Controls.MaterialTextBox txtRazonSocialProv;
-        private MaterialSkin.Controls.MaterialLabel lblRazonSocial;
         private MaterialSkin.Controls.MaterialTextBox txtTelProv;
-        private MaterialSkin.Controls.MaterialLabel lblTelefonoProv;
         private MaterialSkin.Controls.MaterialTextBox txtEmailProv;
-        private MaterialSkin.Controls.MaterialLabel lblEmailProv;
         private MaterialSkin.Controls.MaterialTextBox txtDireccionProv;
-        private MaterialSkin.Controls.MaterialLabel lblDireccion;
         private MaterialSkin.Controls.MaterialButton btnCancelar;
         private MaterialSkin.Controls.MaterialButton btnAceptar;
     }

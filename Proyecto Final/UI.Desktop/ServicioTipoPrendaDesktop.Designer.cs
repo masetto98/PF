@@ -40,6 +40,7 @@ namespace UI.Desktop
             this.nudMinutos = new System.Windows.Forms.NumericUpDown();
             this.txtPrecio = new MaterialSkin.Controls.MaterialTextBox();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            this.cmbTiposMaquina = new MaterialSkin.Controls.MaterialComboBox();
             this.lblConsumo = new MaterialSkin.Controls.MaterialLabel();
             this.btnEliminarConsumo = new MaterialSkin.Controls.MaterialButton();
             this.btnAgregarConsumo = new MaterialSkin.Controls.MaterialButton();
@@ -49,6 +50,7 @@ namespace UI.Desktop
             this.columnInsumo = new System.Windows.Forms.ColumnHeader();
             this.columnCantidad = new System.Windows.Forms.ColumnHeader();
             this.columnUnidad = new System.Windows.Forms.ColumnHeader();
+            this.columnTipoMaquina = new System.Windows.Forms.ColumnHeader();
             this.txtCantidad = new MaterialSkin.Controls.MaterialTextBox();
             this.cmbInsumos = new MaterialSkin.Controls.MaterialComboBox();
             this.materialComboBox1 = new MaterialSkin.Controls.MaterialComboBox();
@@ -59,8 +61,6 @@ namespace UI.Desktop
             this.lblPlazoMaximo = new MaterialSkin.Controls.MaterialLabel();
             this.nudDias = new System.Windows.Forms.NumericUpDown();
             this.lblDias = new MaterialSkin.Controls.MaterialLabel();
-            this.cmbTiposMaquina = new MaterialSkin.Controls.MaterialComboBox();
-            this.columnTipoMaquina = new System.Windows.Forms.ColumnHeader();
             ((System.ComponentModel.ISupportInitialize)(this.nudHoras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMinutos)).BeginInit();
             this.materialCard1.SuspendLayout();
@@ -277,6 +277,31 @@ namespace UI.Desktop
             this.materialCard1.Size = new System.Drawing.Size(715, 309);
             this.materialCard1.TabIndex = 16;
             // 
+            // cmbTiposMaquina
+            // 
+            this.cmbTiposMaquina.AutoResize = false;
+            this.cmbTiposMaquina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.cmbTiposMaquina.Depth = 0;
+            this.cmbTiposMaquina.DisplayMember = "Descripcion";
+            this.cmbTiposMaquina.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cmbTiposMaquina.DropDownHeight = 174;
+            this.cmbTiposMaquina.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTiposMaquina.DropDownWidth = 121;
+            this.cmbTiposMaquina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cmbTiposMaquina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cmbTiposMaquina.FormattingEnabled = true;
+            this.cmbTiposMaquina.Hint = "Tipo Maquina";
+            this.cmbTiposMaquina.IntegralHeight = false;
+            this.cmbTiposMaquina.ItemHeight = 43;
+            this.cmbTiposMaquina.Location = new System.Drawing.Point(532, 33);
+            this.cmbTiposMaquina.MaxDropDownItems = 4;
+            this.cmbTiposMaquina.MouseState = MaterialSkin.MouseState.OUT;
+            this.cmbTiposMaquina.Name = "cmbTiposMaquina";
+            this.cmbTiposMaquina.Size = new System.Drawing.Size(174, 49);
+            this.cmbTiposMaquina.StartIndex = 0;
+            this.cmbTiposMaquina.TabIndex = 7;
+            this.cmbTiposMaquina.ValueMember = "IdTipoMaquina";
+            // 
             // lblConsumo
             // 
             this.lblConsumo.AutoSize = true;
@@ -362,7 +387,7 @@ namespace UI.Desktop
             // 
             this.listConsumos.AutoSizeTable = false;
             this.listConsumos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listConsumos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listConsumos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listConsumos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnNro,
             this.columnInsumo,
@@ -404,6 +429,11 @@ namespace UI.Desktop
             // 
             this.columnUnidad.Text = "Unidad";
             this.columnUnidad.Width = 130;
+            // 
+            // columnTipoMaquina
+            // 
+            this.columnTipoMaquina.Text = "Tipo Maquina";
+            this.columnTipoMaquina.Width = 150;
             // 
             // txtCantidad
             // 
@@ -575,36 +605,6 @@ namespace UI.Desktop
             this.lblDias.Size = new System.Drawing.Size(37, 19);
             this.lblDias.TabIndex = 23;
             this.lblDias.Text = "Días:";
-            // 
-            // cmbTiposMaquina
-            // 
-            this.cmbTiposMaquina.AutoResize = false;
-            this.cmbTiposMaquina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cmbTiposMaquina.Depth = 0;
-            this.cmbTiposMaquina.DisplayMember = "Descripcion";
-            this.cmbTiposMaquina.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cmbTiposMaquina.DropDownHeight = 174;
-            this.cmbTiposMaquina.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTiposMaquina.DropDownWidth = 121;
-            this.cmbTiposMaquina.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cmbTiposMaquina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cmbTiposMaquina.FormattingEnabled = true;
-            this.cmbTiposMaquina.Hint = "Tipo Maquina";
-            this.cmbTiposMaquina.IntegralHeight = false;
-            this.cmbTiposMaquina.ItemHeight = 43;
-            this.cmbTiposMaquina.Location = new System.Drawing.Point(532, 33);
-            this.cmbTiposMaquina.MaxDropDownItems = 4;
-            this.cmbTiposMaquina.MouseState = MaterialSkin.MouseState.OUT;
-            this.cmbTiposMaquina.Name = "cmbTiposMaquina";
-            this.cmbTiposMaquina.Size = new System.Drawing.Size(174, 49);
-            this.cmbTiposMaquina.StartIndex = 0;
-            this.cmbTiposMaquina.TabIndex = 7;
-            this.cmbTiposMaquina.ValueMember = "IdTipoMaquina";
-            // 
-            // columnTipoMaquina
-            // 
-            this.columnTipoMaquina.Text = "Tipo Maquina";
-            this.columnTipoMaquina.Width = 150;
             // 
             // ServicioTipoPrendaDesktop
             // 

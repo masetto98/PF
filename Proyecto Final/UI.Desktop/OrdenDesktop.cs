@@ -37,6 +37,7 @@ namespace UI.Desktop
         private readonly TipoPrendaLogic _tipoPrendaLogic;
         private readonly ServicioTipoPrendaLogic _servicioTipoPrendaLogic;
         private readonly FacturaLogic _facturaLogic;
+        private readonly PagoLogic _pagoLogic;
         public double _total;
 
         public OrdenDesktop(LavanderiaContext context)
@@ -51,7 +52,7 @@ namespace UI.Desktop
             _facturaLogic = new FacturaLogic(new FacturaAdapter(context));
             listItemsServicio.Items.Clear();
             _itemsServicio = new List<OrdenServicioTipoPrenda>();
-
+            _pagoLogic = new PagoLogic(new PagoAdapter(context));
             this.txtNombreApellidoRazonSocial.Enabled = false;
             this.txtIdCliente.Enabled = false;
             this.cbFormaPago.Enabled = false;
@@ -185,6 +186,12 @@ namespace UI.Desktop
                     this.cmbEntregaDomicilio.Enabled = false;
                     this.cmbPrioridad.Enabled = false;
                     this.cmbEstado.Enabled = false;
+                    this.txtObservaciones.Enabled = false;
+                    this.cbFormaPago.Enabled = false;
+                    this.btnAgregarCliente.Enabled = false;
+                    this.dtpFechaEntrega.Enabled = false;
+                    this.nudHoraEntrega.Enabled = false;
+                    
                     break;
                 case ModoForm.Consulta:
                     this.btnAceptar.Text = "Aceptar";
@@ -249,6 +256,13 @@ namespace UI.Desktop
                 Descuento();
                 AsignarPrioridadItems();
                 OrdenActual.ItemsPedidos = _itemsServicio;
+                if(Double.Parse(this.txtSeniaOrden.Text) != OrdenActual.Factura.Pagos[0].Importe)
+                {
+                    Pago senia = OrdenActual.Factura.Pagos[0];
+                    senia.Importe = Double.Parse(this.txtSeniaOrden.Text);
+                    senia.State = BusinessEntity.States.Modified;
+                    _pagoLogic.Save(senia);
+                }
                 
             }
             switch (Modos)
@@ -644,7 +658,7 @@ namespace UI.Desktop
                 case ModoForm.Alta:
                     {
                         GuardarCambios();
-                        //PrintComprobante();
+                        PrintComprobante();
                     };
                     break;
                 case ModoForm.Modificacion:
@@ -703,12 +717,12 @@ namespace UI.Desktop
                         comprobanteorden = comprobanteorden.Replace("@TelLav", negocio.TelEmpresa);
                         comprobanteorden = comprobanteorden.Replace("@Redes", negocio.RedesEmpresa);
                         comprobanteorden = comprobanteorden.Replace("@NroOrden", OrdenActual.NroOrden.ToString());
-                        comprobanteorden = comprobanteorden.Replace("@fechaentrada", OrdenActual.FechaEntrada.ToString());
-                        comprobanteorden = comprobanteorden.Replace("@fecharetiro", OrdenActual.FechaSalida.ToString());
+                        comprobanteorden = comprobanteorden.Replace("@fechaentrada", OrdenActual.FechaEntrada.ToString("dddd dd, MMMM yyyy"));
+                        comprobanteorden = comprobanteorden.Replace("@fecharetiro", OrdenActual.FechaHoraEntregaIngresada.ToString("dddd dd, MMMM yyyy"));
                         comprobanteorden = comprobanteorden.Replace("@cliente", OrdenActual.Cliente.Apellido + "," + OrdenActual.Cliente.Nombre);
                         comprobanteorden = comprobanteorden.Replace("@direccion", OrdenActual.Cliente.Direccion);
                         comprobanteorden = comprobanteorden.Replace("@telefono", OrdenActual.Cliente.Telefono);
-                        comprobanteorden = comprobanteorden.Replace("@obs", OrdenActual.Observaciones);
+                        comprobanteorden = comprobanteorden.Replace("@obs", "Entrega a domicilio:" + OrdenActual.EntregaDomicilio);
                         if(OrdenActual.Descuento is not null)
                         {
                             comprobanteorden = comprobanteorden.Replace("@Desc", OrdenActual.Descuento);
@@ -763,7 +777,7 @@ namespace UI.Desktop
                             stream.Close();
                         }
 
-                            MessageBox.Show("Comprobante exportado exitosamente", "Info");
+                            MessageBox.Show("Comprobante exportado exitosamente", "Info", MessageBoxButtons.OK,MessageBoxIcon.Information);
                         }
                         catch (Exception ex)
                         {
@@ -788,15 +802,19 @@ namespace UI.Desktop
 
         private void txtSeniaOrden_TextChanged(object sender, EventArgs e)
         {
-            if(this.txtSeniaOrden.Text != "" && double.Parse(this.txtSeniaOrden.Text) <= _total)
+            if(_modos != ModoForm.Baja)
             {
-                this.cbFormaPago.Enabled = true;
-                this.cbFormaPago.DataSource = Enum.GetNames(typeof(Business.Entities.Pago.FormasPago));
+                if (this.txtSeniaOrden.Text != "" && double.Parse(this.txtSeniaOrden.Text) <= _total)
+                {
+                    this.cbFormaPago.Enabled = true;
+                    this.cbFormaPago.DataSource = Enum.GetNames(typeof(Business.Entities.Pago.FormasPago));
+                }
+                else
+                {
+                    MessageBox.Show("El valor de la seña ingresado es mayor al total de la Orden. Por favor, ingrese un valor válido para continuar.", "Senia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
-            {
-                MessageBox.Show("El valor de la seña ingresado es mayor al total de la Orden. Por favor, ingrese un valor válido para continuar.", "Senia", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
     }
 }

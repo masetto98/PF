@@ -207,12 +207,14 @@ namespace UI.Desktop
             this.listEstadoMaquinas.MinimumSize = new System.Drawing.Size(200, 100);
             this.listEstadoMaquinas.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listEstadoMaquinas.MouseState = MaterialSkin.MouseState.OUT;
+            this.listEstadoMaquinas.MultiSelect = false;
             this.listEstadoMaquinas.Name = "listEstadoMaquinas";
             this.listEstadoMaquinas.OwnerDraw = true;
             this.listEstadoMaquinas.Size = new System.Drawing.Size(200, 217);
             this.listEstadoMaquinas.TabIndex = 8;
             this.listEstadoMaquinas.UseCompatibleStateImageBehavior = false;
             this.listEstadoMaquinas.View = System.Windows.Forms.View.Details;
+            this.listEstadoMaquinas.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listEstadoMaquinas_ColumnWidthChanging);
             // 
             // columnMaquina
             // 

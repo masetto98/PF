@@ -36,8 +36,8 @@ namespace UI.Desktop
             Singleton.getInstance().ListActual = this.listOrdenes;
             Singleton.getInstance().ListAlternativa = this.listGastos;
             Singleton.getInstance().ModuloActual = "Caja";
-            //this.dtpFecha.Value = DateTime.Today;
-            //this.dtpFechaHasta.Value = DateTime.Today;
+            this.dtpFecha.Value = DateTime.Today;
+            this.dtpFechaHasta.Value = DateTime.Today;
             ActualizarInformacion();
             
         }
@@ -211,10 +211,11 @@ namespace UI.Desktop
                     chartGastos.Series["Gastos"].Points[x].Label = gastos.ToString();
                 }
                 List<Factura> facturasHoy = _facturaLogic.GetAll().FindAll(delegate (Factura f) { return f.FechaFactura.Date >= this.dtpFecha.Value.Date && f.Pagos is not null; });
+                chartIngresos.Series["Ingresos"].Points.Clear();
                 if (facturasHoy is not null && facturasHoy.Count > 0)
                 {
                     List<Factura> facturasOrd = facturasHoy.OrderBy(x => x.FechaFactura.Date).ToList();
-                    chartIngresos.Series["Ingresos"].Points.Clear();
+                    
                     foreach (Factura f in facturasOrd)
                     {
                         double ingresosHoy = 0;
