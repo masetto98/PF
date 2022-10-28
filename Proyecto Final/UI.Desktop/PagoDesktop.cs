@@ -400,7 +400,13 @@ namespace UI.Desktop
             
         }
 
-        
+        private void listPagos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listPagos.Columns[e.ColumnIndex].Width;
+        }
+
+
         /* SE QUITÓ LA FUNCIONALIDAD DE ELIMINAR PAGO
         private void btnEliminarPago_Click(object sender, EventArgs e)
         {

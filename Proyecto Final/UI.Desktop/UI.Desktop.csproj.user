@@ -43,6 +43,9 @@
     <Compile Update="Gastos.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="TipoMaquinaDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Usuarios.cs">
       <SubType>Form</SubType>
     </Compile>

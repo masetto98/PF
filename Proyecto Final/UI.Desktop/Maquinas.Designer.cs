@@ -29,11 +29,11 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            FastReport.DataVisualization.Charting.ChartArea chartArea3 = new FastReport.DataVisualization.Charting.ChartArea();
-            FastReport.DataVisualization.Charting.ChartArea chartArea4 = new FastReport.DataVisualization.Charting.ChartArea();
-            FastReport.DataVisualization.Charting.Series series3 = new FastReport.DataVisualization.Charting.Series();
-            FastReport.DataVisualization.Charting.Series series4 = new FastReport.DataVisualization.Charting.Series();
-            FastReport.DataVisualization.Charting.Title title2 = new FastReport.DataVisualization.Charting.Title();
+            FastReport.DataVisualization.Charting.ChartArea chartArea1 = new FastReport.DataVisualization.Charting.ChartArea();
+            FastReport.DataVisualization.Charting.ChartArea chartArea2 = new FastReport.DataVisualization.Charting.ChartArea();
+            FastReport.DataVisualization.Charting.Series series1 = new FastReport.DataVisualization.Charting.Series();
+            FastReport.DataVisualization.Charting.Series series2 = new FastReport.DataVisualization.Charting.Series();
+            FastReport.DataVisualization.Charting.Title title1 = new FastReport.DataVisualization.Charting.Title();
             this.listMaquinas = new MaterialSkin.Controls.MaterialListView();
             this.columnID = new System.Windows.Forms.ColumnHeader();
             this.columnDescripcion = new System.Windows.Forms.ColumnHeader();
@@ -114,7 +114,7 @@ namespace UI.Desktop
             this.btnEditarMaquina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEditarMaquina.HighEmphasis = true;
             this.btnEditarMaquina.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
-            this.btnEditarMaquina.Location = new System.Drawing.Point(751, 302);
+            this.btnEditarMaquina.Location = new System.Drawing.Point(751, 239);
             this.btnEditarMaquina.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEditarMaquina.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEditarMaquina.Name = "btnEditarMaquina";
@@ -137,7 +137,7 @@ namespace UI.Desktop
             this.btnEliminarMaquina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEliminarMaquina.HighEmphasis = true;
             this.btnEliminarMaquina.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
-            this.btnEliminarMaquina.Location = new System.Drawing.Point(751, 239);
+            this.btnEliminarMaquina.Location = new System.Drawing.Point(751, 302);
             this.btnEliminarMaquina.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminarMaquina.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminarMaquina.Name = "btnEliminarMaquina";
@@ -425,7 +425,7 @@ namespace UI.Desktop
             this.listTiposMaquina.MouseState = MaterialSkin.MouseState.OUT;
             this.listTiposMaquina.Name = "listTiposMaquina";
             this.listTiposMaquina.OwnerDraw = true;
-            this.listTiposMaquina.Size = new System.Drawing.Size(280, 303);
+            this.listTiposMaquina.Size = new System.Drawing.Size(355, 303);
             this.listTiposMaquina.TabIndex = 23;
             this.listTiposMaquina.UseCompatibleStateImageBehavior = false;
             this.listTiposMaquina.View = System.Windows.Forms.View.Details;
@@ -463,6 +463,7 @@ namespace UI.Desktop
             this.btnEditarTipoMaquina.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnEditarTipoMaquina.UseAccentColor = false;
             this.btnEditarTipoMaquina.UseVisualStyleBackColor = false;
+            this.btnEditarTipoMaquina.Click += new System.EventHandler(this.btnEditarTipoMaquina_Click);
             // 
             // btnEliminarTipoMaquina
             // 
@@ -485,6 +486,7 @@ namespace UI.Desktop
             this.btnEliminarTipoMaquina.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnEliminarTipoMaquina.UseAccentColor = false;
             this.btnEliminarTipoMaquina.UseVisualStyleBackColor = false;
+            this.btnEliminarTipoMaquina.Click += new System.EventHandler(this.btnEliminarTipoMaquina_Click);
             // 
             // btnAgregarTipoMaquina
             // 
@@ -507,6 +509,7 @@ namespace UI.Desktop
             this.btnAgregarTipoMaquina.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnAgregarTipoMaquina.UseAccentColor = false;
             this.btnAgregarTipoMaquina.UseVisualStyleBackColor = false;
+            this.btnAgregarTipoMaquina.Click += new System.EventHandler(this.btnAgregarTipoMaquina_Click);
             // 
             // materialLabel5
             // 
@@ -520,7 +523,7 @@ namespace UI.Desktop
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(129, 19);
             this.materialLabel5.TabIndex = 27;
-            this.materialLabel5.Text = "Tipos de maquina";
+            this.materialLabel5.Text = "Tipos de máquina";
             // 
             // materialLabel6
             // 
@@ -539,41 +542,41 @@ namespace UI.Desktop
             // chartUsoMaq
             // 
             this.chartUsoMaq.BackColor = System.Drawing.Color.Transparent;
-            chartArea3.AlignmentOrientation = FastReport.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal;
-            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            chartArea3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            chartArea3.Name = "ChartArea1";
-            chartArea3.Position.Auto = false;
-            chartArea3.Position.Height = 70F;
-            chartArea3.Position.Width = 50F;
-            chartArea3.Position.Y = 15F;
-            chartArea4.AlignmentOrientation = FastReport.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal;
-            chartArea4.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            chartArea4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            chartArea4.Name = "ChartArea2";
-            chartArea4.Position.Auto = false;
-            chartArea4.Position.Height = 70F;
-            chartArea4.Position.Width = 50F;
-            chartArea4.Position.X = 50F;
-            chartArea4.Position.Y = 15F;
-            this.chartUsoMaq.ChartAreas.Add(chartArea3);
-            this.chartUsoMaq.ChartAreas.Add(chartArea4);
+            chartArea1.AlignmentOrientation = FastReport.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal;
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            chartArea1.Name = "ChartArea1";
+            chartArea1.Position.Auto = false;
+            chartArea1.Position.Height = 70F;
+            chartArea1.Position.Width = 50F;
+            chartArea1.Position.Y = 15F;
+            chartArea2.AlignmentOrientation = FastReport.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal;
+            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            chartArea2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            chartArea2.Name = "ChartArea2";
+            chartArea2.Position.Auto = false;
+            chartArea2.Position.Height = 70F;
+            chartArea2.Position.Width = 50F;
+            chartArea2.Position.X = 50F;
+            chartArea2.Position.Y = 15F;
+            this.chartUsoMaq.ChartAreas.Add(chartArea1);
+            this.chartUsoMaq.ChartAreas.Add(chartArea2);
             this.chartUsoMaq.Location = new System.Drawing.Point(872, 176);
             this.chartUsoMaq.Name = "chartUsoMaq";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.Name = "UsoMaq";
-            series4.ChartArea = "ChartArea2";
-            series4.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Pie;
-            series4.Name = "Series1";
-            this.chartUsoMaq.Series.Add(series3);
-            this.chartUsoMaq.Series.Add(series4);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Name = "UsoMaq";
+            series2.ChartArea = "ChartArea2";
+            series2.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Name = "Series1";
+            this.chartUsoMaq.Series.Add(series1);
+            this.chartUsoMaq.Series.Add(series2);
             this.chartUsoMaq.Size = new System.Drawing.Size(374, 243);
             this.chartUsoMaq.TabIndex = 29;
             this.chartUsoMaq.Text = "chart1";
-            title2.Name = "Title1";
-            title2.Text = "Uso de máquinas";
-            this.chartUsoMaq.Titles.Add(title2);
+            title1.Name = "Title1";
+            title1.Text = "Uso de máquinas";
+            this.chartUsoMaq.Titles.Add(title1);
             // 
             // Maquinas
             // 

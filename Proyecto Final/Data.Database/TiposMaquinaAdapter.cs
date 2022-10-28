@@ -24,7 +24,7 @@ namespace Data.Database
             }
             catch (Exception e)
             {
-                Exception ExceptionManejada = new Exception("Error al recuperar listado de tipos de maquinas", e);
+                Exception ExceptionManejada = new Exception("Error al recuperar listado de tipos de máquinas", e);
                 throw ExceptionManejada;
             }
             return tiposMaquinas;
@@ -37,7 +37,7 @@ namespace Data.Database
             }
             catch (Exception e)
             {
-                Exception ExceptionManejada = new Exception("Error al recuperar datos del tipo de maquina", e);
+                Exception ExceptionManejada = new Exception("Error al recuperar datos del tipo de máquina", e);
                 throw ExceptionManejada;
             }
             return null;
@@ -51,22 +51,22 @@ namespace Data.Database
             }
             catch (Exception e)
             {
-                Exception ExceptionManejada = new Exception("Error al modificar datos del tipo de maquina", e);
+                Exception ExceptionManejada = new Exception("Error al modificar datos del tipo de máquina", e);
                 throw ExceptionManejada;
             }
         }
         protected void Insert(TiposMaquina tipoMaquina)
         {
-            try
-            {
-                _context.TiposMaquinas.Add(tipoMaquina);
+            // try
+            //   {
+            _context.TiposMaquinas.Add(tipoMaquina);
                 _context.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                Exception ExceptionManejada = new Exception("Error al crear un tipo de maquina", e);
-                throw ExceptionManejada;
-            }
+            //  }
+            // catch (Exception e)
+            //  {
+            // Exception ExceptionManejada = new Exception("Error al crear un tipo de máquina", e);
+            // throw ExceptionManejada;
+            // }
         }
         public void Delete(int idTipoMaquina)
         {

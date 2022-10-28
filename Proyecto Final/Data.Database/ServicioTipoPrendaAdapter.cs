@@ -69,16 +69,16 @@ namespace Data.Database
         }
         protected void Insert(ServicioTipoPrenda servicioTipoPrenda)
         {
-            try
-            {
+           try
+           {
                 _context.ServiciosTipoPrendas.Add(servicioTipoPrenda);
                 _context.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                Exception ExceptionManejada = new Exception("Error al crear servicio - tipo prenda", e);
-                throw ExceptionManejada;
-            }
+           }
+           catch (Exception e)
+           {
+              Exception ExceptionManejada = new Exception("Error al crear servicio - tipo prenda", e);
+               throw ExceptionManejada;
+           }
         }
         public void Delete(int idServicio,int idTipoPrenda)
         {

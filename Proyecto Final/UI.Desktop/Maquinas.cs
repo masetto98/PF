@@ -339,5 +339,42 @@ namespace UI.Desktop
             e.Cancel = true;
             e.NewWidth = listTiposMaquina.Columns[e.ColumnIndex].Width;
         }
+
+        private void btnAgregarTipoMaquina_Click(object sender, EventArgs e)
+        {
+            TipoMaquinaDesktop frmTipoMaquinaDesktop = new TipoMaquinaDesktop(ApplicationForm.ModoForm.Alta, _context);
+            frmTipoMaquinaDesktop.ShowDialog();
+            ListarTiposMaquinas();
+        }
+
+        private void btnEditarTipoMaquina_Click(object sender, EventArgs e)
+        {
+            if (listTiposMaquina.SelectedItems.Count > 0)
+            {
+                int idTipoMaquina = Int32.Parse(listTiposMaquina.SelectedItems[0].Text);
+                TipoMaquinaDesktop frmTipoMaquinaDesktop = new TipoMaquinaDesktop(idTipoMaquina, ApplicationForm.ModoForm.Modificacion, _context);
+                frmTipoMaquinaDesktop.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder editar", "Tipo de Máquina", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            ListarTiposMaquinas();
+        }
+
+        private void btnEliminarTipoMaquina_Click(object sender, EventArgs e)
+        {
+            if (listTiposMaquina.SelectedItems.Count > 0)
+            {
+                int idTipoMaquina = Int32.Parse(listTiposMaquina.SelectedItems[0].Text);
+                TipoMaquinaDesktop frmTipoMaquinaDesktop = new TipoMaquinaDesktop(idTipoMaquina, ApplicationForm.ModoForm.Baja, _context);
+                frmTipoMaquinaDesktop.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder eliminar", "Tipo de Máquina", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            ListarTiposMaquinas();
+        }
     }
 }

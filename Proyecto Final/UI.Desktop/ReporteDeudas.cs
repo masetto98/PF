@@ -65,7 +65,7 @@ namespace UI.Desktop
                             pagos += p.Importe;
                         }
                     };
-                    return (or.Estado == Orden.Estados.Retirado && or.Factura.Importe > pagos) || (or.FechaHoraEntregaIngresada < DateTime.Now && or.FechaSalida.Date.ToString() == "0001-01-01");
+                    return (or.Estado == Orden.Estados.Retirado && or.Factura.Importe > pagos) || (or.Estado == Orden.Estados.Finalizado);
                 });
         }
         private double CalcularPagosOrden(Orden ordenActual)
@@ -89,12 +89,33 @@ namespace UI.Desktop
             {
                 ListViewItem item = new ListViewItem(oc.Cliente.Nombre + " " + oc.Cliente.Apellido);
                 item.SubItems.Add(oc.NroOrden.ToString());
-                item.SubItems.Add(oc.FechaSalida.ToString());
+                string fecha = oc.FechaSalida.Date.ToString();
+                if (oc.FechaSalida.Date.ToString() == "1/1/0001 00:00:00")
+                {
+                    item.SubItems.Add("No retirada");
+                }
+                else
+                {
+                    item.SubItems.Add(oc.FechaSalida.ToString());
+                }
+               
                 item.SubItems.Add(oc.NroFactura.ToString());
-                item.SubItems.Add(oc.Factura.Importe.ToString());
+                double deudas = 0;
                 double pagos = CalcularPagosOrden(oc);
+                if (oc.Factura.Importe == 0)
+                {
+                    double importe = CalcularImporteOrden(oc);
+                    item.SubItems.Add(importe.ToString());
+                    deudas = importe - pagos;
+
+                }
+                else
+                {
+                    item.SubItems.Add(oc.Factura.Importe.ToString());
+                    deudas = oc.Factura.Importe - pagos;
+                }
+                
                 item.SubItems.Add(pagos.ToString());
-                double deudas = oc.Factura.Importe - pagos;
                 item.SubItems.Add(deudas.ToString());
                 montoTotal1 += deudas;
                 listOrdenesCliente.Items.Add(item);
@@ -104,7 +125,7 @@ namespace UI.Desktop
 
         private void btnReporteDeudas_Click(object sender, EventArgs e)
         {
-            if (Singleton.getInstance().ListActual != null && Singleton.getInstance().ListActual.SelectedItems.Count > 0)
+            if (Singleton.getInstance().ListActual != null && Singleton.getInstance().ListActual.Items.Count > 0)
             {
                 SaveFileDialog sfd = new SaveFileDialog();
                 sfd.Filter = "PDF (*.pdf)|*.pdf";
@@ -192,7 +213,7 @@ namespace UI.Desktop
                                 stream.Close();
                             }
 
-                            MessageBox.Show("Reporte exportado exitosamente", "Info");
+                            MessageBox.Show("Reporte exportado exitosamente", "Info",MessageBoxButtons.OK,MessageBoxIcon.Information);
                         }
                         catch (Exception ex)
                         {
@@ -203,7 +224,7 @@ namespace UI.Desktop
             }
             else
             {
-                MessageBox.Show("No hay registros para exportar", "Info");
+                MessageBox.Show("No hay registros para exportar", "Info",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
             }
         }
 
@@ -282,31 +303,71 @@ namespace UI.Desktop
             double montoTotal2=0;
             foreach(Orden oc in ordenesDeuda)
             {
-                if(oc.Cliente.Nombre.ToLower().Contains(this.txtBuscar.Text.ToLower()) || oc.Cliente.Apellido.ToLower().Contains(this.txtBuscar.Text.ToLower()))
+                string cliente = String.Concat(oc.Cliente.Nombre, " ", oc.Cliente.Apellido, " / ", oc.Cliente.RazonSocial);
+                string cuit = oc.Cliente.Cuit;
+                if (cliente.ToLower().Contains(this.txtBuscar.Text.ToLower()))
                 {
                     ListViewItem item = new ListViewItem(oc.Cliente.Nombre + " " + oc.Cliente.Apellido);
                     item.SubItems.Add(oc.NroOrden.ToString());
-                    item.SubItems.Add(oc.FechaSalida.ToString());
+                    string fecha = oc.FechaSalida.Date.ToString();
+                    if (oc.FechaSalida.Date.ToString() == "1/1/0001 00:00:00")
+                    {
+                        item.SubItems.Add("No retirada");
+                    }
+                    else
+                    {
+                        item.SubItems.Add(oc.FechaSalida.ToString());
+                    }
                     item.SubItems.Add(oc.NroFactura.ToString());
-                    item.SubItems.Add(oc.Factura.Importe.ToString());
+                    double deudas = 0;
                     double pagos = CalcularPagosOrden(oc);
+                    if (oc.Factura.Importe == 0)
+                    {
+                        double importe = CalcularImporteOrden(oc);
+                        item.SubItems.Add(importe.ToString());
+                        deudas = importe - pagos;
+
+                    }
+                    else
+                    {
+                        item.SubItems.Add(oc.Factura.Importe.ToString());
+                        deudas = oc.Factura.Importe - pagos;
+                    }
                     item.SubItems.Add(pagos.ToString());
-                    double deudas = oc.Factura.Importe - pagos;
                     item.SubItems.Add(deudas.ToString());
                     listOrdenesCliente.Items.Add(item);
                     clienteActual = oc.Cliente;
                     montoTotal2 += deudas;
                 }
-                else if(oc.Cliente.Cuit == this.txtBuscar.Text)
+                else if(cuit.Contains(this.txtBuscar.Text))
                 {
                     ListViewItem item = new ListViewItem(oc.Cliente.Nombre + " " + oc.Cliente.Apellido);
                     item.SubItems.Add(oc.NroOrden.ToString());
-                    item.SubItems.Add(oc.FechaSalida.ToString());
+                    string fecha = oc.FechaSalida.Date.ToString();
+                    if (oc.FechaSalida.Date.ToString() == "1/1/0001 00:00:00")
+                    {
+                        item.SubItems.Add("No retirada");
+                    }
+                    else
+                    {
+                        item.SubItems.Add(oc.FechaSalida.ToString());
+                    }
                     item.SubItems.Add(oc.NroFactura.ToString());
-                    item.SubItems.Add(oc.Factura.Importe.ToString());
+                    double deudas = 0;
                     double pagos = CalcularPagosOrden(oc);
+                    if (oc.Factura.Importe == 0)
+                    {
+                        double importe = CalcularImporteOrden(oc);
+                        item.SubItems.Add(importe.ToString());
+                        deudas = importe - pagos;
+
+                    }
+                    else
+                    {
+                        item.SubItems.Add(oc.Factura.Importe.ToString());
+                        deudas = oc.Factura.Importe - pagos;
+                    }
                     item.SubItems.Add(pagos.ToString());
-                    double deudas = oc.Factura.Importe - pagos;
                     item.SubItems.Add(deudas.ToString());
                     listOrdenesCliente.Items.Add(item);
                     clienteActual = oc.Cliente;
@@ -360,6 +421,56 @@ namespace UI.Desktop
         {
             e.Cancel = true;
             e.NewWidth = listOrdenesCliente.Columns[e.ColumnIndex].Width;
+        }
+
+        private double CalcularImporteOrden(Orden ordenActual)
+        {
+            double importe = 0;
+            if (ordenActual.Estado == Orden.Estados.Pagado)
+            {
+                Pago pago = ordenActual.Factura.Pagos.FindLast(delegate (Pago p) { return p.FechaPago <= DateTime.Now; });
+                foreach (OrdenServicioTipoPrenda ostp in ordenActual.ItemsPedidos)
+                {
+                    Precio pre = ostp.ServicioTipoPrenda.HistoricoPrecios.FindLast(delegate (Precio p)
+                    {
+                        return p.FechaDesde < pago.FechaPago;
+                    });
+                    importe += pre.Valor;
+                }
+            }
+            else
+            {
+                foreach (OrdenServicioTipoPrenda ostp in ordenActual.ItemsPedidos)
+                {
+                    Precio precio = ostp.ServicioTipoPrenda.HistoricoPrecios.FindLast(delegate (Precio p)
+                    {
+                        return p.FechaDesde < DateTime.Now;
+                    });
+                    if (precio is not null)
+                    {
+                        importe += precio.Valor;
+                    }
+                }
+            }
+
+            if (ordenActual.Descuento != null)
+            {
+                if (ordenActual.Descuento.StartsWith("%"))
+                {
+
+                    importe = importe * (1 - Double.Parse(ordenActual.Descuento.Remove(0, 1)) / 100.0);
+                }
+                if (!ordenActual.Descuento.StartsWith("%"))
+                {
+                    double resta = Double.Parse(ordenActual.Descuento);
+                    importe = importe - Double.Parse(ordenActual.Descuento);
+                }
+                return importe;
+            }
+            else
+            {
+                return importe;
+            }
         }
     }
 }

@@ -784,6 +784,7 @@ namespace UI.Desktop
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ObjetosPerdidosForm";
             this.Sizable = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Objetos Perdidos";
             this.materialCard1.ResumeLayout(false);
             this.materialCard1.PerformLayout();

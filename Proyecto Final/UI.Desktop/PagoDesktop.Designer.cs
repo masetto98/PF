@@ -122,17 +122,18 @@ namespace UI.Desktop
             this.listPagos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listPagos.FullRowSelect = true;
             this.listPagos.HideSelection = false;
-            this.listPagos.Location = new System.Drawing.Point(98, 74);
+            this.listPagos.Location = new System.Drawing.Point(81, 74);
             this.listPagos.MinimumSize = new System.Drawing.Size(200, 100);
             this.listPagos.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listPagos.MouseState = MaterialSkin.MouseState.OUT;
             this.listPagos.MultiSelect = false;
             this.listPagos.Name = "listPagos";
             this.listPagos.OwnerDraw = true;
-            this.listPagos.Size = new System.Drawing.Size(525, 129);
+            this.listPagos.Size = new System.Drawing.Size(550, 129);
             this.listPagos.TabIndex = 4;
             this.listPagos.UseCompatibleStateImageBehavior = false;
             this.listPagos.View = System.Windows.Forms.View.Details;
+            this.listPagos.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listPagos_ColumnWidthChanging);
             // 
             // columnNroFactura
             // 
@@ -142,7 +143,7 @@ namespace UI.Desktop
             // columnFechaPago
             // 
             this.columnFechaPago.Text = "Fecha de Pago";
-            this.columnFechaPago.Width = 160;
+            this.columnFechaPago.Width = 190;
             // 
             // columnFormaPago
             // 

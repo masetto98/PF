@@ -176,10 +176,22 @@ namespace UI.Desktop
                 this.btnRetirar.Enabled = true;
             }
         }
-
+        private double CalcularPagosOrden(Orden ordenActual)
+        {
+            double pagos = 0;
+            if (ordenActual.Factura is not null && ordenActual.Factura.Pagos is not null)
+            {
+                foreach (Pago p in ordenActual.Factura.Pagos)
+                {
+                    pagos += p.Importe;
+                }
+            }
+            return pagos;
+        }
         private void btnRetirar_Click(object sender, EventArgs e)
         {
-            if (OrdenActual.Estado == Orden.Estados.Pagado)
+            double pagos = CalcularPagosOrden(OrdenActual);
+            if (OrdenActual.Estado == Orden.Estados.Pagado || pagos == OrdenActual.Factura.Importe)
             {
                 OrdenActual.Estado = Orden.Estados.Retirado;
                 OrdenActual.FechaSalida = DateTime.Now;

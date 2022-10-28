@@ -290,7 +290,7 @@ namespace UI.Desktop
             this.cmbTiposMaquina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cmbTiposMaquina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cmbTiposMaquina.FormattingEnabled = true;
-            this.cmbTiposMaquina.Hint = "Tipo Maquina";
+            this.cmbTiposMaquina.Hint = "Tipo Máquina";
             this.cmbTiposMaquina.IntegralHeight = false;
             this.cmbTiposMaquina.ItemHeight = 43;
             this.cmbTiposMaquina.Location = new System.Drawing.Point(532, 33);
