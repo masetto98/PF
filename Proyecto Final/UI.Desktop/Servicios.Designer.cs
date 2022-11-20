@@ -29,9 +29,9 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            FastReport.DataVisualization.Charting.ChartArea chartArea2 = new FastReport.DataVisualization.Charting.ChartArea();
-            FastReport.DataVisualization.Charting.Legend legend2 = new FastReport.DataVisualization.Charting.Legend();
-            FastReport.DataVisualization.Charting.Title title2 = new FastReport.DataVisualization.Charting.Title();
+            FastReport.DataVisualization.Charting.ChartArea chartArea1 = new FastReport.DataVisualization.Charting.ChartArea();
+            FastReport.DataVisualization.Charting.Legend legend1 = new FastReport.DataVisualization.Charting.Legend();
+            FastReport.DataVisualization.Charting.Title title1 = new FastReport.DataVisualization.Charting.Title();
             this.listServicios = new MaterialSkin.Controls.MaterialListView();
             this.columnID = new System.Windows.Forms.ColumnHeader();
             this.columnDescripcion = new System.Windows.Forms.ColumnHeader();
@@ -173,21 +173,21 @@ namespace UI.Desktop
             // chartServicios
             // 
             this.chartServicios.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            chartArea2.ShadowColor = System.Drawing.Color.Transparent;
-            this.chartServicios.ChartAreas.Add(chartArea2);
-            legend2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            legend2.IsTextAutoFit = false;
-            legend2.Name = "Legend1";
-            this.chartServicios.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            chartArea1.ShadowColor = System.Drawing.Color.Transparent;
+            this.chartServicios.ChartAreas.Add(chartArea1);
+            legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            this.chartServicios.Legends.Add(legend1);
             this.chartServicios.Location = new System.Drawing.Point(431, 211);
             this.chartServicios.Name = "chartServicios";
             this.chartServicios.Size = new System.Drawing.Size(498, 317);
             this.chartServicios.TabIndex = 11;
             this.chartServicios.Text = "chart1";
-            title2.Name = "Title1";
-            title2.Text = "Porcentaje de Tipos de Prenda atentidos por Servicios";
-            this.chartServicios.Titles.Add(title2);
+            title1.Name = "Title1";
+            title1.Text = "Porcentaje de Tipos de Prenda atentidos por Servicios";
+            this.chartServicios.Titles.Add(title1);
             // 
             // Servicios
             // 

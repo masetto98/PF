@@ -147,6 +147,7 @@ namespace UI.Desktop
             this.dtpFechaSalida.Size = new System.Drawing.Size(279, 23);
             this.dtpFechaSalida.TabIndex = 12;
             this.dtpFechaSalida.Value = new System.DateTime(2022, 10, 17, 0, 0, 0, 0);
+            this.dtpFechaSalida.Visible = false;
             // 
             // cmbEstado
             // 
@@ -224,7 +225,7 @@ namespace UI.Desktop
             // columnEstado
             // 
             this.columnEstado.Text = "Estado";
-            this.columnEstado.Width = 106;
+            this.columnEstado.Width = 107;
             // 
             // cmbServicios
             // 
@@ -348,7 +349,7 @@ namespace UI.Desktop
             this.txtCuit.Depth = 0;
             this.txtCuit.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtCuit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtCuit.Hint = "Cuit";
+            this.txtCuit.Hint = "Ingrese CUIT o DNI del Cliente";
             this.txtCuit.LeadingIcon = null;
             this.txtCuit.Location = new System.Drawing.Point(9, 10);
             this.txtCuit.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
@@ -407,6 +408,7 @@ namespace UI.Desktop
             this.lblFechaSalida.AutoSize = true;
             this.lblFechaSalida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.lblFechaSalida.Depth = 0;
+            this.lblFechaSalida.Enabled = false;
             this.lblFechaSalida.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblFechaSalida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblFechaSalida.Location = new System.Drawing.Point(513, 148);
@@ -416,6 +418,7 @@ namespace UI.Desktop
             this.lblFechaSalida.Size = new System.Drawing.Size(120, 19);
             this.lblFechaSalida.TabIndex = 26;
             this.lblFechaSalida.Text = "Fecha de salida: ";
+            this.lblFechaSalida.Visible = false;
             // 
             // txtNombreApellidoRazonSocial
             // 
@@ -840,6 +843,7 @@ namespace UI.Desktop
             this.dtpFechaEntrega.Size = new System.Drawing.Size(97, 23);
             this.dtpFechaEntrega.TabIndex = 41;
             this.dtpFechaEntrega.Value = new System.DateTime(2022, 10, 17, 0, 0, 0, 0);
+            this.dtpFechaEntrega.ValueChanged += new System.EventHandler(this.dtpFechaEntrega_ValueChanged);
             // 
             // materialLabel4
             // 

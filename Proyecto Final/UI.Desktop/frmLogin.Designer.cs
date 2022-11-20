@@ -37,6 +37,8 @@ namespace UI.Desktop
             this.showPass1 = new System.Windows.Forms.PictureBox();
             this.hidePass1 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblCuenta = new MaterialSkin.Controls.MaterialLabel();
+            this.btnCrearCuenta = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)(this.showPass1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hidePass1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -51,7 +53,7 @@ namespace UI.Desktop
             this.btnIngresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnIngresar.HighEmphasis = true;
             this.btnIngresar.Icon = null;
-            this.btnIngresar.Location = new System.Drawing.Point(348, 289);
+            this.btnIngresar.Location = new System.Drawing.Point(348, 296);
             this.btnIngresar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnIngresar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnIngresar.Name = "btnIngresar";
@@ -176,12 +178,50 @@ namespace UI.Desktop
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
             // 
+            // lblCuenta
+            // 
+            this.lblCuenta.AutoSize = true;
+            this.lblCuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.lblCuenta.Depth = 0;
+            this.lblCuenta.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblCuenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblCuenta.Location = new System.Drawing.Point(21, 271);
+            this.lblCuenta.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblCuenta.Name = "lblCuenta";
+            this.lblCuenta.Size = new System.Drawing.Size(166, 19);
+            this.lblCuenta.TabIndex = 24;
+            this.lblCuenta.Text = "¿No tienes una cuenta?";
+            // 
+            // btnCrearCuenta
+            // 
+            this.btnCrearCuenta.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnCrearCuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnCrearCuenta.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnCrearCuenta.Depth = 0;
+            this.btnCrearCuenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCrearCuenta.HighEmphasis = true;
+            this.btnCrearCuenta.Icon = null;
+            this.btnCrearCuenta.Location = new System.Drawing.Point(37, 296);
+            this.btnCrearCuenta.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnCrearCuenta.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCrearCuenta.Name = "btnCrearCuenta";
+            this.btnCrearCuenta.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnCrearCuenta.Size = new System.Drawing.Size(128, 36);
+            this.btnCrearCuenta.TabIndex = 25;
+            this.btnCrearCuenta.Text = "Crear cuenta";
+            this.btnCrearCuenta.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnCrearCuenta.UseAccentColor = false;
+            this.btnCrearCuenta.UseVisualStyleBackColor = false;
+            this.btnCrearCuenta.Click += new System.EventHandler(this.btnCrearCuenta_Click);
+            // 
             // frmLogin
             // 
             this.AcceptButton = this.btnIngresar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(490, 340);
+            this.ClientSize = new System.Drawing.Size(490, 343);
+            this.Controls.Add(this.btnCrearCuenta);
+            this.Controls.Add(this.lblCuenta);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.showPass1);
             this.Controls.Add(this.txtContrasenia);
@@ -215,5 +255,7 @@ namespace UI.Desktop
         private System.Windows.Forms.PictureBox showPass1;
         private System.Windows.Forms.PictureBox hidePass1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private MaterialSkin.Controls.MaterialLabel lblCuenta;
+        private MaterialSkin.Controls.MaterialButton btnCrearCuenta;
     }
 }

@@ -114,16 +114,34 @@ namespace UI.Desktop
             }
             return true;
         }
-
+        private bool ValidarExistenciaTipoMaquina()
+        {
+            List<TiposMaquina> tpm = _tiposMaquinaLogic.GetAll();
+            if(tpm.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public override void GuardarCambios()
         {
             try
-            {
-                MapearADatos();
-                if (Validar())
+            {   
+                if (ValidarExistenciaTipoMaquina())
                 {
-                    _maquinaLogic.Save(MaquinaActual);
-                    Close();
+                    MapearADatos();
+                    if (Validar())
+                    {
+                        _maquinaLogic.Save(MaquinaActual);
+                        Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No fue posible agregar una nueva máquina debido a que no se han encontrado tipos de máquinas registrados."+"\n"+"Por favor, registre el/los tipos de máquinas para poder continuar.", "Maquina", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception e)

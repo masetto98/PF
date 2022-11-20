@@ -86,6 +86,7 @@ namespace UI.Desktop
                 case ModoForm.Modificacion:
                     this.btnAceptarUsuario.Text = "Guardar";
                     this.txtIdUsuario.Enabled = false;
+                    this.btnBuscar.Enabled = false;
                     break;
                 case ModoForm.Baja:
                     this.btnAceptarUsuario.Text = "Eliminar";

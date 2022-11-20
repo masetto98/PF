@@ -27,6 +27,8 @@ namespace UI.Desktop
             _ordenItems = new OrdenServicioTipoPrendaLogic(new OrdenServicioTipoPrendaAdapter(context));
             ListarServicioTipoPrenda();
             CargarSerieGrafico();
+            chartItem.BackColor = Color.Transparent;
+            chartItem.ChartAreas[0].BackColor = Color.Transparent;
         }
         private void CargarSerieGrafico()
         {

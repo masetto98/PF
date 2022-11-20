@@ -33,32 +33,43 @@ namespace UI.Desktop
             _tipoPrendaLogic = new TipoPrendaLogic(new TipoPrendaAdapter(context));
             ListarServicios();
             CargarSeriesGrafico();
+            chartServicios.BackColor = Color.Transparent;
+            chartServicios.ChartAreas[0].BackColor = Color.Transparent;
+            chartServicios.Legends[0].BackColor = Color.Transparent;
         }
         private void CargarSeriesGrafico()
         {
             
             List<TipoPrenda> tiposPrenda = _tipoPrendaLogic.GetAll();
-            foreach(TipoPrenda tp in tiposPrenda)
+            if(tiposPrenda.Count > 0)
             {
-                Series serie = chartServicios.Series.Add(tp.Descripcion);
-            }
-            List<Servicio> servicios = _servicioLogic.GetAll();
-            foreach(Servicio s in servicios)
-            {
-                double cantXprenda = 0;
-                List<Business.Entities.ServicioTipoPrenda> items = _servicioTipoPrendaLogic.GetAll().FindAll(delegate (Business.Entities.ServicioTipoPrenda item)
+                foreach (TipoPrenda tp in tiposPrenda)
                 {
-                    return item.Servicio == s;
-                });
-                foreach (Business.Entities.ServicioTipoPrenda item in items)
-                {
-                    cantXprenda = CalcularCantxPrenda(item);
-                    double cantTotal = CalcularTotalxServicio(items);
-                    double mostrar = Math.Round((cantXprenda / cantTotal) * 100, 2);
-                    chartServicios.Series[item.TipoPrenda.Descripcion].Points.AddXY(s.Descripcion, mostrar);
-                    chartServicios.Series[item.TipoPrenda.Descripcion].IsValueShownAsLabel = true;
+                    Series serie = chartServicios.Series.Add(tp.Descripcion);
                 }
             }
+           
+            List<Servicio> servicios = _servicioLogic.GetAll();
+            if(servicios.Count > 0)
+            {
+                foreach (Servicio s in servicios)
+                {
+                    double cantXprenda = 0;
+                    List<Business.Entities.ServicioTipoPrenda> items = _servicioTipoPrendaLogic.GetAll().FindAll(delegate (Business.Entities.ServicioTipoPrenda item)
+                    {
+                        return item.Servicio == s;
+                    });
+                    foreach (Business.Entities.ServicioTipoPrenda item in items)
+                    {
+                        cantXprenda = CalcularCantxPrenda(item);
+                        double cantTotal = CalcularTotalxServicio(items);
+                        double mostrar = Math.Round((cantXprenda / cantTotal) * 100, 2);
+                        chartServicios.Series[item.TipoPrenda.Descripcion].Points.AddXY(s.Descripcion, mostrar);
+                        chartServicios.Series[item.TipoPrenda.Descripcion].IsValueShownAsLabel = true;
+                    }
+                }
+            }
+            
            
             /*
             List<Servicio> servicios = _servicioLogic.GetAll();

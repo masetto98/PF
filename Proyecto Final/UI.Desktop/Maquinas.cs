@@ -33,13 +33,16 @@ namespace UI.Desktop
             //ListarMaquinas();
             ListarTiposMaquinas();
             CargarSerieGrafico();
+            chartUsoMaq.BackColor = Color.Transparent;
+            chartUsoMaq.ChartAreas[0].BackColor = Color.Transparent;
+            chartUsoMaq.ChartAreas[1].BackColor = Color.Transparent;
         }
 
         private void ListarTiposMaquinas() 
         {
             listTiposMaquina.Items.Clear();
             List<TiposMaquina> tiposMaquinas = _tiposMaquinaLogic.GetAll();
-            if (tiposMaquinas is not null)
+            if (tiposMaquinas.Count > 0)
             {
                 foreach (TiposMaquina m in tiposMaquinas)
                 {
@@ -67,7 +70,10 @@ namespace UI.Desktop
             double cantAtendidosTotal = 0;
             foreach(Maquina m in tm.Maquinas)
             {
-                cantAtendidosTotal += m.itemsAtendidos.Count;
+                if(m.itemsAtendidos is not null)
+                {
+                    cantAtendidosTotal += m.itemsAtendidos.Count;
+                }
             }
             return cantAtendidosTotal;
         }
@@ -77,32 +83,36 @@ namespace UI.Desktop
             double cantAtendidosTotal = 0;
             double cantAtendidosxMaq = 0;
             List<TiposMaquina> tiposMaq = _tiposMaquinaLogic.GetAll();
-            tipoMaqActual = tiposMaq[0];
-            foreach(TiposMaquina tm in tiposMaq)
+            if(tiposMaq.Count > 0)
             {
-                if(tipoMaqActual != tm)
+                tipoMaqActual = tiposMaq[0];
+                foreach (TiposMaquina tm in tiposMaq)
                 {
-                    cantAtendidosTotal = CalcularTotalTipoMaq(tm);
-                    foreach (Maquina m in tm.Maquinas)
+                    if (tipoMaqActual != tm)
                     {
-                        cantAtendidosxMaq = CalcularUsoMaquina(m);
-                        double mostrar = Math.Round((cantAtendidosxMaq / cantAtendidosTotal) * 100, 2);
-                        chartUsoMaq.Series["Series1"].Points.AddXY(m.Descripcion + "\n" + mostrar.ToString() + "%", cantAtendidosxMaq / cantAtendidosTotal);
-                        
-                        
-                    }
-                }
-                else
-                {
-                    cantAtendidosTotal = CalcularTotalTipoMaq(tm);
-                    foreach (Maquina m in tm.Maquinas)
-                    {
-                        cantAtendidosxMaq = CalcularUsoMaquina(m);
-                        double mostrar = Math.Round((cantAtendidosxMaq / cantAtendidosTotal)*100,2);
+                        cantAtendidosTotal = CalcularTotalTipoMaq(tm);
+                        foreach (Maquina m in tm.Maquinas)
+                        {
+                            cantAtendidosxMaq = CalcularUsoMaquina(m);
+                            double mostrar = Math.Round((cantAtendidosxMaq / cantAtendidosTotal) * 100, 2);
+                            chartUsoMaq.Series["Series1"].Points.AddXY(m.Descripcion + "\n" + mostrar.ToString() + "%", cantAtendidosxMaq / cantAtendidosTotal);
 
-                        chartUsoMaq.Series["UsoMaq"].Points.AddXY(m.Descripcion + "\n" + mostrar.ToString()+"%", cantAtendidosxMaq / cantAtendidosTotal);
+
+                        }
+                    }
+                    else
+                    {
+                        cantAtendidosTotal = CalcularTotalTipoMaq(tm);
+                        foreach (Maquina m in tm.Maquinas)
+                        {
+                            cantAtendidosxMaq = CalcularUsoMaquina(m);
+                            double mostrar = Math.Round((cantAtendidosxMaq / cantAtendidosTotal) * 100, 2);
+
+                            chartUsoMaq.Series["UsoMaq"].Points.AddXY(m.Descripcion + "\n" + mostrar.ToString() + "%", cantAtendidosxMaq / cantAtendidosTotal);
+                        }
                     }
                 }
+            
                
             }
 

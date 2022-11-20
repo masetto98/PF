@@ -336,7 +336,10 @@ namespace UI.Desktop
             this.txtNombreApellidoRazonSocial.Text = "";
             try
             {
-                Cliente cli = _clienteLogic.GetOneConCuit(this.txtCuit.Text);
+                Cliente cli = _clienteLogic.GetAll().Find(
+                    delegate (Cliente c) {
+                        return c.Cuit == this.txtCuit.Text || c.Cuit.Contains(this.txtCuit.Text);
+                    });
                 if (cli == null)
                 {
                    
@@ -619,7 +622,7 @@ namespace UI.Desktop
                 MapearADatos();
                 if (Validar() && OrdenActual.Cliente is not null && OrdenActual.ItemsPedidos.Count > 0)
                 {
-                    if (MessageBox.Show("DATOS  DE LA ORDEN:" + "\n" 
+                    if (MessageBox.Show("¿Desea registrar la orden con la siguiente información?" + "\n" + "DATOS  DE LA ORDEN:" + "\n" 
                         + "Cuit: " + OrdenActual.Cliente.Cuit + "\n"
                         + "Cliente: " + OrdenActual.Cliente.Nombre + " " + OrdenActual.Cliente.Apellido + " | " + OrdenActual.Cliente.RazonSocial + "\n"
                         + "Fecha y hora de entrega: " + OrdenActual.FechaHoraEntregaIngresada + "\n"
@@ -627,9 +630,21 @@ namespace UI.Desktop
                         + "Entrega a domicilio: " + OrdenActual.EntregaDomicilio.ToString() + "\n"
                         + "Descuento: " + OrdenActual.Descuento + "\n"
                         + "Total: " + _total
-                        , "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        , "Orden", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         _ordenLogic.Save(OrdenActual);
+                        AtributosNegocio negocio = new AtributosNegocio();
+                        AtributosNegocioLogic negocioLogic = new AtributosNegocioLogic(new AtributosNegocioAdapter(_context));
+                        negocio = negocioLogic.GetOne(1);
+                        if(negocio is null)
+                        {
+                            if(MessageBox.Show("No fue posible emitir el comprobante debido a que aún no se encuentran registrado los atributos del negocio."+"\n" +"¿Desea registrar los atributos en este momento?","Comprobante", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                frmAtributosNegocio frmAtributosnegocio = new frmAtributosNegocio(ModoForm.Alta, _context);
+                                frmAtributosnegocio.ShowDialog();
+                                PrintComprobante();
+                            }
+                        }
                         Close();
                     }
                 }
@@ -672,7 +687,7 @@ namespace UI.Desktop
                 case ModoForm.Alta:
                     {
                         GuardarCambios();
-                        PrintComprobante();
+                       
                     };
                     break;
                 case ModoForm.Modificacion:
@@ -715,88 +730,98 @@ namespace UI.Desktop
                         catch (IOException ex)
                         {
                             fileError = true;
-                            MessageBox.Show("No fue posible escribir el archivo en el disco." + ex.Message);
+                            MessageBox.Show("No fue posible escribir el archivo en el disco." + ex.Message,"Info",MessageBoxButtons.OK,MessageBoxIcon.Error);
                         }
                     }
                     if (!fileError)
                     {
-                        try
-                        {
+                    try
+                    {
                         AtributosNegocio negocio = new AtributosNegocio();
                         AtributosNegocioLogic negocioLogic = new AtributosNegocioLogic(new AtributosNegocioAdapter(_context));
                         negocio = negocioLogic.GetOne(1);
-                        string comprobanteorden = Properties.Resources.comprobanteorden2.ToString();
-                        comprobanteorden = comprobanteorden.Replace("@NombreLavanderia", negocio.NombreEmpresa);
-                        comprobanteorden = comprobanteorden.Replace("@DireccionLav", negocio.DireccionEmpresa);
-                        comprobanteorden = comprobanteorden.Replace("@TelLav", negocio.TelEmpresa);
-                        comprobanteorden = comprobanteorden.Replace("@Redes", negocio.RedesEmpresa);
-                        comprobanteorden = comprobanteorden.Replace("@NroOrden", OrdenActual.NroOrden.ToString());
-                        comprobanteorden = comprobanteorden.Replace("@fechaentrada", OrdenActual.FechaEntrada.ToString("dddd dd, MMMM yyyy"));
-                        comprobanteorden = comprobanteorden.Replace("@fecharetiro", OrdenActual.FechaHoraEntregaIngresada.ToString("dddd dd, MMMM yyyy"));
-                        comprobanteorden = comprobanteorden.Replace("@cliente", OrdenActual.Cliente.Apellido + "," + OrdenActual.Cliente.Nombre);
-                        comprobanteorden = comprobanteorden.Replace("@direccion", OrdenActual.Cliente.Direccion);
-                        comprobanteorden = comprobanteorden.Replace("@telefono", OrdenActual.Cliente.Telefono);
-                        comprobanteorden = comprobanteorden.Replace("@obs", "Entrega a domicilio:" + OrdenActual.EntregaDomicilio);
-                        if(OrdenActual.Descuento is not null)
+                        if (negocio is not null)
                         {
-                            comprobanteorden = comprobanteorden.Replace("@Desc", OrdenActual.Descuento);
-                        }
-                        else
-                        {
-                            comprobanteorden = comprobanteorden.Replace("@Desc", "0");
-                        }
 
-                        string items = string.Empty;
-                        foreach (OrdenServicioTipoPrenda row in _itemsServicio)
-                        {
-                            items += "<tr>";
-                            items += "<td align=" + "\"center\">" + row.OrdenItem + "</td>";
-                            items += "<td align=" + "\"center\">" + row.ServicioTipoPrenda.Servicio.Descripcion + "</td>";
-                            items += "<td align=" + "\"center\">" + row.ServicioTipoPrenda.TipoPrenda.Descripcion + "</td>";
-                            items += "</tr>";
-                        }
-                        comprobanteorden = comprobanteorden.Replace("@items", items);
-                        // falta condicion de si es null el listado de pagos pq falla con el count cuando no hay seña
-                        if(OrdenActual.Factura is not null)
-                        {
-                            FacturaActual = _facturaLogic.GetOne(OrdenActual.NroFactura);
-                            if (FacturaActual.Pagos.Count > 0)
+
+                            string comprobanteorden = Properties.Resources.comprobanteorden2.ToString();
+                            comprobanteorden = comprobanteorden.Replace("@NombreLavanderia", negocio.NombreEmpresa);
+                            comprobanteorden = comprobanteorden.Replace("@DireccionLav", negocio.DireccionEmpresa);
+                            comprobanteorden = comprobanteorden.Replace("@TelLav", negocio.TelEmpresa);
+                            comprobanteorden = comprobanteorden.Replace("@Redes", negocio.RedesEmpresa);
+                            comprobanteorden = comprobanteorden.Replace("@NroOrden", OrdenActual.NroOrden.ToString());
+                            comprobanteorden = comprobanteorden.Replace("@fechaentrada", OrdenActual.FechaEntrada.ToString("dddd dd, MMMM yyyy"));
+                            comprobanteorden = comprobanteorden.Replace("@fecharetiro", OrdenActual.FechaHoraEntregaIngresada.ToString("dddd dd, MMMM yyyy"));
+                            comprobanteorden = comprobanteorden.Replace("@cliente", OrdenActual.Cliente.Apellido + "," + OrdenActual.Cliente.Nombre);
+                            comprobanteorden = comprobanteorden.Replace("@direccion", OrdenActual.Cliente.Direccion);
+                            comprobanteorden = comprobanteorden.Replace("@telefono", OrdenActual.Cliente.Telefono);
+                            comprobanteorden = comprobanteorden.Replace("@obs", "Entrega a domicilio:" + OrdenActual.EntregaDomicilio);
+                            if (OrdenActual.Descuento is not null)
                             {
-                                comprobanteorden = comprobanteorden.Replace("@Seña", OrdenActual.Factura.Pagos[0].Importe.ToString());
+                                comprobanteorden = comprobanteorden.Replace("@Desc", OrdenActual.Descuento);
+                            }
+                            else
+                            {
+                                comprobanteorden = comprobanteorden.Replace("@Desc", "0");
+                            }
+
+                            string items = string.Empty;
+                            foreach (OrdenServicioTipoPrenda row in _itemsServicio)
+                            {
+                                items += "<tr>";
+                                items += "<td align=" + "\"center\">" + row.OrdenItem + "</td>";
+                                items += "<td align=" + "\"center\">" + row.ServicioTipoPrenda.Servicio.Descripcion + "</td>";
+                                items += "<td align=" + "\"center\">" + row.ServicioTipoPrenda.TipoPrenda.Descripcion + "</td>";
+                                items += "</tr>";
+                            }
+                            comprobanteorden = comprobanteorden.Replace("@items", items);
+                            // falta condicion de si es null el listado de pagos pq falla con el count cuando no hay seña
+                            if (OrdenActual.Factura is not null)
+                            {
+                                FacturaActual = _facturaLogic.GetOne(OrdenActual.NroFactura);
+                                if (FacturaActual.Pagos.Count > 0)
+                                {
+                                    comprobanteorden = comprobanteorden.Replace("@Seña", OrdenActual.Factura.Pagos[0].Importe.ToString());
+                                }
+                                else
+                                {
+                                    comprobanteorden = comprobanteorden.Replace("@Seña", "0");
+                                }
                             }
                             else
                             {
                                 comprobanteorden = comprobanteorden.Replace("@Seña", "0");
                             }
+
+
+
+                            using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                            {
+
+                                PdfWriter writer = new PdfWriter(stream);
+                                PdfDocument pdf = new PdfDocument(writer);
+                                pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4);
+
+                                using (StringReader sr = new StringReader(comprobanteorden))
+                                {
+                                    Document document = HtmlConverter.ConvertToDocument(comprobanteorden, writer);
+                                    document.Close();
+                                }
+                                stream.Close();
+                            }
+
+                            MessageBox.Show("Comprobante exportado exitosamente", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                         }
                         else
                         {
-                            comprobanteorden = comprobanteorden.Replace("@Seña", "0");
+                            MessageBox.Show("No fue posible emitir el comprobante debido a que aún no se encuentran registros los atributos del negocio. Por favor, registre los atributos del negocio para emitir el comprobante.", "Comprobante", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                       
-
-
-                        using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
-                        {
-
-                            PdfWriter writer = new PdfWriter(stream);
-                            PdfDocument pdf = new PdfDocument(writer);
-                            pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4);
-                            
-                            using (StringReader sr = new StringReader(comprobanteorden))
-                            {
-                                Document document =  HtmlConverter.ConvertToDocument(comprobanteorden, writer);
-                                document.Close();
-                            }
-                            stream.Close();
-                        }
-
-                            MessageBox.Show("Comprobante exportado exitosamente", "Info", MessageBoxButtons.OK,MessageBoxIcon.Information);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Error: " + ex.Message);
-                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
                     }
                 }
             }
@@ -825,10 +850,19 @@ namespace UI.Desktop
                 }
                 else
                 {
-                    MessageBox.Show("El valor de la seña ingresado es mayor al total de la Orden. Por favor, ingrese un valor válido para continuar.", "Senia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El valor de la seña ingresado es mayor al total de la Orden. Por favor, ingrese un valor válido para continuar.", "Seña", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             
+        }
+
+        private void dtpFechaEntrega_ValueChanged(object sender, EventArgs e)
+        {
+            if(dtpFechaEntrega.Value < dtpFechaIngreso.Value.Date)
+            {
+                MessageBox.Show("La fecha de entrega seleccionada no puede ser inferior a la fecha de ingreso de la Orden.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dtpFechaEntrega.Value = DateTime.Today;
+            }
         }
     }
 }

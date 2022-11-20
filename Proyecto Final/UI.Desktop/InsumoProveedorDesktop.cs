@@ -20,6 +20,7 @@ namespace UI.Desktop
         private readonly ProveedorLogic _proveedorLogic;
         private readonly InsumoLogic _insumoLogic;
         private readonly InsumoProveedorLogic _insumoProveedorLogic;
+        private readonly ConsumoLogic _consumoLogic;
         public InsumoProveedor InsumoProveedorActual { set; get; }
         private readonly LavanderiaContext _context;
         public List<String> _unidadesMedida;
@@ -30,6 +31,7 @@ namespace UI.Desktop
             _insumoLogic = new InsumoLogic(new InsumoAdapter(context));
             _proveedorLogic = new ProveedorLogic(new ProveedorAdapter(context));
             _insumoProveedorLogic = new InsumoProveedorLogic(new InsumoProveedorAdapter(context));
+            _consumoLogic = new ConsumoLogic(new ConsumoAdapter(context));
             _context = context;
             _unidadesMedida = new List<string>();
 
@@ -38,18 +40,18 @@ namespace UI.Desktop
         public InsumoProveedorDesktop(ModoForm modo, LavanderiaContext context) : this(context)
         {
             Modos = modo;
-            // No te deja hacer nada hasta que no introduzcas un legajo válido, como en usuario
+            
             this.cbProveedores.DropDownStyle = ComboBoxStyle.DropDownList;
             try
             {
-                // Cargo los cursos para mostrarlos en el combobox
+               
                 List<Proveedor> proveedores = _proveedorLogic.GetAll();
                 this.cbProveedores.DataSource = proveedores;
-                // selecciono el curso de la posicion 0 como para seleccionar algo
-                this.cbProveedores.SelectedIndex = 0;
+               
+                //this.cbProveedores.SelectedIndex = 0;
                 List<Insumo> insumos = _insumoLogic.GetAll();
                 this.cbInsumos.DataSource = insumos;
-                this.cbInsumos.SelectedIndex = 0;
+               // this.cbInsumos.SelectedIndex = 0;
                 
             }
             catch (Exception e)
@@ -78,8 +80,7 @@ namespace UI.Desktop
             this.dtpFechaIngreso.Value = InsumoProveedorActual.FechaIngreso;
             this.txtCantidad.Text = InsumoProveedorActual.Cantidad.ToString();
             this.cmbUnidadMedida.Text = InsumoProveedorActual.Insumo.UnidadMedida.ToString();
-            // Tengo que cargar los cursos por si quiero seleccionar otro
-            // Y seleccionar el actual
+           
             try
             {
                 List<Proveedor> proveedores = _proveedorLogic.GetAll();
@@ -137,7 +138,7 @@ namespace UI.Desktop
                     InsumoProveedorActual.FechaIngreso = DateTime.Now;
                     InsumoProveedorActual.Cantidad = ConvertirUnidadesConsumo(double.Parse(this.txtCantidad.Text),_unidadesMedida[this.cmbUnidadMedida.SelectedIndex]);
                 }
-        
+                
                 switch (Modos)
                 {
                     case ModoForm.Alta:
@@ -211,8 +212,15 @@ namespace UI.Desktop
             {
                 case ModoForm.Alta:
                     {
-                        GuardarCambios();
-                        ModificarStock();
+                        if (ValidarExistenciaInsProv())
+                        {
+                            GuardarCambios();
+                            ModificarStock();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No fue posible agregar el nuevo ingreso debido a que no se han encontrado proveedores o insumos en el sistema." + "\n" + "Por favor, registre dichos elementos para poder continuar.", "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
                     };
                     break;
                 case ModoForm.Modificacion:
@@ -227,6 +235,7 @@ namespace UI.Desktop
                     {
                         if (MessageBox.Show($"¿Está seguro que desea eliminar el ingreso?", "Ingreso", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
+                            ModificarStock();
                             Eliminar();
                             Close();
                         }
@@ -240,22 +249,68 @@ namespace UI.Desktop
 
         private void ModificarStock() 
         {
-            int IdInsumo = (int)this.cbInsumos.SelectedValue;
-            Insumo insumo = _insumoLogic.GetOne(IdInsumo);
-            double stockAnterior = insumo.Stock;
-            insumo.Stock = stockAnterior + InsumoProveedorActual.Cantidad;
-            insumo.State = BusinessEntity.States.Modified;
-            _insumoLogic.Save(insumo);
-        }
+            switch (Modos)
+            {
+                case ModoForm.Alta:
+                    {
+                        int IdInsumo = (int)this.cbInsumos.SelectedValue;
+                        Insumo insumo = _insumoLogic.GetOne(IdInsumo);
+                        double stockAnterior = insumo.Stock;
+                        insumo.Stock = stockAnterior + InsumoProveedorActual.Cantidad;
+                        insumo.State = BusinessEntity.States.Modified;
+                        _insumoLogic.Save(insumo);
+                    };
+                    break;
+                case ModoForm.Baja:
+                    {
+                        List<Consumo> consumos = _consumoLogic.GetAll().FindAll(
+                            delegate (Consumo c)
+                            {
+                                return c.Insumo == InsumoProveedorActual.Insumo && c.FechaConsumo >= InsumoProveedorActual.FechaIngreso;
+                            });
+                        double consumoApartirDeIngreso = 0;
+                        foreach(Consumo c in consumos)
+                        {
+                            consumoApartirDeIngreso += c.Cantidad;
+                        }
+                        double consumoIngreso = InsumoProveedorActual.Cantidad - consumoApartirDeIngreso;
+                        Insumo insumo = InsumoProveedorActual.Insumo;
+                        double stockAnterior = insumo.Stock;
+                        insumo.Stock = stockAnterior - consumoIngreso;
+                        insumo.State = BusinessEntity.States.Modified;
+                        _insumoLogic.Save(insumo);
 
+                    };
+                    break;
+                    
+
+            }
+            
+        }
+        private bool ValidarExistenciaInsProv()
+        {
+            List<Insumo> insumos = _insumoLogic.GetAll();
+            List<Proveedor> prov = _proveedorLogic.GetAll();
+            if(insumos.Count > 0 && prov.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public override void GuardarCambios()
         {
             try
             {
-                MapearADatos();
-                Validaciones.ValidarNumeroEnteroDecimal(this.txtCantidad.Text);
-                _insumoProveedorLogic.Save(InsumoProveedorActual);
-                Close();
+               
+                    MapearADatos();
+                    Validaciones.ValidarNumeroEnteroDecimal(this.txtCantidad.Text);
+                    _insumoProveedorLogic.Save(InsumoProveedorActual);
+                    Close();
+               
+               
                 
             }
             catch (Exception e)

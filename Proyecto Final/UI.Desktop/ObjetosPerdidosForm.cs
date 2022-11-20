@@ -139,7 +139,7 @@ namespace UI.Desktop
             LimpiarItems();
             try
             {
-                if (OrdenActual.ItemsPedidos is not null)
+                if (OrdenActual is not null && OrdenActual.ItemsPedidos.Count > 0)
                 {
                     OrdenServicioTipoPrenda ostpActual = OrdenActual.ItemsPedidos.Find(delegate (OrdenServicioTipoPrenda ostp)
                     {
@@ -162,6 +162,10 @@ namespace UI.Desktop
                     {
                         MessageBox.Show("Debe seleccionar un item en la lista \"Items de la orden\" para poder observar los detalles", "Items", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Debe ingresar un número de orden o buscar un cliente a través de su cuit para poder continuar", "Items", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)

@@ -124,5 +124,43 @@ namespace UI.Desktop
                 MessageBox.Show("Debe seleccionar una fila en la lista Insumos para poder agregar", "Consumo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void btnAgregarIns_Click(object sender, EventArgs e)
+        {
+            InsumoDesktop frmInsumoDesktop = new InsumoDesktop(ApplicationForm.ModoForm.Alta, _context);
+            frmInsumoDesktop.ShowDialog();
+            ListarStock();
+        }
+
+        private void btnEditarIns_Click(object sender, EventArgs e)
+        {
+
+            if (listInsumos.SelectedItems.Count > 0)
+            {
+                int idInsumo = Int32.Parse(listInsumos.SelectedItems[0].Text);
+                InsumoDesktop frmInsumoDesktop = new InsumoDesktop(idInsumo, ApplicationForm.ModoForm.Modificacion, _context);
+                frmInsumoDesktop.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder editar", "Insumo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            ListarStock();
+        }
+
+        private void btnEliminarIns_Click(object sender, EventArgs e)
+        {
+            if (listInsumos.SelectedItems.Count > 0)
+            {
+                int idInsumo = Int32.Parse(listInsumos.SelectedItems[0].Text);
+                InsumoDesktop frmInsumoDesktop = new InsumoDesktop(idInsumo, ApplicationForm.ModoForm.Baja, _context);
+                frmInsumoDesktop.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder eliminar", "Insumo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            ListarStock();
+        }
     }
 }

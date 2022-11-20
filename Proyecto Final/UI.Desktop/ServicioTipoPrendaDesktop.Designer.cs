@@ -404,7 +404,7 @@ namespace UI.Desktop
             this.listConsumos.MouseState = MaterialSkin.MouseState.OUT;
             this.listConsumos.Name = "listConsumos";
             this.listConsumos.OwnerDraw = true;
-            this.listConsumos.Size = new System.Drawing.Size(603, 215);
+            this.listConsumos.Size = new System.Drawing.Size(592, 215);
             this.listConsumos.TabIndex = 2;
             this.listConsumos.UseCompatibleStateImageBehavior = false;
             this.listConsumos.View = System.Windows.Forms.View.Details;

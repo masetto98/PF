@@ -150,6 +150,7 @@ namespace UI.Desktop
             }
             else
             {
+                _total = _totalitems;
                 this.txtTotalFactura.Text = _totalitems.ToString();
             }
             
@@ -219,12 +220,11 @@ namespace UI.Desktop
         {
             Close();
         }
-        
-        private void btnImpFactura_Click(object sender, EventArgs e)
+        public void PrintComprobante()
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "PDF (*.pdf)|*.pdf";
-            sfd.FileName = $"Factura - {OrdenActual.NroFactura} - {DateTime.Now.ToString("yyyyMMddHHmmss")}.pdf";
+            sfd.FileName = $"Comprobante Retiro - {OrdenActual.NroFactura} - {DateTime.Now.ToString("yyyyMMddHHmmss")}.pdf";
             bool fileError = false;
             if (sfd.ShowDialog() == DialogResult.OK)
             {
@@ -244,9 +244,9 @@ namespace UI.Desktop
                 {
                     try
                     {
-                        
-                        negocio = _atributosLogic.GetOne(1);
-                        string factura = Properties.Resources.factura3.ToString();
+
+
+                        string factura = Properties.Resources.factura.ToString();
                         factura = factura.Replace("@nombrempresa", negocio.NombreEmpresa);
                         factura = factura.Replace("@direccionempresa", negocio.DireccionEmpresa);
                         factura = factura.Replace("@telempresa", negocio.TelEmpresa);
@@ -268,7 +268,7 @@ namespace UI.Desktop
                         foreach (OrdenServicioTipoPrenda row in _itemsServicio)
                         {
                             items += "<tr>";
-                            items += "<td align="+ "\"center\">" + row.OrdenItem + "</td>";
+                            items += "<td align=" + "\"center\">" + row.OrdenItem + "</td>";
                             items += "<td align=" + "\"center\">" + row.ServicioTipoPrenda.Servicio.Descripcion + "</td>";
                             items += "<td align=" + "\"center\">" + row.ServicioTipoPrenda.TipoPrenda.Descripcion + "</td>";
                             items += "<td align=" + "\"center\">" + row.ServicioTipoPrenda.HistoricoPrecios.FindLast(
@@ -280,7 +280,7 @@ namespace UI.Desktop
                         }
                         factura = factura.Replace("@items", items);
                         factura = factura.Replace("@totalitems", _totalitems.ToString());
-                        if(OrdenActual.Descuento != null)
+                        if (OrdenActual.Descuento != null)
                         {
                             factura = factura.Replace("@Desc", OrdenActual.Descuento);
                         }
@@ -291,7 +291,7 @@ namespace UI.Desktop
                         double totalfactura;
                         FacturaActual = _facturaLogic.GetOne(OrdenActual.NroFactura);
                         if (FacturaActual.Pagos.Count > 0)
-                            
+
                         {
                             factura = factura.Replace("@Seña", OrdenActual.Factura.Pagos[0].Importe.ToString());
                             totalfactura = _total - OrdenActual.Factura.Pagos[0].Importe;
@@ -303,13 +303,13 @@ namespace UI.Desktop
                             totalfactura = _total;
                             factura = factura.Replace("@totalfact", totalfactura.ToString());
                         }
-                        
+
                         using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
                         {
                             PdfWriter writer = new PdfWriter(stream);
                             PdfDocument pdf = new PdfDocument(writer);
                             pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4);
-                            
+
                             //Paragraph p = new Paragraph();
                             //p.SetTextAlignment(TextAlignment.CENTER);
                             //p.Add($"Reporte de {Singleton.getInstance().ModuloActual} \n");
@@ -319,31 +319,39 @@ namespace UI.Desktop
                             using (StringReader sr = new StringReader(factura))
                             {
                                 Document document = HtmlConverter.ConvertToDocument(factura, writer);
-                                
-                                ImageData imageData = ImageDataFactory.Create("D:\\Proyectos\\PF\\Proyecto Final\\UI.Desktop\\Resources\\logo_lavadero_elsol.png");
-                                iText.Layout.Element.Image logo = new iText.Layout.Element.Image(imageData);
-                               // iText.Kernel.Geom.Rectangle pagesize = document.GetPdfDocument().GetDefaultPageSize().;
-                                logo.ScaleToFit(300, 160);
-                                //logo.SetRelativePosition(document.GetLeftMargin(), document.GetTopMargin() - 80,document.GetRightMargin(),document.GetBottomMargin());
-                                float top = document.GetPdfDocument().GetDefaultPageSize().GetTop();
-                                float dif = top - 160;
-                                logo.SetFixedPosition(document.GetLeftMargin(), dif);
-                                document.Add(logo);
                                 document.Close();
                             }
                             stream.Close();
                         }
 
-                        MessageBox.Show("La factura fue generada correctamente", "Info");
+                        MessageBox.Show("El comprobante fue generado correctamente", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error: " + ex.Message);
+                        MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-    
+
                 }
 
             }
+        }
+        private void btnImpFactura_Click(object sender, EventArgs e)
+        {
+            negocio = _atributosLogic.GetAll().FirstOrDefault();
+            if (negocio is null)
+            {
+                if (MessageBox.Show("No fue posible emitir el comprobante debido a que aún no se encuentran registrado los atributos del negocio." + "\n" + "¿Desea registrar los atributos en este momento?", "Comprobante", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    frmAtributosNegocio frmAtributosnegocio = new frmAtributosNegocio(ModoForm.Alta, _context);
+                    frmAtributosnegocio.ShowDialog();
+                    PrintComprobante();
+                }
+            }
+            else
+            {
+                PrintComprobante();
+            }
+           
         }
 
         private void listItemsRetiro_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
