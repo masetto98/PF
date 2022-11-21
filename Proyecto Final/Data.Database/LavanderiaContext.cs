@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
 using System.Configuration;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Business.Entities;
 
@@ -160,7 +161,7 @@ namespace Data.Database
                 .HasOne(m => m.Factura)
                 .WithMany()
                 .HasForeignKey(m => m.NroFactura)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<OrdenServicioTipoPrenda>()
                 .HasOne(m => m.Orden)
@@ -209,6 +210,16 @@ namespace Data.Database
 
             modelBuilder.Entity<ServicioTipoPrenda>()
                 .HasKey(m => new { m.IdServicio, m.IdTipoPrenda });
+        }
+
+        public override int SaveChanges()
+        {
+            foreach (var item in ChangeTracker.Entries().Where(e => e.State == EntityState.Deleted && e.Metadata.GetProperties().Any(x => x.Name == "Borrado")))
+            {
+                item.State = EntityState.Unchanged;
+                item.CurrentValues["Borrado"] = true;      
+            }
+            return base.SaveChanges();
         }
 
         public DbSet<Cliente>? Clientes { get; set; }

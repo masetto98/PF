@@ -20,7 +20,7 @@ namespace Data.Database
             List<Factura> facturas = new List<Factura>();
             try
             {
-                facturas = _context.Facturas.ToList();
+                facturas = _context.Facturas.Where(f => f.Borrado == false).Include(f => f.Pagos.Where(p => p.Borrado == false)).ToList();
             }
             catch (Exception e)
             {
@@ -33,7 +33,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.Facturas.Include(f => f.Pagos).FirstOrDefault(f => f.NroFactura ==nroFactura);
+                return _context.Facturas.Where(f => f.Borrado == false).Include(f => f.Pagos.Where(p => p.Borrado == false)).FirstOrDefault(f => f.NroFactura ==nroFactura);
             }
             catch (Exception e)
             {

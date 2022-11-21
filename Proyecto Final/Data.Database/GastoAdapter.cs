@@ -22,7 +22,7 @@ namespace Data.Database
             List<Gasto> gastos = new List<Gasto>();
             try
             {
-                gastos = _context.Gastos.ToList();
+                gastos = _context.Gastos.Where(g => g.Borrado == false).ToList();
             }
             catch (Exception e)
             {
@@ -36,7 +36,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.Gastos.FirstOrDefault(g => g.IdGasto == idGasto);
+                return _context.Gastos.Where(g => g.Borrado==false).FirstOrDefault(g => g.IdGasto == idGasto);
             }
             catch (Exception e)
             {

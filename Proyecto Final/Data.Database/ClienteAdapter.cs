@@ -20,7 +20,7 @@ namespace Data.Database
             List<Cliente> clientes = new List<Cliente>();
             try
             {
-                clientes = _context.Clientes.
+                clientes = _context.Clientes.Where(c => c.Borrado==false).
                     ToList();
             }
             catch (Exception e)
@@ -34,8 +34,8 @@ namespace Data.Database
         {
             try
             {
-                return _context.Clientes.
-                    Include(c => c.Ordenes).
+                return _context.Clientes.Where(c => c.Borrado == false).
+                    Include(c => c.Ordenes.Where(o => o.Borrado== false)).
                     FirstOrDefault(c => c.IdCliente == idCliente);
             }
             catch (Exception e)
@@ -109,7 +109,7 @@ namespace Data.Database
             Cliente cliente = new Cliente();
             try
             {
-                cliente = _context.Clientes.FirstOrDefault(c => c.Cuit == Cuit);
+                cliente = _context.Clientes.Where(c => c.Borrado == false).FirstOrDefault(c => c.Cuit == Cuit);
             }
             catch (Exception e)
             {
@@ -123,7 +123,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.Clientes.Include(c => c.Ordenes).FirstOrDefault(c => c.IdCliente == idCliente);
+                return _context.Clientes.Where(c => c.Borrado == false).Include(c => c.Ordenes).FirstOrDefault(c => c.IdCliente == idCliente);
             }
             catch (Exception e)
             {

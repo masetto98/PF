@@ -19,7 +19,7 @@ namespace Data.Database
             List<Pago> pagos = new List<Pago>();
             try
             {
-                pagos = _context.Pagos.ToList();
+                pagos = _context.Pagos.Where(p => p.Borrado == false).ToList();
             }
             catch (Exception e)
             {
@@ -32,7 +32,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.Pagos.FirstOrDefault(p => p.NroFactura == nroFactura && p.FechaPago == fechaPago);
+                return _context.Pagos.Where(p => p.Borrado == false).FirstOrDefault(p => p.NroFactura == nroFactura && p.FechaPago == fechaPago);
             }
             catch (Exception e)
             {

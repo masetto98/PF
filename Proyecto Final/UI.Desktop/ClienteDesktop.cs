@@ -101,6 +101,7 @@ namespace UI.Desktop
                 ClienteActual.Telefono = this.txtTelefono.Text;
                 ClienteActual.Email = this.txtEmail.Text;
                 ClienteActual.Direccion = this.txtDireccion.Text;
+                ClienteActual.Borrado = false;
             }
             if (Modos == ModoForm.Modificacion)
             {

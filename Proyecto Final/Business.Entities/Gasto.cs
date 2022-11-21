@@ -15,6 +15,7 @@ namespace Business.Entities
         private DateTime _fechaRealizado;
         private double _importe;
         private TiposGasto _tipoGasto;
+        private bool _deleted;
 
         public enum TiposGasto
         {
@@ -54,6 +55,13 @@ namespace Business.Entities
         {
             get { return _tipoGasto; }
             set { _tipoGasto = value; }
+        }
+
+        [Column("deleted")]
+        public bool Borrado
+        {
+            get { return _deleted; }
+            set { _deleted = value; }
         }
 
     }

@@ -20,7 +20,7 @@ namespace Data.Database
             List<Servicio> servicios = new List<Servicio>();
             try
             {
-                servicios = _context.Servicios.ToList();
+                servicios = _context.Servicios.Where(s => s.Borrado == false).ToList();
             }
             catch (Exception e)
             {
@@ -33,7 +33,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.Servicios.FirstOrDefault(s => s.IdServicio == idServicio);
+                return _context.Servicios.Where(s => s.Borrado == false).FirstOrDefault(s => s.IdServicio == idServicio);
             }
             catch (Exception e)
             {

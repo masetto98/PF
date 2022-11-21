@@ -19,6 +19,7 @@ namespace UI.Desktop
         private readonly MaquinaLogic _maquinaLogic;
         private readonly TiposMaquinaLogic _tiposMaquinaLogic;
         public Maquina MaquinaActual { get; set; }
+        
 
         public MaquinaDesktop(LavanderiaContext context)
         {
@@ -84,7 +85,8 @@ namespace UI.Desktop
             {
                 MaquinaActual = new Maquina();
                 MaquinaActual.Descripcion = this.txtDescripcion.Text;
-                MaquinaActual.TipoMaquina=_tiposMaquinaLogic.GetOne((int)this.cmbTiposMaquina.SelectedValue);
+                MaquinaActual.TipoMaquina = _tiposMaquinaLogic.GetOne((int)this.cmbTiposMaquina.SelectedValue);
+               
             }
             if (Modos == ModoForm.Modificacion)
             {
@@ -95,9 +97,11 @@ namespace UI.Desktop
             {
                 case ModoForm.Alta:
                     MaquinaActual.State = BusinessEntity.States.New;
+                    
                     break;
                 case ModoForm.Modificacion:
                     MaquinaActual.State = BusinessEntity.States.Modified;
+                    
                     break;
             }
 
@@ -123,6 +127,7 @@ namespace UI.Desktop
                 if (Validar())
                 {
                     _maquinaLogic.Save(MaquinaActual);
+                    
                     Close();
                 }
             }

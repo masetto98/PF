@@ -11,6 +11,7 @@ namespace Business.Entities
     {
         private int _idServicio;
         private string _descripcion;
+        private bool _deleted;
         private List<ServicioTipoPrenda>_servicioTipoPrenda;//Listas de prendas a las cuales se puede aplicar ese servicio
 
         [Key]
@@ -25,6 +26,13 @@ namespace Business.Entities
         {
             get { return _descripcion; }
             set { _descripcion = value; }
+        }
+
+        [Column("deleted")]
+        public bool Borrado
+        {
+            get { return _deleted; }
+            set { _deleted = value; }
         }
 
         public List<ServicioTipoPrenda> ServicioTipoPrenda
