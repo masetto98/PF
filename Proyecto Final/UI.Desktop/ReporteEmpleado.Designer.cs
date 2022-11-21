@@ -89,6 +89,7 @@ namespace UI.Desktop
             // 
             // dtpFechaDesde
             // 
+            this.dtpFechaDesde.Enabled = false;
             this.dtpFechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFechaDesde.Location = new System.Drawing.Point(132, 93);
             this.dtpFechaDesde.Name = "dtpFechaDesde";
@@ -98,6 +99,7 @@ namespace UI.Desktop
             // 
             // dtpFechaHasta
             // 
+            this.dtpFechaHasta.Enabled = false;
             this.dtpFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFechaHasta.Location = new System.Drawing.Point(132, 123);
             this.dtpFechaHasta.Name = "dtpFechaHasta";

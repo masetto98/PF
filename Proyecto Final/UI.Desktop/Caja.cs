@@ -39,6 +39,10 @@ namespace UI.Desktop
             this.dtpFecha.Value = DateTime.Today;
             this.dtpFechaHasta.Value = DateTime.Today;
             ActualizarInformacion();
+            chartGastos.BackColor = Color.Transparent;
+            chartIngresos.BackColor = Color.Transparent;
+            chartGastos.ChartAreas[0].BackColor = Color.Transparent;
+            chartIngresos.ChartAreas[0].BackColor = Color.Transparent;
             
         }
         private void CargarSeriesGrafico()
@@ -428,7 +432,7 @@ namespace UI.Desktop
 
         private void btnReporteCaja_Click(object sender, EventArgs e)
         {
-            if (Singleton.getInstance().ListActual != null && Singleton.getInstance().ListActual.SelectedItems.Count > 0)
+            if (Singleton.getInstance().ListActual != null && (listOrdenes.Items.Count > 0 || listGastos.Items.Count > 0))
             {
                 SaveFileDialog sfd = new SaveFileDialog();
                 sfd.Filter = "PDF (*.pdf)|*.pdf";
@@ -570,7 +574,7 @@ namespace UI.Desktop
                                 stream.Close();
                             }
 
-                            MessageBox.Show("Reporte exportado exitosamente", "Info");
+                            MessageBox.Show("Reporte exportado exitosamente", "Info",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                         }
                         catch (Exception ex)
                         {
@@ -581,7 +585,7 @@ namespace UI.Desktop
             }
             else
             {
-                MessageBox.Show("No hay registros para exportar", "Info");
+                MessageBox.Show("No hay registros para exportar", "Info",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
 

@@ -30,7 +30,6 @@ namespace UI.Desktop
         private void InitializeComponent()
         {
             this.btnAceptar = new MaterialSkin.Controls.MaterialButton();
-            this.txtCuit = new MaterialSkin.Controls.MaterialTextBox();
             this.txtNombre = new MaterialSkin.Controls.MaterialTextBox();
             this.txtApellido = new MaterialSkin.Controls.MaterialTextBox();
             this.txtTelefono = new MaterialSkin.Controls.MaterialTextBox();
@@ -40,6 +39,8 @@ namespace UI.Desktop
             this.cbTipoEmpleado = new MaterialSkin.Controls.MaterialComboBox();
             this.btnCancelar = new MaterialSkin.Controls.MaterialButton();
             this.txtID = new MaterialSkin.Controls.MaterialTextBox();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.txtCuit = new MaterialSkin.Controls.MaterialTextBox2();
             this.SuspendLayout();
             // 
             // btnAceptar
@@ -51,7 +52,7 @@ namespace UI.Desktop
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAceptar.HighEmphasis = true;
             this.btnAceptar.Icon = null;
-            this.btnAceptar.Location = new System.Drawing.Point(223, 572);
+            this.btnAceptar.Location = new System.Drawing.Point(223, 660);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptar.Name = "btnAceptar";
@@ -64,26 +65,6 @@ namespace UI.Desktop
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // txtCuit
-            // 
-            this.txtCuit.AnimateReadOnly = false;
-            this.txtCuit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.txtCuit.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCuit.Depth = 0;
-            this.txtCuit.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtCuit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtCuit.Hint = "Cuit";
-            this.txtCuit.LeadingIcon = null;
-            this.txtCuit.Location = new System.Drawing.Point(52, 147);
-            this.txtCuit.MaxLength = 50;
-            this.txtCuit.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtCuit.Multiline = false;
-            this.txtCuit.Name = "txtCuit";
-            this.txtCuit.Size = new System.Drawing.Size(361, 50);
-            this.txtCuit.TabIndex = 9;
-            this.txtCuit.Text = "";
-            this.txtCuit.TrailingIcon = null;
-            // 
             // txtNombre
             // 
             this.txtNombre.AnimateReadOnly = false;
@@ -94,7 +75,7 @@ namespace UI.Desktop
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtNombre.Hint = "Nombre";
             this.txtNombre.LeadingIcon = null;
-            this.txtNombre.Location = new System.Drawing.Point(52, 204);
+            this.txtNombre.Location = new System.Drawing.Point(52, 227);
             this.txtNombre.MaxLength = 50;
             this.txtNombre.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNombre.Multiline = false;
@@ -114,7 +95,7 @@ namespace UI.Desktop
             this.txtApellido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtApellido.Hint = "Apellido";
             this.txtApellido.LeadingIcon = null;
-            this.txtApellido.Location = new System.Drawing.Point(52, 260);
+            this.txtApellido.Location = new System.Drawing.Point(52, 293);
             this.txtApellido.MaxLength = 50;
             this.txtApellido.MouseState = MaterialSkin.MouseState.OUT;
             this.txtApellido.Multiline = false;
@@ -134,7 +115,7 @@ namespace UI.Desktop
             this.txtTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtTelefono.Hint = "Teléfono";
             this.txtTelefono.LeadingIcon = null;
-            this.txtTelefono.Location = new System.Drawing.Point(52, 316);
+            this.txtTelefono.Location = new System.Drawing.Point(52, 360);
             this.txtTelefono.MaxLength = 50;
             this.txtTelefono.MouseState = MaterialSkin.MouseState.OUT;
             this.txtTelefono.Multiline = false;
@@ -154,7 +135,7 @@ namespace UI.Desktop
             this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtEmail.Hint = "Email";
             this.txtEmail.LeadingIcon = null;
-            this.txtEmail.Location = new System.Drawing.Point(52, 372);
+            this.txtEmail.Location = new System.Drawing.Point(52, 427);
             this.txtEmail.MaxLength = 50;
             this.txtEmail.MouseState = MaterialSkin.MouseState.OUT;
             this.txtEmail.Multiline = false;
@@ -174,7 +155,7 @@ namespace UI.Desktop
             this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtDireccion.Hint = "Dirección";
             this.txtDireccion.LeadingIcon = null;
-            this.txtDireccion.Location = new System.Drawing.Point(52, 428);
+            this.txtDireccion.Location = new System.Drawing.Point(52, 491);
             this.txtDireccion.MaxLength = 50;
             this.txtDireccion.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDireccion.Multiline = false;
@@ -190,7 +171,7 @@ namespace UI.Desktop
             this.dtpFechaInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpFechaInicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaInicio.Location = new System.Drawing.Point(52, 484);
+            this.dtpFechaInicio.Location = new System.Drawing.Point(52, 573);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
             this.dtpFechaInicio.Size = new System.Drawing.Size(361, 23);
             this.dtpFechaInicio.TabIndex = 17;
@@ -210,7 +191,7 @@ namespace UI.Desktop
             this.cbTipoEmpleado.Hint = "Tipo de Empleado";
             this.cbTipoEmpleado.IntegralHeight = false;
             this.cbTipoEmpleado.ItemHeight = 43;
-            this.cbTipoEmpleado.Location = new System.Drawing.Point(52, 514);
+            this.cbTipoEmpleado.Location = new System.Drawing.Point(52, 602);
             this.cbTipoEmpleado.MaxDropDownItems = 4;
             this.cbTipoEmpleado.MouseState = MaterialSkin.MouseState.OUT;
             this.cbTipoEmpleado.Name = "cbTipoEmpleado";
@@ -227,7 +208,7 @@ namespace UI.Desktop
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
-            this.btnCancelar.Location = new System.Drawing.Point(317, 572);
+            this.btnCancelar.Location = new System.Drawing.Point(317, 660);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -261,11 +242,59 @@ namespace UI.Desktop
             this.txtID.Text = "";
             this.txtID.TrailingIcon = null;
             // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(52, 551);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(111, 19);
+            this.materialLabel1.TabIndex = 23;
+            this.materialLabel1.Text = "Fecha de inicio:";
+            // 
+            // txtCuit
+            // 
+            this.txtCuit.AnimateReadOnly = false;
+            this.txtCuit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.txtCuit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.txtCuit.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtCuit.Depth = 0;
+            this.txtCuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtCuit.HelperText = "Sin incluir espacios o guiones";
+            this.txtCuit.HideSelection = true;
+            this.txtCuit.Hint = "Cuit";
+            this.txtCuit.LeadingIcon = null;
+            this.txtCuit.Location = new System.Drawing.Point(52, 157);
+            this.txtCuit.MaxLength = 32767;
+            this.txtCuit.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtCuit.Name = "txtCuit";
+            this.txtCuit.PasswordChar = '\0';
+            this.txtCuit.PrefixSuffixText = null;
+            this.txtCuit.ReadOnly = false;
+            this.txtCuit.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtCuit.SelectedText = "";
+            this.txtCuit.SelectionLength = 0;
+            this.txtCuit.SelectionStart = 0;
+            this.txtCuit.ShortcutsEnabled = true;
+            this.txtCuit.ShowAssistiveText = true;
+            this.txtCuit.Size = new System.Drawing.Size(361, 64);
+            this.txtCuit.TabIndex = 24;
+            this.txtCuit.TabStop = false;
+            this.txtCuit.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCuit.TrailingIcon = null;
+            this.txtCuit.UseSystemPasswordChar = false;
+            // 
             // EmpleadoDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 618);
+            this.ClientSize = new System.Drawing.Size(461, 707);
+            this.Controls.Add(this.txtCuit);
+            this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.cbTipoEmpleado);
@@ -275,8 +304,8 @@ namespace UI.Desktop
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.txtCuit);
             this.Controls.Add(this.btnAceptar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "EmpleadoDesktop";
             this.Sizable = false;
@@ -290,7 +319,6 @@ namespace UI.Desktop
         #endregion
 
         private MaterialSkin.Controls.MaterialButton btnAceptar;
-        private MaterialSkin.Controls.MaterialTextBox txtCuit;
         private MaterialSkin.Controls.MaterialTextBox txtNombre;
         private MaterialSkin.Controls.MaterialTextBox txtApellido;
         private MaterialSkin.Controls.MaterialTextBox txtTelefono;
@@ -300,6 +328,8 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialComboBox cbTipoEmpleado;
         private MaterialSkin.Controls.MaterialButton btnCancelar;
         private MaterialSkin.Controls.MaterialTextBox txtID;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialTextBox2 txtCuit;
     }
 }
 

@@ -398,7 +398,7 @@ namespace UI.Desktop
             }
             else
             {
-                MessageBox.Show("Seleccionar una fila en la lista de \"Ordenes del cliente\" para poder ver los pagos", "Pago", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Seleccionar una fila en la lista de \"Ordenes del cliente\" para poder observar los pagos", "Pago", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -459,7 +459,18 @@ namespace UI.Desktop
                 }
                 ListarOrdenesCliente();
                 CalcularCuentaCorrienteCliente();
-                ListarPagosOrden();
+                listPagosOrden.Items.Clear();
+                if (OrdenActual.Factura is not null && OrdenActual.Factura.Pagos is not null && OrdenActual.Factura.Pagos.Count > 0)
+                {
+                    foreach (Pago p in OrdenActual.Factura.Pagos)
+                    {
+                        ListViewItem item = new ListViewItem(p.FechaPago.ToString());
+                        item.SubItems.Add(p.Importe.ToString());
+                        item.SubItems.Add(p.FormaPago.ToString());
+                        listPagosOrden.Items.Add(item);
+                    }
+                }
+                
             }
 
             else
@@ -656,7 +667,7 @@ namespace UI.Desktop
             //ListarIngresos();
 
         }
-
+        /*
         private void btnEditarIngresoInsumo_Click(object sender, EventArgs e)
         {
             if (listIngresosInsumos.SelectedItems.Count > 0)
@@ -684,7 +695,7 @@ namespace UI.Desktop
             }
 
         }
-
+        */
         private void btnEliminarIngresoInsumo_Click(object sender, EventArgs e)
         {
             if (listIngresosInsumos.SelectedItems.Count > 0)
@@ -831,7 +842,7 @@ namespace UI.Desktop
             frmInsumoProveedor.ShowDialog();
             ListarIngresos();
         }
-
+        /*
         private void btnEditarIngreso_Click(object sender, EventArgs e)
         {
             if (listIngresos.SelectedItems.Count > 0)
@@ -850,7 +861,7 @@ namespace UI.Desktop
             }
         }
 
-
+        */
         private void btnEliminarIngreso_Click(object sender, EventArgs e)
         {
             if (listIngresos.SelectedItems.Count > 0)
@@ -1248,11 +1259,14 @@ namespace UI.Desktop
             {
                 this.Dispose();
             }
-
-            this.mnuPrincipal.Visible = true;
-            this.epUser.Visible = true;
-            this.epUser.Title = $"{Singleton.getInstance().UserLogged.NombreUsuario}";
-            ConfiguracionAdministrador();
+            else
+            {
+                this.mnuPrincipal.Visible = true;
+                this.epUser.Visible = true;
+                this.epUser.Title = $"{Singleton.getInstance().UserLogged.NombreUsuario}";
+                ConfiguracionAdministrador();
+            }
+            
 
 
         }
@@ -1448,26 +1462,35 @@ namespace UI.Desktop
 
         private void btnIniciarServicio_Click(object sender, EventArgs e)
         {
-            if (listTrabajosPendientes.SelectedItems.Count > 0)
+            List<Maquina> maquinas = _maquinaLogic.GetAll();
+            if(maquinas.Count > 0)
             {
-                OrdenServicioTipoPrenda t = _trabajosPendientes.Find(delegate (OrdenServicioTipoPrenda item)
+                if (listTrabajosPendientes.SelectedItems.Count > 0)
                 {
-                    return item.NroOrden == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].Text) &&
-                           item.ServicioTipoPrenda.Servicio.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[1].Text &&
-                           item.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[2].Text &&
-                           item.OrdenItem == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].SubItems[3].Text);
-                });
-                MaquinaOrdenServicioTipoPrendaDesktop frmTrabajos = new MaquinaOrdenServicioTipoPrendaDesktop(t.NroOrden, t.IdServicio, t.IdTipoPrenda, t.OrdenItem, ApplicationForm.ModoForm.Alta, _context);
-                frmTrabajos.ShowDialog();
+                    OrdenServicioTipoPrenda t = _trabajosPendientes.Find(delegate (OrdenServicioTipoPrenda item)
+                    {
+                        return item.NroOrden == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].Text) &&
+                               item.ServicioTipoPrenda.Servicio.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[1].Text &&
+                               item.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[2].Text &&
+                               item.OrdenItem == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].SubItems[3].Text);
+                    });
+                    MaquinaOrdenServicioTipoPrendaDesktop frmTrabajos = new MaquinaOrdenServicioTipoPrendaDesktop(t.NroOrden, t.IdServicio, t.IdTipoPrenda, t.OrdenItem, ApplicationForm.ModoForm.Alta, _context);
+                    frmTrabajos.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar un trabajo en la lista para poder iniciarlo", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                Planificar();
+                ListarOrdenesTrabajosPendientes();
+                ListarTrabajosEnProceso();
+                ListarEstadoMaquinas();
             }
             else
             {
-                MessageBox.Show("Debe seleccionar un trabajo en la lista para poder iniciarlo", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No es posible iniciar el servicio debido a que no se han encontrado máquinas en el sistema. Por favor, registre nuevas máquinas para continuar.","Iniciar Servicio",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
-            Planificar();
-            ListarOrdenesTrabajosPendientes();
-            ListarTrabajosEnProceso();
-            ListarEstadoMaquinas();
+
         }
 
         private void btnFinalizarTrabajo_Click_1(object sender, EventArgs e)
@@ -1782,14 +1805,15 @@ namespace UI.Desktop
         private void btnAtributos_Click(object sender, EventArgs e)
         {
             List<AtributosNegocio> atributosNegocio = _atributosNegocioLogic.GetAll();
-            if (atributosNegocio is null)
+            if (atributosNegocio.Count > 0)
             {
-                frmAtributosNegocio frmAtributosnegocio = new frmAtributosNegocio(ModoForm.Alta, _context);
+                
+                frmAtributosNegocio frmAtributosnegocio = new frmAtributosNegocio(atributosNegocio.FirstOrDefault().ID, ModoForm.Modificacion, _context);
                 frmAtributosnegocio.ShowDialog();
             }
             else 
             {
-                frmAtributosNegocio frmAtributosnegocio = new frmAtributosNegocio(atributosNegocio.FirstOrDefault().ID,ModoForm.Modificacion, _context);
+                frmAtributosNegocio frmAtributosnegocio = new frmAtributosNegocio(ModoForm.Alta, _context);
                 frmAtributosnegocio.ShowDialog();
             }
         }

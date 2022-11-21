@@ -193,14 +193,14 @@ namespace UI.Desktop
             this.txtBuscar.Depth = 0;
             this.txtBuscar.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtBuscar.Hint = "Buscar";
+            this.txtBuscar.Hint = "Ingrese Cuit/Razón Social del Proveedor...";
             this.txtBuscar.LeadingIcon = null;
-            this.txtBuscar.Location = new System.Drawing.Point(403, 91);
+            this.txtBuscar.Location = new System.Drawing.Point(380, 91);
             this.txtBuscar.MaxLength = 50;
             this.txtBuscar.MouseState = MaterialSkin.MouseState.OUT;
             this.txtBuscar.Multiline = false;
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(295, 50);
+            this.txtBuscar.Size = new System.Drawing.Size(318, 50);
             this.txtBuscar.TabIndex = 10;
             this.txtBuscar.Text = "";
             this.txtBuscar.TrailingIcon = null;

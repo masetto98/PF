@@ -57,16 +57,16 @@ namespace Data.Database
         }
         protected void Insert(Factura factura)
         {
-            //try
-            //{
+            try
+            {
                 _context.Facturas.Add(factura);
                 _context.SaveChanges();
-            // }
-            // catch (Exception e)
-            // {
-            // Exception ExceptionManejada = new Exception("Error al crear factura", e);
-            // throw ExceptionManejada;
-            //}
+            }
+            catch (Exception e)
+            {
+            Exception ExceptionManejada = new Exception("Error al crear factura", e);
+            throw ExceptionManejada;
+            }
         }
         public void Delete(int nroFactura)
         {

@@ -57,16 +57,16 @@ namespace Data.Database
         }
         protected void Insert(TiposMaquina tipoMaquina)
         {
-            // try
-            //   {
+            try
+            {
             _context.TiposMaquinas.Add(tipoMaquina);
-                _context.SaveChanges();
-            //  }
-            // catch (Exception e)
-            //  {
-            // Exception ExceptionManejada = new Exception("Error al crear un tipo de máquina", e);
-            // throw ExceptionManejada;
-            // }
+            _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+            Exception ExceptionManejada = new Exception("Error al crear un tipo de máquina", e);
+            throw ExceptionManejada;
+            }
         }
         public void Delete(int idTipoMaquina)
         {

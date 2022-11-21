@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Factura de Servicio</title>
+	<title>Comprobante de Retiro</title>
 	<style>
 		table.border {
 			border-collapse: collapse;
@@ -9,9 +9,7 @@
 			
 			
 		}
-		table thead{
-			background-color:teal;
-		}
+		
 		table tbody{
 			border-collapse: collapse;
 			border: 1px solid black;
@@ -25,9 +23,9 @@
 <body>
 	<table class="border" style="width:100%">
 		<tr>
-			<td style="width:30%"></td>
+			
 			<td>
-				<table align="center">
+				<table align="left">
 					<tr>
 						<td align="center"><font size="5">@nombrempresa</font></td>
 					</tr>
@@ -42,25 +40,25 @@
 					</tr>
 				</table>
 			</td>
-			<td style="width:35%">
+			<td style="width:45%">
 				<table style="width:100%" align="center">
-					<thead style="background-color: #D8D8D8 !important">
+					<thead>
 						<tr>
-							<th>Factura</th>
+							<th style="background-color:#D8D8D8">Comprobante de Retiro</th>
 						</tr>
 					</thead>
 				</table>
 				<table style="width:100%">
 					<tr>
-						<td>N° Factura:</td>
+						<td>N° Comprobante:</td>
 						<td>@nrofactura</td>
 					</tr>
 					<tr>
-						<td>Fecha Factura:</td>
+						<td>Fecha Comprobante:</td>
 						<td>@fechafactura</td>
 					</tr>
 					<tr>
-						<td>Hora Factura:</td>
+						<td>Hora Comprobante:</td>
 						<td>@hsfactura</td>
 					</tr>
 				</table>
@@ -72,9 +70,9 @@
 		<tr>
 			<td colspan="3">
 				<table style="width:100%">
-					<thead style="background-color:#D8D8D8">
+					<thead>
 						<tr>
-							<th>Cliente</th>
+							<th style="background-color:#D8D8D8">Cliente</th>
 						</tr>
 					</thead>
 				</table>
@@ -106,7 +104,7 @@
 				<table style="width:100%">
 					<thead>
 						<tr>
-							<th>Detalles Orden</th>
+							<th style="background-color:#D8D8D8">Detalles Orden</th>
 						</tr>
 					</thead>
 				</table>
@@ -127,12 +125,12 @@
 		<tr>
 			<td colspan="3">
 				<table  class="border"style="width:80%" align="center">
-					<thead style="background-color:#D8D8D8">
+					<thead>
 						<tr>
-							<th>Nro Item</th>
-							<th>Servicio</th>
-							<th>Tipo Prenda</th>
-							<th>Precio</th>
+							<th style="background-color:#D8D8D8">Nro Item</th>
+							<th style="background-color:#D8D8D8">Servicio</th>
+							<th style="background-color:#D8D8D8">Tipo Prenda</th>
+							<th style="background-color:#D8D8D8">Precio</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -140,19 +138,24 @@
 						<tr>
 							<td style="border:0px !important"></td>
 							<td style="border:0px !important"></td>
-							<td align="right">Subtotal:</td>
-							<td>@totalitems</td>
 						</tr>
 					</tbody>
 				</table>
 			</td>
 		</tr>
+      
 		<tr>
 			<td colspan="3" height="25"></td>
 		</tr>
 		<tr>
 			<td colspan="3">
 				<table class="border" align="right">
+                  	<thead>
+						<tr>
+							<th style="background-color:#D8D8D8">Resumen</th>
+                          <th style="background-color:#D8D8D8"></th>
+						</tr>
+					</thead>
 					<tr>
 						<td>Subtotal:</td>
 						<td>@totalitems</td>

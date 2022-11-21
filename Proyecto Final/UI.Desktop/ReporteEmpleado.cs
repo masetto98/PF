@@ -160,6 +160,8 @@ namespace UI.Desktop
             {
                 BuscarEmpleado();
                 CargarListas();
+                dtpFechaDesde.Enabled = true;
+                dtpFechaHasta.Enabled = true;
             }
             else
             {

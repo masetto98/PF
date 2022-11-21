@@ -172,20 +172,15 @@ namespace UI.Desktop
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {   
-            List<Proveedor> proveedoresBusqueda = _proveedorLogic.GetAll().FindAll(delegate (Proveedor p)
+        {
+
+            List<Proveedor> proveedoresBusqueda = _proveedorLogic.GetAll();
+            listProveedores.Items.Clear();
+            foreach (Proveedor p in proveedoresBusqueda)
             {
-                return p.IdProveedor.ToString().StartsWith(this.txtBuscar.Text) ||
-                       p.RazonSocial.StartsWith(this.txtBuscar.Text) ||
-                       p.Telefono.StartsWith(this.txtBuscar.Text) ||
-                       p.Direccion.StartsWith(this.txtBuscar.Text) ||
-                       p.Email.StartsWith(this.txtBuscar.Text) ||
-                       p.Cuit.StartsWith(this.txtBuscar.Text);
-            });
-            if (proveedoresBusqueda.Count > 0) 
-            {
-                listProveedores.Items.Clear();
-                foreach(Proveedor p in proveedoresBusqueda)
+                string prov = String.Concat(p.RazonSocial);
+                string cuit = p.Cuit;
+                if (prov.ToLower().Contains(this.txtBuscar.Text.ToLower()) || cuit.ToLower().Contains(this.txtBuscar.Text.ToLower()))
                 {
                     ListViewItem item = new ListViewItem(p.IdProveedor.ToString());
                     item.SubItems.Add(p.Cuit);
@@ -196,6 +191,7 @@ namespace UI.Desktop
                     listProveedores.Items.Add(item);
                 }
             }
+            
             if (this.txtBuscar.Text == "") { ListarProveedores(); }
         }
 

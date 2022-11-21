@@ -440,7 +440,7 @@ namespace UI.Desktop
             // columnDescripcionTpm
             // 
             this.columnDescripcionTpm.Text = "Descripción";
-            this.columnDescripcionTpm.Width = 200;
+            this.columnDescripcionTpm.Width = 275;
             // 
             // btnEditarTipoMaquina
             // 
@@ -535,9 +535,9 @@ namespace UI.Desktop
             this.materialLabel6.Location = new System.Drawing.Point(384, 154);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
-            this.materialLabel6.Size = new System.Drawing.Size(72, 19);
+            this.materialLabel6.Size = new System.Drawing.Size(76, 19);
             this.materialLabel6.TabIndex = 28;
-            this.materialLabel6.Text = "Máquinas";
+            this.materialLabel6.Text = "Máquinas:";
             // 
             // chartUsoMaq
             // 

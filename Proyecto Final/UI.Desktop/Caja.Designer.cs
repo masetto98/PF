@@ -347,7 +347,7 @@ namespace UI.Desktop
             // columnFecha
             // 
             this.columnFecha.Text = "Fecha realizado";
-            this.columnFecha.Width = 155;
+            this.columnFecha.Width = 160;
             // 
             // columnImporte
             // 

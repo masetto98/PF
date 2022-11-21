@@ -18,11 +18,15 @@ namespace UI.Desktop
     {
         private readonly UsuarioLogic _usuarioLogic;
         private readonly EmpleadoLogic _empleadoLogic;
+        private readonly LavanderiaContext _context;
+
         public frmLogin(LavanderiaContext context)
         {
+            _context = context;
             InitializeComponent();
             _usuarioLogic = new UsuarioLogic(new UsuarioAdapter(context));
             _empleadoLogic = new EmpleadoLogic(new EmpleadoAdapter(context));
+            
         }
         private void btnIngresar_Click(object sender, EventArgs e)
         {
@@ -59,7 +63,23 @@ namespace UI.Desktop
 
 
         }
-
+        private bool VerificarExistenciaUsuarios()
+        {
+            Usuario us = _usuarioLogic.GetAll().Find(
+                delegate (Usuario us) {
+                    return us.Empleado.TipoEmpleado == Empleado.TiposEmpleado.Admin;
+                });
+            
+            if(us is null)
+            {
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         private void showPass1_Click(object sender, EventArgs e)
         {
             hidePass1.BringToFront();
@@ -71,6 +91,26 @@ namespace UI.Desktop
         {
             txtContrasenia.UseSystemPasswordChar = true;
             showPass1.BringToFront();
+        }
+
+        private void btnCrearCuenta_Click(object sender, EventArgs e)
+        {
+            if (!VerificarExistenciaUsuarios())
+            {
+                EmpleadoDesktop frmEmpleado = new EmpleadoDesktop(ApplicationForm.ModoForm.Alta, _context);
+                frmEmpleado.ShowDialog();
+                List<Empleado> empleados = _empleadoLogic.GetAll();
+                if (empleados.Count > 0)
+                {
+                    UsuarioDesktop frmUsuario = new UsuarioDesktop(ApplicationForm.ModoForm.Alta, _context);
+                    frmUsuario.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("¡Atención! Debe contactarse con un Administrador para poder crear una nueva cuenta.", "Cuenta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+           
         }
     }
 }

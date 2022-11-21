@@ -447,9 +447,9 @@ namespace UI.Desktop
             this.btnImpFactura.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnImpFactura.Name = "btnImpFactura";
             this.btnImpFactura.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnImpFactura.Size = new System.Drawing.Size(131, 36);
+            this.btnImpFactura.Size = new System.Drawing.Size(149, 36);
             this.btnImpFactura.TabIndex = 5;
-            this.btnImpFactura.Text = "Imprimir Factura";
+            this.btnImpFactura.Text = "Imprimir Comprobante";
             this.btnImpFactura.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnImpFactura.UseAccentColor = false;
             this.btnImpFactura.UseVisualStyleBackColor = false;

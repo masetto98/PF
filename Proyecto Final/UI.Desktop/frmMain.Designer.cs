@@ -95,7 +95,6 @@ namespace UI.Desktop
             this.columnFechaInput = new System.Windows.Forms.ColumnHeader();
             this.columnCantidad = new System.Windows.Forms.ColumnHeader();
             this.columnUniMed = new System.Windows.Forms.ColumnHeader();
-            this.btnEditarIngresoInsumo = new MaterialSkin.Controls.MaterialButton();
             this.btnIngresoInsumo = new MaterialSkin.Controls.MaterialButton();
             this.btnDetalles = new MaterialSkin.Controls.MaterialButton();
             this.listInsumos = new MaterialSkin.Controls.MaterialListView();
@@ -110,7 +109,6 @@ namespace UI.Desktop
             this.btnActualizarIngresos = new MaterialSkin.Controls.MaterialButton();
             this.lblFiltrarFecha = new MaterialSkin.Controls.MaterialLabel();
             this.dtpFiltrarFechaIngreso = new System.Windows.Forms.DateTimePicker();
-            this.btnEditarIngreso = new MaterialSkin.Controls.MaterialButton();
             this.btnEliminarIngreso = new MaterialSkin.Controls.MaterialButton();
             this.btnNuevoIngreso = new MaterialSkin.Controls.MaterialButton();
             this.listIngresos = new MaterialSkin.Controls.MaterialListView();
@@ -1007,7 +1005,6 @@ namespace UI.Desktop
             this.TabStock.Controls.Add(this.materialLabel7);
             this.TabStock.Controls.Add(this.btnEliminarIngresoInsumo);
             this.TabStock.Controls.Add(this.listIngresosInsumos);
-            this.TabStock.Controls.Add(this.btnEditarIngresoInsumo);
             this.TabStock.Controls.Add(this.btnIngresoInsumo);
             this.TabStock.Controls.Add(this.btnDetalles);
             this.TabStock.Controls.Add(this.listInsumos);
@@ -1152,7 +1149,7 @@ namespace UI.Desktop
             this.btnEliminarIngresoInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEliminarIngresoInsumo.HighEmphasis = true;
             this.btnEliminarIngresoInsumo.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
-            this.btnEliminarIngresoInsumo.Location = new System.Drawing.Point(1174, 295);
+            this.btnEliminarIngresoInsumo.Location = new System.Drawing.Point(1173, 232);
             this.btnEliminarIngresoInsumo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminarIngresoInsumo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminarIngresoInsumo.Name = "btnEliminarIngresoInsumo";
@@ -1212,29 +1209,6 @@ namespace UI.Desktop
             // 
             this.columnUniMed.Text = "Unidad";
             this.columnUniMed.Width = 102;
-            // 
-            // btnEditarIngresoInsumo
-            // 
-            this.btnEditarIngresoInsumo.AutoSize = false;
-            this.btnEditarIngresoInsumo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEditarIngresoInsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.btnEditarIngresoInsumo.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnEditarIngresoInsumo.Depth = 0;
-            this.btnEditarIngresoInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnEditarIngresoInsumo.HighEmphasis = true;
-            this.btnEditarIngresoInsumo.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
-            this.btnEditarIngresoInsumo.Location = new System.Drawing.Point(1174, 232);
-            this.btnEditarIngresoInsumo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnEditarIngresoInsumo.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnEditarIngresoInsumo.Name = "btnEditarIngresoInsumo";
-            this.btnEditarIngresoInsumo.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEditarIngresoInsumo.Size = new System.Drawing.Size(115, 51);
-            this.btnEditarIngresoInsumo.TabIndex = 19;
-            this.btnEditarIngresoInsumo.Text = "Editar";
-            this.btnEditarIngresoInsumo.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnEditarIngresoInsumo.UseAccentColor = false;
-            this.btnEditarIngresoInsumo.UseVisualStyleBackColor = false;
-            this.btnEditarIngresoInsumo.Click += new System.EventHandler(this.btnEditarIngresoInsumo_Click);
             // 
             // btnIngresoInsumo
             // 
@@ -1406,7 +1380,6 @@ namespace UI.Desktop
             this.TabMovimientos.Controls.Add(this.btnActualizarIngresos);
             this.TabMovimientos.Controls.Add(this.lblFiltrarFecha);
             this.TabMovimientos.Controls.Add(this.dtpFiltrarFechaIngreso);
-            this.TabMovimientos.Controls.Add(this.btnEditarIngreso);
             this.TabMovimientos.Controls.Add(this.btnEliminarIngreso);
             this.TabMovimientos.Controls.Add(this.btnNuevoIngreso);
             this.TabMovimientos.Controls.Add(this.listIngresos);
@@ -1466,29 +1439,6 @@ namespace UI.Desktop
             this.dtpFiltrarFechaIngreso.TabIndex = 13;
             this.dtpFiltrarFechaIngreso.CloseUp += new System.EventHandler(this.dtpFiltrarFechaIngreso_CloseUp);
             // 
-            // btnEditarIngreso
-            // 
-            this.btnEditarIngreso.AutoSize = false;
-            this.btnEditarIngreso.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEditarIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.btnEditarIngreso.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnEditarIngreso.Depth = 0;
-            this.btnEditarIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnEditarIngreso.HighEmphasis = true;
-            this.btnEditarIngreso.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
-            this.btnEditarIngreso.Location = new System.Drawing.Point(258, 16);
-            this.btnEditarIngreso.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnEditarIngreso.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnEditarIngreso.Name = "btnEditarIngreso";
-            this.btnEditarIngreso.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEditarIngreso.Size = new System.Drawing.Size(114, 51);
-            this.btnEditarIngreso.TabIndex = 12;
-            this.btnEditarIngreso.Text = "Editar";
-            this.btnEditarIngreso.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnEditarIngreso.UseAccentColor = false;
-            this.btnEditarIngreso.UseVisualStyleBackColor = false;
-            this.btnEditarIngreso.Click += new System.EventHandler(this.btnEditarIngreso_Click);
-            // 
             // btnEliminarIngreso
             // 
             this.btnEliminarIngreso.AutoSize = false;
@@ -1499,7 +1449,7 @@ namespace UI.Desktop
             this.btnEliminarIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEliminarIngreso.HighEmphasis = true;
             this.btnEliminarIngreso.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
-            this.btnEliminarIngreso.Location = new System.Drawing.Point(380, 16);
+            this.btnEliminarIngreso.Location = new System.Drawing.Point(267, 16);
             this.btnEliminarIngreso.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminarIngreso.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminarIngreso.Name = "btnEliminarIngreso";
@@ -2798,7 +2748,6 @@ namespace UI.Desktop
         private System.Windows.Forms.TabPage TabStock;
         private MaterialSkin.Controls.MaterialTabSelector tabSelectorInventario;
         private System.Windows.Forms.TabPage TabMovimientos;
-        private MaterialSkin.Controls.MaterialButton btnEditarIngreso;
         private MaterialSkin.Controls.MaterialButton btnEliminarIngreso;
         private MaterialSkin.Controls.MaterialButton btnNuevoIngreso;
         private MaterialSkin.Controls.MaterialListView listIngresos;
@@ -2905,7 +2854,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnAgregarInsumo;
         private MaterialSkin.Controls.MaterialCard materialCard6;
         private MaterialSkin.Controls.MaterialButton btnEliminarIngresoInsumo;
-        private MaterialSkin.Controls.MaterialButton btnEditarIngresoInsumo;
         private MaterialSkin.Controls.MaterialButton btnIngresoInsumo;
         private MaterialSkin.Controls.MaterialLabel materialLabel7;
         private System.Windows.Forms.ColumnHeader columnUniMed;
