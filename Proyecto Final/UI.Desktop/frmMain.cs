@@ -1311,7 +1311,7 @@ namespace UI.Desktop
             e.NewWidth = listMaquinasItem.Columns[e.ColumnIndex].Width;
         }
         #region ------- TRABAJOS PENDIENTES -------
-
+        /*
         private void CargarListaEspera2()
         {
 
@@ -1328,7 +1328,7 @@ namespace UI.Desktop
             List<ItemTrabajo> orderList = _listaEspera.OrderByDescending(i => i.Trabajo.Prioridad).ThenBy(i => i.Trabajo.Estado).ThenBy(i => i.TiempoRestante).ToList();
             _listaEspera.Clear();
             _listaEspera = orderList;
-        }
+        }*/
 
         private void CargarListaEspera()
         {

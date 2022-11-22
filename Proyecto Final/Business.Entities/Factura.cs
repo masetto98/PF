@@ -14,6 +14,7 @@ namespace Business.Entities
         private DateTime _fechaFactura;
         private double _importe;
         private Orden _orden;
+        private bool _deleted;
         private List<Pago> _pagos;
 
         [Key]
@@ -35,6 +36,19 @@ namespace Business.Entities
             get { return _importe; }
             set { _importe = value; }
         }
+
+        [Column("deleted")]
+        public bool Borrado
+        {
+            get { return _deleted; }
+            set { _deleted = value; }
+        }
+        /*
+        public Orden Orden
+        {
+            get { return _orden; }
+            set { _orden = value; }
+        }*/
 
         public List<Pago> Pagos
         {

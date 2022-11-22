@@ -12,6 +12,7 @@ namespace Business.Entities
         private int _nroFactura;
         private DateTime _fechaPago;
         private double _importe;
+        private bool _deleted;
         public enum FormasPago
         {
             Efectivo = 0,
@@ -48,6 +49,14 @@ namespace Business.Entities
             get { return _formaPago; }
             set { _formaPago = value; }
         }
+
+        [Column("deleted")]
+        public bool Borrado
+        {
+            get { return _deleted; }
+            set { _deleted = value; }
+        }
+
         public Factura Factura
         {
             get { return _factura; }

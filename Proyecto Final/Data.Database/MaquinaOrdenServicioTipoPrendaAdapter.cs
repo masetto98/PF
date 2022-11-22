@@ -20,7 +20,7 @@ namespace Data.Database
             List<MaquinaOrdenServicioTipoPrenda> trabajosRealizados = new List<MaquinaOrdenServicioTipoPrenda>();
             try
             {
-                trabajosRealizados = _context.MaquinasOrdenesServiciosTipoPrendas
+                trabajosRealizados = _context.MaquinasOrdenesServiciosTipoPrendas.Where(i => i.Borrado == false)
                     .Include(i => i.Maquina)
                     .Include(i => i.OrdenServicioTipoPrenda)
                         .ThenInclude(o=> o.ServicioTipoPrenda)
@@ -44,7 +44,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.MaquinasOrdenesServiciosTipoPrendas
+                return _context.MaquinasOrdenesServiciosTipoPrendas.Where(i => i.Borrado == false)
                     .Include(i => i.Maquina)
                     .Include(i => i.OrdenServicioTipoPrenda)
                         .ThenInclude(o => o.ServicioTipoPrenda)

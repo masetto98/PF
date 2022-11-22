@@ -182,7 +182,7 @@ namespace UI.Desktop
                             }
                             else
                             {
-                                if (f.Pagos is not null && f.Pagos[0].FechaPago.Date <= this.dtpFechaHasta.Value.Date)
+                                if (f.Pagos is not null && f.Pagos.Count>0 && f.Pagos[0].FechaPago.Date <= this.dtpFechaHasta.Value.Date)
                                 {
                                     chartIngresos.Series["Ingresos"].Points.AddXY(f.Pagos[0].FechaPago.Date, f.Pagos[0].Importe);
                                 }
@@ -304,7 +304,14 @@ namespace UI.Desktop
                         }
                     }
                     ListViewItem item = new ListViewItem(o.NroFactura.ToString());
-                    item.SubItems.Add(o.FechaSalida.Date.ToString("yyyy-MM-dd"));
+                    if (o.FechaSalida == DateTime.MinValue)
+                    {
+                        item.SubItems.Add("No retirado");
+                    }
+                    else
+                    {
+                        item.SubItems.Add(o.FechaSalida.Date.ToString("yyyy-MM-dd"));
+                    }
                     item.SubItems.Add(ingresos.ToString());
                     listOrdenes.Items.Add(item);
                 }
@@ -679,7 +686,15 @@ namespace UI.Desktop
                             }
                         }
                         ListViewItem item = new ListViewItem(o.NroFactura.ToString());
-                        item.SubItems.Add(o.FechaSalida.Date.ToString("yyyy-MM-dd"));
+                        if (o.FechaSalida == DateTime.MinValue)
+                        {
+                            item.SubItems.Add("No retirado");
+                        }
+                        else
+                        {
+                            item.SubItems.Add(o.FechaSalida.Date.ToString("yyyy-MM-dd"));
+                        }
+                        //item.SubItems.Add(o.FechaSalida.Date.ToString("yyyy-MM-dd"));
                         item.SubItems.Add(ingresos.ToString());
                         listOrdenes.Items.Add(item);
                     }

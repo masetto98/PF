@@ -20,14 +20,14 @@ namespace Data.Database
             List<Orden> ordenes = new List<Orden>();
             try
             {
-                ordenes = _context.Ordenes
+                ordenes = _context.Ordenes.Where(o => o.Borrado == false)
                     .Include(o => o.Cliente)
                     .Include(o => o.Empleado)
                     .Include(o => o.Factura)
                         .ThenInclude(f =>f.Pagos)
-                    .Include(o => o.ItemsPedidos)
+                    .Include(o => o.ItemsPedidos.Where(ip => ip.Borrado == false))
                         .ThenInclude( i => i.MaquinaOrdenServicioTipoPrenda)
-                    .Include(o => o.ItemsPedidos)
+                    .Include(o => o.ItemsPedidos.Where(ip => ip.Borrado == false))
                         .ThenInclude(i => i.ServicioTipoPrenda)
                             .ThenInclude(stp => stp.Servicio)
                         .ThenInclude(i => i.ServicioTipoPrenda)
@@ -47,7 +47,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.Ordenes
+                return _context.Ordenes.Where(o => o.Borrado == false)
                     .Include(o => o.Cliente)
                     .Include(o => o.Factura)
                         .ThenInclude(f => f.Pagos)
@@ -128,13 +128,13 @@ namespace Data.Database
             }
             orden.State = BusinessEntity.States.Unmodified;
         }
-        
+        /*
         public Business.Entities.Cliente GetOneConCuit(string Cuit)
         {
             Cliente cliente = new Cliente();
             try
             {
-                cliente = _context.Clientes.FirstOrDefault(c => c.Cuit == Cuit);
+                cliente = _context.Clientes.Where(o => o.Borrado == false).FirstOrDefault(c => c.Cuit == Cuit);
             }
             catch (Exception e)
             {
@@ -142,6 +142,6 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
             return cliente;
-        }
+        }*/
     }
 }

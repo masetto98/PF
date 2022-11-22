@@ -19,7 +19,7 @@ namespace Data.Database
             List<Consumo> consumos = new List<Consumo>();
             try
             {
-                consumos = _context.Consumos.ToList();
+                consumos = _context.Consumos.Where(c => c.Borrado == false).ToList();
             }
             catch (Exception e)
             {
@@ -32,7 +32,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.Consumos.FirstOrDefault(e => e.IdMaquina == idMaquina && e.FechaConsumo==fecha_consumo && e.IdInsumo==idInsumo);
+                return _context.Consumos.Where(e => e.Borrado == false).FirstOrDefault(e => e.IdMaquina == idMaquina && e.FechaConsumo==fecha_consumo && e.IdInsumo==idInsumo);
             }
             catch (Exception e)
             {

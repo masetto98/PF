@@ -17,6 +17,7 @@ namespace Business.Entities
         private int _idTipoPrenda;
         private int _ordenItem;
         private int _idEmpleado;
+        private bool _deleted;
         private Maquina _maquina;
         private OrdenServicioTipoPrenda _ordenServicioTipoPrenda;
         private Empleado _empleado;
@@ -77,6 +78,13 @@ namespace Business.Entities
         {
             get { return _idEmpleado; }
             set { _idEmpleado = value; }
+        }
+
+        [Column("deleted")]
+        public bool Borrado
+        {
+            get { return _deleted; }
+            set { _deleted = value; }
         }
 
         public Maquina Maquina

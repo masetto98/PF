@@ -17,6 +17,7 @@ namespace Business.Entities
         private Estados _estado;
         private Prioridades _prioridad;
         private Orden _orden;
+        private bool _deleted;
         private ServicioTipoPrenda _servicioTipoPrenda;
         private List<MaquinaOrdenServicioTipoPrenda> _maquinasItem;// un item de orden puede pasar por varias maquinas como en el caso de lavado y secado que debe pasar por el lavaropas y secarropas.
         
@@ -80,6 +81,12 @@ namespace Business.Entities
             set { _fecha_cambio_prioridad = value; }
         }
 
+        [Column("deleted")]
+        public bool Borrado
+        {
+            get { return _deleted; }
+            set { _deleted = value; }
+        }
 
         public ServicioTipoPrenda ServicioTipoPrenda
         {

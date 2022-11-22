@@ -15,6 +15,7 @@ namespace Business.Entities
         private int _idInsumo;
         private double _cantidad;
         private int _unidadMedida;
+        private bool _deleted;
         private MaquinaOrdenServicioTipoPrenda _maquinaOrdenServicioTipoPrenda;
         private Insumo _insumo;
         /*
@@ -60,6 +61,12 @@ namespace Business.Entities
             set { _unidadMedida = value; }
         }
 
+        [Column("deleted")]
+        public bool Borrado
+        {
+            get { return _deleted; }
+            set { _deleted = value; }
+        }
         public MaquinaOrdenServicioTipoPrenda MaquinaOrdenServicioTipoPrenda
         {
             get { return _maquinaOrdenServicioTipoPrenda; }

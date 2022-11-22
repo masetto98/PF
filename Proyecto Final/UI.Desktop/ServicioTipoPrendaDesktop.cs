@@ -85,12 +85,12 @@ namespace UI.Desktop
 
         public override void MapearDeDatos()
         {
-            this.nudHoras.Value = ServicioTipoPrendaActual.TiempoRequerido.Hours;
-            this.nudMinutos.Value = ServicioTipoPrendaActual.TiempoRequerido.Minutes;
-            TimeSpan TiempoMax = TimeSpan.Parse(ServicioTipoPrendaActual.TiempoDemoraMax);
-            this.nudDias.Value = TiempoMax.Days;
-            this.nudHoras2.Value = TiempoMax.Hours;
-            this.nudMinutos2.Value = TiempoMax.Minutes;
+            //this.nudHoras.Value = ServicioTipoPrendaActual.TiempoRequerido.Hours;
+           // this.nudMinutos.Value = ServicioTipoPrendaActual.TiempoRequerido.Minutes;
+            //TimeSpan TiempoMax = TimeSpan.Parse(ServicioTipoPrendaActual.TiempoDemoraMax);
+            //this.nudDias.Value = TiempoMax.Days;
+            //this.nudHoras2.Value = TiempoMax.Hours;
+            //this.nudMinutos2.Value = TiempoMax.Minutes;
             this.txtPrecio.Text = PrecioActual.Valor.ToString();
             if (ServicioTipoPrendaActual.InsumoServicioTipoPrenda is not null)
             {
@@ -124,12 +124,12 @@ namespace UI.Desktop
                     this.btnAceptar.Text = "Eliminar";
                     this.cmbServicios.Enabled = false;
                     this.cmbTipoPrendas.Enabled = false;
-                    this.nudHoras.Enabled = false;
-                    this.nudMinutos.Enabled = false;
+                    //this.nudHoras.Enabled = false;
+                    //this.nudMinutos.Enabled = false;
                     this.txtPrecio.Enabled = false;
-                    this.nudDias.Enabled = false;
-                    this.nudHoras2.Enabled = false;
-                    this.nudMinutos2.Enabled = false;
+                    //this.nudDias.Enabled = false;
+                    //this.nudHoras2.Enabled = false;
+                    //this.nudMinutos2.Enabled = false;
                     this.btnAgregarConsumo.Enabled = false;
                     this.btnEliminarConsumo.Enabled = false;
                     break;
@@ -137,12 +137,12 @@ namespace UI.Desktop
                     this.btnAceptar.Text = "Aceptar";
                     this.cmbServicios.Enabled = false;
                     this.cmbTipoPrendas.Enabled = false;
-                    this.nudHoras.Enabled = false;
-                    this.nudMinutos.Enabled = false;
+                    //this.nudHoras.Enabled = false;
+                    //this.nudMinutos.Enabled = false;
                     this.txtPrecio.Enabled = false;
-                    this.nudDias.Enabled = false;
-                    this.nudHoras2.Enabled = false;
-                    this.nudMinutos2.Enabled = false;
+                    //this.nudDias.Enabled = false;
+                    //this.nudHoras2.Enabled = false;
+                    //this.nudMinutos2.Enabled = false;
                     this.btnAgregarConsumo.Enabled = false;
                     this.btnEliminarConsumo.Enabled = false;
                     ;
@@ -158,8 +158,8 @@ namespace UI.Desktop
                 Precio precioActual = new Precio();
                 ServicioTipoPrendaActual.Servicio = _servicioLogic.GetOne((int)this.cmbServicios.SelectedValue);
                 ServicioTipoPrendaActual.TipoPrenda = _tipoPrendaLogic.GetOne((int)this.cmbTipoPrendas.SelectedValue);
-                ServicioTipoPrendaActual.TiempoRequerido = new TimeSpan(((int)this.nudHoras.Value),((int)this.nudMinutos.Value),00);
-                ServicioTipoPrendaActual.TiempoDemoraMax = new TimeSpan((int)this.nudDias.Value,(int)this.nudHoras2.Value,(int)this.nudMinutos2.Value,00).ToString();
+                //ServicioTipoPrendaActual.TiempoRequerido = new TimeSpan(((int)this.nudHoras.Value),((int)this.nudMinutos.Value),00);
+                //ServicioTipoPrendaActual.TiempoDemoraMax = new TimeSpan((int)this.nudDias.Value,(int)this.nudHoras2.Value,(int)this.nudMinutos2.Value,00).ToString();
                 precioActual.Valor = double.Parse(this.txtPrecio.Text);
                 precioActual.FechaDesde = DateTime.Now;
                 ServicioTipoPrendaActual.HistoricoPrecios = new List<Precio>();
@@ -173,8 +173,8 @@ namespace UI.Desktop
                 this.cmbServicios.FindStringExact(ServicioTipoPrendaActual.TipoPrenda.Descripcion);
                 this.cmbServicios.Enabled = false;
                 this.cmbTipoPrendas.Enabled = false;
-                ServicioTipoPrendaActual.TiempoRequerido = new TimeSpan(((int)this.nudHoras.Value), ((int)this.nudMinutos.Value), 00);
-                ServicioTipoPrendaActual.TiempoDemoraMax = new TimeSpan((int)this.nudDias.Value, (int)this.nudHoras2.Value, (int)this.nudMinutos2.Value, 00).ToString();
+                //ServicioTipoPrendaActual.TiempoRequerido = new TimeSpan(((int)this.nudHoras.Value), ((int)this.nudMinutos.Value), 00);
+                //ServicioTipoPrendaActual.TiempoDemoraMax = new TimeSpan((int)this.nudDias.Value, (int)this.nudHoras2.Value, (int)this.nudMinutos2.Value, 00).ToString();
                 if (PrecioActual.Valor != double.Parse(this.txtPrecio.Text)) 
                 {
                     Precio nuevoPrecio = new Precio();

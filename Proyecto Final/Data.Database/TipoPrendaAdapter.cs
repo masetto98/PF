@@ -20,7 +20,7 @@ namespace Data.Database
             List<TipoPrenda> tipoPrendas = new List<TipoPrenda>();
             try
             {
-                tipoPrendas = _context.TipoPrendas.ToList();
+                tipoPrendas = _context.TipoPrendas.Where(tp => tp.Borrado == false).ToList();
             }
             catch (Exception e)
             {
@@ -33,7 +33,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.TipoPrendas.FirstOrDefault(s => s.IdTipoPrenda == idTipoPrenda);
+                return _context.TipoPrendas.Where(tp => tp.Borrado == false).FirstOrDefault(s => s.IdTipoPrenda == idTipoPrenda);
             }
             catch (Exception e)
             {

@@ -27,6 +27,7 @@ namespace Business.Entities
         private Cliente _cliente;
         private Empleado _empleado;
         private Factura? _factura;
+        private bool _deleted;
         private List<OrdenServicioTipoPrenda> _itemsPedidos;
 
         public enum Estados
@@ -136,6 +137,14 @@ namespace Business.Entities
             get { return _entregaDomicilio; }
             set { _entregaDomicilio = value; }
         }
+
+        [Column("deleted")]
+        public bool Borrado
+        {
+            get { return _deleted; }
+            set { _deleted = value; }
+        }
+
         public bool Senia
         {
             get { return _senia; }
