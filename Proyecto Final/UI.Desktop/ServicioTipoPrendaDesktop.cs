@@ -154,17 +154,19 @@ namespace UI.Desktop
         {
             if (Modos == ModoForm.Alta)
             {
-                ServicioTipoPrendaActual = new Business.Entities.ServicioTipoPrenda();
-                Precio precioActual = new Precio();
-                ServicioTipoPrendaActual.Servicio = _servicioLogic.GetOne((int)this.cmbServicios.SelectedValue);
-                ServicioTipoPrendaActual.TipoPrenda = _tipoPrendaLogic.GetOne((int)this.cmbTipoPrendas.SelectedValue);
-                //ServicioTipoPrendaActual.TiempoRequerido = new TimeSpan(((int)this.nudHoras.Value),((int)this.nudMinutos.Value),00);
-                //ServicioTipoPrendaActual.TiempoDemoraMax = new TimeSpan((int)this.nudDias.Value,(int)this.nudHoras2.Value,(int)this.nudMinutos2.Value,00).ToString();
-                precioActual.Valor = double.Parse(this.txtPrecio.Text);
-                precioActual.FechaDesde = DateTime.Now;
-                ServicioTipoPrendaActual.HistoricoPrecios = new List<Precio>();
-                ServicioTipoPrendaActual.HistoricoPrecios.Add(precioActual);
-                ServicioTipoPrendaActual.InsumoServicioTipoPrenda = _consumos;
+                
+                    ServicioTipoPrendaActual = new Business.Entities.ServicioTipoPrenda();
+                    Precio precioActual = new Precio();
+                    ServicioTipoPrendaActual.Servicio = _servicioLogic.GetOne((int)this.cmbServicios.SelectedValue);
+                    ServicioTipoPrendaActual.TipoPrenda = _tipoPrendaLogic.GetOne((int)this.cmbTipoPrendas.SelectedValue);
+                    //ServicioTipoPrendaActual.TiempoRequerido = new TimeSpan(((int)this.nudHoras.Value),((int)this.nudMinutos.Value),00);
+                    //ServicioTipoPrendaActual.TiempoDemoraMax = new TimeSpan((int)this.nudDias.Value,(int)this.nudHoras2.Value,(int)this.nudMinutos2.Value,00).ToString();
+                    precioActual.Valor = double.Parse(this.txtPrecio.Text);
+                    precioActual.FechaDesde = DateTime.Now;
+                    ServicioTipoPrendaActual.HistoricoPrecios = new List<Precio>();
+                    ServicioTipoPrendaActual.HistoricoPrecios.Add(precioActual);
+                    ServicioTipoPrendaActual.InsumoServicioTipoPrenda = _consumos;
+                
                 
             }
             if (Modos == ModoForm.Modificacion)
@@ -199,10 +201,17 @@ namespace UI.Desktop
         {
             try
             {
-                Validaciones.ValidarNumeroEnteroDecimal(this.txtPrecio.Text);
-                MapearADatos();
-                _servicioTipoPrendaLogic.Save(ServicioTipoPrendaActual);
-                Close();
+                if (this.cmbServicios.SelectedValue is not null && this.cmbTipoPrendas.SelectedValue is not null)
+                {
+                    Validaciones.ValidarNumeroEnteroDecimal(this.txtPrecio.Text);
+                    MapearADatos();
+                    _servicioTipoPrendaLogic.Save(ServicioTipoPrendaActual);
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar un servicio para un tipo de prenda en su respectivo listado para poder continuar.", "Servicio - Tipo Prenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception e)
             {
@@ -281,18 +290,32 @@ namespace UI.Desktop
         {
             try
             {
-                InsumoServicioTipoPrenda consumoActual = new InsumoServicioTipoPrenda();
-                consumoActual.ServicioTipoPrenda = _servicioTipoPrendaLogic.GetOne((int)this.cmbServicios.SelectedValue, (int)this.cmbTipoPrendas.SelectedValue);
-                consumoActual.Insumo = InsumoActual;
-                Validaciones.ValidarNumeroEnteroDecimal(this.txtCantidad.Text);
-                consumoActual.Cantidad = ConvertirUnidadesConsumo(Int32.Parse(this.txtCantidad.Text), _unidadesMedida[this.cmbUnidadMedida.SelectedIndex]);
-                consumoActual.FechaDesde = DateTime.Now;
-                consumoActual.TipoMaquina = _tiposMaquinaLogic.GetOne((int)this.cmbTiposMaquina.SelectedValue);
-                if (ValidarExistencia())
+                if(this.cmbServicios.SelectedValue is not null && this.cmbTipoPrendas.SelectedValue is not null)
                 {
-                    _consumos.Add(consumoActual);
+                    if(cmbTiposMaquina.SelectedValue is not null && cmbUnidadMedida is not null)
+                    {
+                        InsumoServicioTipoPrenda consumoActual = new InsumoServicioTipoPrenda();
+                        consumoActual.ServicioTipoPrenda = _servicioTipoPrendaLogic.GetOne((int)this.cmbServicios.SelectedValue, (int)this.cmbTipoPrendas.SelectedValue);
+                        consumoActual.Insumo = InsumoActual;
+                        Validaciones.ValidarNumeroEnteroDecimal(this.txtCantidad.Text);
+                        consumoActual.Cantidad = ConvertirUnidadesConsumo(Int32.Parse(this.txtCantidad.Text), _unidadesMedida[this.cmbUnidadMedida.SelectedIndex]);
+                        consumoActual.FechaDesde = DateTime.Now;
+                        consumoActual.TipoMaquina = _tiposMaquinaLogic.GetOne((int)this.cmbTiposMaquina.SelectedValue);
+                        if (ValidarExistencia())
+                        {
+                            _consumos.Add(consumoActual);
+                        }
+                        ListarConsumos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Debe seleccionar una unidad de medida y un tipo de máquina en su respectivo listado para poder agregar un consumo.", "Servicio - Tipo Prenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                ListarConsumos();
+                else
+                {
+                    MessageBox.Show("Debe seleccionar un servicio para un tipo de prenda en su respectivo listado para poder agregar un consumo.", "Servicio - Tipo Prenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception f) 
             {
@@ -365,6 +388,10 @@ namespace UI.Desktop
                 _consumos.Remove(_itemDelete);
                 listConsumos.Items.Remove(listConsumos.SelectedItems[0]);
                 ListarConsumos();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila de la lista para poder eliminar un consumo.", "Consumo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         
         }

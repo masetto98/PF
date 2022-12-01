@@ -59,37 +59,45 @@ namespace UI.Desktop
         }
         private void CargarAtendidas()
         {
-            double cantidadTotalAten = 0;
-            listAtendidas.Items.Clear();
-            foreach(MaquinaOrdenServicioTipoPrenda aten in ordenesAtendidas)
+            if(ordenesAtendidas is not null)
             {
-                ListViewItem item = new ListViewItem(aten.NroOrden.ToString());
-                item.SubItems.Add(aten.Maquina.Descripcion);
-                item.SubItems.Add(aten.OrdenServicioTipoPrenda.ServicioTipoPrenda.Servicio.Descripcion + " "+ aten.OrdenServicioTipoPrenda.ServicioTipoPrenda.TipoPrenda.Descripcion);
-                item.SubItems.Add(aten.TiempoInicioServicio.ToString());
-                item.SubItems.Add(aten.TiempoFinServicio.ToString());
-                cantidadTotalAten += 1;
-                listAtendidas.Items.Add(item);
+                double cantidadTotalAten = 0;
+                listAtendidas.Items.Clear();
+                foreach (MaquinaOrdenServicioTipoPrenda aten in ordenesAtendidas)
+                {
+                    ListViewItem item = new ListViewItem(aten.NroOrden.ToString());
+                    item.SubItems.Add(aten.Maquina.Descripcion);
+                    item.SubItems.Add(aten.OrdenServicioTipoPrenda.ServicioTipoPrenda.Servicio.Descripcion + " " + aten.OrdenServicioTipoPrenda.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                    item.SubItems.Add(aten.TiempoInicioServicio.ToString());
+                    item.SubItems.Add(aten.TiempoFinServicio.ToString());
+                    cantidadTotalAten += 1;
+                    listAtendidas.Items.Add(item);
+                }
+                cantTotalAten = cantidadTotalAten;
             }
-            cantTotalAten = cantidadTotalAten;
+            
         }
         private void CargarRegistradas()
         {
-            double cantidadTotalReg = 0;
-            double cantidadTotalItemsReg = 0;
-            listRegistradas.Items.Clear();
-            foreach (Orden or in ordenesRegistradas)
+            if(ordenesRegistradas is not null)
             {
-                ListViewItem item = new ListViewItem(or.NroOrden.ToString());
-                item.SubItems.Add(or.FechaEntrada.ToString());
-                item.SubItems.Add(or.Cliente.Apellido+", "+or.Cliente.Nombre);
-                item.SubItems.Add(or.ItemsPedidos.Count.ToString());
-                cantidadTotalItemsReg += or.ItemsPedidos.Count;
-                cantidadTotalReg += 1;
-                listRegistradas.Items.Add(item);
+                double cantidadTotalReg = 0;
+                double cantidadTotalItemsReg = 0;
+                listRegistradas.Items.Clear();
+                foreach (Orden or in ordenesRegistradas)
+                {
+                    ListViewItem item = new ListViewItem(or.NroOrden.ToString());
+                    item.SubItems.Add(or.FechaEntrada.ToString());
+                    item.SubItems.Add(or.Cliente.Apellido + ", " + or.Cliente.Nombre);
+                    item.SubItems.Add(or.ItemsPedidos.Count.ToString());
+                    cantidadTotalItemsReg += or.ItemsPedidos.Count;
+                    cantidadTotalReg += 1;
+                    listRegistradas.Items.Add(item);
+                }
+                cantTotalReg = cantidadTotalReg;
+                cantTotalItemsReg = cantidadTotalItemsReg;
             }
-            cantTotalReg = cantidadTotalReg;
-            cantTotalItemsReg = cantidadTotalItemsReg;
+            
         }
         private void BuscarEmpleado()
         {
@@ -236,7 +244,7 @@ namespace UI.Desktop
 
         private void btnReporte_Click(object sender, EventArgs e)
         {
-            if (Singleton.getInstance().ListActual != null && listEmpleados.SelectedItems.Count > 0)
+            if (Singleton.getInstance().ListActual != null && listEmpleados.SelectedItems.Count > 0 && empleadoActual is not null)
             {
                 SaveFileDialog sfd = new SaveFileDialog();
                 sfd.Filter = "PDF (*.pdf)|*.pdf";
@@ -385,18 +393,18 @@ namespace UI.Desktop
                                 stream.Close();
                             }
 
-                            MessageBox.Show("Reporte exportado exitosamente", "Info");
+                            MessageBox.Show("Reporte exportado exitosamente", "Info", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("Error: " + ex.Message);
+                            MessageBox.Show("Error: " + ex.Message,"Reporte",MessageBoxButtons.OK,MessageBoxIcon.Error);
                         }
                     }
                 }
             }
             else
             {
-                MessageBox.Show("No hay registros para exportar", "Info");
+                MessageBox.Show("No hay registros para exportar", "Info",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
 

@@ -725,6 +725,7 @@ namespace UI.Desktop
             this.txtSeniaOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtSeniaOrden.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSeniaOrden.Depth = 0;
+            this.txtSeniaOrden.Enabled = false;
             this.txtSeniaOrden.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtSeniaOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtSeniaOrden.LeadingIcon = null;

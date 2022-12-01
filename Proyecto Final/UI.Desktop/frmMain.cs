@@ -724,32 +724,42 @@ namespace UI.Desktop
         }
         private void dtpFiltroFechaIngreso_ValueChanged(object sender, EventArgs e)
         {
-            listIngresosInsumos.Items.Clear();
-            if (listInsumos.SelectedItems.Count > 0)
+            if(listIngresosInsumos.Items.Count > 0)
             {
-                Insumo insumoActual = _insumoLogic.GetOne(Int32.Parse(listInsumos.SelectedItems[0].Text));
-                List<InsumoProveedor> ip = insumoActual.InsumosProveedores;
-                List<InsumoProveedor> ipFiltro = ip.FindAll(
-                    delegate (InsumoProveedor ip)
-                    {
-                        return ip.FechaIngreso.Date >= dtpFiltroFechaIngreso.Value.Date;
-                    });
-                if (insumoActual is not null && ipFiltro.Count > 0)
+                listIngresosInsumos.Items.Clear();
+                if (listInsumos.SelectedItems.Count > 0)
                 {
-                    foreach (InsumoProveedor insP in ipFiltro)
+                    Insumo insumoActual = _insumoLogic.GetOne(Int32.Parse(listInsumos.SelectedItems[0].Text));
+                    List<InsumoProveedor> ip = insumoActual.InsumosProveedores;
+                    List<InsumoProveedor> ipFiltro = ip.FindAll(
+                        delegate (InsumoProveedor ip)
+                        {
+                            return ip.FechaIngreso.Date >= dtpFiltroFechaIngreso.Value.Date;
+                        });
+                    if (insumoActual is not null && ipFiltro.Count > 0)
                     {
-                        ListViewItem item = new ListViewItem(insP.Proveedor.RazonSocial);
-                        item.SubItems.Add(insP.FechaIngreso.ToString("yyyy-MM-dd HH:mm:ss.fffffff"));
-                        item.SubItems.Add(insP.Cantidad.ToString());
-                        item.SubItems.Add(insP.Insumo.UnidadMedida.ToString());
-                        listIngresosInsumos.Items.Add(item);
+                        foreach (InsumoProveedor insP in ipFiltro)
+                        {
+                            ListViewItem item = new ListViewItem(insP.Proveedor.RazonSocial);
+                            item.SubItems.Add(insP.FechaIngreso.ToString("yyyy-MM-dd HH:mm:ss.fffffff"));
+                            item.SubItems.Add(insP.Cantidad.ToString());
+                            item.SubItems.Add(insP.Insumo.UnidadMedida.ToString());
+                            listIngresosInsumos.Items.Add(item);
+                        }
                     }
+                }
+                else
+                {
+                    dtpFiltroFechaIngreso.Value = DateTime.Now;
+                    MessageBox.Show("Seleccionar una fila en la lista para poder observar los detalles", "Movimientos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
-                MessageBox.Show("Seleccionar una fila en la lista para poder observar los detalles", "Insumo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dtpFiltroFechaIngreso.Value = DateTime.Now;
+                MessageBox.Show("No se han encontrado Movimientos para realizar el filtro correspondiente.", "Movimientos", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            
         }
         private void dtpFiltrarFechaIngreso_CloseUp(object sender, EventArgs e)
         {
@@ -1429,36 +1439,38 @@ namespace UI.Desktop
                            item.OrdenServicioTipoPrenda.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[2].Text &&
                            item.OrdenItem == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].SubItems[3].Text);
                 });
+                if (maquinasItem is not null)
+                {
+                    if (maquinasItem.Count > 0)
+                    {
+                        listMaquinasItem.Items.Clear();
+                        foreach (MaquinaOrdenServicioTipoPrenda mi in maquinasItem)
+                        {
+                            ListViewItem mir = new ListViewItem(mi.Maquina.Descripcion);
+                            mir.SubItems.Add(mi.TiempoInicioServicio.ToString());
+                            if (mi.TiempoFinServicio == DateTime.MinValue)
+                            {
+                                mir.SubItems.Add("");
+                            }
+                            else { mir.SubItems.Add(mi.TiempoFinServicio.ToString()); }
+                            listMaquinasItem.Items.Add(mir);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("El item seleccionado no tiene servicios realizados", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }   
             }
             else
             {
                 MessageBox.Show("Debe seleccionar un trabajo en la lista para poder observar los detalles", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            if (maquinasItem is not null)
-            {
-                if (maquinasItem.Count > 0)
-                {
-                    listMaquinasItem.Items.Clear();
-                    foreach (MaquinaOrdenServicioTipoPrenda mi in maquinasItem)
-                    {
-                        ListViewItem mir = new ListViewItem(mi.Maquina.Descripcion);
-                        mir.SubItems.Add(mi.TiempoInicioServicio.ToString());
-                        if (mi.TiempoFinServicio == DateTime.MinValue)
-                        {
-                            mir.SubItems.Add("");
-                        }
-                        else { mir.SubItems.Add(mi.TiempoFinServicio.ToString()); }
-                        listMaquinasItem.Items.Add(mir);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("El item seleccionado no tiene servicios realizados", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
+            
+        }
             
 
-        }
+        
 
         private void btnIniciarServicio_Click(object sender, EventArgs e)
         {
@@ -1876,11 +1888,7 @@ namespace UI.Desktop
             frmProveedores.ShowDialog();
         }
 
-        private void btnClientes_Click(object sender, EventArgs e)
-        {
-            Clientes frmClientes = new Clientes(_context);
-            frmClientes.ShowDialog();
-        }
+        
 
         private void btnInsumos_Click(object sender, EventArgs e)
         {

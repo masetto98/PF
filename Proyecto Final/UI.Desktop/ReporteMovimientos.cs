@@ -370,8 +370,9 @@ namespace UI.Desktop
             }
             else
             {
-                dtpFechaDesde.Value = DateTime.Now;
+                
                 MessageBox.Show("Debe seleccionar un Insumo de la lista para poder continuar.", "Movimientos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dtpFechaDesde.Value = DateTime.Today;
             }
             
 
@@ -381,89 +382,97 @@ namespace UI.Desktop
         {
             if(listInsumos.SelectedItems.Count > 0)
             {
-                if (dtpFechaDesde.Value.Date != DateTime.Now.Date)
+                if (dtpFechaHasta.Value > dtpFechaDesde.Value)
                 {
-                    insumoActual = _insumoLogic.GetOne(Int32.Parse(listInsumos.SelectedItems[0].Text));
-                    double totalIngresos3 = 0;
-                    listIngresos.Items.Clear();
-                    foreach (InsumoProveedor ip in insumoActual.InsumosProveedores)
+                    if (dtpFechaDesde.Value.Date != DateTime.Now.Date)
                     {
-                        if (ip.FechaIngreso.Date >= dtpFechaDesde.Value.Date && ip.FechaIngreso.Date <= dtpFechaHasta.Value.Date)
+                        insumoActual = _insumoLogic.GetOne(Int32.Parse(listInsumos.SelectedItems[0].Text));
+                        double totalIngresos3 = 0;
+                        listIngresos.Items.Clear();
+                        foreach (InsumoProveedor ip in insumoActual.InsumosProveedores)
                         {
-                            ListViewItem item = new ListViewItem(ip.Proveedor.RazonSocial);
-                            item.SubItems.Add(ip.FechaIngreso.ToString());
-                            item.SubItems.Add(ip.Cantidad.ToString() + " " + insumoActual.UnidadMedida);
-                            totalIngresos3 += ip.Cantidad;
-                            listIngresos.Items.Add(item);
-                        }
-                    }
-                    _totalIngresos = totalIngresos3;
-                    List<Consumo> consumosInsumo = insumoActual.Consumos;
-                    double totalEgresos3 = 0;
-                    if (consumosInsumo is not null)
-                    {
-                        listEgresos.Items.Clear();
-                        foreach (Consumo c in consumosInsumo)
-                        {
-                            if (c.FechaConsumo.Date >= dtpFechaDesde.Value.Date && c.FechaConsumo <= dtpFechaHasta.Value.Date)
+                            if (ip.FechaIngreso.Date >= dtpFechaDesde.Value.Date && ip.FechaIngreso.Date <= dtpFechaHasta.Value.Date)
                             {
-                                ListViewItem item = new ListViewItem(c.MaquinaOrdenServicioTipoPrenda.NroOrden.ToString());
-                                item.SubItems.Add(c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda.Servicio.Descripcion + " " + c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda.TipoPrenda.Descripcion);
-                                item.SubItems.Add(c.MaquinaOrdenServicioTipoPrenda.Maquina.Descripcion);
-                                item.SubItems.Add(c.FechaConsumo.ToString());
-                                item.SubItems.Add(c.Cantidad.ToString());
-                                totalEgresos3 += c.Cantidad;
-                                listEgresos.Items.Add(item);
+                                ListViewItem item = new ListViewItem(ip.Proveedor.RazonSocial);
+                                item.SubItems.Add(ip.FechaIngreso.ToString());
+                                item.SubItems.Add(ip.Cantidad.ToString() + " " + insumoActual.UnidadMedida);
+                                totalIngresos3 += ip.Cantidad;
+                                listIngresos.Items.Add(item);
                             }
                         }
-                        _totalEgresos = totalEgresos3;
+                        _totalIngresos = totalIngresos3;
+                        List<Consumo> consumosInsumo = insumoActual.Consumos;
+                        double totalEgresos3 = 0;
+                        if (consumosInsumo is not null)
+                        {
+                            listEgresos.Items.Clear();
+                            foreach (Consumo c in consumosInsumo)
+                            {
+                                if (c.FechaConsumo.Date >= dtpFechaDesde.Value.Date && c.FechaConsumo <= dtpFechaHasta.Value.Date)
+                                {
+                                    ListViewItem item = new ListViewItem(c.MaquinaOrdenServicioTipoPrenda.NroOrden.ToString());
+                                    item.SubItems.Add(c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda.Servicio.Descripcion + " " + c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                                    item.SubItems.Add(c.MaquinaOrdenServicioTipoPrenda.Maquina.Descripcion);
+                                    item.SubItems.Add(c.FechaConsumo.ToString());
+                                    item.SubItems.Add(c.Cantidad.ToString());
+                                    totalEgresos3 += c.Cantidad;
+                                    listEgresos.Items.Add(item);
+                                }
+                            }
+                            _totalEgresos = totalEgresos3;
+                        }
+                    }
+                    else
+                    {
+                        insumoActual = _insumoLogic.GetOne(Int32.Parse(listInsumos.SelectedItems[0].Text));
+                        double totalIngresos4 = 0;
+                        listIngresos.Items.Clear();
+                        foreach (InsumoProveedor ip in insumoActual.InsumosProveedores)
+                        {
+                            if (ip.FechaIngreso.Date <= dtpFechaHasta.Value.Date)
+                            {
+                                ListViewItem item = new ListViewItem(ip.Proveedor.RazonSocial);
+                                item.SubItems.Add(ip.FechaIngreso.ToString());
+                                item.SubItems.Add(ip.Cantidad.ToString() + " " + insumoActual.UnidadMedida);
+                                totalIngresos4 += ip.Cantidad;
+                                listIngresos.Items.Add(item);
+                            }
+                        }
+                        _totalIngresos = totalIngresos4;
+
+                        List<Consumo> consumosInsumo = insumoActual.Consumos;
+                        double totalEgresos4 = 0;
+                        if (consumosInsumo is not null)
+                        {
+                            listEgresos.Items.Clear();
+                            foreach (Consumo c in consumosInsumo)
+                            {
+                                if (c.FechaConsumo.Date <= dtpFechaHasta.Value.Date)
+                                {
+                                    ListViewItem item = new ListViewItem(c.MaquinaOrdenServicioTipoPrenda.NroOrden.ToString());
+                                    item.SubItems.Add(c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda.Servicio.Descripcion + " " + c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                                    item.SubItems.Add(c.MaquinaOrdenServicioTipoPrenda.Maquina.Descripcion);
+                                    item.SubItems.Add(c.FechaConsumo.ToString());
+                                    item.SubItems.Add(c.Cantidad.ToString());
+                                    totalEgresos4 += c.Cantidad;
+                                    listEgresos.Items.Add(item);
+                                }
+                            }
+                            _totalEgresos = totalEgresos4;
+                        }
                     }
                 }
                 else
                 {
-                    insumoActual = _insumoLogic.GetOne(Int32.Parse(listInsumos.SelectedItems[0].Text));
-                    double totalIngresos4 = 0;
-                    listIngresos.Items.Clear();
-                    foreach (InsumoProveedor ip in insumoActual.InsumosProveedores)
-                    {
-                        if (ip.FechaIngreso.Date <= dtpFechaHasta.Value.Date)
-                        {
-                            ListViewItem item = new ListViewItem(ip.Proveedor.RazonSocial);
-                            item.SubItems.Add(ip.FechaIngreso.ToString());
-                            item.SubItems.Add(ip.Cantidad.ToString() + " " + insumoActual.UnidadMedida);
-                            totalIngresos4 += ip.Cantidad;
-                            listIngresos.Items.Add(item);
-                        }
-                    }
-                    _totalIngresos = totalIngresos4;
-
-                    List<Consumo> consumosInsumo = insumoActual.Consumos;
-                    double totalEgresos4 = 0;
-                    if (consumosInsumo is not null)
-                    {
-                        listEgresos.Items.Clear();
-                        foreach (Consumo c in consumosInsumo)
-                        {
-                            if (c.FechaConsumo.Date <= dtpFechaHasta.Value.Date)
-                            {
-                                ListViewItem item = new ListViewItem(c.MaquinaOrdenServicioTipoPrenda.NroOrden.ToString());
-                                item.SubItems.Add(c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda.Servicio.Descripcion + " " + c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda.TipoPrenda.Descripcion);
-                                item.SubItems.Add(c.MaquinaOrdenServicioTipoPrenda.Maquina.Descripcion);
-                                item.SubItems.Add(c.FechaConsumo.ToString());
-                                item.SubItems.Add(c.Cantidad.ToString());
-                                totalEgresos4 += c.Cantidad;
-                                listEgresos.Items.Add(item);
-                            }
-                        }
-                        _totalEgresos = totalEgresos4;
-                    }
+                    MessageBox.Show("La Fecha Hasta seleccionada no puede ser inferior a la Fecha Desde. Por favor, seleccione una fecha válida para continuar.", "Movimientos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                
             }
             else
             {
-                dtpFechaHasta.Value = DateTime.Now;
+                
                 MessageBox.Show("Debe seleccionar un Insumo de la lista para poder continuar.", "Movimientos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                dtpFechaHasta.Value = DateTime.Today;
             }
             
         }

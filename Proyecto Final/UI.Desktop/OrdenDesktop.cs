@@ -19,6 +19,7 @@ using iText.Layout.Properties;
 using iText.Layout;
 using System.IO;
 using FluentValidation.Results;
+using System.Text.RegularExpressions;
 
 namespace UI.Desktop
 {
@@ -67,10 +68,10 @@ namespace UI.Desktop
             {
                 List<Servicio> servicios = _servicioLogic.GetAll();
                 this.cmbServicios.DataSource = servicios;
-                this.cmbServicios.SelectedIndex = 0;
+                //this.cmbServicios.SelectedIndex = 0;
                 List<TipoPrenda> tipoPrendas = _tipoPrendaLogic.GetAll();
                 this.cmbTipoPrenda.DataSource = tipoPrendas;
-                this.cmbTipoPrenda.SelectedIndex = 0;
+                //this.cmbTipoPrenda.SelectedIndex = 0;
                 this.cmbEstado.DataSource = Enum.GetNames(typeof(Orden.Estados));
                 this.cmbPrioridad.DataSource = Enum.GetNames(typeof(Orden.Prioridades));
                 this.cmbPrioridad.SelectedIndex = 0;
@@ -419,21 +420,33 @@ namespace UI.Desktop
         {
             try
             {
-                Business.Entities.ServicioTipoPrenda servicioTp = _servicioTipoPrendaLogic.GetOne((int)this.cmbServicios.SelectedValue, (int)this.cmbTipoPrenda.SelectedValue);
-                if (servicioTp is null)
+                if(this.cmbServicios.SelectedValue is not null && this.cmbTipoPrenda.SelectedValue is not null)
                 {
-                    MessageBox.Show("El servicio para el tipo de prenda seleccionado no es válido", "Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    /*
-                    Exception r = new Exception("Error al recuperar el servicio tipo prenda.");
-                    throw r;
-                    */
+                    Business.Entities.ServicioTipoPrenda servicioTp = _servicioTipoPrendaLogic.GetOne((int)this.cmbServicios.SelectedValue, (int)this.cmbTipoPrenda.SelectedValue);
+                    if (servicioTp is null)
+                    {
+                        MessageBox.Show("El servicio para el tipo de prenda seleccionado no es válido o no existe.", "Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        /*
+                        Exception r = new Exception("Error al recuperar el servicio tipo prenda.");
+                        throw r;
+                        */
+                    }
+                    else
+                    {
+                        AgregarItem(servicioTp);
+                        if (!this.txtSeniaOrden.Enabled)
+                        {
+                            this.txtSeniaOrden.Enabled = true;
+                        }
+                        ListarItems();
+                        CalcularImporte();
+                    }
                 }
                 else
                 {
-                    AgregarItem(servicioTp);
-                    ListarItems();
-                    CalcularImporte();
+                    MessageBox.Show("Debe seleccionar un servicio para un tipo de prenda de sus respectivos listados para poder continuar.", "Item", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                
             }
             catch (Exception r)
             {
@@ -838,20 +851,43 @@ namespace UI.Desktop
             e.Cancel = true;
             e.NewWidth = listItemsServicio.Columns[e.ColumnIndex].Width;
         }
-
+        public bool ValidarNumeroEnteroDecimal(string cantidad)
+        {
+            if (!Regex.IsMatch(cantidad, @"\d{1,7}(,\d{1,2})?"))
+            {
+                return false;
+                //MessageBox.Show("El valor de seña ingresado no es un número. Por favor, ingrese un valor de seña válido.", "Seña", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                return true;
+            }
+        }
         private void txtSeniaOrden_TextChanged(object sender, EventArgs e)
         {
+            
             if(_modos != ModoForm.Baja)
             {
-                if (this.txtSeniaOrden.Text != "" && double.Parse(this.txtSeniaOrden.Text) <= _total)
+                if (this.txtSeniaOrden.Text != "" && ValidarNumeroEnteroDecimal(this.txtSeniaOrden.Text))
                 {
-                    this.cbFormaPago.Enabled = true;
-                    this.cbFormaPago.DataSource = Enum.GetNames(typeof(Business.Entities.Pago.FormasPago));
+                    
+                    if (double.Parse(this.txtSeniaOrden.Text) <= _total)
+                    {
+                        this.cbFormaPago.Enabled = true;
+                        this.cbFormaPago.DataSource = Enum.GetNames(typeof(Business.Entities.Pago.FormasPago));
+                    }
+                    else
+                    {
+                        MessageBox.Show("El valor de la seña ingresado es mayor al total de la Orden. Por favor, ingrese un valor válido para continuar.", "Seña", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
                 else
                 {
-                    MessageBox.Show("El valor de la seña ingresado es mayor al total de la Orden. Por favor, ingrese un valor válido para continuar.", "Seña", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El valor de seña ingresado no es un número. Por favor, ingrese un valor de seña válido.", "Seña", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.txtSeniaOrden.Text = "";
                 }
+                
             }
             
         }

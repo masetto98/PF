@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
 using Data.Database;
+using FluentValidation.Results;
 
 namespace UI.Desktop
 {
@@ -115,8 +116,11 @@ namespace UI.Desktop
             try
             {
                 MapearADatos();
-                _atributosNegocioLogic.Save(AtributosNegocioActual);
-                Close();
+                if (Validar())
+                {
+                    _atributosNegocioLogic.Save(AtributosNegocioActual);
+                    Close();
+                }
             }
             catch (Exception e)
             {
@@ -124,7 +128,17 @@ namespace UI.Desktop
             }
         }
 
-
+        public override bool Validar()
+        {
+            ValidationResult result = new AtributosNegocioValidator().Validate(AtributosNegocioActual);
+            if (!result.IsValid)
+            {
+                string notificacion = string.Join(Environment.NewLine, result.Errors);
+                MessageBox.Show(notificacion, "Atributos Negocio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             switch (Modos)

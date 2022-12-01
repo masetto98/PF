@@ -252,8 +252,18 @@ namespace Business.Logic
         public GastoValidator()
         {
             RuleFor(x => x.TipoGasto).NotEmpty();
-            RuleFor(x => x.Importe).NotNull();
+            RuleFor(x => x.Importe.ToString()).NotEmpty().Matches(@"\d{1,7}(,\d{1,2})?").WithMessage("'Importe' debe ser numérico");
             RuleFor(x => x.Descripcion).NotNull().MaximumLength(200);
+        }
+    }
+    public class AtributosNegocioValidator : AbstractValidator<AtributosNegocio>
+    {
+        public AtributosNegocioValidator()
+        {
+            RuleFor(x => x.NombreEmpresa).NotEmpty().Matches("^[a-zA-Z0-9üéáíóúñÑ ]+$").WithMessage("'Nombre de Empresa' debe contener solo letras y/o números");
+            RuleFor(x => x.DireccionEmpresa).NotEmpty().MaximumLength(50).Matches("^[a-zA-Z0-9üéáíóúñÑ ]+$").WithMessage("'Dirección' debe contener solo letras y/o números");
+            RuleFor(x => x.TelEmpresa).NotEmpty().Matches("^[0-9]+$").WithMessage("'Teléfono' debe contener solo números");
+            
         }
     }
 

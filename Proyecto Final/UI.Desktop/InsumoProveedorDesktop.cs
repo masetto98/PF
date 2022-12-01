@@ -339,10 +339,14 @@ namespace UI.Desktop
           
         private void cbInsumos_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            Insumo insumoActual = _insumoLogic.GetOne(Int32.Parse(this.cbInsumos.SelectedValue.ToString()));
-            List<string> unidadesMedida = new List<string>();
-            _unidadesMedida = SetearMedidas((int)insumoActual.UnidadMedida, unidadesMedida);
-            this.cmbUnidadMedida.DataSource = _unidadesMedida;
+            if(this.cbInsumos.SelectedValue is not null)
+            {
+                Insumo insumoActual = _insumoLogic.GetOne(Int32.Parse(this.cbInsumos.SelectedValue.ToString()));
+                List<string> unidadesMedida = new List<string>();
+                _unidadesMedida = SetearMedidas((int)insumoActual.UnidadMedida, unidadesMedida);
+                this.cmbUnidadMedida.DataSource = _unidadesMedida;
+            }
+            
         }
     }
 }

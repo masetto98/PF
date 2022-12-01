@@ -65,7 +65,7 @@ namespace UI.Desktop
             this.txtDireccion.Depth = 0;
             this.txtDireccion.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtDireccion.Hint = "Direccion";
+            this.txtDireccion.Hint = "Dirección";
             this.txtDireccion.LeadingIcon = null;
             this.txtDireccion.Location = new System.Drawing.Point(9, 147);
             this.txtDireccion.MaxLength = 50;

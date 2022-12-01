@@ -121,7 +121,7 @@ namespace UI.Desktop
             try
             {
                 MapearADatos();
-                Validaciones.ValidarNumeroEnteroDecimal(this.txtImporte.Text);
+                //Validaciones.ValidarNumeroEnteroDecimal(this.txtImporte.Text);
                 if (Validar())
                 {
                     _gastoLogic.Save(GastoActual);

@@ -102,7 +102,7 @@ namespace UI.Desktop
             this.listIngresos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listIngresos.FullRowSelect = true;
             this.listIngresos.HideSelection = false;
-            this.listIngresos.Location = new System.Drawing.Point(464, 179);
+            this.listIngresos.Location = new System.Drawing.Point(433, 178);
             this.listIngresos.MinimumSize = new System.Drawing.Size(200, 100);
             this.listIngresos.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listIngresos.MouseState = MaterialSkin.MouseState.OUT;
@@ -145,7 +145,7 @@ namespace UI.Desktop
             this.listEgresos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listEgresos.FullRowSelect = true;
             this.listEgresos.HideSelection = false;
-            this.listEgresos.Location = new System.Drawing.Point(464, 427);
+            this.listEgresos.Location = new System.Drawing.Point(433, 426);
             this.listEgresos.MinimumSize = new System.Drawing.Size(200, 100);
             this.listEgresos.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listEgresos.MouseState = MaterialSkin.MouseState.OUT;
@@ -212,7 +212,7 @@ namespace UI.Desktop
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(464, 154);
+            this.materialLabel1.Location = new System.Drawing.Point(433, 153);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(65, 19);
@@ -226,7 +226,7 @@ namespace UI.Desktop
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(464, 405);
+            this.materialLabel2.Location = new System.Drawing.Point(433, 404);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(81, 19);
@@ -236,7 +236,7 @@ namespace UI.Desktop
             // dtpFechaDesde
             // 
             this.dtpFechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaDesde.Location = new System.Drawing.Point(694, 105);
+            this.dtpFechaDesde.Location = new System.Drawing.Point(587, 105);
             this.dtpFechaDesde.Name = "dtpFechaDesde";
             this.dtpFechaDesde.Size = new System.Drawing.Size(157, 23);
             this.dtpFechaDesde.TabIndex = 6;
@@ -249,7 +249,7 @@ namespace UI.Desktop
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(594, 105);
+            this.materialLabel3.Location = new System.Drawing.Point(487, 105);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Size = new System.Drawing.Size(94, 19);
@@ -263,7 +263,7 @@ namespace UI.Desktop
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(857, 107);
+            this.materialLabel4.Location = new System.Drawing.Point(750, 107);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(92, 19);
@@ -273,7 +273,7 @@ namespace UI.Desktop
             // dtpFechaHasta
             // 
             this.dtpFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaHasta.Location = new System.Drawing.Point(957, 105);
+            this.dtpFechaHasta.Location = new System.Drawing.Point(850, 105);
             this.dtpFechaHasta.Name = "dtpFechaHasta";
             this.dtpFechaHasta.Size = new System.Drawing.Size(157, 23);
             this.dtpFechaHasta.TabIndex = 8;
@@ -288,7 +288,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(1165, 643);
+            this.btnCerrar.Location = new System.Drawing.Point(1136, 643);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -327,7 +327,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1255, 688);
+            this.ClientSize = new System.Drawing.Size(1222, 688);
             this.Controls.Add(this.btnReporteMovimientos);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.materialLabel4);

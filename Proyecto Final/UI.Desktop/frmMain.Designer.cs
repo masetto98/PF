@@ -2389,7 +2389,7 @@ namespace UI.Desktop
             this.btnClientes.UseAccentColor = false;
             this.btnClientes.UseVisualStyleBackColor = false;
             this.btnClientes.Visible = false;
-            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
+            
             // 
             // materialCard1
             // 
