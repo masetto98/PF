@@ -489,44 +489,47 @@ namespace UI.Desktop
                 if(_deudaCliente > 0)
                 {
                     FormaPagoDesktop fp = new FormaPagoDesktop();
-                    fp.ShowDialog();
-                    Pago.FormasPago formaPago = fp.GetFormaPago();
-                    if (MessageBox.Show("¿Está seguro que desea saldar la deuda con la siguiente información?" + "\n"
-                           + "Cuit: " + listClientes.SelectedItems[0].SubItems[1].Text + "\n"
-                           + "Cliente: " + listClientes.SelectedItems[0].SubItems[2].Text + " " + listClientes.SelectedItems[0].SubItems[3].Text + " | " + listClientes.SelectedItems[0].SubItems[4].Text + "\n"
-                           + "Forma de pago: " + formaPago + "\n"
-                           + "Total: " + this.lblCuentaCorriente.Text
-                           , "Saldar Deuda", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if(fp.ShowDialog() == DialogResult.OK)
                     {
-                        Cliente clienteActual = _clienteLogic.GetOne(Int32.Parse(listClientes.SelectedItems[0].Text));
-                        if (clienteActual is not null)
+                        Pago.FormasPago formaPago = fp.GetFormaPago();
+                        if (MessageBox.Show("¿Está seguro que desea saldar la deuda con la siguiente información?" + "\n"
+                               + "Cuit: " + listClientes.SelectedItems[0].SubItems[1].Text + "\n"
+                               + "Cliente: " + listClientes.SelectedItems[0].SubItems[2].Text + " " + listClientes.SelectedItems[0].SubItems[3].Text + " | " + listClientes.SelectedItems[0].SubItems[4].Text + "\n"
+                               + "Forma de pago: " + formaPago + "\n"
+                               + "Total: " + this.lblCuentaCorriente.Text
+                               , "Saldar Deuda", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            if (clienteActual.Ordenes is not null)
+                            Cliente clienteActual = _clienteLogic.GetOne(Int32.Parse(listClientes.SelectedItems[0].Text));
+                            if (clienteActual is not null)
                             {
-                                foreach (Orden o in clienteActual.Ordenes)
+                                if (clienteActual.Ordenes is not null)
                                 {
-                                    double importe = CalcularImporteOrden(o);
-                                    if(o.Factura.Importe == 0)
+                                    foreach (Orden o in clienteActual.Ordenes)
                                     {
-                                        o.Factura.Importe = importe;
+                                        double importe = CalcularImporteOrden(o);
+                                        if (o.Factura.Importe == 0)
+                                        {
+                                            o.Factura.Importe = importe;
+                                        }
+                                        double pagos = CalcularPagosOrden(o);
+                                        if (importe != pagos)
+                                        {
+                                            Pago pagoActual = new Pago();
+                                            pagoActual.FechaPago = DateTime.Now;
+                                            pagoActual.FormaPago = formaPago;
+                                            pagoActual.Importe = importe - pagos;
+                                            o.Factura.Pagos.Add(pagoActual);
+                                        }
                                     }
-                                    double pagos = CalcularPagosOrden(o);
-                                    if (importe != pagos)
-                                    {
-                                        Pago pagoActual = new Pago();
-                                        pagoActual.FechaPago = DateTime.Now;
-                                        pagoActual.FormaPago = formaPago;
-                                        pagoActual.Importe = importe - pagos;
-                                        o.Factura.Pagos.Add(pagoActual);
-                                    }
+                                    clienteActual.State = BusinessEntity.States.Modified;
+                                    _clienteLogic.Save(clienteActual);
                                 }
-                                clienteActual.State = BusinessEntity.States.Modified;
-                                _clienteLogic.Save(clienteActual);
                             }
                         }
+                        CalcularCuentaCorrienteCliente();
+                        ListarOrdenesCliente();
                     }
-                    CalcularCuentaCorrienteCliente();
-                    ListarOrdenesCliente();
+                    
                 }
                 else
                 {
@@ -2025,6 +2028,6 @@ namespace UI.Desktop
             
         }
 
-        
+      
     }
 }

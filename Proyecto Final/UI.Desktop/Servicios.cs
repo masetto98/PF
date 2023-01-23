@@ -99,21 +99,67 @@ namespace UI.Desktop
             }
             */
         }
-
-        private bool ValidarExistencia()
+        private void filtroFechaSerie()
         {
-            bool ok = true;
-            if (ok)
-            {
-                foreach (Series s in listSeries)
+            
+                List<TipoPrenda> tiposPrenda = _tipoPrendaLogic.GetAll();
+                if (tiposPrenda.Count > 0)
                 {
-                    if (!chartServicios.Series.Contains(s))
+                    if(chartServicios.Series.Count > 0)
                     {
-                        ok = false;
+                        foreach (TipoPrenda tp in tiposPrenda)
+                        {
+                            chartServicios.Series[tp.Descripcion].Points.Clear();
+                        }
+                       
+                    }
+                    else
+                    {
+                        foreach (TipoPrenda tp in tiposPrenda)
+                        {
+                            Series serie = chartServicios.Series.Add(tp.Descripcion);
+                        }
+                    }
+                    
+                }
+
+                List<Servicio> servicios = _servicioLogic.GetAll();
+                if (servicios.Count > 0)
+                {
+                    foreach (Servicio s in servicios)
+                    {
+                        double cantXprenda = 0;
+                        List<Business.Entities.ServicioTipoPrenda> items = _servicioTipoPrendaLogic.GetAll().FindAll(delegate (Business.Entities.ServicioTipoPrenda item)
+                        {
+                            return item.Servicio == s;
+                        });
+                        foreach (Business.Entities.ServicioTipoPrenda item in items)
+                        {
+                            cantXprenda = CalcularCantxPrendaFiltro(item);
+                            double cantTotal = CalcularTotalxServicioFiltro(items);
+                            double mostrar = Math.Round((cantXprenda / cantTotal) * 100, 2);
+                            chartServicios.Series[item.TipoPrenda.Descripcion].Points.AddXY(s.Descripcion, mostrar);
+                            chartServicios.Series[item.TipoPrenda.Descripcion].IsValueShownAsLabel = true;
+                        }
                     }
                 }
-            }
-            return ok;
+            
+            
+        }
+        private bool ValidarExistencia()
+        {
+                bool ok = true;
+                if (ok)
+                {
+                    foreach (Series s in listSeries)
+                    {
+                        if (!chartServicios.Series.Contains(s))
+                        {
+                            ok = false;
+                        }
+                    }
+                }
+                return ok;
             
         }
         private double CalcularTotalxServicio(List<Business.Entities.ServicioTipoPrenda> items)
@@ -125,9 +171,87 @@ namespace UI.Desktop
             }
             return cantTotal;
         }
+        private double CalcularTotalxServicioFiltro(List<Business.Entities.ServicioTipoPrenda> items)
+        {
+            if (dtpServicioHasta.Value.Date != DateTime.Now.Date)
+            {
+                if (dtpServicioDesde.Value.Date != DateTime.Now.Date)
+                {
+                    double cantTotal = 0;
+                    foreach (Business.Entities.ServicioTipoPrenda item in items)
+                    {
+                        List<OrdenServicioTipoPrenda> itemsFiltro = item.ItemsPedidos.FindAll(delegate (OrdenServicioTipoPrenda item)
+                        {
+                            return item.Orden.FechaEntrada.Date >= dtpServicioDesde.Value.Date && item.Orden.FechaEntrada.Date <= dtpServicioHasta.Value.Date;
+                        });
+                        cantTotal += itemsFiltro.Count;
+                    }
+                    return cantTotal;
+                    
+                }
+                else
+                {
+                    double cantTotal = 0;
+                    foreach (Business.Entities.ServicioTipoPrenda item in items)
+                    {
+                        List<OrdenServicioTipoPrenda> itemsFiltro = item.ItemsPedidos.FindAll(delegate (OrdenServicioTipoPrenda item)
+                        {
+                            return item.Orden.FechaEntrada.Date <= dtpServicioHasta.Value.Date;
+                        });
+                        cantTotal += itemsFiltro.Count;
+                    }
+                    return cantTotal;
+                }
+            }
+            else
+            {
+                double cantTotal = 0;
+                foreach (Business.Entities.ServicioTipoPrenda item in items)
+                {
+                    List<OrdenServicioTipoPrenda> itemsFiltro = item.ItemsPedidos.FindAll(delegate (OrdenServicioTipoPrenda item)
+                    {
+                        return item.Orden.FechaEntrada.Date >= dtpServicioDesde.Value.Date ;
+                    });
+                    cantTotal += itemsFiltro.Count;
+                }
+                return cantTotal;
+            }
+            
+        }
         private double CalcularCantxPrenda(Business.Entities.ServicioTipoPrenda item)
         {
             return item.ItemsPedidos.Count;
+        }
+        private double CalcularCantxPrendaFiltro(Business.Entities.ServicioTipoPrenda item)
+        {
+            if (dtpServicioHasta.Value.Date != DateTime.Now.Date)
+            {
+                if (dtpServicioDesde.Value.Date != DateTime.Now.Date)
+                {
+                    List<OrdenServicioTipoPrenda> itemsPedidosfiltro = item.ItemsPedidos.FindAll(delegate (OrdenServicioTipoPrenda elem)
+                    {
+                        return elem.Orden.FechaEntrada.Date >= dtpServicioDesde.Value.Date && elem.Orden.FechaEntrada.Date <= dtpServicioHasta.Value.Date;
+                    });
+                    return itemsPedidosfiltro.Count;
+                }
+                else
+                {
+                    List<OrdenServicioTipoPrenda> itemsPedidosfiltro = item.ItemsPedidos.FindAll(delegate (OrdenServicioTipoPrenda elem)
+                    {
+                        return elem.Orden.FechaEntrada.Date <= dtpServicioHasta.Value.Date;
+                    });
+                    return itemsPedidosfiltro.Count;
+                }
+            }
+            else
+            {
+                List<OrdenServicioTipoPrenda> itemsPedidosfiltro = item.ItemsPedidos.FindAll(delegate (OrdenServicioTipoPrenda elem)
+                {
+                    return elem.Orden.FechaEntrada.Date >= dtpServicioDesde.Value.Date;
+                });
+                return itemsPedidosfiltro.Count;
+            }
+
         }
         private void ListarServicios() 
         {
@@ -196,6 +320,17 @@ namespace UI.Desktop
         {
             e.Cancel = true;
             e.NewWidth = listServicios.Columns[e.ColumnIndex].Width;
+        }
+
+
+        private void dtpServicioDesde_ValueChanged(object sender, EventArgs e)
+        {
+            filtroFechaSerie();
+        }
+
+        private void dtpServicioHasta_ValueChanged(object sender, EventArgs e)
+        {
+            filtroFechaSerie();
         }
     }
 }

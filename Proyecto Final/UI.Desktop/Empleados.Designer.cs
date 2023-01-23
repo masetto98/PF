@@ -29,9 +29,9 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            FastReport.DataVisualization.Charting.ChartArea chartArea1 = new FastReport.DataVisualization.Charting.ChartArea();
-            FastReport.DataVisualization.Charting.Legend legend1 = new FastReport.DataVisualization.Charting.Legend();
-            FastReport.DataVisualization.Charting.Title title1 = new FastReport.DataVisualization.Charting.Title();
+            FastReport.DataVisualization.Charting.ChartArea chartArea2 = new FastReport.DataVisualization.Charting.ChartArea();
+            FastReport.DataVisualization.Charting.Legend legend2 = new FastReport.DataVisualization.Charting.Legend();
+            FastReport.DataVisualization.Charting.Title title2 = new FastReport.DataVisualization.Charting.Title();
             this.listEmpleados = new MaterialSkin.Controls.MaterialListView();
             this.columnID = new System.Windows.Forms.ColumnHeader();
             this.columnCuit = new System.Windows.Forms.ColumnHeader();
@@ -248,9 +248,9 @@ namespace UI.Desktop
             this.materialLabel3.Location = new System.Drawing.Point(9, 74);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(137, 19);
+            this.materialLabel3.Size = new System.Drawing.Size(142, 19);
             this.materialLabel3.TabIndex = 2;
-            this.materialLabel3.Text = "Ordenes atendidas:";
+            this.materialLabel3.Text = "Trabajos atendidos:";
             // 
             // materialLabel2
             // 
@@ -278,7 +278,7 @@ namespace UI.Desktop
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(91, 19);
             this.materialLabel1.TabIndex = 0;
-            this.materialLabel1.Text = "Estadisticas:";
+            this.materialLabel1.Text = "Estadísticas:";
             // 
             // btnCerrar
             // 
@@ -305,17 +305,17 @@ namespace UI.Desktop
             // chartEmpleados
             // 
             this.chartEmpleados.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            this.chartEmpleados.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartEmpleados.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chartEmpleados.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartEmpleados.Legends.Add(legend2);
             this.chartEmpleados.Location = new System.Drawing.Point(441, 229);
             this.chartEmpleados.Name = "chartEmpleados";
             this.chartEmpleados.Size = new System.Drawing.Size(489, 259);
             this.chartEmpleados.TabIndex = 12;
-            title1.Name = "Title1";
-            title1.Text = "Porcentaje de Ordenes Registradas y Trabajos Atendidos por Empleado";
-            this.chartEmpleados.Titles.Add(title1);
+            title2.Name = "Title1";
+            title2.Text = "Porcentaje de Ordenes Registradas y Trabajos Atendidos por Empleado";
+            this.chartEmpleados.Titles.Add(title2);
             // 
             // Empleados
             // 

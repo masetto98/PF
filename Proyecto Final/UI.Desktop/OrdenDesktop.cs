@@ -260,12 +260,15 @@ namespace UI.Desktop
                 Descuento();
                 AsignarPrioridadItems();
                 OrdenActual.ItemsPedidos = _itemsServicio;
-                if(Double.Parse(this.txtSeniaOrden.Text) != OrdenActual.Factura.Pagos[0].Importe)
+                if(OrdenActual.Factura.Pagos.Count > 0)
                 {
-                    Pago senia = OrdenActual.Factura.Pagos[0];
-                    senia.Importe = Double.Parse(this.txtSeniaOrden.Text);
-                    senia.State = BusinessEntity.States.Modified;
-                    _pagoLogic.Save(senia);
+                    if (Double.Parse(this.txtSeniaOrden.Text) != OrdenActual.Factura.Pagos[0].Importe)
+                    {
+                        Pago senia = OrdenActual.Factura.Pagos[0];
+                        senia.Importe = Double.Parse(this.txtSeniaOrden.Text);
+                        senia.State = BusinessEntity.States.Modified;
+                        _pagoLogic.Save(senia);
+                    }
                 }
                 
             }
@@ -663,7 +666,7 @@ namespace UI.Desktop
                 }
                 else 
                 {
-                    MessageBox.Show("La orden debe tener por lo menos un servicio requerido", "Orden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("La orden debe contener por lo menos un servicio requerido", "Orden", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception e)
@@ -682,7 +685,7 @@ namespace UI.Desktop
                 }
                 else
                 {
-                    Exception r = new Exception("La orden que quiere eliminar ya esta finalizada o se encuentra en proceso de atención");
+                    Exception r = new Exception("La orden que desea eliminar ya se encuentra finalizada o en proceso de atención");
                     throw r;
                 }
             }

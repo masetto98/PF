@@ -22,6 +22,7 @@ namespace UI.Desktop
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             GetFormaPago();
+            this.DialogResult = DialogResult.OK;
             Close();
         }
         public Business.Entities.Pago.FormasPago GetFormaPago()

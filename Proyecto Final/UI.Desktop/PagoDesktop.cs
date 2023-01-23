@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,6 +21,7 @@ namespace UI.Desktop
         private readonly OrdenLogic _ordenLogic;
         private readonly PagoLogic _pagoLogic;
         public List<Pago> _pagosFactura;
+        public List<Pago> _pagosActuales;
         public Pago PagoActual { set; get; }
         public Orden OrdenActual { set; get; }
         public Factura FacturaActual { set; get; }
@@ -36,6 +38,7 @@ namespace UI.Desktop
             _ordenLogic = new OrdenLogic(new OrdenAdapter(context));
             _pagosFactura = new List<Pago>();
             _itemsServicio = new List<OrdenServicioTipoPrenda>();
+            _pagosActuales = new List<Pago>();
             btnAgregarPago.Enabled = false;
 
         }
@@ -66,7 +69,7 @@ namespace UI.Desktop
                 Precio precioActual = i.ServicioTipoPrenda.HistoricoPrecios.FindLast(
                     delegate (Precio p)
                     {
-                        return p.FechaDesde <= DateTime.Today;
+                        return p.FechaDesde <= DateTime.Now;
                     });
                 _total += precioActual.Valor;
             }
@@ -107,10 +110,14 @@ namespace UI.Desktop
             if(OrdenActual.Senia == true)
             {
                 this.txtSenia.Text = OrdenActual.Factura.Pagos[0].Importe.ToString();
+                foreach(Pago p in FacturaActual.Pagos)
+                {
+                    _pagosActuales.Add(p);
+                }
             }
             try
             {
-
+             
                 TotalAPagar();
             }
             catch (Exception e)
@@ -176,15 +183,26 @@ namespace UI.Desktop
         }
         public double TotalPagos()
         {
-            _pagosFactura = FacturaActual.Pagos;
             double totalpagos = 0;
+            _pagosFactura = FacturaActual.Pagos;
             if (_pagosFactura != null)
-            { 
-                foreach (Pago p in _pagosFactura)
+            {
+                if (_pagosActuales.Count > _pagosFactura.Count)
                 {
-                    totalpagos += p.Importe;
+                    foreach (Pago p in _pagosActuales)
+                    {
+                        totalpagos += p.Importe;
+                    }
+                    return totalpagos;
                 }
-                return totalpagos;
+                else
+                {
+                    foreach (Pago p in _pagosFactura)
+                    {
+                        totalpagos += p.Importe;
+                    }
+                    return totalpagos;
+                }
             }
             else
             {
@@ -193,16 +211,33 @@ namespace UI.Desktop
         }
         public void ListarPagos()
         {
-            _pagosFactura = FacturaActual.Pagos;
-            listPagos.Items.Clear();
-            foreach (Pago p in _pagosFactura)
+            if(_pagosActuales.Count > 0)
             {
-                ListViewItem item = new ListViewItem(FacturaActual.NroFactura.ToString());
-                item.SubItems.Add(p.FechaPago.ToString());
-                item.SubItems.Add(p.FormaPago.ToString());
-                item.SubItems.Add(p.Importe.ToString());
-                listPagos.Items.Add(item);
+                listPagos.Items.Clear();
+                foreach (Pago p in _pagosActuales)
+                {
+                    ListViewItem item = new ListViewItem(FacturaActual.NroFactura.ToString());
+                    item.SubItems.Add(p.FechaPago.ToString());
+                    item.SubItems.Add(p.FormaPago.ToString());
+                    item.SubItems.Add(p.Importe.ToString());
+                    listPagos.Items.Add(item);
+                }
             }
+            else
+            {
+                _pagosFactura = FacturaActual.Pagos;
+                listPagos.Items.Clear();
+                foreach (Pago p in _pagosFactura)
+                {
+                    ListViewItem item = new ListViewItem(FacturaActual.NroFactura.ToString());
+                    item.SubItems.Add(p.FechaPago.ToString());
+                    item.SubItems.Add(p.FormaPago.ToString());
+                    item.SubItems.Add(p.Importe.ToString());
+                    listPagos.Items.Add(item);
+                }
+            }
+            
+            
         }
         public override void MapearADatos()
         {
@@ -216,9 +251,13 @@ namespace UI.Desktop
                 {
                     FacturaActual.FechaFactura = DateTime.Now;
                 }
+                
                 FacturaActual.Pagos = new List<Pago>();
+                _pagosActuales.Add(PagoActual);
+                /*
                 FacturaActual.Pagos.Add(PagoActual);
                 OrdenActual.Factura = FacturaActual;
+                */
             }
             if (Modos == ModoForm.Modificacion)
             {
@@ -226,8 +265,11 @@ namespace UI.Desktop
                 PagoActual.FechaPago = DateTime.Now;
                 PagoActual.FormaPago = (Business.Entities.Pago.FormasPago)Enum.Parse(typeof(Business.Entities.Pago.FormasPago), cbFormaPago.SelectedItem.ToString());
                 PagoActual.Importe = double.Parse(txtImportePago.Text);
+                _pagosActuales.Add(PagoActual);
+                /*
                 FacturaActual.Pagos.Add(PagoActual);
                 OrdenActual.Factura = FacturaActual;
+                */
             }
             switch (Modos)
             {
@@ -241,19 +283,19 @@ namespace UI.Desktop
         }
         public override void GuardarCambios()
         {
-        try
-        {
-            if (true)
-                {
-                    MapearADatos();
-                    //_facturaLogic.Save(FacturaActual);
-                    ListarPagos();
-                }
-        }
-        catch (Exception e)
-        {
-             MessageBox.Show(e.Message, "Pagos-Factura", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+            try
+            {
+                if (true)
+                    {
+                        MapearADatos();
+                        //_facturaLogic.Save(FacturaActual);
+                        ListarPagos();
+                    }
+            }
+            catch (Exception e)
+            {
+                 MessageBox.Show(e.Message, "Pagos-Factura", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void btnAceptarPago_Click(object sender, EventArgs e)
         {
@@ -261,9 +303,11 @@ namespace UI.Desktop
             if(totalActual == FacturaActual.Importe && OrdenActual.Estado != Orden.Estados.Retirado)
             {
                 if (OrdenActual.Estado == Orden.Estados.Finalizado) { OrdenActual.Estado = Orden.Estados.Pagado;}
+                
                 OrdenActual.State = BusinessEntity.States.Modified;
                 _ordenLogic.Save(OrdenActual);
             }
+            FacturaActual.Pagos = _pagosActuales;
             FacturaActual.State = BusinessEntity.States.Modified;
             _facturaLogic.Save(FacturaActual);
             Close();
@@ -279,7 +323,7 @@ namespace UI.Desktop
                 {
                     case ModoForm.Alta:
                         {
-                            if (MessageBox.Show($"¿Está seguro que desea agregar el pago?", "Orden", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                            if (MessageBox.Show($"¿Está seguro que desea agregar el nuevo pago?", "Orden", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                             {
                                 GuardarCambios();
                                 this.txtImportePago.Text = "";
@@ -288,13 +332,14 @@ namespace UI.Desktop
                                 {
                                     this.btnSaldarDeuda.Enabled = false;
                                 }
+                                
                             }
                             //ListarPagos();
                         };
                         break;
                     case ModoForm.Modificacion:
                         {
-                            if (MessageBox.Show($"¿Está seguro que desea agregar el pago?", "Pago", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                            if (MessageBox.Show($"¿Está seguro que desea agregar el nuevo pago?", "Pago", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                             {
                                 GuardarCambios();
                                 this.txtImportePago.Text = "";
@@ -333,49 +378,53 @@ namespace UI.Desktop
         {
             double totalActual = TotalPagos();
             FormaPagoDesktop fp = new FormaPagoDesktop();
-            fp.ShowDialog();
-            if (Modos == ModoForm.Alta)
+            if (fp.ShowDialog() == DialogResult.OK)
             {
-                PagoActual = new Pago();
-                PagoActual.FechaPago = DateTime.Now;
-                PagoActual.FormaPago = fp.GetFormaPago();
-                PagoActual.Importe = FacturaActual.Importe - totalActual;
-                /*FacturaActual = new Factura();
-                FacturaActual.FechaFactura = DateTime.Now;*/
-                //FacturaActual.Pagos = new List<Pago>();
-                if(FacturaActual.FechaFactura.ToString("yyyy/MM/dd") == "0001/01/01")
+                if (Modos == ModoForm.Alta)
                 {
-                    FacturaActual.FechaFactura = DateTime.Now;
+                    PagoActual = new Pago();
+                    PagoActual.FechaPago = DateTime.Now;
+                    PagoActual.FormaPago = fp.GetFormaPago();
+                    PagoActual.Importe = FacturaActual.Importe - totalActual;
+                    /*FacturaActual = new Factura();
+                    FacturaActual.FechaFactura = DateTime.Now;*/
+                    //FacturaActual.Pagos = new List<Pago>();
+                    if (FacturaActual.FechaFactura.ToString("yyyy/MM/dd") == "0001/01/01")
+                    {
+                        FacturaActual.FechaFactura = DateTime.Now;
+                    }
+                    FacturaActual.Pagos.Add(PagoActual);
+                    OrdenActual.Factura = FacturaActual;
                 }
-                FacturaActual.Pagos.Add(PagoActual);
-                OrdenActual.Factura = FacturaActual;
+                if (Modos == ModoForm.Modificacion)
+                {
+                    PagoActual = new Pago();
+                    PagoActual.FechaPago = DateTime.Now;
+                    PagoActual.FormaPago = fp.GetFormaPago();
+                    PagoActual.Importe = FacturaActual.Importe - totalActual;
+                    FacturaActual.Pagos.Add(PagoActual);
+                    OrdenActual.Factura = FacturaActual;
+                }
+                switch (Modos)
+                {
+                    case ModoForm.Alta:
+                        FacturaActual.State = BusinessEntity.States.Modified;
+                        this.cbFormaPago.Enabled = false;
+                        this.txtImportePago.Enabled = false;
+                        this.btnAgregarPago.Enabled = false;
+                        break;
+                    case ModoForm.Modificacion:
+                        FacturaActual.State = BusinessEntity.States.Modified;
+                        this.cbFormaPago.Enabled = false;
+                        this.txtImportePago.Enabled = false;
+                        this.btnAgregarPago.Enabled = false;
+                        break;
+                }
+                ListarPagos();
+                TotalAPagar();
             }
-            if (Modos == ModoForm.Modificacion)
-            {
-                PagoActual = new Pago();
-                PagoActual.FechaPago = DateTime.Now;
-                PagoActual.FormaPago = fp.GetFormaPago();
-                PagoActual.Importe = FacturaActual.Importe - totalActual;
-                FacturaActual.Pagos.Add(PagoActual);
-                OrdenActual.Factura = FacturaActual;
-            }
-            switch (Modos)
-            {
-                case ModoForm.Alta:
-                    FacturaActual.State = BusinessEntity.States.Modified;
-                    this.cbFormaPago.Enabled = false;
-                    this.txtImportePago.Enabled = false;
-                    this.btnAgregarPago.Enabled = false;
-                    break;
-                case ModoForm.Modificacion:
-                    FacturaActual.State = BusinessEntity.States.Modified;
-                    this.cbFormaPago.Enabled = false;
-                    this.txtImportePago.Enabled = false;
-                    this.btnAgregarPago.Enabled = false;
-                    break;
-            }
-            ListarPagos();
-            TotalAPagar();
+                
+            
         }
 
         private void txtApagar_TextChanged(object sender, EventArgs e)
@@ -386,17 +435,39 @@ namespace UI.Desktop
                 btnAgregarPago.Enabled = false;
             }
         }
-
+        public bool ValidarNumeroEnteroDecimal(string cantidad)
+        {
+            if (!Regex.IsMatch(cantidad, @"\d{1,7}(,\d{1,2})?"))
+            {
+                return false;
+                //MessageBox.Show("El valor de seña ingresado no es un número. Por favor, ingrese un valor de seña válido.", "Seña", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                return true;
+            }
+        }
         private void txtImportePago_TextChanged(object sender, EventArgs e)
         {
-            if(txtImportePago.Text != "")
+            if (txtImportePago.Text != "" && double.Parse(txtImportePago.Text) != 0)
             {
-                btnAgregarPago.Enabled = true;
+                if (ValidarNumeroEnteroDecimal(txtImportePago.Text))
+                {
+
+                    btnAgregarPago.Enabled = true;
+
+                }
+                else
+                {
+                    MessageBox.Show("El importe de pago ingresado no es un número. Por favor, ingrese un importe válido.", "Pago", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.txtImportePago.Text = "";
+                }
             }
             else
             {
                 btnAgregarPago.Enabled = false;
             }
+            
             
         }
 

@@ -105,7 +105,7 @@ namespace UI.Desktop
             this.txtIdCliente.Enabled = false;
             this.txtIdCliente.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtIdCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtIdCliente.Hint = "Id";
+            this.txtIdCliente.Hint = "ID";
             this.txtIdCliente.LeadingIcon = null;
             this.txtIdCliente.Location = new System.Drawing.Point(9, 70);
             this.txtIdCliente.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
@@ -375,7 +375,7 @@ namespace UI.Desktop
             this.cmbTipoPrenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cmbTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cmbTipoPrenda.FormattingEnabled = true;
-            this.cmbTipoPrenda.Hint = "Tipo de Prenda";
+            this.cmbTipoPrenda.Hint = "Tipos de Prenda";
             this.cmbTipoPrenda.IntegralHeight = false;
             this.cmbTipoPrenda.ItemHeight = 43;
             this.cmbTipoPrenda.Location = new System.Drawing.Point(222, 28);
@@ -452,14 +452,14 @@ namespace UI.Desktop
             this.btnAgregarCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregarCliente.HighEmphasis = true;
             this.btnAgregarCliente.Icon = null;
-            this.btnAgregarCliente.Location = new System.Drawing.Point(407, 80);
+            this.btnAgregarCliente.Location = new System.Drawing.Point(407, 70);
             this.btnAgregarCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAgregarCliente.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAgregarCliente.Name = "btnAgregarCliente";
             this.btnAgregarCliente.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnAgregarCliente.Size = new System.Drawing.Size(71, 36);
+            this.btnAgregarCliente.Size = new System.Drawing.Size(77, 50);
             this.btnAgregarCliente.TabIndex = 30;
-            this.btnAgregarCliente.Text = "Nuevo";
+            this.btnAgregarCliente.Text = "Nuevo Cliente";
             this.btnAgregarCliente.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnAgregarCliente.UseAccentColor = false;
             this.btnAgregarCliente.UseVisualStyleBackColor = false;

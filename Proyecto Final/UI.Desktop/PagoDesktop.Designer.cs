@@ -334,8 +334,8 @@ namespace UI.Desktop
             this.btnSaldarDeuda.Size = new System.Drawing.Size(119, 51);
             this.btnSaldarDeuda.TabIndex = 14;
             this.btnSaldarDeuda.Text = "Saldar Deuda";
-            this.ayudaPago.SetToolTip(this.btnSaldarDeuda, "Al presionar se añadirá un pago en \"efectivo\" con un importe igual al total a pag" +
-        "ar. \r\nPor favor, utilizar si desea cancelar el total de una deuda.");
+            this.ayudaPago.SetToolTip(this.btnSaldarDeuda, "Al presionar se añadirá un nuevo pago con un importe igual al total a pagar. \r\nPo" +
+        "r favor, utilizar solo si desea cancelar el total de la deuda.");
             this.btnSaldarDeuda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnSaldarDeuda.UseAccentColor = false;
             this.btnSaldarDeuda.UseVisualStyleBackColor = false;

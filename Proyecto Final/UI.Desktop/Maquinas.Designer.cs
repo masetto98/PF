@@ -29,11 +29,9 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            FastReport.DataVisualization.Charting.ChartArea chartArea1 = new FastReport.DataVisualization.Charting.ChartArea();
             FastReport.DataVisualization.Charting.ChartArea chartArea2 = new FastReport.DataVisualization.Charting.ChartArea();
-            FastReport.DataVisualization.Charting.Series series1 = new FastReport.DataVisualization.Charting.Series();
             FastReport.DataVisualization.Charting.Series series2 = new FastReport.DataVisualization.Charting.Series();
-            FastReport.DataVisualization.Charting.Title title1 = new FastReport.DataVisualization.Charting.Title();
+            FastReport.DataVisualization.Charting.Title title2 = new FastReport.DataVisualization.Charting.Title();
             this.listMaquinas = new MaterialSkin.Controls.MaterialListView();
             this.columnID = new System.Windows.Forms.ColumnHeader();
             this.columnDescripcion = new System.Windows.Forms.ColumnHeader();
@@ -64,6 +62,10 @@ namespace UI.Desktop
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.chartUsoMaq = new FastReport.DataVisualization.Charting.Chart();
+            this.dtpMaquinaDesde = new System.Windows.Forms.DateTimePicker();
+            this.dtpMaquinaHasta = new System.Windows.Forms.DateTimePicker();
+            this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
             this.materialCard1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartUsoMaq)).BeginInit();
             this.SuspendLayout();
@@ -77,6 +79,7 @@ namespace UI.Desktop
             this.columnID,
             this.columnDescripcion});
             this.listMaquinas.Depth = 0;
+            this.listMaquinas.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listMaquinas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listMaquinas.FullRowSelect = true;
             this.listMaquinas.HideSelection = false;
@@ -183,6 +186,7 @@ namespace UI.Desktop
             this.columnDescripcion2,
             this.columnCosto});
             this.listMantenimientos.Depth = 0;
+            this.listMantenimientos.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listMantenimientos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listMantenimientos.FullRowSelect = true;
             this.listMantenimientos.HideSelection = false;
@@ -416,6 +420,7 @@ namespace UI.Desktop
             this.columnIdTpm,
             this.columnDescripcionTpm});
             this.listTiposMaquina.Depth = 0;
+            this.listTiposMaquina.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listTiposMaquina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listTiposMaquina.FullRowSelect = true;
             this.listTiposMaquina.HideSelection = false;
@@ -423,6 +428,7 @@ namespace UI.Desktop
             this.listTiposMaquina.MinimumSize = new System.Drawing.Size(200, 100);
             this.listTiposMaquina.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listTiposMaquina.MouseState = MaterialSkin.MouseState.OUT;
+            this.listTiposMaquina.MultiSelect = false;
             this.listTiposMaquina.Name = "listTiposMaquina";
             this.listTiposMaquina.OwnerDraw = true;
             this.listTiposMaquina.Size = new System.Drawing.Size(355, 303);
@@ -542,47 +548,79 @@ namespace UI.Desktop
             // chartUsoMaq
             // 
             this.chartUsoMaq.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.AlignmentOrientation = FastReport.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal;
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            chartArea1.Name = "ChartArea1";
-            chartArea1.Position.Auto = false;
-            chartArea1.Position.Height = 70F;
-            chartArea1.Position.Width = 50F;
-            chartArea1.Position.Y = 15F;
             chartArea2.AlignmentOrientation = FastReport.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal;
             chartArea2.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             chartArea2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            chartArea2.Name = "ChartArea2";
-            chartArea2.Position.Auto = false;
-            chartArea2.Position.Height = 70F;
-            chartArea2.Position.Width = 50F;
-            chartArea2.Position.X = 50F;
-            chartArea2.Position.Y = 15F;
-            this.chartUsoMaq.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
             this.chartUsoMaq.ChartAreas.Add(chartArea2);
             this.chartUsoMaq.Location = new System.Drawing.Point(872, 176);
             this.chartUsoMaq.Name = "chartUsoMaq";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Name = "UsoMaq";
-            series2.ChartArea = "ChartArea2";
+            series2.ChartArea = "ChartArea1";
             series2.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Name = "Series1";
-            this.chartUsoMaq.Series.Add(series1);
+            series2.Name = "UsoMaq";
             this.chartUsoMaq.Series.Add(series2);
             this.chartUsoMaq.Size = new System.Drawing.Size(374, 243);
             this.chartUsoMaq.TabIndex = 29;
             this.chartUsoMaq.Text = "chart1";
-            title1.Name = "Title1";
-            title1.Text = "Uso de máquinas";
-            this.chartUsoMaq.Titles.Add(title1);
+            title2.Name = "Title1";
+            title2.Text = "Uso de máquinas";
+            this.chartUsoMaq.Titles.Add(title2);
+            // 
+            // dtpMaquinaDesde
+            // 
+            this.dtpMaquinaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpMaquinaDesde.Location = new System.Drawing.Point(995, 88);
+            this.dtpMaquinaDesde.Name = "dtpMaquinaDesde";
+            this.dtpMaquinaDesde.Size = new System.Drawing.Size(141, 23);
+            this.dtpMaquinaDesde.TabIndex = 30;
+            this.dtpMaquinaDesde.ValueChanged += new System.EventHandler(this.dtpMaquinaDesde_ValueChanged);
+            // 
+            // dtpMaquinaHasta
+            // 
+            this.dtpMaquinaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpMaquinaHasta.Location = new System.Drawing.Point(995, 128);
+            this.dtpMaquinaHasta.Name = "dtpMaquinaHasta";
+            this.dtpMaquinaHasta.Size = new System.Drawing.Size(141, 23);
+            this.dtpMaquinaHasta.TabIndex = 31;
+            this.dtpMaquinaHasta.ValueChanged += new System.EventHandler(this.dtpMaquinaHasta_ValueChanged);
+            // 
+            // materialLabel7
+            // 
+            this.materialLabel7.AutoSize = true;
+            this.materialLabel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel7.Depth = 0;
+            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel7.Location = new System.Drawing.Point(895, 92);
+            this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel7.Name = "materialLabel7";
+            this.materialLabel7.Size = new System.Drawing.Size(94, 19);
+            this.materialLabel7.TabIndex = 32;
+            this.materialLabel7.Text = "Fecha desde:";
+            // 
+            // materialLabel8
+            // 
+            this.materialLabel8.AutoSize = true;
+            this.materialLabel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel8.Depth = 0;
+            this.materialLabel8.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel8.Location = new System.Drawing.Point(897, 132);
+            this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel8.Name = "materialLabel8";
+            this.materialLabel8.Size = new System.Drawing.Size(92, 19);
+            this.materialLabel8.TabIndex = 33;
+            this.materialLabel8.Text = "Fecha hasta:";
             // 
             // Maquinas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1270, 710);
+            this.Controls.Add(this.materialLabel8);
+            this.Controls.Add(this.materialLabel7);
+            this.Controls.Add(this.dtpMaquinaHasta);
+            this.Controls.Add(this.dtpMaquinaDesde);
             this.Controls.Add(this.chartUsoMaq);
             this.Controls.Add(this.materialLabel6);
             this.Controls.Add(this.materialLabel5);
@@ -647,5 +685,9 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
         private FastReport.DataVisualization.Charting.Chart chartUsoMaq;
+        private System.Windows.Forms.DateTimePicker dtpMaquinaDesde;
+        private System.Windows.Forms.DateTimePicker dtpMaquinaHasta;
+        private MaterialSkin.Controls.MaterialLabel materialLabel7;
+        private MaterialSkin.Controls.MaterialLabel materialLabel8;
     }
 }

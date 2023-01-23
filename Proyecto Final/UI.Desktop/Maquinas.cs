@@ -32,10 +32,10 @@ namespace UI.Desktop
             _itemServidos = new MaquinaOrdenServicioTipoPrendaLogic(new MaquinaOrdenServicioTipoPrendaAdapter(context));
             //ListarMaquinas();
             ListarTiposMaquinas();
-            CargarSerieGrafico();
+            // CargarSerieGrafico();
             chartUsoMaq.BackColor = Color.Transparent;
             chartUsoMaq.ChartAreas[0].BackColor = Color.Transparent;
-            chartUsoMaq.ChartAreas[1].BackColor = Color.Transparent;
+            //chartUsoMaq.ChartAreas[1].BackColor = Color.Transparent;
         }
 
         private void ListarTiposMaquinas() 
@@ -65,6 +65,64 @@ namespace UI.Desktop
                 return 0;
             }
         }
+
+        private double CalcularUsoMaquinaFiltro(Maquina m)
+        {
+            if(dtpMaquinaHasta.Value.Date != DateTime.Now.Date)
+            {
+                if(dtpMaquinaDesde.Value.Date != DateTime.Now.Date)
+                {
+                    List<MaquinaOrdenServicioTipoPrenda> itemsServidos = _itemServidos.GetAll().FindAll(
+                            delegate (MaquinaOrdenServicioTipoPrenda items) 
+                            { 
+                                return items.Maquina == m && items.TiempoInicioServicio.Date >= dtpMaquinaDesde.Value.Date && items.TiempoInicioServicio.Date <= dtpMaquinaHasta.Value.Date; 
+                            });
+                    if (itemsServidos is not null)
+                    {
+                        return itemsServidos.Count;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+                else
+                {
+                    List<MaquinaOrdenServicioTipoPrenda> itemsServidos = _itemServidos.GetAll().FindAll(
+                            delegate (MaquinaOrdenServicioTipoPrenda items)
+                            {
+                                return items.Maquina == m && items.TiempoInicioServicio.Date <= dtpMaquinaHasta.Value.Date;
+                            });
+                    if (itemsServidos is not null)
+                    {
+                        return itemsServidos.Count;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+                
+            }
+            else
+            {
+                List<MaquinaOrdenServicioTipoPrenda> itemsServidos = _itemServidos.GetAll().FindAll(
+                            delegate (MaquinaOrdenServicioTipoPrenda items)
+                            {
+                                return items.Maquina == m && items.TiempoInicioServicio.Date >= dtpMaquinaDesde.Value.Date;
+                            });
+                if (itemsServidos is not null)
+                {
+                    return itemsServidos.Count;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+           
+        }
+
         private double CalcularTotalTipoMaq(TiposMaquina tm)
         {
             double cantAtendidosTotal = 0;
@@ -76,6 +134,61 @@ namespace UI.Desktop
                 }
             }
             return cantAtendidosTotal;
+        }
+        private double CalcularTotalTipoMaqFiltro(TiposMaquina tm)
+        {
+            if(dtpMaquinaHasta.Value.Date != DateTime.Now.Date)
+            {
+                if(dtpMaquinaDesde.Value.Date != DateTime.Now.Date)
+                {
+                    double cantAtendidosTotal = 0;
+                    foreach (Maquina m in tm.Maquinas)
+                    {
+                        if (m.itemsAtendidos is not null)
+                        {
+                            List<MaquinaOrdenServicioTipoPrenda> itemsAtendidosFiltro = m.itemsAtendidos.FindAll(delegate (MaquinaOrdenServicioTipoPrenda itemAten)
+                            {
+                                return itemAten.TiempoInicioServicio.Date >= dtpMaquinaDesde.Value.Date && itemAten.TiempoInicioServicio.Date <= dtpMaquinaHasta.Value.Date;
+                            });
+                            cantAtendidosTotal += itemsAtendidosFiltro.Count;
+                        }
+                    }
+                    return cantAtendidosTotal;
+                }
+                else
+                {
+                    double cantAtendidosTotal = 0;
+                    foreach (Maquina m in tm.Maquinas)
+                    {
+                        if (m.itemsAtendidos is not null)
+                        {
+                            List<MaquinaOrdenServicioTipoPrenda> itemsAtendidosFiltro = m.itemsAtendidos.FindAll(delegate (MaquinaOrdenServicioTipoPrenda itemAten)
+                            {
+                                return itemAten.TiempoInicioServicio.Date <= dtpMaquinaHasta.Value.Date;
+                            });
+                            cantAtendidosTotal += itemsAtendidosFiltro.Count;
+                        }
+                    }
+                    return cantAtendidosTotal;
+                }
+            }
+            else
+            {
+                double cantAtendidosTotal = 0;
+                foreach (Maquina m in tm.Maquinas)
+                {
+                    if (m.itemsAtendidos is not null)
+                    {
+                        List<MaquinaOrdenServicioTipoPrenda> itemsAtendidosFiltro = m.itemsAtendidos.FindAll(delegate (MaquinaOrdenServicioTipoPrenda itemAten)
+                        {
+                            return itemAten.TiempoInicioServicio.Date >= dtpMaquinaDesde.Value.Date;
+                        });
+                        cantAtendidosTotal += itemsAtendidosFiltro.Count;
+                    }
+                }
+                return cantAtendidosTotal;
+            }
+            
         }
         private void CargarSerieGrafico()
         {
@@ -117,9 +230,60 @@ namespace UI.Desktop
             }
 
         }
+        private void CargarSerieGrafico2()
+        {
+            chartUsoMaq.Series["UsoMaq"].Points.Clear();
+            double cantAtendidosTotal = 0;
+            double cantAtendidosxMaq = 0;
+            if (listTiposMaquina.SelectedItems.Count > 0)
+            {
+                //int idMaquina = Int32.Parse(listTiposMaquina.SelectedItems[0].Text);
+                TiposMaquina tm = _tiposMaquinaLogic.GetOne(Int32.Parse(listTiposMaquina.SelectedItems[0].Text));
+                if (tm is not null && tm.Maquinas.Count > 0)
+                {
+                    cantAtendidosTotal = CalcularTotalTipoMaq(tm);
+                    foreach (Maquina m in tm.Maquinas)
+                    {
+                        cantAtendidosxMaq = CalcularUsoMaquina(m);
+                        double mostrar = Math.Round((cantAtendidosxMaq / cantAtendidosTotal) * 100, 2);
+                        chartUsoMaq.Series["UsoMaq"].Points.AddXY(m.Descripcion + "\n" + mostrar.ToString() + "%", cantAtendidosxMaq / cantAtendidosTotal);
+
+                    }
+
+                }
+            }
+                
+        }
+        private void filtroFechaSerie()
+        {
+            chartUsoMaq.Series["UsoMaq"].Points.Clear();
+            double cantAtendidosTotal = 0;
+            double cantAtendidosxMaq = 0;
+            if (listTiposMaquina.SelectedItems.Count > 0)
+            {
+                //int idMaquina = Int32.Parse(listTiposMaquina.SelectedItems[0].Text);
+                TiposMaquina tm = _tiposMaquinaLogic.GetOne(Int32.Parse(listTiposMaquina.SelectedItems[0].Text));
+                if (tm is not null && tm.Maquinas.Count > 0)
+                {
+                    cantAtendidosTotal = CalcularTotalTipoMaqFiltro(tm);
+                    foreach (Maquina m in tm.Maquinas)
+                    {
+                        cantAtendidosxMaq = CalcularUsoMaquinaFiltro(m);
+                        double mostrar = Math.Round((cantAtendidosxMaq / cantAtendidosTotal) * 100, 2);
+                        chartUsoMaq.Series["UsoMaq"].Points.AddXY(m.Descripcion + "\n" + mostrar.ToString() + "%", cantAtendidosxMaq / cantAtendidosTotal);
+
+                    }
+
+                }
+            }
+
+        }
         private void listTiposMaquina_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             ListarMaquinas();
+            CargarSerieGrafico2();
+
         }
 
         private void listMaquinas_SelectedIndexChanged(object sender, EventArgs e)
@@ -165,12 +329,13 @@ namespace UI.Desktop
 
         private void ListarMaquinas() 
         {
-            listMaquinas.Items.Clear();
+           
             if (listTiposMaquina.SelectedItems.Count > 0)
             {
                 TiposMaquina tipoMaquinaActual = _tiposMaquinaLogic.GetOne(Int32.Parse(listTiposMaquina.SelectedItems[0].Text));
                 if (tipoMaquinaActual is not null && tipoMaquinaActual.Maquinas is not null)
                 {
+                    listMaquinas.Items.Clear();
                     foreach (Maquina m in tipoMaquinaActual.Maquinas)
                     {
                         ListViewItem item = new ListViewItem(m.IdMaquina.ToString());
@@ -385,6 +550,16 @@ namespace UI.Desktop
                 MessageBox.Show("Debe seleccionar una fila en la lista para poder eliminar", "Tipo de Máquina", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             ListarTiposMaquinas();
+        }
+
+        private void dtpMaquinaDesde_ValueChanged(object sender, EventArgs e)
+        {
+            filtroFechaSerie();
+        }
+
+        private void dtpMaquinaHasta_ValueChanged(object sender, EventArgs e)
+        {
+            filtroFechaSerie();
         }
     }
 }

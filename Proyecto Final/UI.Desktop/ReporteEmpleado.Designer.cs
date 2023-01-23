@@ -70,6 +70,7 @@ namespace UI.Desktop
             this.listEmpleados.MinimumSize = new System.Drawing.Size(200, 100);
             this.listEmpleados.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listEmpleados.MouseState = MaterialSkin.MouseState.OUT;
+            this.listEmpleados.MultiSelect = false;
             this.listEmpleados.Name = "listEmpleados";
             this.listEmpleados.OwnerDraw = true;
             this.listEmpleados.Size = new System.Drawing.Size(310, 449);
@@ -175,6 +176,7 @@ namespace UI.Desktop
             this.listRegistradas.MinimumSize = new System.Drawing.Size(200, 100);
             this.listRegistradas.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listRegistradas.MouseState = MaterialSkin.MouseState.OUT;
+            this.listRegistradas.MultiSelect = false;
             this.listRegistradas.Name = "listRegistradas";
             this.listRegistradas.OwnerDraw = true;
             this.listRegistradas.Size = new System.Drawing.Size(684, 205);
@@ -222,6 +224,7 @@ namespace UI.Desktop
             this.listAtendidas.MinimumSize = new System.Drawing.Size(200, 100);
             this.listAtendidas.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listAtendidas.MouseState = MaterialSkin.MouseState.OUT;
+            this.listAtendidas.MultiSelect = false;
             this.listAtendidas.Name = "listAtendidas";
             this.listAtendidas.OwnerDraw = true;
             this.listAtendidas.Size = new System.Drawing.Size(720, 218);
@@ -310,9 +313,9 @@ namespace UI.Desktop
             this.materialLabel3.Location = new System.Drawing.Point(467, 136);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(151, 19);
+            this.materialLabel3.Size = new System.Drawing.Size(146, 19);
             this.materialLabel3.TabIndex = 10;
-            this.materialLabel3.Text = "Ordenes Registradas:";
+            this.materialLabel3.Text = "Ordenes registradas:";
             // 
             // materialLabel4
             // 

@@ -40,6 +40,10 @@ namespace UI.Desktop
             this.btnAgregar = new MaterialSkin.Controls.MaterialButton();
             this.btnCerrar = new MaterialSkin.Controls.MaterialButton();
             this.chartServicios = new FastReport.DataVisualization.Charting.Chart();
+            this.dtpServicioDesde = new System.Windows.Forms.DateTimePicker();
+            this.dtpServicioHasta = new System.Windows.Forms.DateTimePicker();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)(this.chartServicios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -186,14 +190,64 @@ namespace UI.Desktop
             this.chartServicios.TabIndex = 11;
             this.chartServicios.Text = "chart1";
             title1.Name = "Title1";
-            title1.Text = "Porcentaje de Tipos de Prenda atentidos por Servicios";
+            title1.Text = "Porcentaje de Tipos de Prenda solicitados por Servicios";
             this.chartServicios.Titles.Add(title1);
+            // 
+            // dtpServicioDesde
+            // 
+            this.dtpServicioDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpServicioDesde.Location = new System.Drawing.Point(542, 129);
+            this.dtpServicioDesde.Name = "dtpServicioDesde";
+            this.dtpServicioDesde.Size = new System.Drawing.Size(149, 23);
+            this.dtpServicioDesde.TabIndex = 12;
+            this.dtpServicioDesde.ValueChanged += new System.EventHandler(this.dtpServicioDesde_ValueChanged);
+            // 
+            // dtpServicioHasta
+            // 
+            this.dtpServicioHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpServicioHasta.Location = new System.Drawing.Point(542, 175);
+            this.dtpServicioHasta.Name = "dtpServicioHasta";
+            this.dtpServicioHasta.Size = new System.Drawing.Size(149, 23);
+            this.dtpServicioHasta.TabIndex = 13;
+            this.dtpServicioHasta.ValueChanged += new System.EventHandler(this.dtpServicioHasta_ValueChanged);
+            // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(442, 129);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(94, 19);
+            this.materialLabel1.TabIndex = 14;
+            this.materialLabel1.Text = "Fecha desde:";
+            // 
+            // materialLabel2
+            // 
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel2.Location = new System.Drawing.Point(444, 175);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(92, 19);
+            this.materialLabel2.TabIndex = 15;
+            this.materialLabel2.Text = "Fecha hasta:";
             // 
             // Servicios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(954, 582);
+            this.Controls.Add(this.materialLabel2);
+            this.Controls.Add(this.materialLabel1);
+            this.Controls.Add(this.dtpServicioHasta);
+            this.Controls.Add(this.dtpServicioDesde);
             this.Controls.Add(this.chartServicios);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnEliminar);
@@ -222,5 +276,9 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnAgregar;
         private MaterialSkin.Controls.MaterialButton btnCerrar;
         private FastReport.DataVisualization.Charting.Chart chartServicios;
+        private System.Windows.Forms.DateTimePicker dtpServicioDesde;
+        private System.Windows.Forms.DateTimePicker dtpServicioHasta;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
     }
 }
