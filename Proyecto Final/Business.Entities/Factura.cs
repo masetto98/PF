@@ -11,9 +11,10 @@ namespace Business.Entities
     public class Factura:BusinessEntity
     {
         private int _nroFactura;
+        //private int _nroOrden;
         private DateTime _fechaFactura;
         private double _importe;
-        private Orden _orden;
+        //private Orden _orden;
         private bool _deleted;
         private List<Pago> _pagos;
 
@@ -30,6 +31,13 @@ namespace Business.Entities
             get { return _fechaFactura; }
             set { _fechaFactura = value; }
         }
+        /*
+        [Column("nro_Orden")]
+        public int NroOrden
+        {
+            get { return _nroOrden; }
+            set { _nroOrden = value; }
+        }*/
         [Column("importe")]
         public double Importe
         {
@@ -49,7 +57,7 @@ namespace Business.Entities
             get { return _orden; }
             set { _orden = value; }
         }*/
-
+        
         public List<Pago> Pagos
         {
             get { return _pagos; }

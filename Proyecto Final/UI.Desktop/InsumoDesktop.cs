@@ -20,10 +20,12 @@ namespace UI.Desktop
         
         public Insumo InsumoActual { set; get; }
         private readonly InsumoLogic _insumoLogic;
+        private readonly ProveedorLogic _proveedorLogic;
         public InsumoDesktop(LavanderiaContext context)
         {
             InitializeComponent();
             _insumoLogic = new InsumoLogic(new InsumoAdapter(context));
+            _proveedorLogic = new ProveedorLogic(new ProveedorAdapter(context));
         }
 
         public InsumoDesktop(ModoForm modo, LavanderiaContext context) : this(context)
@@ -83,17 +85,45 @@ namespace UI.Desktop
         {
             if (Modos == ModoForm.Alta)
             {
+                List<Proveedor> proveedores = _proveedorLogic.GetAll();
+                Proveedor ingreso = proveedores.Find(x => x.RazonSocial == "Ingreso/Modificación");
+                if (ingreso is null)
+                {
+                    ingreso = new Proveedor();
+                    ingreso.Cuit = "0";
+                    ingreso.RazonSocial = "Ingreso/Modificación";
+                    ingreso.Telefono = "123456789";
+                    ingreso.Direccion = "ingreso 000";
+                    ingreso.Email = "ingresoingreso@gmail.com";
+                    ingreso.State = BusinessEntity.States.New;
+                    _proveedorLogic.Save(ingreso);
+                }
                 InsumoActual = new Insumo();
+                InsumoProveedor primerIngreso = new InsumoProveedor();
                 InsumoActual.Descripcion = this.txtDescInsumo.Text;
                 InsumoActual.Stock = Double.Parse(this.txtExistenciaInsumo.Text);
                 InsumoActual.UnidadMedida = (Business.Entities.Insumo.Medidas)Enum.Parse(typeof(Business.Entities.Insumo.Medidas), cmbUnidadMedida.SelectedItem.ToString());
-                
+                primerIngreso.Proveedor = ingreso; 
+                primerIngreso.Cantidad = Double.Parse(this.txtExistenciaInsumo.Text);
+                primerIngreso.FechaIngreso = DateTime.Now;
+                InsumoActual.InsumosProveedores = new List<InsumoProveedor>();
+                InsumoActual.InsumosProveedores.Add(primerIngreso);
             }
             if (Modos == ModoForm.Modificacion)
             {
+                double stockAnt = InsumoActual.Stock;
                 InsumoActual.Descripcion = this.txtDescInsumo.Text;
                 InsumoActual.Stock = Double.Parse(this.txtExistenciaInsumo.Text);
                 InsumoActual.UnidadMedida = (Business.Entities.Insumo.Medidas)Enum.Parse(typeof(Business.Entities.Insumo.Medidas), cmbUnidadMedida.SelectedItem.ToString());
+                if (InsumoActual.Stock != stockAnt)
+                {
+                    InsumoProveedor modificaStock = new InsumoProveedor();
+                    modificaStock.Proveedor = _proveedorLogic.GetAll().Find(x => x.RazonSocial == "Ingreso/Modificación");
+                    modificaStock.Cantidad =InsumoActual.Stock - stockAnt;
+                    modificaStock.FechaIngreso = DateTime.Now;
+                    if (InsumoActual.InsumosProveedores is null) { InsumoActual.InsumosProveedores = new List<InsumoProveedor>(); }
+                    InsumoActual.InsumosProveedores.Add(modificaStock);
+                }
             }
             switch (Modos)
             {
@@ -104,6 +134,23 @@ namespace UI.Desktop
                     InsumoActual.State = BusinessEntity.States.Modified;
                     break;
             }
+        }
+
+        private void VerificarInstanciaIngreso() 
+        {
+            List<Proveedor> proveedores = _proveedorLogic.GetAll();
+            Proveedor ingresos = proveedores.Find(x => x.RazonSocial == "Ingreso/Modificación");
+            if (ingresos is null) 
+            {
+                Proveedor ingreso = new Proveedor();
+                ingreso.Cuit = "0";
+                ingreso.RazonSocial = "Ingreso/Modificación";
+                ingreso.Telefono = "00000000";
+                ingreso.Direccion = "-";
+                ingreso.Email = "ingreso@gmail.com";
+                _proveedorLogic.Save(ingreso);
+            }
+
         }
 
         public override bool Validar()

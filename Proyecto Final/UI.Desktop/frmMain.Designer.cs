@@ -56,16 +56,13 @@ namespace UI.Desktop
             this.btnAgregarPago = new MaterialSkin.Controls.MaterialButton();
             this.btnVerPagos = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
-            this.listPagosOrden = new MaterialSkin.Controls.MaterialListView();
-            this.columnFechaPago = new System.Windows.Forms.ColumnHeader();
-            this.columnValorPago = new System.Windows.Forms.ColumnHeader();
-            this.columnTipoPago = new System.Windows.Forms.ColumnHeader();
             this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
             this.listOrdenesCliente = new MaterialSkin.Controls.MaterialListView();
             this.columnNroOrden = new System.Windows.Forms.ColumnHeader();
             this.columnFecha = new System.Windows.Forms.ColumnHeader();
             this.columnValor = new System.Windows.Forms.ColumnHeader();
             this.columnDeuda = new System.Windows.Forms.ColumnHeader();
+            this.columnSalida = new System.Windows.Forms.ColumnHeader();
             this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
             this.cmbBuscarCliente = new MaterialSkin.Controls.MaterialComboBox();
             this.btnOrdenesCliente = new MaterialSkin.Controls.MaterialButton();
@@ -196,6 +193,11 @@ namespace UI.Desktop
             this.btnEditarPerfil = new MaterialSkin.Controls.MaterialButton();
             this.imgUserLogin = new System.Windows.Forms.PictureBox();
             this.btnCerrarSesion = new MaterialSkin.Controls.MaterialButton();
+            this.listPagosOrden = new MaterialSkin.Controls.MaterialListView();
+            this.columnNroO = new System.Windows.Forms.ColumnHeader();
+            this.columnFechaPago = new System.Windows.Forms.ColumnHeader();
+            this.columnVal = new System.Windows.Forms.ColumnHeader();
+            this.columnTp = new System.Windows.Forms.ColumnHeader();
             this.mnuPrincipal.SuspendLayout();
             this.mnuTabOrdenes.SuspendLayout();
             this.mnuTabClientes.SuspendLayout();
@@ -501,11 +503,11 @@ namespace UI.Desktop
             // mnuTabClientes
             // 
             this.mnuTabClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.mnuTabClientes.Controls.Add(this.listPagosOrden);
             this.mnuTabClientes.Controls.Add(this.materialCard7);
             this.mnuTabClientes.Controls.Add(this.btnAgregarPago);
             this.mnuTabClientes.Controls.Add(this.btnVerPagos);
             this.mnuTabClientes.Controls.Add(this.materialLabel11);
-            this.mnuTabClientes.Controls.Add(this.listPagosOrden);
             this.mnuTabClientes.Controls.Add(this.materialLabel10);
             this.mnuTabClientes.Controls.Add(this.listOrdenesCliente);
             this.mnuTabClientes.Controls.Add(this.materialLabel9);
@@ -533,7 +535,7 @@ namespace UI.Desktop
             this.materialCard7.Controls.Add(this.materialLabel12);
             this.materialCard7.Depth = 0;
             this.materialCard7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard7.Location = new System.Drawing.Point(844, 16);
+            this.materialCard7.Location = new System.Drawing.Point(831, 16);
             this.materialCard7.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard7.Name = "materialCard7";
@@ -601,7 +603,7 @@ namespace UI.Desktop
             this.btnAgregarPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregarPago.HighEmphasis = true;
             this.btnAgregarPago.Icon = global::UI.Desktop.Properties.Resources.pay_payment_bill_dollar_cash_icon_143281;
-            this.btnAgregarPago.Location = new System.Drawing.Point(1133, 214);
+            this.btnAgregarPago.Location = new System.Drawing.Point(1120, 123);
             this.btnAgregarPago.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAgregarPago.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAgregarPago.Name = "btnAgregarPago";
@@ -624,7 +626,7 @@ namespace UI.Desktop
             this.btnVerPagos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnVerPagos.HighEmphasis = true;
             this.btnVerPagos.Icon = global::UI.Desktop.Properties.Resources.payment_tax_invoice_document_calculator_icon_188684__1_;
-            this.btnVerPagos.Location = new System.Drawing.Point(1133, 151);
+            this.btnVerPagos.Location = new System.Drawing.Point(998, 123);
             this.btnVerPagos.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnVerPagos.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVerPagos.Name = "btnVerPagos";
@@ -644,54 +646,12 @@ namespace UI.Desktop
             this.materialLabel11.Depth = 0;
             this.materialLabel11.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel11.Location = new System.Drawing.Point(678, 357);
+            this.materialLabel11.Location = new System.Drawing.Point(678, 378);
             this.materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel11.Name = "materialLabel11";
             this.materialLabel11.Size = new System.Drawing.Size(132, 19);
             this.materialLabel11.TabIndex = 11;
             this.materialLabel11.Text = "Pagos de la orden:";
-            // 
-            // listPagosOrden
-            // 
-            this.listPagosOrden.AutoSizeTable = false;
-            this.listPagosOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listPagosOrden.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listPagosOrden.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnFechaPago,
-            this.columnValorPago,
-            this.columnTipoPago});
-            this.listPagosOrden.Depth = 0;
-            this.listPagosOrden.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.listPagosOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.listPagosOrden.FullRowSelect = true;
-            this.listPagosOrden.HideSelection = false;
-            this.listPagosOrden.Location = new System.Drawing.Point(678, 379);
-            this.listPagosOrden.MinimumSize = new System.Drawing.Size(200, 100);
-            this.listPagosOrden.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.listPagosOrden.MouseState = MaterialSkin.MouseState.OUT;
-            this.listPagosOrden.MultiSelect = false;
-            this.listPagosOrden.Name = "listPagosOrden";
-            this.listPagosOrden.OwnerDraw = true;
-            this.listPagosOrden.Size = new System.Drawing.Size(451, 198);
-            this.listPagosOrden.TabIndex = 10;
-            this.listPagosOrden.UseCompatibleStateImageBehavior = false;
-            this.listPagosOrden.View = System.Windows.Forms.View.Details;
-            this.listPagosOrden.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listPagosOrden_ColumnWidthChanging);
-            // 
-            // columnFechaPago
-            // 
-            this.columnFechaPago.Text = "Fecha";
-            this.columnFechaPago.Width = 199;
-            // 
-            // columnValorPago
-            // 
-            this.columnValorPago.Text = "Valor";
-            this.columnValorPago.Width = 100;
-            // 
-            // columnTipoPago
-            // 
-            this.columnTipoPago.Text = "Tipo de pago";
-            this.columnTipoPago.Width = 152;
             // 
             // materialLabel10
             // 
@@ -700,7 +660,7 @@ namespace UI.Desktop
             this.materialLabel10.Depth = 0;
             this.materialLabel10.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel10.Location = new System.Drawing.Point(678, 128);
+            this.materialLabel10.Location = new System.Drawing.Point(677, 150);
             this.materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel10.Name = "materialLabel10";
             this.materialLabel10.Size = new System.Drawing.Size(138, 19);
@@ -716,20 +676,21 @@ namespace UI.Desktop
             this.columnNroOrden,
             this.columnFecha,
             this.columnValor,
-            this.columnDeuda});
+            this.columnDeuda,
+            this.columnSalida});
             this.listOrdenesCliente.Depth = 0;
             this.listOrdenesCliente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listOrdenesCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listOrdenesCliente.FullRowSelect = true;
             this.listOrdenesCliente.HideSelection = false;
-            this.listOrdenesCliente.Location = new System.Drawing.Point(678, 150);
+            this.listOrdenesCliente.Location = new System.Drawing.Point(678, 183);
             this.listOrdenesCliente.MinimumSize = new System.Drawing.Size(200, 100);
             this.listOrdenesCliente.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listOrdenesCliente.MouseState = MaterialSkin.MouseState.OUT;
             this.listOrdenesCliente.MultiSelect = false;
             this.listOrdenesCliente.Name = "listOrdenesCliente";
             this.listOrdenesCliente.OwnerDraw = true;
-            this.listOrdenesCliente.Size = new System.Drawing.Size(450, 192);
+            this.listOrdenesCliente.Size = new System.Drawing.Size(556, 192);
             this.listOrdenesCliente.TabIndex = 8;
             this.listOrdenesCliente.UseCompatibleStateImageBehavior = false;
             this.listOrdenesCliente.View = System.Windows.Forms.View.Details;
@@ -737,8 +698,8 @@ namespace UI.Desktop
             // 
             // columnNroOrden
             // 
-            this.columnNroOrden.Text = "N° Orden";
-            this.columnNroOrden.Width = 100;
+            this.columnNroOrden.Text = "N°";
+            this.columnNroOrden.Width = 50;
             // 
             // columnFecha
             // 
@@ -754,6 +715,11 @@ namespace UI.Desktop
             // 
             this.columnDeuda.Text = "Deuda";
             this.columnDeuda.Width = 99;
+            // 
+            // columnSalida
+            // 
+            this.columnSalida.Text = "Fecha Salida";
+            this.columnSalida.Width = 156;
             // 
             // materialLabel9
             // 
@@ -2672,6 +2638,50 @@ namespace UI.Desktop
             this.btnCerrarSesion.UseVisualStyleBackColor = false;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
+            // listPagosOrden
+            // 
+            this.listPagosOrden.AutoSizeTable = false;
+            this.listPagosOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listPagosOrden.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listPagosOrden.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnNroO,
+            this.columnFechaPago,
+            this.columnVal,
+            this.columnTp});
+            this.listPagosOrden.Depth = 0;
+            this.listPagosOrden.FullRowSelect = true;
+            this.listPagosOrden.HideSelection = false;
+            this.listPagosOrden.Location = new System.Drawing.Point(678, 400);
+            this.listPagosOrden.MinimumSize = new System.Drawing.Size(200, 100);
+            this.listPagosOrden.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listPagosOrden.MouseState = MaterialSkin.MouseState.OUT;
+            this.listPagosOrden.Name = "listPagosOrden";
+            this.listPagosOrden.OwnerDraw = true;
+            this.listPagosOrden.Size = new System.Drawing.Size(556, 177);
+            this.listPagosOrden.TabIndex = 15;
+            this.listPagosOrden.UseCompatibleStateImageBehavior = false;
+            this.listPagosOrden.View = System.Windows.Forms.View.Details;
+            // 
+            // columnNroO
+            // 
+            this.columnNroO.Text = "N° Orden";
+            this.columnNroO.Width = 90;
+            // 
+            // columnFechaPago
+            // 
+            this.columnFechaPago.Text = "Fecha pago";
+            this.columnFechaPago.Width = 200;
+            // 
+            // columnVal
+            // 
+            this.columnVal.Text = "Valor";
+            this.columnVal.Width = 100;
+            // 
+            // columnTp
+            // 
+            this.columnTp.Text = "Tipo Pago";
+            this.columnTp.Width = 150;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2865,10 +2875,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnAgregarPago;
         private MaterialSkin.Controls.MaterialButton btnVerPagos;
         private MaterialSkin.Controls.MaterialLabel materialLabel11;
-        private MaterialSkin.Controls.MaterialListView listPagosOrden;
-        private System.Windows.Forms.ColumnHeader columnFechaPago;
-        private System.Windows.Forms.ColumnHeader columnValorPago;
-        private System.Windows.Forms.ColumnHeader columnTipoPago;
         private MaterialSkin.Controls.MaterialLabel materialLabel10;
         private MaterialSkin.Controls.MaterialListView listOrdenesCliente;
         private System.Windows.Forms.ColumnHeader columnNroOrden;
@@ -2894,6 +2900,12 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnReporteEmpleados;
         private MaterialSkin.Controls.MaterialButton btnAtributos;
         private MaterialSkin.Controls.MaterialButton btnSaldarDeuda;
+        private System.Windows.Forms.ColumnHeader columnSalida;
+        private MaterialSkin.Controls.MaterialListView listPagosOrden;
+        private System.Windows.Forms.ColumnHeader columnNroO;
+        private System.Windows.Forms.ColumnHeader columnFechaPago;
+        private System.Windows.Forms.ColumnHeader columnVal;
+        private System.Windows.Forms.ColumnHeader columnTp;
     }
 }
 
