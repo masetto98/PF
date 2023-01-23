@@ -67,6 +67,8 @@ namespace UI.Desktop
             this.cmbTipoPrendas.DataSource = _tipoPrendaLogic.GetAll();
             this.cmbInsumos.DataSource = _insumoLogic.GetAll();
             this.cmbTiposMaquina.DataSource = _tiposMaquinaLogic.GetAll();
+            this.cmbInsumos.SelectedItem = null;
+            this.cmbTiposMaquina.SelectedItem = null;
             try
             {
                 ServicioTipoPrendaActual = _servicioTipoPrendaLogic.GetOne(idServicio,IdTipoPrenda);

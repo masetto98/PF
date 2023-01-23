@@ -92,6 +92,7 @@ namespace UI.Desktop
             {
                 MaquinaActual.Descripcion = this.txtDescripcion.Text;
                 this.cmbTiposMaquina.FindStringExact(MaquinaActual.TipoMaquina.Descripcion);
+                MaquinaActual.TipoMaquina = _tiposMaquinaLogic.GetOne((int)this.cmbTiposMaquina.SelectedValue);
             }
             switch (Modos)
             {

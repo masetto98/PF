@@ -216,7 +216,7 @@ namespace UI.Desktop.Properties {
         ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
         ///&lt;html&gt;
         ///&lt;head&gt;
-        ///	&lt;title&gt;Factura de Servicio&lt;/title&gt;
+        ///	&lt;title&gt;Comprobante de Retiro&lt;/title&gt;
         ///	&lt;style&gt;
         ///		table.border {
         ///			border-collapse: collapse;
@@ -224,9 +224,7 @@ namespace UI.Desktop.Properties {
         ///			
         ///			
         ///		}
-        ///		table thead{
-        ///			background-color:teal;
-        ///		}
+        ///		
         ///		table tbody{
         ///			border-collapse: collapse;
         ///			border: 1px solid black;
@@ -240,14 +238,15 @@ namespace UI.Desktop.Properties {
         ///&lt;body&gt;
         ///	&lt;table class=&quot;border&quot; style=&quot;width:100%&quot;&gt;
         ///		&lt;tr&gt;
-        ///			&lt;td style=&quot;width:30%&quot;&gt;&lt;/td&gt;
+        ///			
         ///			&lt;td&gt;
-        ///				&lt;table align=&quot;center&quot;&gt;
-        ///					&lt; [resto de la cadena truncado]&quot;;.
+        ///				&lt;table align=&quot;left&quot;&gt;
+        ///					&lt;tr&gt;
+        ///						&lt;td align=&quot;center&quot;&gt;&lt;font size=&quot;5&quot;&gt;@nombrempresa&lt;/font&gt;&lt;/td&gt;        /// [resto de la cadena truncado]&quot;;.
         /// </summary>
-        internal static string factura3 {
+        internal static string factura {
             get {
-                return ResourceManager.GetString("factura3", resourceCulture);
+                return ResourceManager.GetString("factura", resourceCulture);
             }
         }
         

@@ -11,11 +11,9 @@ namespace Business.Entities
     {
         private int _idServicio;
         private int _idTipoPrenda;
-        //private TimeSpan _tiempoRequerido; // esta debe ser una variable que indique el tiempo que tarda un servicio para un determinado tipo de prenda
         private Servicio _servicio;
         private TipoPrenda _tipoPrenda;
         private Prioridades _prioridad;
-        //private string _tiempoDemoraMax;
         private bool _deleted;
         private List<OrdenServicioTipoPrenda> _itemsPedidos;//Listado de ordenes que tiene ese servicio-tipoPrenda
         private List<Precio> _historicoPrecios;// Lista de todos los precios que tuvo el servicio-tipo Prenda
@@ -41,22 +39,7 @@ namespace Business.Entities
             get { return _idTipoPrenda; }
             set { _idTipoPrenda = value; }
         }
-        /*
-        [Column("tiempo_requerido")]
-        public TimeSpan TiempoRequerido
-        {
-            get { return _tiempoRequerido; }
-            set { _tiempoRequerido = value; }
-        }
-
-
-        [Column("tiempo_demora_max")]
-        public string TiempoDemoraMax
-        {
-            get { return _tiempoDemoraMax; }
-            set { _tiempoDemoraMax = value; }
-        }
-        */
+        
         [Column("prioridad")]
         public Prioridades Prioridad
         {

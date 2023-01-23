@@ -303,7 +303,10 @@ namespace UI.Desktop
                         item.SubItems.Add(importe.ToString());
                         double pagos = CalcularPagosOrden(o);
                         double deudas = importe - pagos;
-                        item.SubItems.Add(deudas.ToString());
+                        if (deudas == 0) { item.SubItems.Add("Pagado"); }
+                        else { item.SubItems.Add(deudas.ToString()); }
+                        if (o.FechaSalida == DateTime.MinValue) { item.SubItems.Add("Sin retirar"); }
+                        else { item.SubItems.Add(o.FechaSalida.ToString()); }
                         listOrdenesCliente.Items.Add(item);
                     }
                 }
@@ -388,7 +391,9 @@ namespace UI.Desktop
                 {
                     foreach (Pago p in ordenActual.Factura.Pagos)
                     {
-                        ListViewItem item = new ListViewItem(p.FechaPago.ToString());
+
+                        ListViewItem item = new ListViewItem(ordenActual.NroOrden.ToString());
+                        item.SubItems.Add(p.FechaPago.ToString());
                         item.SubItems.Add(p.Importe.ToString());
                         item.SubItems.Add(p.FormaPago.ToString());
                         listPagosOrden.Items.Add(item);
@@ -464,7 +469,8 @@ namespace UI.Desktop
                 {
                     foreach (Pago p in OrdenActual.Factura.Pagos)
                     {
-                        ListViewItem item = new ListViewItem(p.FechaPago.ToString());
+                        ListViewItem item = new ListViewItem(OrdenActual.NroOrden.ToString());
+                        item.SubItems.Add(p.FechaPago.ToString());
                         item.SubItems.Add(p.Importe.ToString());
                         item.SubItems.Add(p.FormaPago.ToString());
                         listPagosOrden.Items.Add(item);
@@ -1167,10 +1173,18 @@ namespace UI.Desktop
             if (listOrdenes.SelectedItems.Count > 0)
             {
                 int nroOrden = Int32.Parse(this.listOrdenes.SelectedItems[0].Text);
-                OrdenDesktop frmOrden = new OrdenDesktop(nroOrden, ApplicationForm.ModoForm.Modificacion, _context);
-                frmOrden.ShowDialog();
-                CargarOrdenes();
-                Planificar();
+                Orden orden = _ordenLogic.GetOne(nroOrden);
+                if (orden.Estado != Orden.Estados.Finalizado && orden.Estado != Orden.Estados.Retirado)
+                {
+                    OrdenDesktop frmOrden = new OrdenDesktop(nroOrden, ApplicationForm.ModoForm.Modificacion, _context);
+                    frmOrden.ShowDialog();
+                    CargarOrdenes();
+                    Planificar();
+                }
+                else 
+                {
+                    MessageBox.Show("La orden seleccionada está FINALIZADA o RETIRADA y NO es posible modificarla", "Orden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
@@ -1311,24 +1325,7 @@ namespace UI.Desktop
             e.NewWidth = listMaquinasItem.Columns[e.ColumnIndex].Width;
         }
         #region ------- TRABAJOS PENDIENTES -------
-        /*
-        private void CargarListaEspera2()
-        {
-
-            foreach (OrdenServicioTipoPrenda item in _trabajosPendientes)
-            {
-                ItemTrabajo trabajo = new ItemTrabajo();
-                trabajo.Trabajo = item;
-                TimeSpan tiempoTranscurrido = DateTime.Today - item.Orden.FechaEntrada;
-                TimeSpan tiempoRestante = TimeSpan.Parse(item.ServicioTipoPrenda.TiempoDemoraMax) - tiempoTranscurrido - item.ServicioTipoPrenda.TiempoRequerido;
-                trabajo.TiempoRestante = tiempoRestante;
-                _listaEspera.Add(trabajo);
-
-            }
-            List<ItemTrabajo> orderList = _listaEspera.OrderByDescending(i => i.Trabajo.Prioridad).ThenBy(i => i.Trabajo.Estado).ThenBy(i => i.TiempoRestante).ToList();
-            _listaEspera.Clear();
-            _listaEspera = orderList;
-        }*/
+       
 
         private void CargarListaEspera()
         {
@@ -1337,8 +1334,6 @@ namespace UI.Desktop
             {
                 ItemTrabajo trabajo = new ItemTrabajo();
                 trabajo.Trabajo = item;
-                //TimeSpan tiempoTranscurrido = DateTime.Today - item.Orden.FechaEntrada;
-                //TimeSpan tiempoRestante = TimeSpan.Parse(item.ServicioTipoPrenda.TiempoDemoraMax) - tiempoTranscurrido - item.ServicioTipoPrenda.TiempoRequerido;
                 TimeSpan tiempoRestante = item.Orden.FechaHoraEntregaIngresada - DateTime.Now;
                 trabajo.TiempoRestante = tiempoRestante;
                 _listaEspera.Add(trabajo);
@@ -1558,19 +1553,7 @@ namespace UI.Desktop
             ListarOrdenesTrabajosPendientes();
 
         }
-        /*
-        private void ValidarTerminacionOrden(int nroOrden)
-        {
-            Orden ordenActual = _ordenLogic.GetOne(nroOrden);
-            List<OrdenServicioTipoPrenda> ordenesPendientes = ordenActual.ItemsPedidos.FindAll(delegate (OrdenServicioTipoPrenda ostp)
-            { return ostp.Estado != OrdenServicioTipoPrenda.Estados.Finalizado; });
-            if (ordenesPendientes.Count == 0)
-            {
-                ordenActual.Estado = Orden.Estados.Finalizado;
-                ordenActual.State = BusinessEntity.States.Modified;
-                _ordenLogic.Save(ordenActual);
-            }
-        }*/
+        
 
         private bool ValidarFinalizacionOrden(int nroOrden)
         {

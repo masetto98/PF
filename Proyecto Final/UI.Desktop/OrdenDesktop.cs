@@ -665,7 +665,13 @@ namespace UI.Desktop
             {
                 if (OrdenActual.Estado == Orden.Estados.Pendiente)
                 {
+
                     _ordenLogic.Delete(OrdenActual.NroOrden);
+                    if (OrdenActual.Factura is not null) 
+                    {
+                        _facturaLogic.Delete(OrdenActual.Factura.NroFactura);
+                    }
+
                 }
                 else
                 {
@@ -702,6 +708,7 @@ namespace UI.Desktop
                     {
                         if (MessageBox.Show($"¿Está seguro que desea eliminar la Orden - {OrdenActual.NroOrden}?", "Orden", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
+                            InformarPagosOrdenABorrar();
                             Eliminar();
                             Close();
                         }
@@ -712,7 +719,23 @@ namespace UI.Desktop
                     break;
             }
         }
-        
+
+        private void InformarPagosOrdenABorrar()
+        {
+            if (OrdenActual.Factura is not null) 
+            {
+                double pagos = 0.0;
+                foreach (Pago p in OrdenActual.Factura.Pagos) 
+                {
+                    pagos += p.Importe;
+                }
+                if (pagos != 0.0) 
+                { 
+                    MessageBox.Show($"Se debe DEVOLVER al CLIENTE ${pagos}", "Orden", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                }
+            }
+        }
+
         public void PrintComprobante()
         {
                 SaveFileDialog sfd = new SaveFileDialog();
@@ -825,7 +848,9 @@ namespace UI.Desktop
                     }
                 }
             }
-            
+
+        
+
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {

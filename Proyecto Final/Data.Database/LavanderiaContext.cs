@@ -156,13 +156,13 @@ namespace Data.Database
                 .WithMany(e => e.OrdenesRegistradas)
                 .HasForeignKey(m => m.IdEmpleado)
                 .OnDelete(DeleteBehavior.NoAction);
-
+            
             modelBuilder.Entity<Orden>()
                 .HasOne(m => m.Factura)
                 .WithMany()
                 .HasForeignKey(m => m.NroFactura)
                 .OnDelete(DeleteBehavior.Cascade);
-
+           
             modelBuilder.Entity<OrdenServicioTipoPrenda>()
                 .HasOne(m => m.Orden)
                 .WithMany(o => o.ItemsPedidos)
@@ -182,7 +182,7 @@ namespace Data.Database
                 .HasOne(m => m.Factura)
                 .WithMany(f => f.Pagos)
                 .HasForeignKey(m => m.NroFactura)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Pago>()
                 .HasKey(m => new { m.NroFactura, m.FechaPago });
