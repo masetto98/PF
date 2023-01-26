@@ -38,12 +38,13 @@ namespace UI.Desktop
             this.columnPagos = new System.Windows.Forms.ColumnHeader();
             this.columnDeuda = new System.Windows.Forms.ColumnHeader();
             this.btnReporteDeudas = new MaterialSkin.Controls.MaterialButton();
-            this.dtpFiltroDeuda = new System.Windows.Forms.DateTimePicker();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.txtBuscar = new MaterialSkin.Controls.MaterialTextBox();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.btnReset = new MaterialSkin.Controls.MaterialButton();
             this.btnCerrar = new MaterialSkin.Controls.MaterialButton();
+            this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // listOrdenesCliente
@@ -134,29 +135,6 @@ namespace UI.Desktop
             this.btnReporteDeudas.UseVisualStyleBackColor = false;
             this.btnReporteDeudas.Click += new System.EventHandler(this.btnReporteDeudas_Click);
             // 
-            // dtpFiltroDeuda
-            // 
-            this.dtpFiltroDeuda.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFiltroDeuda.Location = new System.Drawing.Point(623, 101);
-            this.dtpFiltroDeuda.Name = "dtpFiltroDeuda";
-            this.dtpFiltroDeuda.Size = new System.Drawing.Size(200, 23);
-            this.dtpFiltroDeuda.TabIndex = 2;
-            this.dtpFiltroDeuda.CloseUp += new System.EventHandler(this.dtpFiltroDeuda_CloseUp);
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(544, 105);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(77, 19);
-            this.materialLabel1.TabIndex = 3;
-            this.materialLabel1.Text = "A partir de:";
-            // 
             // txtBuscar
             // 
             this.txtBuscar.AnimateReadOnly = false;
@@ -192,28 +170,6 @@ namespace UI.Desktop
             this.materialLabel2.TabIndex = 5;
             this.materialLabel2.Text = "Buscar:";
             // 
-            // btnReset
-            // 
-            this.btnReset.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.btnReset.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnReset.Depth = 0;
-            this.btnReset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnReset.HighEmphasis = true;
-            this.btnReset.Icon = null;
-            this.btnReset.Location = new System.Drawing.Point(855, 96);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnReset.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnReset.Name = "btnReset";
-            this.btnReset.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnReset.Size = new System.Drawing.Size(65, 36);
-            this.btnReset.TabIndex = 6;
-            this.btnReset.Text = "reset";
-            this.btnReset.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnReset.UseAccentColor = false;
-            this.btnReset.UseVisualStyleBackColor = false;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
             // btnCerrar
             // 
             this.btnCerrar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -236,17 +192,64 @@ namespace UI.Desktop
             this.btnCerrar.UseVisualStyleBackColor = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
+            // dtpFechaDesde
+            // 
+            this.dtpFechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaDesde.Location = new System.Drawing.Point(511, 102);
+            this.dtpFechaDesde.Name = "dtpFechaDesde";
+            this.dtpFechaDesde.Size = new System.Drawing.Size(138, 23);
+            this.dtpFechaDesde.TabIndex = 8;
+            this.dtpFechaDesde.ValueChanged += new System.EventHandler(this.dtpFechaDesde_ValueChanged);
+            // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(411, 104);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(94, 19);
+            this.materialLabel1.TabIndex = 9;
+            this.materialLabel1.Text = "Fecha desde:";
+            // 
+            // materialLabel3
+            // 
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel3.Location = new System.Drawing.Point(655, 104);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(92, 19);
+            this.materialLabel3.TabIndex = 10;
+            this.materialLabel3.Text = "Fecha hasta:";
+            // 
+            // dtpFechaHasta
+            // 
+            this.dtpFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaHasta.Location = new System.Drawing.Point(753, 102);
+            this.dtpFechaHasta.Name = "dtpFechaHasta";
+            this.dtpFechaHasta.Size = new System.Drawing.Size(152, 23);
+            this.dtpFechaHasta.TabIndex = 11;
+            this.dtpFechaHasta.ValueChanged += new System.EventHandler(this.dtpFechaHasta_ValueChanged);
+            // 
             // ReporteDeudas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(933, 548);
+            this.Controls.Add(this.dtpFechaHasta);
+            this.Controls.Add(this.materialLabel3);
+            this.Controls.Add(this.materialLabel1);
+            this.Controls.Add(this.dtpFechaDesde);
             this.Controls.Add(this.btnCerrar);
-            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.txtBuscar);
-            this.Controls.Add(this.materialLabel1);
-            this.Controls.Add(this.dtpFiltroDeuda);
             this.Controls.Add(this.btnReporteDeudas);
             this.Controls.Add(this.listOrdenesCliente);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -271,11 +274,12 @@ namespace UI.Desktop
         private System.Windows.Forms.ColumnHeader columnPagos;
         private System.Windows.Forms.ColumnHeader columnDeuda;
         private MaterialSkin.Controls.MaterialButton btnReporteDeudas;
-        private System.Windows.Forms.DateTimePicker dtpFiltroDeuda;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialTextBox txtBuscar;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MaterialSkin.Controls.MaterialButton btnReset;
         private MaterialSkin.Controls.MaterialButton btnCerrar;
+        private System.Windows.Forms.DateTimePicker dtpFechaDesde;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private System.Windows.Forms.DateTimePicker dtpFechaHasta;
     }
 }

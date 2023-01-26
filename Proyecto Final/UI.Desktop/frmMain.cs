@@ -17,6 +17,8 @@ using iText.Layout.Element;
 using iText.Layout.Properties;
 using iText.Layout;
 using System.IO;
+using PdfiumViewer;
+
 
 
 namespace UI.Desktop
@@ -95,6 +97,9 @@ namespace UI.Desktop
                     break;
                 case 3:
                     ListarOrdenesTrabajosPendientes();
+                    break;
+                case 5:
+                    obtenerPDF();
                     break;
 
             }
@@ -1909,8 +1914,24 @@ namespace UI.Desktop
 
         #endregion
 
+        #region ------- AYUDA -------
 
+        private void obtenerPDF()
+        {
+            byte[] PDF = Properties.Resources.Manual_de_Usuario;
+            var stream = new MemoryStream(PDF);
+
+            PdfiumViewer.PdfDocument pdfDocument = PdfiumViewer.PdfDocument.Load(stream);
+
+            pdfViewerHelpUser.Document = pdfDocument;
+            
+        }
+
+
+
+        #endregion
         // NO ESTA IMPLEMENTADO LOS REPORTES DE LOS LISTVIEW
+        /*
         private void btnReporte_Click(object sender, EventArgs e)
         {
             if (Singleton.getInstance().ListActual != null && Singleton.getInstance().ListActual.SelectedItems.Count > 0)
@@ -1994,7 +2015,7 @@ namespace UI.Desktop
                 MessageBox.Show("No hay registros para exportar", "Info");
             }
         }
-
+        */
         private void btnEditarPerfil_Click(object sender, EventArgs e)
         {
             
@@ -2011,6 +2032,6 @@ namespace UI.Desktop
             
         }
 
-      
+       
     }
 }

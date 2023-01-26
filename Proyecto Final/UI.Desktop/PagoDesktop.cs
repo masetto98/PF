@@ -364,7 +364,7 @@ namespace UI.Desktop
             }
             else
             {
-                MessageBox.Show("El importe del pago ingresado supera el valor de la factura. Por favor, ingrese un importe valido.", "Pago", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El importe del pago ingresado supera el valor de la factura. Por favor, ingrese un importe válido.", "Pago", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }
@@ -393,8 +393,8 @@ namespace UI.Desktop
                     {
                         FacturaActual.FechaFactura = DateTime.Now;
                     }
-                    FacturaActual.Pagos.Add(PagoActual);
-                    OrdenActual.Factura = FacturaActual;
+                    FacturaActual.Pagos = new List<Pago>();
+                    _pagosActuales.Add(PagoActual);
                 }
                 if (Modos == ModoForm.Modificacion)
                 {
@@ -402,8 +402,8 @@ namespace UI.Desktop
                     PagoActual.FechaPago = DateTime.Now;
                     PagoActual.FormaPago = fp.GetFormaPago();
                     PagoActual.Importe = FacturaActual.Importe - totalActual;
-                    FacturaActual.Pagos.Add(PagoActual);
-                    OrdenActual.Factura = FacturaActual;
+                    _pagosActuales.Add(PagoActual);
+                    
                 }
                 switch (Modos)
                 {

@@ -49,6 +49,11 @@ namespace UI.Desktop
             this.columnFechaSalida = new System.Windows.Forms.ColumnHeader();
             this.columnEstado = new System.Windows.Forms.ColumnHeader();
             this.mnuTabClientes = new System.Windows.Forms.TabPage();
+            this.listPagosOrden = new MaterialSkin.Controls.MaterialListView();
+            this.columnNroO = new System.Windows.Forms.ColumnHeader();
+            this.columnFechaPago = new System.Windows.Forms.ColumnHeader();
+            this.columnVal = new System.Windows.Forms.ColumnHeader();
+            this.columnTp = new System.Windows.Forms.ColumnHeader();
             this.materialCard7 = new MaterialSkin.Controls.MaterialCard();
             this.btnSaldarDeuda = new MaterialSkin.Controls.MaterialButton();
             this.lblCuentaCorriente = new MaterialSkin.Controls.MaterialLabel();
@@ -179,6 +184,8 @@ namespace UI.Desktop
             this.btnTipoPrenda = new MaterialSkin.Controls.MaterialButton();
             this.btnServicio = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.tabAyuda = new System.Windows.Forms.TabPage();
+            this.pdfViewerHelpUser = new PdfiumViewer.PdfViewer();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
@@ -193,11 +200,6 @@ namespace UI.Desktop
             this.btnEditarPerfil = new MaterialSkin.Controls.MaterialButton();
             this.imgUserLogin = new System.Windows.Forms.PictureBox();
             this.btnCerrarSesion = new MaterialSkin.Controls.MaterialButton();
-            this.listPagosOrden = new MaterialSkin.Controls.MaterialListView();
-            this.columnNroO = new System.Windows.Forms.ColumnHeader();
-            this.columnFechaPago = new System.Windows.Forms.ColumnHeader();
-            this.columnVal = new System.Windows.Forms.ColumnHeader();
-            this.columnTp = new System.Windows.Forms.ColumnHeader();
             this.mnuPrincipal.SuspendLayout();
             this.mnuTabOrdenes.SuspendLayout();
             this.mnuTabClientes.SuspendLayout();
@@ -216,6 +218,7 @@ namespace UI.Desktop
             this.materialCard3.SuspendLayout();
             this.materialCard2.SuspendLayout();
             this.materialCard1.SuspendLayout();
+            this.tabAyuda.SuspendLayout();
             this.epUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgUserLogin)).BeginInit();
             this.SuspendLayout();
@@ -227,6 +230,7 @@ namespace UI.Desktop
             this.mnuPrincipal.Controls.Add(this.mnuTabInventario);
             this.mnuPrincipal.Controls.Add(this.tabPlanificacion);
             this.mnuPrincipal.Controls.Add(this.tabUtilidades);
+            this.mnuPrincipal.Controls.Add(this.tabAyuda);
             this.mnuPrincipal.Depth = 0;
             this.mnuPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mnuPrincipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -526,6 +530,51 @@ namespace UI.Desktop
             this.mnuTabClientes.Size = new System.Drawing.Size(1353, 679);
             this.mnuTabClientes.TabIndex = 1;
             this.mnuTabClientes.Text = "Clientes";
+            // 
+            // listPagosOrden
+            // 
+            this.listPagosOrden.AutoSizeTable = false;
+            this.listPagosOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listPagosOrden.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listPagosOrden.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnNroO,
+            this.columnFechaPago,
+            this.columnVal,
+            this.columnTp});
+            this.listPagosOrden.Depth = 0;
+            this.listPagosOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.listPagosOrden.FullRowSelect = true;
+            this.listPagosOrden.HideSelection = false;
+            this.listPagosOrden.Location = new System.Drawing.Point(678, 400);
+            this.listPagosOrden.MinimumSize = new System.Drawing.Size(200, 100);
+            this.listPagosOrden.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listPagosOrden.MouseState = MaterialSkin.MouseState.OUT;
+            this.listPagosOrden.Name = "listPagosOrden";
+            this.listPagosOrden.OwnerDraw = true;
+            this.listPagosOrden.Size = new System.Drawing.Size(556, 177);
+            this.listPagosOrden.TabIndex = 15;
+            this.listPagosOrden.UseCompatibleStateImageBehavior = false;
+            this.listPagosOrden.View = System.Windows.Forms.View.Details;
+            // 
+            // columnNroO
+            // 
+            this.columnNroO.Text = "N° Orden";
+            this.columnNroO.Width = 90;
+            // 
+            // columnFechaPago
+            // 
+            this.columnFechaPago.Text = "Fecha pago";
+            this.columnFechaPago.Width = 200;
+            // 
+            // columnVal
+            // 
+            this.columnVal.Text = "Valor";
+            this.columnVal.Width = 100;
+            // 
+            // columnTp
+            // 
+            this.columnTp.Text = "Tipo Pago";
+            this.columnTp.Width = 150;
             // 
             // materialCard7
             // 
@@ -2527,6 +2576,29 @@ namespace UI.Desktop
             this.materialLabel2.TabIndex = 0;
             this.materialLabel2.Text = "Administrar negocio";
             // 
+            // tabAyuda
+            // 
+            this.tabAyuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.tabAyuda.Controls.Add(this.pdfViewerHelpUser);
+            this.tabAyuda.ImageKey = "help-round-button_icon-icons.com_72706.png";
+            this.tabAyuda.Location = new System.Drawing.Point(4, 39);
+            this.tabAyuda.Name = "tabAyuda";
+            this.tabAyuda.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAyuda.Size = new System.Drawing.Size(1353, 679);
+            this.tabAyuda.TabIndex = 5;
+            this.tabAyuda.Text = "Ayuda";
+            // 
+            // pdfViewerHelpUser
+            // 
+            this.pdfViewerHelpUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pdfViewerHelpUser.Location = new System.Drawing.Point(3, 3);
+            this.pdfViewerHelpUser.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pdfViewerHelpUser.Name = "pdfViewerHelpUser";
+            this.pdfViewerHelpUser.ShowToolbar = false;
+            this.pdfViewerHelpUser.Size = new System.Drawing.Size(1347, 673);
+            this.pdfViewerHelpUser.TabIndex = 0;
+            this.pdfViewerHelpUser.ZoomMode = PdfiumViewer.PdfViewerZoomMode.FitWidth;
+            // 
             // imageList1
             // 
             this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
@@ -2537,6 +2609,7 @@ namespace UI.Desktop
             this.imageList1.Images.SetKeyName(2, "sales_sale_supermarket_stock_market_icon_153849.png");
             this.imageList1.Images.SetKeyName(3, "20business-planning_102092.png");
             this.imageList1.Images.SetKeyName(4, "tools_icon-icons.com_69843.png");
+            this.imageList1.Images.SetKeyName(5, "help-round-button_icon-icons.com_72706.png");
             // 
             // epUser
             // 
@@ -2638,50 +2711,6 @@ namespace UI.Desktop
             this.btnCerrarSesion.UseVisualStyleBackColor = false;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
-            // listPagosOrden
-            // 
-            this.listPagosOrden.AutoSizeTable = false;
-            this.listPagosOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listPagosOrden.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listPagosOrden.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnNroO,
-            this.columnFechaPago,
-            this.columnVal,
-            this.columnTp});
-            this.listPagosOrden.Depth = 0;
-            this.listPagosOrden.FullRowSelect = true;
-            this.listPagosOrden.HideSelection = false;
-            this.listPagosOrden.Location = new System.Drawing.Point(678, 400);
-            this.listPagosOrden.MinimumSize = new System.Drawing.Size(200, 100);
-            this.listPagosOrden.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.listPagosOrden.MouseState = MaterialSkin.MouseState.OUT;
-            this.listPagosOrden.Name = "listPagosOrden";
-            this.listPagosOrden.OwnerDraw = true;
-            this.listPagosOrden.Size = new System.Drawing.Size(556, 177);
-            this.listPagosOrden.TabIndex = 15;
-            this.listPagosOrden.UseCompatibleStateImageBehavior = false;
-            this.listPagosOrden.View = System.Windows.Forms.View.Details;
-            // 
-            // columnNroO
-            // 
-            this.columnNroO.Text = "N° Orden";
-            this.columnNroO.Width = 90;
-            // 
-            // columnFechaPago
-            // 
-            this.columnFechaPago.Text = "Fecha pago";
-            this.columnFechaPago.Width = 200;
-            // 
-            // columnVal
-            // 
-            this.columnVal.Text = "Valor";
-            this.columnVal.Width = 100;
-            // 
-            // columnTp
-            // 
-            this.columnTp.Text = "Tipo Pago";
-            this.columnTp.Width = 150;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2730,6 +2759,7 @@ namespace UI.Desktop
             this.materialCard2.PerformLayout();
             this.materialCard1.ResumeLayout(false);
             this.materialCard1.PerformLayout();
+            this.tabAyuda.ResumeLayout(false);
             this.epUser.ResumeLayout(false);
             this.epUser.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgUserLogin)).EndInit();
@@ -2906,6 +2936,8 @@ namespace UI.Desktop
         private System.Windows.Forms.ColumnHeader columnFechaPago;
         private System.Windows.Forms.ColumnHeader columnVal;
         private System.Windows.Forms.ColumnHeader columnTp;
+        private System.Windows.Forms.TabPage tabAyuda;
+        private PdfiumViewer.PdfViewer pdfViewerHelpUser;
     }
 }
 
