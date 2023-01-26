@@ -10,7 +10,7 @@ namespace Business.Entities
     {
         private OrdenServicioTipoPrenda _trabajo;
         private TimeSpan _tiempoRestante;
-
+        private DateTime _fecha;
         public OrdenServicioTipoPrenda Trabajo 
         {
             get { return _trabajo; }
@@ -22,5 +22,12 @@ namespace Business.Entities
             get { return _tiempoRestante; }
             set { _tiempoRestante = value; }
         }
+
+        public DateTime Fecha
+        {
+            get { return _fecha; }
+            set { _fecha = value; }
+        }
+
     }
 }

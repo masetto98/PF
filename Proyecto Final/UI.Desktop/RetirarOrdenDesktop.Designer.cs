@@ -258,7 +258,7 @@ namespace UI.Desktop
             // 
             this.listItemsRetiro.AutoSizeTable = false;
             this.listItemsRetiro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listItemsRetiro.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listItemsRetiro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listItemsRetiro.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnServ,
             this.columnTp,
@@ -397,7 +397,7 @@ namespace UI.Desktop
             this.btnRetirar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnRetirar.HighEmphasis = true;
             this.btnRetirar.Icon = null;
-            this.btnRetirar.Location = new System.Drawing.Point(588, 589);
+            this.btnRetirar.Location = new System.Drawing.Point(600, 577);
             this.btnRetirar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnRetirar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRetirar.Name = "btnRetirar";
@@ -419,7 +419,7 @@ namespace UI.Desktop
             this.btnCancelarRetiro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelarRetiro.HighEmphasis = true;
             this.btnCancelarRetiro.Icon = null;
-            this.btnCancelarRetiro.Location = new System.Drawing.Point(688, 589);
+            this.btnCancelarRetiro.Location = new System.Drawing.Point(688, 577);
             this.btnCancelarRetiro.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelarRetiro.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelarRetiro.Name = "btnCancelarRetiro";
@@ -442,7 +442,7 @@ namespace UI.Desktop
             this.btnImpFactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnImpFactura.HighEmphasis = true;
             this.btnImpFactura.Icon = global::UI.Desktop.Properties.Resources.mbriprint_99560;
-            this.btnImpFactura.Location = new System.Drawing.Point(14, 589);
+            this.btnImpFactura.Location = new System.Drawing.Point(14, 577);
             this.btnImpFactura.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnImpFactura.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnImpFactura.Name = "btnImpFactura";
@@ -508,7 +508,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 638);
+            this.ClientSize = new System.Drawing.Size(800, 624);
             this.Controls.Add(this.materialCard2);
             this.Controls.Add(this.btnImpFactura);
             this.Controls.Add(this.btnCancelarRetiro);

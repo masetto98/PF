@@ -52,7 +52,7 @@ namespace UI.Desktop
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAceptar.HighEmphasis = true;
             this.btnAceptar.Icon = null;
-            this.btnAceptar.Location = new System.Drawing.Point(223, 660);
+            this.btnAceptar.Location = new System.Drawing.Point(183, 567);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptar.Name = "btnAceptar";
@@ -75,7 +75,7 @@ namespace UI.Desktop
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtNombre.Hint = "Nombre";
             this.txtNombre.LeadingIcon = null;
-            this.txtNombre.Location = new System.Drawing.Point(52, 227);
+            this.txtNombre.Location = new System.Drawing.Point(12, 200);
             this.txtNombre.MaxLength = 50;
             this.txtNombre.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNombre.Multiline = false;
@@ -95,7 +95,7 @@ namespace UI.Desktop
             this.txtApellido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtApellido.Hint = "Apellido";
             this.txtApellido.LeadingIcon = null;
-            this.txtApellido.Location = new System.Drawing.Point(52, 293);
+            this.txtApellido.Location = new System.Drawing.Point(12, 256);
             this.txtApellido.MaxLength = 50;
             this.txtApellido.MouseState = MaterialSkin.MouseState.OUT;
             this.txtApellido.Multiline = false;
@@ -115,7 +115,7 @@ namespace UI.Desktop
             this.txtTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtTelefono.Hint = "Teléfono";
             this.txtTelefono.LeadingIcon = null;
-            this.txtTelefono.Location = new System.Drawing.Point(52, 360);
+            this.txtTelefono.Location = new System.Drawing.Point(12, 312);
             this.txtTelefono.MaxLength = 50;
             this.txtTelefono.MouseState = MaterialSkin.MouseState.OUT;
             this.txtTelefono.Multiline = false;
@@ -135,7 +135,7 @@ namespace UI.Desktop
             this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtEmail.Hint = "Email";
             this.txtEmail.LeadingIcon = null;
-            this.txtEmail.Location = new System.Drawing.Point(52, 427);
+            this.txtEmail.Location = new System.Drawing.Point(12, 368);
             this.txtEmail.MaxLength = 50;
             this.txtEmail.MouseState = MaterialSkin.MouseState.OUT;
             this.txtEmail.Multiline = false;
@@ -155,7 +155,7 @@ namespace UI.Desktop
             this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtDireccion.Hint = "Dirección";
             this.txtDireccion.LeadingIcon = null;
-            this.txtDireccion.Location = new System.Drawing.Point(52, 491);
+            this.txtDireccion.Location = new System.Drawing.Point(12, 424);
             this.txtDireccion.MaxLength = 50;
             this.txtDireccion.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDireccion.Multiline = false;
@@ -171,9 +171,9 @@ namespace UI.Desktop
             this.dtpFechaInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpFechaInicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaInicio.Location = new System.Drawing.Point(52, 573);
+            this.dtpFechaInicio.Location = new System.Drawing.Point(129, 537);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
-            this.dtpFechaInicio.Size = new System.Drawing.Size(361, 23);
+            this.dtpFechaInicio.Size = new System.Drawing.Size(244, 23);
             this.dtpFechaInicio.TabIndex = 17;
             // 
             // cbTipoEmpleado
@@ -191,7 +191,7 @@ namespace UI.Desktop
             this.cbTipoEmpleado.Hint = "Tipo de Empleado";
             this.cbTipoEmpleado.IntegralHeight = false;
             this.cbTipoEmpleado.ItemHeight = 43;
-            this.cbTipoEmpleado.Location = new System.Drawing.Point(52, 602);
+            this.cbTipoEmpleado.Location = new System.Drawing.Point(12, 480);
             this.cbTipoEmpleado.MaxDropDownItems = 4;
             this.cbTipoEmpleado.MouseState = MaterialSkin.MouseState.OUT;
             this.cbTipoEmpleado.Name = "cbTipoEmpleado";
@@ -208,7 +208,7 @@ namespace UI.Desktop
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
-            this.btnCancelar.Location = new System.Drawing.Point(317, 660);
+            this.btnCancelar.Location = new System.Drawing.Point(277, 567);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -232,7 +232,7 @@ namespace UI.Desktop
             this.txtID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtID.Hint = "ID";
             this.txtID.LeadingIcon = null;
-            this.txtID.Location = new System.Drawing.Point(52, 91);
+            this.txtID.Location = new System.Drawing.Point(12, 89);
             this.txtID.MaxLength = 50;
             this.txtID.MouseState = MaterialSkin.MouseState.OUT;
             this.txtID.Multiline = false;
@@ -249,7 +249,7 @@ namespace UI.Desktop
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(52, 551);
+            this.materialLabel1.Location = new System.Drawing.Point(12, 541);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(111, 19);
@@ -268,7 +268,7 @@ namespace UI.Desktop
             this.txtCuit.HideSelection = true;
             this.txtCuit.Hint = "Cuit";
             this.txtCuit.LeadingIcon = null;
-            this.txtCuit.Location = new System.Drawing.Point(52, 157);
+            this.txtCuit.Location = new System.Drawing.Point(12, 145);
             this.txtCuit.MaxLength = 32767;
             this.txtCuit.MouseState = MaterialSkin.MouseState.OUT;
             this.txtCuit.Name = "txtCuit";
@@ -292,7 +292,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(461, 707);
+            this.ClientSize = new System.Drawing.Size(390, 613);
             this.Controls.Add(this.txtCuit);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.txtID);

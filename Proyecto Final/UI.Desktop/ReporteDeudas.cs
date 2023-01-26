@@ -227,69 +227,10 @@ namespace UI.Desktop
                 MessageBox.Show("No hay registros para exportar", "Info",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
             }
         }
-
+        
         private void dtpFiltroDeuda_CloseUp(object sender, EventArgs e)
         {
-            DateTime fechaFiltro = dtpFiltroDeuda.Value;
-            string fechaFiltro2 = fechaFiltro.ToString("yyyy/MM/dd");
-            List<Orden> ordenesFiltro = ordenesDeuda.FindAll(
-                delegate (Orden or)
-                {
-                    string fechaSalida = or.FechaSalida.ToString("yyyy/MM/dd");
-                    return DateTime.Parse(fechaSalida) >= DateTime.Parse(fechaFiltro2);
-                });
-            listOrdenesCliente.Items.Clear();
-            foreach (Orden oc in ordenesFiltro)
-            {
-                if(oc.Cliente.RazonSocial == "")
-                {
-                    ListViewItem item = new ListViewItem(oc.Cliente.Nombre + "-" + oc.Cliente.Apellido);
-                    item.SubItems.Add(oc.NroOrden.ToString());
-                    item.SubItems.Add(oc.FechaSalida.ToString());
-                    if (oc.Factura is not null)
-                    {
-                        item.SubItems.Add(oc.NroFactura.ToString());
-                        item.SubItems.Add(oc.Factura.Importe.ToString());
-                        double pagos = CalcularPagosOrden(oc);
-                        item.SubItems.Add(pagos.ToString());
-                        double deudas = oc.Factura.Importe - pagos;
-                        item.SubItems.Add(deudas.ToString());
-                    }
-                    else
-                    {
-                        item.SubItems.Add("-");
-                        item.SubItems.Add("-");
-                        double pagos = CalcularPagosOrden(oc);
-                        item.SubItems.Add(pagos.ToString());
-                        item.SubItems.Add("Sin importe");
-                    }
-                    listOrdenesCliente.Items.Add(item);
-                }
-                else
-                {
-                    ListViewItem item = new ListViewItem(oc.Cliente.RazonSocial);
-                    item.SubItems.Add(oc.NroOrden.ToString());
-                    item.SubItems.Add(oc.FechaSalida.ToString());
-                    if (oc.Factura is not null)
-                    {
-                        item.SubItems.Add(oc.NroFactura.ToString());
-                        item.SubItems.Add(oc.Factura.Importe.ToString());
-                        double pagos = CalcularPagosOrden(oc);
-                        item.SubItems.Add(pagos.ToString());
-                        double deudas = oc.Factura.Importe - pagos;
-                        item.SubItems.Add(deudas.ToString());
-                    }
-                    else
-                    {
-                        item.SubItems.Add("-");
-                        item.SubItems.Add("-");
-                        double pagos = CalcularPagosOrden(oc);
-                        item.SubItems.Add(pagos.ToString());
-                        item.SubItems.Add("Sin importe");
-                    }
-                    listOrdenesCliente.Items.Add(item);
-                }
-            }
+
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -472,5 +413,77 @@ namespace UI.Desktop
                 return importe;
             }
         }
+
+        private void dtpFiltroDeuda_ValueChanged(object sender, EventArgs e)
+        {
+            //ListarDeudas();
+            listOrdenesCliente.Items.Clear();
+        }
+
+        private void ListarDeudas() 
+        {
+            DateTime fechaFiltro = dtpFiltroDeuda.Value;
+            string fechaFiltro2 = fechaFiltro.ToString("yyyy/MM/dd");
+            List<Orden> ordenesFiltro = ordenesDeuda.FindAll(
+                delegate (Orden or)
+                {
+                    string fechaSalida = or.FechaSalida.ToString("yyyy/MM/dd");
+                    return DateTime.Parse(fechaSalida) >= DateTime.Parse(fechaFiltro2);
+                });
+            listOrdenesCliente.Items.Clear();
+            foreach (Orden oc in ordenesFiltro)
+            {
+                if (oc.Cliente.RazonSocial == "")
+                {
+                    ListViewItem item = new ListViewItem(oc.Cliente.Nombre + "-" + oc.Cliente.Apellido);
+                    item.SubItems.Add(oc.NroOrden.ToString());
+                    item.SubItems.Add(oc.FechaSalida.ToString());
+                    if (oc.Factura is not null)
+                    {
+                        item.SubItems.Add(oc.NroFactura.ToString());
+                        item.SubItems.Add(oc.Factura.Importe.ToString());
+                        double pagos = CalcularPagosOrden(oc);
+                        item.SubItems.Add(pagos.ToString());
+                        double deudas = oc.Factura.Importe - pagos;
+                        item.SubItems.Add(deudas.ToString());
+                    }
+                    else
+                    {
+                        item.SubItems.Add("-");
+                        item.SubItems.Add("-");
+                        double pagos = CalcularPagosOrden(oc);
+                        item.SubItems.Add(pagos.ToString());
+                        item.SubItems.Add("Sin importe");
+                    }
+                    listOrdenesCliente.Items.Add(item);
+                }
+                else
+                {
+                    ListViewItem item = new ListViewItem(oc.Cliente.RazonSocial);
+                    item.SubItems.Add(oc.NroOrden.ToString());
+                    item.SubItems.Add(oc.FechaSalida.ToString());
+                    if (oc.Factura is not null)
+                    {
+                        item.SubItems.Add(oc.NroFactura.ToString());
+                        item.SubItems.Add(oc.Factura.Importe.ToString());
+                        double pagos = CalcularPagosOrden(oc);
+                        item.SubItems.Add(pagos.ToString());
+                        double deudas = oc.Factura.Importe - pagos;
+                        item.SubItems.Add(deudas.ToString());
+                    }
+                    else
+                    {
+                        item.SubItems.Add("-");
+                        item.SubItems.Add("-");
+                        double pagos = CalcularPagosOrden(oc);
+                        item.SubItems.Add(pagos.ToString());
+                        item.SubItems.Add("Sin importe");
+                    }
+                    listOrdenesCliente.Items.Add(item);
+                }
+            }
+        }
     }
+
+
 }

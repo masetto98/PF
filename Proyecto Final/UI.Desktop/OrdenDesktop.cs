@@ -708,14 +708,16 @@ namespace UI.Desktop
             {
                 case ModoForm.Alta:
                     {
-                        GuardarCambios();
-                       
+                        
+                            GuardarCambios();
+                        
                     };
                     break;
                 case ModoForm.Modificacion:
                     {
                         if (MessageBox.Show($"¿Está seguro que desea modificar la Orden?", "Orden", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
+                            
                             GuardarCambios();
                         }
                     };

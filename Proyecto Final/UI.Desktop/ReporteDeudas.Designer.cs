@@ -44,6 +44,8 @@ namespace UI.Desktop
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.btnReset = new MaterialSkin.Controls.MaterialButton();
             this.btnCerrar = new MaterialSkin.Controls.MaterialButton();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // listOrdenesCliente
@@ -64,7 +66,7 @@ namespace UI.Desktop
             this.listOrdenesCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listOrdenesCliente.FullRowSelect = true;
             this.listOrdenesCliente.HideSelection = false;
-            this.listOrdenesCliente.Location = new System.Drawing.Point(12, 155);
+            this.listOrdenesCliente.Location = new System.Drawing.Point(12, 138);
             this.listOrdenesCliente.MinimumSize = new System.Drawing.Size(200, 100);
             this.listOrdenesCliente.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listOrdenesCliente.MouseState = MaterialSkin.MouseState.OUT;
@@ -121,7 +123,7 @@ namespace UI.Desktop
             this.btnReporteDeudas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnReporteDeudas.HighEmphasis = true;
             this.btnReporteDeudas.Icon = null;
-            this.btnReporteDeudas.Location = new System.Drawing.Point(13, 497);
+            this.btnReporteDeudas.Location = new System.Drawing.Point(13, 480);
             this.btnReporteDeudas.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnReporteDeudas.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnReporteDeudas.Name = "btnReporteDeudas";
@@ -137,11 +139,11 @@ namespace UI.Desktop
             // dtpFiltroDeuda
             // 
             this.dtpFiltroDeuda.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFiltroDeuda.Location = new System.Drawing.Point(623, 101);
+            this.dtpFiltroDeuda.Location = new System.Drawing.Point(579, 101);
             this.dtpFiltroDeuda.Name = "dtpFiltroDeuda";
-            this.dtpFiltroDeuda.Size = new System.Drawing.Size(200, 23);
+            this.dtpFiltroDeuda.Size = new System.Drawing.Size(106, 23);
             this.dtpFiltroDeuda.TabIndex = 2;
-            this.dtpFiltroDeuda.CloseUp += new System.EventHandler(this.dtpFiltroDeuda_CloseUp);
+            this.dtpFiltroDeuda.ValueChanged += new System.EventHandler(this.dtpFiltroDeuda_ValueChanged);
             // 
             // materialLabel1
             // 
@@ -150,7 +152,7 @@ namespace UI.Desktop
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(544, 105);
+            this.materialLabel1.Location = new System.Drawing.Point(496, 105);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(77, 19);
@@ -167,7 +169,7 @@ namespace UI.Desktop
             this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtBuscar.Hint = "Ingrese nombre, apellido o cuit del cliente";
             this.txtBuscar.LeadingIcon = null;
-            this.txtBuscar.Location = new System.Drawing.Point(72, 87);
+            this.txtBuscar.Location = new System.Drawing.Point(73, 82);
             this.txtBuscar.MaxLength = 50;
             this.txtBuscar.MouseState = MaterialSkin.MouseState.OUT;
             this.txtBuscar.Multiline = false;
@@ -185,7 +187,7 @@ namespace UI.Desktop
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(12, 106);
+            this.materialLabel2.Location = new System.Drawing.Point(13, 101);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(54, 19);
@@ -201,7 +203,7 @@ namespace UI.Desktop
             this.btnReset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnReset.HighEmphasis = true;
             this.btnReset.Icon = null;
-            this.btnReset.Location = new System.Drawing.Point(855, 96);
+            this.btnReset.Location = new System.Drawing.Point(855, 91);
             this.btnReset.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnReset.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnReset.Name = "btnReset";
@@ -223,7 +225,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(843, 497);
+            this.btnCerrar.Location = new System.Drawing.Point(843, 480);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -236,11 +238,35 @@ namespace UI.Desktop
             this.btnCerrar.UseVisualStyleBackColor = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
+            // materialLabel3
+            // 
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel3.Location = new System.Drawing.Point(691, 106);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(41, 19);
+            this.materialLabel3.TabIndex = 8;
+            this.materialLabel3.Text = "hasta";
+            // 
+            // dtpFechaHasta
+            // 
+            this.dtpFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaHasta.Location = new System.Drawing.Point(738, 101);
+            this.dtpFechaHasta.Name = "dtpFechaHasta";
+            this.dtpFechaHasta.Size = new System.Drawing.Size(95, 23);
+            this.dtpFechaHasta.TabIndex = 9;
+            // 
             // ReporteDeudas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(933, 548);
+            this.ClientSize = new System.Drawing.Size(933, 526);
+            this.Controls.Add(this.dtpFechaHasta);
+            this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.materialLabel2);
@@ -277,5 +303,7 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialButton btnReset;
         private MaterialSkin.Controls.MaterialButton btnCerrar;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private System.Windows.Forms.DateTimePicker dtpFechaHasta;
     }
 }

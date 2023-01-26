@@ -46,7 +46,7 @@ namespace UI.Desktop
             // 
             this.listGastos.AutoSizeTable = false;
             this.listGastos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listGastos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listGastos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listGastos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnFechaRealizado,
             this.columnTipoGasto,
@@ -57,14 +57,14 @@ namespace UI.Desktop
             this.listGastos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listGastos.FullRowSelect = true;
             this.listGastos.HideSelection = false;
-            this.listGastos.Location = new System.Drawing.Point(12, 155);
+            this.listGastos.Location = new System.Drawing.Point(12, 115);
             this.listGastos.MinimumSize = new System.Drawing.Size(200, 100);
             this.listGastos.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listGastos.MouseState = MaterialSkin.MouseState.OUT;
             this.listGastos.MultiSelect = false;
             this.listGastos.Name = "listGastos";
             this.listGastos.OwnerDraw = true;
-            this.listGastos.Size = new System.Drawing.Size(690, 277);
+            this.listGastos.Size = new System.Drawing.Size(690, 328);
             this.listGastos.TabIndex = 0;
             this.listGastos.UseCompatibleStateImageBehavior = false;
             this.listGastos.View = System.Windows.Forms.View.Details;
@@ -99,7 +99,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(625, 452);
+            this.btnCerrar.Location = new System.Drawing.Point(625, 449);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -121,7 +121,7 @@ namespace UI.Desktop
             this.btnReporteGastos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnReporteGastos.HighEmphasis = true;
             this.btnReporteGastos.Icon = null;
-            this.btnReporteGastos.Location = new System.Drawing.Point(12, 452);
+            this.btnReporteGastos.Location = new System.Drawing.Point(12, 449);
             this.btnReporteGastos.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnReporteGastos.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnReporteGastos.Name = "btnReporteGastos";
@@ -141,7 +141,7 @@ namespace UI.Desktop
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(12, 111);
+            this.materialLabel1.Location = new System.Drawing.Point(12, 90);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(94, 19);
@@ -151,18 +151,18 @@ namespace UI.Desktop
             // dtpFechaDesde
             // 
             this.dtpFechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaDesde.Location = new System.Drawing.Point(112, 111);
+            this.dtpFechaDesde.Location = new System.Drawing.Point(112, 86);
             this.dtpFechaDesde.Name = "dtpFechaDesde";
-            this.dtpFechaDesde.Size = new System.Drawing.Size(143, 23);
+            this.dtpFechaDesde.Size = new System.Drawing.Size(122, 23);
             this.dtpFechaDesde.TabIndex = 4;
             this.dtpFechaDesde.CloseUp += new System.EventHandler(this.dtpFechaDesde_CloseUp);
             // 
             // dtpFechaHasta
             // 
             this.dtpFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaHasta.Location = new System.Drawing.Point(385, 111);
+            this.dtpFechaHasta.Location = new System.Drawing.Point(338, 86);
             this.dtpFechaHasta.Name = "dtpFechaHasta";
-            this.dtpFechaHasta.Size = new System.Drawing.Size(143, 23);
+            this.dtpFechaHasta.Size = new System.Drawing.Size(122, 23);
             this.dtpFechaHasta.TabIndex = 5;
             this.dtpFechaHasta.CloseUp += new System.EventHandler(this.dtpFechaHasta_CloseUp);
             // 
@@ -173,7 +173,7 @@ namespace UI.Desktop
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(287, 111);
+            this.materialLabel2.Location = new System.Drawing.Point(240, 90);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(92, 19);

@@ -49,7 +49,7 @@ namespace UI.Desktop
             this.txtId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtId.Hint = "ID";
             this.txtId.LeadingIcon = null;
-            this.txtId.Location = new System.Drawing.Point(49, 95);
+            this.txtId.Location = new System.Drawing.Point(12, 95);
             this.txtId.MaxLength = 50;
             this.txtId.MouseState = MaterialSkin.MouseState.OUT;
             this.txtId.Multiline = false;
@@ -68,7 +68,7 @@ namespace UI.Desktop
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAceptar.HighEmphasis = true;
             this.btnAceptar.Icon = null;
-            this.btnAceptar.Location = new System.Drawing.Point(190, 397);
+            this.btnAceptar.Location = new System.Drawing.Point(153, 395);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptar.Name = "btnAceptar";
@@ -90,7 +90,7 @@ namespace UI.Desktop
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
-            this.btnCancelar.Location = new System.Drawing.Point(284, 397);
+            this.btnCancelar.Location = new System.Drawing.Point(247, 395);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -118,7 +118,7 @@ namespace UI.Desktop
             this.cmbTipoGasto.Hint = "Tipo de gasto";
             this.cmbTipoGasto.IntegralHeight = false;
             this.cmbTipoGasto.ItemHeight = 43;
-            this.cmbTipoGasto.Location = new System.Drawing.Point(49, 151);
+            this.cmbTipoGasto.Location = new System.Drawing.Point(12, 151);
             this.cmbTipoGasto.MaxDropDownItems = 4;
             this.cmbTipoGasto.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbTipoGasto.Name = "cmbTipoGasto";
@@ -134,7 +134,7 @@ namespace UI.Desktop
             this.txtDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtDescripcion.Hint = "Descripción";
-            this.txtDescripcion.Location = new System.Drawing.Point(49, 206);
+            this.txtDescripcion.Location = new System.Drawing.Point(12, 206);
             this.txtDescripcion.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(331, 96);
@@ -151,12 +151,12 @@ namespace UI.Desktop
             this.txtImporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtImporte.Hint = "Importe";
             this.txtImporte.LeadingIcon = null;
-            this.txtImporte.Location = new System.Drawing.Point(49, 338);
+            this.txtImporte.Location = new System.Drawing.Point(12, 338);
             this.txtImporte.MaxLength = 50;
             this.txtImporte.MouseState = MaterialSkin.MouseState.OUT;
             this.txtImporte.Multiline = false;
             this.txtImporte.Name = "txtImporte";
-            this.txtImporte.Size = new System.Drawing.Size(241, 50);
+            this.txtImporte.Size = new System.Drawing.Size(331, 50);
             this.txtImporte.TabIndex = 5;
             this.txtImporte.Text = "";
             this.txtImporte.TrailingIcon = null;
@@ -168,16 +168,16 @@ namespace UI.Desktop
             this.dtpFechaRealizacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpFechaRealizacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dtpFechaRealizacion.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaRealizacion.Location = new System.Drawing.Point(49, 308);
+            this.dtpFechaRealizacion.Location = new System.Drawing.Point(12, 309);
             this.dtpFechaRealizacion.Name = "dtpFechaRealizacion";
-            this.dtpFechaRealizacion.Size = new System.Drawing.Size(241, 23);
+            this.dtpFechaRealizacion.Size = new System.Drawing.Size(331, 23);
             this.dtpFechaRealizacion.TabIndex = 6;
             // 
             // GastoDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(429, 446);
+            this.ClientSize = new System.Drawing.Size(354, 446);
             this.Controls.Add(this.dtpFechaRealizacion);
             this.Controls.Add(this.txtImporte);
             this.Controls.Add(this.txtDescripcion);

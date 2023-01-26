@@ -48,7 +48,7 @@ namespace UI.Desktop
             this.txtIDInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtIDInsumo.Hint = "ID";
             this.txtIDInsumo.LeadingIcon = null;
-            this.txtIDInsumo.Location = new System.Drawing.Point(46, 90);
+            this.txtIDInsumo.Location = new System.Drawing.Point(12, 90);
             this.txtIDInsumo.MaxLength = 50;
             this.txtIDInsumo.MouseState = MaterialSkin.MouseState.OUT;
             this.txtIDInsumo.Multiline = false;
@@ -68,12 +68,12 @@ namespace UI.Desktop
             this.txtDescInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtDescInsumo.Hint = "Descripción";
             this.txtDescInsumo.LeadingIcon = null;
-            this.txtDescInsumo.Location = new System.Drawing.Point(46, 146);
+            this.txtDescInsumo.Location = new System.Drawing.Point(12, 145);
             this.txtDescInsumo.MaxLength = 50;
             this.txtDescInsumo.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDescInsumo.Multiline = false;
             this.txtDescInsumo.Name = "txtDescInsumo";
-            this.txtDescInsumo.Size = new System.Drawing.Size(344, 50);
+            this.txtDescInsumo.Size = new System.Drawing.Size(346, 50);
             this.txtDescInsumo.TabIndex = 3;
             this.txtDescInsumo.Text = "";
             this.txtDescInsumo.TrailingIcon = null;
@@ -88,7 +88,7 @@ namespace UI.Desktop
             this.txtExistenciaInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtExistenciaInsumo.Hint = "Existencia";
             this.txtExistenciaInsumo.LeadingIcon = null;
-            this.txtExistenciaInsumo.Location = new System.Drawing.Point(46, 201);
+            this.txtExistenciaInsumo.Location = new System.Drawing.Point(12, 200);
             this.txtExistenciaInsumo.MaxLength = 50;
             this.txtExistenciaInsumo.MouseState = MaterialSkin.MouseState.OUT;
             this.txtExistenciaInsumo.Multiline = false;
@@ -108,7 +108,7 @@ namespace UI.Desktop
             this.btnAceptarInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAceptarInsumo.HighEmphasis = true;
             this.btnAceptarInsumo.Icon = null;
-            this.btnAceptarInsumo.Location = new System.Drawing.Point(200, 273);
+            this.btnAceptarInsumo.Location = new System.Drawing.Point(166, 259);
             this.btnAceptarInsumo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptarInsumo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptarInsumo.Name = "btnAceptarInsumo";
@@ -130,7 +130,7 @@ namespace UI.Desktop
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
-            this.btnCancelar.Location = new System.Drawing.Point(294, 273);
+            this.btnCancelar.Location = new System.Drawing.Point(260, 259);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -158,7 +158,7 @@ namespace UI.Desktop
             this.cmbUnidadMedida.Hint = "Unidad de medida";
             this.cmbUnidadMedida.IntegralHeight = false;
             this.cmbUnidadMedida.ItemHeight = 43;
-            this.cmbUnidadMedida.Location = new System.Drawing.Point(169, 201);
+            this.cmbUnidadMedida.Location = new System.Drawing.Point(137, 201);
             this.cmbUnidadMedida.MaxDropDownItems = 4;
             this.cmbUnidadMedida.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbUnidadMedida.Name = "cmbUnidadMedida";
@@ -170,7 +170,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 324);
+            this.ClientSize = new System.Drawing.Size(366, 305);
             this.Controls.Add(this.cmbUnidadMedida);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptarInsumo);
