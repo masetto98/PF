@@ -149,6 +149,24 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
+        /*
+        public List<OrdenServicioTipoPrenda> GetItemsFinalizados()
+        {
+            try
+            {
+                var consulta = from items in GetAll()
+                               where items.Estado == OrdenServicioTipoPrenda.Estados.Finalizado && items.Borrado == false
+                               orderby items.Orden.FechaEntrada descending
+                               select items;
+
+                return consulta.ToList<OrdenServicioTipoPrenda>();
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al recuperar trabajos finalizados", e);
+                throw ExceptionManejada;
+            }
+        }*/
 
     }
 }

@@ -44,7 +44,10 @@ namespace UI.Desktop
             this.dtpServicioHasta = new System.Windows.Forms.DateTimePicker();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)(this.chartServicios)).BeginInit();
+            this.materialCard1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listServicios
@@ -60,14 +63,14 @@ namespace UI.Desktop
             this.listServicios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listServicios.FullRowSelect = true;
             this.listServicios.HideSelection = false;
-            this.listServicios.Location = new System.Drawing.Point(29, 151);
+            this.listServicios.Location = new System.Drawing.Point(12, 151);
             this.listServicios.MinimumSize = new System.Drawing.Size(200, 100);
             this.listServicios.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listServicios.MouseState = MaterialSkin.MouseState.OUT;
             this.listServicios.MultiSelect = false;
             this.listServicios.Name = "listServicios";
             this.listServicios.OwnerDraw = true;
-            this.listServicios.Size = new System.Drawing.Size(360, 377);
+            this.listServicios.Size = new System.Drawing.Size(360, 373);
             this.listServicios.TabIndex = 0;
             this.listServicios.UseCompatibleStateImageBehavior = false;
             this.listServicios.View = System.Windows.Forms.View.Details;
@@ -93,7 +96,7 @@ namespace UI.Desktop
             this.btnEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEliminar.HighEmphasis = true;
             this.btnEliminar.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
-            this.btnEliminar.Location = new System.Drawing.Point(275, 91);
+            this.btnEliminar.Location = new System.Drawing.Point(258, 91);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminar.Name = "btnEliminar";
@@ -116,7 +119,7 @@ namespace UI.Desktop
             this.btnEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEditar.HighEmphasis = true;
             this.btnEditar.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
-            this.btnEditar.Location = new System.Drawing.Point(151, 91);
+            this.btnEditar.Location = new System.Drawing.Point(135, 91);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEditar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEditar.Name = "btnEditar";
@@ -139,7 +142,7 @@ namespace UI.Desktop
             this.btnAgregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregar.HighEmphasis = true;
             this.btnAgregar.Icon = global::UI.Desktop.Properties.Resources.electric_appliances_waching_machine_laundry_icon_124437;
-            this.btnAgregar.Location = new System.Drawing.Point(29, 91);
+            this.btnAgregar.Location = new System.Drawing.Point(13, 91);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAgregar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAgregar.Name = "btnAgregar";
@@ -161,7 +164,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(852, 537);
+            this.btnCerrar.Location = new System.Drawing.Point(838, 531);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -184,7 +187,7 @@ namespace UI.Desktop
             legend1.IsTextAutoFit = false;
             legend1.Name = "Legend1";
             this.chartServicios.Legends.Add(legend1);
-            this.chartServicios.Location = new System.Drawing.Point(431, 211);
+            this.chartServicios.Location = new System.Drawing.Point(17, 80);
             this.chartServicios.Name = "chartServicios";
             this.chartServicios.Size = new System.Drawing.Size(498, 317);
             this.chartServicios.TabIndex = 11;
@@ -196,18 +199,18 @@ namespace UI.Desktop
             // dtpServicioDesde
             // 
             this.dtpServicioDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpServicioDesde.Location = new System.Drawing.Point(542, 129);
+            this.dtpServicioDesde.Location = new System.Drawing.Point(117, 36);
             this.dtpServicioDesde.Name = "dtpServicioDesde";
-            this.dtpServicioDesde.Size = new System.Drawing.Size(149, 23);
+            this.dtpServicioDesde.Size = new System.Drawing.Size(86, 23);
             this.dtpServicioDesde.TabIndex = 12;
             this.dtpServicioDesde.ValueChanged += new System.EventHandler(this.dtpServicioDesde_ValueChanged);
             // 
             // dtpServicioHasta
             // 
             this.dtpServicioHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpServicioHasta.Location = new System.Drawing.Point(542, 175);
+            this.dtpServicioHasta.Location = new System.Drawing.Point(323, 35);
             this.dtpServicioHasta.Name = "dtpServicioHasta";
-            this.dtpServicioHasta.Size = new System.Drawing.Size(149, 23);
+            this.dtpServicioHasta.Size = new System.Drawing.Size(104, 23);
             this.dtpServicioHasta.TabIndex = 13;
             this.dtpServicioHasta.ValueChanged += new System.EventHandler(this.dtpServicioHasta_ValueChanged);
             // 
@@ -218,7 +221,7 @@ namespace UI.Desktop
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(442, 129);
+            this.materialLabel1.Location = new System.Drawing.Point(17, 41);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(94, 19);
@@ -232,28 +235,58 @@ namespace UI.Desktop
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(444, 175);
+            this.materialLabel2.Location = new System.Drawing.Point(225, 40);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(92, 19);
             this.materialLabel2.TabIndex = 15;
             this.materialLabel2.Text = "Fecha hasta:";
             // 
+            // materialCard1
+            // 
+            this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.materialCard1.Controls.Add(this.materialLabel3);
+            this.materialCard1.Controls.Add(this.chartServicios);
+            this.materialCard1.Controls.Add(this.dtpServicioHasta);
+            this.materialCard1.Controls.Add(this.materialLabel2);
+            this.materialCard1.Controls.Add(this.materialLabel1);
+            this.materialCard1.Controls.Add(this.dtpServicioDesde);
+            this.materialCard1.Depth = 0;
+            this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard1.Location = new System.Drawing.Point(380, 91);
+            this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard1.Name = "materialCard1";
+            this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard1.Size = new System.Drawing.Size(535, 433);
+            this.materialCard1.TabIndex = 16;
+            // 
+            // materialLabel3
+            // 
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel3.Location = new System.Drawing.Point(17, 9);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(87, 19);
+            this.materialLabel3.TabIndex = 16;
+            this.materialLabel3.Text = "Estadisticas";
+            // 
             // Servicios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(954, 582);
-            this.Controls.Add(this.materialLabel2);
-            this.Controls.Add(this.materialLabel1);
-            this.Controls.Add(this.dtpServicioHasta);
-            this.Controls.Add(this.dtpServicioDesde);
-            this.Controls.Add(this.chartServicios);
+            this.ClientSize = new System.Drawing.Size(931, 570);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.listServicios);
+            this.Controls.Add(this.materialCard1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "Servicios";
@@ -261,6 +294,8 @@ namespace UI.Desktop
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Servicios";
             ((System.ComponentModel.ISupportInitialize)(this.chartServicios)).EndInit();
+            this.materialCard1.ResumeLayout(false);
+            this.materialCard1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,5 +315,7 @@ namespace UI.Desktop
         private System.Windows.Forms.DateTimePicker dtpServicioHasta;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialCard materialCard1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
     }
 }

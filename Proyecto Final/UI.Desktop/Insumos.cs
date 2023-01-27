@@ -18,7 +18,7 @@ namespace UI.Desktop
         private InsumoLogic _insumoLogic;
         private Insumo insumoActual;
         private LavanderiaContext _context;
-        private InsumoServicioTipoPrenda consumoActual;
+        //private InsumoServicioTipoPrenda consumoActual;
         public Insumos(LavanderiaContext context)
         {
             InitializeComponent();
@@ -44,7 +44,11 @@ namespace UI.Desktop
         private void btnDetalles_Click(object sender, EventArgs e)
         {
             ListarConsumos();
+            this.dtpFechaInicio.Value = DateTime.Today.AddYears(-10);
+            this.dtpFechaHasta.Value = DateTime.Today;
+            CalcularEstadisticasInsumos();
         }
+
         private void ListarConsumos()
         {
             listConsumos.Items.Clear();
@@ -57,13 +61,14 @@ namespace UI.Desktop
                     {
                         ListViewItem item = new ListViewItem(istp.ServicioTipoPrenda.Servicio.Descripcion);
                         item.SubItems.Add(istp.ServicioTipoPrenda.TipoPrenda.Descripcion);
-                        item.SubItems.Add(istp.FechaDesde.ToString());
+                        //item.SubItems.Add(istp.FechaDesde.ToString());
                         item.SubItems.Add(istp.Cantidad.ToString());
                         listConsumos.Items.Add(item);
                     }
                 }
             }
         }
+
         private void listInsumos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             e.Cancel = true;
@@ -73,56 +78,6 @@ namespace UI.Desktop
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            if(listInsumos.SelectedItems.Count > 0)
-            {
-                if(listConsumos.SelectedItems.Count > 0)
-                {
-                    InsumoServicioTipoPrenda stpActual = insumoActual.InsumoServicioTipoPrenda.Find(
-                           delegate (InsumoServicioTipoPrenda istp)
-                           {
-                               return istp.ServicioTipoPrenda.Servicio.Descripcion == listConsumos.SelectedItems[0].Text && istp.ServicioTipoPrenda.TipoPrenda.Descripcion == listConsumos.SelectedItems[0].SubItems[1].Text;
-                           });
-                    ServicioTipoPrendaDesktop frmConsumo = new ServicioTipoPrendaDesktop(stpActual.IdServicio, stpActual.IdTipoPrenda, ApplicationForm.ModoForm.Modificacion, _context);
-                    frmConsumo.ShowDialog();
-                }
-                else
-                {
-                    MessageBox.Show("Debe seleccionar una fila en la lista Consumos para poder agregar", "Consumo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar una fila en la lista Insumos para poder agregar", "Consumo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            if (listInsumos.SelectedItems.Count > 0)
-            {
-                if (listConsumos.SelectedItems.Count > 0)
-                {
-                    InsumoServicioTipoPrenda stpActual = insumoActual.InsumoServicioTipoPrenda.Find(
-                           delegate (InsumoServicioTipoPrenda istp)
-                           {
-                               return istp.ServicioTipoPrenda.Servicio.Descripcion == listConsumos.SelectedItems[0].Text && istp.ServicioTipoPrenda.TipoPrenda.Descripcion == listConsumos.SelectedItems[0].SubItems[1].Text;
-                           });
-                    ServicioTipoPrendaDesktop frmConsumo = new ServicioTipoPrendaDesktop(stpActual.IdServicio, stpActual.IdTipoPrenda, ApplicationForm.ModoForm.Modificacion, _context);
-                    frmConsumo.ShowDialog();
-                }
-                else
-                {
-                    MessageBox.Show("Debe seleccionar una fila en la lista Consumos para poder agregar", "Consumo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar una fila en la lista Insumos para poder agregar", "Consumo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
 
         private void btnAgregarIns_Click(object sender, EventArgs e)
@@ -161,6 +116,70 @@ namespace UI.Desktop
                 MessageBox.Show("Debe seleccionar una fila en la lista para poder eliminar", "Insumo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             ListarStock();
+        }
+
+        private void txtBuscarInsumos_TextChanged(object sender, EventArgs e)
+        {
+            listInsumos.Items.Clear();
+            List<Insumo> insumos = _insumoLogic.GetAll();
+            if (insumos.Count > 0)
+            {
+                foreach (Insumo i in insumos)
+                {
+                    if (i.IdInsumo.ToString().ToLower().Contains(this.txtBuscarInsumos.Text.ToLower()) || i.Descripcion.ToLower().Contains(this.txtBuscarInsumos.Text.ToLower())) 
+                    {
+                        ListViewItem item = new ListViewItem(i.IdInsumo.ToString());
+                        item.SubItems.Add(i.Descripcion);
+                        listInsumos.Items.Add(item);
+                    }
+                }
+            }
+
+        }
+
+        
+        private void dtpFechaInicio_ValueChanged(object sender, EventArgs e)
+        {
+            CalcularEstadisticasInsumos();
+        }
+
+        private void dtpFechaHasta_ValueChanged(object sender, EventArgs e)
+        {
+            CalcularEstadisticasInsumos();
+        }
+
+        private void CalcularEstadisticasInsumos() 
+        {
+            this.lblCantidadInsumoIngresada.Text = "-";
+            this.lblInsumosUtilizados.Text = "-";
+            double _cantidadUtilizada = 0.0;
+            double _cantidadIngresada = 0.0;
+            if (insumoActual is not null)
+            {
+                if (insumoActual.Consumos is not null && insumoActual.Consumos.Count > 0)
+                {
+                    foreach (Consumo c in insumoActual.Consumos)
+                    {
+                        if (c.FechaConsumo.Date >= this.dtpFechaInicio.Value.Date && c.FechaConsumo.Date <= this.dtpFechaHasta.Value.Date)
+                        {
+                            _cantidadUtilizada += c.Cantidad;
+                        }
+                    }
+                    this.lblInsumosUtilizados.Text = String.Concat(_cantidadUtilizada.ToString("N3"), " ", insumoActual.UnidadMedida.ToString());
+                }
+                if (insumoActual.InsumosProveedores is not null && insumoActual.InsumosProveedores.Count > 0)
+                {
+                    foreach (InsumoProveedor ip in insumoActual.InsumosProveedores)
+                    {
+                        if (ip.FechaIngreso.Date >= this.dtpFechaInicio.Value.Date && ip.FechaIngreso.Date <= this.dtpFechaHasta.Value.Date)
+                        {
+                            _cantidadIngresada += ip.Cantidad;
+                        }
+                    }
+                    this.lblCantidadInsumoIngresada.Text = String.Concat(_cantidadIngresada.ToString("N3"), " ", insumoActual.UnidadMedida.ToString());
+                }
+            }
+            //else { MessageBox.Show("Seleccione un insumo y haga click en detalles", "Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information); }
         }
     }
 }

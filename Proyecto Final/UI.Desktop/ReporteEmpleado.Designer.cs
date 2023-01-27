@@ -52,13 +52,15 @@ namespace UI.Desktop
             this.btnReporte = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            this.materialCard1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listEmpleados
             // 
             this.listEmpleados.AutoSizeTable = false;
             this.listEmpleados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listEmpleados.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listEmpleados.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listEmpleados.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnID,
             this.columnNomApe});
@@ -66,14 +68,14 @@ namespace UI.Desktop
             this.listEmpleados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listEmpleados.FullRowSelect = true;
             this.listEmpleados.HideSelection = false;
-            this.listEmpleados.Location = new System.Drawing.Point(12, 158);
+            this.listEmpleados.Location = new System.Drawing.Point(10, 90);
             this.listEmpleados.MinimumSize = new System.Drawing.Size(200, 100);
             this.listEmpleados.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listEmpleados.MouseState = MaterialSkin.MouseState.OUT;
             this.listEmpleados.MultiSelect = false;
             this.listEmpleados.Name = "listEmpleados";
             this.listEmpleados.OwnerDraw = true;
-            this.listEmpleados.Size = new System.Drawing.Size(310, 449);
+            this.listEmpleados.Size = new System.Drawing.Size(310, 588);
             this.listEmpleados.TabIndex = 0;
             this.listEmpleados.UseCompatibleStateImageBehavior = false;
             this.listEmpleados.View = System.Windows.Forms.View.Details;
@@ -92,9 +94,9 @@ namespace UI.Desktop
             // 
             this.dtpFechaDesde.Enabled = false;
             this.dtpFechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaDesde.Location = new System.Drawing.Point(132, 93);
+            this.dtpFechaDesde.Location = new System.Drawing.Point(762, 130);
             this.dtpFechaDesde.Name = "dtpFechaDesde";
-            this.dtpFechaDesde.Size = new System.Drawing.Size(170, 23);
+            this.dtpFechaDesde.Size = new System.Drawing.Size(107, 23);
             this.dtpFechaDesde.TabIndex = 1;
             this.dtpFechaDesde.ValueChanged += new System.EventHandler(this.dtpFechaDesde_ValueChanged);
             // 
@@ -102,9 +104,9 @@ namespace UI.Desktop
             // 
             this.dtpFechaHasta.Enabled = false;
             this.dtpFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaHasta.Location = new System.Drawing.Point(132, 123);
+            this.dtpFechaHasta.Location = new System.Drawing.Point(973, 130);
             this.dtpFechaHasta.Name = "dtpFechaHasta";
-            this.dtpFechaHasta.Size = new System.Drawing.Size(170, 23);
+            this.dtpFechaHasta.Size = new System.Drawing.Size(107, 23);
             this.dtpFechaHasta.TabIndex = 2;
             this.dtpFechaHasta.ValueChanged += new System.EventHandler(this.dtpFechaHasta_ValueChanged);
             // 
@@ -115,7 +117,7 @@ namespace UI.Desktop
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(12, 93);
+            this.materialLabel1.Location = new System.Drawing.Point(662, 134);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(94, 19);
@@ -129,7 +131,7 @@ namespace UI.Desktop
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(13, 123);
+            this.materialLabel2.Location = new System.Drawing.Point(875, 134);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(92, 19);
@@ -145,7 +147,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(1110, 628);
+            this.btnCerrar.Location = new System.Drawing.Point(1003, 687);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -162,7 +164,7 @@ namespace UI.Desktop
             // 
             this.listRegistradas.AutoSizeTable = false;
             this.listRegistradas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listRegistradas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listRegistradas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listRegistradas.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnNroOrden,
             this.columnFechaEntrada,
@@ -172,14 +174,14 @@ namespace UI.Desktop
             this.listRegistradas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listRegistradas.FullRowSelect = true;
             this.listRegistradas.HideSelection = false;
-            this.listRegistradas.Location = new System.Drawing.Point(467, 158);
+            this.listRegistradas.Location = new System.Drawing.Point(10, 36);
             this.listRegistradas.MinimumSize = new System.Drawing.Size(200, 100);
             this.listRegistradas.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listRegistradas.MouseState = MaterialSkin.MouseState.OUT;
             this.listRegistradas.MultiSelect = false;
             this.listRegistradas.Name = "listRegistradas";
             this.listRegistradas.OwnerDraw = true;
-            this.listRegistradas.Size = new System.Drawing.Size(684, 205);
+            this.listRegistradas.Size = new System.Drawing.Size(717, 207);
             this.listRegistradas.TabIndex = 6;
             this.listRegistradas.UseCompatibleStateImageBehavior = false;
             this.listRegistradas.View = System.Windows.Forms.View.Details;
@@ -209,7 +211,7 @@ namespace UI.Desktop
             // 
             this.listAtendidas.AutoSizeTable = false;
             this.listAtendidas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listAtendidas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listAtendidas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listAtendidas.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnOrden,
             this.columnMaquina,
@@ -220,14 +222,14 @@ namespace UI.Desktop
             this.listAtendidas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listAtendidas.FullRowSelect = true;
             this.listAtendidas.HideSelection = false;
-            this.listAtendidas.Location = new System.Drawing.Point(467, 389);
+            this.listAtendidas.Location = new System.Drawing.Point(10, 291);
             this.listAtendidas.MinimumSize = new System.Drawing.Size(200, 100);
             this.listAtendidas.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listAtendidas.MouseState = MaterialSkin.MouseState.OUT;
             this.listAtendidas.MultiSelect = false;
             this.listAtendidas.Name = "listAtendidas";
             this.listAtendidas.OwnerDraw = true;
-            this.listAtendidas.Size = new System.Drawing.Size(720, 218);
+            this.listAtendidas.Size = new System.Drawing.Size(720, 211);
             this.listAtendidas.TabIndex = 7;
             this.listAtendidas.UseCompatibleStateImageBehavior = false;
             this.listAtendidas.View = System.Windows.Forms.View.Details;
@@ -268,7 +270,7 @@ namespace UI.Desktop
             this.btnDetalles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDetalles.HighEmphasis = true;
             this.btnDetalles.Icon = global::UI.Desktop.Properties.Resources.document_3530;
-            this.btnDetalles.Location = new System.Drawing.Point(329, 158);
+            this.btnDetalles.Location = new System.Drawing.Point(327, 90);
             this.btnDetalles.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnDetalles.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnDetalles.Name = "btnDetalles";
@@ -290,7 +292,7 @@ namespace UI.Desktop
             this.btnReporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnReporte.HighEmphasis = true;
             this.btnReporte.Icon = null;
-            this.btnReporte.Location = new System.Drawing.Point(13, 628);
+            this.btnReporte.Location = new System.Drawing.Point(10, 687);
             this.btnReporte.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnReporte.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnReporte.Name = "btnReporte";
@@ -310,7 +312,7 @@ namespace UI.Desktop
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(467, 136);
+            this.materialLabel3.Location = new System.Drawing.Point(10, 14);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Size = new System.Drawing.Size(146, 19);
@@ -324,24 +326,39 @@ namespace UI.Desktop
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(467, 367);
+            this.materialLabel4.Location = new System.Drawing.Point(10, 258);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(142, 19);
             this.materialLabel4.TabIndex = 11;
             this.materialLabel4.Text = "Trabajos atendidos:";
             // 
+            // materialCard1
+            // 
+            this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.materialCard1.Controls.Add(this.listAtendidas);
+            this.materialCard1.Controls.Add(this.materialLabel3);
+            this.materialCard1.Controls.Add(this.materialLabel4);
+            this.materialCard1.Controls.Add(this.listRegistradas);
+            this.materialCard1.Depth = 0;
+            this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard1.Location = new System.Drawing.Point(327, 161);
+            this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard1.Name = "materialCard1";
+            this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard1.Size = new System.Drawing.Size(753, 517);
+            this.materialCard1.TabIndex = 12;
+            // 
             // ReporteEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1204, 679);
-            this.Controls.Add(this.materialLabel4);
-            this.Controls.Add(this.materialLabel3);
+            this.ClientSize = new System.Drawing.Size(1096, 738);
+            this.Controls.Add(this.materialCard1);
             this.Controls.Add(this.btnReporte);
             this.Controls.Add(this.btnDetalles);
-            this.Controls.Add(this.listAtendidas);
-            this.Controls.Add(this.listRegistradas);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.materialLabel1);
@@ -354,6 +371,8 @@ namespace UI.Desktop
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Empleados";
+            this.materialCard1.ResumeLayout(false);
+            this.materialCard1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -384,5 +403,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnReporte;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
+        private MaterialSkin.Controls.MaterialCard materialCard1;
     }
 }

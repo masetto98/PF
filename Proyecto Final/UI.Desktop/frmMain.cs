@@ -38,7 +38,9 @@ namespace UI.Desktop
         public AtributosNegocio NegocioActual;
         public List<OrdenServicioTipoPrenda> _trabajosPendientes;
         public List<MaquinaOrdenServicioTipoPrenda> _trabajosEnProceso;
+        public List<OrdenServicioTipoPrenda> _trabajosFinalizados;
         public List<ItemTrabajo> _listaEspera;
+        public List<ItemTrabajo> _listaFinalizados;
         public double _deudaCliente;
 
         public frmMain(LavanderiaContext context)
@@ -56,11 +58,13 @@ namespace UI.Desktop
             _maquinaOrdenServicioTipoPrendaLogic = new MaquinaOrdenServicioTipoPrendaLogic(new MaquinaOrdenServicioTipoPrendaAdapter(context));
             _maquinaLogic = new MaquinaLogic(new MaquinaAdapter(context));
             _listaEspera = new List<ItemTrabajo>();
+            _listaFinalizados = new List<ItemTrabajo>();
             //NegocioActual = _atributosNegocioLogic.GetOne(1);
             RellenarComboBox(listClientes, cmbBuscarCliente);
             RellenarComboBox(listOrdenes, cmbBuscarOrden);
             RellenarComboBox(listInsumos, cmbInsumos);
             RellenarComboBox(listTrabajosPendientes, cmbTrabajosPendientes);
+            RellenarComboBox(listTrabajosFinalizados,cmbFiltroTrabajosFinalizados);
             CargarOrdenes();
             Planificar();
         }
@@ -74,14 +78,7 @@ namespace UI.Desktop
             }
             cbActual.DataSource = columnas;
         }
-        /*
-        private void btnNuevoCliente_Click(object sender, EventArgs e)
-        {
-            ClienteDesktop frmCliente = new ClienteDesktop(ApplicationForm.ModoForm.Alta, _context);
-            frmCliente.ShowDialog();
-
-        }*/
-
+       
         private void mnuPrincipal_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (mnuPrincipal.SelectedIndex)
@@ -97,6 +94,7 @@ namespace UI.Desktop
                     break;
                 case 3:
                     ListarOrdenesTrabajosPendientes();
+                    //ListarTrabajosFinalizados();
                     break;
                 case 5:
                     obtenerPDF();
@@ -300,7 +298,10 @@ namespace UI.Desktop
                 Cliente clienteActual = _clienteLogic.GetOne(Int32.Parse(listClientes.SelectedItems[0].Text));
                 if (clienteActual.Ordenes is not null)
                 {
-                    foreach (Orden o in clienteActual.Ordenes)
+                    //clienteActual.Ordenes.Sort((x, y) => x.Estado.CompareTo(y.Estado));
+                    List<Orden> orderOrdenes = clienteActual.Ordenes.OrderBy(x => x.Estado).ToList();
+                    //maquinasItem.Sort((x, y) => x.TiempoInicioServicio.CompareTo(y.TiempoInicioServicio));
+                    foreach (Orden o in orderOrdenes)
                     {
                         ListViewItem item = new ListViewItem(o.NroOrden.ToString());
                         item.SubItems.Add(o.FechaEntrada.ToString());
@@ -764,13 +765,13 @@ namespace UI.Desktop
                 }
                 else
                 {
-                    dtpFiltroFechaIngreso.Value = DateTime.Now;
+                    //dtpFiltroFechaIngreso.Value = DateTime.Now;
                     MessageBox.Show("Seleccionar una fila en la lista para poder observar los detalles", "Movimientos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
-                dtpFiltroFechaIngreso.Value = DateTime.Now;
+                //dtpFiltroFechaIngreso.Value = DateTime.Now;
                 MessageBox.Show("No se han encontrado Movimientos para realizar el filtro correspondiente.", "Movimientos", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             
@@ -1321,15 +1322,20 @@ namespace UI.Desktop
         {
             _trabajosPendientes = _ordenServicioTipoPrendaLogic.GetItemsPendientes();
             _listaEspera.Clear();
+            _listaFinalizados.Clear();
             CargarListaEspera();
-            ListarEstadoMaquinas();
+            ListarOrdenesTrabajosPendientes();
+            //ListarEstadoMaquinas();
             ListarTrabajosEnProceso();
+            CargarListaFinalizados();
+            ListarTrabajosFinalizados();
         }
+        /*
         private void listEstadoMaquinas_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             e.Cancel = true;
             e.NewWidth = listEstadoMaquinas.Columns[e.ColumnIndex].Width;
-        }
+        }*/
 
         private void listTrabajosPendientes_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
@@ -1342,9 +1348,9 @@ namespace UI.Desktop
             e.Cancel = true;
             e.NewWidth = listMaquinasItem.Columns[e.ColumnIndex].Width;
         }
+        
         #region ------- TRABAJOS PENDIENTES -------
        
-
         private void CargarListaEspera()
         {
 
@@ -1400,7 +1406,7 @@ namespace UI.Desktop
                 else { listTrabajosPendientes.Items[i].BackColor = Color.White; }
             }
         }
-
+        /*
         private void ListarEstadoMaquinas()
         {
             List<Maquina> maquinas = _maquinaLogic.GetAll();
@@ -1428,7 +1434,7 @@ namespace UI.Desktop
                 }
             }
             listMaquinasItem.Sort();
-        }
+        }*/
 
         private void btnMostrarServicios_Click(object sender, EventArgs e)
         {
@@ -1444,8 +1450,10 @@ namespace UI.Desktop
                 });
                 if (maquinasItem is not null)
                 {
+                    maquinasItem.Sort((x, y) => x.TiempoInicioServicio.CompareTo(y.TiempoInicioServicio));
                     if (maquinasItem.Count > 0)
                     {
+
                         listMaquinasItem.Items.Clear();
                         foreach (MaquinaOrdenServicioTipoPrenda mi in maquinasItem)
                         {
@@ -1471,9 +1479,6 @@ namespace UI.Desktop
             }
             
         }
-            
-
-        
 
         private void btnIniciarServicio_Click(object sender, EventArgs e)
         {
@@ -1499,7 +1504,7 @@ namespace UI.Desktop
                 Planificar();
                 ListarOrdenesTrabajosPendientes();
                 ListarTrabajosEnProceso();
-                ListarEstadoMaquinas();
+                //ListarEstadoMaquinas();
             }
             else
             {
@@ -1540,14 +1545,7 @@ namespace UI.Desktop
                     else
                     {
                         if (MessageBox.Show("¿Esta seguro que desea finalizar este trabajo?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        { /*
-                    OrdenServicioTipoPrenda t = _trabajosPendientes.Find(delegate (OrdenServicioTipoPrenda item)
-                    {
-                        return item.NroOrden == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].Text) &&
-                               item.ServicioTipoPrenda.Servicio.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[1].Text &&
-                               item.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[2].Text &&
-                               item.OrdenItem == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].SubItems[3].Text);
-                    });*/
+                        { 
                             t.Estado = OrdenServicioTipoPrenda.Estados.Finalizado;
                             if (ValidarFinalizacionOrden(t.NroOrden))
                             {
@@ -1574,7 +1572,6 @@ namespace UI.Desktop
 
         }
         
-
         private bool ValidarFinalizacionOrden(int nroOrden)
         {
             Orden ordenActual = _ordenLogic.GetOne(nroOrden);
@@ -1685,46 +1682,183 @@ namespace UI.Desktop
                     }
                 }
             }
-            if (this.cmbTrabajosPendientes.SelectedItem.ToString() == "Estado")
-            {
-                foreach (ItemTrabajo i in _listaEspera)
-                {
-                    if (i.Trabajo.Estado.ToString().Contains(this.txtBuscarTrabajosPendientes.Text))
-                    {
-                        ListViewItem item = new ListViewItem(i.Trabajo.Orden.NroOrden.ToString());
-                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.Servicio.Descripcion);
-                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion);
-                        item.SubItems.Add(i.Trabajo.OrdenItem.ToString());
-                        item.SubItems.Add(i.Trabajo.Estado.ToString());
-                        item.SubItems.Add(i.Trabajo.Prioridad.ToString());
-                        item.SubItems.Add(i.TiempoRestante.ToString());
-                        listTrabajosPendientes.Items.Add(item);
-                    }
-                }
-            }
-            if (this.cmbTrabajosPendientes.SelectedItem.ToString() == "Prioridad")
-            {
-                foreach (ItemTrabajo i in _listaEspera)
-                {
-                    if (i.Trabajo.Prioridad.ToString().Contains(this.txtBuscarTrabajosPendientes.Text))
-                    {
-                        ListViewItem item = new ListViewItem(i.Trabajo.Orden.NroOrden.ToString());
-                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.Servicio.Descripcion);
-                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion);
-                        item.SubItems.Add(i.Trabajo.OrdenItem.ToString());
-                        item.SubItems.Add(i.Trabajo.Estado.ToString());
-                        item.SubItems.Add(i.Trabajo.Prioridad.ToString());
-                        item.SubItems.Add(i.TiempoRestante.ToString());
-                        listTrabajosPendientes.Items.Add(item);
-                    }
-                }
-            }
             if (this.txtBuscarTrabajosPendientes.Text == "") { ListarOrdenesTrabajosPendientes(); }
         }
 
+        private void cmbTrabajosPendientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListarOrdenesTrabajosPendientes();
+            if (this.cmbTrabajosPendientes.SelectedItem.ToString() == "Prioridad")
+            {
+                txtBuscarTrabajosPendientes.Visible = false;
+                this.lblElijaFechaEntrega.Visible = false;
+                this.dtpFechaVencitmiento.Visible = false;
+                cmbEstados.DataSource = Enum.GetValues(typeof(OrdenServicioTipoPrenda.Prioridades));
+                //cmbEstados.SelectedItem = null;
+                cmbEstados.Visible = true;
+            }
+            else if (this.cmbTrabajosPendientes.SelectedItem.ToString() == "Estado")
+            {
+                List<string> opciones = new List<string>();
+                opciones.Add("Pendiente");
+                opciones.Add("Iniciado");
+                cmbEstados.DataSource = opciones;
+                //cmbEstados.SelectedItem = null;
+                txtBuscarTrabajosPendientes.Visible = false;
+                this.lblElijaFechaEntrega.Visible = false;
+                this.dtpFechaVencitmiento.Visible = false;
+                cmbEstados.Visible = true;
+            }
+            else if (this.cmbTrabajosPendientes.SelectedItem.ToString() == "Tiempo Restante") 
+            {
+                this.txtBuscarTrabajosPendientes.Visible = false;
+                this.cmbEstados.Visible = false;
+                this.lblElijaFechaEntrega.Visible = true;
+                this.dtpFechaVencitmiento.Visible = true;
+            }
+            else
+            {
+                cmbEstados.Visible = false;
+                txtBuscarTrabajosPendientes.Visible = true;
+                this.lblElijaFechaEntrega.Visible = false;
+                this.dtpFechaVencitmiento.Visible = false;
+            }
+        }
+
+        private void cmbEstados_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.cmbEstados.SelectedItem.ToString() == "Estandar" )
+            {
+                listTrabajosPendientes.Items.Clear();
+                foreach (ItemTrabajo i in _listaEspera)
+                {
+                    if (i.Trabajo.Prioridad.ToString().Contains(this.cmbEstados.SelectedItem.ToString()))
+                    {
+                        ListViewItem item = new ListViewItem(i.Trabajo.Orden.NroOrden.ToString());
+                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.Servicio.Descripcion);
+                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                        item.SubItems.Add(i.Trabajo.OrdenItem.ToString());
+                        item.SubItems.Add(i.Trabajo.Estado.ToString());
+                        item.SubItems.Add(i.Trabajo.Prioridad.ToString());
+                        if (i.TiempoRestante.ToString().Contains("-"))
+                        {
+                            item.SubItems.Add("-" + i.TiempoRestante.ToString(@"d\d\:h\h\:m\m"));
+                        }
+                        else
+                        {
+                            item.SubItems.Add(i.TiempoRestante.ToString(@"d\d\:h\h\:m\m"));
+                        }
+                        listTrabajosPendientes.Items.Add(item);
+                    }
+                }
+            }
+            if (this.cmbEstados.SelectedItem.ToString() == "Alta")
+            {
+                listTrabajosPendientes.Items.Clear();
+                foreach (ItemTrabajo i in _listaEspera)
+                {
+                    if (i.Trabajo.Prioridad.ToString().Contains(this.cmbEstados.SelectedItem.ToString()))
+                    {
+                        ListViewItem item = new ListViewItem(i.Trabajo.Orden.NroOrden.ToString());
+                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.Servicio.Descripcion);
+                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                        item.SubItems.Add(i.Trabajo.OrdenItem.ToString());
+                        item.SubItems.Add(i.Trabajo.Estado.ToString());
+                        item.SubItems.Add(i.Trabajo.Prioridad.ToString());
+                        if (i.TiempoRestante.ToString().Contains("-"))
+                        {
+                            item.SubItems.Add("-" + i.TiempoRestante.ToString(@"d\d\:h\h\:m\m"));
+                        }
+                        else
+                        {
+                            item.SubItems.Add(i.TiempoRestante.ToString(@"d\d\:h\h\:m\m"));
+                        }
+                        listTrabajosPendientes.Items.Add(item);
+                    }
+                }
+            }
+            if (this.cmbEstados.SelectedItem.ToString() == "Pendiente")
+            {
+                listTrabajosPendientes.Items.Clear();
+                foreach (ItemTrabajo i in _listaEspera)
+                {
+                    if (i.Trabajo.Estado.ToString().Contains(this.cmbEstados.SelectedItem.ToString()))
+                    {
+                        ListViewItem item = new ListViewItem(i.Trabajo.Orden.NroOrden.ToString());
+                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.Servicio.Descripcion);
+                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                        item.SubItems.Add(i.Trabajo.OrdenItem.ToString());
+                        item.SubItems.Add(i.Trabajo.Estado.ToString());
+                        item.SubItems.Add(i.Trabajo.Prioridad.ToString());
+                        if (i.TiempoRestante.ToString().Contains("-"))
+                        {
+                            item.SubItems.Add("-" + i.TiempoRestante.ToString(@"d\d\:h\h\:m\m"));
+                        }
+                        else
+                        {
+                            item.SubItems.Add(i.TiempoRestante.ToString(@"d\d\:h\h\:m\m"));
+                        }
+                        listTrabajosPendientes.Items.Add(item);
+                    }
+                }
+            }
+            if (this.cmbEstados.SelectedItem.ToString() == "Iniciado")
+            {
+                listTrabajosPendientes.Items.Clear();
+                foreach (ItemTrabajo i in _listaEspera)
+                {
+                    if (i.Trabajo.Estado.ToString().Contains(this.cmbEstados.SelectedItem.ToString()))
+                    {
+                        ListViewItem item = new ListViewItem(i.Trabajo.Orden.NroOrden.ToString());
+                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.Servicio.Descripcion);
+                        item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                        item.SubItems.Add(i.Trabajo.OrdenItem.ToString());
+                        item.SubItems.Add(i.Trabajo.Estado.ToString());
+                        item.SubItems.Add(i.Trabajo.Prioridad.ToString());
+                        if (i.TiempoRestante.ToString().Contains("-"))
+                        {
+                            item.SubItems.Add("-" + i.TiempoRestante.ToString(@"d\d\:h\h\:m\m"));
+                        }
+                        else
+                        {
+                            item.SubItems.Add(i.TiempoRestante.ToString(@"d\d\:h\h\:m\m"));
+                        }
+                        listTrabajosPendientes.Items.Add(item);
+                    }
+                }
+
+            }
+        }
+
+        private void dtpFechaVencitmiento_ValueChanged(object sender, EventArgs e)
+        {
+            listTrabajosPendientes.Items.Clear();
+            foreach (ItemTrabajo i in _listaEspera)
+            {
+                if (i.Trabajo.Orden.FechaHoraEntregaIngresada.Date <= this.dtpFechaVencitmiento.Value.Date)
+                {
+                    ListViewItem item = new ListViewItem(i.Trabajo.Orden.NroOrden.ToString());
+                    item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.Servicio.Descripcion);
+                    item.SubItems.Add(i.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                    item.SubItems.Add(i.Trabajo.OrdenItem.ToString());
+                    item.SubItems.Add(i.Trabajo.Estado.ToString());
+                    item.SubItems.Add(i.Trabajo.Prioridad.ToString());
+                    if (i.TiempoRestante.ToString().Contains("-"))
+                    {
+                        item.SubItems.Add("-" + i.TiempoRestante.ToString(@"d\d\:h\h\:m\m"));
+                    }
+                    else
+                    {
+                        item.SubItems.Add(i.TiempoRestante.ToString(@"d\d\:h\h\:m\m"));
+                    }
+                    listTrabajosPendientes.Items.Add(item);
+                }
+            }
+        }
         #endregion
 
         #region ------- TRABAJOS EN PROCESO -------
+
         private void ListarTrabajosEnProceso()
         {
             _trabajosEnProceso = _maquinaOrdenServicioTipoPrendaLogic.GetAll().FindAll(delegate (MaquinaOrdenServicioTipoPrenda m) { return m.TiempoFinServicio == DateTime.MinValue; });
@@ -1767,13 +1901,253 @@ namespace UI.Desktop
             }
             ListarOrdenesTrabajosPendientes();
             ListarTrabajosEnProceso();
-            ListarEstadoMaquinas();
+            //ListarEstadoMaquinas();
         }
 
         private void listTrabajosEnProceso_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             e.Cancel = true;
             e.NewWidth = listTrabajosEnProceso.Columns[e.ColumnIndex].Width;
+        }
+
+        #endregion
+
+        #region ------- TRABAJOS FINALIZADOS -------
+
+        private void ListarTrabajosFinalizados() 
+        {
+            
+            listTrabajosFinalizados.Items.Clear();
+            if (_listaFinalizados.Count > 0) {
+                foreach (ItemTrabajo it in _listaFinalizados) {
+                    ListViewItem item =  new ListViewItem(it.Trabajo.Orden.NroOrden.ToString());
+                    item.SubItems.Add(it.Trabajo.ServicioTipoPrenda.Servicio.Descripcion);
+                    item.SubItems.Add(it.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                    item.SubItems.Add(it.Trabajo.OrdenItem.ToString());
+                    item.SubItems.Add(it.Trabajo.Estado.ToString());
+                    item.SubItems.Add(it.Fecha.ToString());
+                    listTrabajosFinalizados.Items.Add(item);
+                }
+            }
+        }
+
+        private void CargarListaFinalizados()
+        {
+            _trabajosFinalizados = _ordenServicioTipoPrendaLogic.GetAll().FindAll(delegate (OrdenServicioTipoPrenda o) { return o.Estado == OrdenServicioTipoPrenda.Estados.Finalizado;});
+            foreach (OrdenServicioTipoPrenda item in _trabajosFinalizados)
+            {
+                ItemTrabajo trabajo = new ItemTrabajo();
+                trabajo.Trabajo = item;
+                List<MaquinaOrdenServicioTipoPrenda> servicios = item.MaquinaOrdenServicioTipoPrenda.OrderByDescending(x => x.TiempoFinServicio).ToList();
+                if (servicios.Count >0)
+                {
+                    trabajo.Fecha = servicios.First().TiempoFinServicio;
+                    _listaFinalizados.Add(trabajo);
+                }
+            }
+            List<ItemTrabajo> orderList = _listaFinalizados.OrderByDescending(i => i.Fecha).ToList();
+            _listaFinalizados.Clear();
+            _listaFinalizados = orderList;
+        }
+
+        private void btnServiciosDetallados_Click(object sender, EventArgs e)
+        {
+            List<MaquinaOrdenServicioTipoPrenda> maquinasItem = new List<MaquinaOrdenServicioTipoPrenda>();
+            if (listTrabajosFinalizados.SelectedItems.Count > 0)
+            {
+                maquinasItem = _maquinaOrdenServicioTipoPrendaLogic.GetAll().FindAll(delegate (MaquinaOrdenServicioTipoPrenda item)
+                {
+                    return item.NroOrden == Int32.Parse(this.listTrabajosFinalizados.SelectedItems[0].Text) &&
+                           item.OrdenServicioTipoPrenda.ServicioTipoPrenda.Servicio.Descripcion == this.listTrabajosFinalizados.SelectedItems[0].SubItems[1].Text &&
+                           item.OrdenServicioTipoPrenda.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listTrabajosFinalizados.SelectedItems[0].SubItems[2].Text &&
+                           item.OrdenItem == Int32.Parse(this.listTrabajosFinalizados.SelectedItems[0].SubItems[3].Text);
+                });
+                if (maquinasItem is not null)
+                {
+                    maquinasItem.Sort((x, y) => x.TiempoInicioServicio.CompareTo(y.TiempoInicioServicio));
+                    if (maquinasItem.Count > 0)
+                    {
+                        listServiciosOrden.Items.Clear();
+                        foreach (MaquinaOrdenServicioTipoPrenda mi in maquinasItem)
+                        {
+                            ListViewItem mir = new ListViewItem(mi.Maquina.Descripcion);
+                            mir.SubItems.Add(mi.TiempoInicioServicio.ToString());
+                            if (mi.TiempoFinServicio == DateTime.MinValue)
+                            {
+                                mir.SubItems.Add("");
+                            }
+                            else { mir.SubItems.Add(mi.TiempoFinServicio.ToString()); }
+                            mir.SubItems.Add(String.Concat(mi.Empleado.Nombre, " ", mi.Empleado.Apellido));
+                            listServiciosOrden.Items.Add(mir);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("El item seleccionado no tiene servicios realizados", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un trabajo en la lista para poder observar los detalles", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void txtBuscarTrabajosFinalizados_TextChanged(object sender, EventArgs e)
+        {
+            //_trabajosFinalizados = _maquinaOrdenServicioTipoPrendaLogic.GetAll().FindAll(delegate (MaquinaOrdenServicioTipoPrenda m) { return m.TiempoFinServicio != DateTime.MinValue; });
+            listTrabajosFinalizados.Items.Clear();
+            if (this.cmbFiltroTrabajosFinalizados.SelectedItem.ToString() == "N°")
+            {
+                foreach (ItemTrabajo it in _listaFinalizados)
+                {
+                    if (it.Trabajo.NroOrden.ToString().Contains(this.txtBuscarTrabajosFinalizados.Text))
+                    {
+                        ListViewItem item = new ListViewItem(it.Trabajo.NroOrden.ToString());
+                        item.SubItems.Add(it.Trabajo.ServicioTipoPrenda.Servicio.Descripcion);
+                        item.SubItems.Add(it.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                        item.SubItems.Add(it.Trabajo.OrdenItem.ToString());
+                        item.SubItems.Add(it.Trabajo.Estado.ToString());
+                        item.SubItems.Add(it.Fecha.ToString());
+                        listTrabajosFinalizados.Items.Add(item);
+                    }
+                }
+
+            }
+            if (this.cmbFiltroTrabajosFinalizados.SelectedItem.ToString() == "Servicio")
+            {
+                foreach (ItemTrabajo it in _listaFinalizados)
+                {
+                    if (it.Trabajo.ServicioTipoPrenda.Servicio.Descripcion.Contains(this.txtBuscarTrabajosFinalizados.Text))
+                    {
+                        ListViewItem item = new ListViewItem(it.Trabajo.NroOrden.ToString());
+                        item.SubItems.Add(it.Trabajo.ServicioTipoPrenda.Servicio.Descripcion);
+                        item.SubItems.Add(it.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                        item.SubItems.Add(it.Trabajo.OrdenItem.ToString());
+                        item.SubItems.Add(it.Trabajo.Estado.ToString());
+                        item.SubItems.Add(it.Fecha.ToString());
+                        listTrabajosFinalizados.Items.Add(item);
+                    }
+                }
+            }
+            if (this.cmbFiltroTrabajosFinalizados.SelectedItem.ToString() == "Tipo Prenda")
+            {
+                foreach (ItemTrabajo it in _listaFinalizados)
+                {
+                    if (it.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion.Contains(this.txtBuscarTrabajosFinalizados.Text))
+                    {
+                        ListViewItem item = new ListViewItem(it.Trabajo.NroOrden.ToString());
+                        item.SubItems.Add(it.Trabajo.ServicioTipoPrenda.Servicio.Descripcion);
+                        item.SubItems.Add(it.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                        item.SubItems.Add(it.Trabajo.OrdenItem.ToString());
+                        item.SubItems.Add(it.Trabajo.Estado.ToString());
+                        item.SubItems.Add(it.Fecha.ToString());
+                        listTrabajosFinalizados.Items.Add(item);
+                    }
+                }
+            }
+            if (this.cmbFiltroTrabajosFinalizados.SelectedItem.ToString() == "Item")
+            {
+                foreach (ItemTrabajo it in _listaFinalizados)
+                {
+                    if (it.Trabajo.OrdenItem.ToString().Contains(this.txtBuscarTrabajosFinalizados.Text))
+                    {
+                        ListViewItem item = new ListViewItem(it.Trabajo.NroOrden.ToString());
+                        item.SubItems.Add(it.Trabajo.ServicioTipoPrenda.Servicio.Descripcion);
+                        item.SubItems.Add(it.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                        item.SubItems.Add(it.Trabajo.OrdenItem.ToString());
+                        item.SubItems.Add(it.Trabajo.Estado.ToString());
+                        item.SubItems.Add(it.Fecha.ToString());
+                        listTrabajosFinalizados.Items.Add(item);
+                    }
+                }
+            }
+            if (this.txtBuscarTrabajosFinalizados.Text == "") { ListarTrabajosFinalizados(); }
+            
+        }
+
+        private void btnEnviarPendientes_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Desea enviar este item a pendientes?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (listTrabajosFinalizados.SelectedItems.Count > 0)
+                {
+                    OrdenServicioTipoPrenda ostp = _ordenServicioTipoPrendaLogic.GetAll().Find(x =>
+                          x.NroOrden == Int32.Parse(this.listTrabajosFinalizados.SelectedItems[0].Text) &&
+                          x.ServicioTipoPrenda.Servicio.Descripcion == this.listTrabajosFinalizados.SelectedItems[0].SubItems[1].Text &&
+                          x.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listTrabajosFinalizados.SelectedItems[0].SubItems[2].Text &&
+                          x.OrdenItem == Int32.Parse(this.listTrabajosFinalizados.SelectedItems[0].SubItems[3].Text));
+
+                    Orden ordenItemActual = _ordenLogic.GetOne(ostp.NroOrden);
+                    if (ordenItemActual is not null && ordenItemActual.Estado != Orden.Estados.Retirado)
+                    {
+                        ostp.Estado = OrdenServicioTipoPrenda.Estados.Iniciado;
+                        ostp.State = BusinessEntity.States.Modified;
+                        ordenItemActual.Estado = Orden.Estados.Procesando;
+                        ordenItemActual.State = BusinessEntity.States.Modified;
+                        ordenItemActual.ItemsPedidos.Add(ostp);
+                        _ordenLogic.Save(ordenItemActual);
+                        Planificar();
+                    }
+                    else { MessageBox.Show("La orden del item selecciona ya se encuentra registrada como RETIRADA, y por lo tanto no es posible realizar la acción", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                }
+
+            }
+        }
+
+        private void cmbFiltroTrabajosFinalizados_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            //listTrabajosFinalizados.Items.Clear();
+            if (this.cmbFiltroTrabajosFinalizados.SelectedItem.ToString() == "Fecha y hora fin")
+            {
+                this.txtBuscarTrabajosFinalizados.Visible = false;
+                this.lblDesde.Visible = true;
+                this.dtpBuscarFechaMenor.Visible = true;
+                this.lblHasta.Visible = true;
+                this.dtpBuscarFechaMayor.Visible = true;
+                this.dtpBuscarFechaMenor.Value = DateTime.Today;
+                this.dtpBuscarFechaMayor.Value = DateTime.Today;
+
+            }
+            else 
+            {
+                this.txtBuscarTrabajosFinalizados.Visible = true;
+                this.lblDesde.Visible = false;
+                this.dtpBuscarFechaMenor.Visible = false;
+                this.lblHasta.Visible = false;
+                this.dtpBuscarFechaMayor.Visible = false;
+                ListarTrabajosFinalizados();
+            }
+        }
+
+        private void dtpBuscarFechaMenor_ValueChanged(object sender, EventArgs e)
+        {
+            ListarTrabajosFinalizadosPorFecha();
+        }
+
+        private void dtpBuscarFechaMayor_ValueChanged(object sender, EventArgs e)
+        {
+            ListarTrabajosFinalizadosPorFecha();
+        }
+
+        private void ListarTrabajosFinalizadosPorFecha() 
+        {
+            listTrabajosFinalizados.Items.Clear();
+            foreach (ItemTrabajo it in _listaFinalizados)
+            {
+                if (it.Fecha.Date >= dtpBuscarFechaMenor.Value.Date && it.Fecha.Date <= dtpBuscarFechaMayor.Value.Date)
+                {
+                    ListViewItem item = new ListViewItem(it.Trabajo.NroOrden.ToString());
+                    item.SubItems.Add(it.Trabajo.ServicioTipoPrenda.Servicio.Descripcion);
+                    item.SubItems.Add(it.Trabajo.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                    item.SubItems.Add(it.Trabajo.OrdenItem.ToString());
+                    item.SubItems.Add(it.Trabajo.Estado.ToString());
+                    item.SubItems.Add(it.Fecha.ToString());
+                    listTrabajosFinalizados.Items.Add(item);
+                }
+            }
+
         }
 
         #endregion
