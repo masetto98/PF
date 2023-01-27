@@ -63,7 +63,7 @@ namespace UI.Desktop
 
         private void btnReporteGastos_Click(object sender, EventArgs e)
         {
-            if (Singleton.getInstance().ListActual != null && Singleton.getInstance().ListActual.SelectedItems.Count > 0)
+            if (Singleton.getInstance().ListActual != null && Singleton.getInstance().ListActual.Items.Count > 0)
             {
                 SaveFileDialog sfd = new SaveFileDialog();
                 sfd.Filter = "PDF (*.pdf)|*.pdf";
@@ -130,15 +130,35 @@ namespace UI.Desktop
                                 fecha.Add($"Fecha de emisión: {DateTime.Now} \n");
                                 fecha.SetFontSize(9);
                                 document.Add(fecha);
-                                if(dtpFechaDesde.Value.ToString("yyyy/MM/dd") != DateTime.Now.ToString("yyyy/MM/dd"))
+                                if (dtpFechaHasta.Value.Date != DateTime.Now.Date)
+                                {
+                                    if (dtpFechaDesde.Value.Date != DateTime.Now.Date)
+                                    {
+                                        Paragraph fechaDesde = new Paragraph();
+                                        fechaDesde.SetTextAlignment(TextAlignment.CENTER);
+                                        fechaDesde.Add($"El Reporte abarca desde: {dtpFechaDesde.Value.Date.ToString("yyyy/MM/dd")} - hasta: {dtpFechaHasta.Value.Date.ToString("yyyy/MM/dd")}\n");
+                                        fechaDesde.SetFontSize(9);
+                                        document.Add(fechaDesde);
+                                    }
+                                    else
+                                    {
+                                        Paragraph fechaDesde = new Paragraph();
+                                        fechaDesde.SetTextAlignment(TextAlignment.CENTER);
+                                        fechaDesde.Add($"El Reporte abarca hasta: {dtpFechaHasta.Value.Date.ToString("yyyy/MM/dd")}\n");
+                                        fechaDesde.SetFontSize(9);
+                                        document.Add(fechaDesde);
+                                    }
+
+                                }
+                                else
                                 {
                                     Paragraph fechaDesde = new Paragraph();
                                     fechaDesde.SetTextAlignment(TextAlignment.CENTER);
-                                    fechaDesde.Add($"Gastos desde: {dtpFechaDesde.Value.Date} - hasta: {dtpFechaHasta.Value.Date}\n");
+                                    fechaDesde.Add($"El Reporte abarca desde: {dtpFechaDesde.Value.Date.ToString("yyyy/MM/dd")}\n");
                                     fechaDesde.SetFontSize(9);
                                     document.Add(fechaDesde);
                                 }
-                                
+
                                 document.Add(pdfTable);
                                 Paragraph Total = new Paragraph();
                                 Total.SetTextAlignment(TextAlignment.RIGHT);
@@ -151,7 +171,7 @@ namespace UI.Desktop
                                 stream.Close();
                             }
 
-                            MessageBox.Show("Reporte exportado exitosamente", "Info",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                            MessageBox.Show("Reporte exportado exitosamente", "Info",MessageBoxButtons.OK,MessageBoxIcon.Information);
                         }
                         catch (Exception ex)
                         {
@@ -165,22 +185,13 @@ namespace UI.Desktop
                 MessageBox.Show("No hay registros para exportar", "Info",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
-
-        private void dtpFechaDesde_CloseUp(object sender, EventArgs e)
+        private void listarGastosFiltro(List<Gasto> gastosFiltro)
         {
             double montoTotal2 = 0;
-            DateTime fechaDesde = dtpFechaDesde.Value;
-            string fechaDesde2 = fechaDesde.ToString("yyyy/MM/dd");
-            gastosDesde = gastos.FindAll(
-                delegate (Gasto g)
-                {
-                    string fechaRealizado = g.FechaRealizado.ToString("yyyy/MM/dd");
-                    return DateTime.Parse(fechaRealizado) >= DateTime.Parse(fechaDesde2);
-                });
             listGastos.Items.Clear();
-            if (gastosDesde is not null)
+            if (gastosFiltro is not null)
             {
-                foreach (Gasto g in gastosDesde)
+                foreach (Gasto g in gastosFiltro)
                 {
                     ListViewItem item = new ListViewItem(g.FechaRealizado.ToString());
                     item.SubItems.Add(g.TipoGasto.ToString());
@@ -193,49 +204,55 @@ namespace UI.Desktop
             montoTotal = montoTotal2;
         }
 
-        private void dtpFechaHasta_CloseUp(object sender, EventArgs e)
-        {
-            double montoTotal3 = 0;
-            DateTime fechaHasta = dtpFechaHasta.Value;
-            string fechaHasta2 = fechaHasta.ToString("yyyy/MM/dd");
-            if(gastosDesde is not null)
-            {
-              gastosHasta = gastosDesde.FindAll(
-              delegate (Gasto g)
-              {
-                  string fechaRealizado = g.FechaRealizado.ToString("yyyy/MM/dd");
-                  return DateTime.Parse(fechaRealizado) <= DateTime.Parse(fechaHasta2);
-              });
-            }
-            else
-            {
-                gastosHasta = gastos.FindAll(
-               delegate (Gasto g)
-               {
-                   string fechaRealizado = g.FechaRealizado.ToString("yyyy/MM/dd");
-                   return DateTime.Parse(fechaRealizado) <= DateTime.Parse(fechaHasta2);
-               });
-            }
-            listGastos.Items.Clear();
-            if (gastosHasta is not null)
-            {
-                foreach (Gasto g in gastosHasta)
-                {
-                    ListViewItem item = new ListViewItem(g.FechaRealizado.ToString());
-                    item.SubItems.Add(g.TipoGasto.ToString());
-                    item.SubItems.Add(g.Descripcion);
-                    item.SubItems.Add(g.Importe.ToString());
-                    listGastos.Items.Add(item);
-                    montoTotal3 += g.Importe;
-                }
-            }
-            montoTotal = montoTotal3;
-        }
-
         private void listGastos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             e.Cancel = true;
             e.NewWidth = listGastos.Columns[e.ColumnIndex].Width;
+        }
+        private void filtroFecha()
+        {
+            List<Gasto> gastosFiltro = new List<Gasto>();
+            if(dtpFechaHasta.Value.Date != DateTime.Now.Date)
+            {
+                if(dtpFechaDesde.Value.Date != DateTime.Now.Date)
+                {
+                    
+                    gastosFiltro = gastos.FindAll(
+                                    delegate (Gasto g)
+                                    {
+                                        return g.FechaRealizado.Date >= dtpFechaDesde.Value.Date && g.FechaRealizado.Date <= dtpFechaHasta.Value.Date;
+                                    });
+                    listarGastosFiltro(gastosFiltro);
+                }
+                else
+                {
+                    gastosFiltro = gastos.FindAll(
+                                  delegate (Gasto g)
+                                  {
+                                      return g.FechaRealizado.Date <= dtpFechaHasta.Value.Date;
+                                  });
+                    listarGastosFiltro(gastosFiltro);
+                }
+            }
+            else
+            {
+                gastosFiltro = gastos.FindAll(
+                                  delegate (Gasto g)
+                                  {
+                                      return g.FechaRealizado.Date >= dtpFechaDesde.Value.Date;
+                                  });
+                listarGastosFiltro(gastosFiltro);
+            }
+        }
+        private void dtpFechaDesde_ValueChanged(object sender, EventArgs e)
+        {
+            filtroFecha();
+        }
+
+        private void dtpFechaHasta_ValueChanged(object sender, EventArgs e)
+        {
+            filtroFecha();
+            
         }
     }
 }

@@ -125,6 +125,8 @@ namespace UI.Desktop
             this.tabPlanificacion = new System.Windows.Forms.TabPage();
             this.tabControlPlanificacion = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPendientes = new System.Windows.Forms.TabPage();
+            this.dtpFechaVencitmiento = new System.Windows.Forms.DateTimePicker();
+            this.lblElijaFechaEntrega = new MaterialSkin.Controls.MaterialLabel();
             this.cmbEstados = new MaterialSkin.Controls.MaterialComboBox();
             this.txtBuscarTrabajosPendientes = new MaterialSkin.Controls.MaterialTextBox();
             this.cmbTrabajosPendientes = new MaterialSkin.Controls.MaterialComboBox();
@@ -221,8 +223,6 @@ namespace UI.Desktop
             this.btnEditarPerfil = new MaterialSkin.Controls.MaterialButton();
             this.imgUserLogin = new System.Windows.Forms.PictureBox();
             this.btnCerrarSesion = new MaterialSkin.Controls.MaterialButton();
-            this.lblElijaFechaEntrega = new MaterialSkin.Controls.MaterialLabel();
-            this.dtpFechaVencitmiento = new System.Windows.Forms.DateTimePicker();
             this.mnuPrincipal.SuspendLayout();
             this.mnuTabOrdenes.SuspendLayout();
             this.mnuTabClientes.SuspendLayout();
@@ -1667,6 +1667,31 @@ namespace UI.Desktop
             this.tabPendientes.TabIndex = 0;
             this.tabPendientes.Text = "Trabajos Pendientes";
             // 
+            // dtpFechaVencitmiento
+            // 
+            this.dtpFechaVencitmiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaVencitmiento.Location = new System.Drawing.Point(468, 551);
+            this.dtpFechaVencitmiento.Name = "dtpFechaVencitmiento";
+            this.dtpFechaVencitmiento.Size = new System.Drawing.Size(100, 23);
+            this.dtpFechaVencitmiento.TabIndex = 12;
+            this.dtpFechaVencitmiento.Visible = false;
+            this.dtpFechaVencitmiento.ValueChanged += new System.EventHandler(this.dtpFechaVencitmiento_ValueChanged);
+            // 
+            // lblElijaFechaEntrega
+            // 
+            this.lblElijaFechaEntrega.AutoSize = true;
+            this.lblElijaFechaEntrega.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.lblElijaFechaEntrega.Depth = 0;
+            this.lblElijaFechaEntrega.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblElijaFechaEntrega.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblElijaFechaEntrega.Location = new System.Drawing.Point(288, 553);
+            this.lblElijaFechaEntrega.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblElijaFechaEntrega.Name = "lblElijaFechaEntrega";
+            this.lblElijaFechaEntrega.Size = new System.Drawing.Size(174, 19);
+            this.lblElijaFechaEntrega.TabIndex = 11;
+            this.lblElijaFechaEntrega.Text = "Elija la fecha de entrega:";
+            this.lblElijaFechaEntrega.Visible = false;
+            // 
             // cmbEstados
             // 
             this.cmbEstados.AutoResize = false;
@@ -3019,29 +3044,6 @@ namespace UI.Desktop
             this.btnCerrarSesion.UseAccentColor = false;
             this.btnCerrarSesion.UseVisualStyleBackColor = false;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
-            // 
-            // lblElijaFechaEntrega
-            // 
-            this.lblElijaFechaEntrega.AutoSize = true;
-            this.lblElijaFechaEntrega.Depth = 0;
-            this.lblElijaFechaEntrega.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblElijaFechaEntrega.Location = new System.Drawing.Point(288, 553);
-            this.lblElijaFechaEntrega.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblElijaFechaEntrega.Name = "lblElijaFechaEntrega";
-            this.lblElijaFechaEntrega.Size = new System.Drawing.Size(174, 19);
-            this.lblElijaFechaEntrega.TabIndex = 11;
-            this.lblElijaFechaEntrega.Text = "Elija la fecha de entrega:";
-            this.lblElijaFechaEntrega.Visible = false;
-            // 
-            // dtpFechaVencitmiento
-            // 
-            this.dtpFechaVencitmiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaVencitmiento.Location = new System.Drawing.Point(468, 551);
-            this.dtpFechaVencitmiento.Name = "dtpFechaVencitmiento";
-            this.dtpFechaVencitmiento.Size = new System.Drawing.Size(100, 23);
-            this.dtpFechaVencitmiento.TabIndex = 12;
-            this.dtpFechaVencitmiento.Visible = false;
-            this.dtpFechaVencitmiento.ValueChanged += new System.EventHandler(this.dtpFechaVencitmiento_ValueChanged);
             // 
             // frmMain
             // 

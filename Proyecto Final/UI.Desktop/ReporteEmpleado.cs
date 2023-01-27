@@ -393,7 +393,7 @@ namespace UI.Desktop
                                 stream.Close();
                             }
 
-                            MessageBox.Show("Reporte exportado exitosamente", "Info", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MessageBox.Show("Reporte exportado exitosamente", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         catch (Exception ex)
                         {

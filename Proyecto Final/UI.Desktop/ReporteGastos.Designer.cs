@@ -46,7 +46,7 @@ namespace UI.Desktop
             // 
             this.listGastos.AutoSizeTable = false;
             this.listGastos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listGastos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listGastos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listGastos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnFechaRealizado,
             this.columnTipoGasto,
@@ -155,7 +155,7 @@ namespace UI.Desktop
             this.dtpFechaDesde.Name = "dtpFechaDesde";
             this.dtpFechaDesde.Size = new System.Drawing.Size(122, 23);
             this.dtpFechaDesde.TabIndex = 4;
-            this.dtpFechaDesde.CloseUp += new System.EventHandler(this.dtpFechaDesde_CloseUp);
+            this.dtpFechaDesde.ValueChanged += new System.EventHandler(this.dtpFechaDesde_ValueChanged);
             // 
             // dtpFechaHasta
             // 
@@ -164,7 +164,7 @@ namespace UI.Desktop
             this.dtpFechaHasta.Name = "dtpFechaHasta";
             this.dtpFechaHasta.Size = new System.Drawing.Size(122, 23);
             this.dtpFechaHasta.TabIndex = 5;
-            this.dtpFechaHasta.CloseUp += new System.EventHandler(this.dtpFechaHasta_CloseUp);
+            this.dtpFechaHasta.ValueChanged += new System.EventHandler(this.dtpFechaHasta_ValueChanged);
             // 
             // materialLabel2
             // 
