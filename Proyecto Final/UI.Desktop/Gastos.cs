@@ -50,6 +50,7 @@ namespace UI.Desktop
                     item.SubItems.Add(g.Descripcion);
                     item.SubItems.Add(g.FechaRealizado.ToString());
                     item.SubItems.Add(g.Importe.ToString());
+                    item.SubItems.Add(String.Concat(g.IdEmpleado," - ",g.Empleado.Apellido, " ", g.Empleado.Nombre));
                     listGastos.Items.Add(item);
                 }
             }
@@ -112,6 +113,7 @@ namespace UI.Desktop
                         item.SubItems.Add(g.Descripcion);
                         item.SubItems.Add(g.FechaRealizado.ToString());
                         item.SubItems.Add(g.Importe.ToString());
+                        item.SubItems.Add(String.Concat(g.IdEmpleado, " - ", g.Empleado.Apellido, " ", g.Empleado.Nombre));
                         listGastos.Items.Add(item);
                     }
                 }
@@ -120,13 +122,14 @@ namespace UI.Desktop
             {
                 foreach (Gasto g in gastos)
                 {
-                    if (g.TipoGasto.ToString().Contains(this.txtBuscar.Text))
+                    if (g.TipoGasto.ToString().ToLower().Contains(this.txtBuscar.Text.ToLower()))
                     {
                         ListViewItem item = new ListViewItem(g.IdGasto.ToString());
                         item.SubItems.Add(g.TipoGasto.ToString());
                         item.SubItems.Add(g.Descripcion);
                         item.SubItems.Add(g.FechaRealizado.ToString());
                         item.SubItems.Add(g.Importe.ToString());
+                        item.SubItems.Add(String.Concat(g.IdEmpleado, " - ", g.Empleado.Apellido, " ", g.Empleado.Nombre));
                         listGastos.Items.Add(item);
                     }
                 }
@@ -142,6 +145,7 @@ namespace UI.Desktop
                         item.SubItems.Add(g.Descripcion);
                         item.SubItems.Add(g.FechaRealizado.ToString());
                         item.SubItems.Add(g.Importe.ToString());
+                        item.SubItems.Add(String.Concat(g.IdEmpleado, " - ", g.Empleado.Apellido, " ", g.Empleado.Nombre));
                         listGastos.Items.Add(item);
                     }
                 }
@@ -157,6 +161,7 @@ namespace UI.Desktop
                         item.SubItems.Add(g.Descripcion);
                         item.SubItems.Add(g.FechaRealizado.ToString());
                         item.SubItems.Add(g.Importe.ToString());
+                        item.SubItems.Add(String.Concat(g.IdEmpleado, " - ", g.Empleado.Apellido, " ", g.Empleado.Nombre));
                         listGastos.Items.Add(item);
                     }
                 }
@@ -172,6 +177,24 @@ namespace UI.Desktop
                         item.SubItems.Add(g.Descripcion);
                         item.SubItems.Add(g.FechaRealizado.ToString());
                         item.SubItems.Add(g.Importe.ToString());
+                        item.SubItems.Add(String.Concat(g.IdEmpleado, " - ", g.Empleado.Apellido, " ", g.Empleado.Nombre));
+                        listGastos.Items.Add(item);
+                    }
+                }
+            }
+
+            if (this.cmbFiltro.SelectedItem.ToString() == "Empleado")
+            {
+                foreach (Gasto g in gastos)
+                {
+                    if (String.Concat(g.IdEmpleado, " - ", g.Empleado.Apellido, " ", g.Empleado.Nombre).ToLower().Contains(this.txtBuscar.Text.ToLower()))
+                    {
+                        ListViewItem item = new ListViewItem(g.IdGasto.ToString());
+                        item.SubItems.Add(g.TipoGasto.ToString());
+                        item.SubItems.Add(g.Descripcion);
+                        item.SubItems.Add(g.FechaRealizado.ToString());
+                        item.SubItems.Add(g.Importe.ToString());
+                        item.SubItems.Add(String.Concat(g.IdEmpleado, " - ", g.Empleado.Apellido, " ", g.Empleado.Nombre));
                         listGastos.Items.Add(item);
                     }
                 }

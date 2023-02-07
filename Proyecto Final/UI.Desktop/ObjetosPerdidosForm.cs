@@ -36,12 +36,15 @@ namespace UI.Desktop
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            cargarCliente();
-            if (ClienteActual is not null)
+            if (this.txtCuit.Text != "")
             {
-                ListarOrdenes();
+                cargarCliente();
+                if (ClienteActual is not null)
+                {
+                    ListarOrdenes();
+                }
             }
-
+            else { MessageBox.Show("Ingrese un cuil", "Objetos perdidos", MessageBoxButtons.OK, MessageBoxIcon.Information); }
         }
 
         private void cargarCliente()

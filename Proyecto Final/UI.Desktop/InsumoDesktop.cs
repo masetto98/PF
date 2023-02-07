@@ -56,7 +56,7 @@ namespace UI.Desktop
             this.txtDescInsumo.Text = this.InsumoActual.Descripcion;
             this.txtExistenciaInsumo.Text = this.InsumoActual.Stock.ToString();
             this.cmbUnidadMedida.SelectedIndex = this.cmbUnidadMedida.FindStringExact(Enum.GetName(InsumoActual.UnidadMedida));
-            
+            this.txtPuntoPedido.Text = InsumoActual.PuntoPedido.ToString();
             switch (this.Modos)
             {
                 case ModoForm.Alta:
@@ -102,6 +102,7 @@ namespace UI.Desktop
                 InsumoProveedor primerIngreso = new InsumoProveedor();
                 InsumoActual.Descripcion = this.txtDescInsumo.Text;
                 InsumoActual.Stock = Double.Parse(this.txtExistenciaInsumo.Text);
+                InsumoActual.PuntoPedido = Double.Parse(this.txtPuntoPedido.Text);
                 InsumoActual.UnidadMedida = (Business.Entities.Insumo.Medidas)Enum.Parse(typeof(Business.Entities.Insumo.Medidas), cmbUnidadMedida.SelectedItem.ToString());
                 primerIngreso.Proveedor = ingreso; 
                 primerIngreso.Cantidad = Double.Parse(this.txtExistenciaInsumo.Text);
@@ -114,6 +115,7 @@ namespace UI.Desktop
                 double stockAnt = InsumoActual.Stock;
                 InsumoActual.Descripcion = this.txtDescInsumo.Text;
                 InsumoActual.Stock = Double.Parse(this.txtExistenciaInsumo.Text);
+                InsumoActual.PuntoPedido = Double.Parse(this.txtPuntoPedido.Text);
                 InsumoActual.UnidadMedida = (Business.Entities.Insumo.Medidas)Enum.Parse(typeof(Business.Entities.Insumo.Medidas), cmbUnidadMedida.SelectedItem.ToString());
                 if (InsumoActual.Stock != stockAnt)
                 {

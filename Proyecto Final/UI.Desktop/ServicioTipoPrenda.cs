@@ -47,7 +47,6 @@ namespace UI.Desktop
                 }
                 double mostrar = Math.Round((cantxItem / totalItems) * 100, 2);
                 chartItem.Series["Series1"].Points.AddXY(item.Servicio.Descripcion +" "+ item.TipoPrenda.Descripcion, mostrar);
-
             }
         }
         private void ListarServicioTipoPrenda() 
@@ -197,6 +196,14 @@ namespace UI.Desktop
         {
             e.Cancel = true;
             e.NewWidth = listServiciosTipoPrendas.Columns[e.ColumnIndex].Width;
+        }
+
+        private void listServiciosTipoPrendas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.lblCantidadSolicitudes.Text = "-";
+            this.lblIngresosUtlimoMes.Text = "-";
+            this.lblIngresoTotalObtenido.Text = "-";
+            this.lblTiempoPromedio.Text = "-";
         }
     }
 }

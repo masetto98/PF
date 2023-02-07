@@ -85,6 +85,7 @@ namespace UI.Desktop
                 GastoActual.Descripcion = this.txtDescripcion.Text;
                 GastoActual.FechaRealizado = DateTime.Now;
                 GastoActual.Importe = Double.Parse(this.txtImporte.Text);
+                GastoActual.Empleado = Singleton.getInstance().EmpleadoLogged;
             }
             if (Modos == ModoForm.Modificacion)
             {

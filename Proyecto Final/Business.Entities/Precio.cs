@@ -12,9 +12,9 @@ namespace Business.Entities
     {
         private int _idServicio;
         private int _idTipoPrenda;
-        //[DataType(DataType.Date)]
         private DateTime _fechaDesde;
         private double _valor;
+        private bool _deleted;
         private ServicioTipoPrenda _servicioTipoPrenda;
 
         [Column("id_servicio")]
@@ -44,7 +44,14 @@ namespace Business.Entities
             get { return _valor; }
             set { _valor = value; }
         }
-        
+
+        [Column("deleted")]
+        public bool Borrado
+        {
+            get { return _deleted; }
+            set { _deleted = value; }
+        }
+
         public ServicioTipoPrenda ServicioTipoPrenda
         {
             get { return _servicioTipoPrenda; }

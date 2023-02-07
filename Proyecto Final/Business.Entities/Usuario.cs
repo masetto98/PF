@@ -15,6 +15,8 @@ namespace Business.Entities
         private string _clave;
         private bool _habilitado;
         private int _idEmpleado;
+        private int? _pregunta;
+        private string? _respuesta;
         private Empleado _empleado;
 
         [Key]
@@ -59,7 +61,22 @@ namespace Business.Entities
             get{return _empleado;}
             set{_empleado = value;}
         }
+
         [Column("Salt")]
         public string Salt { get; set; }
+        
+        [Column("pregunta")]
+        public int? Pregunta
+        {
+            get { return _pregunta; }
+            set { _pregunta = value; }
+        }
+
+        [Column("respuesta")]
+        public string? Respuesta
+        {
+            get { return _respuesta; }
+            set { _respuesta = value; }
+        }
     }
 }

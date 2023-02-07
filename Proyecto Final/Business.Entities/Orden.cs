@@ -18,7 +18,7 @@ namespace Business.Entities
         private DateTime _fechaEntrada;
         private DateTime _fechaSalida;
         private DateTime _fechaHoraEntregaIngresada;
-        private TimeSpan _tiempoFinalizacionReal;
+        //private TimeSpan _tiempoFinalizacionReal;
         private Estados _estado;
         private Prioridades _prioridad;
         private EntregasDomicilio _entregaDomicilio;
@@ -97,12 +97,14 @@ namespace Business.Entities
             get { return _fechaHoraEntregaIngresada; }
             set { _fechaHoraEntregaIngresada = value; }
         }
+        /*
         [Column("tiempo_finalizacion_real")]
         public TimeSpan TiempoFinalizacionReal
         {
             get { return _tiempoFinalizacionReal; }
             set { _tiempoFinalizacionReal = value; }
-        }
+        }*/
+
         [Column("fecha_salida")]
         public DateTime FechaSalida
         {

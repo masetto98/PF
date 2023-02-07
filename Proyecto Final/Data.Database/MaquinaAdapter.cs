@@ -20,7 +20,7 @@ namespace Data.Database
             List<Maquina> maquinas = new List<Maquina>();
             try
             {
-                maquinas = _context.Maquinas
+                maquinas = _context.Maquinas.Where(x => x.Borrado == false)
                                             .Include(i=>i.itemsAtendidos)
                                             .Include(i => i.Mantenimientos)
                                             .ToList();
@@ -39,7 +39,7 @@ namespace Data.Database
                 return _context.Maquinas
                                         .Include(i => i.itemsAtendidos)
                                         .Include(i => i.Mantenimientos)
-                                        .FirstOrDefault(s => s.IdMaquina == idMaquina);
+                                        .FirstOrDefault(s => s.IdMaquina == idMaquina && s.Borrado == false);
             }
             catch (Exception e)
             {

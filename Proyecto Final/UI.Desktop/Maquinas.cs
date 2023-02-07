@@ -32,10 +32,25 @@ namespace UI.Desktop
             _itemServidos = new MaquinaOrdenServicioTipoPrendaLogic(new MaquinaOrdenServicioTipoPrendaAdapter(context));
             //ListarMaquinas();
             ListarTiposMaquinas();
+            DesabilitarBotones();
             // CargarSerieGrafico();
             chartUsoMaq.BackColor = Color.Transparent;
             chartUsoMaq.ChartAreas[0].BackColor = Color.Transparent;
             //chartUsoMaq.ChartAreas[1].BackColor = Color.Transparent;
+        }
+
+        private void DesabilitarBotones()
+        {
+            if (listTiposMaquina.Items.Count > 0)
+            {
+                this.btnAgregarMaquina.Enabled = true;
+            }
+            else { this.btnAgregarMaquina.Enabled = false; }
+            if (listMaquinas.Items.Count > 0) 
+            {
+                this.btnAgregarMantenimiento.Enabled = true;
+            }
+            else { this.btnAgregarMantenimiento.Enabled = false; }
         }
 
         private void ListarTiposMaquinas() 
@@ -344,6 +359,7 @@ namespace UI.Desktop
                     }
                 }
             }
+            DesabilitarBotones();
         }
 
         private void btnAgregarMaquina_Click(object sender, EventArgs e)
@@ -351,6 +367,7 @@ namespace UI.Desktop
             MaquinaDesktop frmMaquinaDesktop = new MaquinaDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmMaquinaDesktop.ShowDialog();
             ListarMaquinas();
+            DesabilitarBotones();
         }
 
         private void btnEditarMaquina_Click(object sender, EventArgs e)
@@ -366,6 +383,7 @@ namespace UI.Desktop
                 MessageBox.Show("Debe seleccionar una fila en la lista para poder editar", "Máquina", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             ListarMaquinas();
+            DesabilitarBotones();
         }
 
         private void btnEliminarMaquina_Click(object sender, EventArgs e)
@@ -381,6 +399,7 @@ namespace UI.Desktop
                 MessageBox.Show("Debe seleccionar una fila en la lista para poder eliminar", "Máquina", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             ListarMaquinas();
+            DesabilitarBotones();
 
         }
         
@@ -520,6 +539,7 @@ namespace UI.Desktop
             TipoMaquinaDesktop frmTipoMaquinaDesktop = new TipoMaquinaDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmTipoMaquinaDesktop.ShowDialog();
             ListarTiposMaquinas();
+            DesabilitarBotones();
         }
 
         private void btnEditarTipoMaquina_Click(object sender, EventArgs e)
@@ -535,6 +555,7 @@ namespace UI.Desktop
                 MessageBox.Show("Debe seleccionar una fila en la lista para poder editar", "Tipo de Máquina", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             ListarTiposMaquinas();
+            DesabilitarBotones();
         }
 
         private void btnEliminarTipoMaquina_Click(object sender, EventArgs e)
@@ -550,6 +571,7 @@ namespace UI.Desktop
                 MessageBox.Show("Debe seleccionar una fila en la lista para poder eliminar", "Tipo de Máquina", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             ListarTiposMaquinas();
+            DesabilitarBotones();
         }
 
         private void dtpMaquinaDesde_ValueChanged(object sender, EventArgs e)

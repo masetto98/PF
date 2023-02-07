@@ -35,6 +35,7 @@ namespace UI.Desktop
             this.btnAceptarInsumo = new MaterialSkin.Controls.MaterialButton();
             this.btnCancelar = new MaterialSkin.Controls.MaterialButton();
             this.cmbUnidadMedida = new MaterialSkin.Controls.MaterialComboBox();
+            this.txtPuntoPedido = new MaterialSkin.Controls.MaterialTextBox();
             this.SuspendLayout();
             // 
             // txtIDInsumo
@@ -53,7 +54,7 @@ namespace UI.Desktop
             this.txtIDInsumo.MouseState = MaterialSkin.MouseState.OUT;
             this.txtIDInsumo.Multiline = false;
             this.txtIDInsumo.Name = "txtIDInsumo";
-            this.txtIDInsumo.Size = new System.Drawing.Size(119, 50);
+            this.txtIDInsumo.Size = new System.Drawing.Size(81, 50);
             this.txtIDInsumo.TabIndex = 0;
             this.txtIDInsumo.Text = "";
             this.txtIDInsumo.TrailingIcon = null;
@@ -93,7 +94,7 @@ namespace UI.Desktop
             this.txtExistenciaInsumo.MouseState = MaterialSkin.MouseState.OUT;
             this.txtExistenciaInsumo.Multiline = false;
             this.txtExistenciaInsumo.Name = "txtExistenciaInsumo";
-            this.txtExistenciaInsumo.Size = new System.Drawing.Size(119, 50);
+            this.txtExistenciaInsumo.Size = new System.Drawing.Size(161, 50);
             this.txtExistenciaInsumo.TabIndex = 5;
             this.txtExistenciaInsumo.Text = "";
             this.txtExistenciaInsumo.TrailingIcon = null;
@@ -108,7 +109,7 @@ namespace UI.Desktop
             this.btnAceptarInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAceptarInsumo.HighEmphasis = true;
             this.btnAceptarInsumo.Icon = null;
-            this.btnAceptarInsumo.Location = new System.Drawing.Point(166, 259);
+            this.btnAceptarInsumo.Location = new System.Drawing.Point(168, 314);
             this.btnAceptarInsumo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptarInsumo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptarInsumo.Name = "btnAceptarInsumo";
@@ -130,7 +131,7 @@ namespace UI.Desktop
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
-            this.btnCancelar.Location = new System.Drawing.Point(260, 259);
+            this.btnCancelar.Location = new System.Drawing.Point(262, 314);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -158,19 +159,40 @@ namespace UI.Desktop
             this.cmbUnidadMedida.Hint = "Unidad de medida";
             this.cmbUnidadMedida.IntegralHeight = false;
             this.cmbUnidadMedida.ItemHeight = 43;
-            this.cmbUnidadMedida.Location = new System.Drawing.Point(137, 201);
+            this.cmbUnidadMedida.Location = new System.Drawing.Point(12, 256);
             this.cmbUnidadMedida.MaxDropDownItems = 4;
             this.cmbUnidadMedida.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbUnidadMedida.Name = "cmbUnidadMedida";
-            this.cmbUnidadMedida.Size = new System.Drawing.Size(221, 49);
+            this.cmbUnidadMedida.Size = new System.Drawing.Size(346, 49);
             this.cmbUnidadMedida.StartIndex = 0;
             this.cmbUnidadMedida.TabIndex = 9;
+            // 
+            // txtPuntoPedido
+            // 
+            this.txtPuntoPedido.AnimateReadOnly = false;
+            this.txtPuntoPedido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.txtPuntoPedido.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPuntoPedido.Depth = 0;
+            this.txtPuntoPedido.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtPuntoPedido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtPuntoPedido.Hint = "Punto de pedido ";
+            this.txtPuntoPedido.LeadingIcon = null;
+            this.txtPuntoPedido.Location = new System.Drawing.Point(179, 201);
+            this.txtPuntoPedido.MaxLength = 50;
+            this.txtPuntoPedido.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtPuntoPedido.Multiline = false;
+            this.txtPuntoPedido.Name = "txtPuntoPedido";
+            this.txtPuntoPedido.Size = new System.Drawing.Size(179, 50);
+            this.txtPuntoPedido.TabIndex = 10;
+            this.txtPuntoPedido.Text = "";
+            this.txtPuntoPedido.TrailingIcon = null;
             // 
             // InsumoDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(366, 305);
+            this.ClientSize = new System.Drawing.Size(374, 368);
+            this.Controls.Add(this.txtPuntoPedido);
             this.Controls.Add(this.cmbUnidadMedida);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptarInsumo);
@@ -196,5 +218,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnAceptarInsumo;
         private MaterialSkin.Controls.MaterialButton btnCancelar;
         private MaterialSkin.Controls.MaterialComboBox cmbUnidadMedida;
+        private MaterialSkin.Controls.MaterialTextBox txtPuntoPedido;
     }
 }

@@ -72,7 +72,10 @@ namespace UI.Desktop
             double cantOrdAtenTotal = 0;
             foreach(Empleado e in empleados)
             {
-                cantOrdAtenTotal += e.OrdenesAtendidas.Count;
+                if (e.OrdenesAtendidas is not null)
+                {
+                    cantOrdAtenTotal += e.OrdenesAtendidas.Count;
+                }
             }
             return cantOrdAtenTotal;
         }
@@ -81,7 +84,10 @@ namespace UI.Desktop
             double cantOrdenRegTotal = 0;
             foreach(Empleado e in empleados)
             {
-                cantOrdenRegTotal += e.OrdenesRegistradas.Count;
+                if (e.OrdenesRegistradas is not null)
+                {
+                    cantOrdenRegTotal += e.OrdenesRegistradas.Count;
+                }
             }
             return cantOrdenRegTotal;
         }

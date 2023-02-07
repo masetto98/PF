@@ -30,9 +30,10 @@ namespace UI.Desktop
         }
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 Usuario usr = _usuarioLogic.Login(this.txtNombreUsuario.Text, this.txtContrasenia.Text);
+
                 if (usr != null)
                 {
                     if (usr.Habilitado == true)
@@ -54,12 +55,13 @@ namespace UI.Desktop
                     MessageBox.Show("Contraseña incorrecta", "Login"
                     , MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
+            //}
+            /*
             catch (Exception ex)
             {
                 MessageBox.Show("Usuario incorrecto", "Login"
                     , MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }*/
 
 
         }
@@ -112,5 +114,12 @@ namespace UI.Desktop
             }
            
         }
+
+        private void linklblLoginHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LoginHelpForm frmLoginHelp = new LoginHelpForm(ApplicationForm.ModoForm.Alta, _context);
+            frmLoginHelp.ShowDialog();
+        }
+        
     }
 }

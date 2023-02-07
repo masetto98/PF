@@ -36,6 +36,8 @@ namespace UI.Desktop
             this.listInsumos = new MaterialSkin.Controls.MaterialListView();
             this.columnIDInsumo = new System.Windows.Forms.ColumnHeader();
             this.columnDesc = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.btnDetalles = new MaterialSkin.Controls.MaterialButton();
             this.listConsumos = new MaterialSkin.Controls.MaterialListView();
             this.columnServicio = new System.Windows.Forms.ColumnHeader();
@@ -69,7 +71,9 @@ namespace UI.Desktop
             this.listInsumos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listInsumos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnIDInsumo,
-            this.columnDesc});
+            this.columnDesc,
+            this.columnHeader1,
+            this.columnHeader2});
             this.listInsumos.Depth = 0;
             this.listInsumos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listInsumos.FullRowSelect = true;
@@ -80,7 +84,7 @@ namespace UI.Desktop
             this.listInsumos.MouseState = MaterialSkin.MouseState.OUT;
             this.listInsumos.Name = "listInsumos";
             this.listInsumos.OwnerDraw = true;
-            this.listInsumos.Size = new System.Drawing.Size(372, 471);
+            this.listInsumos.Size = new System.Drawing.Size(500, 471);
             this.listInsumos.TabIndex = 0;
             this.listInsumos.UseCompatibleStateImageBehavior = false;
             this.listInsumos.View = System.Windows.Forms.View.Details;
@@ -89,12 +93,21 @@ namespace UI.Desktop
             // columnIDInsumo
             // 
             this.columnIDInsumo.Text = "ID";
-            this.columnIDInsumo.Width = 100;
             // 
             // columnDesc
             // 
             this.columnDesc.Text = "Descripción";
-            this.columnDesc.Width = 272;
+            this.columnDesc.Width = 170;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Stock Minimo";
+            this.columnHeader1.Width = 150;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Stock Actual";
+            this.columnHeader2.Width = 120;
             // 
             // btnDetalles
             // 
@@ -106,7 +119,7 @@ namespace UI.Desktop
             this.btnDetalles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDetalles.HighEmphasis = true;
             this.btnDetalles.Icon = global::UI.Desktop.Properties.Resources.document_3530;
-            this.btnDetalles.Location = new System.Drawing.Point(394, 139);
+            this.btnDetalles.Location = new System.Drawing.Point(519, 139);
             this.btnDetalles.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnDetalles.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnDetalles.Name = "btnDetalles";
@@ -132,7 +145,7 @@ namespace UI.Desktop
             this.listConsumos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listConsumos.FullRowSelect = true;
             this.listConsumos.HideSelection = false;
-            this.listConsumos.Location = new System.Drawing.Point(394, 396);
+            this.listConsumos.Location = new System.Drawing.Point(519, 391);
             this.listConsumos.MinimumSize = new System.Drawing.Size(200, 100);
             this.listConsumos.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listConsumos.MouseState = MaterialSkin.MouseState.OUT;
@@ -166,7 +179,7 @@ namespace UI.Desktop
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(394, 363);
+            this.materialLabel1.Location = new System.Drawing.Point(519, 358);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(81, 19);
@@ -295,12 +308,12 @@ namespace UI.Desktop
             this.materialCard1.Controls.Add(this.materialLabel2);
             this.materialCard1.Depth = 0;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(394, 230);
+            this.materialCard1.Location = new System.Drawing.Point(519, 225);
             this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(448, 119);
+            this.materialCard1.Size = new System.Drawing.Size(452, 119);
             this.materialCard1.TabIndex = 11;
             // 
             // lblCantidadInsumoIngresada
@@ -380,7 +393,7 @@ namespace UI.Desktop
             this.materialLabel5.Depth = 0;
             this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(394, 201);
+            this.materialLabel5.Location = new System.Drawing.Point(519, 196);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(94, 19);
@@ -389,8 +402,9 @@ namespace UI.Desktop
             // 
             // dtpFechaInicio
             // 
-            this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaInicio.Location = new System.Drawing.Point(494, 200);
+            this.dtpFechaInicio.CustomFormat = "dd/MM/yyyy";
+            this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaInicio.Location = new System.Drawing.Point(619, 195);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
             this.dtpFechaInicio.Size = new System.Drawing.Size(124, 23);
             this.dtpFechaInicio.TabIndex = 13;
@@ -398,8 +412,9 @@ namespace UI.Desktop
             // 
             // dtpFechaHasta
             // 
-            this.dtpFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaHasta.Location = new System.Drawing.Point(677, 200);
+            this.dtpFechaHasta.CustomFormat = "dd/MM/yyyy";
+            this.dtpFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaHasta.Location = new System.Drawing.Point(802, 195);
             this.dtpFechaHasta.Name = "dtpFechaHasta";
             this.dtpFechaHasta.Size = new System.Drawing.Size(124, 23);
             this.dtpFechaHasta.TabIndex = 14;
@@ -412,7 +427,7 @@ namespace UI.Desktop
             this.materialLabel6.Depth = 0;
             this.materialLabel6.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel6.Location = new System.Drawing.Point(624, 202);
+            this.materialLabel6.Location = new System.Drawing.Point(749, 196);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Size = new System.Drawing.Size(47, 19);
@@ -508,6 +523,8 @@ namespace UI.Desktop
         private System.Windows.Forms.DateTimePicker dtpFechaInicio;
         private System.Windows.Forms.DateTimePicker dtpFechaHasta;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
         private FastReport.DataVisualization.Charting.Chart chartInsumos2;
     }
 }

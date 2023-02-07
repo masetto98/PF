@@ -188,6 +188,7 @@ namespace Business.Logic
         public MaquinaValidator()
         {
             RuleFor(x => x.Descripcion).NotEmpty().MaximumLength(50).Matches("^[a-zA-Z0-9üéáíóúñÑ ]+$").WithMessage("'Descripción' debe contener solo letras y/o números");
+            RuleFor(x => x.TipoMaquina).NotNull();
         }
     }
     public class TipoMaquinaValidator : AbstractValidator<TiposMaquina>
@@ -243,6 +244,8 @@ namespace Business.Logic
         {
             RuleFor(x => x.NombreUsuario).NotEmpty().MaximumLength(50).Matches("^[a-zA-Z0-9ñÑ]+$").WithMessage("'Nombre' debe contener solo letras y/o números"); // ValidarLetrasNumeros
             RuleFor(x => x.Clave).NotNull().MinimumLength(8);
+            RuleFor(x => x.Pregunta).NotNull();
+            RuleFor(x => x.Respuesta).NotNull();
 
         }
     }

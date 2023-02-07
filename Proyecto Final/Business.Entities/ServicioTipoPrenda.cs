@@ -46,7 +46,7 @@ namespace Business.Entities
             get { return _prioridad; }
             set { _prioridad = value; }
         }
-
+        
         [Column("deleted")]
         public bool Borrado
         {

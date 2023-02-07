@@ -20,7 +20,7 @@ namespace Data.Database
             List<TiposMaquina> tiposMaquinas = new List<TiposMaquina>();
             try
             {
-                tiposMaquinas = _context.TiposMaquinas.Include(m => m.Maquinas).ToList();
+                tiposMaquinas = _context.TiposMaquinas.Where(x => x.Borrado == false).Include(m => m.Maquinas).ToList();
             }
             catch (Exception e)
             {
@@ -33,7 +33,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.TiposMaquinas.Include(m => m.Maquinas).FirstOrDefault(s => s.IdTipoMaquina == idTipoMaquina);
+                return _context.TiposMaquinas.Include(m => m.Maquinas).FirstOrDefault(s => s.IdTipoMaquina == idTipoMaquina && s.Borrado == false);
             }
             catch (Exception e)
             {
