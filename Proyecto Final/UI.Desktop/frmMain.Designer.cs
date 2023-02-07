@@ -101,7 +101,6 @@ namespace UI.Desktop
             this.cmbInsumos = new MaterialSkin.Controls.MaterialComboBox();
             this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
             this.txtBuscarInsumos = new MaterialSkin.Controls.MaterialTextBox();
-            this.btnReset = new MaterialSkin.Controls.MaterialButton();
             this.dtpFiltroFechaIngreso = new System.Windows.Forms.DateTimePicker();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
@@ -1151,7 +1150,6 @@ namespace UI.Desktop
             this.TabStock.Controls.Add(this.cmbInsumos);
             this.TabStock.Controls.Add(this.materialLabel14);
             this.TabStock.Controls.Add(this.txtBuscarInsumos);
-            this.TabStock.Controls.Add(this.btnReset);
             this.TabStock.Controls.Add(this.dtpFiltroFechaIngreso);
             this.TabStock.Controls.Add(this.materialLabel8);
             this.TabStock.Controls.Add(this.materialLabel7);
@@ -1171,6 +1169,32 @@ namespace UI.Desktop
             this.TabStock.TabIndex = 0;
             this.TabStock.Text = "Stock";
             // 
+            // dtpHastaIngreso
+            // 
+            this.dtpHastaIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.dtpHastaIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dtpHastaIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dtpHastaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpHastaIngreso.Location = new System.Drawing.Point(1048, 206);
+            this.dtpHastaIngreso.Name = "dtpHastaIngreso";
+            this.dtpHastaIngreso.Size = new System.Drawing.Size(118, 23);
+            this.dtpHastaIngreso.TabIndex = 29;
+            this.dtpHastaIngreso.ValueChanged += new System.EventHandler(this.dtpHastaIngreso_ValueChanged);
+            // 
+            // materialLabel17
+            // 
+            this.materialLabel17.AutoSize = true;
+            this.materialLabel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel17.Depth = 0;
+            this.materialLabel17.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel17.Location = new System.Drawing.Point(995, 210);
+            this.materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel17.Name = "materialLabel17";
+            this.materialLabel17.Size = new System.Drawing.Size(47, 19);
+            this.materialLabel17.TabIndex = 28;
+            this.materialLabel17.Text = "Hasta:";
+            // 
             // cardInsumosFaltantes
             // 
             this.cardInsumosFaltantes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -1179,7 +1203,7 @@ namespace UI.Desktop
             this.cardInsumosFaltantes.Controls.Add(this.pxRojo);
             this.cardInsumosFaltantes.Depth = 0;
             this.cardInsumosFaltantes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cardInsumosFaltantes.Location = new System.Drawing.Point(713, 8);
+            this.cardInsumosFaltantes.Location = new System.Drawing.Point(751, 8);
             this.cardInsumosFaltantes.Margin = new System.Windows.Forms.Padding(14);
             this.cardInsumosFaltantes.MouseState = MaterialSkin.MouseState.HOVER;
             this.cardInsumosFaltantes.Name = "cardInsumosFaltantes";
@@ -1195,7 +1219,7 @@ namespace UI.Desktop
             this.lblInsumosFaltantes.Depth = 0;
             this.lblInsumosFaltantes.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblInsumosFaltantes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblInsumosFaltantes.Location = new System.Drawing.Point(14, 6);
+            this.lblInsumosFaltantes.Location = new System.Drawing.Point(14, 5);
             this.lblInsumosFaltantes.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblInsumosFaltantes.Name = "lblInsumosFaltantes";
             this.lblInsumosFaltantes.Size = new System.Drawing.Size(173, 19);
@@ -1215,7 +1239,7 @@ namespace UI.Desktop
             this.listInsumosFaltantes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listInsumosFaltantes.FullRowSelect = true;
             this.listInsumosFaltantes.HideSelection = false;
-            this.listInsumosFaltantes.Location = new System.Drawing.Point(14, 30);
+            this.listInsumosFaltantes.Location = new System.Drawing.Point(14, 29);
             this.listInsumosFaltantes.MinimumSize = new System.Drawing.Size(200, 100);
             this.listInsumosFaltantes.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listInsumosFaltantes.MouseState = MaterialSkin.MouseState.OUT;
@@ -1239,38 +1263,12 @@ namespace UI.Desktop
             // pxRojo
             // 
             this.pxRojo.Image = global::UI.Desktop.Properties.Resources.fondo_rojo;
-            this.pxRojo.Location = new System.Drawing.Point(0, 0);
+            this.pxRojo.Location = new System.Drawing.Point(0, -1);
             this.pxRojo.Name = "pxRojo";
             this.pxRojo.Size = new System.Drawing.Size(341, 190);
             this.pxRojo.TabIndex = 0;
             this.pxRojo.TabStop = false;
             this.pxRojo.Visible = false;
-            // 
-            // dtpHastaIngreso
-            // 
-            this.dtpHastaIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.dtpHastaIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dtpHastaIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.dtpHastaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpHastaIngreso.Location = new System.Drawing.Point(1048, 140);
-            this.dtpHastaIngreso.Name = "dtpHastaIngreso";
-            this.dtpHastaIngreso.Size = new System.Drawing.Size(118, 23);
-            this.dtpHastaIngreso.TabIndex = 29;
-            this.dtpHastaIngreso.ValueChanged += new System.EventHandler(this.dtpHastaIngreso_ValueChanged);
-            // 
-            // materialLabel17
-            // 
-            this.materialLabel17.AutoSize = true;
-            this.materialLabel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel17.Depth = 0;
-            this.materialLabel17.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel17.Location = new System.Drawing.Point(995, 142);
-            this.materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel17.Name = "materialLabel17";
-            this.materialLabel17.Size = new System.Drawing.Size(47, 19);
-            this.materialLabel17.TabIndex = 28;
-            this.materialLabel17.Text = "Hasta:";
             // 
             // cmbInsumos
             // 
@@ -1330,36 +1328,13 @@ namespace UI.Desktop
             this.txtBuscarInsumos.TrailingIcon = null;
             this.txtBuscarInsumos.TextChanged += new System.EventHandler(this.txtBuscarInsumos_TextChanged);
             // 
-            // btnReset
-            // 
-            this.btnReset.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.btnReset.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnReset.Depth = 0;
-            this.btnReset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnReset.HighEmphasis = true;
-            this.btnReset.Icon = null;
-            this.btnReset.Location = new System.Drawing.Point(1174, 128);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnReset.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnReset.Name = "btnReset";
-            this.btnReset.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnReset.Size = new System.Drawing.Size(65, 36);
-            this.btnReset.TabIndex = 24;
-            this.btnReset.Text = "reset";
-            this.btnReset.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnReset.UseAccentColor = false;
-            this.btnReset.UseVisualStyleBackColor = false;
-            this.btnReset.Visible = false;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
             // dtpFiltroFechaIngreso
             // 
             this.dtpFiltroFechaIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.dtpFiltroFechaIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpFiltroFechaIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dtpFiltroFechaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFiltroFechaIngreso.Location = new System.Drawing.Point(871, 140);
+            this.dtpFiltroFechaIngreso.Location = new System.Drawing.Point(871, 206);
             this.dtpFiltroFechaIngreso.Name = "dtpFiltroFechaIngreso";
             this.dtpFiltroFechaIngreso.Size = new System.Drawing.Size(118, 23);
             this.dtpFiltroFechaIngreso.TabIndex = 23;
@@ -1372,7 +1347,7 @@ namespace UI.Desktop
             this.materialLabel8.Depth = 0;
             this.materialLabel8.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel8.Location = new System.Drawing.Point(816, 142);
+            this.materialLabel8.Location = new System.Drawing.Point(816, 210);
             this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel8.Name = "materialLabel8";
             this.materialLabel8.Size = new System.Drawing.Size(49, 19);
@@ -1386,7 +1361,7 @@ namespace UI.Desktop
             this.materialLabel7.Depth = 0;
             this.materialLabel7.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel7.Location = new System.Drawing.Point(564, 142);
+            this.materialLabel7.Location = new System.Drawing.Point(564, 210);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
             this.materialLabel7.Size = new System.Drawing.Size(179, 19);
@@ -3546,7 +3521,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialLabel materialLabel17;
         private MaterialSkin.Controls.MaterialLabel materialLabel18;
         private System.Windows.Forms.DateTimePicker dtpHastaMovimientos;
-        private MaterialSkin.Controls.MaterialButton btnReset;
         private MaterialSkin.Controls.MaterialLabel lblFechaHastaOrdenes;
         private MaterialSkin.Controls.MaterialLabel lblFechaDesdeOrdenes;
         private System.Windows.Forms.DateTimePicker dtpOrdenesFechaHasta;

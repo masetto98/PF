@@ -2430,7 +2430,7 @@ namespace UI.Desktop
         {
             if (listTrabajosFinalizados.SelectedItems.Count > 0)
             {
-                if (MessageBox.Show("Desea enviar este item a pendientes?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("¿ Está seguro que desea enviar este item a pendientes?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
                     OrdenServicioTipoPrenda ostp = _ordenServicioTipoPrendaLogic.GetAll().Find(x =>
@@ -2451,9 +2451,9 @@ namespace UI.Desktop
                             Planificar();
                         }
                         else { MessageBox.Show("La orden a la cual pertenece el item seleccionado ya se encuentra registrada como RETIRADA debido a esto no fue posible realizar la acción correspondiente.", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-                    }
                 }
-                else { MessageBox.Show("La orden del item selecciona ya se encuentra registrada como RETIRADA, y por lo tanto no es posible realizar la acción", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                
+                //else { MessageBox.Show("La orden del item selecciona ya se encuentra registrada como RETIRADA, y por lo tanto no es posible realizar la acción", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information); }
 
             }
             else { MessageBox.Show("Se debe seleccionar un item de la lista", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information); }

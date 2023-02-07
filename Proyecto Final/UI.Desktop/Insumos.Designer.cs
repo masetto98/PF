@@ -29,10 +29,10 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            FastReport.DataVisualization.Charting.ChartArea chartArea1 = new FastReport.DataVisualization.Charting.ChartArea();
-            FastReport.DataVisualization.Charting.Legend legend1 = new FastReport.DataVisualization.Charting.Legend();
-            FastReport.DataVisualization.Charting.Series series1 = new FastReport.DataVisualization.Charting.Series();
-            FastReport.DataVisualization.Charting.Title title1 = new FastReport.DataVisualization.Charting.Title();
+            FastReport.DataVisualization.Charting.ChartArea chartArea3 = new FastReport.DataVisualization.Charting.ChartArea();
+            FastReport.DataVisualization.Charting.Legend legend3 = new FastReport.DataVisualization.Charting.Legend();
+            FastReport.DataVisualization.Charting.Series series3 = new FastReport.DataVisualization.Charting.Series();
+            FastReport.DataVisualization.Charting.Title title3 = new FastReport.DataVisualization.Charting.Title();
             this.listInsumos = new MaterialSkin.Controls.MaterialListView();
             this.columnIDInsumo = new System.Windows.Forms.ColumnHeader();
             this.columnDesc = new System.Windows.Forms.ColumnHeader();
@@ -195,7 +195,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(1096, 616);
+            this.btnCerrar.Location = new System.Drawing.Point(1227, 630);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -436,38 +436,38 @@ namespace UI.Desktop
             // 
             // chartInsumos2
             // 
-            chartArea1.Name = "ChartArea1";
-            chartArea1.Position.Auto = false;
-            chartArea1.Position.Height = 90F;
-            chartArea1.Position.Width = 73.1875F;
-            chartArea1.Position.X = 11F;
-            chartArea1.Position.Y = 10F;
-            this.chartInsumos2.ChartAreas.Add(chartArea1);
-            legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            legend1.IsTextAutoFit = false;
-            legend1.Name = "Legend1";
-            this.chartInsumos2.Legends.Add(legend1);
-            this.chartInsumos2.Location = new System.Drawing.Point(852, 139);
+            chartArea3.Name = "ChartArea1";
+            chartArea3.Position.Auto = false;
+            chartArea3.Position.Height = 90F;
+            chartArea3.Position.Width = 73.1875F;
+            chartArea3.Position.X = 11F;
+            chartArea3.Position.Y = 10F;
+            this.chartInsumos2.ChartAreas.Add(chartArea3);
+            legend3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            legend3.IsTextAutoFit = false;
+            legend3.Name = "Legend1";
+            this.chartInsumos2.Legends.Add(legend3);
+            this.chartInsumos2.Location = new System.Drawing.Point(983, 139);
             this.chartInsumos2.Name = "chartInsumos2";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.CustomProperties = "PieLabelStyle=Disabled";
-            series1.IsValueShownAsLabel = true;
-            series1.Legend = "Legend1";
-            series1.Name = "consumo";
-            this.chartInsumos2.Series.Add(series1);
-            this.chartInsumos2.Size = new System.Drawing.Size(321, 425);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Pie;
+            series3.CustomProperties = "PieLabelStyle=Disabled";
+            series3.IsValueShownAsLabel = true;
+            series3.Legend = "Legend1";
+            series3.Name = "consumo";
+            this.chartInsumos2.Series.Add(series3);
+            this.chartInsumos2.Size = new System.Drawing.Size(321, 466);
             this.chartInsumos2.TabIndex = 17;
             this.chartInsumos2.Text = "chart1";
-            title1.Name = "Title1";
-            title1.Text = "Proporción de consumo por Servicio Tipo de Prenda";
-            this.chartInsumos2.Titles.Add(title1);
+            title3.Name = "Title1";
+            title3.Text = "Proporción de consumo por Servicio Tipo de Prenda";
+            this.chartInsumos2.Titles.Add(title3);
             // 
             // Insumos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1192, 674);
+            this.ClientSize = new System.Drawing.Size(1316, 674);
             this.Controls.Add(this.chartInsumos2);
             this.Controls.Add(this.materialLabel6);
             this.Controls.Add(this.dtpFechaHasta);
@@ -487,8 +487,8 @@ namespace UI.Desktop
             this.MaximizeBox = false;
             this.Name = "Insumos";
             this.Sizable = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Insumos";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.materialCard1.ResumeLayout(false);
             this.materialCard1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartInsumos2)).EndInit();
