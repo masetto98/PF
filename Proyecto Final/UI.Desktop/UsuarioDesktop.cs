@@ -37,6 +37,9 @@ namespace UI.Desktop
             this.txtClaveUser.Enabled = false;
             this.txtConfirmarClave.Enabled = false;
             this.btnAceptarUsuario.Enabled = false;
+            this.cmbPreguntas.Enabled = false;
+            this.txtRespuesta.Enabled = false;
+            CargarPreguntas();
         }
         public UsuarioDesktop(int ID, ModoForm modo, LavanderiaContext context) : this(context)
         {
@@ -53,6 +56,7 @@ namespace UI.Desktop
                 this.txtClaveUser.ReadOnly = true;
                 this.txtConfirmarClave.ReadOnly = true;
                 */
+                CargarPreguntas();
                 MapearDeDatos();
             }
             catch (Exception e)
@@ -65,6 +69,8 @@ namespace UI.Desktop
             this.txtIdUsuario.Text = this.UsuarioActual.IdUsuario.ToString();
             this.chkHabilitado.Checked = this.UsuarioActual.Habilitado;
             this.txtNombreUsuario.Text = this.UsuarioActual.NombreUsuario;
+            this.cmbPreguntas.SelectedIndex = UsuarioActual.Pregunta.Value;
+            
             // La clave no la tengo que cargar porque no se muestra, siempre se vuelve a poner de 0
             // Ahora tengo que cargar los datos de la persona también
             try
@@ -102,7 +108,7 @@ namespace UI.Desktop
         }
         public override void MapearADatos()
         {
-            if(Modos == ModoForm.Alta)
+            if (Modos == ModoForm.Alta)
             {
                 UsuarioActual.Habilitado = this.chkHabilitado.Checked;
                 UsuarioActual.NombreUsuario = this.txtNombreUsuario.Text;
@@ -110,9 +116,12 @@ namespace UI.Desktop
                 {
                     UsuarioActual.Clave = this.txtClaveUser.Text;
                 }
+                UsuarioActual.Pregunta = this.cmbPreguntas.SelectedIndex;
+                UsuarioActual.Respuesta = this.txtRespuesta.Text;
+                
                 
             }
-            else if(Modos == ModoForm.Modificacion)
+            else if (Modos == ModoForm.Modificacion)
             {
                 UsuarioModif = new Usuario();
                 UsuarioModif.IdUsuario = UsuarioActual.IdUsuario;
@@ -120,10 +129,16 @@ namespace UI.Desktop
                 UsuarioModif.Empleado = UsuarioActual.Empleado;
                 UsuarioModif.Habilitado = this.chkHabilitado.Checked;
                 UsuarioModif.NombreUsuario = this.txtNombreUsuario.Text;
-                if(this.txtClaveUser.Text != "")
+                if (this.txtClaveUser.Text != "")
                 {
                     UsuarioModif.Clave = this.txtClaveUser.Text;
                 }
+                if (this.txtRespuesta.Text != "")
+                {
+                    UsuarioModif.Pregunta = this.cmbPreguntas.SelectedIndex;
+                    UsuarioModif.Respuesta = this.txtRespuesta.Text;
+                }
+                
             }
             switch (Modos)
             {
@@ -193,12 +208,26 @@ namespace UI.Desktop
                 this.chkHabilitado.Enabled = true;
                 this.txtClaveUser.Enabled = true;
                 this.txtConfirmarClave.Enabled = true;
+                this.cmbPreguntas.Enabled = true;
+                this.txtRespuesta.Enabled = true;
+                CargarPreguntas();
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message,"Empleado",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
+        
+        private void CargarPreguntas()
+        {
+            List<string> preguntas = new List<string>();
+            preguntas.Add("¿Como es el nombre de tu perro de la infancia?");
+            preguntas.Add("¿Cual es el nombre de tu superheroe favorito?");
+            preguntas.Add("¿Como es el apellido de soltera de tu madre?");
+            preguntas.Add("¿Cual es el nombre de un amigo de la infancia?");
+            this.cmbPreguntas.DataSource = preguntas;
+        }
+
 
         private void btnAceptarUsuario_Click(object sender, EventArgs e)
         {

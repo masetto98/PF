@@ -26,12 +26,14 @@ namespace UI.Desktop
             InitializeComponent();
             _maquinaLogic = new MaquinaLogic(new MaquinaAdapter(context));
             _tiposMaquinaLogic = new TiposMaquinaLogic(new TiposMaquinaAdapter(context));
+            this.cmbTiposMaquina.SelectedItem = null;
         }
 
         public MaquinaDesktop(ModoForm modo, LavanderiaContext context) : this(context) 
         {
             Modos = modo;
             this.cmbTiposMaquina.DataSource = _tiposMaquinaLogic.GetAll();
+            this.cmbTiposMaquina.SelectedItem = null;
         }
 
         public MaquinaDesktop(int idMaquina,ModoForm modo, LavanderiaContext context) : this(context)
@@ -39,7 +41,9 @@ namespace UI.Desktop
             Modos = modo;
             try 
             {
+                
                 this.cmbTiposMaquina.DataSource = _tiposMaquinaLogic.GetAll();
+                this.cmbTiposMaquina.SelectedItem = null;
                 MaquinaActual = _maquinaLogic.GetOne(idMaquina);
                 MapearDeDatos();
 
@@ -69,12 +73,14 @@ namespace UI.Desktop
                     this.btnAceptar.Text = "Eliminar";
                     this.txtID.Enabled = false;
                     this.txtDescripcion.Enabled = false;
+                    this.cmbTiposMaquina.Enabled = false;
 
                     break;
                 case ModoForm.Consulta:
                     this.btnAceptar.Text = "Aceptar";
                     this.txtID.Enabled = false;
                     this.txtDescripcion.Enabled = false;
+                    this.cmbTiposMaquina.Enabled = false;
                     break;
             }
         }
@@ -85,7 +91,11 @@ namespace UI.Desktop
             {
                 MaquinaActual = new Maquina();
                 MaquinaActual.Descripcion = this.txtDescripcion.Text;
-                MaquinaActual.TipoMaquina = _tiposMaquinaLogic.GetOne((int)this.cmbTiposMaquina.SelectedValue);
+                if (this.cmbTiposMaquina.SelectedItem != null)
+                {
+                    MaquinaActual.TipoMaquina = _tiposMaquinaLogic.GetOne((int)this.cmbTiposMaquina.SelectedValue);
+                }
+                
                
             }
             if (Modos == ModoForm.Modificacion)
@@ -162,7 +172,9 @@ namespace UI.Desktop
             {
                 case ModoForm.Alta:
                     {
-                        GuardarCambios();
+                        
+                            GuardarCambios();
+                        
                     };
                     break;
                 case ModoForm.Modificacion:

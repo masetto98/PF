@@ -18,14 +18,7 @@ namespace Business.Entities
         private bool _deleted;
         private MaquinaOrdenServicioTipoPrenda _maquinaOrdenServicioTipoPrenda;
         private Insumo _insumo;
-        /*
-        public enum Medidas
-        {
-            Litros = 1,
-            Kilogramos = 2,
-            Unidades = 3,
-        }*/
-
+        
         [Column("id_maquina")]
         public int IdMaquina 
         {

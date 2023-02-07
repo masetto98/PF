@@ -64,6 +64,11 @@ namespace Data.Database
             {
                 userAnterior.Clave = usuario.Clave;
             }
+            if (usuario.Respuesta != null && usuario.Respuesta != userAnterior.Respuesta)
+            {
+                userAnterior.Respuesta = new Hasher().GenerateHash(usuario.Respuesta, userAnterior.Salt);
+            }
+            else { userAnterior.Respuesta = usuario.Respuesta; }
             try
             {
                 _context.Usuarios.Update(userAnterior);
@@ -79,6 +84,7 @@ namespace Data.Database
         {
             usuario.Salt = new Hasher().GenerateSalt();
             usuario.Clave = new Hasher().GenerateHash(usuario.Clave, usuario.Salt);
+            usuario.Respuesta = new Hasher().GenerateHash(usuario.Respuesta, usuario.Salt);
             try
             {
             _context.Usuarios.Add(usuario);
@@ -132,6 +138,7 @@ namespace Data.Database
                 if (usr.Clave != contrasenia) return null;
                 return usr;
             }
+            
             catch (Exception Ex)
             {
                 Exception ExcepcionManejada = new Exception("Error al recuperar usuario", Ex);

@@ -34,13 +34,16 @@ namespace UI.Desktop
             {
                 foreach (Proveedor p in proveedores) 
                 {
-                    ListViewItem item = new ListViewItem(p.IdProveedor.ToString());
-                    item.SubItems.Add(p.Cuit);
-                    item.SubItems.Add(p.RazonSocial);
-                    item.SubItems.Add(p.Telefono);
-                    item.SubItems.Add(p.Email);
-                    item.SubItems.Add(p.Direccion);
-                    listProveedores.Items.Add(item);
+                    if (p.RazonSocial != "Ingreso/Modificación")
+                    {
+                        ListViewItem item = new ListViewItem(p.IdProveedor.ToString());
+                        item.SubItems.Add(p.Cuit);
+                        item.SubItems.Add(p.RazonSocial);
+                        item.SubItems.Add(p.Telefono);
+                        item.SubItems.Add(p.Email);
+                        item.SubItems.Add(p.Direccion);
+                        listProveedores.Items.Add(item);
+                    }
                 }
             }
         }
@@ -182,13 +185,16 @@ namespace UI.Desktop
                 string cuit = p.Cuit;
                 if (prov.ToLower().Contains(this.txtBuscar.Text.ToLower()) || cuit.ToLower().Contains(this.txtBuscar.Text.ToLower()))
                 {
-                    ListViewItem item = new ListViewItem(p.IdProveedor.ToString());
-                    item.SubItems.Add(p.Cuit);
-                    item.SubItems.Add(p.RazonSocial);
-                    item.SubItems.Add(p.Telefono);
-                    item.SubItems.Add(p.Email);
-                    item.SubItems.Add(p.Direccion);
-                    listProveedores.Items.Add(item);
+                    if (p.RazonSocial != "Ingreso/Modificación")
+                    {
+                        ListViewItem item = new ListViewItem(p.IdProveedor.ToString());
+                        item.SubItems.Add(p.Cuit);
+                        item.SubItems.Add(p.RazonSocial);
+                        item.SubItems.Add(p.Telefono);
+                        item.SubItems.Add(p.Email);
+                        item.SubItems.Add(p.Direccion);
+                        listProveedores.Items.Add(item);
+                    }
                 }
             }
             

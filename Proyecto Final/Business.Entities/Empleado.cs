@@ -27,6 +27,7 @@ namespace Business.Entities
         public TiposEmpleado _tipoEmpleado;
         private List<Orden> _ordenesRegistradas;
         private List<MaquinaOrdenServicioTipoPrenda> _ordenesAtendidas;
+        private List<Gasto> _gastosRegistrados;
         private List<Usuario> _usuarios;
 
         [Key]
@@ -103,6 +104,12 @@ namespace Business.Entities
         {
             get { return _usuarios; }
             set { _usuarios = value; }
+        }
+
+        public List<Gasto> GastosRegistrados
+        {
+            get { return _gastosRegistrados; }
+            set { _gastosRegistrados = value; }
         }
     }
 }

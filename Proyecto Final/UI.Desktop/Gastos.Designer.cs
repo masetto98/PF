@@ -35,6 +35,7 @@ namespace UI.Desktop
             this.columnDescripcion = new System.Windows.Forms.ColumnHeader();
             this.columnFechaRealizado = new System.Windows.Forms.ColumnHeader();
             this.columnImporte = new System.Windows.Forms.ColumnHeader();
+            this.columnEmployee = new System.Windows.Forms.ColumnHeader();
             this.btnEditar = new MaterialSkin.Controls.MaterialButton();
             this.btnEliminar = new MaterialSkin.Controls.MaterialButton();
             this.btnAgregar = new MaterialSkin.Controls.MaterialButton();
@@ -54,7 +55,8 @@ namespace UI.Desktop
             this.columnTipoGasto,
             this.columnDescripcion,
             this.columnFechaRealizado,
-            this.columnImporte});
+            this.columnImporte,
+            this.columnEmployee});
             this.listGastos.Depth = 0;
             this.listGastos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listGastos.FullRowSelect = true;
@@ -66,7 +68,7 @@ namespace UI.Desktop
             this.listGastos.MultiSelect = false;
             this.listGastos.Name = "listGastos";
             this.listGastos.OwnerDraw = true;
-            this.listGastos.Size = new System.Drawing.Size(610, 390);
+            this.listGastos.Size = new System.Drawing.Size(765, 390);
             this.listGastos.TabIndex = 0;
             this.listGastos.UseCompatibleStateImageBehavior = false;
             this.listGastos.View = System.Windows.Forms.View.Details;
@@ -95,6 +97,11 @@ namespace UI.Desktop
             // 
             this.columnImporte.Text = "Importe";
             this.columnImporte.Width = 97;
+            // 
+            // columnEmployee
+            // 
+            this.columnEmployee.Text = "Empleado";
+            this.columnEmployee.Width = 150;
             // 
             // btnEditar
             // 
@@ -198,7 +205,7 @@ namespace UI.Desktop
             this.cmbFiltro.MaxDropDownItems = 4;
             this.cmbFiltro.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbFiltro.Name = "cmbFiltro";
-            this.cmbFiltro.Size = new System.Drawing.Size(171, 49);
+            this.cmbFiltro.Size = new System.Drawing.Size(204, 49);
             this.cmbFiltro.StartIndex = 0;
             this.cmbFiltro.TabIndex = 16;
             // 
@@ -212,12 +219,12 @@ namespace UI.Desktop
             this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtBuscar.Hint = "Buscar gasto ....";
             this.txtBuscar.LeadingIcon = null;
-            this.txtBuscar.Location = new System.Drawing.Point(253, 552);
+            this.txtBuscar.Location = new System.Drawing.Point(285, 552);
             this.txtBuscar.MaxLength = 50;
             this.txtBuscar.MouseState = MaterialSkin.MouseState.OUT;
             this.txtBuscar.Multiline = false;
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(371, 50);
+            this.txtBuscar.Size = new System.Drawing.Size(493, 50);
             this.txtBuscar.TabIndex = 17;
             this.txtBuscar.Text = "";
             this.txtBuscar.TrailingIcon = null;
@@ -232,7 +239,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(547, 611);
+            this.btnCerrar.Location = new System.Drawing.Point(702, 611);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -249,7 +256,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 660);
+            this.ClientSize = new System.Drawing.Size(790, 660);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.cmbFiltro);
@@ -284,5 +291,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialComboBox cmbFiltro;
         private MaterialSkin.Controls.MaterialTextBox txtBuscar;
         private MaterialSkin.Controls.MaterialButton btnCerrar;
+        private System.Windows.Forms.ColumnHeader columnEmployee;
     }
 }

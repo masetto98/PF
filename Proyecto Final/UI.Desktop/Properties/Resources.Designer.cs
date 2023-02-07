@@ -253,6 +253,16 @@ namespace UI.Desktop.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fondo_rojo {
+            get {
+                object obj = ResourceManager.GetObject("fondo rojo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hide_icon_183908 {
             get {
                 object obj = ResourceManager.GetObject("hide_icon_183908", resourceCulture);

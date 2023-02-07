@@ -162,6 +162,7 @@ namespace UI.Desktop
             this.btnAgregarMaquina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnAgregarMaquina.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnAgregarMaquina.Depth = 0;
+            this.btnAgregarMaquina.Enabled = false;
             this.btnAgregarMaquina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregarMaquina.HighEmphasis = true;
             this.btnAgregarMaquina.Icon = global::UI.Desktop.Properties.Resources.plus_icon_icons_com_70890;
@@ -361,6 +362,7 @@ namespace UI.Desktop
             this.btnAgregarMantenimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnAgregarMantenimiento.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnAgregarMantenimiento.Depth = 0;
+            this.btnAgregarMantenimiento.Enabled = false;
             this.btnAgregarMantenimiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregarMantenimiento.HighEmphasis = true;
             this.btnAgregarMantenimiento.Icon = global::UI.Desktop.Properties.Resources.plus_icon_icons_com_70890;

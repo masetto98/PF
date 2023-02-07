@@ -15,16 +15,19 @@ namespace Business.Entities
         private DateTime _fechaRealizado;
         private double _importe;
         private TiposGasto _tipoGasto;
+        private Empleado _empleado;
+        private int _idEmpleado;
         private bool _deleted;
 
         public enum TiposGasto
         {
             Impuestos = 1,
             Servicios = 2,
-            Productos =3,
+            Productos = 3,
             Varios = 4,
-            Matenimientos =5,
+            Matenimientos = 5,
         }
+
         [Key]
         [Column("id_gasto")]
         public int IdGasto
@@ -51,7 +54,7 @@ namespace Business.Entities
             set { _importe = value; }
         }
         [Column("tipo_gasto")]
-        public TiposGasto TipoGasto 
+        public TiposGasto TipoGasto
         {
             get { return _tipoGasto; }
             set { _tipoGasto = value; }
@@ -64,5 +67,16 @@ namespace Business.Entities
             set { _deleted = value; }
         }
 
+        public Empleado Empleado 
+        {
+            get { return _empleado; }
+            set { _empleado = value; }
+        }
+        [Column("id_empleado")]
+        public int IdEmpleado
+        {
+            get { return _idEmpleado; }
+            set { _idEmpleado = value; }
+        }
     }
 }

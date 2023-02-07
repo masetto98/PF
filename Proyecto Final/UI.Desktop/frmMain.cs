@@ -67,6 +67,7 @@ namespace UI.Desktop
             RellenarComboBox(listTrabajosFinalizados,cmbFiltroTrabajosFinalizados);
             CargarOrdenes();
             Planificar();
+            
         }
 
         private void RellenarComboBox(ListView listActual, ComboBox cbActual)
@@ -109,6 +110,7 @@ namespace UI.Desktop
             {
                 case 0:
                     ListarStock();
+                    ValidarStock();
                     break;
                 case 1:
                     ListarIngresos();
@@ -850,7 +852,46 @@ namespace UI.Desktop
 
         #endregion
 
-
+        private void ValidarStock() 
+        {
+            List<Insumo> insumos = _insumoLogic.GetAll();
+            if (insumos is not null) 
+            {
+                listInsumosFaltantes.Items.Clear();
+                foreach (Insumo i in insumos) 
+                {
+                    if (i.Stock < i.PuntoPedido) 
+                    {
+                        ListViewItem item = new ListViewItem(i.IdInsumo.ToString());
+                        item.SubItems.Add(i.Descripcion);
+                        listInsumosFaltantes.Items.Add(item);
+                    }
+                }
+            }
+            if (listInsumosFaltantes.Items.Count > 0)
+            {
+                this.cardInsumosFaltantes.Visible = true;
+                this.pxRojo.Visible = true;
+                this.lblInsumosFaltantes.Visible = true;
+                this.listInsumosFaltantes.Visible = true;
+                ///Notificacion
+                niFaltaInsumos.BalloonTipTitle = "IMPORTANTE!! Hay insumos con poco stock!";
+                niFaltaInsumos.BalloonTipText = "Ver detalles";
+                niFaltaInsumos.ShowBalloonTip(3000);
+                //this.mnuTabInventario.ImageIndex = imageList1.Images.IndexOfKey("inventario_notify.png");
+                //this.mnuTabInventario.ImageKey = "inventario_notify.png";
+            }
+            else 
+            {
+                this.cardInsumosFaltantes.Visible = false;
+                this.pxRojo.Visible = false;
+                this.lblInsumosFaltantes.Visible = false;
+                this.listInsumosFaltantes.Visible = false;
+                //this.mnuTabInventario.ImageKey = "sales_sale_supermarket_stock_market_icon_153849.png";
+                //this.mnuTabInventario.ImageIndex = imageList1.Images.IndexOfKey("sales_sale_supermarket_stock_market_icon_153849.png");
+            }
+            
+        }
 
 
         private void listProveedores_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
@@ -1007,6 +1048,12 @@ namespace UI.Desktop
         {
             ListarIngresos();
         }
+
+        private void niFaltaInsumos_BalloonTipClicked(object sender, EventArgs e)
+        {
+            Insumos frmInsumos = new Insumos(_context);
+            frmInsumos.ShowDialog();
+        }
         #endregion
 
         #region ------- ORDENES -------
@@ -1077,88 +1124,129 @@ namespace UI.Desktop
                     }
                 }
             }
-            if (this.cmbBuscarOrden.SelectedItem.ToString() == "Prioridad")
-            {
-                foreach (Orden o in ordenes)
-                {
-                    if (o.Prioridad.ToString().ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()))
-                    {
-                        ListViewItem item = new ListViewItem(o.NroOrden.ToString());
-                        item.SubItems.Add(String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
-                        item.SubItems.Add(o.Prioridad.ToString());
-                        item.SubItems.Add(o.FechaEntrada.ToString());
-                        if (o.FechaSalida == DateTime.MinValue)
-                        {
-                            item.SubItems.Add("No Retirado");
-                        }
-                        else { item.SubItems.Add(o.FechaSalida.ToString()); }
-                        item.SubItems.Add(o.Estado.ToString());
-                        listOrdenes.Items.Add(item);
-                    }
-                }
-            }
-            if (this.cmbBuscarOrden.SelectedItem.ToString() == "Fecha Ingreso")
-            {
-                foreach (Orden o in ordenes)
-                {
-                    if (o.FechaEntrada.ToString().ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()))
-                    {
-                        ListViewItem item = new ListViewItem(o.NroOrden.ToString());
-                        item.SubItems.Add(String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
-                        item.SubItems.Add(o.Prioridad.ToString());
-                        item.SubItems.Add(o.FechaEntrada.ToString());
-                        if (o.FechaSalida == DateTime.MinValue)
-                        {
-                            item.SubItems.Add("No Retirado");
-                        }
-                        else { item.SubItems.Add(o.FechaSalida.ToString()); }
-                        item.SubItems.Add(o.Estado.ToString());
-                        listOrdenes.Items.Add(item);
-                    }
-                }
-            }
-            if (this.cmbBuscarOrden.SelectedItem.ToString() == "Fecha Salida")
-            {
-                foreach (Orden o in ordenes)
-                {
-                    if (o.FechaSalida.ToString().ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()))
-                    {
-                        ListViewItem item = new ListViewItem(o.NroOrden.ToString());
-                        item.SubItems.Add(String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
-                        item.SubItems.Add(o.Prioridad.ToString());
-                        item.SubItems.Add(o.FechaEntrada.ToString());
-                        if (o.FechaSalida == DateTime.MinValue)
-                        {
-                            item.SubItems.Add("No Retirado");
-                        }
-                        else { item.SubItems.Add(o.FechaSalida.ToString()); }
-                        item.SubItems.Add(o.Estado.ToString());
-                        listOrdenes.Items.Add(item);
-                    }
-                }
-            }
-            if (this.cmbBuscarOrden.SelectedItem.ToString() == "Estado")
-            {
-                foreach (Orden o in ordenes)
-                {
-                    if (o.Estado.ToString().ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()))
-                    {
-                        ListViewItem item = new ListViewItem(o.NroOrden.ToString());
-                        item.SubItems.Add(String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
-                        item.SubItems.Add(o.Prioridad.ToString());
-                        item.SubItems.Add(o.FechaEntrada.ToString());
-                        if (o.FechaSalida == DateTime.MinValue)
-                        {
-                            item.SubItems.Add("No Retirado");
-                        }
-                        else { item.SubItems.Add(o.FechaSalida.ToString()); }
-                        item.SubItems.Add(o.Estado.ToString());
-                        listOrdenes.Items.Add(item);
-                    }
-                }
-            }
             if (this.txtBuscarOrdenes.Text == "") { CargarOrdenes(); }
 
+        }
+
+        private void dtpOrdenesFechaDesde_ValueChanged(object sender, EventArgs e)
+        {
+            ListarOrdenesPorFecha();
+        }
+
+        private void dtpOrdenesFechaHasta_ValueChanged(object sender, EventArgs e)
+        {
+            ListarOrdenesPorFecha();
+        }
+
+        private void ListarOrdenesPorFecha() 
+        {
+            listOrdenes.Items.Clear();
+            List<Orden> ordenes = _ordenLogic.GetAll();
+            if (this.cmbBuscarOrden.SelectedItem.ToString() == "Fecha Ingreso" )
+            {
+                foreach (Orden o in ordenes)
+                {
+                    if (o.FechaEntrada.Date >= this.dtpOrdenesFechaDesde.Value.Date && o.FechaEntrada.Date <= this.dtpOrdenesFechaHasta.Value.Date)
+                    {
+                        ListViewItem item = new ListViewItem(o.NroOrden.ToString());
+                        item.SubItems.Add(String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
+                        item.SubItems.Add(o.Prioridad.ToString());
+                        item.SubItems.Add(o.FechaEntrada.ToString());
+                        if (o.FechaSalida == DateTime.MinValue)
+                        {
+                            item.SubItems.Add("No Retirado");
+                        }
+                        else { item.SubItems.Add(o.FechaSalida.ToString()); }
+                        item.SubItems.Add(o.Estado.ToString());
+                        listOrdenes.Items.Add(item);
+                    }
+                }
+            }
+            if (this.cmbBuscarOrden.SelectedItem.ToString() == "Fecha de Salida")
+            {
+                foreach (Orden o in ordenes)
+                {
+                    if (o.FechaSalida.Date >= this.dtpOrdenesFechaDesde.Value.Date && o.FechaSalida.Date <= this.dtpOrdenesFechaHasta.Value.Date)
+                    {
+                        ListViewItem item = new ListViewItem(o.NroOrden.ToString());
+                        item.SubItems.Add(String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
+                        item.SubItems.Add(o.Prioridad.ToString());
+                        item.SubItems.Add(o.FechaEntrada.ToString());
+                        if (o.FechaSalida == DateTime.MinValue)
+                        {
+                            item.SubItems.Add("No Retirado");
+                        }
+                        else { item.SubItems.Add(o.FechaSalida.ToString()); }
+                        item.SubItems.Add(o.Estado.ToString());
+                        listOrdenes.Items.Add(item);
+                    }
+                }
+            }
+        }
+
+        private void cmbEstadosOrdenes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listOrdenes.Items.Clear();
+            List<Orden> ordenes = _ordenLogic.GetAll();
+            
+            foreach (Orden o in ordenes)
+            {
+                if (o.Estado.ToString() == this.cmbEstadosOrdenes.SelectedItem.ToString() || o.Prioridad.ToString() == this.cmbEstadosOrdenes.SelectedItem.ToString())
+                {
+                    ListViewItem item = new ListViewItem(o.NroOrden.ToString());
+                    item.SubItems.Add(String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
+                    item.SubItems.Add(o.Prioridad.ToString());
+                    item.SubItems.Add(o.FechaEntrada.ToString());
+                    if (o.FechaSalida == DateTime.MinValue)
+                    {
+                        item.SubItems.Add("No Retirado");
+                    }
+                    else { item.SubItems.Add(o.FechaSalida.ToString()); }
+                    item.SubItems.Add(o.Estado.ToString());
+                    listOrdenes.Items.Add(item);
+                }
+            }
+        }
+
+        private void cmbBuscarOrden_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarOrdenes();
+            if (this.cmbBuscarOrden.SelectedItem.ToString() == "Prioridad" || this.cmbBuscarOrden.SelectedItem.ToString() =="Estado")
+            {
+                this.cmbEstadosOrdenes.Visible = true;
+                this.txtBuscarOrdenes.Visible = false;
+                this.lblFechaDesdeOrdenes.Visible = false;
+                this.lblFechaHastaOrdenes.Visible = false;
+                this.dtpOrdenesFechaDesde.Visible = false;
+                this.dtpOrdenesFechaHasta.Visible = false;
+                
+                if (this.cmbBuscarOrden.SelectedItem.ToString() == "Prioridad") 
+                {
+                    this.cmbEstadosOrdenes.DataSource = cmbEstados.DataSource = Enum.GetValues(typeof(Orden.Prioridades));
+                }
+                if (this.cmbBuscarOrden.SelectedItem.ToString() == "Estado") 
+                {
+                    this.cmbEstadosOrdenes.DataSource = Enum.GetValues(typeof(Orden.Estados));
+                }
+            }
+            if (this.cmbBuscarOrden.SelectedItem.ToString() == "Fecha Ingreso" || this.cmbBuscarOrden.SelectedItem.ToString() == "Fecha de Salida")
+            {
+                this.txtBuscarOrdenes.Visible = false;
+                this.lblFechaDesdeOrdenes.Visible = true;
+                this.lblFechaHastaOrdenes.Visible = true;
+                this.dtpOrdenesFechaDesde.Visible = true;
+                this.dtpOrdenesFechaHasta.Visible = true;
+                this.cmbEstadosOrdenes.Visible = false;
+            }
+            if(this.cmbBuscarOrden.SelectedItem.ToString() != "Prioridad" && this.cmbBuscarOrden.SelectedItem.ToString() != "Estado" && this.cmbBuscarOrden.SelectedItem.ToString() != "Fecha Ingreso" && this.cmbBuscarOrden.SelectedItem.ToString() != "Fecha de Salida")
+            {
+                this.txtBuscarOrdenes.Visible = true;
+                this.lblFechaDesdeOrdenes.Visible = false;
+                this.lblFechaHastaOrdenes.Visible = false;
+                this.dtpOrdenesFechaDesde.Visible = false;
+                this.dtpOrdenesFechaHasta.Visible = false;
+                this.cmbEstadosOrdenes.Visible = false;
+            }
         }
         #endregion
 
@@ -1211,6 +1299,7 @@ namespace UI.Desktop
             }
 
         }
+
         public bool VerificarEstadoItems(Orden ordenActual)
         {
             List<OrdenServicioTipoPrenda> itemsOrden = ordenActual.ItemsPedidos;
@@ -1225,6 +1314,7 @@ namespace UI.Desktop
             }
             return ok;
         }
+
         private void btnRetirarOrden_Click(object sender, EventArgs e)
         {
             if (listOrdenes.SelectedItems.Count > 0)
@@ -1281,6 +1371,7 @@ namespace UI.Desktop
         #endregion
 
         #region ------- LOGIN -------
+
         private void frmMain_Shown(object sender, EventArgs e)
         {
 
@@ -1298,9 +1389,8 @@ namespace UI.Desktop
                 this.epUser.Visible = true;
                 this.epUser.Title = $"{Singleton.getInstance().UserLogged.NombreUsuario}";
                 ConfiguracionAdministrador();
+                ValidarStock();
             }
-            
-
 
         }
 
@@ -1855,6 +1945,11 @@ namespace UI.Desktop
                 }
             }
         }
+
+        private void listTrabajosPendientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listMaquinasItem.Items.Clear();
+        }
         #endregion
 
         #region ------- TRABAJOS EN PROCESO -------
@@ -2068,10 +2163,11 @@ namespace UI.Desktop
 
         private void btnEnviarPendientes_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea enviar este item a pendientes?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (listTrabajosFinalizados.SelectedItems.Count > 0)
             {
-                if (listTrabajosFinalizados.SelectedItems.Count > 0)
+                if (MessageBox.Show("Desea enviar este item a pendientes?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+
                     OrdenServicioTipoPrenda ostp = _ordenServicioTipoPrendaLogic.GetAll().Find(x =>
                           x.NroOrden == Int32.Parse(this.listTrabajosFinalizados.SelectedItems[0].Text) &&
                           x.ServicioTipoPrenda.Servicio.Descripcion == this.listTrabajosFinalizados.SelectedItems[0].SubItems[1].Text &&
@@ -2089,10 +2185,13 @@ namespace UI.Desktop
                         _ordenLogic.Save(ordenItemActual);
                         Planificar();
                     }
-                    else { MessageBox.Show("La orden del item selecciona ya se encuentra registrada como RETIRADA, y por lo tanto no es posible realizar la acción", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information); }
                 }
+                else { MessageBox.Show("La orden del item selecciona ya se encuentra registrada como RETIRADA, y por lo tanto no es posible realizar la acción", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information); }
 
             }
+            else { MessageBox.Show("Se debe seleccionar un item de la lista", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+
+            
         }
 
         private void cmbFiltroTrabajosFinalizados_SelectedIndexChanged(object sender, EventArgs e)
@@ -2400,12 +2499,7 @@ namespace UI.Desktop
 
         private void chkCambioColor_CheckedChanged(object sender, EventArgs e)
         {
-           
-                CambiarColor(chkCambioColor.Checked);
-            
-            
+            CambiarColor(chkCambioColor.Checked);
         }
-
-       
     }
 }

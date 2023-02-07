@@ -36,6 +36,8 @@ namespace UI.Desktop
                 {
                     ListViewItem item = new ListViewItem(i.IdInsumo.ToString());
                     item.SubItems.Add(i.Descripcion);
+                    item.SubItems.Add(i.PuntoPedido.ToString());
+                    item.SubItems.Add(i.Stock.ToString("N2"));
                     listInsumos.Items.Add(item);
                 }
             }
@@ -43,17 +45,19 @@ namespace UI.Desktop
 
         private void btnDetalles_Click(object sender, EventArgs e)
         {
-            ListarConsumos();
-            this.dtpFechaInicio.Value = DateTime.Today.AddYears(-10);
-            this.dtpFechaHasta.Value = DateTime.Today;
-            CalcularEstadisticasInsumos();
+            if (listConsumos.Items.Count > 0)
+            {
+                ListarConsumos();
+                CalcularEstadisticasInsumos(this.dtpFechaInicio.MinDate, this.dtpFechaHasta.Value);
+            }
+            else { MessageBox.Show("Seleccione un insumo y haga click en detalles", "Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information); }
         }
 
         private void ListarConsumos()
         {
-            listConsumos.Items.Clear();
-            if (listInsumos.SelectedItems.Count > 0)
-            {
+               listConsumos.Items.Clear();
+            //if (listInsumos.SelectedItems.Count > 0)
+            //{
                 insumoActual = _insumoLogic.GetOne(Int32.Parse(listInsumos.SelectedItems[0].Text));
                 if (insumoActual is not null)
                 {
@@ -66,7 +70,12 @@ namespace UI.Desktop
                         listConsumos.Items.Add(item);
                     }
                 }
-            }
+                //else
+                //{
+                //    MessageBox.Show("Seleccione un insumo y haga click en detalles", "Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //}
+            //}
+            
         }
 
         private void listInsumos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
@@ -140,15 +149,15 @@ namespace UI.Desktop
         
         private void dtpFechaInicio_ValueChanged(object sender, EventArgs e)
         {
-            CalcularEstadisticasInsumos();
+            CalcularEstadisticasInsumos(this.dtpFechaInicio.Value.Date,this.dtpFechaHasta.Value.Date);
         }
 
         private void dtpFechaHasta_ValueChanged(object sender, EventArgs e)
         {
-            CalcularEstadisticasInsumos();
+            CalcularEstadisticasInsumos(this.dtpFechaInicio.Value.Date, this.dtpFechaHasta.Value.Date);
         }
 
-        private void CalcularEstadisticasInsumos() 
+        private void CalcularEstadisticasInsumos(DateTime fechaIni,DateTime fechaHasta) 
         {
             this.lblCantidadInsumoIngresada.Text = "-";
             this.lblInsumosUtilizados.Text = "-";
@@ -160,7 +169,7 @@ namespace UI.Desktop
                 {
                     foreach (Consumo c in insumoActual.Consumos)
                     {
-                        if (c.FechaConsumo.Date >= this.dtpFechaInicio.Value.Date && c.FechaConsumo.Date <= this.dtpFechaHasta.Value.Date)
+                        if (c.FechaConsumo.Date >= fechaIni.Date && c.FechaConsumo.Date <= fechaHasta.Date)
                         {
                             _cantidadUtilizada += c.Cantidad;
                         }
@@ -171,7 +180,7 @@ namespace UI.Desktop
                 {
                     foreach (InsumoProveedor ip in insumoActual.InsumosProveedores)
                     {
-                        if (ip.FechaIngreso.Date >= this.dtpFechaInicio.Value.Date && ip.FechaIngreso.Date <= this.dtpFechaHasta.Value.Date)
+                        if (ip.FechaIngreso.Date >= fechaIni.Date && ip.FechaIngreso.Date <= fechaHasta.Date)
                         {
                             _cantidadIngresada += ip.Cantidad;
                         }

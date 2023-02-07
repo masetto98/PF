@@ -19,6 +19,12 @@ namespace Data.Database
                .HasForeignKey(u => u.IdEmpleado)
                .OnDelete(DeleteBehavior.NoAction);
 
+            modelBuilder.Entity<Gasto>()
+               .HasOne(u => u.Empleado)
+               .WithMany(e => e.GastosRegistrados)
+               .HasForeignKey(u => u.IdEmpleado)
+               .OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<TipoPrenda>()
                 .ToTable("tipo_prendas");
 
@@ -68,7 +74,7 @@ namespace Data.Database
                 .HasOne(ip => ip.TipoMaquina)
                 .WithMany(p => p.Maquinas)
                 .HasForeignKey(ip => ip.IdTipoMaquina)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.ClientCascade);
 
             modelBuilder.Entity<InsumoProveedor>()
                 .HasOne(ip => ip.Insumo)
@@ -191,7 +197,7 @@ namespace Data.Database
                 .HasOne(m => m.ServicioTipoPrenda)
                 .WithMany(stp => stp.HistoricoPrecios)
                 .HasForeignKey( m => new {m.IdServicio,m.IdTipoPrenda})
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.ClientCascade);
 
             modelBuilder.Entity<Precio>()
                 .HasKey(m => new { m.IdServicio, m.IdTipoPrenda, m.FechaDesde });

@@ -33,6 +33,11 @@ namespace UI.Desktop
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.mnuPrincipal = new MaterialSkin.Controls.MaterialTabControl();
             this.mnuTabOrdenes = new System.Windows.Forms.TabPage();
+            this.lblFechaHastaOrdenes = new MaterialSkin.Controls.MaterialLabel();
+            this.lblFechaDesdeOrdenes = new MaterialSkin.Controls.MaterialLabel();
+            this.dtpOrdenesFechaHasta = new System.Windows.Forms.DateTimePicker();
+            this.dtpOrdenesFechaDesde = new System.Windows.Forms.DateTimePicker();
+            this.cmbEstadosOrdenes = new MaterialSkin.Controls.MaterialComboBox();
             this.cmbBuscarOrden = new MaterialSkin.Controls.MaterialComboBox();
             this.btnVerDetalles = new MaterialSkin.Controls.MaterialButton();
             this.btnEditarOrden = new MaterialSkin.Controls.MaterialButton();
@@ -85,6 +90,12 @@ namespace UI.Desktop
             this.mnuTabInventario = new System.Windows.Forms.TabPage();
             this.tabControlInventario = new MaterialSkin.Controls.MaterialTabControl();
             this.TabStock = new System.Windows.Forms.TabPage();
+            this.cardInsumosFaltantes = new MaterialSkin.Controls.MaterialCard();
+            this.lblInsumosFaltantes = new MaterialSkin.Controls.MaterialLabel();
+            this.listInsumosFaltantes = new MaterialSkin.Controls.MaterialListView();
+            this.columnHeader14 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader15 = new System.Windows.Forms.ColumnHeader();
+            this.pxRojo = new System.Windows.Forms.PictureBox();
             this.cmbInsumos = new MaterialSkin.Controls.MaterialComboBox();
             this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
             this.txtBuscarInsumos = new MaterialSkin.Controls.MaterialTextBox();
@@ -223,6 +234,7 @@ namespace UI.Desktop
             this.btnEditarPerfil = new MaterialSkin.Controls.MaterialButton();
             this.imgUserLogin = new System.Windows.Forms.PictureBox();
             this.btnCerrarSesion = new MaterialSkin.Controls.MaterialButton();
+            this.niFaltaInsumos = new System.Windows.Forms.NotifyIcon(this.components);
             this.mnuPrincipal.SuspendLayout();
             this.mnuTabOrdenes.SuspendLayout();
             this.mnuTabClientes.SuspendLayout();
@@ -230,6 +242,8 @@ namespace UI.Desktop
             this.mnuTabInventario.SuspendLayout();
             this.tabControlInventario.SuspendLayout();
             this.TabStock.SuspendLayout();
+            this.cardInsumosFaltantes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pxRojo)).BeginInit();
             this.TabMovimientos.SuspendLayout();
             this.tabPlanificacion.SuspendLayout();
             this.tabControlPlanificacion.SuspendLayout();
@@ -272,6 +286,11 @@ namespace UI.Desktop
             // mnuTabOrdenes
             // 
             this.mnuTabOrdenes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.mnuTabOrdenes.Controls.Add(this.lblFechaHastaOrdenes);
+            this.mnuTabOrdenes.Controls.Add(this.lblFechaDesdeOrdenes);
+            this.mnuTabOrdenes.Controls.Add(this.dtpOrdenesFechaHasta);
+            this.mnuTabOrdenes.Controls.Add(this.dtpOrdenesFechaDesde);
+            this.mnuTabOrdenes.Controls.Add(this.cmbEstadosOrdenes);
             this.mnuTabOrdenes.Controls.Add(this.cmbBuscarOrden);
             this.mnuTabOrdenes.Controls.Add(this.btnVerDetalles);
             this.mnuTabOrdenes.Controls.Add(this.btnEditarOrden);
@@ -290,6 +309,75 @@ namespace UI.Desktop
             this.mnuTabOrdenes.TabIndex = 0;
             this.mnuTabOrdenes.Text = "Ordenes";
             // 
+            // lblFechaHastaOrdenes
+            // 
+            this.lblFechaHastaOrdenes.AutoSize = true;
+            this.lblFechaHastaOrdenes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.lblFechaHastaOrdenes.Depth = 0;
+            this.lblFechaHastaOrdenes.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblFechaHastaOrdenes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblFechaHastaOrdenes.Location = new System.Drawing.Point(996, 36);
+            this.lblFechaHastaOrdenes.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblFechaHastaOrdenes.Name = "lblFechaHastaOrdenes";
+            this.lblFechaHastaOrdenes.Size = new System.Drawing.Size(43, 19);
+            this.lblFechaHastaOrdenes.TabIndex = 17;
+            this.lblFechaHastaOrdenes.Text = "Hasta";
+            // 
+            // lblFechaDesdeOrdenes
+            // 
+            this.lblFechaDesdeOrdenes.AutoSize = true;
+            this.lblFechaDesdeOrdenes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.lblFechaDesdeOrdenes.Depth = 0;
+            this.lblFechaDesdeOrdenes.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblFechaDesdeOrdenes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblFechaDesdeOrdenes.Location = new System.Drawing.Point(835, 36);
+            this.lblFechaDesdeOrdenes.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblFechaDesdeOrdenes.Name = "lblFechaDesdeOrdenes";
+            this.lblFechaDesdeOrdenes.Size = new System.Drawing.Size(49, 19);
+            this.lblFechaDesdeOrdenes.TabIndex = 16;
+            this.lblFechaDesdeOrdenes.Text = "Desde ";
+            // 
+            // dtpOrdenesFechaHasta
+            // 
+            this.dtpOrdenesFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpOrdenesFechaHasta.Location = new System.Drawing.Point(1045, 32);
+            this.dtpOrdenesFechaHasta.Name = "dtpOrdenesFechaHasta";
+            this.dtpOrdenesFechaHasta.Size = new System.Drawing.Size(100, 23);
+            this.dtpOrdenesFechaHasta.TabIndex = 15;
+            this.dtpOrdenesFechaHasta.ValueChanged += new System.EventHandler(this.dtpOrdenesFechaHasta_ValueChanged);
+            // 
+            // dtpOrdenesFechaDesde
+            // 
+            this.dtpOrdenesFechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpOrdenesFechaDesde.Location = new System.Drawing.Point(890, 32);
+            this.dtpOrdenesFechaDesde.Name = "dtpOrdenesFechaDesde";
+            this.dtpOrdenesFechaDesde.Size = new System.Drawing.Size(100, 23);
+            this.dtpOrdenesFechaDesde.TabIndex = 14;
+            this.dtpOrdenesFechaDesde.ValueChanged += new System.EventHandler(this.dtpOrdenesFechaDesde_ValueChanged);
+            // 
+            // cmbEstadosOrdenes
+            // 
+            this.cmbEstadosOrdenes.AutoResize = false;
+            this.cmbEstadosOrdenes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.cmbEstadosOrdenes.Depth = 0;
+            this.cmbEstadosOrdenes.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cmbEstadosOrdenes.DropDownHeight = 174;
+            this.cmbEstadosOrdenes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstadosOrdenes.DropDownWidth = 121;
+            this.cmbEstadosOrdenes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cmbEstadosOrdenes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cmbEstadosOrdenes.FormattingEnabled = true;
+            this.cmbEstadosOrdenes.IntegralHeight = false;
+            this.cmbEstadosOrdenes.ItemHeight = 43;
+            this.cmbEstadosOrdenes.Location = new System.Drawing.Point(766, 15);
+            this.cmbEstadosOrdenes.MaxDropDownItems = 4;
+            this.cmbEstadosOrdenes.MouseState = MaterialSkin.MouseState.OUT;
+            this.cmbEstadosOrdenes.Name = "cmbEstadosOrdenes";
+            this.cmbEstadosOrdenes.Size = new System.Drawing.Size(379, 49);
+            this.cmbEstadosOrdenes.StartIndex = 0;
+            this.cmbEstadosOrdenes.TabIndex = 13;
+            this.cmbEstadosOrdenes.SelectedIndexChanged += new System.EventHandler(this.cmbEstadosOrdenes_SelectedIndexChanged);
+            // 
             // cmbBuscarOrden
             // 
             this.cmbBuscarOrden.AutoResize = false;
@@ -305,13 +393,14 @@ namespace UI.Desktop
             this.cmbBuscarOrden.Hint = "Filtro";
             this.cmbBuscarOrden.IntegralHeight = false;
             this.cmbBuscarOrden.ItemHeight = 43;
-            this.cmbBuscarOrden.Location = new System.Drawing.Point(87, 550);
+            this.cmbBuscarOrden.Location = new System.Drawing.Point(538, 15);
             this.cmbBuscarOrden.MaxDropDownItems = 4;
             this.cmbBuscarOrden.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbBuscarOrden.Name = "cmbBuscarOrden";
             this.cmbBuscarOrden.Size = new System.Drawing.Size(222, 49);
             this.cmbBuscarOrden.StartIndex = 0;
             this.cmbBuscarOrden.TabIndex = 12;
+            this.cmbBuscarOrden.SelectedIndexChanged += new System.EventHandler(this.cmbBuscarOrden_SelectedIndexChanged);
             // 
             // btnVerDetalles
             // 
@@ -393,13 +482,13 @@ namespace UI.Desktop
             this.txtBuscarOrdenes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtBuscarOrdenes.Hint = "Buscar ordenes...";
             this.txtBuscarOrdenes.LeadingIcon = null;
-            this.txtBuscarOrdenes.Location = new System.Drawing.Point(315, 550);
+            this.txtBuscarOrdenes.Location = new System.Drawing.Point(766, 17);
             this.txtBuscarOrdenes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBuscarOrdenes.MaxLength = 50;
             this.txtBuscarOrdenes.MouseState = MaterialSkin.MouseState.OUT;
             this.txtBuscarOrdenes.Multiline = false;
             this.txtBuscarOrdenes.Name = "txtBuscarOrdenes";
-            this.txtBuscarOrdenes.Size = new System.Drawing.Size(438, 50);
+            this.txtBuscarOrdenes.Size = new System.Drawing.Size(379, 50);
             this.txtBuscarOrdenes.TabIndex = 6;
             this.txtBuscarOrdenes.Text = "";
             this.txtBuscarOrdenes.TrailingIcon = null;
@@ -412,7 +501,7 @@ namespace UI.Desktop
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(27, 565);
+            this.materialLabel1.Location = new System.Drawing.Point(478, 37);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(54, 19);
@@ -491,7 +580,7 @@ namespace UI.Desktop
             this.listOrdenes.MultiSelect = false;
             this.listOrdenes.Name = "listOrdenes";
             this.listOrdenes.OwnerDraw = true;
-            this.listOrdenes.Size = new System.Drawing.Size(1118, 465);
+            this.listOrdenes.Size = new System.Drawing.Size(1118, 573);
             this.listOrdenes.TabIndex = 2;
             this.listOrdenes.UseCompatibleStateImageBehavior = false;
             this.listOrdenes.View = System.Windows.Forms.View.Details;
@@ -1050,6 +1139,7 @@ namespace UI.Desktop
             // TabStock
             // 
             this.TabStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.TabStock.Controls.Add(this.cardInsumosFaltantes);
             this.TabStock.Controls.Add(this.cmbInsumos);
             this.TabStock.Controls.Add(this.materialLabel14);
             this.TabStock.Controls.Add(this.txtBuscarInsumos);
@@ -1072,6 +1162,81 @@ namespace UI.Desktop
             this.TabStock.Size = new System.Drawing.Size(1345, 604);
             this.TabStock.TabIndex = 0;
             this.TabStock.Text = "Stock";
+            // 
+            // cardInsumosFaltantes
+            // 
+            this.cardInsumosFaltantes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cardInsumosFaltantes.Controls.Add(this.lblInsumosFaltantes);
+            this.cardInsumosFaltantes.Controls.Add(this.listInsumosFaltantes);
+            this.cardInsumosFaltantes.Controls.Add(this.pxRojo);
+            this.cardInsumosFaltantes.Depth = 0;
+            this.cardInsumosFaltantes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cardInsumosFaltantes.Location = new System.Drawing.Point(713, 8);
+            this.cardInsumosFaltantes.Margin = new System.Windows.Forms.Padding(14);
+            this.cardInsumosFaltantes.MouseState = MaterialSkin.MouseState.HOVER;
+            this.cardInsumosFaltantes.Name = "cardInsumosFaltantes";
+            this.cardInsumosFaltantes.Padding = new System.Windows.Forms.Padding(14);
+            this.cardInsumosFaltantes.Size = new System.Drawing.Size(341, 189);
+            this.cardInsumosFaltantes.TabIndex = 28;
+            this.cardInsumosFaltantes.Visible = false;
+            // 
+            // lblInsumosFaltantes
+            // 
+            this.lblInsumosFaltantes.AutoSize = true;
+            this.lblInsumosFaltantes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.lblInsumosFaltantes.Depth = 0;
+            this.lblInsumosFaltantes.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblInsumosFaltantes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblInsumosFaltantes.Location = new System.Drawing.Point(14, 6);
+            this.lblInsumosFaltantes.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblInsumosFaltantes.Name = "lblInsumosFaltantes";
+            this.lblInsumosFaltantes.Size = new System.Drawing.Size(173, 19);
+            this.lblInsumosFaltantes.TabIndex = 2;
+            this.lblInsumosFaltantes.Text = "Insumos con stock bajo:";
+            this.lblInsumosFaltantes.Visible = false;
+            // 
+            // listInsumosFaltantes
+            // 
+            this.listInsumosFaltantes.AutoSizeTable = false;
+            this.listInsumosFaltantes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listInsumosFaltantes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listInsumosFaltantes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader14,
+            this.columnHeader15});
+            this.listInsumosFaltantes.Depth = 0;
+            this.listInsumosFaltantes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.listInsumosFaltantes.FullRowSelect = true;
+            this.listInsumosFaltantes.HideSelection = false;
+            this.listInsumosFaltantes.Location = new System.Drawing.Point(14, 30);
+            this.listInsumosFaltantes.MinimumSize = new System.Drawing.Size(200, 100);
+            this.listInsumosFaltantes.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listInsumosFaltantes.MouseState = MaterialSkin.MouseState.OUT;
+            this.listInsumosFaltantes.Name = "listInsumosFaltantes";
+            this.listInsumosFaltantes.OwnerDraw = true;
+            this.listInsumosFaltantes.Size = new System.Drawing.Size(310, 148);
+            this.listInsumosFaltantes.TabIndex = 1;
+            this.listInsumosFaltantes.UseCompatibleStateImageBehavior = false;
+            this.listInsumosFaltantes.View = System.Windows.Forms.View.Details;
+            this.listInsumosFaltantes.Visible = false;
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "ID";
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "Insumo";
+            this.columnHeader15.Width = 200;
+            // 
+            // pxRojo
+            // 
+            this.pxRojo.Image = global::UI.Desktop.Properties.Resources.fondo_rojo;
+            this.pxRojo.Location = new System.Drawing.Point(0, 0);
+            this.pxRojo.Name = "pxRojo";
+            this.pxRojo.Size = new System.Drawing.Size(341, 190);
+            this.pxRojo.TabIndex = 0;
+            this.pxRojo.TabStop = false;
+            this.pxRojo.Visible = false;
             // 
             // cmbInsumos
             // 
@@ -1140,7 +1305,7 @@ namespace UI.Desktop
             this.btnReset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnReset.HighEmphasis = true;
             this.btnReset.Icon = null;
-            this.btnReset.Location = new System.Drawing.Point(1101, 130);
+            this.btnReset.Location = new System.Drawing.Point(1102, 192);
             this.btnReset.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnReset.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnReset.Name = "btnReset";
@@ -1159,7 +1324,7 @@ namespace UI.Desktop
             this.dtpFiltroFechaIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpFiltroFechaIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dtpFiltroFechaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFiltroFechaIngreso.Location = new System.Drawing.Point(965, 141);
+            this.dtpFiltroFechaIngreso.Location = new System.Drawing.Point(966, 203);
             this.dtpFiltroFechaIngreso.Name = "dtpFiltroFechaIngreso";
             this.dtpFiltroFechaIngreso.Size = new System.Drawing.Size(118, 23);
             this.dtpFiltroFechaIngreso.TabIndex = 23;
@@ -1172,7 +1337,7 @@ namespace UI.Desktop
             this.materialLabel8.Depth = 0;
             this.materialLabel8.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel8.Location = new System.Drawing.Point(865, 145);
+            this.materialLabel8.Location = new System.Drawing.Point(866, 207);
             this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel8.Name = "materialLabel8";
             this.materialLabel8.Size = new System.Drawing.Size(94, 19);
@@ -1186,7 +1351,7 @@ namespace UI.Desktop
             this.materialLabel7.Depth = 0;
             this.materialLabel7.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel7.Location = new System.Drawing.Point(564, 147);
+            this.materialLabel7.Location = new System.Drawing.Point(564, 210);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
             this.materialLabel7.Size = new System.Drawing.Size(179, 19);
@@ -1203,7 +1368,7 @@ namespace UI.Desktop
             this.btnEliminarIngresoInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEliminarIngresoInsumo.HighEmphasis = true;
             this.btnEliminarIngresoInsumo.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
-            this.btnEliminarIngresoInsumo.Location = new System.Drawing.Point(1173, 232);
+            this.btnEliminarIngresoInsumo.Location = new System.Drawing.Point(1173, 295);
             this.btnEliminarIngresoInsumo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminarIngresoInsumo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminarIngresoInsumo.Name = "btnEliminarIngresoInsumo";
@@ -1231,14 +1396,14 @@ namespace UI.Desktop
             this.listIngresosInsumos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listIngresosInsumos.FullRowSelect = true;
             this.listIngresosInsumos.HideSelection = false;
-            this.listIngresosInsumos.Location = new System.Drawing.Point(564, 169);
+            this.listIngresosInsumos.Location = new System.Drawing.Point(564, 232);
             this.listIngresosInsumos.MinimumSize = new System.Drawing.Size(200, 100);
             this.listIngresosInsumos.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listIngresosInsumos.MouseState = MaterialSkin.MouseState.OUT;
             this.listIngresosInsumos.MultiSelect = false;
             this.listIngresosInsumos.Name = "listIngresosInsumos";
             this.listIngresosInsumos.OwnerDraw = true;
-            this.listIngresosInsumos.Size = new System.Drawing.Size(602, 337);
+            this.listIngresosInsumos.Size = new System.Drawing.Size(602, 274);
             this.listIngresosInsumos.TabIndex = 16;
             this.listIngresosInsumos.UseCompatibleStateImageBehavior = false;
             this.listIngresosInsumos.View = System.Windows.Forms.View.Details;
@@ -1274,7 +1439,7 @@ namespace UI.Desktop
             this.btnIngresoInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnIngresoInsumo.HighEmphasis = true;
             this.btnIngresoInsumo.Icon = global::UI.Desktop.Properties.Resources.product_delivery_icon_152013;
-            this.btnIngresoInsumo.Location = new System.Drawing.Point(1174, 169);
+            this.btnIngresoInsumo.Location = new System.Drawing.Point(1173, 232);
             this.btnIngresoInsumo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnIngresoInsumo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnIngresoInsumo.Name = "btnIngresoInsumo";
@@ -1916,6 +2081,7 @@ namespace UI.Desktop
             this.listTrabajosPendientes.UseCompatibleStateImageBehavior = false;
             this.listTrabajosPendientes.View = System.Windows.Forms.View.Details;
             this.listTrabajosPendientes.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listTrabajosPendientes_ColumnWidthChanging);
+            this.listTrabajosPendientes.SelectedIndexChanged += new System.EventHandler(this.listTrabajosPendientes_SelectedIndexChanged);
             // 
             // columnOrden
             // 
@@ -2944,6 +3110,7 @@ namespace UI.Desktop
             this.imageList1.Images.SetKeyName(3, "20business-planning_102092.png");
             this.imageList1.Images.SetKeyName(4, "tools_icon-icons.com_69843.png");
             this.imageList1.Images.SetKeyName(5, "help-round-button_icon-icons.com_72706.png");
+            this.imageList1.Images.SetKeyName(6, "inventario_notify.png");
             // 
             // epUser
             // 
@@ -3045,6 +3212,14 @@ namespace UI.Desktop
             this.btnCerrarSesion.UseVisualStyleBackColor = false;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
+            // niFaltaInsumos
+            // 
+            this.niFaltaInsumos.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            this.niFaltaInsumos.Icon = ((System.Drawing.Icon)(resources.GetObject("niFaltaInsumos.Icon")));
+            this.niFaltaInsumos.Text = "Insumos";
+            this.niFaltaInsumos.Visible = true;
+            this.niFaltaInsumos.BalloonTipClicked += new System.EventHandler(this.niFaltaInsumos_BalloonTipClicked);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -3075,6 +3250,9 @@ namespace UI.Desktop
             this.tabControlInventario.ResumeLayout(false);
             this.TabStock.ResumeLayout(false);
             this.TabStock.PerformLayout();
+            this.cardInsumosFaltantes.ResumeLayout(false);
+            this.cardInsumosFaltantes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pxRojo)).EndInit();
             this.TabMovimientos.ResumeLayout(false);
             this.TabMovimientos.PerformLayout();
             this.tabPlanificacion.ResumeLayout(false);
@@ -3297,6 +3475,18 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialLabel materialLabel16;
         private MaterialSkin.Controls.MaterialLabel lblElijaFechaEntrega;
         private System.Windows.Forms.DateTimePicker dtpFechaVencitmiento;
+        private MaterialSkin.Controls.MaterialLabel lblFechaHastaOrdenes;
+        private MaterialSkin.Controls.MaterialLabel lblFechaDesdeOrdenes;
+        private System.Windows.Forms.DateTimePicker dtpOrdenesFechaHasta;
+        private System.Windows.Forms.DateTimePicker dtpOrdenesFechaDesde;
+        private MaterialSkin.Controls.MaterialComboBox cmbEstadosOrdenes;
+        private MaterialSkin.Controls.MaterialCard cardInsumosFaltantes;
+        private MaterialSkin.Controls.MaterialLabel lblInsumosFaltantes;
+        private MaterialSkin.Controls.MaterialListView listInsumosFaltantes;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.ColumnHeader columnHeader15;
+        private System.Windows.Forms.PictureBox pxRojo;
+        private System.Windows.Forms.NotifyIcon niFaltaInsumos;
     }
 }
 

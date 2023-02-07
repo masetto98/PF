@@ -12,6 +12,7 @@ namespace Business.Entities
     {
         private int _idTipoMaquina;
         private string _descripcion;
+        private bool _deleted;
         private List<Maquina> _maquinas;
         private List<InsumoServicioTipoPrenda> _insumosServicioTipoPrendaTiposMaquina;
 
@@ -27,6 +28,13 @@ namespace Business.Entities
         {
             get { return _descripcion; }
             set { _descripcion = value; }
+        }
+
+        [Column("deleted")]
+        public bool Borrado
+        {
+            get { return _deleted; }
+            set { _deleted = value; }
         }
 
         public List<Maquina> Maquinas 

@@ -79,6 +79,7 @@ namespace UI.Desktop
             this.listServiciosTipoPrendas.UseCompatibleStateImageBehavior = false;
             this.listServiciosTipoPrendas.View = System.Windows.Forms.View.Details;
             this.listServiciosTipoPrendas.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listServiciosTipoPrendas_ColumnWidthChanging);
+            this.listServiciosTipoPrendas.SelectedIndexChanged += new System.EventHandler(this.listServiciosTipoPrendas_SelectedIndexChanged);
             // 
             // columnServicio
             // 

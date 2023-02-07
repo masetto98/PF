@@ -39,6 +39,7 @@ namespace UI.Desktop
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblCuenta = new MaterialSkin.Controls.MaterialLabel();
             this.btnCrearCuenta = new MaterialSkin.Controls.MaterialButton();
+            this.linklblLoginHelp = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.showPass1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hidePass1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -214,12 +215,24 @@ namespace UI.Desktop
             this.btnCrearCuenta.UseVisualStyleBackColor = false;
             this.btnCrearCuenta.Click += new System.EventHandler(this.btnCrearCuenta_Click);
             // 
+            // linklblLoginHelp
+            // 
+            this.linklblLoginHelp.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.linklblLoginHelp.Location = new System.Drawing.Point(224, 269);
+            this.linklblLoginHelp.Name = "linklblLoginHelp";
+            this.linklblLoginHelp.Size = new System.Drawing.Size(216, 23);
+            this.linklblLoginHelp.TabIndex = 27;
+            this.linklblLoginHelp.TabStop = true;
+            this.linklblLoginHelp.Text = "¿No recuerdas tu contraseña?";
+            this.linklblLoginHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblLoginHelp_LinkClicked);
+            // 
             // frmLogin
             // 
             this.AcceptButton = this.btnIngresar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(490, 343);
+            this.Controls.Add(this.linklblLoginHelp);
             this.Controls.Add(this.btnCrearCuenta);
             this.Controls.Add(this.lblCuenta);
             this.Controls.Add(this.pictureBox1);
@@ -257,5 +270,6 @@ namespace UI.Desktop
         private System.Windows.Forms.PictureBox pictureBox1;
         private MaterialSkin.Controls.MaterialLabel lblCuenta;
         private MaterialSkin.Controls.MaterialButton btnCrearCuenta;
+        private System.Windows.Forms.LinkLabel linklblLoginHelp;
     }
 }

@@ -13,7 +13,7 @@ namespace Business.Entities
         private int _idServicio;
         private int _idTipoPrenda;
         private int _ordenItem;
-        private DateTime _fecha_cambio_prioridad;
+        //private DateTime _fecha_cambio_prioridad;
         private Estados _estado;
         private Prioridades _prioridad;
         private Orden _orden;
@@ -74,13 +74,14 @@ namespace Business.Entities
             get { return _prioridad; }
             set { _prioridad = value; }
         }
+        /*
         [Column("fecha_cambio_prioridad")]
         public DateTime FechaCambioPrioridad
         {
             get { return _fecha_cambio_prioridad; }
             set { _fecha_cambio_prioridad = value; }
         }
-
+        */
         [Column("deleted")]
         public bool Borrado
         {
