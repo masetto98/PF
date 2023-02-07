@@ -43,6 +43,9 @@
     <Compile Update="Gastos.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ServicioTipoPrenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="TipoMaquinaDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,9 +77,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="RetirarOrdenDesktop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="ServicioTipoPrenda.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="ObjetosPerdidosForm.cs">

@@ -35,6 +35,7 @@ namespace UI.Desktop
             this.txtRedes = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
             this.btnAceptar = new MaterialSkin.Controls.MaterialButton();
             this.btnCancelar = new MaterialSkin.Controls.MaterialButton();
+            this.txtCuitEmpresa = new MaterialSkin.Controls.MaterialTextBox();
             this.SuspendLayout();
             // 
             // txtNombreNegocio
@@ -47,7 +48,7 @@ namespace UI.Desktop
             this.txtNombreNegocio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtNombreNegocio.Hint = "Nombre del negocio";
             this.txtNombreNegocio.LeadingIcon = null;
-            this.txtNombreNegocio.Location = new System.Drawing.Point(9, 91);
+            this.txtNombreNegocio.Location = new System.Drawing.Point(9, 142);
             this.txtNombreNegocio.MaxLength = 50;
             this.txtNombreNegocio.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNombreNegocio.Multiline = false;
@@ -67,7 +68,7 @@ namespace UI.Desktop
             this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtDireccion.Hint = "Dirección";
             this.txtDireccion.LeadingIcon = null;
-            this.txtDireccion.Location = new System.Drawing.Point(9, 147);
+            this.txtDireccion.Location = new System.Drawing.Point(9, 198);
             this.txtDireccion.MaxLength = 50;
             this.txtDireccion.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDireccion.Multiline = false;
@@ -87,7 +88,7 @@ namespace UI.Desktop
             this.txtTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtTelefono.Hint = "Teléfono";
             this.txtTelefono.LeadingIcon = null;
-            this.txtTelefono.Location = new System.Drawing.Point(9, 204);
+            this.txtTelefono.Location = new System.Drawing.Point(9, 255);
             this.txtTelefono.MaxLength = 50;
             this.txtTelefono.MouseState = MaterialSkin.MouseState.OUT;
             this.txtTelefono.Multiline = false;
@@ -107,7 +108,7 @@ namespace UI.Desktop
             this.txtRedes.Depth = 0;
             this.txtRedes.HideSelection = true;
             this.txtRedes.Hint = "Redes";
-            this.txtRedes.Location = new System.Drawing.Point(9, 260);
+            this.txtRedes.Location = new System.Drawing.Point(9, 311);
             this.txtRedes.MaxLength = 32767;
             this.txtRedes.MouseState = MaterialSkin.MouseState.OUT;
             this.txtRedes.Name = "txtRedes";
@@ -133,7 +134,7 @@ namespace UI.Desktop
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAceptar.HighEmphasis = true;
             this.btnAceptar.Icon = null;
-            this.btnAceptar.Location = new System.Drawing.Point(131, 422);
+            this.btnAceptar.Location = new System.Drawing.Point(131, 473);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptar.Name = "btnAceptar";
@@ -155,7 +156,7 @@ namespace UI.Desktop
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
-            this.btnCancelar.Location = new System.Drawing.Point(225, 422);
+            this.btnCancelar.Location = new System.Drawing.Point(225, 473);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -168,11 +169,32 @@ namespace UI.Desktop
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // txtCuitEmpresa
+            // 
+            this.txtCuitEmpresa.AnimateReadOnly = false;
+            this.txtCuitEmpresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.txtCuitEmpresa.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCuitEmpresa.Depth = 0;
+            this.txtCuitEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtCuitEmpresa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtCuitEmpresa.Hint = "CUIT del negocio";
+            this.txtCuitEmpresa.LeadingIcon = null;
+            this.txtCuitEmpresa.Location = new System.Drawing.Point(9, 86);
+            this.txtCuitEmpresa.MaxLength = 50;
+            this.txtCuitEmpresa.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtCuitEmpresa.Multiline = false;
+            this.txtCuitEmpresa.Name = "txtCuitEmpresa";
+            this.txtCuitEmpresa.Size = new System.Drawing.Size(312, 50);
+            this.txtCuitEmpresa.TabIndex = 6;
+            this.txtCuitEmpresa.Text = "";
+            this.txtCuitEmpresa.TrailingIcon = null;
+            // 
             // frmAtributosNegocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(333, 473);
+            this.ClientSize = new System.Drawing.Size(333, 516);
+            this.Controls.Add(this.txtCuitEmpresa);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtRedes);
@@ -199,5 +221,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialMultiLineTextBox2 txtRedes;
         private MaterialSkin.Controls.MaterialButton btnAceptar;
         private MaterialSkin.Controls.MaterialButton btnCancelar;
+        private MaterialSkin.Controls.MaterialTextBox txtCuitEmpresa;
     }
 }

@@ -651,7 +651,7 @@ namespace UI.Desktop
                         _ordenLogic.Save(OrdenActual);
                         AtributosNegocio negocio = new AtributosNegocio();
                         AtributosNegocioLogic negocioLogic = new AtributosNegocioLogic(new AtributosNegocioAdapter(_context));
-                        negocio = negocioLogic.GetOne(1);
+                        negocio = negocioLogic.GetAll().FirstOrDefault();
                         if(negocio is null)
                         {
                             if(MessageBox.Show("No fue posible emitir el comprobante debido a que aún no se encuentran registrado los atributos del negocio."+"\n" +"¿Desea registrar los atributos en este momento?","Comprobante", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -660,6 +660,10 @@ namespace UI.Desktop
                                 frmAtributosnegocio.ShowDialog();
                                 PrintComprobante();
                             }
+                        }
+                        else
+                        {
+                            PrintComprobante();
                         }
                         Close();
                     }
@@ -780,7 +784,7 @@ namespace UI.Desktop
                     {
                         AtributosNegocio negocio = new AtributosNegocio();
                         AtributosNegocioLogic negocioLogic = new AtributosNegocioLogic(new AtributosNegocioAdapter(_context));
-                        negocio = negocioLogic.GetOne(1);
+                        negocio = negocioLogic.GetAll().FirstOrDefault();
                         if (negocio is not null)
                         {
 

@@ -244,7 +244,7 @@ namespace UI.Desktop
 
         private void btnReporte_Click(object sender, EventArgs e)
         {
-            if (Singleton.getInstance().ListActual != null && listEmpleados.SelectedItems.Count > 0 && empleadoActual is not null)
+            if (Singleton.getInstance().ListActual != null && empleadoActual is not null && (listAtendidas.Items.Count > 0 || listRegistradas.Items.Count > 0))
             {
                 SaveFileDialog sfd = new SaveFileDialog();
                 sfd.Filter = "PDF (*.pdf)|*.pdf";
@@ -273,12 +273,12 @@ namespace UI.Desktop
                             tablacaja.SetPadding(3);
                             tablacaja.SetWidth(UnitValue.CreatePercentValue(100));
                             tablacaja.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
-                            Cell totalingresos = new Cell().Add(new Paragraph("Total Registradas").SetBold());
+                            Cell totalingresos = new Cell().Add(new Paragraph("Total Ordenes Registradas").SetBold());
                             totalingresos.SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
                             totalingresos.SetTextAlignment(TextAlignment.CENTER);
                             tablacaja.AddCell(totalingresos);
                             tablacaja.AddCell(cantTotalReg.ToString());
-                            Cell totalgastos = new Cell().Add(new Paragraph("Total Atendidos").SetBold());
+                            Cell totalgastos = new Cell().Add(new Paragraph("Total Trabajos Atendidos").SetBold());
                             totalgastos.SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
                             totalgastos.SetTextAlignment(TextAlignment.CENTER);
                             tablacaja.AddCell(totalgastos);

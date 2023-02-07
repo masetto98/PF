@@ -260,6 +260,7 @@ namespace Business.Logic
     {
         public AtributosNegocioValidator()
         {
+            RuleFor(x => x.CuitEmpresa).NotEmpty().Matches("^[0-9]+$").WithMessage("'Cuit' debe contener solo números");
             RuleFor(x => x.NombreEmpresa).NotEmpty().Matches("^[a-zA-Z0-9üéáíóúñÑ ]+$").WithMessage("'Nombre de Empresa' debe contener solo letras y/o números");
             RuleFor(x => x.DireccionEmpresa).NotEmpty().MaximumLength(50).Matches("^[a-zA-Z0-9üéáíóúñÑ ]+$").WithMessage("'Dirección' debe contener solo letras y/o números");
             RuleFor(x => x.TelEmpresa).NotEmpty().Matches("^[0-9]+$").WithMessage("'Teléfono' debe contener solo números");

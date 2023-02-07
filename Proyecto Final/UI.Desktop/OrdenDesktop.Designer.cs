@@ -653,6 +653,7 @@ namespace UI.Desktop
             this.txtDescuento.Depth = 0;
             this.txtDescuento.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtDescuento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtDescuento.Hint = "Ingresar";
             this.txtDescuento.LeadingIcon = null;
             this.txtDescuento.Location = new System.Drawing.Point(128, 36);
             this.txtDescuento.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
@@ -728,6 +729,7 @@ namespace UI.Desktop
             this.txtSeniaOrden.Enabled = false;
             this.txtSeniaOrden.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtSeniaOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtSeniaOrden.Hint = "Ingresar";
             this.txtSeniaOrden.LeadingIcon = null;
             this.txtSeniaOrden.Location = new System.Drawing.Point(5, 36);
             this.txtSeniaOrden.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);

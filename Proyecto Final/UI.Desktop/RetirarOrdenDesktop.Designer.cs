@@ -258,7 +258,7 @@ namespace UI.Desktop
             // 
             this.listItemsRetiro.AutoSizeTable = false;
             this.listItemsRetiro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listItemsRetiro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listItemsRetiro.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listItemsRetiro.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnServ,
             this.columnTp,
@@ -439,6 +439,7 @@ namespace UI.Desktop
             this.btnImpFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnImpFactura.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnImpFactura.Depth = 0;
+            this.btnImpFactura.Enabled = false;
             this.btnImpFactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnImpFactura.HighEmphasis = true;
             this.btnImpFactura.Icon = global::UI.Desktop.Properties.Resources.mbriprint_99560;
@@ -453,6 +454,7 @@ namespace UI.Desktop
             this.btnImpFactura.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnImpFactura.UseAccentColor = false;
             this.btnImpFactura.UseVisualStyleBackColor = false;
+            this.btnImpFactura.Visible = false;
             this.btnImpFactura.Click += new System.EventHandler(this.btnImpFactura_Click);
             // 
             // materialCard2

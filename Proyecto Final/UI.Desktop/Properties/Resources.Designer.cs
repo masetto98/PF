@@ -173,6 +173,44 @@ namespace UI.Desktop.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html&gt;
+        ///&lt;head&gt;
+        ///	&lt;title&gt;Comprobante de Retiro&lt;/title&gt;
+        ///	&lt;style&gt;
+        ///		table.border {
+        ///			border-collapse: collapse;
+        ///			border: 1px solid black;
+        ///		}
+        ///
+        ///		table tbody {
+        ///			border-collapse: collapse;
+        ///			border: 1px solid black;
+        ///		}
+        ///
+        ///		table th {
+        ///			border: 1px solid black;
+        ///		}
+        ///	&lt;/style&gt;
+        ///&lt;/head&gt;
+        ///&lt;body&gt;
+        ///	&lt;table class=&quot;border&quot; style=&quot;width:100%&quot;&gt;
+        ///		&lt;tr&gt;
+        ///
+        ///			&lt;td&gt;
+        ///				&lt;table align=&quot;left&quot;&gt;
+        ///					&lt;tr&gt;
+        ///						&lt;td align=&quot;center&quot;&gt;&lt;font size=&quot;5&quot;&gt;@nombrempresa&lt;/font&gt;&lt;/td&gt;
+        ///					&lt;/tr&gt;
+        ///					&lt; [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string comprobantepago {
+            get {
+                return ResourceManager.GetString("comprobantepago", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap customer_service_icon_194124 {
@@ -263,6 +301,16 @@ namespace UI.Desktop.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap laundry {
+            get {
+                object obj = ResourceManager.GetObject("laundry", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap laundry_washing_machine_clothes_clean_wash_icon_196779 {
             get {
                 object obj = ResourceManager.GetObject("laundry_washing_machine_clothes_clean_wash_icon_196779", resourceCulture);
@@ -307,6 +355,26 @@ namespace UI.Desktop.Properties {
             get {
                 object obj = ResourceManager.GetObject("Manual_de_Usuario", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap maq2 {
+            get {
+                object obj = ResourceManager.GetObject("maq2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap maquinas {
+            get {
+                object obj = ResourceManager.GetObject("maquinas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -473,6 +541,16 @@ namespace UI.Desktop.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap prendas {
+            get {
+                object obj = ResourceManager.GetObject("prendas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap product_delivery_icon_152013 {
             get {
                 object obj = ResourceManager.GetObject("product_delivery_icon_152013", resourceCulture);
@@ -536,6 +614,16 @@ namespace UI.Desktop.Properties {
         internal static System.Drawing.Bitmap searcher_magnifyng_glass_search_locate_find_icon_123813 {
             get {
                 object obj = ResourceManager.GetObject("searcher_magnifyng_glass_search_locate_find_icon_123813", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap settings {
+            get {
+                object obj = ResourceManager.GetObject("settings", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

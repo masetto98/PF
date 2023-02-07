@@ -32,19 +32,22 @@ namespace UI.Desktop
             this.listOrdenesCliente = new MaterialSkin.Controls.MaterialListView();
             this.columnCliente = new System.Windows.Forms.ColumnHeader();
             this.columnNroOrden = new System.Windows.Forms.ColumnHeader();
+            this.columnFechaEntrada = new System.Windows.Forms.ColumnHeader();
             this.columnFechaSalida = new System.Windows.Forms.ColumnHeader();
-            this.columnNroFactura = new System.Windows.Forms.ColumnHeader();
             this.columnImporte = new System.Windows.Forms.ColumnHeader();
             this.columnPagos = new System.Windows.Forms.ColumnHeader();
             this.columnDeuda = new System.Windows.Forms.ColumnHeader();
             this.btnReporteDeudas = new MaterialSkin.Controls.MaterialButton();
             this.txtBuscar = new MaterialSkin.Controls.MaterialTextBox();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.btnCerrar = new MaterialSkin.Controls.MaterialButton();
             this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.listClientes = new MaterialSkin.Controls.MaterialListView();
+            this.Cuit = new System.Windows.Forms.ColumnHeader();
+            this.nomCliente = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // listOrdenesCliente
@@ -55,8 +58,8 @@ namespace UI.Desktop
             this.listOrdenesCliente.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnCliente,
             this.columnNroOrden,
+            this.columnFechaEntrada,
             this.columnFechaSalida,
-            this.columnNroFactura,
             this.columnImporte,
             this.columnPagos,
             this.columnDeuda});
@@ -65,7 +68,7 @@ namespace UI.Desktop
             this.listOrdenesCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listOrdenesCliente.FullRowSelect = true;
             this.listOrdenesCliente.HideSelection = false;
-            this.listOrdenesCliente.Location = new System.Drawing.Point(12, 138);
+            this.listOrdenesCliente.Location = new System.Drawing.Point(417, 141);
             this.listOrdenesCliente.MinimumSize = new System.Drawing.Size(200, 100);
             this.listOrdenesCliente.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listOrdenesCliente.MouseState = MaterialSkin.MouseState.OUT;
@@ -81,32 +84,32 @@ namespace UI.Desktop
             // columnCliente
             // 
             this.columnCliente.Text = "Cliente";
-            this.columnCliente.Width = 211;
+            this.columnCliente.Width = 200;
             // 
             // columnNroOrden
             // 
             this.columnNroOrden.Text = "Nro Orden";
             this.columnNroOrden.Width = 96;
             // 
+            // columnFechaEntrada
+            // 
+            this.columnFechaEntrada.Text = "Fecha de Entrada";
+            this.columnFechaEntrada.Width = 200;
+            // 
             // columnFechaSalida
             // 
-            this.columnFechaSalida.Text = "Fecha de Salida";
-            this.columnFechaSalida.Width = 200;
-            // 
-            // columnNroFactura
-            // 
-            this.columnNroFactura.Text = "Nro Factura";
-            this.columnNroFactura.Width = 106;
+            this.columnFechaSalida.Text = "Fecha Salida";
+            this.columnFechaSalida.Width = 150;
             // 
             // columnImporte
             // 
             this.columnImporte.Text = "Importe";
-            this.columnImporte.Width = 100;
+            this.columnImporte.Width = 95;
             // 
             // columnPagos
             // 
             this.columnPagos.Text = "Pagos";
-            this.columnPagos.Width = 100;
+            this.columnPagos.Width = 95;
             // 
             // columnDeuda
             // 
@@ -122,7 +125,7 @@ namespace UI.Desktop
             this.btnReporteDeudas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnReporteDeudas.HighEmphasis = true;
             this.btnReporteDeudas.Icon = null;
-            this.btnReporteDeudas.Location = new System.Drawing.Point(13, 480);
+            this.btnReporteDeudas.Location = new System.Drawing.Point(13, 483);
             this.btnReporteDeudas.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnReporteDeudas.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnReporteDeudas.Name = "btnReporteDeudas";
@@ -145,30 +148,16 @@ namespace UI.Desktop
             this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtBuscar.Hint = "Ingrese nombre, apellido o cuit del cliente";
             this.txtBuscar.LeadingIcon = null;
-            this.txtBuscar.Location = new System.Drawing.Point(73, 82);
+            this.txtBuscar.Location = new System.Drawing.Point(72, 85);
             this.txtBuscar.MaxLength = 50;
             this.txtBuscar.MouseState = MaterialSkin.MouseState.OUT;
             this.txtBuscar.Multiline = false;
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(321, 50);
+            this.txtBuscar.Size = new System.Drawing.Size(320, 50);
             this.txtBuscar.TabIndex = 4;
             this.txtBuscar.Text = "";
             this.txtBuscar.TrailingIcon = null;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
-            // 
-            // materialLabel2
-            // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(13, 101);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(54, 19);
-            this.materialLabel2.TabIndex = 5;
-            this.materialLabel2.Text = "Buscar:";
             // 
             // btnCerrar
             // 
@@ -179,7 +168,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(843, 480);
+            this.btnCerrar.Location = new System.Drawing.Point(1248, 483);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -195,7 +184,7 @@ namespace UI.Desktop
             // dtpFechaDesde
             // 
             this.dtpFechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaDesde.Location = new System.Drawing.Point(511, 102);
+            this.dtpFechaDesde.Location = new System.Drawing.Point(916, 105);
             this.dtpFechaDesde.Name = "dtpFechaDesde";
             this.dtpFechaDesde.Size = new System.Drawing.Size(138, 23);
             this.dtpFechaDesde.TabIndex = 8;
@@ -208,7 +197,7 @@ namespace UI.Desktop
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(411, 104);
+            this.materialLabel1.Location = new System.Drawing.Point(816, 107);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(94, 19);
@@ -222,7 +211,7 @@ namespace UI.Desktop
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(655, 104);
+            this.materialLabel3.Location = new System.Drawing.Point(1060, 107);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Size = new System.Drawing.Size(92, 19);
@@ -232,23 +221,74 @@ namespace UI.Desktop
             // dtpFechaHasta
             // 
             this.dtpFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaHasta.Location = new System.Drawing.Point(753, 102);
+            this.dtpFechaHasta.Location = new System.Drawing.Point(1158, 105);
             this.dtpFechaHasta.Name = "dtpFechaHasta";
             this.dtpFechaHasta.Size = new System.Drawing.Size(152, 23);
             this.dtpFechaHasta.TabIndex = 11;
             this.dtpFechaHasta.ValueChanged += new System.EventHandler(this.dtpFechaHasta_ValueChanged);
             // 
+            // materialLabel4
+            // 
+            this.materialLabel4.AutoSize = true;
+            this.materialLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel4.Location = new System.Drawing.Point(12, 96);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(54, 19);
+            this.materialLabel4.TabIndex = 12;
+            this.materialLabel4.Text = "Buscar:";
+            // 
+            // listClientes
+            // 
+            this.listClientes.AutoSizeTable = false;
+            this.listClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listClientes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Cuit,
+            this.nomCliente});
+            this.listClientes.Depth = 0;
+            this.listClientes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listClientes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.listClientes.FullRowSelect = true;
+            this.listClientes.HideSelection = false;
+            this.listClientes.Location = new System.Drawing.Point(12, 141);
+            this.listClientes.MinimumSize = new System.Drawing.Size(200, 100);
+            this.listClientes.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listClientes.MouseState = MaterialSkin.MouseState.OUT;
+            this.listClientes.MultiSelect = false;
+            this.listClientes.Name = "listClientes";
+            this.listClientes.OwnerDraw = true;
+            this.listClientes.Size = new System.Drawing.Size(380, 333);
+            this.listClientes.TabIndex = 13;
+            this.listClientes.UseCompatibleStateImageBehavior = false;
+            this.listClientes.View = System.Windows.Forms.View.Details;
+            this.listClientes.SelectedIndexChanged += new System.EventHandler(this.listClientes_SelectedIndexChanged);
+            // 
+            // Cuit
+            // 
+            this.Cuit.Text = "Cuit";
+            this.Cuit.Width = 130;
+            // 
+            // nomCliente
+            // 
+            this.nomCliente.Text = "Nombre y apellido / Razón Social";
+            this.nomCliente.Width = 250;
+            // 
             // ReporteDeudas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(933, 548);
+            this.ClientSize = new System.Drawing.Size(1336, 530);
+            this.Controls.Add(this.listClientes);
+            this.Controls.Add(this.materialLabel4);
             this.Controls.Add(this.dtpFechaHasta);
             this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.dtpFechaDesde);
             this.Controls.Add(this.btnCerrar);
-            this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.btnReporteDeudas);
             this.Controls.Add(this.listOrdenesCliente);
@@ -268,18 +308,21 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialListView listOrdenesCliente;
         private System.Windows.Forms.ColumnHeader columnCliente;
         private System.Windows.Forms.ColumnHeader columnNroOrden;
+        private System.Windows.Forms.ColumnHeader columnFechaEntrada;
         private System.Windows.Forms.ColumnHeader columnFechaSalida;
-        private System.Windows.Forms.ColumnHeader columnNroFactura;
         private System.Windows.Forms.ColumnHeader columnImporte;
         private System.Windows.Forms.ColumnHeader columnPagos;
         private System.Windows.Forms.ColumnHeader columnDeuda;
         private MaterialSkin.Controls.MaterialButton btnReporteDeudas;
         private MaterialSkin.Controls.MaterialTextBox txtBuscar;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialButton btnCerrar;
         private System.Windows.Forms.DateTimePicker dtpFechaDesde;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private System.Windows.Forms.DateTimePicker dtpFechaHasta;
+        private MaterialSkin.Controls.MaterialLabel materialLabel4;
+        private MaterialSkin.Controls.MaterialListView listClientes;
+        private System.Windows.Forms.ColumnHeader Cuit;
+        private System.Windows.Forms.ColumnHeader nomCliente;
     }
 }

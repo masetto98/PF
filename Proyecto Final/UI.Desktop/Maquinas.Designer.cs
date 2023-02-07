@@ -29,9 +29,9 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            FastReport.DataVisualization.Charting.ChartArea chartArea1 = new FastReport.DataVisualization.Charting.ChartArea();
-            FastReport.DataVisualization.Charting.Series series1 = new FastReport.DataVisualization.Charting.Series();
-            FastReport.DataVisualization.Charting.Title title1 = new FastReport.DataVisualization.Charting.Title();
+            FastReport.DataVisualization.Charting.ChartArea chartArea2 = new FastReport.DataVisualization.Charting.ChartArea();
+            FastReport.DataVisualization.Charting.Series series2 = new FastReport.DataVisualization.Charting.Series();
+            FastReport.DataVisualization.Charting.Title title2 = new FastReport.DataVisualization.Charting.Title();
             this.listMaquinas = new MaterialSkin.Controls.MaterialListView();
             this.columnID = new System.Windows.Forms.ColumnHeader();
             this.columnDescripcion = new System.Windows.Forms.ColumnHeader();
@@ -107,7 +107,7 @@ namespace UI.Desktop
             // columnDescripcion
             // 
             this.columnDescripcion.Text = "Descripción";
-            this.columnDescripcion.Width = 290;
+            this.columnDescripcion.Width = 293;
             // 
             // btnEditarMaquina
             // 
@@ -119,12 +119,12 @@ namespace UI.Desktop
             this.btnEditarMaquina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEditarMaquina.HighEmphasis = true;
             this.btnEditarMaquina.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
-            this.btnEditarMaquina.Location = new System.Drawing.Point(130, 390);
+            this.btnEditarMaquina.Location = new System.Drawing.Point(134, 390);
             this.btnEditarMaquina.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEditarMaquina.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEditarMaquina.Name = "btnEditarMaquina";
             this.btnEditarMaquina.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEditarMaquina.Size = new System.Drawing.Size(98, 36);
+            this.btnEditarMaquina.Size = new System.Drawing.Size(110, 36);
             this.btnEditarMaquina.TabIndex = 14;
             this.btnEditarMaquina.Text = "Editar";
             this.btnEditarMaquina.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -142,12 +142,12 @@ namespace UI.Desktop
             this.btnEliminarMaquina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEliminarMaquina.HighEmphasis = true;
             this.btnEliminarMaquina.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
-            this.btnEliminarMaquina.Location = new System.Drawing.Point(236, 390);
+            this.btnEliminarMaquina.Location = new System.Drawing.Point(252, 390);
             this.btnEliminarMaquina.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminarMaquina.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminarMaquina.Name = "btnEliminarMaquina";
             this.btnEliminarMaquina.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEliminarMaquina.Size = new System.Drawing.Size(109, 36);
+            this.btnEliminarMaquina.Size = new System.Drawing.Size(114, 36);
             this.btnEliminarMaquina.TabIndex = 13;
             this.btnEliminarMaquina.Text = "Eliminar";
             this.btnEliminarMaquina.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -218,7 +218,7 @@ namespace UI.Desktop
             // columnCosto
             // 
             this.columnCosto.Text = "Costo";
-            this.columnCosto.Width = 94;
+            this.columnCosto.Width = 95;
             // 
             // materialCard1
             // 
@@ -306,7 +306,7 @@ namespace UI.Desktop
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(91, 19);
             this.materialLabel1.TabIndex = 0;
-            this.materialLabel1.Text = "Estadisticas:";
+            this.materialLabel1.Text = "Estadísticas:";
             // 
             // btnEditarMantenimiento
             // 
@@ -460,12 +460,12 @@ namespace UI.Desktop
             this.btnEditarTipoMaquina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEditarTipoMaquina.HighEmphasis = true;
             this.btnEditarTipoMaquina.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
-            this.btnEditarTipoMaquina.Location = new System.Drawing.Point(130, 109);
+            this.btnEditarTipoMaquina.Location = new System.Drawing.Point(134, 109);
             this.btnEditarTipoMaquina.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEditarTipoMaquina.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEditarTipoMaquina.Name = "btnEditarTipoMaquina";
             this.btnEditarTipoMaquina.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEditarTipoMaquina.Size = new System.Drawing.Size(114, 38);
+            this.btnEditarTipoMaquina.Size = new System.Drawing.Size(110, 36);
             this.btnEditarTipoMaquina.TabIndex = 26;
             this.btnEditarTipoMaquina.Text = "Editar";
             this.btnEditarTipoMaquina.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -488,7 +488,7 @@ namespace UI.Desktop
             this.btnEliminarTipoMaquina.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminarTipoMaquina.Name = "btnEliminarTipoMaquina";
             this.btnEliminarTipoMaquina.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEliminarTipoMaquina.Size = new System.Drawing.Size(114, 38);
+            this.btnEliminarTipoMaquina.Size = new System.Drawing.Size(114, 36);
             this.btnEliminarTipoMaquina.TabIndex = 25;
             this.btnEliminarTipoMaquina.Text = "Eliminar";
             this.btnEliminarTipoMaquina.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -511,7 +511,7 @@ namespace UI.Desktop
             this.btnAgregarTipoMaquina.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAgregarTipoMaquina.Name = "btnAgregarTipoMaquina";
             this.btnAgregarTipoMaquina.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnAgregarTipoMaquina.Size = new System.Drawing.Size(114, 38);
+            this.btnAgregarTipoMaquina.Size = new System.Drawing.Size(114, 36);
             this.btnAgregarTipoMaquina.TabIndex = 24;
             this.btnAgregarTipoMaquina.Text = "Agregar";
             this.btnAgregarTipoMaquina.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -529,9 +529,9 @@ namespace UI.Desktop
             this.materialLabel5.Location = new System.Drawing.Point(12, 88);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(129, 19);
+            this.materialLabel5.Size = new System.Drawing.Size(133, 19);
             this.materialLabel5.TabIndex = 27;
-            this.materialLabel5.Text = "Tipos de máquina";
+            this.materialLabel5.Text = "Tipos de máquina:";
             // 
             // materialLabel6
             // 
@@ -550,23 +550,23 @@ namespace UI.Desktop
             // chartUsoMaq
             // 
             this.chartUsoMaq.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.AlignmentOrientation = FastReport.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal;
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            chartArea1.Name = "ChartArea1";
-            this.chartUsoMaq.ChartAreas.Add(chartArea1);
+            chartArea2.AlignmentOrientation = FastReport.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal;
+            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            chartArea2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            chartArea2.Name = "ChartArea1";
+            this.chartUsoMaq.ChartAreas.Add(chartArea2);
             this.chartUsoMaq.Location = new System.Drawing.Point(9, 7);
             this.chartUsoMaq.Name = "chartUsoMaq";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Name = "UsoMaq";
-            this.chartUsoMaq.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Name = "UsoMaq";
+            this.chartUsoMaq.Series.Add(series2);
             this.chartUsoMaq.Size = new System.Drawing.Size(319, 251);
             this.chartUsoMaq.TabIndex = 29;
             this.chartUsoMaq.Text = "chart1";
-            title1.Name = "Title1";
-            title1.Text = "Uso de máquinas";
-            this.chartUsoMaq.Titles.Add(title1);
+            title2.Name = "Title1";
+            title2.Text = "Uso de máquinas";
+            this.chartUsoMaq.Titles.Add(title2);
             // 
             // dtpMaquinaDesde
             // 

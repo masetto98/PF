@@ -41,12 +41,24 @@ namespace UI.Desktop
             _clienteLogic = new ClienteLogic(new ClienteAdapter(context));
             _ordenLogic = new OrdenLogic(new OrdenAdapter(context));
             //ordenes = _ordenLogic.GetAll();
+            ListarClientes();
             listarOrdenesCliente();
             Singleton.getInstance().ListActual = this.listOrdenesCliente;
             Singleton.getInstance().ModuloActual = "Deudas Clientes";
             
         }
-        
+        private void ListarClientes()
+        {
+            List<Cliente> clientes = _clienteLogic.GetAll();
+            listClientes.Items.Clear();
+            foreach (Cliente c in clientes)
+            {
+                ListViewItem item = new ListViewItem(c.Cuit);
+                item.SubItems.Add(c.Nombre + " " + c.Apellido + "/" + c.RazonSocial);
+                listClientes.Items.Add(item);
+
+            }
+        }
         public List<Orden> OrdenesDeuda()
         {
              ordenesDeuda = _ordenLogic.GetAll().FindAll(
@@ -167,6 +179,7 @@ namespace UI.Desktop
                     item.Text = oc.Cliente.RazonSocial;
                 }
                 item.SubItems.Add(oc.NroOrden.ToString());
+                item.SubItems.Add(oc.FechaEntrada.ToString("dd/MM/yyyy HH:ss:mm"));
                 string fecha = oc.FechaSalida.Date.ToString();
                 if (oc.FechaSalida.Date.ToString() == "1/1/0001 00:00:00")
                 {
@@ -177,7 +190,7 @@ namespace UI.Desktop
                     item.SubItems.Add(oc.FechaSalida.ToString());
                 }
                
-                item.SubItems.Add(oc.NroFactura.ToString());
+                
                 double deudas = 0;
                 double pagos = CalcularPagosOrden(oc);
                 if (oc.Factura.Importe == 0)
@@ -345,96 +358,31 @@ namespace UI.Desktop
                 
         }
 
-        /*
-        private void dtpFiltroDeuda_CloseUp(object sender, EventArgs e)
+    
+
+        private void listarClientesFiltrados(List<Cliente> clientes)
         {
-            DateTime fechaFiltro = dtpFechaDesde.Value;
-            string fechaFiltro2 = fechaFiltro.ToString("yyyy/MM/dd");
-            List<Orden> ordenesFiltro = ordenesDeuda.FindAll(
-                delegate (Orden or)
-                {
-                    string fechaSalida = or.FechaSalida.ToString("yyyy/MM/dd");
-                    return DateTime.Parse(fechaSalida) >= DateTime.Parse(fechaFiltro2);
-                });
-            listOrdenesCliente.Items.Clear();
-            foreach (Orden oc in ordenesFiltro)
+            listClientes.Items.Clear();
+            foreach(Cliente c in clientes)
             {
-                if(oc.Cliente.RazonSocial == "")
-                {
-                    ListViewItem item = new ListViewItem(oc.Cliente.Nombre + "-" + oc.Cliente.Apellido);
-                    item.SubItems.Add(oc.NroOrden.ToString());
-                    item.SubItems.Add(oc.FechaSalida.ToString());
-                    if (oc.Factura is not null)
-                    {
-                        item.SubItems.Add(oc.NroFactura.ToString());
-                        item.SubItems.Add(oc.Factura.Importe.ToString());
-                        double pagos = CalcularPagosOrden(oc);
-                        item.SubItems.Add(pagos.ToString());
-                        double deudas = oc.Factura.Importe - pagos;
-                        item.SubItems.Add(deudas.ToString());
-                    }
-                    else
-                    {
-                        item.SubItems.Add("-");
-                        item.SubItems.Add("-");
-                        double pagos = CalcularPagosOrden(oc);
-                        item.SubItems.Add(pagos.ToString());
-                        item.SubItems.Add("Sin importe");
-                    }
-                    listOrdenesCliente.Items.Add(item);
-                }
-                else
-                {
-                    ListViewItem item = new ListViewItem(oc.Cliente.RazonSocial);
-                    item.SubItems.Add(oc.NroOrden.ToString());
-                    item.SubItems.Add(oc.FechaSalida.ToString());
-                    if (oc.Factura is not null)
-                    {
-                        item.SubItems.Add(oc.NroFactura.ToString());
-                        item.SubItems.Add(oc.Factura.Importe.ToString());
-                        double pagos = CalcularPagosOrden(oc);
-                        item.SubItems.Add(pagos.ToString());
-                        double deudas = oc.Factura.Importe - pagos;
-                        item.SubItems.Add(deudas.ToString());
-                    }
-                    else
-                    {
-                        item.SubItems.Add("-");
-                        item.SubItems.Add("-");
-                        double pagos = CalcularPagosOrden(oc);
-                        item.SubItems.Add(pagos.ToString());
-                        item.SubItems.Add("Sin importe");
-                    }
-                    listOrdenesCliente.Items.Add(item);
-                }
+                ListViewItem item = new ListViewItem(c.Cuit);
+                item.SubItems.Add(c.Nombre + " " + c.Apellido + "/" + c.RazonSocial);
+                listClientes.Items.Add(item);
             }
         }
-        */
-
-
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            List<Orden> ordenesFiltro = new List<Orden>();
-            foreach(Orden oc in ordenesDeuda)
+            List<Cliente> clientes = _clienteLogic.GetAll().FindAll(
+                delegate (Cliente c)
+                {
+                    string cuit = c.Cuit;
+                    string cliente = String.Concat(c.Nombre, " ", c.Apellido, " / ", c.RazonSocial);
+                    return c.Nombre.ToLower().Contains(txtBuscar.Text.ToLower()) || c.Apellido.ToLower().Contains(txtBuscar.Text.ToLower()) || c.Cuit.ToLower().Contains(txtBuscar.Text.ToLower());
+                });
+            if(clientes.Count > 0)
             {
-                string cliente = String.Concat(oc.Cliente.Nombre, " ", oc.Cliente.Apellido, " / ", oc.Cliente.RazonSocial);
-                string cuit = oc.Cliente.Cuit;
-                if (cliente.ToLower().Contains(this.txtBuscar.Text.ToLower()))
-                {
-                    clienteActual = oc.Cliente;
-                    ordenesFiltro.Add(oc);
-                   
-                }
-                else if(cuit.Contains(this.txtBuscar.Text))
-                {
-                    clienteActual = oc.Cliente;
-                    ordenesFiltro.Add(oc);
-                }
+                listarClientesFiltrados(clientes);
             }
-            listarOrdenesFiltradas(ordenesFiltro);
-            ordenesDeudaCliente = ordenesFiltro;
-
-            
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -449,49 +397,6 @@ namespace UI.Desktop
         }
 
         
-        /*
-        private void listarOrdenesFiltradas2(List<Orden> ordenesFiltro)
-        {
-            double montoTotal1 = 0;
-            listOrdenesCliente.Items.Clear();
-            foreach (Orden oc in ordenesFiltro)
-            {
-                ListViewItem item = new ListViewItem(oc.Cliente.Nombre + " " + oc.Cliente.Apellido);
-                item.SubItems.Add(oc.NroOrden.ToString());
-                string fecha = oc.FechaSalida.Date.ToString();
-                if (oc.FechaSalida.Date.ToString() == "1/1/0001 00:00:00")
-                {
-                    item.SubItems.Add("No retirada");
-                }
-                else
-                {
-                    item.SubItems.Add(oc.FechaSalida.ToString());
-                }
-
-                item.SubItems.Add(oc.NroFactura.ToString());
-                double deudas = 0;
-                double pagos = CalcularPagosOrden(oc);
-                if (oc.Factura.Importe == 0)
-                {
-                    double importe = CalcularImporteOrden(oc);
-                    item.SubItems.Add(importe.ToString());
-                    deudas = importe - pagos;
-
-                }
-                else
-                {
-                    item.SubItems.Add(oc.Factura.Importe.ToString());
-                    deudas = oc.Factura.Importe - pagos;
-                }
-
-                item.SubItems.Add(pagos.ToString());
-                item.SubItems.Add(deudas.ToString());
-                montoTotal1 += deudas;
-                listOrdenesCliente.Items.Add(item);
-            }
-            montoTotal = montoTotal1;
-        }
-        */
         private void listarOrdenesFiltradas(List<Orden> ordenesFiltro)
         {
             double montoTotal1 = 0;
@@ -509,6 +414,7 @@ namespace UI.Desktop
                     item.Text = oc.Cliente.RazonSocial;
                 }
                 item.SubItems.Add(oc.NroOrden.ToString());
+                item.SubItems.Add(oc.FechaEntrada.ToString("dd/MM/yyyy HH:ss:mm"));
                 string fecha = oc.FechaSalida.Date.ToString();
                 if (oc.FechaSalida.Date.ToString() == "1/1/0001 00:00:00")
                 {
@@ -518,8 +424,6 @@ namespace UI.Desktop
                 {
                     item.SubItems.Add(oc.FechaSalida.ToString());
                 }
-
-                item.SubItems.Add(oc.NroFactura.ToString());
                 double deudas = 0;
                 double pagos = CalcularPagosOrden(oc);
                 if (oc.Factura.Importe == 0)
@@ -638,7 +542,7 @@ namespace UI.Desktop
       
         private void dtpFechaDesde_ValueChanged(object sender, EventArgs e)
         {
-            if(txtBuscar.Text != "" && clienteActual is not null)
+            if(listClientes.SelectedItems.Count > 0 && clienteActual is not null)
             {
                 filtroFechaCliente();
             }
@@ -652,7 +556,7 @@ namespace UI.Desktop
 
         private void dtpFechaHasta_ValueChanged(object sender, EventArgs e)
         {
-            if (txtBuscar.Text != "" && clienteActual is not null)
+            if (listClientes.SelectedItems.Count > 0 && clienteActual is not null)
             {
                 filtroFechaCliente();
             }
@@ -660,6 +564,30 @@ namespace UI.Desktop
             {
                 filtroFecha();
             }
+        }
+
+        private void listClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            if (listClientes.SelectedItems.Count > 0)
+            {
+                Cliente ClienteSelect = _clienteLogic.GetOneConCuit(listClientes.SelectedItems[0].Text);
+                if (ClienteSelect is not null)
+                {
+                    List<Orden> ordenesFiltro = new List<Orden>();
+                    foreach (Orden oc in ordenesDeuda)
+                    {
+                        if (oc.Cliente == ClienteSelect)
+                        {
+                            ordenesFiltro.Add(oc);
+                        }
+                    }
+                    listarOrdenesFiltradas(ordenesFiltro);
+                    ordenesDeudaCliente = ordenesFiltro;
+                    clienteActual = ClienteSelect;
+                }
+            }
+               
         }
     }
 

@@ -29,9 +29,9 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            FastReport.DataVisualization.Charting.ChartArea chartArea1 = new FastReport.DataVisualization.Charting.ChartArea();
-            FastReport.DataVisualization.Charting.Legend legend1 = new FastReport.DataVisualization.Charting.Legend();
-            FastReport.DataVisualization.Charting.Title title1 = new FastReport.DataVisualization.Charting.Title();
+            FastReport.DataVisualization.Charting.ChartArea chartArea2 = new FastReport.DataVisualization.Charting.ChartArea();
+            FastReport.DataVisualization.Charting.Legend legend2 = new FastReport.DataVisualization.Charting.Legend();
+            FastReport.DataVisualization.Charting.Title title2 = new FastReport.DataVisualization.Charting.Title();
             this.listEmpleados = new MaterialSkin.Controls.MaterialListView();
             this.columnID = new System.Windows.Forms.ColumnHeader();
             this.columnCuit = new System.Windows.Forms.ColumnHeader();
@@ -42,13 +42,13 @@ namespace UI.Desktop
             this.btnAgregar = new MaterialSkin.Controls.MaterialButton();
             this.btnDetalles = new MaterialSkin.Controls.MaterialButton();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            this.chartEmpleados = new FastReport.DataVisualization.Charting.Chart();
             this.lblOrdenesAtendidas = new MaterialSkin.Controls.MaterialLabel();
             this.lblOrdenesRegistradas = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.btnCerrar = new MaterialSkin.Controls.MaterialButton();
-            this.chartEmpleados = new FastReport.DataVisualization.Charting.Chart();
             this.materialCard1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartEmpleados)).BeginInit();
             this.SuspendLayout();
@@ -98,7 +98,7 @@ namespace UI.Desktop
             // columnApellido
             // 
             this.columnApellido.Text = "Apellido";
-            this.columnApellido.Width = 130;
+            this.columnApellido.Width = 133;
             // 
             // btnEditar
             // 
@@ -211,6 +211,21 @@ namespace UI.Desktop
             this.materialCard1.Size = new System.Drawing.Size(510, 389);
             this.materialCard1.TabIndex = 10;
             // 
+            // chartEmpleados
+            // 
+            this.chartEmpleados.BackColor = System.Drawing.Color.Transparent;
+            chartArea2.Name = "ChartArea1";
+            this.chartEmpleados.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartEmpleados.Legends.Add(legend2);
+            this.chartEmpleados.Location = new System.Drawing.Point(9, 102);
+            this.chartEmpleados.Name = "chartEmpleados";
+            this.chartEmpleados.Size = new System.Drawing.Size(489, 259);
+            this.chartEmpleados.TabIndex = 12;
+            title2.Name = "Title1";
+            title2.Text = "Porcentaje de Ordenes Registradas y Trabajos Atendidos por Empleado";
+            this.chartEmpleados.Titles.Add(title2);
+            // 
             // lblOrdenesAtendidas
             // 
             this.lblOrdenesAtendidas.AutoSize = true;
@@ -302,21 +317,6 @@ namespace UI.Desktop
             this.btnCerrar.UseAccentColor = false;
             this.btnCerrar.UseVisualStyleBackColor = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
-            // chartEmpleados
-            // 
-            this.chartEmpleados.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            this.chartEmpleados.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartEmpleados.Legends.Add(legend1);
-            this.chartEmpleados.Location = new System.Drawing.Point(9, 102);
-            this.chartEmpleados.Name = "chartEmpleados";
-            this.chartEmpleados.Size = new System.Drawing.Size(489, 259);
-            this.chartEmpleados.TabIndex = 12;
-            title1.Name = "Title1";
-            title1.Text = "Porcentaje de Ordenes Registradas y Trabajos Atendidos por Empleado";
-            this.chartEmpleados.Titles.Add(title1);
             // 
             // Empleados
             // 

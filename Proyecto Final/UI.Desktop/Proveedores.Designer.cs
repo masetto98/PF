@@ -287,7 +287,7 @@ namespace UI.Desktop
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(91, 19);
             this.materialLabel2.TabIndex = 0;
-            this.materialLabel2.Text = "Estadisticas:";
+            this.materialLabel2.Text = "Estadísticas:";
             // 
             // btnCerrar
             // 
@@ -341,12 +341,12 @@ namespace UI.Desktop
             // columnInsumo
             // 
             this.columnInsumo.Text = "Insumo";
-            this.columnInsumo.Width = 150;
+            this.columnInsumo.Width = 153;
             // 
             // columnFechaIngreso
             // 
             this.columnFechaIngreso.Text = "Fecha Ingreso";
-            this.columnFechaIngreso.Width = 165;
+            this.columnFechaIngreso.Width = 164;
             // 
             // columnCantidad
             // 
@@ -386,7 +386,7 @@ namespace UI.Desktop
             this.btnEliminarIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEliminarIngreso.HighEmphasis = true;
             this.btnEliminarIngreso.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
-            this.btnEliminarIngreso.Location = new System.Drawing.Point(1207, 444);
+            this.btnEliminarIngreso.Location = new System.Drawing.Point(1207, 454);
             this.btnEliminarIngreso.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminarIngreso.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminarIngreso.Name = "btnEliminarIngreso";

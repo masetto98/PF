@@ -274,7 +274,7 @@ namespace UI.Desktop
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Size = new System.Drawing.Size(87, 19);
             this.materialLabel3.TabIndex = 16;
-            this.materialLabel3.Text = "Estadisticas";
+            this.materialLabel3.Text = "Estadísticas";
             // 
             // Servicios
             // 

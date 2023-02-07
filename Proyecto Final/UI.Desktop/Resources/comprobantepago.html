@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Comprobante de Retiro</title>
+	<style>
+		table.border {
+			border-collapse: collapse;
+			border: 1px solid black;
+		}
+
+		table tbody {
+			border-collapse: collapse;
+			border: 1px solid black;
+		}
+
+		table th {
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<table class="border" style="width:100%">
+		<tr>
+
+			<td>
+				<table align="left">
+					<tr>
+						<td align="center"><font size="5">@nombrempresa</font></td>
+					</tr>
+					<tr>
+						<td align="center">C.U.I.T: @cuitempresa</td>
+					</tr>
+					<tr>
+						<td align="center">@direccionempresa</td>
+					</tr>
+					<tr>
+						<td align="center">@telempresa</td>
+					</tr>
+					<tr>
+						<td align="center">@redes</td>
+					</tr>
+				</table>
+			</td>
+			<td style="width:45%">
+				<table style="width:100%" align="center">
+					<thead>
+						<tr>
+							<th style="background-color:#D8D8D8">Comprobante de pago</th>
+						</tr>
+					</thead>
+				</table>
+				<table style="width:100%">
+					<tr>
+						<td>Fecha y Hora Comprobante:</td>
+						<td>@fechafactura<br>@hsfactura</br></td>
+					</tr>
+
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3" height="25"></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<table style="width:100%">
+					<thead>
+						<tr>
+							<th style="background-color:#D8D8D8">Cliente</th>
+						</tr>
+					</thead>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3" height="20"></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<table style="width:120%">
+					<tr>
+						<td align="left"><b>C.U.I.T:</b></td>
+						<td align="left">@cuit</td>
+						<td align="right"><b>Nombre:</b></td>
+						<td>@nombre</td>
+					</tr>
+					<tr>
+						<td align="left"><b>Tel:</b></td>
+						<td align="left">@telcli</td>
+						<td align="right"><b>Dirección:</b></td>
+						<td>@direcli</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3" height="20"></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<table style="width:100%">
+					<thead>
+						<tr>
+							<th style="background-color:#D8D8D8">Detalles</th>
+						</tr>
+					</thead>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3" height="25"></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<table class="border" style="width:80%" align="center">
+					<thead>
+						<tr>
+							<th style="background-color:#D8D8D8">N° Orden</th>
+							<th style="background-color:#D8D8D8">Fecha Orden</th>
+							<th style="background-color:#D8D8D8">Servicios</th>
+							<th style="background-color:#D8D8D8">Importe</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						@items
+						<tr>
+							<td style="border:0px !important"></td>
+							<td style="border:0px !important"></td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+
+		<tr>
+			<td colspan="3" height="25"></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<table class="border" align="right">
+					<thead>
+						<tr>
+							<th style="background-color:#D8D8D8">Resumen</th>
+							<th style="background-color:#D8D8D8"></th>
+						</tr>
+					</thead>
+					<tr>
+						<td><b>Subtotal:</b></td>
+						<td>@totalitems</td>
+					</tr>
+					<tr>
+						<td><b>Pagos realizados:</b></td>
+						<td>@pagosrealizados</td>
+					</tr>
+					<tr>
+						<td><b>TOTAL:</b></td>
+						<td>@totalfact</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3" height="20"></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<table style="width:100%">
+					<thead>
+						<tr>
+							<th style="background-color:#D8D8D8">Condiciones y formas de pago</th>
+						</tr>
+					</thead>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3" height="25"></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<table style="width:100%">
+					<tr>
+						<td><b>Recibe:</b></td>
+						<td>@empleado</td>
+						<td>@fechapago</td>
+						<td>@monto</td>
+					</tr>
+					<tr>
+						<td colspan="3" height="15"></td>
+					</tr>
+					<tr>
+						<td><b>Forma de pago:</b></td>
+						<td>@formpago</td>
+						<td><b>Concepto:</b></td>
+						<td>@concepto</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" height="50"></td>
+		</tr>
+		<tr>
+			<td colspan="1"><hr width="250"></hr></td>
+		</tr>
+		<tr>
+			<td colspan="1" align="center">(Firma y aclaración)</td>
+		</tr>
+	</table>
+</body>
+</html> 

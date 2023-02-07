@@ -60,11 +60,12 @@ namespace UI.Desktop
             // 
             this.listEmpleados.AutoSizeTable = false;
             this.listEmpleados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listEmpleados.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listEmpleados.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listEmpleados.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnID,
             this.columnNomApe});
             this.listEmpleados.Depth = 0;
+            this.listEmpleados.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listEmpleados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listEmpleados.FullRowSelect = true;
             this.listEmpleados.HideSelection = false;
@@ -75,7 +76,7 @@ namespace UI.Desktop
             this.listEmpleados.MultiSelect = false;
             this.listEmpleados.Name = "listEmpleados";
             this.listEmpleados.OwnerDraw = true;
-            this.listEmpleados.Size = new System.Drawing.Size(310, 588);
+            this.listEmpleados.Size = new System.Drawing.Size(310, 566);
             this.listEmpleados.TabIndex = 0;
             this.listEmpleados.UseCompatibleStateImageBehavior = false;
             this.listEmpleados.View = System.Windows.Forms.View.Details;
@@ -147,7 +148,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(1003, 687);
+            this.btnCerrar.Location = new System.Drawing.Point(1003, 665);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -164,7 +165,7 @@ namespace UI.Desktop
             // 
             this.listRegistradas.AutoSizeTable = false;
             this.listRegistradas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listRegistradas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listRegistradas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listRegistradas.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnNroOrden,
             this.columnFechaEntrada,
@@ -181,7 +182,7 @@ namespace UI.Desktop
             this.listRegistradas.MultiSelect = false;
             this.listRegistradas.Name = "listRegistradas";
             this.listRegistradas.OwnerDraw = true;
-            this.listRegistradas.Size = new System.Drawing.Size(717, 207);
+            this.listRegistradas.Size = new System.Drawing.Size(720, 200);
             this.listRegistradas.TabIndex = 6;
             this.listRegistradas.UseCompatibleStateImageBehavior = false;
             this.listRegistradas.View = System.Windows.Forms.View.Details;
@@ -200,7 +201,7 @@ namespace UI.Desktop
             // columnCliente
             // 
             this.columnCliente.Text = "Cliente";
-            this.columnCliente.Width = 250;
+            this.columnCliente.Width = 286;
             // 
             // columnCantItems
             // 
@@ -211,7 +212,7 @@ namespace UI.Desktop
             // 
             this.listAtendidas.AutoSizeTable = false;
             this.listAtendidas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listAtendidas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listAtendidas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listAtendidas.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnOrden,
             this.columnMaquina,
@@ -222,14 +223,14 @@ namespace UI.Desktop
             this.listAtendidas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listAtendidas.FullRowSelect = true;
             this.listAtendidas.HideSelection = false;
-            this.listAtendidas.Location = new System.Drawing.Point(10, 291);
+            this.listAtendidas.Location = new System.Drawing.Point(10, 272);
             this.listAtendidas.MinimumSize = new System.Drawing.Size(200, 100);
             this.listAtendidas.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listAtendidas.MouseState = MaterialSkin.MouseState.OUT;
             this.listAtendidas.MultiSelect = false;
             this.listAtendidas.Name = "listAtendidas";
             this.listAtendidas.OwnerDraw = true;
-            this.listAtendidas.Size = new System.Drawing.Size(720, 211);
+            this.listAtendidas.Size = new System.Drawing.Size(720, 200);
             this.listAtendidas.TabIndex = 7;
             this.listAtendidas.UseCompatibleStateImageBehavior = false;
             this.listAtendidas.View = System.Windows.Forms.View.Details;
@@ -248,17 +249,17 @@ namespace UI.Desktop
             // columnItem
             // 
             this.columnItem.Text = "Item";
-            this.columnItem.Width = 200;
+            this.columnItem.Width = 250;
             // 
             // columnFechaInicio
             // 
             this.columnFechaInicio.Text = "Fecha Inicio";
-            this.columnFechaInicio.Width = 150;
+            this.columnFechaInicio.Width = 156;
             // 
             // columnFechaFin
             // 
             this.columnFechaFin.Text = "Fecha Fin";
-            this.columnFechaFin.Width = 150;
+            this.columnFechaFin.Width = 156;
             // 
             // btnDetalles
             // 
@@ -292,7 +293,7 @@ namespace UI.Desktop
             this.btnReporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnReporte.HighEmphasis = true;
             this.btnReporte.Icon = null;
-            this.btnReporte.Location = new System.Drawing.Point(10, 687);
+            this.btnReporte.Location = new System.Drawing.Point(10, 665);
             this.btnReporte.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnReporte.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnReporte.Name = "btnReporte";
@@ -326,7 +327,7 @@ namespace UI.Desktop
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(10, 258);
+            this.materialLabel4.Location = new System.Drawing.Point(10, 239);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(142, 19);
@@ -348,14 +349,14 @@ namespace UI.Desktop
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(753, 517);
+            this.materialCard1.Size = new System.Drawing.Size(753, 495);
             this.materialCard1.TabIndex = 12;
             // 
             // ReporteEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1096, 738);
+            this.ClientSize = new System.Drawing.Size(1096, 707);
             this.Controls.Add(this.materialCard1);
             this.Controls.Add(this.btnReporte);
             this.Controls.Add(this.btnDetalles);

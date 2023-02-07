@@ -307,7 +307,7 @@ namespace UI.Desktop
                                 stream.Close();
                             }
 
-                            MessageBox.Show("Reporte exportado exitosamente", "Info");
+                            MessageBox.Show("Reporte exportado exitosamente", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         catch (Exception ex)
                         {
@@ -318,7 +318,7 @@ namespace UI.Desktop
             }
             else
             {
-                MessageBox.Show("No hay registros para exportar", "Info");
+                MessageBox.Show("No hay registros para exportar", "Info",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
 

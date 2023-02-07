@@ -24,8 +24,7 @@ namespace UI.Desktop
         private readonly OrdenLogic _ordenLogic;
         private readonly GastoLogic _gastoLogic;
         private readonly FacturaLogic _facturaLogic;
-
-
+        private readonly PagoLogic _pagoLogic;
 
         public Caja(LavanderiaContext context)
         {
@@ -33,11 +32,12 @@ namespace UI.Desktop
             _ordenLogic = new OrdenLogic(new OrdenAdapter(context));
             _gastoLogic = new GastoLogic(new GastoAdapter(context));
             _facturaLogic = new FacturaLogic(new FacturaAdapter(context));
+            _pagoLogic = new PagoLogic(new PagoAdapter(context));
             Singleton.getInstance().ListActual = this.listOrdenes;
             Singleton.getInstance().ListAlternativa = this.listGastos;
             Singleton.getInstance().ModuloActual = "Caja";
-            this.dtpFecha.Value = DateTime.Today;
-            this.dtpFechaHasta.Value = DateTime.Today;
+            //this.dtpFecha.Value = DateTime.Today;
+            //this.dtpFechaHasta.Value = DateTime.Today;
             ActualizarInformacion();
             chartGastos.BackColor = Color.Transparent;
             chartIngresos.BackColor = Color.Transparent;
@@ -45,6 +45,7 @@ namespace UI.Desktop
             chartIngresos.ChartAreas[0].BackColor = Color.Transparent;
             
         }
+        /*
         private void CargarSeriesGrafico()
         {
             if(dtpFechaHasta.Value.Date != DateTime.Now.Date)
@@ -57,24 +58,25 @@ namespace UI.Desktop
                     {
                         List<Gasto> gastosHoy = _gastoLogic.GetAll().FindAll(delegate (Gasto g) { return g.FechaRealizado.Date >= this.dtpFecha.Value.Date && g.FechaRealizado.Date <= dtpFechaHasta.Value.Date && g.TipoGasto.ToString() == tiposgasto[x]; });
                         double gastos = 0;
-                        if (gastosHoy is not null)
+                        if (gastosHoy is not null && gastosHoy.Count > 0)
                         {
                             foreach (Gasto g in gastosHoy)
                             {
                                 gastos += g.Importe;
 
                             }
-                        }
+                        
                         chartGastos.Series["Gastos"].Points.Add(gastos);
                         chartGastos.Series["Gastos"].Points[x].AxisLabel = tiposgasto[x];
                         chartGastos.Series["Gastos"].Points[x].LegendText = tiposgasto[x];
                         chartGastos.Series["Gastos"].Points[x].Label = gastos.ToString();
+                        }
                     }
 
 
                     List<Factura> facturasHoy = _facturaLogic.GetAll().FindAll(delegate (Factura f) { return f.FechaFactura.Date <= this.dtpFechaHasta.Value.Date && f.FechaFactura.Date <= this.dtpFechaHasta.Value.Date && f.Pagos is not null; });
                     
-                    if (facturasHoy is not null)
+                    if (facturasHoy is not null && facturasHoy.Count > 0)
                     {
                         List<Factura> facturasOrd = facturasHoy.OrderBy(x => x.FechaFactura.Date).ToList();
                         chartIngresos.Series["Ingresos"].Points.Clear();
@@ -201,18 +203,19 @@ namespace UI.Desktop
                 {
                     List<Gasto> gastosHoy = _gastoLogic.GetAll().FindAll(delegate (Gasto g) { return g.FechaRealizado.Date >= this.dtpFecha.Value.Date && g.TipoGasto.ToString() == tiposgasto[x]; });
                     double gastos = 0;
-                    if (gastosHoy is not null)
+                    if (gastosHoy is not null && gastosHoy.Count > 0)
                     {
                         foreach (Gasto g in gastosHoy)
                         {
                             gastos += g.Importe;
 
                         }
+
+                        chartGastos.Series["Gastos"].Points.Add(gastos);
+                        chartGastos.Series["Gastos"].Points[x].AxisLabel = tiposgasto[x];
+                        chartGastos.Series["Gastos"].Points[x].LegendText = tiposgasto[x];
+                        chartGastos.Series["Gastos"].Points[x].Label = gastos.ToString();
                     }
-                    chartGastos.Series["Gastos"].Points.Add(gastos);
-                    chartGastos.Series["Gastos"].Points[x].AxisLabel = tiposgasto[x];
-                    chartGastos.Series["Gastos"].Points[x].LegendText = tiposgasto[x];
-                    chartGastos.Series["Gastos"].Points[x].Label = gastos.ToString();
                 }
                 List<Factura> facturasHoy = _facturaLogic.GetAll().FindAll(delegate (Factura f) { return f.FechaFactura.Date >= this.dtpFecha.Value.Date && f.Pagos is not null; });
                 chartIngresos.Series["Ingresos"].Points.Clear();
@@ -263,67 +266,419 @@ namespace UI.Desktop
                     }
 
                 }
-            }
-            
-            
+            } 
         }
+        */
+        private void CargarSeriesGrafico2()
+        {
+            if (dtpFechaHasta.Value.Date != DateTime.Now.Date)
+            {
+                if (dtpFecha.Value.Date != DateTime.Now.Date)
+                {
+                    string[] tiposgasto = Enum.GetNames(typeof(Gasto.TiposGasto));
+                    chartGastos.Series["Gastos"].Points.Clear();
+                    for (int x = 0; x < tiposgasto.Length; x++)
+                    {
+                        List<Gasto> gastosHoy = _gastoLogic.GetAll().FindAll(delegate (Gasto g) { return g.FechaRealizado.Date >= this.dtpFecha.Value.Date && g.FechaRealizado.Date <= dtpFechaHasta.Value.Date && g.TipoGasto.ToString() == tiposgasto[x]; });
+                        double gastos = 0;
+                        if (gastosHoy is not null && gastosHoy.Count > 0)
+                        {
+                            foreach (Gasto g in gastosHoy)
+                            {
+                                gastos += g.Importe;
+
+                            }
+
+                            chartGastos.Series["Gastos"].Points.Add(gastos);
+                            chartGastos.Series["Gastos"].Points[x].AxisLabel = tiposgasto[x];
+                            chartGastos.Series["Gastos"].Points[x].LegendText = tiposgasto[x];
+                            chartGastos.Series["Gastos"].Points[x].Label = gastos.ToString();
+                        }
+                    }
+                    List<Pago> pagosHoy = _pagoLogic.GetAll().FindAll(delegate (Pago p) { return p.FechaPago.Date >= this.dtpFecha.Value.Date && p.FechaPago.Date <= this.dtpFechaHasta.Value.Date; });
+                    chartIngresos.Series["Ingresos"].Points.Clear();
+                    if (pagosHoy is not null && pagosHoy.Count > 0)
+                    {
+                        List<Pago> pagosOrd = pagosHoy.OrderBy(x => x.FechaPago.Date).ToList();
+                       
+                        TimeSpan diferenciaFechas = dtpFechaHasta.Value.Date - dtpFecha.Value.Date;
+                        if (diferenciaFechas.TotalDays != 0)
+                        {
+                            DateTime fechaInicial = dtpFecha.Value.Date;
+                            for (int x = 1; x <= diferenciaFechas.TotalDays + 1; x++)
+                            {
+                                double ingresosHoy = 0;
+                                foreach (Pago p in pagosOrd)
+                                {
+                                    if (p.FechaPago.Date == fechaInicial.Date)
+                                    {
+                                        ingresosHoy += p.Importe;
+                                    }
+                                }
+                                if (ingresosHoy != 0)
+                                {
+                                    chartIngresos.Series["Ingresos"].Points.AddXY(fechaInicial.Date, ingresosHoy);
+                                }
+                                fechaInicial = fechaInicial.AddDays(1);
+
+                            }
+                        }
+                        
+
+                    }
+
+
+                }
+                else
+                {
+                    string[] tiposgasto = Enum.GetNames(typeof(Gasto.TiposGasto));
+                    chartGastos.Series["Gastos"].Points.Clear();
+                    for (int x = 0; x < tiposgasto.Length; x++)
+                    {
+                        List<Gasto> gastosHoy = _gastoLogic.GetAll().FindAll(delegate (Gasto g) { return g.FechaRealizado.Date <= dtpFechaHasta.Value.Date && g.TipoGasto.ToString() == tiposgasto[x]; });
+                        double gastos = 0;
+                        if (gastosHoy is not null)
+                        {
+                            foreach (Gasto g in gastosHoy)
+                            {
+                                gastos += g.Importe;
+
+                            }
+                        }
+                        chartGastos.Series["Gastos"].Points.Add(gastos);
+                        chartGastos.Series["Gastos"].Points[x].AxisLabel = tiposgasto[x];
+                        chartGastos.Series["Gastos"].Points[x].LegendText = tiposgasto[x];
+                        chartGastos.Series["Gastos"].Points[x].Label = gastos.ToString();
+                    }
+
+                    List<Pago> pagosHoy = _pagoLogic.GetAll().FindAll(delegate (Pago p) { return p.FechaPago.Date <= this.dtpFechaHasta.Value.Date; });
+                    chartIngresos.Series["Ingresos"].Points.Clear();
+                    if (pagosHoy is not null && pagosHoy.Count > 0)
+                    {
+                        List<Pago> pagosOrd = pagosHoy.OrderBy(x => x.FechaPago.Date).ToList();
+                        
+                        TimeSpan diferenciaFechas = dtpFechaHasta.Value.Date - pagosOrd[0].FechaPago.Date;
+                        if (diferenciaFechas.TotalDays != 0)
+                        {
+                            DateTime fechaInicial = dtpFecha.Value.Date;
+                            for (int x = 1; x <= diferenciaFechas.TotalDays + 1; x++)
+                            {
+                                double ingresosHoy = 0;
+                                foreach (Pago p in pagosOrd)
+                                {
+                                    if (p.FechaPago.Date == fechaInicial.Date)
+                                    {
+                                        ingresosHoy += p.Importe;
+                                    }
+                                }
+                                if (ingresosHoy != 0)
+                                {
+                                    chartIngresos.Series["Ingresos"].Points.AddXY(fechaInicial.Date, ingresosHoy);
+                                }
+                                fechaInicial = fechaInicial.AddDays(1);
+
+                            }
+                        }
+
+                    }
+                }
+
+            }
+            else
+            {
+                string[] tiposgasto = Enum.GetNames(typeof(Gasto.TiposGasto));
+                chartGastos.Series["Gastos"].Points.Clear();
+                for (int x = 0; x < tiposgasto.Length; x++)
+                {
+                    List<Gasto> gastosHoy = _gastoLogic.GetAll().FindAll(delegate (Gasto g) { return g.FechaRealizado.Date >= this.dtpFecha.Value.Date && g.TipoGasto.ToString() == tiposgasto[x]; });
+                    double gastos = 0;
+                    if (gastosHoy is not null && gastosHoy.Count > 0)
+                    {
+                        foreach (Gasto g in gastosHoy)
+                        {
+                            gastos += g.Importe;
+
+                        }
+
+                        chartGastos.Series["Gastos"].Points.Add(gastos);
+                        chartGastos.Series["Gastos"].Points[x].AxisLabel = tiposgasto[x];
+                        chartGastos.Series["Gastos"].Points[x].LegendText = tiposgasto[x];
+                        chartGastos.Series["Gastos"].Points[x].Label = gastos.ToString();
+                    }
+                }
+                List<Pago> pagosHoy = _pagoLogic.GetAll().FindAll(delegate (Pago p) { return p.FechaPago.Date >= this.dtpFecha.Value.Date; });
+                chartIngresos.Series["Ingresos"].Points.Clear();
+                if (pagosHoy is not null && pagosHoy.Count > 0)
+                {
+                    List<Pago> pagosOrd = pagosHoy.OrderBy(x => x.FechaPago.Date).ToList();
+                   
+                    TimeSpan diferenciaFechas = DateTime.Now.Date - dtpFecha.Value.Date;
+                    if (diferenciaFechas.TotalDays != 0)
+                    {
+                        DateTime fechaInicial = dtpFecha.Value.Date;
+                        for (int x = 1; x <= diferenciaFechas.TotalDays + 1; x++)
+                        {
+                            double ingresosHoy = 0;
+                            foreach (Pago p in pagosOrd)
+                            {
+                                if (p.FechaPago.Date == fechaInicial.Date)
+                                {
+                                    ingresosHoy += p.Importe;
+                                }
+                            }
+                            if (ingresosHoy != 0)
+                            {
+                                chartIngresos.Series["Ingresos"].Points.AddXY(fechaInicial.Date, ingresosHoy);
+                            }
+                            fechaInicial = fechaInicial.AddDays(1);
+
+                        }
+                    }
+                    else
+                    {
+                        DateTime fechaInicial = dtpFecha.Value.Date;
+                        double ingresosHoy = 0;
+                        foreach (Pago p in pagosOrd)
+                        {
+                            if (p.FechaPago.Date == fechaInicial.Date)
+                            {
+                                ingresosHoy += p.Importe;
+                            }
+                        }
+                        if (ingresosHoy != 0)
+                        {
+                            chartIngresos.Series["Ingresos"].Points.AddXY(fechaInicial.Date, ingresosHoy);
+                        }
+
+                    }
+
+                }
+
+            }
+
+
+        }
+        
         private void ActualizarInformacion() 
         {
             ListarOrdenes();
             ListarGastos();
             //SaldoAnterior();
-            IngresosDelDia();
-            GastosDelDia();
-            CargarSeriesGrafico();
+            //IngresosDelDia();
+            //GastosDelDia();
+            CargarSeriesGrafico2();
             double ingresos = Double.Parse(this.lblIngresosDia.Text.Remove(0, 2));
             double gastos = Double.Parse(this.lblSalidasDia.Text.Remove(0, 2));
             double balance = ingresos - gastos;
             this.lblBalanceHoy.Text = String.Concat("$ ", balance.ToString());
         }
 
-        private void ListarOrdenes() 
+        private void ActualizarInformacionFiltro()
         {
-            List<Orden> ordenes = _ordenLogic.GetAll().FindAll(delegate (Orden o)
-            { return o.FechaSalida.Date >= this.dtpFecha.Value.Date; });
-            
-            if (ordenes is not null) 
+            filtroFecha();
+            ListarGastosFiltro();
+            CargarSeriesGrafico2();
+            double ingresos = Double.Parse(this.lblIngresosDia.Text.Remove(0, 2));
+            double gastos = Double.Parse(this.lblSalidasDia.Text.Remove(0, 2));
+            double balance = ingresos - gastos;
+            this.lblBalanceHoy.Text = String.Concat("$ ", balance.ToString());
+        }
+        private void filtroFecha()
+        {
+            List<Orden> ordenes = _ordenLogic.GetAll();
+            listOrdenes.Items.Clear();
+            double ingresosTotal = 0;
+            if (dtpFechaHasta.Value.Date != DateTime.Now.Date)
             {
-                List<Orden> ordenesOr = ordenes.OrderBy(x => x.FechaSalida.Date).ToList();
-                listOrdenes.Items.Clear();
-                foreach (Orden o in ordenesOr) 
+                if(dtpFecha.Value.Date != DateTime.Now.Date)
+                {
+                    foreach(Orden o in ordenes)
+                    {
+                        double ingresos = 0;
+                        if(o.Factura.Pagos is not null && o.Factura.Pagos.Count > 0)
+                        {
+                            foreach(Pago p in o.Factura.Pagos)
+                            {
+                                if(p.FechaPago.Date >= dtpFecha.Value.Date && p.FechaPago.Date <= dtpFechaHasta.Value.Date)
+                                {
+                                    ingresos += p.Importe;
+                                }
+                            }
+                        }
+                        if(ingresos != 0)
+                        {
+                            ListViewItem item = new ListViewItem(o.NroFactura.ToString());
+                            if (o.FechaSalida == DateTime.MinValue)
+                            {
+                                item.SubItems.Add("No retirado");
+                            }
+                            else
+                            {
+                                item.SubItems.Add(o.FechaSalida.Date.ToString("yyyy-MM-dd"));
+                            }
+                            item.SubItems.Add(ingresos.ToString());
+                            listOrdenes.Items.Add(item);
+                            ingresosTotal += ingresos;
+                        }
+
+                    }
+                }
+                else
+                {
+                    foreach (Orden o in ordenes)
+                    {
+                        double ingresos = 0;
+                        if (o.Factura.Pagos is not null && o.Factura.Pagos.Count > 0)
+                        {
+                            foreach (Pago p in o.Factura.Pagos)
+                            {
+                                if (p.FechaPago.Date <= dtpFechaHasta.Value.Date)
+                                {
+                                    ingresos += p.Importe;
+                                }
+                            }
+                        }
+                        if (ingresos != 0)
+                        {
+                            ListViewItem item = new ListViewItem(o.NroFactura.ToString());
+                            if (o.FechaSalida == DateTime.MinValue)
+                            {
+                                item.SubItems.Add("No retirado");
+                            }
+                            else
+                            {
+                                item.SubItems.Add(o.FechaSalida.Date.ToString("yyyy-MM-dd"));
+                            }
+                            item.SubItems.Add(ingresos.ToString());
+                            listOrdenes.Items.Add(item);
+                            ingresosTotal += ingresos;
+                        }
+
+                    }
+                }
+            }
+            else
+            {
+                foreach (Orden o in ordenes)
                 {
                     double ingresos = 0;
-                    if (o.Factura is not null && o.Factura.Pagos is not null) 
+                    if (o.Factura.Pagos is not null && o.Factura.Pagos.Count > 0)
                     {
-                        foreach (Pago p in o.Factura.Pagos) 
+                        foreach (Pago p in o.Factura.Pagos)
                         {
-                            if (p.FechaPago.Date >= this.dtpFecha.Value.Date) 
+                            if (p.FechaPago.Date >= dtpFecha.Value.Date)
                             {
                                 ingresos += p.Importe;
                             }
                         }
                     }
-                    ListViewItem item = new ListViewItem(o.NroFactura.ToString());
-                    if (o.FechaSalida == DateTime.MinValue)
+                    if (ingresos != 0)
                     {
-                        item.SubItems.Add("No retirado");
+                        ListViewItem item = new ListViewItem(o.NroFactura.ToString());
+                        if (o.FechaSalida == DateTime.MinValue)
+                        {
+                            item.SubItems.Add("No retirado");
+                        }
+                        else
+                        {
+                            item.SubItems.Add(o.FechaSalida.Date.ToString("yyyy-MM-dd"));
+                        }
+                        item.SubItems.Add(ingresos.ToString());
+                        listOrdenes.Items.Add(item);
+                        ingresosTotal += ingresos;
                     }
-                    else
-                    {
-                        item.SubItems.Add(o.FechaSalida.Date.ToString("yyyy-MM-dd"));
-                    }
-                    item.SubItems.Add(ingresos.ToString());
-                    listOrdenes.Items.Add(item);
+
                 }
             }
+            this.lblIngresosDia.Text = String.Concat("$ ", ingresosTotal.ToString());
         }
+       
 
+        private void ListarOrdenes() 
+        {
+            List<Orden> ordenes = _ordenLogic.GetAll();
+            
+            if (ordenes is not null) 
+            {
+                List<Orden> ordenesOr = ordenes.OrderBy(x => x.FechaEntrada.Date).ToList();
+                listOrdenes.Items.Clear();
+                double ingresoTotal = 0;
+                foreach (Orden o in ordenesOr) 
+                {
+                    double ingresos = 0;
+                    if (o.Factura.Pagos is not null && o.Factura.Pagos.Count > 0) 
+                    {
+                        foreach (Pago p in o.Factura.Pagos) 
+                        {
+                            if (p.FechaPago.Date >= DateTime.Now.Date) 
+                            {
+                                ingresos += p.Importe;
+                            }
+                        }
+                    }
+                    if(ingresos != 0)
+                    {
+                        ListViewItem item = new ListViewItem(o.NroFactura.ToString());
+                        if (o.FechaSalida == DateTime.MinValue)
+                        {
+                            item.SubItems.Add("No retirado");
+                        }
+                        else
+                        {
+                            item.SubItems.Add(o.FechaSalida.Date.ToString("yyyy-MM-dd"));
+                        }
+                        item.SubItems.Add(ingresos.ToString());
+                        listOrdenes.Items.Add(item);
+                        ingresoTotal += ingresos;
+                    }
+                    
+                }
+                this.lblIngresosDia.Text = String.Concat("$ ", ingresoTotal.ToString());
+
+            }
+        }
+        private void ListarGastosFiltro()
+        {
+            List<Gasto> gastosFiltro = new List<Gasto>();
+            double gastoTotal = 0.0;
+            listGastos.Items.Clear();
+            if (dtpFechaHasta.Value.Date != DateTime.Now.Date)
+            {
+                if(dtpFecha.Value.Date != DateTime.Now.Date)
+                {
+                    gastosFiltro = _gastoLogic.GetAll().FindAll(delegate (Gasto g) { return g.FechaRealizado.Date >= this.dtpFecha.Value.Date && g.FechaRealizado.Date <= dtpFechaHasta.Value.Date; });
+                }
+                else
+                {
+                    gastosFiltro = _gastoLogic.GetAll().FindAll(delegate (Gasto g) { return g.FechaRealizado.Date <= dtpFechaHasta.Value.Date; });
+                }
+            }
+            else
+            {
+                gastosFiltro = _gastoLogic.GetAll().FindAll(delegate (Gasto g) { return g.FechaRealizado.Date >= this.dtpFecha.Value.Date; });
+            }
+            if (gastosFiltro.Count > 0)
+            {
+                foreach (Gasto g in gastosFiltro)
+                {
+                    ListViewItem item = new ListViewItem(g.TipoGasto.ToString());
+                    item.SubItems.Add(g.Descripcion);
+                    item.SubItems.Add(g.FechaRealizado.ToString());
+                    item.SubItems.Add(g.Importe.ToString());
+                    listGastos.Items.Add(item);
+                    gastoTotal += g.Importe;
+                }
+                this.lblSalidasDia.Text = String.Concat("$ ", gastoTotal.ToString());
+            }
+        }
         private void ListarGastos() 
         {
+            
             listGastos.Items.Clear();
-            List<Gasto> gastos = _gastoLogic.GetAll().FindAll(delegate (Gasto g) { return g.FechaRealizado.Date >= this.dtpFecha.Value.Date; });
+            List<Gasto> gastos = _gastoLogic.GetAll().FindAll(delegate (Gasto g) { return g.FechaRealizado.Date >= DateTime.Now.Date; });
             if (gastos is not null)
             {
+                double gastoTotal = 0.0;
                 foreach (Gasto g in gastos)
                 {
                     ListViewItem item = new ListViewItem(g.TipoGasto.ToString());
@@ -331,7 +686,9 @@ namespace UI.Desktop
                     item.SubItems.Add(g.FechaRealizado.ToString());
                     item.SubItems.Add(g.Importe.ToString());
                     listGastos.Items.Add(item);
+                    gastoTotal += g.Importe;
                 }
+                this.lblSalidasDia.Text = String.Concat("$ ", gastoTotal.ToString());
             }
         }
         /*
@@ -367,7 +724,7 @@ namespace UI.Desktop
                 }
                 this.lblSaldoAnterior.Text = String.Concat("$ ",cajaUltimoDia.ToString());
             }
-        }*/
+        }
 
         private void IngresosDelDia() 
         {
@@ -407,10 +764,11 @@ namespace UI.Desktop
             
             
         }
-
+        */
         private void dtpFecha_ValueChanged(object sender, EventArgs e)
         {
-            ActualizarInformacion();
+            ActualizarInformacionFiltro();
+           
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -541,11 +899,31 @@ namespace UI.Desktop
                                 fecha.Add($"Fecha de emisión: {DateTime.Now} \n");
                                 fecha.SetFontSize(9);
                                 document.Add(fecha);
-                                if (dtpFecha.Value.ToString("yyyy/MM/dd") != DateTime.Now.ToString("yyyy/MM/dd"))
+                                if (dtpFechaHasta.Value.Date != DateTime.Now.Date)
+                                {
+                                    if (dtpFecha.Value.Date != DateTime.Now.Date)
+                                    {
+                                        Paragraph fechaDesde = new Paragraph();
+                                        fechaDesde.SetTextAlignment(TextAlignment.CENTER);
+                                        fechaDesde.Add($"El Reporte abarca desde: {dtpFecha.Value.Date.ToString("yyyy/MM/dd")} - hasta: {dtpFechaHasta.Value.Date.ToString("yyyy/MM/dd")}\n");
+                                        fechaDesde.SetFontSize(9);
+                                        document.Add(fechaDesde);
+                                    }
+                                    else
+                                    {
+                                        Paragraph fechaDesde = new Paragraph();
+                                        fechaDesde.SetTextAlignment(TextAlignment.CENTER);
+                                        fechaDesde.Add($"El Reporte abarca hasta: {dtpFechaHasta.Value.Date.ToString("yyyy/MM/dd")}\n");
+                                        fechaDesde.SetFontSize(9);
+                                        document.Add(fechaDesde);
+                                    }
+
+                                }
+                                else
                                 {
                                     Paragraph fechaDesde = new Paragraph();
                                     fechaDesde.SetTextAlignment(TextAlignment.CENTER);
-                                    fechaDesde.Add($"Caja desde: {dtpFecha.Value.Date} - hasta: {dtpFechaHasta.Value.Date}\n");
+                                    fechaDesde.Add($"El Reporte abarca desde: {dtpFecha.Value.Date.ToString("yyyy/MM/dd")}\n");
                                     fechaDesde.SetFontSize(9);
                                     document.Add(fechaDesde);
                                 }
@@ -574,7 +952,7 @@ namespace UI.Desktop
                                 stream.Close();
                             }
 
-                            MessageBox.Show("Reporte exportado exitosamente", "Info",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                            MessageBox.Show("Reporte exportado exitosamente", "Info",MessageBoxButtons.OK,MessageBoxIcon.Information);
                         }
                         catch (Exception ex)
                         {
@@ -591,6 +969,8 @@ namespace UI.Desktop
 
         private void dtpFechaHasta_ValueChanged(object sender, EventArgs e)
         {
+            ActualizarInformacionFiltro();
+            /*
             if(dtpFecha.Value.Date != DateTime.Now.Date)
             {
                 CargarSeriesGrafico();
@@ -745,6 +1125,9 @@ namespace UI.Desktop
                     this.lblSalidasDia.Text = String.Concat("$ ", gastos2.ToString());
                 }
             }
+            */
         }
+
+       
     }
 }

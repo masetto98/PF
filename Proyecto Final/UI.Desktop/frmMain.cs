@@ -18,6 +18,7 @@ using iText.Layout.Properties;
 using iText.Layout;
 using System.IO;
 using PdfiumViewer;
+using Humanizer;
 
 
 
@@ -35,6 +36,7 @@ namespace UI.Desktop
         private readonly OrdenServicioTipoPrendaLogic _ordenServicioTipoPrendaLogic;
         private readonly MaquinaOrdenServicioTipoPrendaLogic _maquinaOrdenServicioTipoPrendaLogic;
         private readonly MaquinaLogic _maquinaLogic;
+        private readonly AtributosNegocioLogic _atributosLogic;
         public AtributosNegocio NegocioActual;
         public List<OrdenServicioTipoPrenda> _trabajosPendientes;
         public List<MaquinaOrdenServicioTipoPrenda> _trabajosEnProceso;
@@ -42,6 +44,13 @@ namespace UI.Desktop
         public List<ItemTrabajo> _listaEspera;
         public List<ItemTrabajo> _listaFinalizados;
         public double _deudaCliente;
+        public Insumo insumoActual;
+        public Cliente clienteActual;
+        public List<Orden> ordenesPagadas;
+        public double _pagosAnteriores;
+        public Pago.FormasPago formaPago;
+        public AtributosNegocio negocio { set; get; }
+
 
         public frmMain(LavanderiaContext context)
         {
@@ -59,6 +68,7 @@ namespace UI.Desktop
             _maquinaLogic = new MaquinaLogic(new MaquinaAdapter(context));
             _listaEspera = new List<ItemTrabajo>();
             _listaFinalizados = new List<ItemTrabajo>();
+            _atributosLogic = new AtributosNegocioLogic(new AtributosNegocioAdapter(context));
             //NegocioActual = _atributosNegocioLogic.GetOne(1);
             RellenarComboBox(listClientes, cmbBuscarCliente);
             RellenarComboBox(listOrdenes, cmbBuscarOrden);
@@ -283,6 +293,7 @@ namespace UI.Desktop
             e.Cancel = true;
             e.NewWidth = listPagosOrden.Columns[e.ColumnIndex].Width;
         }
+       
         private void btnOrdenesCliente_Click(object sender, EventArgs e)
         {
             ListarOrdenesCliente();
@@ -491,6 +502,176 @@ namespace UI.Desktop
             }
 
         }
+        private void verificarAtributosNegocio()
+        {
+            negocio = _atributosLogic.GetAll().FirstOrDefault();
+            if (negocio is null)
+            {
+                if (MessageBox.Show("No fue posible emitir el comprobante debido a que aún no se encuentran registrado los atributos del negocio." + "\n" + "¿Desea registrar los atributos en este momento?", "Comprobante", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    frmAtributosNegocio frmAtributosnegocio = new frmAtributosNegocio(ModoForm.Alta, _context);
+                    frmAtributosnegocio.ShowDialog();
+                    emitirComprobantePago();
+                }
+            }
+            else
+            {
+                emitirComprobantePago();
+            }
+        }
+        private void emitirComprobantePago()
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "PDF (*.pdf)|*.pdf";
+            sfd.FileName = $"Comprobante de Pago-{clienteActual.Cuit}-{DateTime.Now.ToString("yyyyMMddHHmmss")}.pdf";
+            bool fileError = false;
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                if (File.Exists(sfd.FileName))
+                {
+                    try
+                    {
+                        File.Delete(sfd.FileName);
+                    }
+                    catch (IOException ex)
+                    {
+                        fileError = true;
+                        MessageBox.Show("No fue posible escribir el archivo en el disco." + ex.Message);
+                    }
+                }
+                if (!fileError)
+                {
+                    try
+                    {
+
+                        AtributosNegocio negocio = new AtributosNegocio();
+                        AtributosNegocioLogic negocioLogic = new AtributosNegocioLogic(new AtributosNegocioAdapter(_context));
+                        negocio = negocioLogic.GetAll().FirstOrDefault();
+                        if(negocio is not null)
+                        {
+                            string factura = Properties.Resources.comprobantepago.ToString();
+                            factura = factura.Replace("@nombrempresa", negocio.NombreEmpresa);
+                            factura = factura.Replace("@cuitempresa", negocio.CuitEmpresa);
+                            factura = factura.Replace("@direccionempresa", negocio.DireccionEmpresa);
+                            factura = factura.Replace("@telempresa", negocio.TelEmpresa);
+                            factura = factura.Replace("@redes", negocio.RedesEmpresa);
+
+                            factura = factura.Replace("@fechafactura", DateTime.Now.Date.ToString("dd/MM/yyyy"));
+                            factura = factura.Replace("@hsfactura", DateTime.Now.ToString("HH:mm:ss"));
+
+
+                            factura = factura.Replace("@cuit", clienteActual.Cuit);
+                            if (clienteActual.RazonSocial == "")
+                            {
+                                factura = factura.Replace("@nombre", clienteActual.Apellido + "," + clienteActual.Nombre);
+                            }
+                            else
+                            {
+                                factura = factura.Replace("@nombre", clienteActual.RazonSocial);
+                            }
+
+                            factura = factura.Replace("@direcli", clienteActual.Direccion);
+                            factura = factura.Replace("@telcli", clienteActual.Telefono);
+                            string items = string.Empty;
+                            double totalItems = 0;
+                            _pagosAnteriores = 0;
+                            foreach (Orden row in ordenesPagadas)
+                            {
+                                items += "<tr>";
+                                items += "<td align=" + "\"center\">" + row.NroOrden.ToString() + "</td>";
+                                items += "<td align=" + "\"center\">" + row.FechaEntrada.ToString("dd/MM/yyyy HH:ss:mm") + "</td>";
+                                items += "<td align=" + "\"center\">";
+                                foreach (OrdenServicioTipoPrenda servicios in row.ItemsPedidos)
+                                {
+                                    items += "<br>" + servicios.ServicioTipoPrenda.Servicio.Descripcion + " " + servicios.ServicioTipoPrenda.TipoPrenda.Descripcion +"</br>";
+                                }
+                                items += "</td>";
+                                //items += "<td align=" + "\"center\">" + row.ServicioTipoPrenda.TipoPrenda.Descripcion + "</td>";
+
+                                items += "<td align=" + "\"center\">" +"$"+ row.Factura.Importe.ToString() + "</td>";
+                                items += "</tr>";
+                                totalItems += row.Factura.Importe;
+                                if(row.Factura.Pagos.Count > 0)
+                                {
+                                    foreach(Pago p in row.Factura.Pagos)
+                                    {
+                                        if(p.FechaPago.Date != DateTime.Now.Date)
+                                        {
+                                            _pagosAnteriores += p.Importe;
+                                        }
+                                       
+                                    }
+                                }
+                            }
+                            factura = factura.Replace("@items", items);
+                            factura = factura.Replace("@totalitems", "$" + totalItems.ToString());
+                            double totalfactura;
+                            if (_pagosAnteriores != 0)
+                            {
+                                factura = factura.Replace("@pagosrealizados", "$"+ _pagosAnteriores.ToString());
+                                totalfactura = totalItems - _pagosAnteriores;
+                            }
+                            else
+                            {
+                                factura = factura.Replace("@pagosrealizados", "0");
+                                totalfactura = totalItems - 0;
+                            }
+                            Empleado empActual = Singleton.getInstance().UserLogged.Empleado;
+                            int parteEntera = Convert.ToInt32((Math.Truncate(totalfactura)));
+                            double parteDecimal = totalfactura - Convert.ToDouble(parteEntera);
+                            string Decimal = parteDecimal.ToString().Split(",")[1];
+                            int pDecimal = Convert.ToInt32(Decimal);
+                            factura = factura.Replace("@totalfact", "$"+totalfactura.ToString());
+                            factura = factura.Replace("@empleado", empActual.Apellido + ", "+empActual.Nombre);
+                            factura = factura.Replace("@fechapago", "el día "+ DateTime.Now.Day.ToString() + " del mes de " + DateTime.Now.ToString("MMMM") +" del año " + DateTime.Now.Year.ToString());
+                            if(pDecimal != 0)
+                            {
+                                factura = factura.Replace("@monto", " un monto de $" + totalfactura.ToString() + "(" + parteEntera.ToWords().ToUpper() + " CON " + pDecimal.ToWords().ToUpper() + ")");
+                            }
+                            else
+                            {
+                                factura = factura.Replace("@monto", " un monto de $" + totalfactura.ToString() + "(" + parteEntera.ToWords() + ")");
+                            }
+                            
+                            factura = factura.Replace("@formpago", formaPago.ToString());
+                            factura = factura.Replace("@concepto", "Saldar Deuda Cta.Cte");
+                            
+
+
+
+                            using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                            {
+                                PdfWriter writer = new PdfWriter(stream);
+                                iText.Kernel.Pdf.PdfDocument pdf = new iText.Kernel.Pdf.PdfDocument(writer);
+                                pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4);
+
+                                //Paragraph p = new Paragraph();
+                                //p.SetTextAlignment(TextAlignment.CENTER);
+                                //p.Add($"Reporte de {Singleton.getInstance().ModuloActual} \n");
+                                //p.SetBold();
+                                //p.SetUnderline();
+                                //p.SetFontSize(18);
+                                using (StringReader sr = new StringReader(factura))
+                                {
+                                    Document document = iText.Html2pdf.HtmlConverter.ConvertToDocument(factura, writer);
+                                    document.Close();
+                                }
+                                stream.Close();
+                            }
+
+                            MessageBox.Show("El comprobante fue generado correctamente", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+
+            }
+        }
 
         private void btnSaldarDeuda_Click(object sender, EventArgs e)
         {
@@ -503,7 +684,7 @@ namespace UI.Desktop
                     FormaPagoDesktop fp = new FormaPagoDesktop();
                     if(fp.ShowDialog() == DialogResult.OK)
                     {
-                        Pago.FormasPago formaPago = fp.GetFormaPago();
+                        formaPago = fp.GetFormaPago();
                         if (MessageBox.Show("¿Está seguro que desea saldar la deuda con la siguiente información?" + "\n"
                                + "Cuit: " + listClientes.SelectedItems[0].SubItems[1].Text + "\n"
                                + "Cliente: " + listClientes.SelectedItems[0].SubItems[2].Text + " " + listClientes.SelectedItems[0].SubItems[3].Text + " | " + listClientes.SelectedItems[0].SubItems[4].Text + "\n"
@@ -511,9 +692,10 @@ namespace UI.Desktop
                                + "Total: " + this.lblCuentaCorriente.Text
                                , "Saldar Deuda", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            Cliente clienteActual = _clienteLogic.GetOne(Int32.Parse(listClientes.SelectedItems[0].Text));
+                            clienteActual = _clienteLogic.GetOne(Int32.Parse(listClientes.SelectedItems[0].Text));
                             if (clienteActual is not null)
                             {
+                                ordenesPagadas = new List<Orden>();
                                 if (clienteActual.Ordenes is not null)
                                 {
                                     foreach (Orden o in clienteActual.Ordenes)
@@ -526,20 +708,27 @@ namespace UI.Desktop
                                         double pagos = CalcularPagosOrden(o);
                                         if (importe != pagos)
                                         {
+                                            o.Factura.FechaFactura = DateTime.Now;
                                             Pago pagoActual = new Pago();
                                             pagoActual.FechaPago = DateTime.Now;
                                             pagoActual.FormaPago = formaPago;
                                             pagoActual.Importe = importe - pagos;
                                             o.Factura.Pagos.Add(pagoActual);
+                                            ordenesPagadas.Add(o);
+
                                         }
+                                       
                                     }
+                                    
                                     clienteActual.State = BusinessEntity.States.Modified;
                                     _clienteLogic.Save(clienteActual);
                                 }
                             }
                         }
+                        verificarAtributosNegocio();
                         CalcularCuentaCorrienteCliente();
                         ListarOrdenesCliente();
+                        
                     }
                     
                 }
@@ -656,7 +845,7 @@ namespace UI.Desktop
             listIngresosInsumos.Items.Clear();
             if (listInsumos.SelectedItems.Count > 0)
             {
-                Insumo insumoActual = _insumoLogic.GetOne(Int32.Parse(listInsumos.SelectedItems[0].Text));
+                insumoActual = _insumoLogic.GetOne(Int32.Parse(listInsumos.SelectedItems[0].Text));
                 if (insumoActual is not null && insumoActual.InsumosProveedores.Count > 0)
                 {
                     foreach (InsumoProveedor ip in insumoActual.InsumosProveedores)
@@ -737,56 +926,81 @@ namespace UI.Desktop
             }
             //ListarIngresos();
         }
-        private void dtpFiltroFechaIngreso_ValueChanged(object sender, EventArgs e)
+        private void filtroFechaIngresos()
         {
-            if(listIngresosInsumos.Items.Count > 0)
+            if(insumoActual is not null)
             {
-                listIngresosInsumos.Items.Clear();
-                if (listInsumos.SelectedItems.Count > 0)
+                if(dtpHastaIngreso.Value.Date != DateTime.Now.Date)
                 {
-                    Insumo insumoActual = _insumoLogic.GetOne(Int32.Parse(listInsumos.SelectedItems[0].Text));
-                    List<InsumoProveedor> ip = insumoActual.InsumosProveedores;
-                    List<InsumoProveedor> ipFiltro = ip.FindAll(
+                    if(dtpFiltroFechaIngreso.Value.Date != DateTime.Now.Date)
+                    {
+                        List<InsumoProveedor> ipFiltro = insumoActual.InsumosProveedores.FindAll(
                         delegate (InsumoProveedor ip)
                         {
-                            return ip.FechaIngreso.Date >= dtpFiltroFechaIngreso.Value.Date;
+                            return ip.FechaIngreso.Date >= dtpFiltroFechaIngreso.Value.Date && ip.FechaIngreso.Date <= dtpHastaIngreso.Value.Date;
                         });
-                    if (insumoActual is not null && ipFiltro.Count > 0)
+                        listarIngresosFiltrados(ipFiltro);
+                    }
+                    else
                     {
-                        foreach (InsumoProveedor insP in ipFiltro)
+                        List<InsumoProveedor> ipFiltro = insumoActual.InsumosProveedores.FindAll(
+                        delegate (InsumoProveedor ip)
                         {
-                            ListViewItem item = new ListViewItem(insP.Proveedor.RazonSocial);
-                            item.SubItems.Add(insP.FechaIngreso.ToString("yyyy-MM-dd HH:mm:ss.fffffff"));
-                            item.SubItems.Add(insP.Cantidad.ToString());
-                            item.SubItems.Add(insP.Insumo.UnidadMedida.ToString());
-                            listIngresosInsumos.Items.Add(item);
-                        }
+                            return ip.FechaIngreso.Date <= dtpHastaIngreso.Value.Date;
+                        });
+                        listarIngresosFiltrados(ipFiltro);
                     }
                 }
                 else
                 {
-                    //dtpFiltroFechaIngreso.Value = DateTime.Now;
-                    MessageBox.Show("Seleccionar una fila en la lista para poder observar los detalles", "Movimientos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    List<InsumoProveedor> ipFiltro = insumoActual.InsumosProveedores.FindAll(
+                        delegate (InsumoProveedor ip)
+                        {
+                            return ip.FechaIngreso.Date >= dtpFiltroFechaIngreso.Value.Date;
+                        });
+                    listarIngresosFiltrados(ipFiltro);
                 }
             }
-            else
-            {
-                //dtpFiltroFechaIngreso.Value = DateTime.Now;
-                MessageBox.Show("No se han encontrado Movimientos para realizar el filtro correspondiente.", "Movimientos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+        }
+        private void filtroFechaMovimientos()
+        {
+           
+                if (dtpHastaIngreso.Value.Date != DateTime.Now.Date)
+                {
+                    if (dtpFiltroFechaIngreso.Value.Date != DateTime.Now.Date)
+                    {
+                        List<InsumoProveedor> ipFiltro = _insumoProveedorLogic.GetAll().FindAll(
+                        delegate (InsumoProveedor ip)
+                        {
+                            return ip.FechaIngreso.Date >= dtpDesdeMovimientos.Value.Date && ip.FechaIngreso.Date <= dtpHastaMovimientos.Value;
+                        });
+                        listarMovimientosFiltrados(ipFiltro);
+                    }
+                    else
+                    {
+                        List<InsumoProveedor> ipFiltro = _insumoProveedorLogic.GetAll().FindAll(
+                        delegate (InsumoProveedor ip)
+                        {
+                            return ip.FechaIngreso.Date <= dtpHastaMovimientos.Value;
+                        });
+                        listarMovimientosFiltrados(ipFiltro);
+                    }
+                }
+                else
+                {
+                    List<InsumoProveedor> ipFiltro = _insumoProveedorLogic.GetAll().FindAll(
+                        delegate (InsumoProveedor ip)
+                        {
+                            return ip.FechaIngreso.Date >= dtpDesdeMovimientos.Value.Date;
+                        });
+                        listarMovimientosFiltrados(ipFiltro);
+                }
             
         }
-        private void dtpFiltrarFechaIngreso_CloseUp(object sender, EventArgs e)
+        private void listarMovimientosFiltrados(List<InsumoProveedor> ipFiltro)
         {
-            DateTime fechaFiltro = dtpFiltrarFechaIngreso.Value;
-            List<InsumoProveedor> insumosproveedores = _insumoProveedorLogic.GetAll();
-            List<InsumoProveedor> ipFecha = insumosproveedores.FindAll(
-                delegate (InsumoProveedor ip) {
-                    return ip.FechaIngreso.Date >= fechaFiltro.Date;
-                }
-                );
             listIngresos.Items.Clear();
-            foreach (InsumoProveedor ip in ipFecha)
+            foreach (InsumoProveedor ip in ipFiltro)
             {
 
                 ListViewItem item = new ListViewItem(ip.IdProveedor.ToString());
@@ -797,6 +1011,47 @@ namespace UI.Desktop
                 item.SubItems.Add(ip.Cantidad.ToString());
                 listIngresos.Items.Add(item);
             }
+        }
+        private void listarIngresosFiltrados(List<InsumoProveedor> ipFiltro)
+        {
+            listIngresosInsumos.Items.Clear();
+            if (insumoActual is not null && ipFiltro.Count > 0)
+            {
+                foreach (InsumoProveedor insP in ipFiltro)
+                {
+                    ListViewItem item = new ListViewItem(insP.Proveedor.RazonSocial);
+                    item.SubItems.Add(insP.FechaIngreso.ToString("yyyy-MM-dd HH:mm:ss.fffffff"));
+                    item.SubItems.Add(insP.Cantidad.ToString());
+                    item.SubItems.Add(insP.Insumo.UnidadMedida.ToString());
+                    listIngresosInsumos.Items.Add(item);
+                }
+            }
+        }
+        private void dtpHastaIngreso_ValueChanged(object sender, EventArgs e)
+        {
+           
+                filtroFechaIngresos();
+
+            
+               
+        }
+        private void dtpFiltroFechaIngreso_ValueChanged(object sender, EventArgs e)
+        {
+            
+             filtroFechaIngresos();
+
+        }
+
+        private void dtpDesdeMovimientos_ValueChanged(object sender, EventArgs e)
+        {
+            filtroFechaMovimientos();
+            
+            
+        }
+
+        private void dtpHastaMovimientos_ValueChanged(object sender, EventArgs e)
+        {
+            filtroFechaMovimientos();
         }
         /*
         private void dtpFiltroFechaIngreso_CloseUp(object sender, EventArgs e)
@@ -1913,7 +2168,17 @@ namespace UI.Desktop
         #endregion
 
         #region ------- TRABAJOS FINALIZADOS -------
+        private void listTrabajosFinalizados_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listTrabajosFinalizados.Columns[e.ColumnIndex].Width;
+        }
 
+        private void listServiciosOrden_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listServiciosOrden.Columns[e.ColumnIndex].Width;
+        }
         private void ListarTrabajosFinalizados() 
         {
             
@@ -2068,31 +2333,39 @@ namespace UI.Desktop
 
         private void btnEnviarPendientes_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea enviar este item a pendientes?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (listTrabajosFinalizados.SelectedItems.Count > 0)
             {
-                if (listTrabajosFinalizados.SelectedItems.Count > 0)
+                if (MessageBox.Show("¿Está seguro que desea enviar el trabajo seleccionado nuevamente a pendientes?", "Enviar a pendientes", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    OrdenServicioTipoPrenda ostp = _ordenServicioTipoPrendaLogic.GetAll().Find(x =>
-                          x.NroOrden == Int32.Parse(this.listTrabajosFinalizados.SelectedItems[0].Text) &&
-                          x.ServicioTipoPrenda.Servicio.Descripcion == this.listTrabajosFinalizados.SelectedItems[0].SubItems[1].Text &&
-                          x.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listTrabajosFinalizados.SelectedItems[0].SubItems[2].Text &&
-                          x.OrdenItem == Int32.Parse(this.listTrabajosFinalizados.SelectedItems[0].SubItems[3].Text));
-
-                    Orden ordenItemActual = _ordenLogic.GetOne(ostp.NroOrden);
-                    if (ordenItemActual is not null && ordenItemActual.Estado != Orden.Estados.Retirado)
+                    if (listTrabajosFinalizados.SelectedItems.Count > 0)
                     {
-                        ostp.Estado = OrdenServicioTipoPrenda.Estados.Iniciado;
-                        ostp.State = BusinessEntity.States.Modified;
-                        ordenItemActual.Estado = Orden.Estados.Procesando;
-                        ordenItemActual.State = BusinessEntity.States.Modified;
-                        ordenItemActual.ItemsPedidos.Add(ostp);
-                        _ordenLogic.Save(ordenItemActual);
-                        Planificar();
-                    }
-                    else { MessageBox.Show("La orden del item selecciona ya se encuentra registrada como RETIRADA, y por lo tanto no es posible realizar la acción", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-                }
+                        OrdenServicioTipoPrenda ostp = _ordenServicioTipoPrendaLogic.GetAll().Find(x =>
+                              x.NroOrden == Int32.Parse(this.listTrabajosFinalizados.SelectedItems[0].Text) &&
+                              x.ServicioTipoPrenda.Servicio.Descripcion == this.listTrabajosFinalizados.SelectedItems[0].SubItems[1].Text &&
+                              x.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listTrabajosFinalizados.SelectedItems[0].SubItems[2].Text &&
+                              x.OrdenItem == Int32.Parse(this.listTrabajosFinalizados.SelectedItems[0].SubItems[3].Text));
 
+                        Orden ordenItemActual = _ordenLogic.GetOne(ostp.NroOrden);
+                        if (ordenItemActual is not null && ordenItemActual.Estado != Orden.Estados.Retirado)
+                        {
+                            ostp.Estado = OrdenServicioTipoPrenda.Estados.Iniciado;
+                            ostp.State = BusinessEntity.States.Modified;
+                            ordenItemActual.Estado = Orden.Estados.Procesando;
+                            ordenItemActual.State = BusinessEntity.States.Modified;
+                            ordenItemActual.ItemsPedidos.Add(ostp);
+                            _ordenLogic.Save(ordenItemActual);
+                            Planificar();
+                        }
+                        else { MessageBox.Show("La orden a la cual pertenece el item seleccionado ya se encuentra registrada como RETIRADA debido a esto no fue posible realizar la acción correspondiente.", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                    }
+
+                }
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un trabajo del listado para poder enviarlo a pendientes.", "Trabajos Finalizados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+                
         }
 
         private void cmbFiltroTrabajosFinalizados_SelectedIndexChanged(object sender, EventArgs e)
@@ -2406,6 +2679,6 @@ namespace UI.Desktop
             
         }
 
-       
+        
     }
 }

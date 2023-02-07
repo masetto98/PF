@@ -40,7 +40,6 @@ namespace UI.Desktop
             this.columnNro = new System.Windows.Forms.ColumnHeader();
             this.columnFechaSalida = new System.Windows.Forms.ColumnHeader();
             this.columnIngresos = new System.Windows.Forms.ColumnHeader();
-            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.lblBalanceHoy = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
@@ -61,10 +60,11 @@ namespace UI.Desktop
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.btnReporteCaja = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
-            this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
             this.chartGastos = new FastReport.DataVisualization.Charting.Chart();
             this.chartIngresos = new FastReport.DataVisualization.Charting.Chart();
             this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
             this.materialCard1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartGastos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartIngresos)).BeginInit();
@@ -111,20 +111,6 @@ namespace UI.Desktop
             // 
             this.columnIngresos.Text = "Dinero ingresado";
             this.columnIngresos.Width = 150;
-            // 
-            // dtpFecha
-            // 
-            this.dtpFecha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.dtpFecha.CustomFormat = "dd/MM/yyyy";
-            this.dtpFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dtpFecha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFecha.Location = new System.Drawing.Point(112, 95);
-            this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(196, 23);
-            this.dtpFecha.TabIndex = 1;
-            this.dtpFecha.Value = new System.DateTime(2022, 10, 4, 0, 0, 0, 0);
-            this.dtpFecha.ValueChanged += new System.EventHandler(this.dtpFecha_ValueChanged);
             // 
             // materialCard1
             // 
@@ -283,9 +269,9 @@ namespace UI.Desktop
             this.materialLabel8.Location = new System.Drawing.Point(13, 165);
             this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel8.Name = "materialLabel8";
-            this.materialLabel8.Size = new System.Drawing.Size(129, 19);
+            this.materialLabel8.Size = new System.Drawing.Size(157, 19);
             this.materialLabel8.TabIndex = 4;
-            this.materialLabel8.Text = "Ordenes retiradas:";
+            this.materialLabel8.Text = "Ordenes con ingresos:";
             // 
             // btnCerrar
             // 
@@ -296,7 +282,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(1228, 603);
+            this.btnCerrar.Location = new System.Drawing.Point(1236, 606);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -344,7 +330,7 @@ namespace UI.Desktop
             // columnDesc
             // 
             this.columnDesc.Text = "Descripción";
-            this.columnDesc.Width = 136;
+            this.columnDesc.Width = 142;
             // 
             // columnFecha
             // 
@@ -379,7 +365,7 @@ namespace UI.Desktop
             this.btnReporteCaja.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnReporteCaja.HighEmphasis = true;
             this.btnReporteCaja.Icon = null;
-            this.btnReporteCaja.Location = new System.Drawing.Point(12, 603);
+            this.btnReporteCaja.Location = new System.Drawing.Point(12, 606);
             this.btnReporteCaja.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnReporteCaja.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnReporteCaja.Name = "btnReporteCaja";
@@ -405,20 +391,6 @@ namespace UI.Desktop
             this.materialLabel7.Size = new System.Drawing.Size(92, 19);
             this.materialLabel7.TabIndex = 10;
             this.materialLabel7.Text = "Fecha hasta:";
-            // 
-            // dtpFechaHasta
-            // 
-            this.dtpFechaHasta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.dtpFechaHasta.CustomFormat = "dd/MM/yyyy";
-            this.dtpFechaHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dtpFechaHasta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dtpFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaHasta.Location = new System.Drawing.Point(112, 130);
-            this.dtpFechaHasta.Name = "dtpFechaHasta";
-            this.dtpFechaHasta.Size = new System.Drawing.Size(196, 23);
-            this.dtpFechaHasta.TabIndex = 9;
-            this.dtpFechaHasta.Value = new System.DateTime(2022, 10, 4, 0, 0, 0, 0);
-            this.dtpFechaHasta.ValueChanged += new System.EventHandler(this.dtpFechaHasta_ValueChanged);
             // 
             // chartGastos
             // 
@@ -479,14 +451,33 @@ namespace UI.Desktop
             this.materialCard2.Size = new System.Drawing.Size(380, 502);
             this.materialCard2.TabIndex = 13;
             // 
+            // dtpFecha
+            // 
+            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFecha.Location = new System.Drawing.Point(113, 91);
+            this.dtpFecha.Name = "dtpFecha";
+            this.dtpFecha.Size = new System.Drawing.Size(181, 23);
+            this.dtpFecha.TabIndex = 14;
+            this.dtpFecha.ValueChanged += new System.EventHandler(this.dtpFecha_ValueChanged);
+            // 
+            // dtpFechaHasta
+            // 
+            this.dtpFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaHasta.Location = new System.Drawing.Point(113, 128);
+            this.dtpFechaHasta.Name = "dtpFechaHasta";
+            this.dtpFechaHasta.Size = new System.Drawing.Size(181, 23);
+            this.dtpFechaHasta.TabIndex = 15;
+            this.dtpFechaHasta.ValueChanged += new System.EventHandler(this.dtpFechaHasta_ValueChanged);
+            // 
             // Caja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1325, 654);
+            this.Controls.Add(this.dtpFechaHasta);
+            this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.materialCard2);
             this.Controls.Add(this.materialLabel7);
-            this.Controls.Add(this.dtpFechaHasta);
             this.Controls.Add(this.btnReporteCaja);
             this.Controls.Add(this.materialLabel4);
             this.Controls.Add(this.listGastos);
@@ -494,7 +485,6 @@ namespace UI.Desktop
             this.Controls.Add(this.materialLabel8);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.materialCard1);
-            this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.listOrdenes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -517,7 +507,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialListView listOrdenes;
         private System.Windows.Forms.ColumnHeader columnNro;
         private System.Windows.Forms.ColumnHeader columnFechaSalida;
-        private System.Windows.Forms.DateTimePicker dtpFecha;
         private MaterialSkin.Controls.MaterialCard materialCard1;
         private MaterialSkin.Controls.MaterialLabel lblSalidasDia;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
@@ -539,9 +528,10 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnReporteCaja;
         private System.Windows.Forms.ColumnHeader columnIngresos;
         private MaterialSkin.Controls.MaterialLabel materialLabel7;
-        private System.Windows.Forms.DateTimePicker dtpFechaHasta;
         private FastReport.DataVisualization.Charting.Chart chartGastos;
         private FastReport.DataVisualization.Charting.Chart chartIngresos;
         private MaterialSkin.Controls.MaterialCard materialCard2;
+        private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.DateTimePicker dtpFechaHasta;
     }
 }

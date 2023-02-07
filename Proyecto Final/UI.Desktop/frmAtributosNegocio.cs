@@ -49,6 +49,7 @@ namespace UI.Desktop
 
         public override void MapearDeDatos()
         {
+            this.txtCuitEmpresa.Text = AtributosNegocioActual.CuitEmpresa;
             this.txtNombreNegocio.Text = AtributosNegocioActual.NombreEmpresa;
             this.txtDireccion.Text = AtributosNegocioActual.DireccionEmpresa;
             this.txtTelefono.Text = AtributosNegocioActual.TelEmpresa;
@@ -87,6 +88,7 @@ namespace UI.Desktop
             if (Modos == ModoForm.Alta)
             {
                 AtributosNegocioActual = new AtributosNegocio();
+                AtributosNegocioActual.CuitEmpresa = this.txtCuitEmpresa.Text;
                 AtributosNegocioActual.NombreEmpresa= this.txtNombreNegocio.Text;
                 AtributosNegocioActual.DireccionEmpresa = this.txtDireccion.Text;
                 AtributosNegocioActual.TelEmpresa = this.txtTelefono.Text;
@@ -94,6 +96,7 @@ namespace UI.Desktop
             }
             if (Modos == ModoForm.Modificacion)
             {
+                AtributosNegocioActual.CuitEmpresa = this.txtCuitEmpresa.Text;
                 AtributosNegocioActual.NombreEmpresa = this.txtNombreNegocio.Text;
                 AtributosNegocioActual.DireccionEmpresa = this.txtDireccion.Text;
                 AtributosNegocioActual.TelEmpresa = this.txtTelefono.Text;

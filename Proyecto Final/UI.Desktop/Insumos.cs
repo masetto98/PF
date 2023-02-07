@@ -16,6 +16,7 @@ namespace UI.Desktop
     public partial class Insumos : ApplicationForm
     {
         private InsumoLogic _insumoLogic;
+        private MaquinaOrdenServicioTipoPrendaLogic _maquinaOrdenServicioTipoPrendaLogic;
         private Insumo insumoActual;
         private LavanderiaContext _context;
         //private InsumoServicioTipoPrenda consumoActual;
@@ -24,7 +25,11 @@ namespace UI.Desktop
             InitializeComponent();
             _context = context;
             _insumoLogic = new InsumoLogic(new InsumoAdapter(context));
+            _maquinaOrdenServicioTipoPrendaLogic = new MaquinaOrdenServicioTipoPrendaLogic(new MaquinaOrdenServicioTipoPrendaAdapter(context));
             ListarStock();
+            chartInsumos2.BackColor = Color.Transparent;
+            chartInsumos2.ChartAreas[0].BackColor = Color.Transparent;
+            chartInsumos2.Legends[0].BackColor = Color.Transparent;
         }
         private void ListarStock()
         {
@@ -40,13 +45,120 @@ namespace UI.Desktop
                 }
             }
         }
+        /*
+        private void CargarSerieGrafico()
+        {
+            chartInsumos.Series["Usostp"].Points.Clear();
+            double cantTotal = 0;
+            double cantXservicioTipoPrenda = 0;
+            if (listInsumos.SelectedItems.Count > 0)
+            {
 
+                if (insumoActual is not null)
+                {
+                    cantTotal = CalcularTotalUso(insumoActual.InsumoServicioTipoPrenda);
+                    foreach (InsumoServicioTipoPrenda istp in insumoActual.InsumoServicioTipoPrenda)
+                    {
+                        cantXservicioTipoPrenda = CalcularUsoServicioTipoPrenda(istp);
+                        double mostrar = Math.Round((cantXservicioTipoPrenda / cantTotal) * 100, 2);
+                        chartInsumos.Series["Usostp"].Points.AddXY(istp.ServicioTipoPrenda.Servicio.Descripcion + "\n" + istp.ServicioTipoPrenda.TipoPrenda.Descripcion + "\n" + mostrar.ToString() + "%", cantXservicioTipoPrenda / cantTotal);
+                        chartInsumos.Series["Usostp"].IsValueShownAsLabel = false;
+                        chartInsumos.Series["Usostp"].IsXValueIndexed = false;
+                        
+
+
+                    }
+                }
+            }
+        }
+
+        */
+        private void CargarSerieGrafico2()
+        {
+            chartInsumos2.Series["consumo"].Points.Clear();
+            double cantTotal = 0;
+            if (listInsumos.SelectedItems.Count > 0)
+            {
+                if (insumoActual is not null)
+                {
+                    cantTotal = calcularTotalConsumo();
+                    foreach (InsumoServicioTipoPrenda istp in insumoActual.InsumoServicioTipoPrenda)
+                    {
+                        double cantXstp = 0;
+                        List<Consumo> consumosFiltro = insumoActual.Consumos.FindAll(
+                            delegate (Consumo c)
+                            {
+                                return c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda == istp.ServicioTipoPrenda;
+                            });
+                        cantXstp = calcularCantXStp(consumosFiltro);
+                        double mostrar = Math.Round((cantXstp / cantTotal) * 100, 2);
+                        chartInsumos2.Series["consumo"].Points.AddXY(istp.ServicioTipoPrenda.Servicio.Descripcion + "\n" + istp.ServicioTipoPrenda.TipoPrenda.Descripcion + "\n" + mostrar.ToString() + "%", cantXstp / cantTotal);
+                        chartInsumos2.Series["consumo"].IsValueShownAsLabel = true;
+                    }
+                }
+            }
+        }
+        private double calcularTotalConsumo()
+        {
+            double _cantidadTotal = 0;
+            if (insumoActual.Consumos is not null && insumoActual.Consumos.Count > 0)
+            {
+                foreach (Consumo c in insumoActual.Consumos)
+                {
+                    if (c.FechaConsumo.Date >= this.dtpFechaInicio.Value.Date && c.FechaConsumo.Date <= this.dtpFechaHasta.Value.Date)
+                    {
+                        _cantidadTotal += c.Cantidad;
+                    }
+                }
+
+            }
+            return _cantidadTotal;
+        }
+        private double calcularCantXStp(List<Consumo> consumosFiltro)
+        {
+            double cant = 0;
+            foreach(Consumo c in consumosFiltro)
+            {
+                if (c.FechaConsumo.Date >= this.dtpFechaInicio.Value.Date && c.FechaConsumo.Date <= this.dtpFechaHasta.Value.Date)
+                {
+                    cant += c.Cantidad;
+                }
+                    
+            }
+            return cant;
+        }
+        /*
+        private double CalcularTotalUso(List<InsumoServicioTipoPrenda> istps)
+        {
+            double cantTotal = 0;
+            foreach(InsumoServicioTipoPrenda istp in istps)
+            {
+                List<MaquinaOrdenServicioTipoPrenda> mostp = _maquinaOrdenServicioTipoPrendaLogic.GetAll().FindAll(
+                delegate (MaquinaOrdenServicioTipoPrenda mostp)
+                {
+                    return mostp.OrdenServicioTipoPrenda.ServicioTipoPrenda == istp.ServicioTipoPrenda;
+                });
+                cantTotal += mostp.Count;
+            }
+            return cantTotal;
+        }
+        private double CalcularUsoServicioTipoPrenda(InsumoServicioTipoPrenda istp)
+        {
+            List<MaquinaOrdenServicioTipoPrenda> mostp = _maquinaOrdenServicioTipoPrendaLogic.GetAll().FindAll(
+                delegate (MaquinaOrdenServicioTipoPrenda mostp)
+                {
+                    return mostp.OrdenServicioTipoPrenda.ServicioTipoPrenda == istp.ServicioTipoPrenda;
+                });
+            return mostp.Count;
+        }
+        */
         private void btnDetalles_Click(object sender, EventArgs e)
         {
             ListarConsumos();
             this.dtpFechaInicio.Value = DateTime.Today.AddYears(-10);
             this.dtpFechaHasta.Value = DateTime.Today;
             CalcularEstadisticasInsumos();
+            CargarSerieGrafico2();
         }
 
         private void ListarConsumos()
@@ -141,11 +253,13 @@ namespace UI.Desktop
         private void dtpFechaInicio_ValueChanged(object sender, EventArgs e)
         {
             CalcularEstadisticasInsumos();
+            CargarSerieGrafico2();
         }
 
         private void dtpFechaHasta_ValueChanged(object sender, EventArgs e)
         {
             CalcularEstadisticasInsumos();
+            CargarSerieGrafico2();
         }
 
         private void CalcularEstadisticasInsumos() 
@@ -180,6 +294,12 @@ namespace UI.Desktop
                 }
             }
             //else { MessageBox.Show("Seleccione un insumo y haga click en detalles", "Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+        }
+
+        private void listConsumos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listConsumos.Columns[e.ColumnIndex].Width;
         }
     }
 }

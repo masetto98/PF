@@ -13,6 +13,7 @@ namespace Business.Entities
         private int _id;
         //private TimeSpan _horasLaboralesDiarias;
         private string _logo_negocio;
+        private string _cuitEmpresa;
         private string _nombreEmpresa;
         private string _direccionEmpresa;
         private string _telEmpresa;
@@ -38,7 +39,12 @@ namespace Business.Entities
             get { return _logo_negocio;}
             set { _logo_negocio = value; }
         }
-
+        [Column("cuit_empresa")]
+        public string CuitEmpresa
+        {
+            get { return _cuitEmpresa; }
+            set { _cuitEmpresa = value; }
+        }
         [Column("nombre_empresa")]
         public string NombreEmpresa
         {
@@ -63,5 +69,6 @@ namespace Business.Entities
             get { return _redesEmpresa; }
             set { _redesEmpresa = value; }
         }
+       
     }
 }
