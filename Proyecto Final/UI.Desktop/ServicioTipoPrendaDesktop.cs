@@ -183,6 +183,21 @@ namespace UI.Desktop
                     break;
             }
         }
+        /*
+        private void QuitarBorrado(int idServicio,int idTipoPrenda) 
+        {
+            ServicioTipoPrendaActual = _servicioTipoPrendaLogic.GetOneSinBorrado(idServicio, idTipoPrenda);
+            if (ServicioTipoPrendaActual is not null) 
+            {
+                ServicioTipoPrendaActual.Borrado = false;
+                Precio precioActual = new Precio();
+                precioActual.FechaDesde = DateTime.Today;
+                precioActual.Valor = Double.Parse(txtPrecio.Text);
+                ServicioTipoPrendaActual.HistoricoPrecios.Add(precioActual);
+                ServicioTipoPrendaActual.State= ServicioTipoPrendaActual.State = BusinessEntity.States.Modified;
+                ServicioTipoPrendaActual.InsumoServicioTipoPrenda = _consumosActuales;
+            }
+        }*/
 
         public override void GuardarCambios()
         {
@@ -190,8 +205,16 @@ namespace UI.Desktop
             {
                 if (this.cmbServicios.SelectedValue is not null && this.cmbTipoPrendas.SelectedValue is not null)
                 {
+                    
                     Validaciones.ValidarNumeroEnteroDecimal(this.txtPrecio.Text);
-                    MapearADatos();
+                    //Business.Entities.ServicioTipoPrenda stpBorrada = _servicioTipoPrendaLogic.GetOneSinBorrado((int)this.cmbServicios.SelectedValue, (int)this.cmbTipoPrendas.SelectedValue);
+                    MapearADatos();/*
+                    if (stpBorrada is not null)
+                    { 
+                        ServicioTipoPrendaActual.Borrado = false;
+                        ServicioTipoPrendaActual.State = BusinessEntity.States.Modified;
+                        foreach (Precio p in stpBorrada.HistoricoPrecios) {ServicioTipoPrendaActual.HistoricoPrecios.Add(p);}
+                    }*/
                     Business.Entities.ServicioTipoPrenda stp = _servicioTipoPrendaLogic.GetOne((int)this.cmbServicios.SelectedValue,(int) this.cmbTipoPrendas.SelectedValue);
                     if (stp is null)
                     {
@@ -209,6 +232,7 @@ namespace UI.Desktop
                     MessageBox.Show("Debe seleccionar un servicio para un tipo de prenda en su respectivo listado para poder continuar.", "Servicio - Tipo Prenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            
             catch (Exception e)
             {
                 MessageBox.Show(e.Message, "Servicio-TipoPrenda", MessageBoxButtons.OK, MessageBoxIcon.Error);

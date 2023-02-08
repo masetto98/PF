@@ -87,6 +87,7 @@ namespace UI.Desktop
             this.listProveedores.UseCompatibleStateImageBehavior = false;
             this.listProveedores.View = System.Windows.Forms.View.Details;
             this.listProveedores.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listProveedores_ColumnWidthChanging);
+            this.listProveedores.SelectedIndexChanged += new System.EventHandler(this.listProveedores_SelectedIndexChanged);
             // 
             // columnId
             // 

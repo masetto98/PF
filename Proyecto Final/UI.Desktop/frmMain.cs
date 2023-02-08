@@ -451,6 +451,7 @@ namespace UI.Desktop
                     }
                 }
                 this.lblCuentaCorriente.Text = _deudaCliente.ToString();
+                this.lblDatosCliente.Text = String.Concat(clienteActual.IdCliente, " - ", clienteActual.Apellido, " ", clienteActual.Nombre);
             }
 
         }
@@ -746,6 +747,18 @@ namespace UI.Desktop
             }
         }
 
+        private void listClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listOrdenesCliente.Items.Clear();
+            listPagosOrden.Items.Clear();
+            this.lblDatosCliente.Text = "-";
+            this.lblCuentaCorriente.Text = "-";
+        }
+
+        private void listOrdenesCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listPagosOrden.Items.Clear();
+        }
 
         #endregion
 
@@ -2768,5 +2781,7 @@ namespace UI.Desktop
         {
             CambiarColor(chkCambioColor.Checked);
         }
+
+        
     }
 }

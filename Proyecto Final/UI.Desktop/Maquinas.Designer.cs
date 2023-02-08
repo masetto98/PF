@@ -29,9 +29,9 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            FastReport.DataVisualization.Charting.ChartArea chartArea2 = new FastReport.DataVisualization.Charting.ChartArea();
-            FastReport.DataVisualization.Charting.Series series2 = new FastReport.DataVisualization.Charting.Series();
-            FastReport.DataVisualization.Charting.Title title2 = new FastReport.DataVisualization.Charting.Title();
+            FastReport.DataVisualization.Charting.ChartArea chartArea1 = new FastReport.DataVisualization.Charting.ChartArea();
+            FastReport.DataVisualization.Charting.Series series1 = new FastReport.DataVisualization.Charting.Series();
+            FastReport.DataVisualization.Charting.Title title1 = new FastReport.DataVisualization.Charting.Title();
             this.listMaquinas = new MaterialSkin.Controls.MaterialListView();
             this.columnID = new System.Windows.Forms.ColumnHeader();
             this.columnDescripcion = new System.Windows.Forms.ColumnHeader();
@@ -552,23 +552,23 @@ namespace UI.Desktop
             // chartUsoMaq
             // 
             this.chartUsoMaq.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.AlignmentOrientation = FastReport.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal;
-            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            chartArea2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            chartArea2.Name = "ChartArea1";
-            this.chartUsoMaq.ChartAreas.Add(chartArea2);
+            chartArea1.AlignmentOrientation = FastReport.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal;
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            chartArea1.Name = "ChartArea1";
+            this.chartUsoMaq.ChartAreas.Add(chartArea1);
             this.chartUsoMaq.Location = new System.Drawing.Point(9, 7);
             this.chartUsoMaq.Name = "chartUsoMaq";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Name = "UsoMaq";
-            this.chartUsoMaq.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Name = "UsoMaq";
+            this.chartUsoMaq.Series.Add(series1);
             this.chartUsoMaq.Size = new System.Drawing.Size(319, 251);
             this.chartUsoMaq.TabIndex = 29;
             this.chartUsoMaq.Text = "chart1";
-            title2.Name = "Title1";
-            title2.Text = "Uso de máquinas";
-            this.chartUsoMaq.Titles.Add(title2);
+            title1.Name = "Title1";
+            title1.Text = "Uso de máquinas";
+            this.chartUsoMaq.Titles.Add(title1);
             // 
             // dtpMaquinaDesde
             // 

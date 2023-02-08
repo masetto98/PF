@@ -21,7 +21,7 @@ namespace Data.Database
             List<Mantenimiento> mantenimientos = new List<Mantenimiento>();
             try
             {
-                mantenimientos = _context.Mantenimientos
+                mantenimientos = _context.Mantenimientos.Where(s => s.Borrado==false)
                                             .Include(i=>i.Maquina)
                                             .ToList();
             }
@@ -36,7 +36,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.Mantenimientos
+                return _context.Mantenimientos.Where(s => s.Borrado == false)
                                             .Include(s => s.Maquina)
                                             .FirstOrDefault(s => s.IdMaquina == idMaquina && s.FechaRealizado == fechaRealizacion);
             }

@@ -212,6 +212,11 @@ namespace UI.Desktop
             e.Cancel = true;
             e.NewWidth = listIngresosInsumos.Columns[e.ColumnIndex].Width;
         }
+
+        private void listProveedores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listIngresosInsumos.Items.Clear();
+        }
     }
 
     

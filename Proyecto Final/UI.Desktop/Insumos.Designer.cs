@@ -29,10 +29,10 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            FastReport.DataVisualization.Charting.ChartArea chartArea3 = new FastReport.DataVisualization.Charting.ChartArea();
-            FastReport.DataVisualization.Charting.Legend legend3 = new FastReport.DataVisualization.Charting.Legend();
-            FastReport.DataVisualization.Charting.Series series3 = new FastReport.DataVisualization.Charting.Series();
-            FastReport.DataVisualization.Charting.Title title3 = new FastReport.DataVisualization.Charting.Title();
+            FastReport.DataVisualization.Charting.ChartArea chartArea1 = new FastReport.DataVisualization.Charting.ChartArea();
+            FastReport.DataVisualization.Charting.Legend legend1 = new FastReport.DataVisualization.Charting.Legend();
+            FastReport.DataVisualization.Charting.Series series1 = new FastReport.DataVisualization.Charting.Series();
+            FastReport.DataVisualization.Charting.Title title1 = new FastReport.DataVisualization.Charting.Title();
             this.listInsumos = new MaterialSkin.Controls.MaterialListView();
             this.columnIDInsumo = new System.Windows.Forms.ColumnHeader();
             this.columnDesc = new System.Windows.Forms.ColumnHeader();
@@ -89,6 +89,7 @@ namespace UI.Desktop
             this.listInsumos.UseCompatibleStateImageBehavior = false;
             this.listInsumos.View = System.Windows.Forms.View.Details;
             this.listInsumos.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listInsumos_ColumnWidthChanging);
+            this.listInsumos.SelectedIndexChanged += new System.EventHandler(this.listInsumos_SelectedIndexChanged);
             // 
             // columnIDInsumo
             // 
@@ -436,32 +437,32 @@ namespace UI.Desktop
             // 
             // chartInsumos2
             // 
-            chartArea3.Name = "ChartArea1";
-            chartArea3.Position.Auto = false;
-            chartArea3.Position.Height = 90F;
-            chartArea3.Position.Width = 73.1875F;
-            chartArea3.Position.X = 11F;
-            chartArea3.Position.Y = 10F;
-            this.chartInsumos2.ChartAreas.Add(chartArea3);
-            legend3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            legend3.IsTextAutoFit = false;
-            legend3.Name = "Legend1";
-            this.chartInsumos2.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            chartArea1.Position.Auto = false;
+            chartArea1.Position.Height = 90F;
+            chartArea1.Position.Width = 73.1875F;
+            chartArea1.Position.X = 11F;
+            chartArea1.Position.Y = 10F;
+            this.chartInsumos2.ChartAreas.Add(chartArea1);
+            legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            this.chartInsumos2.Legends.Add(legend1);
             this.chartInsumos2.Location = new System.Drawing.Point(983, 139);
             this.chartInsumos2.Name = "chartInsumos2";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.CustomProperties = "PieLabelStyle=Disabled";
-            series3.IsValueShownAsLabel = true;
-            series3.Legend = "Legend1";
-            series3.Name = "consumo";
-            this.chartInsumos2.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.CustomProperties = "PieLabelStyle=Disabled";
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.Name = "consumo";
+            this.chartInsumos2.Series.Add(series1);
             this.chartInsumos2.Size = new System.Drawing.Size(321, 466);
             this.chartInsumos2.TabIndex = 17;
             this.chartInsumos2.Text = "chart1";
-            title3.Name = "Title1";
-            title3.Text = "Proporción de consumo por Servicio Tipo de Prenda";
-            this.chartInsumos2.Titles.Add(title3);
+            title1.Name = "Title1";
+            title1.Text = "Proporción de consumo por Servicio Tipo de Prenda";
+            this.chartInsumos2.Titles.Add(title1);
             // 
             // Insumos
             // 

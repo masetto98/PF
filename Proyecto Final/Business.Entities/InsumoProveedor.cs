@@ -15,6 +15,7 @@ namespace Business.Entities
         private int _idInsumo;
         private DateTime _fechaIngreso;
         private double _cantidad;
+        private bool _deleted;
         private Proveedor _proveedor;
         private Insumo _insumo;
 
@@ -44,6 +45,13 @@ namespace Business.Entities
         {
             get { return _cantidad; }
             set { _cantidad = value; }
+        }
+
+        [Column("deleted")]
+        public bool Borrado
+        {
+            get { return _deleted; }
+            set { _deleted = value; }
         }
 
         public Proveedor Proveedor
