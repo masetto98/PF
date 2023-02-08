@@ -101,8 +101,8 @@ namespace UI.Desktop
             this.txtCuit.Size = new System.Drawing.Size(237, 50);
             this.txtCuit.TabIndex = 0;
             this.txtCuit.Text = "";
-            this.toolTipUsuario.SetToolTip(this.txtCuit, "Ingrese un cuit de empleado y presiona buscar antes\r\nde ingresar los datos del us" +
-        "uario.");
+            this.toolTipUsuario.SetToolTip(this.txtCuit, "Ingrese un cuit de empleado y presiona buscar para\r\npoder ingresar los datos del " +
+        "usuario.");
             this.txtCuit.TrailingIcon = null;
             // 
             // txtNombre
@@ -181,7 +181,7 @@ namespace UI.Desktop
             this.chkHabilitado.ReadOnly = false;
             this.chkHabilitado.Ripple = true;
             this.chkHabilitado.Size = new System.Drawing.Size(108, 37);
-            this.chkHabilitado.TabIndex = 8;
+            this.chkHabilitado.TabIndex = 18;
             this.chkHabilitado.Text = "Habilitado";
             this.chkHabilitado.UseVisualStyleBackColor = false;
             // 
@@ -200,7 +200,7 @@ namespace UI.Desktop
             this.btnAceptarUsuario.Name = "btnAceptarUsuario";
             this.btnAceptarUsuario.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btnAceptarUsuario.Size = new System.Drawing.Size(86, 36);
-            this.btnAceptarUsuario.TabIndex = 15;
+            this.btnAceptarUsuario.TabIndex = 19;
             this.btnAceptarUsuario.Text = "Aceptar";
             this.btnAceptarUsuario.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnAceptarUsuario.UseAccentColor = false;
@@ -222,7 +222,7 @@ namespace UI.Desktop
             this.btnCancelarUsuario.Name = "btnCancelarUsuario";
             this.btnCancelarUsuario.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btnCancelarUsuario.Size = new System.Drawing.Size(96, 36);
-            this.btnCancelarUsuario.TabIndex = 16;
+            this.btnCancelarUsuario.TabIndex = 25;
             this.btnCancelarUsuario.Text = "Cancelar";
             this.btnCancelarUsuario.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnCancelarUsuario.UseAccentColor = false;
@@ -315,7 +315,7 @@ namespace UI.Desktop
             this.txtClaveUser.SelectionStart = 0;
             this.txtClaveUser.ShortcutsEnabled = true;
             this.txtClaveUser.Size = new System.Drawing.Size(322, 48);
-            this.txtClaveUser.TabIndex = 18;
+            this.txtClaveUser.TabIndex = 8;
             this.txtClaveUser.TabStop = false;
             this.txtClaveUser.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtClaveUser.TrailingIcon = null;
@@ -345,7 +345,7 @@ namespace UI.Desktop
             this.txtConfirmarClave.SelectionStart = 0;
             this.txtConfirmarClave.ShortcutsEnabled = true;
             this.txtConfirmarClave.Size = new System.Drawing.Size(322, 48);
-            this.txtConfirmarClave.TabIndex = 19;
+            this.txtConfirmarClave.TabIndex = 15;
             this.txtConfirmarClave.TabStop = false;
             this.txtConfirmarClave.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtConfirmarClave.TrailingIcon = null;
@@ -416,7 +416,7 @@ namespace UI.Desktop
             this.cmbPreguntas.Name = "cmbPreguntas";
             this.cmbPreguntas.Size = new System.Drawing.Size(502, 49);
             this.cmbPreguntas.StartIndex = 0;
-            this.cmbPreguntas.TabIndex = 25;
+            this.cmbPreguntas.TabIndex = 16;
             // 
             // txtRespuesta
             // 
@@ -466,9 +466,9 @@ namespace UI.Desktop
             this.materialLabel3.Location = new System.Drawing.Point(13, 82);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(427, 19);
+            this.materialLabel3.Size = new System.Drawing.Size(440, 19);
             this.materialLabel3.TabIndex = 28;
-            this.materialLabel3.Text = "Indique una respuesta: (IMPORTANTE recordar la respuesta)";
+            this.materialLabel3.Text = "Indique una respuesta: (¡IMPORTANTE! Recordar la respuesta)";
             // 
             // materialLabel2
             // 
@@ -504,7 +504,7 @@ namespace UI.Desktop
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancelarUsuario;
-            this.ClientSize = new System.Drawing.Size(574, 740);
+            this.ClientSize = new System.Drawing.Size(574, 730);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.materialCard2);
             this.Controls.Add(this.showPass2);

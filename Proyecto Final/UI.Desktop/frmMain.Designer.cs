@@ -194,6 +194,7 @@ namespace UI.Desktop
             this.columnHeader13 = new System.Windows.Forms.ColumnHeader();
             this.tabSelectorPlanificacion = new MaterialSkin.Controls.MaterialTabSelector();
             this.tabUtilidades = new System.Windows.Forms.TabPage();
+            this.switchComprobantes = new MaterialSkin.Controls.MaterialSwitch();
             this.materialCard5 = new MaterialSkin.Controls.MaterialCard();
             this.btnGastos = new MaterialSkin.Controls.MaterialButton();
             this.btnCaja = new MaterialSkin.Controls.MaterialButton();
@@ -396,7 +397,7 @@ namespace UI.Desktop
             this.cmbBuscarOrden.Hint = "Filtro";
             this.cmbBuscarOrden.IntegralHeight = false;
             this.cmbBuscarOrden.ItemHeight = 43;
-            this.cmbBuscarOrden.Location = new System.Drawing.Point(538, 15);
+            this.cmbBuscarOrden.Location = new System.Drawing.Point(538, 17);
             this.cmbBuscarOrden.MaxDropDownItems = 4;
             this.cmbBuscarOrden.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbBuscarOrden.Name = "cmbBuscarOrden";
@@ -438,12 +439,12 @@ namespace UI.Desktop
             this.btnEditarOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEditarOrden.HighEmphasis = true;
             this.btnEditarOrden.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
-            this.btnEditarOrden.Location = new System.Drawing.Point(149, 8);
+            this.btnEditarOrden.Location = new System.Drawing.Point(149, 13);
             this.btnEditarOrden.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEditarOrden.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEditarOrden.Name = "btnEditarOrden";
             this.btnEditarOrden.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEditarOrden.Size = new System.Drawing.Size(114, 51);
+            this.btnEditarOrden.Size = new System.Drawing.Size(114, 53);
             this.btnEditarOrden.TabIndex = 10;
             this.btnEditarOrden.Text = "Editar";
             this.btnEditarOrden.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -522,12 +523,12 @@ namespace UI.Desktop
             this.btnEliminarOrden.HighEmphasis = true;
             this.btnEliminarOrden.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
             this.btnEliminarOrden.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEliminarOrden.Location = new System.Drawing.Point(271, 8);
+            this.btnEliminarOrden.Location = new System.Drawing.Point(271, 13);
             this.btnEliminarOrden.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminarOrden.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminarOrden.Name = "btnEliminarOrden";
             this.btnEliminarOrden.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEliminarOrden.Size = new System.Drawing.Size(114, 51);
+            this.btnEliminarOrden.Size = new System.Drawing.Size(114, 53);
             this.btnEliminarOrden.TabIndex = 4;
             this.btnEliminarOrden.Text = "Eliminar";
             this.btnEliminarOrden.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -545,7 +546,7 @@ namespace UI.Desktop
             this.btnNuevaOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnNuevaOrden.HighEmphasis = true;
             this.btnNuevaOrden.Icon = global::UI.Desktop.Properties.Resources.addthelist_añadir_3477;
-            this.btnNuevaOrden.Location = new System.Drawing.Point(27, 8);
+            this.btnNuevaOrden.Location = new System.Drawing.Point(27, 13);
             this.btnNuevaOrden.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnNuevaOrden.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNuevaOrden.Name = "btnNuevaOrden";
@@ -2558,6 +2559,7 @@ namespace UI.Desktop
             // tabUtilidades
             // 
             this.tabUtilidades.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.tabUtilidades.Controls.Add(this.switchComprobantes);
             this.tabUtilidades.Controls.Add(this.materialCard5);
             this.tabUtilidades.Controls.Add(this.materialCard4);
             this.tabUtilidades.Controls.Add(this.materialCard3);
@@ -2570,6 +2572,24 @@ namespace UI.Desktop
             this.tabUtilidades.Size = new System.Drawing.Size(1353, 679);
             this.tabUtilidades.TabIndex = 4;
             this.tabUtilidades.Text = "Utilidades";
+            // 
+            // switchComprobantes
+            // 
+            this.switchComprobantes.AutoSize = true;
+            this.switchComprobantes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.switchComprobantes.Depth = 0;
+            this.switchComprobantes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.switchComprobantes.Location = new System.Drawing.Point(352, 375);
+            this.switchComprobantes.Margin = new System.Windows.Forms.Padding(0);
+            this.switchComprobantes.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.switchComprobantes.MouseState = MaterialSkin.MouseState.HOVER;
+            this.switchComprobantes.Name = "switchComprobantes";
+            this.switchComprobantes.Ripple = true;
+            this.switchComprobantes.Size = new System.Drawing.Size(205, 37);
+            this.switchComprobantes.TabIndex = 6;
+            this.switchComprobantes.Text = "Emitir comprobantes";
+            this.switchComprobantes.UseVisualStyleBackColor = false;
+            this.switchComprobantes.CheckedChanged += new System.EventHandler(this.switchComprobantes_CheckedChanged);
             // 
             // materialCard5
             // 
@@ -3306,6 +3326,7 @@ namespace UI.Desktop
             this.tabFinalizados.ResumeLayout(false);
             this.tabFinalizados.PerformLayout();
             this.tabUtilidades.ResumeLayout(false);
+            this.tabUtilidades.PerformLayout();
             this.materialCard5.ResumeLayout(false);
             this.materialCard5.PerformLayout();
             this.materialCard4.ResumeLayout(false);
@@ -3533,6 +3554,7 @@ namespace UI.Desktop
         private System.Windows.Forms.ColumnHeader columnHeader15;
         private System.Windows.Forms.PictureBox pxRojo;
         private System.Windows.Forms.NotifyIcon niFaltaInsumos;
+        private MaterialSkin.Controls.MaterialSwitch switchComprobantes;
     }
 }
 

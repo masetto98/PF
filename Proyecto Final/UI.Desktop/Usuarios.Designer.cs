@@ -59,14 +59,14 @@ namespace UI.Desktop
             this.listUsuarios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listUsuarios.FullRowSelect = true;
             this.listUsuarios.HideSelection = false;
-            this.listUsuarios.Location = new System.Drawing.Point(12, 143);
+            this.listUsuarios.Location = new System.Drawing.Point(10, 152);
             this.listUsuarios.MinimumSize = new System.Drawing.Size(200, 100);
             this.listUsuarios.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listUsuarios.MouseState = MaterialSkin.MouseState.OUT;
             this.listUsuarios.MultiSelect = false;
             this.listUsuarios.Name = "listUsuarios";
             this.listUsuarios.OwnerDraw = true;
-            this.listUsuarios.Size = new System.Drawing.Size(660, 390);
+            this.listUsuarios.Size = new System.Drawing.Size(660, 376);
             this.listUsuarios.TabIndex = 0;
             this.listUsuarios.UseCompatibleStateImageBehavior = false;
             this.listUsuarios.View = System.Windows.Forms.View.Details;
@@ -111,7 +111,7 @@ namespace UI.Desktop
             this.btnEditarCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEditarCliente.HighEmphasis = true;
             this.btnEditarCliente.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
-            this.btnEditarCliente.Location = new System.Drawing.Point(136, 83);
+            this.btnEditarCliente.Location = new System.Drawing.Point(134, 92);
             this.btnEditarCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEditarCliente.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEditarCliente.Name = "btnEditarCliente";
@@ -134,7 +134,7 @@ namespace UI.Desktop
             this.btnEliminarCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEliminarCliente.HighEmphasis = true;
             this.btnEliminarCliente.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
-            this.btnEliminarCliente.Location = new System.Drawing.Point(258, 83);
+            this.btnEliminarCliente.Location = new System.Drawing.Point(256, 92);
             this.btnEliminarCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminarCliente.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminarCliente.Name = "btnEliminarCliente";
@@ -157,7 +157,7 @@ namespace UI.Desktop
             this.btnAgregarCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregarCliente.HighEmphasis = true;
             this.btnAgregarCliente.Icon = global::UI.Desktop.Properties.Resources.adduser_añadir_3553;
-            this.btnAgregarCliente.Location = new System.Drawing.Point(14, 83);
+            this.btnAgregarCliente.Location = new System.Drawing.Point(12, 92);
             this.btnAgregarCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAgregarCliente.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAgregarCliente.Name = "btnAgregarCliente";
@@ -179,7 +179,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(598, 542);
+            this.btnCerrar.Location = new System.Drawing.Point(593, 539);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";

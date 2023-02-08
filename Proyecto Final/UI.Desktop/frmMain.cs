@@ -19,8 +19,8 @@ using iText.Layout;
 using System.IO;
 using PdfiumViewer;
 using Humanizer;
-
-
+using System.Configuration;
+using System.Xml;
 
 namespace UI.Desktop
 {
@@ -77,8 +77,10 @@ namespace UI.Desktop
             RellenarComboBox(listTrabajosFinalizados,cmbFiltroTrabajosFinalizados);
             CargarOrdenes();
             Planificar();
+           
             
         }
+       
 
         private void RellenarComboBox(ListView listActual, ComboBox cbActual)
         {
@@ -107,12 +109,17 @@ namespace UI.Desktop
                     ListarOrdenesTrabajosPendientes();
                     //ListarTrabajosFinalizados();
                     break;
+                case 4:
+                    verificarEmisionComprobantes();
+                    break;
                 case 5:
                     obtenerPDF();
                     break;
 
             }
         }
+        
+
 
         private void tabControlInventario_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -727,7 +734,10 @@ namespace UI.Desktop
                                 }
                             }
                         }
-                        verificarAtributosNegocio();
+                        if (Properties.Settings.Default.emitirComprobantes)
+                        {
+                            verificarAtributosNegocio();
+                        }
                         CalcularCuentaCorrienteCliente();
                         ListarOrdenesCliente();
                         
@@ -2651,6 +2661,23 @@ namespace UI.Desktop
             ReporteEmpleado frmEmpleados = new ReporteEmpleado(_context);
             frmEmpleados.ShowDialog();
         }
+        private void verificarEmisionComprobantes()
+        {
+            this.switchComprobantes.Checked = Properties.Settings.Default.emitirComprobantes;
+        }
+
+        private void switchComprobantes_CheckedChanged(object sender, EventArgs e)
+        {
+            if (switchComprobantes.Checked)
+            {
+                Properties.Settings.Default.emitirComprobantes = true;
+            }
+            else
+            {
+                Properties.Settings.Default.emitirComprobantes = false;
+            }
+            Properties.Settings.Default.Save();
+        }
 
         #endregion
 
@@ -2768,5 +2795,7 @@ namespace UI.Desktop
         {
             CambiarColor(chkCambioColor.Checked);
         }
+
+        
     }
 }

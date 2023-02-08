@@ -649,28 +649,32 @@ namespace UI.Desktop
                         , "Orden", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         _ordenLogic.Save(OrdenActual);
-                        AtributosNegocio negocio = new AtributosNegocio();
-                        AtributosNegocioLogic negocioLogic = new AtributosNegocioLogic(new AtributosNegocioAdapter(_context));
-                        negocio = negocioLogic.GetAll().FirstOrDefault();
-                        if(negocio is null)
+                        if (Properties.Settings.Default.emitirComprobantes)
                         {
-                            if(MessageBox.Show("No fue posible emitir el comprobante debido a que aún no se encuentran registrado los atributos del negocio."+"\n" +"¿Desea registrar los atributos en este momento?","Comprobante", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            AtributosNegocio negocio = new AtributosNegocio();
+                            AtributosNegocioLogic negocioLogic = new AtributosNegocioLogic(new AtributosNegocioAdapter(_context));
+                            negocio = negocioLogic.GetAll().FirstOrDefault();
+                            if (negocio is null)
                             {
-                                frmAtributosNegocio frmAtributosnegocio = new frmAtributosNegocio(ModoForm.Alta, _context);
-                                frmAtributosnegocio.ShowDialog();
+                                if (MessageBox.Show("No fue posible emitir el comprobante debido a que aún no se encuentran registrado los atributos del negocio." + "\n" + "¿Desea registrar los atributos en este momento?", "Comprobante", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    frmAtributosNegocio frmAtributosnegocio = new frmAtributosNegocio(ModoForm.Alta, _context);
+                                    frmAtributosnegocio.ShowDialog();
+                                    PrintComprobante();
+                                }
+                            }
+                            else
+                            {
                                 PrintComprobante();
                             }
                         }
-                        else
-                        {
-                            PrintComprobante();
-                        }
+                        
                         Close();
                     }
                 }
                 else 
                 {
-                    MessageBox.Show("La orden debe contener por lo menos un servicio requerido", "Orden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("La orden debe contener por lo menos un trabajo a realizar", "Orden", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception e)
@@ -796,8 +800,10 @@ namespace UI.Desktop
                             comprobanteorden = comprobanteorden.Replace("@Redes", negocio.RedesEmpresa);
                             comprobanteorden = comprobanteorden.Replace("@NroOrden", OrdenActual.NroOrden.ToString());
                             comprobanteorden = comprobanteorden.Replace("@fechaentrada", OrdenActual.FechaEntrada.ToString("dddd dd, MMMM yyyy"));
+                            comprobanteorden = comprobanteorden.Replace("@hsentrada", OrdenActual.FechaEntrada.ToString("HH:mm:ss"));
                             comprobanteorden = comprobanteorden.Replace("@fecharetiro", OrdenActual.FechaHoraEntregaIngresada.ToString("dddd dd, MMMM yyyy"));
-                            comprobanteorden = comprobanteorden.Replace("@cliente", OrdenActual.Cliente.Apellido + "," + OrdenActual.Cliente.Nombre);
+                            comprobanteorden = comprobanteorden.Replace("@hsretiro", OrdenActual.FechaHoraEntregaIngresada.ToString("HH:mm:ss"));
+                            comprobanteorden = comprobanteorden.Replace("@cliente", OrdenActual.Cliente.Apellido + ", " + OrdenActual.Cliente.Nombre);
                             comprobanteorden = comprobanteorden.Replace("@direccion", OrdenActual.Cliente.Direccion);
                             comprobanteorden = comprobanteorden.Replace("@telefono", OrdenActual.Cliente.Telefono);
                             comprobanteorden = comprobanteorden.Replace("@obs", "Entrega a domicilio:" + OrdenActual.EntregaDomicilio);
@@ -826,11 +832,11 @@ namespace UI.Desktop
                                 FacturaActual = _facturaLogic.GetOne(OrdenActual.NroFactura);
                                 if (FacturaActual.Pagos.Count > 0)
                                 {
-                                    comprobanteorden = comprobanteorden.Replace("@Seña", OrdenActual.Factura.Pagos[0].Importe.ToString());
+                                    comprobanteorden = comprobanteorden.Replace("@Seña", "$" + OrdenActual.Factura.Pagos[0].Importe.ToString());
                                 }
                                 else
                                 {
-                                    comprobanteorden = comprobanteorden.Replace("@Seña", "0");
+                                    comprobanteorden = comprobanteorden.Replace("@Seña", "$"+"0");
                                 }
                             }
                             else

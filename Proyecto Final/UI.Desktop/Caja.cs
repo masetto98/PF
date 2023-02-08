@@ -277,6 +277,7 @@ namespace UI.Desktop
                 {
                     string[] tiposgasto = Enum.GetNames(typeof(Gasto.TiposGasto));
                     chartGastos.Series["Gastos"].Points.Clear();
+                    int index = 0;
                     for (int x = 0; x < tiposgasto.Length; x++)
                     {
                         List<Gasto> gastosHoy = _gastoLogic.GetAll().FindAll(delegate (Gasto g) { return g.FechaRealizado.Date >= this.dtpFecha.Value.Date && g.FechaRealizado.Date <= dtpFechaHasta.Value.Date && g.TipoGasto.ToString() == tiposgasto[x]; });
@@ -290,9 +291,10 @@ namespace UI.Desktop
                             }
 
                             chartGastos.Series["Gastos"].Points.Add(gastos);
-                            chartGastos.Series["Gastos"].Points[x].AxisLabel = tiposgasto[x];
-                            chartGastos.Series["Gastos"].Points[x].LegendText = tiposgasto[x];
-                            chartGastos.Series["Gastos"].Points[x].Label = gastos.ToString();
+                            chartGastos.Series["Gastos"].Points[index].AxisLabel = tiposgasto[x];
+                            chartGastos.Series["Gastos"].Points[index].LegendText = tiposgasto[x];
+                            chartGastos.Series["Gastos"].Points[index].Label = gastos.ToString();
+                            index += 1;
                         }
                     }
                     List<Pago> pagosHoy = _pagoLogic.GetAll().FindAll(delegate (Pago p) { return p.FechaPago.Date >= this.dtpFecha.Value.Date && p.FechaPago.Date <= this.dtpFechaHasta.Value.Date; });
@@ -333,6 +335,7 @@ namespace UI.Desktop
                 {
                     string[] tiposgasto = Enum.GetNames(typeof(Gasto.TiposGasto));
                     chartGastos.Series["Gastos"].Points.Clear();
+                    int index = 0;
                     for (int x = 0; x < tiposgasto.Length; x++)
                     {
                         List<Gasto> gastosHoy = _gastoLogic.GetAll().FindAll(delegate (Gasto g) { return g.FechaRealizado.Date <= dtpFechaHasta.Value.Date && g.TipoGasto.ToString() == tiposgasto[x]; });
@@ -346,9 +349,10 @@ namespace UI.Desktop
                             }
                         }
                         chartGastos.Series["Gastos"].Points.Add(gastos);
-                        chartGastos.Series["Gastos"].Points[x].AxisLabel = tiposgasto[x];
-                        chartGastos.Series["Gastos"].Points[x].LegendText = tiposgasto[x];
-                        chartGastos.Series["Gastos"].Points[x].Label = gastos.ToString();
+                        chartGastos.Series["Gastos"].Points[index].AxisLabel = tiposgasto[x];
+                        chartGastos.Series["Gastos"].Points[index].LegendText = tiposgasto[x];
+                        chartGastos.Series["Gastos"].Points[index].Label = gastos.ToString();
+                        index += 1;
                     }
 
                     List<Pago> pagosHoy = _pagoLogic.GetAll().FindAll(delegate (Pago p) { return p.FechaPago.Date <= this.dtpFechaHasta.Value.Date; });
@@ -388,6 +392,7 @@ namespace UI.Desktop
             {
                 string[] tiposgasto = Enum.GetNames(typeof(Gasto.TiposGasto));
                 chartGastos.Series["Gastos"].Points.Clear();
+                int index = 0;
                 for (int x = 0; x < tiposgasto.Length; x++)
                 {
                     List<Gasto> gastosHoy = _gastoLogic.GetAll().FindAll(delegate (Gasto g) { return g.FechaRealizado.Date >= this.dtpFecha.Value.Date && g.TipoGasto.ToString() == tiposgasto[x]; });
@@ -401,9 +406,10 @@ namespace UI.Desktop
                         }
 
                         chartGastos.Series["Gastos"].Points.Add(gastos);
-                        chartGastos.Series["Gastos"].Points[x].AxisLabel = tiposgasto[x];
-                        chartGastos.Series["Gastos"].Points[x].LegendText = tiposgasto[x];
-                        chartGastos.Series["Gastos"].Points[x].Label = gastos.ToString();
+                        chartGastos.Series["Gastos"].Points[index].AxisLabel = tiposgasto[x];
+                        chartGastos.Series["Gastos"].Points[index].LegendText = tiposgasto[x];
+                        chartGastos.Series["Gastos"].Points[index].Label = gastos.ToString();
+                        index += 1;
                     }
                 }
                 List<Pago> pagosHoy = _pagoLogic.GetAll().FindAll(delegate (Pago p) { return p.FechaPago.Date >= this.dtpFecha.Value.Date; });

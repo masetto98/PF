@@ -710,6 +710,7 @@ namespace UI.Desktop
             this.cbFormaPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cbFormaPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cbFormaPago.FormattingEnabled = true;
+            this.cbFormaPago.Hint = "Forma de pago";
             this.cbFormaPago.IntegralHeight = false;
             this.cbFormaPago.ItemHeight = 43;
             this.cbFormaPago.Location = new System.Drawing.Point(122, 37);

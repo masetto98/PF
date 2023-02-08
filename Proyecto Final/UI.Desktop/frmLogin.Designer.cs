@@ -31,8 +31,6 @@ namespace UI.Desktop
         {
             this.btnIngresar = new MaterialSkin.Controls.MaterialButton();
             this.txtNombreUsuario = new MaterialSkin.Controls.MaterialTextBox();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.txtContrasenia = new MaterialSkin.Controls.MaterialTextBox2();
             this.showPass1 = new System.Windows.Forms.PictureBox();
             this.hidePass1 = new System.Windows.Forms.PictureBox();
@@ -86,34 +84,6 @@ namespace UI.Desktop
             this.txtNombreUsuario.TabIndex = 1;
             this.txtNombreUsuario.Text = "";
             this.txtNombreUsuario.TrailingIcon = null;
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(202, 98);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(136, 19);
-            this.materialLabel1.TabIndex = 3;
-            this.materialLabel1.Text = "Nombre de Usuario";
-            // 
-            // materialLabel2
-            // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(202, 173);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(82, 19);
-            this.materialLabel2.TabIndex = 4;
-            this.materialLabel2.Text = "Contraseña";
             // 
             // txtContrasenia
             // 
@@ -238,8 +208,6 @@ namespace UI.Desktop
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.showPass1);
             this.Controls.Add(this.txtContrasenia);
-            this.Controls.Add(this.materialLabel2);
-            this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.txtNombreUsuario);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.hidePass1);
@@ -262,8 +230,6 @@ namespace UI.Desktop
 
         private MaterialSkin.Controls.MaterialButton btnIngresar;
         private MaterialSkin.Controls.MaterialTextBox txtNombreUsuario;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialTextBox2 txtContrasenia;
         private System.Windows.Forms.PictureBox showPass1;
         private System.Windows.Forms.PictureBox hidePass1;

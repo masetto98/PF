@@ -328,13 +328,22 @@ namespace UI.Desktop
         private void btnNewProvIngreso_Click(object sender, EventArgs e)
         {
             ProveedorDesktop frmProv = new ProveedorDesktop(ApplicationForm.ModoForm.Alta, _context);
-            frmProv.ShowDialog();
+            if (frmProv.ShowDialog() == DialogResult.OK)
+            {
+                List<Proveedor> proveedores = _proveedorLogic.GetAll();
+                this.cbProveedores.DataSource = proveedores;
+            }
+                
         }
 
         private void btnNewInsumoIngreso_Click(object sender, EventArgs e)
         {
             InsumoDesktop frmIns = new InsumoDesktop(ApplicationForm.ModoForm.Alta, _context);
-            frmIns.ShowDialog();
+            if (frmIns.ShowDialog() == DialogResult.OK)
+            {
+                List<Insumo> insumos = _insumoLogic.GetAll();
+                this.cbInsumos.DataSource = insumos;
+            }
         }
           
         private void cbInsumos_SelectionChangeCommitted(object sender, EventArgs e)

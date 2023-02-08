@@ -29,9 +29,9 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            FastReport.DataVisualization.Charting.ChartArea chartArea2 = new FastReport.DataVisualization.Charting.ChartArea();
-            FastReport.DataVisualization.Charting.Legend legend2 = new FastReport.DataVisualization.Charting.Legend();
-            FastReport.DataVisualization.Charting.Title title2 = new FastReport.DataVisualization.Charting.Title();
+            FastReport.DataVisualization.Charting.ChartArea chartArea1 = new FastReport.DataVisualization.Charting.ChartArea();
+            FastReport.DataVisualization.Charting.Legend legend1 = new FastReport.DataVisualization.Charting.Legend();
+            FastReport.DataVisualization.Charting.Title title1 = new FastReport.DataVisualization.Charting.Title();
             this.listEmpleados = new MaterialSkin.Controls.MaterialListView();
             this.columnID = new System.Windows.Forms.ColumnHeader();
             this.columnCuit = new System.Windows.Forms.ColumnHeader();
@@ -68,14 +68,14 @@ namespace UI.Desktop
             this.listEmpleados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listEmpleados.FullRowSelect = true;
             this.listEmpleados.HideSelection = false;
-            this.listEmpleados.Location = new System.Drawing.Point(17, 145);
+            this.listEmpleados.Location = new System.Drawing.Point(17, 159);
             this.listEmpleados.MinimumSize = new System.Drawing.Size(200, 100);
             this.listEmpleados.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listEmpleados.MouseState = MaterialSkin.MouseState.OUT;
             this.listEmpleados.MultiSelect = false;
             this.listEmpleados.Name = "listEmpleados";
             this.listEmpleados.OwnerDraw = true;
-            this.listEmpleados.Size = new System.Drawing.Size(443, 482);
+            this.listEmpleados.Size = new System.Drawing.Size(443, 440);
             this.listEmpleados.TabIndex = 0;
             this.listEmpleados.UseCompatibleStateImageBehavior = false;
             this.listEmpleados.View = System.Windows.Forms.View.Details;
@@ -115,7 +115,7 @@ namespace UI.Desktop
             this.btnEditar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEditar.Size = new System.Drawing.Size(114, 43);
+            this.btnEditar.Size = new System.Drawing.Size(114, 50);
             this.btnEditar.TabIndex = 8;
             this.btnEditar.Text = "Editar";
             this.btnEditar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -138,7 +138,7 @@ namespace UI.Desktop
             this.btnEliminar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEliminar.Size = new System.Drawing.Size(114, 43);
+            this.btnEliminar.Size = new System.Drawing.Size(114, 50);
             this.btnEliminar.TabIndex = 7;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -161,7 +161,7 @@ namespace UI.Desktop
             this.btnAgregar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnAgregar.Size = new System.Drawing.Size(114, 43);
+            this.btnAgregar.Size = new System.Drawing.Size(114, 50);
             this.btnAgregar.TabIndex = 6;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -179,7 +179,7 @@ namespace UI.Desktop
             this.btnDetalles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDetalles.HighEmphasis = true;
             this.btnDetalles.Icon = global::UI.Desktop.Properties.Resources.document_3530;
-            this.btnDetalles.Location = new System.Drawing.Point(467, 145);
+            this.btnDetalles.Location = new System.Drawing.Point(467, 159);
             this.btnDetalles.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnDetalles.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnDetalles.Name = "btnDetalles";
@@ -203,7 +203,7 @@ namespace UI.Desktop
             this.materialCard1.Controls.Add(this.materialLabel1);
             this.materialCard1.Depth = 0;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(467, 193);
+            this.materialCard1.Location = new System.Drawing.Point(467, 210);
             this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
@@ -214,17 +214,17 @@ namespace UI.Desktop
             // chartEmpleados
             // 
             this.chartEmpleados.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            this.chartEmpleados.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartEmpleados.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chartEmpleados.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartEmpleados.Legends.Add(legend1);
             this.chartEmpleados.Location = new System.Drawing.Point(9, 102);
             this.chartEmpleados.Name = "chartEmpleados";
             this.chartEmpleados.Size = new System.Drawing.Size(489, 259);
             this.chartEmpleados.TabIndex = 12;
-            title2.Name = "Title1";
-            title2.Text = "Porcentaje de Ordenes Registradas y Trabajos Atendidos por Empleado";
-            this.chartEmpleados.Titles.Add(title2);
+            title1.Name = "Title1";
+            title1.Text = "Porcentaje de Ordenes Registradas y Trabajos Atendidos por Empleado";
+            this.chartEmpleados.Titles.Add(title1);
             // 
             // lblOrdenesAtendidas
             // 
@@ -305,7 +305,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(900, 588);
+            this.btnCerrar.Location = new System.Drawing.Point(900, 609);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -322,7 +322,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(998, 639);
+            this.ClientSize = new System.Drawing.Size(998, 656);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.materialCard1);
             this.Controls.Add(this.btnDetalles);

@@ -46,11 +46,11 @@ namespace UI.Desktop
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.lblTiempoPromedio = new MaterialSkin.Controls.MaterialLabel();
             this.lblCantidadSolicitudes = new MaterialSkin.Controls.MaterialLabel();
+            this.chartItem = new FastReport.DataVisualization.Charting.Chart();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.btnCerrar = new MaterialSkin.Controls.MaterialButton();
-            this.chartItem = new FastReport.DataVisualization.Charting.Chart();
             this.materialCard1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartItem)).BeginInit();
             this.SuspendLayout();
@@ -67,7 +67,7 @@ namespace UI.Desktop
             this.listServiciosTipoPrendas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listServiciosTipoPrendas.FullRowSelect = true;
             this.listServiciosTipoPrendas.HideSelection = false;
-            this.listServiciosTipoPrendas.Location = new System.Drawing.Point(15, 141);
+            this.listServiciosTipoPrendas.Location = new System.Drawing.Point(15, 160);
             this.listServiciosTipoPrendas.MinimumSize = new System.Drawing.Size(200, 100);
             this.listServiciosTipoPrendas.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listServiciosTipoPrendas.MouseState = MaterialSkin.MouseState.OUT;
@@ -101,7 +101,7 @@ namespace UI.Desktop
             this.btnDetalles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDetalles.HighEmphasis = true;
             this.btnDetalles.Icon = global::UI.Desktop.Properties.Resources.document_3530;
-            this.btnDetalles.Location = new System.Drawing.Point(380, 141);
+            this.btnDetalles.Location = new System.Drawing.Point(380, 161);
             this.btnDetalles.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnDetalles.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnDetalles.Name = "btnDetalles";
@@ -124,7 +124,7 @@ namespace UI.Desktop
             this.btnAgregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregar.HighEmphasis = true;
             this.btnAgregar.Icon = global::UI.Desktop.Properties.Resources.plus_icon_icons_com_70890;
-            this.btnAgregar.Location = new System.Drawing.Point(15, 86);
+            this.btnAgregar.Location = new System.Drawing.Point(15, 95);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAgregar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAgregar.Name = "btnAgregar";
@@ -147,7 +147,7 @@ namespace UI.Desktop
             this.btnEditarServicioTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEditarServicioTipoPrenda.HighEmphasis = true;
             this.btnEditarServicioTipoPrenda.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
-            this.btnEditarServicioTipoPrenda.Location = new System.Drawing.Point(137, 86);
+            this.btnEditarServicioTipoPrenda.Location = new System.Drawing.Point(137, 95);
             this.btnEditarServicioTipoPrenda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEditarServicioTipoPrenda.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEditarServicioTipoPrenda.Name = "btnEditarServicioTipoPrenda";
@@ -170,7 +170,7 @@ namespace UI.Desktop
             this.btnEliminarServicioTipoPrenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEliminarServicioTipoPrenda.HighEmphasis = true;
             this.btnEliminarServicioTipoPrenda.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
-            this.btnEliminarServicioTipoPrenda.Location = new System.Drawing.Point(259, 86);
+            this.btnEliminarServicioTipoPrenda.Location = new System.Drawing.Point(259, 95);
             this.btnEliminarServicioTipoPrenda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminarServicioTipoPrenda.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminarServicioTipoPrenda.Name = "btnEliminarServicioTipoPrenda";
@@ -192,17 +192,18 @@ namespace UI.Desktop
             this.materialCard1.Controls.Add(this.materialLabel6);
             this.materialCard1.Controls.Add(this.lblTiempoPromedio);
             this.materialCard1.Controls.Add(this.lblCantidadSolicitudes);
+            this.materialCard1.Controls.Add(this.chartItem);
             this.materialCard1.Controls.Add(this.materialLabel3);
             this.materialCard1.Controls.Add(this.materialLabel2);
             this.materialCard1.Controls.Add(this.materialLabel1);
             this.materialCard1.Depth = 0;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(502, 86);
+            this.materialCard1.Location = new System.Drawing.Point(504, 86);
             this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(422, 169);
+            this.materialCard1.Size = new System.Drawing.Size(450, 439);
             this.materialCard1.TabIndex = 6;
             // 
             // lblIngresoTotalObtenido
@@ -289,6 +290,27 @@ namespace UI.Desktop
             this.lblCantidadSolicitudes.TabIndex = 4;
             this.lblCantidadSolicitudes.Text = "-";
             // 
+            // chartItem
+            // 
+            this.chartItem.BackColor = System.Drawing.Color.Transparent;
+            chartArea1.BackColor = System.Drawing.Color.Transparent;
+            chartArea1.Name = "ChartArea1";
+            this.chartItem.ChartAreas.Add(chartArea1);
+            this.chartItem.Location = new System.Drawing.Point(9, 178);
+            this.chartItem.Name = "chartItem";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.StackedBar;
+            series1.IsValueShownAsLabel = true;
+            series1.Name = "Series1";
+            series1.YValuesPerPoint = 6;
+            this.chartItem.Series.Add(series1);
+            this.chartItem.Size = new System.Drawing.Size(430, 234);
+            this.chartItem.TabIndex = 8;
+            this.chartItem.Text = "chart1";
+            title1.Name = "Title1";
+            title1.Text = "Porcentaje de Servicios brindados por Tipo de Prenda";
+            this.chartItem.Titles.Add(title1);
+            // 
             // materialLabel3
             // 
             this.materialLabel3.AutoSize = true;
@@ -340,7 +362,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(847, 515);
+            this.btnCerrar.Location = new System.Drawing.Point(877, 536);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -353,45 +375,24 @@ namespace UI.Desktop
             this.btnCerrar.UseVisualStyleBackColor = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
-            // chartItem
-            // 
-            this.chartItem.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            this.chartItem.ChartAreas.Add(chartArea1);
-            this.chartItem.Location = new System.Drawing.Point(502, 272);
-            this.chartItem.Name = "chartItem";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.StackedBar;
-            series1.IsValueShownAsLabel = true;
-            series1.Name = "Series1";
-            series1.YValuesPerPoint = 6;
-            this.chartItem.Series.Add(series1);
-            this.chartItem.Size = new System.Drawing.Size(422, 234);
-            this.chartItem.TabIndex = 8;
-            this.chartItem.Text = "chart1";
-            title1.Name = "Title1";
-            title1.Text = "Porcentaje de Servicios brindados por Tipo de Prenda";
-            this.chartItem.Titles.Add(title1);
-            // 
             // ServicioTipoPrenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(941, 556);
-            this.Controls.Add(this.chartItem);
+            this.ClientSize = new System.Drawing.Size(966, 578);
             this.Controls.Add(this.btnCerrar);
-            this.Controls.Add(this.materialCard1);
             this.Controls.Add(this.btnEditarServicioTipoPrenda);
             this.Controls.Add(this.btnEliminarServicioTipoPrenda);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.btnDetalles);
             this.Controls.Add(this.listServiciosTipoPrendas);
+            this.Controls.Add(this.materialCard1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "ServicioTipoPrenda";
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Servicio - TipoPrenda";
+            this.Text = "Servicios por tipo de prenda";
             this.materialCard1.ResumeLayout(false);
             this.materialCard1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartItem)).EndInit();

@@ -134,6 +134,7 @@ namespace UI.Desktop
                 if (Validar())
                 {
                     _proveedorLogic.Save(ProveedorActual);
+                    this.DialogResult = DialogResult.OK;
                     Close();
                 }
             }

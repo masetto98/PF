@@ -51,7 +51,7 @@ namespace UI.Desktop
             this.listTipoPrendas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listTipoPrendas.FullRowSelect = true;
             this.listTipoPrendas.HideSelection = false;
-            this.listTipoPrendas.Location = new System.Drawing.Point(12, 144);
+            this.listTipoPrendas.Location = new System.Drawing.Point(12, 147);
             this.listTipoPrendas.MinimumSize = new System.Drawing.Size(200, 100);
             this.listTipoPrendas.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listTipoPrendas.MouseState = MaterialSkin.MouseState.OUT;
@@ -83,7 +83,7 @@ namespace UI.Desktop
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCerrar.HighEmphasis = true;
             this.btnCerrar.Icon = null;
-            this.btnCerrar.Location = new System.Drawing.Point(293, 494);
+            this.btnCerrar.Location = new System.Drawing.Point(293, 497);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCerrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCerrar.Name = "btnCerrar";
@@ -106,7 +106,7 @@ namespace UI.Desktop
             this.btnAgregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregar.HighEmphasis = true;
             this.btnAgregar.Icon = global::UI.Desktop.Properties.Resources.plus_icon_icons_com_70890;
-            this.btnAgregar.Location = new System.Drawing.Point(13, 84);
+            this.btnAgregar.Location = new System.Drawing.Point(13, 87);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAgregar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAgregar.Name = "btnAgregar";
@@ -129,7 +129,7 @@ namespace UI.Desktop
             this.btnEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEditar.HighEmphasis = true;
             this.btnEditar.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
-            this.btnEditar.Location = new System.Drawing.Point(135, 84);
+            this.btnEditar.Location = new System.Drawing.Point(135, 87);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEditar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEditar.Name = "btnEditar";
@@ -152,7 +152,7 @@ namespace UI.Desktop
             this.btnEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEliminar.HighEmphasis = true;
             this.btnEliminar.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
-            this.btnEliminar.Location = new System.Drawing.Point(256, 84);
+            this.btnEliminar.Location = new System.Drawing.Point(256, 87);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminar.Name = "btnEliminar";
@@ -169,7 +169,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(383, 540);
+            this.ClientSize = new System.Drawing.Size(383, 548);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnAgregar);

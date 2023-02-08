@@ -175,6 +175,7 @@ namespace UI.Desktop
                 if (Validar())
                 {
                     _insumoLogic.Save(InsumoActual);
+                    this.DialogResult = DialogResult.OK;
                     Close();
                 }
             }

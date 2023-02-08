@@ -54,7 +54,7 @@ namespace UI.Desktop
             this.txtNombreNegocio.Multiline = false;
             this.txtNombreNegocio.Name = "txtNombreNegocio";
             this.txtNombreNegocio.Size = new System.Drawing.Size(312, 50);
-            this.txtNombreNegocio.TabIndex = 0;
+            this.txtNombreNegocio.TabIndex = 1;
             this.txtNombreNegocio.Text = "";
             this.txtNombreNegocio.TrailingIcon = null;
             // 
@@ -74,7 +74,7 @@ namespace UI.Desktop
             this.txtDireccion.Multiline = false;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(311, 50);
-            this.txtDireccion.TabIndex = 1;
+            this.txtDireccion.TabIndex = 2;
             this.txtDireccion.Text = "";
             this.txtDireccion.TrailingIcon = null;
             // 
@@ -94,7 +94,7 @@ namespace UI.Desktop
             this.txtTelefono.Multiline = false;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(311, 50);
-            this.txtTelefono.TabIndex = 2;
+            this.txtTelefono.TabIndex = 3;
             this.txtTelefono.Text = "";
             this.txtTelefono.TrailingIcon = null;
             // 
@@ -120,7 +120,7 @@ namespace UI.Desktop
             this.txtRedes.SelectionStart = 0;
             this.txtRedes.ShortcutsEnabled = true;
             this.txtRedes.Size = new System.Drawing.Size(311, 153);
-            this.txtRedes.TabIndex = 3;
+            this.txtRedes.TabIndex = 4;
             this.txtRedes.TabStop = false;
             this.txtRedes.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtRedes.UseSystemPasswordChar = false;
@@ -140,7 +140,7 @@ namespace UI.Desktop
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btnAceptar.Size = new System.Drawing.Size(86, 36);
-            this.btnAceptar.TabIndex = 4;
+            this.btnAceptar.TabIndex = 5;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnAceptar.UseAccentColor = false;
@@ -162,7 +162,7 @@ namespace UI.Desktop
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btnCancelar.Size = new System.Drawing.Size(96, 36);
-            this.btnCancelar.TabIndex = 5;
+            this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnCancelar.UseAccentColor = false;
@@ -175,7 +175,7 @@ namespace UI.Desktop
             this.txtCuitEmpresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtCuitEmpresa.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCuitEmpresa.Depth = 0;
-            this.txtCuitEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtCuitEmpresa.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtCuitEmpresa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtCuitEmpresa.Hint = "CUIT del negocio";
             this.txtCuitEmpresa.LeadingIcon = null;
@@ -185,7 +185,7 @@ namespace UI.Desktop
             this.txtCuitEmpresa.Multiline = false;
             this.txtCuitEmpresa.Name = "txtCuitEmpresa";
             this.txtCuitEmpresa.Size = new System.Drawing.Size(312, 50);
-            this.txtCuitEmpresa.TabIndex = 6;
+            this.txtCuitEmpresa.TabIndex = 0;
             this.txtCuitEmpresa.Text = "";
             this.txtCuitEmpresa.TrailingIcon = null;
             // 

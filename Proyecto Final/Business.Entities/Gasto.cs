@@ -59,6 +59,13 @@ namespace Business.Entities
             get { return _tipoGasto; }
             set { _tipoGasto = value; }
         }
+        [Column("id_empleado")]
+        public int IdEmpleado
+        {
+            get { return _idEmpleado; }
+            set { _idEmpleado = value; }
+        }
+       
 
         [Column("deleted")]
         public bool Borrado
@@ -66,17 +73,11 @@ namespace Business.Entities
             get { return _deleted; }
             set { _deleted = value; }
         }
-
-        public Empleado Empleado 
+        public Empleado Empleado
         {
             get { return _empleado; }
             set { _empleado = value; }
         }
-        [Column("id_empleado")]
-        public int IdEmpleado
-        {
-            get { return _idEmpleado; }
-            set { _idEmpleado = value; }
-        }
+
     }
 }
