@@ -91,7 +91,10 @@ namespace UI.Desktop
                 MantenimientoActual = new Mantenimiento();
                 MantenimientoActual.FechaRealizado = this.dtpFechaRealizacion.Value;
                 MantenimientoActual.Descripcion = this.txtDescripcion.Text;
-                MantenimientoActual.Costo = double.Parse(this.txtCosto.Text);
+                if (this.txtCosto.Text !="" && Validaciones.ValidarNumeros(this.txtCosto.Text)) 
+                { 
+                MantenimientoActual.Costo = double.Parse(this.txtCosto.Text); 
+                }
                 MantenimientoActual.Maquina = MaquinaActual;
             }
             if (Modos == ModoForm.Modificacion)
@@ -129,9 +132,10 @@ namespace UI.Desktop
             {
                 
                 MapearADatos();
-                Validaciones.ValidarNumeroEnteroDecimal(this.txtCosto.Text);
+                //Validaciones.ValidarNumeroEnteroDecimal(this.txtCosto.Text);
                 if (Validar())
                 {
+                    AgregarGasto();
                     _mantenimientoLogic.Save(MantenimientoActual);
                     Close();
                 }
@@ -146,6 +150,7 @@ namespace UI.Desktop
         {
             try
             {
+                AgregarGasto();
                 _mantenimientoLogic.Delete(MantenimientoActual.IdMaquina,MantenimientoActual.FechaRealizado);
             }
             catch (Exception e)
@@ -161,7 +166,7 @@ namespace UI.Desktop
                 case ModoForm.Alta:
                     {
                         GuardarCambios();
-                        AgregarGasto();
+                        //AgregarGasto();
                         Close();
                     };
                     break;
@@ -170,7 +175,7 @@ namespace UI.Desktop
                         if (MessageBox.Show($"¿Está seguro que desea modificar el mantenimiento {MantenimientoActual.Descripcion}?", "Mantenimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             GuardarCambios();
-                            AgregarGasto();
+                            //AgregarGasto();
                         }
 
                     };
@@ -200,6 +205,7 @@ namespace UI.Desktop
                         GastoActual.FechaRealizado = MantenimientoActual.FechaRealizado;
                         GastoActual.Importe = MantenimientoActual.Costo;
                         GastoActual.TipoGasto = Gasto.TiposGasto.Matenimientos;
+                        GastoActual.Empleado = Singleton.getInstance().EmpleadoLogged;
                         GastoActual.State = BusinessEntity.States.New;
                         _gastoLogic.Save(GastoActual);
                     };
@@ -215,6 +221,16 @@ namespace UI.Desktop
                         GastoActual.State = BusinessEntity.States.Modified;
                         _gastoLogic.Save(GastoActual);
                     };
+                    break;
+                case ModoForm.Baja:
+                    {
+                        GastoActual = _gastoLogic.GetAll().Find(
+                            delegate (Gasto g) {
+                                return g.Descripcion == MantenimientoActual.Descripcion && g.FechaRealizado == MantenimientoActual.FechaRealizado;
+                            });
+                        GastoActual.State = BusinessEntity.States.Deleted;
+                        _gastoLogic.Delete(GastoActual.IdGasto);
+                    }
                     break;
             }
             

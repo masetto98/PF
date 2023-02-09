@@ -29,6 +29,15 @@ namespace Business.Logic
                 throw ExceptionManejada;
             }
         }
+
+        static public bool ValidarNumeros(string cantidad)
+        {
+            if (Regex.IsMatch(cantidad, @"\d{1,7}(,\d{1,2})?"))
+            {
+                return true;
+            }
+            else { return false;}
+        }
         static public void ValidarEmail(string email)
         {
             try
@@ -180,6 +189,7 @@ namespace Business.Logic
         public MantenimientoValidator()
         {
             RuleFor(x => x.Descripcion).NotEmpty().MaximumLength(50).Matches("^[a-zA-Z0-9üéáíóúñÑ ]+$").WithMessage("'Descripción' debe contener solo letras y/o números");
+            RuleFor(x => x.Costo.ToString()).NotEmpty().Matches(@"\d{1,7}(,\d{1,2})?").WithMessage("'Costo' debe ser numérico");
         }
     }
 

@@ -15,6 +15,7 @@ namespace Business.Entities
         private DateTime _fechaDesde;
         private double _cantidad;
         private int _idTipoMaquina;
+        private bool _deleted;
         private Insumo _insumo;
         private ServicioTipoPrenda _servicioTipoPrenda;
         private TiposMaquina _tipoMaquina;
@@ -60,6 +61,13 @@ namespace Business.Entities
         {
             get { return _idTipoMaquina; }
             set { _idTipoMaquina = value; }
+        }
+
+        [Column("deleted")]
+        public bool Borrado
+        {
+            get { return _deleted; }
+            set { _deleted = value; }
         }
 
         public Insumo Insumo

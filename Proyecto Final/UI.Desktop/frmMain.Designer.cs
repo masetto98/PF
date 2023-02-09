@@ -1,4 +1,4 @@
-﻿
+
 namespace UI.Desktop
 {
     partial class frmMain
@@ -239,6 +239,8 @@ namespace UI.Desktop
             this.imgUserLogin = new System.Windows.Forms.PictureBox();
             this.btnCerrarSesion = new MaterialSkin.Controls.MaterialButton();
             this.niFaltaInsumos = new System.Windows.Forms.NotifyIcon(this.components);
+            this.materialLabel19 = new MaterialSkin.Controls.MaterialLabel();
+            this.lblDatosCliente = new MaterialSkin.Controls.MaterialLabel();
             this.mnuPrincipal.SuspendLayout();
             this.mnuTabOrdenes.SuspendLayout();
             this.mnuTabClientes.SuspendLayout();
@@ -684,7 +686,7 @@ namespace UI.Desktop
             this.listPagosOrden.MultiSelect = false;
             this.listPagosOrden.Name = "listPagosOrden";
             this.listPagosOrden.OwnerDraw = true;
-            this.listPagosOrden.Size = new System.Drawing.Size(564, 177);
+            this.listPagosOrden.Size = new System.Drawing.Size(573, 177);
             this.listPagosOrden.TabIndex = 15;
             this.listPagosOrden.UseCompatibleStateImageBehavior = false;
             this.listPagosOrden.View = System.Windows.Forms.View.Details;
@@ -713,17 +715,19 @@ namespace UI.Desktop
             // materialCard7
             // 
             this.materialCard7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard7.Controls.Add(this.lblDatosCliente);
+            this.materialCard7.Controls.Add(this.materialLabel19);
             this.materialCard7.Controls.Add(this.btnSaldarDeuda);
             this.materialCard7.Controls.Add(this.lblCuentaCorriente);
             this.materialCard7.Controls.Add(this.materialLabel12);
             this.materialCard7.Depth = 0;
             this.materialCard7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard7.Location = new System.Drawing.Point(831, 16);
+            this.materialCard7.Location = new System.Drawing.Point(840, 16);
             this.materialCard7.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard7.Name = "materialCard7";
             this.materialCard7.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard7.Size = new System.Drawing.Size(411, 72);
+            this.materialCard7.Size = new System.Drawing.Size(411, 86);
             this.materialCard7.TabIndex = 14;
             // 
             // btnSaldarDeuda
@@ -735,7 +739,7 @@ namespace UI.Desktop
             this.btnSaldarDeuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnSaldarDeuda.HighEmphasis = true;
             this.btnSaldarDeuda.Icon = null;
-            this.btnSaldarDeuda.Location = new System.Drawing.Point(275, 18);
+            this.btnSaldarDeuda.Location = new System.Drawing.Point(275, 39);
             this.btnSaldarDeuda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnSaldarDeuda.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSaldarDeuda.Name = "btnSaldarDeuda";
@@ -755,7 +759,7 @@ namespace UI.Desktop
             this.lblCuentaCorriente.Depth = 0;
             this.lblCuentaCorriente.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblCuentaCorriente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblCuentaCorriente.Location = new System.Drawing.Point(143, 28);
+            this.lblCuentaCorriente.Location = new System.Drawing.Point(143, 38);
             this.lblCuentaCorriente.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblCuentaCorriente.Name = "lblCuentaCorriente";
             this.lblCuentaCorriente.Size = new System.Drawing.Size(5, 19);
@@ -769,7 +773,7 @@ namespace UI.Desktop
             this.materialLabel12.Depth = 0;
             this.materialLabel12.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel12.Location = new System.Drawing.Point(17, 28);
+            this.materialLabel12.Location = new System.Drawing.Point(12, 39);
             this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel12.Name = "materialLabel12";
             this.materialLabel12.Size = new System.Drawing.Size(120, 19);
@@ -786,7 +790,7 @@ namespace UI.Desktop
             this.btnAgregarPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAgregarPago.HighEmphasis = true;
             this.btnAgregarPago.Icon = global::UI.Desktop.Properties.Resources.pay_payment_bill_dollar_cash_icon_143281;
-            this.btnAgregarPago.Location = new System.Drawing.Point(1128, 123);
+            this.btnAgregarPago.Location = new System.Drawing.Point(1137, 122);
             this.btnAgregarPago.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAgregarPago.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAgregarPago.Name = "btnAgregarPago";
@@ -809,7 +813,7 @@ namespace UI.Desktop
             this.btnVerPagos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnVerPagos.HighEmphasis = true;
             this.btnVerPagos.Icon = global::UI.Desktop.Properties.Resources.payment_tax_invoice_document_calculator_icon_188684__1_;
-            this.btnVerPagos.Location = new System.Drawing.Point(1006, 123);
+            this.btnVerPagos.Location = new System.Drawing.Point(1015, 123);
             this.btnVerPagos.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnVerPagos.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVerPagos.Name = "btnVerPagos";
@@ -873,11 +877,12 @@ namespace UI.Desktop
             this.listOrdenesCliente.MultiSelect = false;
             this.listOrdenesCliente.Name = "listOrdenesCliente";
             this.listOrdenesCliente.OwnerDraw = true;
-            this.listOrdenesCliente.Size = new System.Drawing.Size(564, 192);
+            this.listOrdenesCliente.Size = new System.Drawing.Size(573, 192);
             this.listOrdenesCliente.TabIndex = 8;
             this.listOrdenesCliente.UseCompatibleStateImageBehavior = false;
             this.listOrdenesCliente.View = System.Windows.Forms.View.Details;
             this.listOrdenesCliente.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listOrdenesCliente_ColumnWidthChanging);
+            this.listOrdenesCliente.SelectedIndexChanged += new System.EventHandler(this.listOrdenesCliente_SelectedIndexChanged);
             // 
             // columnNroOrden
             // 
@@ -1084,6 +1089,7 @@ namespace UI.Desktop
             this.listClientes.UseCompatibleStateImageBehavior = false;
             this.listClientes.View = System.Windows.Forms.View.Details;
             this.listClientes.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listClientes_ColumnWidthChanging);
+            this.listClientes.SelectedIndexChanged += new System.EventHandler(this.listClientes_SelectedIndexChanged);
             this.listClientes.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listClientes_MouseDoubleClick);
             // 
             // columnID
@@ -3283,6 +3289,30 @@ namespace UI.Desktop
             this.niFaltaInsumos.Visible = true;
             this.niFaltaInsumos.BalloonTipClicked += new System.EventHandler(this.niFaltaInsumos_BalloonTipClicked);
             // 
+            // materialLabel19
+            // 
+            this.materialLabel19.AutoSize = true;
+            this.materialLabel19.Depth = 0;
+            this.materialLabel19.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel19.Location = new System.Drawing.Point(12, 11);
+            this.materialLabel19.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel19.Name = "materialLabel19";
+            this.materialLabel19.Size = new System.Drawing.Size(53, 19);
+            this.materialLabel19.TabIndex = 4;
+            this.materialLabel19.Text = "Cliente:";
+            // 
+            // lblDatosCliente
+            // 
+            this.lblDatosCliente.AutoSize = true;
+            this.lblDatosCliente.Depth = 0;
+            this.lblDatosCliente.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblDatosCliente.Location = new System.Drawing.Point(77, 10);
+            this.lblDatosCliente.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblDatosCliente.Name = "lblDatosCliente";
+            this.lblDatosCliente.Size = new System.Drawing.Size(5, 19);
+            this.lblDatosCliente.TabIndex = 5;
+            this.lblDatosCliente.Text = "-";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -3555,6 +3585,8 @@ namespace UI.Desktop
         private System.Windows.Forms.PictureBox pxRojo;
         private System.Windows.Forms.NotifyIcon niFaltaInsumos;
         private MaterialSkin.Controls.MaterialSwitch switchComprobantes;
+        private MaterialSkin.Controls.MaterialLabel lblDatosCliente;
+        private MaterialSkin.Controls.MaterialLabel materialLabel19;
     }
 }
 

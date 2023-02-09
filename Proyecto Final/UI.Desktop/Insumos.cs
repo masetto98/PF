@@ -156,12 +156,12 @@ namespace UI.Desktop
         */
         private void btnDetalles_Click(object sender, EventArgs e)
         {
-            if (listConsumos.Items.Count > 0)
+            if (listInsumos.Items.Count > 0)
             {
-            ListarConsumos();
-            this.dtpFechaInicio.Value = DateTime.Today.AddYears(-10);
-            this.dtpFechaHasta.Value = DateTime.Today;
-            CargarSerieGrafico2();
+                ListarConsumos();
+                this.dtpFechaInicio.Value = DateTime.Today.AddYears(-10);
+                this.dtpFechaHasta.Value = DateTime.Today;
+                CargarSerieGrafico2();
                 CalcularEstadisticasInsumos(this.dtpFechaInicio.MinDate, this.dtpFechaHasta.Value);
             }
             else { MessageBox.Show("Seleccione un insumo y haga click en detalles", "Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information); }
@@ -311,6 +311,13 @@ namespace UI.Desktop
         {
             e.Cancel = true;
             e.NewWidth = listConsumos.Columns[e.ColumnIndex].Width;
+        }
+
+        private void listInsumos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listConsumos.Items.Clear();
+            this.lblCantidadInsumoIngresada.Text = "-";
+            this.lblInsumosUtilizados.Text = "-";
         }
     }
 }

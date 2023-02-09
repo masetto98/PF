@@ -21,7 +21,7 @@ namespace Data.Database
             List<ServicioTipoPrenda> serviciosTipoPrendas = new List<ServicioTipoPrenda>();
             try
             {
-                serviciosTipoPrendas = _context.ServiciosTipoPrendas.Where(i => i.Borrado == false)
+                serviciosTipoPrendas = _context.ServiciosTipoPrendas//.Where(i => i.Borrado == false)
                     .Include(i=>i.Servicio)
                     .Include(i => i.TipoPrenda)
                     .Include(i => i.ItemsPedidos.Where(ip => ip.Borrado == false))
@@ -40,7 +40,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.ServiciosTipoPrendas.Where(i => i.Borrado == false)
+                return _context.ServiciosTipoPrendas//.Where(i => i.Borrado == false)
                     .Include(i => i.Servicio)
                     .Include(i => i.TipoPrenda)
                     .Include(i => i.ItemsPedidos)
@@ -54,6 +54,27 @@ namespace Data.Database
             }
             return null;
         }
+
+
+        public Business.Entities.ServicioTipoPrenda GetOneSinBorrado(int idServicio, int idTipoPrenda)
+        {
+            try
+            {
+                return _context.ServiciosTipoPrendas
+                    .Include(i => i.Servicio)
+                    .Include(i => i.TipoPrenda)
+                    .Include(i => i.ItemsPedidos)
+                    .Include(i => i.HistoricoPrecios)
+                    .FirstOrDefault(stp => stp.IdTipoPrenda == idTipoPrenda && stp.IdServicio == idServicio);
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al recuperar datos del servicio-tipo prenda", e);
+                throw ExceptionManejada;
+            }
+            return null;
+        }
+
         protected void Update(ServicioTipoPrenda servicioTipoPrenda)
         {
             try
@@ -61,6 +82,7 @@ namespace Data.Database
                 _context.ServiciosTipoPrendas.Update(servicioTipoPrenda);
                 _context.SaveChanges();
             }
+            
             catch (Exception e)
             {
                 Exception ExceptionManejada = new Exception("Error al modificar datos del servicio - tipo prenda", e);

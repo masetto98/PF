@@ -14,6 +14,7 @@ namespace Business.Entities
         private string _descripcion;
         private double _stock;
         private double _puntoPedido;
+        private bool _deleted;
         private List<InsumoProveedor>? _insumosProveedores;// lista de proveedores que proveen ese insumo
         private List<InsumoServicioTipoPrenda> _insumosServicioTipoPrenda;//lista de serviciosTipoPrenda donde se utiliza ese insumo
         private List<Consumo> _consumos;
@@ -60,6 +61,13 @@ namespace Business.Entities
         {
             get { return _puntoPedido; }
             set { _puntoPedido = value; }
+        }
+
+        [Column("deleted")]
+        public bool Borrado
+        {
+            get { return _deleted; }
+            set { _deleted = value; }
         }
 
         public List<InsumoProveedor> InsumosProveedores

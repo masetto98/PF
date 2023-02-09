@@ -62,7 +62,7 @@ namespace Data.Database
                 .HasOne(ip => ip.Proveedor)
                 .WithMany(p => p.InsumosProveedor)
                 .HasForeignKey(ip => ip.IdProveedor)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.ClientCascade);
 
             modelBuilder.Entity<Consumo>()
                 .HasOne(ip => ip.Insumo)
@@ -80,7 +80,7 @@ namespace Data.Database
                 .HasOne(ip => ip.Insumo)
                 .WithMany(i => i.InsumosProveedores)
                 .HasForeignKey(ip => ip.IdInsumo)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.ClientCascade);
 
             modelBuilder.Entity<InsumoProveedor>()
                 .HasKey(ip => new { ip.IdProveedor, ip.IdInsumo, ip.FechaIngreso });
@@ -89,19 +89,19 @@ namespace Data.Database
                 .HasOne(istp => istp.Insumo)
                 .WithMany(i => i.InsumoServicioTipoPrenda)
                 .HasForeignKey(istp => istp.IdInsumo)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.ClientCascade);
 
             modelBuilder.Entity<InsumoServicioTipoPrenda>()
                 .HasOne(istp => istp.ServicioTipoPrenda)
                 .WithMany(stp => stp.InsumoServicioTipoPrenda)
                 .HasForeignKey(istp => new { istp.IdServicio, istp.IdTipoPrenda })
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.ClientCascade);
 
             modelBuilder.Entity<InsumoServicioTipoPrenda>()
                 .HasOne(istp => istp.TipoMaquina)
                 .WithMany(stp => stp.InsumosServicioTipoPrendaTiposMaquina)
                 .HasForeignKey(istp => istp.IdTipoMaquina)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.ClientCascade);
 
             modelBuilder.Entity<InsumoServicioTipoPrenda>()
                 .HasKey(istp => new { istp.IdInsumo, istp.IdServicio, istp.IdTipoPrenda,istp.FechaDesde});

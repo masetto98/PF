@@ -14,6 +14,7 @@ namespace Business.Entities
         private DateTime _fechaRealizado;
         private string _descripcion;
         private double _costo;
+        private bool _deleted;
         private Maquina _maquina;
 
         [Column("id_maquina")]
@@ -39,6 +40,13 @@ namespace Business.Entities
         {
             get { return _costo; }
             set { _costo = value; }
+        }
+
+        [Column("deleted")]
+        public bool Borrado
+        {
+            get { return _deleted; }
+            set { _deleted = value; }
         }
 
         public Maquina Maquina

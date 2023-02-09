@@ -53,7 +53,7 @@ namespace Business.Entities
             get { return _deleted; }
             set { _deleted = value; }
         }
-
+        
         public Servicio Servicio
         {
             get { return _servicio; }

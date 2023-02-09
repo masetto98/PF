@@ -1,4 +1,4 @@
-﻿
+
 namespace UI.Desktop
 {
     partial class Insumos
@@ -89,6 +89,7 @@ namespace UI.Desktop
             this.listInsumos.UseCompatibleStateImageBehavior = false;
             this.listInsumos.View = System.Windows.Forms.View.Details;
             this.listInsumos.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listInsumos_ColumnWidthChanging);
+            this.listInsumos.SelectedIndexChanged += new System.EventHandler(this.listInsumos_SelectedIndexChanged);
             // 
             // columnIDInsumo
             // 
@@ -443,6 +444,7 @@ namespace UI.Desktop
             chartArea1.Position.X = 11F;
             chartArea1.Position.Y = 10F;
             this.chartInsumos2.ChartAreas.Add(chartArea1);
+            legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             legend1.IsTextAutoFit = false;
             legend1.Name = "Legend1";
             this.chartInsumos2.Legends.Add(legend1);
@@ -455,7 +457,7 @@ namespace UI.Desktop
             series1.Legend = "Legend1";
             series1.Name = "consumo";
             this.chartInsumos2.Series.Add(series1);
-            this.chartInsumos2.Size = new System.Drawing.Size(321, 504);
+            this.chartInsumos2.Size = new System.Drawing.Size(321, 466);
             this.chartInsumos2.TabIndex = 17;
             this.chartInsumos2.Text = "chart1";
             title1.Name = "Title1";
