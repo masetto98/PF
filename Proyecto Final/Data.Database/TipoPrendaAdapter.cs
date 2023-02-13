@@ -68,6 +68,7 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
+        /*
         public void Delete(int idTipoPrenda)
         {
             TipoPrenda tipoPrenda = new TipoPrenda();
@@ -80,6 +81,29 @@ namespace Data.Database
             catch (Exception e)
             {
                 Exception ExceptionManejada = new Exception("Error al eliminar tipo de prenda", e);
+                throw ExceptionManejada;
+            }
+        }*/
+
+        public void Delete(int idTipoPrenda)
+        {
+            TipoPrenda tipoPrenda = new TipoPrenda();
+            try
+            {
+                tipoPrenda = _context.TipoPrendas.Find(idTipoPrenda);
+                tipoPrenda.Borrado = true;
+                tipoPrenda.State = BusinessEntity.States.Modified;
+                foreach (ServicioTipoPrenda stp in tipoPrenda.ServicioTipoPrenda)
+                {
+                    stp.Borrado = true;
+                    stp.State = BusinessEntity.States.Modified;
+                }
+                _context.TipoPrendas.Update(tipoPrenda);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al borrar tipo de prenda", e);
                 throw ExceptionManejada;
             }
         }

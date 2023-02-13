@@ -13,7 +13,7 @@ namespace Business.Entities
         private int _nroFactura;
         private DateTime _fechaFactura;
         private double _importe;
-        private bool _deleted;
+        //private bool _deleted;
         private List<Pago> _pagos;
 
         [Key]
@@ -36,13 +36,13 @@ namespace Business.Entities
             get { return _importe; }
             set { _importe = value; }
         }
-
+        /*
         [Column("deleted")]
         public bool Borrado
         {
             get { return _deleted; }
             set { _deleted = value; }
-        }
+        }*/
         
         public List<Pago> Pagos
         {

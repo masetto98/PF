@@ -20,14 +20,14 @@ namespace Data.Database
             List<Orden> ordenes = new List<Orden>();
             try
             {
-                ordenes = _context.Ordenes.Where(o => o.Borrado == false)
+                ordenes = _context.Ordenes
                     .Include(o => o.Cliente)
                     .Include(o => o.Empleado)
                     .Include(o => o.Factura)
                         .ThenInclude(f =>f.Pagos)
-                    .Include(o => o.ItemsPedidos.Where(ip => ip.Borrado == false))
+                    .Include(o => o.ItemsPedidos)
                         .ThenInclude( i => i.MaquinaOrdenServicioTipoPrenda)
-                    .Include(o => o.ItemsPedidos.Where(ip => ip.Borrado == false))
+                    .Include(o => o.ItemsPedidos)
                         .ThenInclude(i => i.ServicioTipoPrenda)
                             .ThenInclude(stp => stp.Servicio)
                         .ThenInclude(i => i.ServicioTipoPrenda)
@@ -47,7 +47,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.Ordenes.Where(o => o.Borrado == false)
+                return _context.Ordenes
                     .Include(o => o.Cliente)
                     .Include(o => o.Factura)
                         .ThenInclude(f => f.Pagos)
@@ -85,16 +85,16 @@ namespace Data.Database
         }
         protected void Insert(Orden orden)
         {
-            //try
-            //{
-            _context.Ordenes.Add(orden);
-            _context.SaveChanges();
-            //}
-            //catch (Exception e)
-            // {
-            // Exception ExceptionManejada = new Exception("Error al crear orden", e);
-            //throw ExceptionManejada;
-            //}
+            try
+            {
+                _context.Ordenes.Add(orden);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al crear orden", e);
+                throw ExceptionManejada;
+            }
         }
         public void Delete(int nroOrden)
         {

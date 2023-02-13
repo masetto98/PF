@@ -54,6 +54,7 @@ namespace Data.Database
             }
             return null;
         }
+
         protected void Update(InsumoServicioTipoPrenda insumoServicioTipoPrenda)
         {
             try
@@ -67,6 +68,7 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
+
         protected void Insert(InsumoServicioTipoPrenda insumoServicioTipoPrenda)
         {
             try
@@ -80,6 +82,7 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
+
         public void Delete(int idServicio, int idTipoPrenda, int idInsumo, DateTime fechaDesde)
         {
             InsumoServicioTipoPrenda insumoServicioTipoPrenda = new InsumoServicioTipoPrenda();

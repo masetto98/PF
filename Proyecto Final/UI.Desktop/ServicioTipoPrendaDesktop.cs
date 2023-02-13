@@ -1,4 +1,4 @@
-﻿using MaterialSkin;
+using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
@@ -146,6 +146,9 @@ namespace UI.Desktop
         {
             if (Modos == ModoForm.Alta)
             {
+                Business.Entities.ServicioTipoPrenda stpBorrada = _servicioTipoPrendaLogic.GetOneSinBorrado((int)this.cmbServicios.SelectedValue, (int)this.cmbTipoPrendas.SelectedValue);
+                if (stpBorrada is null)
+                {
                     ServicioTipoPrendaActual = new Business.Entities.ServicioTipoPrenda();
                     Precio precioActual = new Precio();
                     ServicioTipoPrendaActual.Servicio = _servicioLogic.GetOne((int)this.cmbServicios.SelectedValue);
@@ -155,6 +158,24 @@ namespace UI.Desktop
                     ServicioTipoPrendaActual.HistoricoPrecios = new List<Precio>();
                     ServicioTipoPrendaActual.HistoricoPrecios.Add(precioActual);
                     ServicioTipoPrendaActual.InsumoServicioTipoPrenda = _consumosActuales;
+                }
+                else 
+                {
+                    ServicioTipoPrendaActual = _servicioTipoPrendaLogic.GetOneSinBorrado((int)this.cmbServicios.SelectedValue, (int)this.cmbTipoPrendas.SelectedValue);
+                    ServicioTipoPrendaActual.Borrado = false;
+                    Precio precioActual = new Precio();
+                    precioActual.Valor = double.Parse(this.txtPrecio.Text);
+                    precioActual.FechaDesde = DateTime.Now;
+                    ServicioTipoPrendaActual.HistoricoPrecios = new List<Precio>();
+                    foreach (Precio p in ServicioTipoPrendaActual.HistoricoPrecios) 
+                    {
+                        p.Borrado = false;
+                        //ServicioTipoPrendaActual.HistoricoPrecios.Add(p); 
+                    }
+                    ServicioTipoPrendaActual.HistoricoPrecios.Add(precioActual);
+                    ServicioTipoPrendaActual.InsumoServicioTipoPrenda = _consumosActuales;
+                    ServicioTipoPrendaActual.State = BusinessEntity.States.Modified;
+                }
                 
                 
             }
@@ -176,7 +197,10 @@ namespace UI.Desktop
             switch (Modos)
             {
                 case ModoForm.Alta:
-                    ServicioTipoPrendaActual.State = BusinessEntity.States.New;
+                    if (ServicioTipoPrendaActual.State == BusinessEntity.States.Deleted)
+                    {
+                        ServicioTipoPrendaActual.State = BusinessEntity.States.New;
+                    }
                     break;
                 case ModoForm.Modificacion:
                     ServicioTipoPrendaActual.State = BusinessEntity.States.Modified;

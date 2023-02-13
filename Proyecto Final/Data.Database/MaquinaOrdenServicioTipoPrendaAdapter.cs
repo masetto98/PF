@@ -20,7 +20,7 @@ namespace Data.Database
             List<MaquinaOrdenServicioTipoPrenda> trabajosRealizados = new List<MaquinaOrdenServicioTipoPrenda>();
             try
             {
-                trabajosRealizados = _context.MaquinasOrdenesServiciosTipoPrendas.Where(i => i.Borrado == false)
+                trabajosRealizados = _context.MaquinasOrdenesServiciosTipoPrendas
                     .Include(i => i.Maquina)
                     .Include(i => i.OrdenServicioTipoPrenda)
                         .ThenInclude(o=> o.ServicioTipoPrenda)
@@ -44,7 +44,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.MaquinasOrdenesServiciosTipoPrendas.Where(i => i.Borrado == false)
+                return _context.MaquinasOrdenesServiciosTipoPrendas
                     .Include(i => i.Maquina)
                     .Include(i => i.OrdenServicioTipoPrenda)
                         .ThenInclude(o => o.ServicioTipoPrenda)
@@ -62,6 +62,7 @@ namespace Data.Database
             }
             return null;
         }
+
         protected void Update(MaquinaOrdenServicioTipoPrenda trabajo)
         {
             try
@@ -75,6 +76,7 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
+
         protected void Insert(MaquinaOrdenServicioTipoPrenda trabajo)
         {
             try
@@ -88,6 +90,7 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
+        /*
         public void Delete(int idMaquina, DateTime tiempoInicioServicio)
         {
             MaquinaOrdenServicioTipoPrenda trabajo = new MaquinaOrdenServicioTipoPrenda();
@@ -100,6 +103,24 @@ namespace Data.Database
             catch (Exception e)
             {
                 Exception ExceptionManejada = new Exception("Error al eliminar trabajo", e);
+                throw ExceptionManejada;
+            }
+        }*/
+
+        public void Delete(int idMaquina, DateTime tiempoInicioServicio)
+        {
+            MaquinaOrdenServicioTipoPrenda trabajo = new MaquinaOrdenServicioTipoPrenda();
+            try
+            {
+                trabajo = _context.MaquinasOrdenesServiciosTipoPrendas.Find(idMaquina, tiempoInicioServicio);
+                trabajo.Borrado = true;
+                trabajo.State = BusinessEntity.States.Modified;
+                _context.MaquinasOrdenesServiciosTipoPrendas.Update(trabajo);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al borrar datos del trabajo", e);
                 throw ExceptionManejada;
             }
         }

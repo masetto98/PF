@@ -110,7 +110,7 @@ namespace Data.Database
                 .HasOne(m => m.Maquina)
                 .WithMany(ma => ma.Mantenimientos)
                 .HasForeignKey(m => m.IdMaquina)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.ClientCascade);
 
             modelBuilder.Entity<Mantenimiento>()
                 .HasKey(m => new { m.IdMaquina, m.FechaRealizado });
@@ -121,13 +121,13 @@ namespace Data.Database
                 .HasOne(m => m.Maquina)
                 .WithMany(ma => ma.itemsAtendidos)
                 .HasForeignKey(m => m.IdMaquina)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.ClientCascade);
             
             modelBuilder.Entity<MaquinaOrdenServicioTipoPrenda>()
                 .HasMany(m => m.Consumos)
                 .WithOne(ma => ma.MaquinaOrdenServicioTipoPrenda)
                 .HasForeignKey(m => new { m.IdMaquina, m.FechaConsumo})
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.ClientCascade);
 
             modelBuilder.Entity<Consumo>()
                 .HasKey(m => new { m.IdMaquina, m.FechaConsumo, m.IdInsumo });
@@ -179,7 +179,7 @@ namespace Data.Database
                 .HasOne(m => m.ServicioTipoPrenda)
                 .WithMany(stp => stp.ItemsPedidos)
                 .HasForeignKey(m => new { m.IdServicio, m.IdTipoPrenda})
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.ClientCascade);
            
             modelBuilder.Entity<OrdenServicioTipoPrenda>()
                 .HasKey(m => new { m.NroOrden, m.IdServicio, m.IdTipoPrenda, m.OrdenItem });

@@ -36,10 +36,10 @@ namespace Data.Database
         {
             try
             {
-                return _context.Maquinas
+                return _context.Maquinas.Where(x => x.Borrado == false)
                                         .Include(i => i.itemsAtendidos)
                                         .Include(i => i.Mantenimientos)
-                                        .FirstOrDefault(s => s.IdMaquina == idMaquina && s.Borrado == false);
+                                        .FirstOrDefault(s => s.IdMaquina == idMaquina);
             }
             catch (Exception e)
             {
@@ -74,6 +74,7 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
+        
         public void Delete(int idMaquina)
         {
             Maquina maquina = new Maquina();
@@ -89,7 +90,25 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
-
+        /*
+        public void Delete(int idMaquina)
+        {
+            Maquina maquina = new Maquina();
+            try
+            {
+                maquina = _context.Maquinas.Find(idMaquina);
+                maquina.State = BusinessEntity.States.Modified;
+                maquina.Borrado = true;
+                _context.Maquinas.Update(maquina);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al borrar la maquina", e);
+                throw ExceptionManejada;
+            }
+        }
+        */
         public void Save(Maquina maquina)
         {
             if (maquina.State == BusinessEntity.States.New)

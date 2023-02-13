@@ -25,6 +25,7 @@ namespace Business.Entities
         [DataType(DataType.Date)]
         private DateTime _fechaInicio;
         public TiposEmpleado _tipoEmpleado;
+        private bool _deleted;
         private List<Orden> _ordenesRegistradas;
         private List<MaquinaOrdenServicioTipoPrenda> _ordenesAtendidas;
         private List<Gasto> _gastosRegistrados;
@@ -86,6 +87,13 @@ namespace Business.Entities
         {
             get { return _tipoEmpleado; }
             set { _tipoEmpleado = value; }
+        }
+
+        [Column("deleted")]
+        public bool Borrado
+        {
+            get { return _deleted; }
+            set { _deleted = value; }
         }
 
         public List<Orden> OrdenesRegistradas

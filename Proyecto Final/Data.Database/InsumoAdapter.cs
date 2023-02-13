@@ -20,7 +20,7 @@ namespace Data.Database
             List<Insumo> insumos = new List<Insumo>();
             try
             {
-                insumos = _context.Insumos
+                insumos = _context.Insumos.Where(i => i.Borrado == false)
                                         .Include(i => i.InsumoServicioTipoPrenda)
                                         .Include(i => i.InsumosProveedores)
                                             .ThenInclude(p => p.Proveedor)
@@ -37,7 +37,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.Insumos
+                return _context.Insumos.Where(i => i.Borrado == false)
                                        .Include(i => i.InsumoServicioTipoPrenda)
                                             .ThenInclude(stp => stp.ServicioTipoPrenda)
                                                 .ThenInclude(s => s.Servicio)
@@ -81,6 +81,7 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
+        /*
         public void Delete(int idInsumo)
         {
             Insumo insumo = new Insumo();
@@ -93,6 +94,24 @@ namespace Data.Database
             catch (Exception e)
             {
                 Exception ExceptionManejada = new Exception("Error al eliminar insumo", e);
+                throw ExceptionManejada;
+            }
+        }*/
+
+        public void Delete(int idInsumo)
+        {
+            Insumo insumo = new Insumo();
+            try
+            {
+                insumo = _context.Insumos.Find(idInsumo);
+                insumo.Borrado = true;
+                insumo.State = BusinessEntity.States.Modified;
+                _context.Insumos.Update(insumo);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al borrar insumo", e);
                 throw ExceptionManejada;
             }
         }

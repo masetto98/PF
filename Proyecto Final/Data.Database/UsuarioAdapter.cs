@@ -96,6 +96,7 @@ namespace Data.Database
             throw ExceptionManejada;
             }
         }
+        /*
         public void Delete(int ID)
         {
             Usuario usuario = new Usuario();
@@ -108,6 +109,24 @@ namespace Data.Database
             catch (Exception e)
             {
                 Exception ExceptionManejada = new Exception("Error al eliminar usuario", e);
+                throw ExceptionManejada;
+            }
+        }*/
+
+        public void Delete(int ID)
+        {
+            Usuario usuario = new Usuario();
+            try
+            {
+                usuario = _context.Usuarios.Find(ID);
+                usuario.State = BusinessEntity.States.Modified;
+                usuario.Borrado = true;
+                _context.Usuarios.Add(usuario);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al crear usuario", e);
                 throw ExceptionManejada;
             }
         }

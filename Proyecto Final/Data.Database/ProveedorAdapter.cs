@@ -20,7 +20,7 @@ namespace Data.Database
             List<Proveedor> proveedores = new List<Proveedor>();
             try
             {
-                proveedores = _context.Proveedores
+                proveedores = _context.Proveedores.Where(i => i.Borrado == false)
                                                 .Include(i => i.InsumosProveedor)
                                                     .ThenInclude(x =>x.Insumo)
                                                 .ToList();
@@ -36,7 +36,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.Proveedores
+                return _context.Proveedores.Where(i => i.Borrado == false)
                                            .Include(i => i.InsumosProveedor)
                                                 .ThenInclude(x => x.Insumo)
                                            .FirstOrDefault(c => c.IdProveedor == idProveedor);
@@ -74,6 +74,7 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
+        /*
         public void Delete(int idProveedor)
         {
             Proveedor proveedor = new Proveedor();
@@ -86,6 +87,24 @@ namespace Data.Database
             catch (Exception e)
             {
                 Exception ExceptionManejada = new Exception("Error al eliminar proveedor", e);
+                throw ExceptionManejada;
+            }
+        }*/
+
+        public void Delete(int idProveedor)
+        {
+            Proveedor proveedor = new Proveedor();
+            try
+            {
+                proveedor = _context.Proveedores.Find(idProveedor);
+                proveedor.State = BusinessEntity.States.Modified;
+                proveedor.Borrado = true;
+                _context.Proveedores.Update(proveedor);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al modificar datos del proveedor", e);
                 throw ExceptionManejada;
             }
         }

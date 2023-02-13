@@ -118,6 +118,7 @@ namespace UI.Desktop
                 }
                 UsuarioActual.Pregunta = this.cmbPreguntas.SelectedIndex;
                 UsuarioActual.Respuesta = this.txtRespuesta.Text;
+                UsuarioActual.Borrado = false;
                 
                 
             }

@@ -20,7 +20,7 @@ namespace Data.Database
             List<Empleado> empleados = new List<Empleado>();
             try
             {
-                empleados = _context.Empleados.Include(i => i.Usuarios).ToList();
+                empleados = _context.Empleados.Where(i => i.Borrado == false).Include(i => i.Usuarios).ToList();
             }
             catch (Exception e)
             {
@@ -33,7 +33,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.Empleados.Include(i => i.Usuarios).FirstOrDefault(e => e.IdEmpleado == idEmpleado);
+                return _context.Empleados.Where(i => i.Borrado == false).Include(i => i.Usuarios).FirstOrDefault(e => e.IdEmpleado == idEmpleado);
             }
             catch (Exception e)
             {
@@ -68,6 +68,7 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
+        /*
         public void Delete(int idEmpleado)
         {
             Empleado empleado = new Empleado();
@@ -82,7 +83,26 @@ namespace Data.Database
                 Exception ExceptionManejada = new Exception("Error al eliminar empleado", e);
                 throw ExceptionManejada;
             }
+        }*/
+
+        public void Delete(int idEmpleado)
+        {
+            Empleado empleado = new Empleado();
+            try
+            {
+                empleado = _context.Empleados.Find(idEmpleado);
+                empleado.Borrado = true;
+                empleado.State = BusinessEntity.States.Modified;
+                _context.Empleados.Add(empleado);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al crear empleado", e);
+                throw ExceptionManejada;
+            }
         }
+
 
         public void Save(Empleado empleado)
         {

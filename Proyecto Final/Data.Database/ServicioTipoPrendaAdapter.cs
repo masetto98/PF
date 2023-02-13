@@ -21,10 +21,10 @@ namespace Data.Database
             List<ServicioTipoPrenda> serviciosTipoPrendas = new List<ServicioTipoPrenda>();
             try
             {
-                serviciosTipoPrendas = _context.ServiciosTipoPrendas//.Where(i => i.Borrado == false)
+                serviciosTipoPrendas = _context.ServiciosTipoPrendas.Where(i => i.Borrado == false)
                     .Include(i=>i.Servicio)
                     .Include(i => i.TipoPrenda)
-                    .Include(i => i.ItemsPedidos.Where(ip => ip.Borrado == false))
+                    .Include(i => i.ItemsPedidos)
                     .Include(i =>i.HistoricoPrecios)
                     .Include(i =>i.InsumoServicioTipoPrenda)
                     .ToList();
@@ -40,11 +40,12 @@ namespace Data.Database
         {
             try
             {
-                return _context.ServiciosTipoPrendas//.Where(i => i.Borrado == false)
+                return _context.ServiciosTipoPrendas.Where(i => i.Borrado == false)
                     .Include(i => i.Servicio)
                     .Include(i => i.TipoPrenda)
                     .Include(i => i.ItemsPedidos)
                     .Include(i => i.HistoricoPrecios)
+                    .Include(i => i.InsumoServicioTipoPrenda)
                     .FirstOrDefault(stp => stp.IdTipoPrenda == idTipoPrenda && stp.IdServicio == idServicio );
             }
             catch (Exception e)

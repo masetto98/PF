@@ -17,6 +17,7 @@ namespace Business.Entities
         private int _idEmpleado;
         private int? _pregunta;
         private string? _respuesta;
+        private bool _deleted;
         private Empleado _empleado;
 
         [Key]
@@ -77,6 +78,13 @@ namespace Business.Entities
         {
             get { return _respuesta; }
             set { _respuesta = value; }
+        }
+
+        [Column("deleted")]
+        public bool Borrado
+        {
+            get { return _deleted; }
+            set { _deleted = value; }
         }
     }
 }
