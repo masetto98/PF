@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Comprobante Lavander�a</title>
+	<title>Comprobante lavado</title>
 	<style>
 		table.border {
 			border-collapse: collapse;
@@ -18,7 +18,7 @@
 						<tr>
 							<td style="width:75%">
 								<table>
-									<tr><td><h3>@NombreLavanderia</h3></td></tr>
+									<tr><td><font size="5">@NombreLavanderia</font></td></tr>
 									<tr><td>@DireccionLav</td></tr>
 									<tr><td>Tel:@TelLav</td></tr>
 									<tr><td>@Redes</td></tr>
@@ -26,22 +26,34 @@
 							</td>
 							<td>
 								<table class="border" align="center">
-									<tr><td>Nro Orden:</td></tr>
-									<tr><td>@NroOrden</td></tr>
+									<tr><td align="center"><b>Nro Orden:</b></td></tr>
+									<tr><td align="center">@NroOrden</td></tr>
 
 								</table>
 							</td>
 						</tr>
+						<tr><td colspan="2" height="10"></td></tr>
 						<tr>
 							<td colspan="2">
 								<table align="right">
 									<tr>
-										<td>Fecha entrada:</td>
-										<td>@fechaentrada</td>
+										<td align="right"><b>Ingreso:</b></td>
 									</tr>
 									<tr>
-										<td align="right">Fecha Retiro:</td>
-										<td>@fecharetiro</td>
+										<td align="right">@fechaentrada</td>
+									</tr>
+									<tr>
+										<td align="right">@hsentrada</td>
+									</tr>
+									<tr>
+										<td align="right"><b>Retiro:</b></td>
+
+									</tr>
+									<tr>
+										<td align="right">@fecharetiro</td>
+									</tr>
+									<tr>
+										<td align="right">@hsretiro</td>
 									</tr>
 								</table>
 
@@ -51,7 +63,7 @@
 										<td>@cliente</td>
 									</tr>
 									<tr>
-										<td align="left">Direcci�n:</td>
+										<td align="left">Dirección:</td>
 										<td>@direccion</td>
 									</tr>
 									<tr>
@@ -66,11 +78,11 @@
 						<tr>
 							<td colspan="2">
 								<table class="border" style="width:100%">
-									<thead style="background-color:#D8D8D8">
+									<thead>
 										<tr>
-											<th>Nro</th>
-											<th>Servicio</th>
-											<th>Tipo Prenda</th>
+											<th style="background-color:#D8D8D8">N° Item</th>
+											<th style="background-color:#D8D8D8">Servicio</th>
+											<th style="background-color:#D8D8D8">Tipo Prenda</th>
 
 										</tr>
 									</thead>
@@ -83,20 +95,20 @@
 						<tr><td colspan="2" height="10"></td></tr>
 						<tr>
 							<td colspan="1">
-								Observaciones
-								<table class="border">
-									<tr><td>@obs</td></tr>
+
+								<table>
+									<tr><td valign="top" width="100">@obs</td></tr>
 								</table>
 							</td>
 							<td>
-								<table class="border">
+								<table>
 									<tr>
-										<td>Descuento:</td>
+										<td><b>Descuento:</b></td>
 										<td>@Desc</td>
 									</tr>
 									<tr>
-										<td>Se�a:</td>
-										<td>@Se�a</td>
+										<td><b>Seña:</b></td>
+										<td>@Seña</td>
 									</tr>
 								</table>
 							</td>
@@ -109,7 +121,7 @@
 						<tr>
 							<td style="width:75%">
 								<table>
-									<tr><td><h3>@NombreLavanderia</h3></td></tr>
+									<tr><td><font size="5">@NombreLavanderia</font></td></tr>
 									<tr><td>@DireccionLav</td></tr>
 									<tr><td>Tel:@TelLav</td></tr>
 									<tr><td>@Redes</td></tr>
@@ -117,21 +129,34 @@
 							</td>
 							<td>
 								<table class="border" align="center">
-									<tr><td align="center">Nro Orden:</td></tr>
+									<tr><td align="center"><b>Nro Orden:</b></td></tr>
 									<tr><td align="center">@NroOrden</td></tr>
+
 								</table>
 							</td>
 						</tr>
+						<tr><td colspan="2" height="10"></td></tr>
 						<tr>
 							<td colspan="2">
 								<table align="right">
 									<tr>
-										<td>Fecha entrada:</td>
-										<td>@fechaentrada</td>
+										<td align="right"><b>Ingreso:</b></td>
 									</tr>
 									<tr>
-										<td align="right">Fecha Retiro:</td>
-										<td>@fecharetiro</td>
+										<td align="right">@fechaentrada</td>
+									</tr>
+									<tr>
+										<td align="right">@hsentrada</td>
+									</tr>
+									<tr>
+										<td align="right"><b>Retiro:</b></td>
+
+									</tr>
+									<tr>
+										<td align="right">@fecharetiro</td>
+									</tr>
+									<tr>
+										<td align="right">@hsretiro</td>
 									</tr>
 								</table>
 
@@ -141,7 +166,7 @@
 										<td>@cliente</td>
 									</tr>
 									<tr>
-										<td align="left">Direcci�n:</td>
+										<td align="left">Dirección:</td>
 										<td>@direccion</td>
 									</tr>
 									<tr>
@@ -156,11 +181,11 @@
 						<tr>
 							<td colspan="2">
 								<table class="border" style="width:100%">
-									<thead style="background-color:#D8D8D8">
+									<thead>
 										<tr>
-											<th>Nro</th>
-											<th>Servicio</th>
-											<th>Tipo Prenda</th>
+											<th style="background-color:#D8D8D8">N° Item</th>
+											<th style="background-color:#D8D8D8">Servicio</th>
+											<th style="background-color:#D8D8D8">Tipo Prenda</th>
 
 										</tr>
 									</thead>
@@ -173,20 +198,19 @@
 						<tr><td colspan="2" height="10"></td></tr>
 						<tr>
 							<td colspan="1">
-								Observaciones
-								<table class="border">
-									<tr><td>@obs</td></tr>
+								<table>
+									<tr><td valign="top" width="100">@obs</td></tr>
 								</table>
 							</td>
 							<td>
-								<table class="border">
+								<table>
 									<tr>
-										<td>Descuento:</td>
+										<td><b>Descuento:</b></td>
 										<td>@Desc</td>
 									</tr>
 									<tr>
-										<td>Se�a:</td>
-										<td>@Se�a</td>
+										<td><b>Seña:</b></td>
+										<td>@Seña</td>
 									</tr>
 								</table>
 							</td>

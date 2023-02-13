@@ -118,6 +118,7 @@ namespace UI.Desktop
                     break;
             }
         }
+        /*
         public void ListarItems()
         {
             listItemsRetiro.Items.Clear();
@@ -128,6 +129,7 @@ namespace UI.Desktop
                     {
                         return p.FechaDesde <= DateTime.Today;
                     });
+                
                 ListViewItem item = new ListViewItem(i.ServicioTipoPrenda.Servicio.Descripcion);
                 item.SubItems.Add(i.ServicioTipoPrenda.TipoPrenda.Descripcion);
                 item.SubItems.Add(i.Estado.ToString());
@@ -153,10 +155,79 @@ namespace UI.Desktop
                 _total = _totalitems;
                 this.txtTotalFactura.Text = _totalitems.ToString();
             }
+            if(OrdenActual.Factura.Importe != _total)
+            {
+                OrdenActual.Factura.Importe = _total;
+            }
             
         }
-    
-        
+        */
+        public void ListarItems()
+        {
+            listItemsRetiro.Items.Clear();
+
+            if (OrdenActual is not null && (OrdenActual.Estado == Orden.Estados.Pagado || OrdenActual.Factura.FechaFactura != DateTime.MinValue))
+            {
+                Pago pago = OrdenActual.Factura.Pagos.FindLast(delegate (Pago p) { return p.FechaPago <= DateTime.Now; });
+                foreach (OrdenServicioTipoPrenda i in _itemsServicio)
+                {
+                    Precio precioActual = i.ServicioTipoPrenda.HistoricoPrecios.FindLast(
+                        delegate (Precio p)
+                        {
+                            return p.FechaDesde <= pago.FechaPago;
+                        });
+                    ListViewItem item = new ListViewItem(i.ServicioTipoPrenda.Servicio.Descripcion);
+                    item.SubItems.Add(i.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                    item.SubItems.Add(i.Estado.ToString());
+                    item.SubItems.Add(precioActual.Valor.ToString());
+                    listItemsRetiro.Items.Add(item);
+                    _totalitems += precioActual.Valor;
+                }
+            }
+            else
+            {
+                foreach (OrdenServicioTipoPrenda i in _itemsServicio)
+                {
+                    Precio precioActual = i.ServicioTipoPrenda.HistoricoPrecios.FindLast(
+                        delegate (Precio p)
+                        {
+                            return p.FechaDesde <= DateTime.Now;
+                        });
+                    ListViewItem item = new ListViewItem(i.ServicioTipoPrenda.Servicio.Descripcion);
+                    item.SubItems.Add(i.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                    item.SubItems.Add(i.Estado.ToString());
+                    item.SubItems.Add(precioActual.Valor.ToString());
+                    listItemsRetiro.Items.Add(item);
+                    _totalitems += precioActual.Valor;
+                }
+            }
+            if (OrdenActual.Descuento != null)
+            {
+                if (OrdenActual.Descuento.Contains("%"))
+                {
+                    string desc = OrdenActual.Descuento.Substring(1, OrdenActual.Descuento.Length - 1);
+                    _total = _totalitems * (1 - (Double.Parse(desc) / 100.0));
+                }
+                else
+                {
+                    _total = _totalitems - Int32.Parse(OrdenActual.Descuento);
+                }
+                this.txtTotalFactura.Text = _total.ToString();
+            }
+            else
+            {
+                _total = _totalitems;
+                this.txtTotalFactura.Text = _totalitems.ToString();
+            }
+            
+            if (OrdenActual.Factura.Importe != _total)
+            {
+                OrdenActual.Factura.Importe = _total;
+                OrdenActual.Factura.State = BusinessEntity.States.Modified;
+                _facturaLogic.Save(OrdenActual.Factura);
+            }
+        }
+
 
         private void btnPagoRetirar_Click(object sender, EventArgs e)
         {
@@ -220,6 +291,7 @@ namespace UI.Desktop
         {
             Close();
         }
+        /*
         public void PrintComprobante()
         {
             SaveFileDialog sfd = new SaveFileDialog();
@@ -335,6 +407,7 @@ namespace UI.Desktop
 
             }
         }
+        */
         private void btnImpFactura_Click(object sender, EventArgs e)
         {
             negocio = _atributosLogic.GetAll().FirstOrDefault();
@@ -344,12 +417,12 @@ namespace UI.Desktop
                 {
                     frmAtributosNegocio frmAtributosnegocio = new frmAtributosNegocio(ModoForm.Alta, _context);
                     frmAtributosnegocio.ShowDialog();
-                    PrintComprobante();
+                    //PrintComprobante();
                 }
             }
             else
             {
-                PrintComprobante();
+                //PrintComprobante();
             }
            
         }

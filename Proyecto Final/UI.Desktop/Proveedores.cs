@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
 using Data.Database;
+using System.Collections;
 
 namespace UI.Desktop
 {
@@ -17,13 +18,19 @@ namespace UI.Desktop
     {
         private readonly ProveedorLogic _proveedorLogic;
         private readonly LavanderiaContext _context;
-        
+        private ListViewColumnSorter lvwColumnSorter;
+
+
         public Proveedores(LavanderiaContext context)
         {
             InitializeComponent();
             _context = context;
             _proveedorLogic = new ProveedorLogic(new ProveedorAdapter(context));
             ListarProveedores();
+            // Create an instance of a ListView column sorter and assign it
+            // to the ListView control.
+            lvwColumnSorter = new ListViewColumnSorter();
+            this.listProveedores.ListViewItemSorter = lvwColumnSorter;
         }
 
         private void ListarProveedores()
@@ -216,6 +223,32 @@ namespace UI.Desktop
         private void listProveedores_SelectedIndexChanged(object sender, EventArgs e)
         {
             listIngresosInsumos.Items.Clear();
+        }
+
+        private void listProveedores_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.listProveedores.Sort();
         }
     }
 

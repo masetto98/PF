@@ -198,14 +198,26 @@ namespace UI.Desktop
                     
                     break;
                 case ModoForm.Consulta:
-                    this.btnAceptar.Text = "Aceptar";
-                    this.btnAgregarItemOrden.Enabled = false;
-                    this.btnEliminarItemOrden.Enabled = false;
+                    this.btnAceptar.Visible = false;
+                    this.btnCancelar.Text = "Salir";
                     this.cmbServicios.Enabled = false;
                     this.cmbTipoPrenda.Enabled = false;
-                    this.btnBuscar.Enabled = false;
+                    this.txtCuit.Enabled = false;
+                    this.btnAgregarItemOrden.Enabled = false;
+                    this.btnEliminarItemOrden.Enabled = false;
+                    this.txtDescuento.Enabled = false;
+                    this.txtSeniaOrden.Enabled = false;
+                    this.rbtnPorcentaje.Enabled = false;
+                    this.rbtnValor.Enabled = false;
+                    this.cmbEntregaDomicilio.Enabled = false;
+                    this.cmbPrioridad.Enabled = false;
+                    this.cmbEstado.Enabled = false;
+                    this.txtObservaciones.Enabled = false;
+                    this.cbFormaPago.Enabled = false;
                     this.btnAgregarCliente.Enabled = false;
-                    ;
+                    this.dtpFechaEntrega.Enabled = false;
+                    this.nudHoraEntrega.Enabled = false;
+                    
                     break;
             }
         }
@@ -232,7 +244,7 @@ namespace UI.Desktop
                 {
                     OrdenActual.Senia = true;
                     
-                    FacturaActual.FechaFactura = DateTime.Now;
+                    //FacturaActual.FechaFactura = DateTime.Now;
                     FacturaActual.Pagos = new List<Pago>();
                     PagoActual = new Pago();
                     PagoActual.FechaPago = DateTime.Now;
@@ -382,7 +394,7 @@ namespace UI.Desktop
         {
             listItemsServicio.Items.Clear();
 
-            if (OrdenActual is not null && OrdenActual.Estado == Orden.Estados.Pagado)
+            if (OrdenActual is not null && (OrdenActual.Estado == Orden.Estados.Pagado || OrdenActual.Factura.FechaFactura != DateTime.MinValue))
             {
                 Pago pago = OrdenActual.Factura.Pagos.FindLast(delegate (Pago p) { return p.FechaPago <= DateTime.Now; });
                 foreach (OrdenServicioTipoPrenda i in _itemsServicio)
@@ -502,7 +514,7 @@ namespace UI.Desktop
         private void CalcularImporte()
         {
             _total = 0;
-            if (OrdenActual is not null && OrdenActual.Estado == Orden.Estados.Pagado)
+            if (OrdenActual is not null && (OrdenActual.Estado == Orden.Estados.Pagado || OrdenActual.Factura.FechaFactura != DateTime.MinValue))
             {
                 Pago pago = OrdenActual.Factura.Pagos.FindLast(delegate (Pago p) { return p.FechaPago <= DateTime.Now; });
                 foreach (OrdenServicioTipoPrenda ostp in _itemsServicio)
@@ -716,16 +728,13 @@ namespace UI.Desktop
             {
                 case ModoForm.Alta:
                     {
-                        
-                            GuardarCambios();
-                        
+                           GuardarCambios();
                     };
                     break;
                 case ModoForm.Modificacion:
                     {
                         if (MessageBox.Show($"¿Está seguro que desea modificar la Orden?", "Orden", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
-                            
                             GuardarCambios();
                         }
                     };
@@ -793,7 +802,7 @@ namespace UI.Desktop
                         {
 
 
-                            string comprobanteorden = Properties.Resources.comprobanteorden2.ToString();
+                            string comprobanteorden = Properties.Resources.comprobanteorden.ToString();
                             comprobanteorden = comprobanteorden.Replace("@NombreLavanderia", negocio.NombreEmpresa);
                             comprobanteorden = comprobanteorden.Replace("@DireccionLav", negocio.DireccionEmpresa);
                             comprobanteorden = comprobanteorden.Replace("@TelLav", negocio.TelEmpresa);

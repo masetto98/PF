@@ -283,49 +283,57 @@ namespace UI.Desktop
                                     document.Add(p);
                                     Paragraph fecha = new Paragraph();
                                     fecha.SetTextAlignment(TextAlignment.LEFT);
-                                    fecha.Add($"Fecha de emisión: {DateTime.Now} \n");
+                                    fecha.Add($"Fecha y hora de emisión: {DateTime.Now} \n");
                                     fecha.SetFontSize(9);
                                     document.Add(fecha);
-                                if (dtpFechaHasta.Value.Date != DateTime.Now.Date)
-                                {
-                                    if(dtpFechaDesde.Value.Date != DateTime.Now.Date)
+                                    if (dtpFechaHasta.Value.Date != DateTime.Now.Date)
                                     {
-                                        Paragraph fechaDesde = new Paragraph();
-                                        fechaDesde.SetTextAlignment(TextAlignment.CENTER);
-                                        fechaDesde.Add($"El Reporte abarca desde: {dtpFechaDesde.Value.Date.ToString("yyyy/MM/dd")} - hasta: {dtpFechaHasta.Value.Date.ToString("yyyy/MM/dd")}\n");
-                                        fechaDesde.SetFontSize(9);
-                                        document.Add(fechaDesde);
-                                    }
-                                    else
-                                    {
-                                        Paragraph fechaDesde = new Paragraph();
-                                        fechaDesde.SetTextAlignment(TextAlignment.CENTER);
-                                        fechaDesde.Add($"El Reporte abarca hasta: {dtpFechaHasta.Value.Date.ToString("yyyy/MM/dd")}\n");
-                                        fechaDesde.SetFontSize(9);
-                                        document.Add(fechaDesde);
-                                    }
+                                        if(dtpFechaDesde.Value.Date != DateTime.Now.Date)
+                                        {
+                                            Paragraph fechaDesde = new Paragraph();
+                                            fechaDesde.SetTextAlignment(TextAlignment.CENTER);
+                                            fechaDesde.Add($"El Reporte abarca desde: {dtpFechaDesde.Value.Date.ToString("yyyy/MM/dd")} - hasta: {dtpFechaHasta.Value.Date.ToString("yyyy/MM/dd")}\n");
+                                            fechaDesde.SetFontSize(9);
+                                            document.Add(fechaDesde);
+                                        }
+                                        else
+                                        {
+                                            Paragraph fechaDesde = new Paragraph();
+                                            fechaDesde.SetTextAlignment(TextAlignment.CENTER);
+                                            fechaDesde.Add($"El Reporte abarca hasta: {dtpFechaHasta.Value.Date.ToString("yyyy/MM/dd")}\n");
+                                            fechaDesde.SetFontSize(9);
+                                            document.Add(fechaDesde);
+                                        }
                                     
-                                }
-                                else
-                                {
-                                    Paragraph fechaDesde = new Paragraph();
-                                    fechaDesde.SetTextAlignment(TextAlignment.CENTER);
-                                    fechaDesde.Add($"El Reporte abarca desde: {dtpFechaDesde.Value.Date.ToString("yyyy/MM/dd")}\n");
-                                    fechaDesde.SetFontSize(9);
-                                    document.Add(fechaDesde);
-                                }
-                                if (this.txtBuscar.Text != "")
+                                    }
+                                    else if(dtpFechaDesde.Value.Date != DateTime.Now.Date)
+                                    {
+                                        Paragraph fechaDesde = new Paragraph();
+                                        fechaDesde.SetTextAlignment(TextAlignment.CENTER);
+                                        fechaDesde.Add($"El Reporte abarca desde: {dtpFechaDesde.Value.Date.ToString("yyyy/MM/dd")}\n");
+                                        fechaDesde.SetFontSize(9);
+                                        document.Add(fechaDesde);
+                                    }
+                                    if (clienteActual is not null)
                                     {
                                         Paragraph cliente = new Paragraph();
                                         cliente.SetTextAlignment(TextAlignment.LEFT);
-                                    if(clienteActual.RazonSocial == "")
-                                    {
-                                        cliente.Add($"Cliente: {clienteActual.Nombre}, {clienteActual.Apellido} \n");
-                                    }
-                                    else
-                                    {
-                                        cliente.Add($"Cliente: {clienteActual.RazonSocial} \n");
-                                    }
+                                        if(clienteActual.RazonSocial == "")
+                                        {
+                                            cliente.Add($"Cliente: {clienteActual.Nombre}, {clienteActual.Apellido} \n");
+                                        }
+                                        else
+                                        {
+                                            if(clienteActual.Nombre != "" && clienteActual.Apellido != "")
+                                            {
+                                                cliente.Add($"Cliente: {clienteActual.Nombre}, {clienteActual.Apellido} / {clienteActual.RazonSocial} \n");
+                                            }
+                                            else
+                                            {
+                                                cliente.Add($"Cliente: {clienteActual.RazonSocial} \n");
+                                            }
+                                        
+                                        }
                                         cliente.SetBold();
                                         cliente.SetFontSize(12);
                                         document.Add(cliente);
@@ -586,6 +594,10 @@ namespace UI.Desktop
                     ordenesDeudaCliente = ordenesFiltro;
                     clienteActual = ClienteSelect;
                 }
+            }
+            else
+            {
+                listarOrdenesCliente();
             }
                
         }

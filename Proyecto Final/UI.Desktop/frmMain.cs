@@ -30,6 +30,7 @@ namespace UI.Desktop
         private readonly ClienteLogic _clienteLogic;
         private readonly AtributosNegocioLogic _atributosNegocioLogic;
         private readonly ProveedorLogic _proveedorLogic;
+        private readonly FacturaLogic _facturaLogic;
         private readonly InsumoLogic _insumoLogic;
         private readonly InsumoProveedorLogic _insumoProveedorLogic;
         private readonly OrdenLogic _ordenLogic;
@@ -66,6 +67,7 @@ namespace UI.Desktop
             _ordenServicioTipoPrendaLogic = new OrdenServicioTipoPrendaLogic(new OrdenServicioTipoPrendaAdapter(context));
             _maquinaOrdenServicioTipoPrendaLogic = new MaquinaOrdenServicioTipoPrendaLogic(new MaquinaOrdenServicioTipoPrendaAdapter(context));
             _maquinaLogic = new MaquinaLogic(new MaquinaAdapter(context));
+            _facturaLogic = new FacturaLogic(new FacturaAdapter(context));
             _listaEspera = new List<ItemTrabajo>();
             _listaFinalizados = new List<ItemTrabajo>();
             _atributosLogic = new AtributosNegocioLogic(new AtributosNegocioAdapter(context));
@@ -325,10 +327,29 @@ namespace UI.Desktop
                     {
                         ListViewItem item = new ListViewItem(o.NroOrden.ToString());
                         item.SubItems.Add(o.FechaEntrada.ToString());
-                        double importe = CalcularImporteOrden(o);
-                        item.SubItems.Add(importe.ToString());
-                        double pagos = CalcularPagosOrden(o);
-                        double deudas = importe - pagos;
+                        double pagos = 0;
+                        double deudas = 0;
+                        if(o.Factura.Importe != 0 && o.Factura.FechaFactura.ToString("yyyy/MM/dd") != "0001/01/01")
+                        {
+
+                            pagos = CalcularPagosOrden(o);
+                            deudas = o.Factura.Importe - pagos;
+                            item.SubItems.Add(o.Factura.Importe.ToString());
+                        }
+                        else
+                        {
+                            double importe = CalcularImporteOrden(o);
+                            if (o.Factura.Importe != importe)
+                            {
+                                o.Factura.Importe = importe;
+                                o.Factura.State = BusinessEntity.States.Modified;
+                                _facturaLogic.Save(o.Factura);
+                            }
+                            pagos = CalcularPagosOrden(o);
+                            deudas = importe - pagos;
+                            item.SubItems.Add(importe.ToString());
+                        }
+                        
                         if (deudas == 0) { item.SubItems.Add("Pagado"); }
                         else { item.SubItems.Add(deudas.ToString()); }
                         if (o.FechaSalida == DateTime.MinValue) { item.SubItems.Add("Sin retirar"); }
@@ -450,9 +471,13 @@ namespace UI.Desktop
                     {
                         foreach (Orden o in clienteActual.Ordenes)
                         {
-                            double importe = CalcularImporteOrden(o);
-                            double pagos = CalcularPagosOrden(o);
-                            _deudaCliente += (importe - pagos);
+                            if(o.Factura.FechaFactura == DateTime.MinValue)
+                            {
+                                double importe = CalcularImporteOrden(o);
+                                double pagos = CalcularPagosOrden(o);
+                                _deudaCliente += (importe - pagos);
+                            }
+                           
                             
                         }
                     }
@@ -710,24 +735,48 @@ namespace UI.Desktop
                                 {
                                     foreach (Orden o in clienteActual.Ordenes)
                                     {
-                                        double importe = CalcularImporteOrden(o);
-                                        if (o.Factura.Importe == 0)
+                                        if(o.Factura.Importe == 0 && o.Factura.FechaFactura == DateTime.MinValue)
                                         {
+                                            double importe = CalcularImporteOrden(o);
                                             o.Factura.Importe = importe;
-                                        }
-                                        double pagos = CalcularPagosOrden(o);
-                                        if (importe != pagos)
-                                        {
-                                            o.Factura.FechaFactura = DateTime.Now;
-                                            Pago pagoActual = new Pago();
-                                            pagoActual.FechaPago = DateTime.Now;
-                                            pagoActual.FormaPago = formaPago;
-                                            pagoActual.Importe = importe - pagos;
-                                            o.Factura.Pagos.Add(pagoActual);
-                                            ordenesPagadas.Add(o);
+                                            o.Factura.State = BusinessEntity.States.Modified;
+                                            _facturaLogic.Save(o.Factura);
+                                            double pagos = CalcularPagosOrden(o);
+                                            if (importe != pagos)
+                                            {
+                                                o.Factura.FechaFactura = DateTime.Now;
+                                                Pago pagoActual = new Pago();
+                                                pagoActual.FechaPago = DateTime.Now;
+                                                pagoActual.FormaPago = formaPago;
+                                                pagoActual.Importe = importe - pagos;
+                                                o.Factura.Pagos.Add(pagoActual);
+                                                ordenesPagadas.Add(o);
 
+                                            }
                                         }
-                                       
+                                        else if(o.Factura.Importe != 0 && o.Factura.FechaFactura == DateTime.MinValue)
+                                        {
+                                            double importe = CalcularImporteOrden(o);
+                                            if(o.Factura.Importe != importe)
+                                            {
+                                                o.Factura.Importe = importe;
+                                                o.Factura.State = BusinessEntity.States.Modified;
+                                                _facturaLogic.Save(o.Factura);
+                                            }
+                                            double pagos = CalcularPagosOrden(o);
+                                            if (importe != pagos)
+                                            {
+                                                o.Factura.FechaFactura = DateTime.Now;
+                                                Pago pagoActual = new Pago();
+                                                pagoActual.FechaPago = DateTime.Now;
+                                                pagoActual.FormaPago = formaPago;
+                                                pagoActual.Importe = importe - pagos;
+                                                o.Factura.Pagos.Add(pagoActual);
+                                                ordenesPagadas.Add(o);
+
+                                            }
+                                        }
+                                                                              
                                     }
                                     
                                     clienteActual.State = BusinessEntity.States.Modified;
@@ -1559,7 +1608,7 @@ namespace UI.Desktop
             {
                 int nroOrden = Int32.Parse(this.listOrdenes.SelectedItems[0].Text);
                 Orden orden = _ordenLogic.GetOne(nroOrden);
-                if (orden.Estado != Orden.Estados.Finalizado && orden.Estado != Orden.Estados.Retirado)
+                if (orden.Estado != Orden.Estados.Finalizado && orden.Estado != Orden.Estados.Retirado && orden.Estado != Orden.Estados.Pagado)
                 {
                     OrdenDesktop frmOrden = new OrdenDesktop(nroOrden, ApplicationForm.ModoForm.Modificacion, _context);
                     frmOrden.ShowDialog();
@@ -1568,12 +1617,12 @@ namespace UI.Desktop
                 }
                 else 
                 {
-                    MessageBox.Show("La orden seleccionada está FINALIZADA o RETIRADA y NO es posible modificarla", "Orden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("La orden seleccionada se encuentra FINALIZADA, PAGADA o RETIRADA y por lo tanto NO es posible modificarla", "Orden", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
-                MessageBox.Show("Debe seleccionar una fila en la lista para poder editar una Orden", "Orden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Debe seleccionar una fila en la lista para poder editar una orden", "Orden", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }

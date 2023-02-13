@@ -61,6 +61,8 @@ namespace UI.Desktop
             this.columnVal = new System.Windows.Forms.ColumnHeader();
             this.columnTp = new System.Windows.Forms.ColumnHeader();
             this.materialCard7 = new MaterialSkin.Controls.MaterialCard();
+            this.lblDatosCliente = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel19 = new MaterialSkin.Controls.MaterialLabel();
             this.btnSaldarDeuda = new MaterialSkin.Controls.MaterialButton();
             this.lblCuentaCorriente = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
@@ -239,8 +241,6 @@ namespace UI.Desktop
             this.imgUserLogin = new System.Windows.Forms.PictureBox();
             this.btnCerrarSesion = new MaterialSkin.Controls.MaterialButton();
             this.niFaltaInsumos = new System.Windows.Forms.NotifyIcon(this.components);
-            this.materialLabel19 = new MaterialSkin.Controls.MaterialLabel();
-            this.lblDatosCliente = new MaterialSkin.Controls.MaterialLabel();
             this.mnuPrincipal.SuspendLayout();
             this.mnuTabOrdenes.SuspendLayout();
             this.mnuTabClientes.SuspendLayout();
@@ -729,6 +729,34 @@ namespace UI.Desktop
             this.materialCard7.Padding = new System.Windows.Forms.Padding(14);
             this.materialCard7.Size = new System.Drawing.Size(411, 86);
             this.materialCard7.TabIndex = 14;
+            // 
+            // lblDatosCliente
+            // 
+            this.lblDatosCliente.AutoSize = true;
+            this.lblDatosCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.lblDatosCliente.Depth = 0;
+            this.lblDatosCliente.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblDatosCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblDatosCliente.Location = new System.Drawing.Point(77, 10);
+            this.lblDatosCliente.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblDatosCliente.Name = "lblDatosCliente";
+            this.lblDatosCliente.Size = new System.Drawing.Size(5, 19);
+            this.lblDatosCliente.TabIndex = 5;
+            this.lblDatosCliente.Text = "-";
+            // 
+            // materialLabel19
+            // 
+            this.materialLabel19.AutoSize = true;
+            this.materialLabel19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel19.Depth = 0;
+            this.materialLabel19.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel19.Location = new System.Drawing.Point(12, 11);
+            this.materialLabel19.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel19.Name = "materialLabel19";
+            this.materialLabel19.Size = new System.Drawing.Size(53, 19);
+            this.materialLabel19.TabIndex = 4;
+            this.materialLabel19.Text = "Cliente:";
             // 
             // btnSaldarDeuda
             // 
@@ -3288,30 +3316,6 @@ namespace UI.Desktop
             this.niFaltaInsumos.Text = "Insumos";
             this.niFaltaInsumos.Visible = true;
             this.niFaltaInsumos.BalloonTipClicked += new System.EventHandler(this.niFaltaInsumos_BalloonTipClicked);
-            // 
-            // materialLabel19
-            // 
-            this.materialLabel19.AutoSize = true;
-            this.materialLabel19.Depth = 0;
-            this.materialLabel19.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel19.Location = new System.Drawing.Point(12, 11);
-            this.materialLabel19.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel19.Name = "materialLabel19";
-            this.materialLabel19.Size = new System.Drawing.Size(53, 19);
-            this.materialLabel19.TabIndex = 4;
-            this.materialLabel19.Text = "Cliente:";
-            // 
-            // lblDatosCliente
-            // 
-            this.lblDatosCliente.AutoSize = true;
-            this.lblDatosCliente.Depth = 0;
-            this.lblDatosCliente.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblDatosCliente.Location = new System.Drawing.Point(77, 10);
-            this.lblDatosCliente.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblDatosCliente.Name = "lblDatosCliente";
-            this.lblDatosCliente.Size = new System.Drawing.Size(5, 19);
-            this.lblDatosCliente.TabIndex = 5;
-            this.lblDatosCliente.Text = "-";
             // 
             // frmMain
             // 

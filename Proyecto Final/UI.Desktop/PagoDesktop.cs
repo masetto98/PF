@@ -247,11 +247,7 @@ namespace UI.Desktop
                 PagoActual.FechaPago = DateTime.Now;
                 PagoActual.FormaPago = (Business.Entities.Pago.FormasPago)Enum.Parse(typeof(Business.Entities.Pago.FormasPago), cbFormaPago.SelectedItem.ToString());
                 PagoActual.Importe = double.Parse(txtImportePago.Text);
-                if (FacturaActual.FechaFactura.ToString("yyyy/MM/dd") == "0001/01/01")
-                {
-                    FacturaActual.FechaFactura = DateTime.Now;
-                }
-                
+                              
                 FacturaActual.Pagos = new List<Pago>();
                 _pagosActuales.Add(PagoActual);
                 /*
@@ -302,6 +298,10 @@ namespace UI.Desktop
             double totalActual = TotalPagos();
             if(totalActual == FacturaActual.Importe && OrdenActual.Estado != Orden.Estados.Retirado)
             {
+                if (FacturaActual.FechaFactura.ToString("yyyy/MM/dd") == "0001/01/01") //BANDERA
+                {
+                    FacturaActual.FechaFactura = DateTime.Now;
+                }
                 if (OrdenActual.Estado == Orden.Estados.Finalizado) { OrdenActual.Estado = Orden.Estados.Pagado;}
                 
                 OrdenActual.State = BusinessEntity.States.Modified;

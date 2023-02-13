@@ -215,17 +215,17 @@ namespace UI.Desktop
                         ServicioTipoPrendaActual.State = BusinessEntity.States.Modified;
                         foreach (Precio p in stpBorrada.HistoricoPrecios) {ServicioTipoPrendaActual.HistoricoPrecios.Add(p);}
                     }*/
-                    Business.Entities.ServicioTipoPrenda stp = _servicioTipoPrendaLogic.GetOne((int)this.cmbServicios.SelectedValue,(int) this.cmbTipoPrendas.SelectedValue);
-                    if (stp is null)
-                    {
-                        _servicioTipoPrendaLogic.Save(ServicioTipoPrendaActual);
+                    // Business.Entities.ServicioTipoPrenda stp = _servicioTipoPrendaLogic.GetOne((int)this.cmbServicios.SelectedValue,(int) this.cmbTipoPrendas.SelectedValue);
+                    //  if (stp is null)
+                    // {
+                    _servicioTipoPrendaLogic.Save(ServicioTipoPrendaActual);
                         //Close();
                         Dispose();
-                    }
-                    else 
-                    {
-                        MessageBox.Show("El SERVICIO - TIPO PRENDA ya existe", "Servicio - Tipo Prenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    //  }
+                    //  else
+                    // {
+                    // MessageBox.Show("El SERVICIO - TIPO PRENDA ya existe", "Servicio - Tipo Prenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // }
                 }
                 else
                 {

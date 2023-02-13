@@ -86,6 +86,7 @@ namespace UI.Desktop
             this.listProveedores.TabIndex = 0;
             this.listProveedores.UseCompatibleStateImageBehavior = false;
             this.listProveedores.View = System.Windows.Forms.View.Details;
+            this.listProveedores.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listProveedores_ColumnClick);
             this.listProveedores.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listProveedores_ColumnWidthChanging);
             this.listProveedores.SelectedIndexChanged += new System.EventHandler(this.listProveedores_SelectedIndexChanged);
             // 

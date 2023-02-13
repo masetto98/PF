@@ -713,7 +713,7 @@ namespace UI.Desktop
             this.cbFormaPago.Hint = "Forma de pago";
             this.cbFormaPago.IntegralHeight = false;
             this.cbFormaPago.ItemHeight = 43;
-            this.cbFormaPago.Location = new System.Drawing.Point(122, 37);
+            this.cbFormaPago.Location = new System.Drawing.Point(122, 36);
             this.cbFormaPago.MaxDropDownItems = 4;
             this.cbFormaPago.MouseState = MaterialSkin.MouseState.OUT;
             this.cbFormaPago.Name = "cbFormaPago";

@@ -275,7 +275,7 @@ namespace UI.Desktop
             // nomCliente
             // 
             this.nomCliente.Text = "Nombre y apellido / Razón Social";
-            this.nomCliente.Width = 250;
+            this.nomCliente.Width = 300;
             // 
             // ReporteDeudas
             // 
