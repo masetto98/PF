@@ -126,7 +126,7 @@ namespace UI.Desktop
                 Precio precioActual = i.ServicioTipoPrenda.HistoricoPrecios.FindLast(
                     delegate (Precio p)
                     {
-                        return p.FechaDesde <= DateTime.Today;
+                        return p.FechaDesde <= DateTime.Today.AddHours(23).AddMinutes(59).AddMilliseconds(59999);
                     });
                 ListViewItem item = new ListViewItem(i.ServicioTipoPrenda.Servicio.Descripcion);
                 item.SubItems.Add(i.ServicioTipoPrenda.TipoPrenda.Descripcion);

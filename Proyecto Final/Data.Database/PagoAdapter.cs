@@ -19,7 +19,7 @@ namespace Data.Database
             List<Pago> pagos = new List<Pago>();
             try
             {
-                pagos = _context.Pagos.Where(p => p.Borrado == false).ToList();
+                pagos = _context.Pagos.ToList();
             }
             catch (Exception e)
             {
@@ -32,7 +32,7 @@ namespace Data.Database
         {
             try
             {
-                return _context.Pagos.Where(p => p.Borrado == false).FirstOrDefault(p => p.NroFactura == nroFactura && p.FechaPago == fechaPago);
+                return _context.Pagos.FirstOrDefault(p => p.NroFactura == nroFactura && p.FechaPago == fechaPago);
             }
             catch (Exception e)
             {
@@ -67,6 +67,7 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
+        
         public void Delete(int nroFactura, DateTime fechaPago)
         {
             Pago pago = new Pago();
@@ -82,6 +83,24 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
+        /*
+        public void Delete(int nroFactura, DateTime fechaPago)
+        {
+            Pago pago = new Pago();
+            try
+            {
+                pago = _context.Pagos.Find(nroFactura, fechaPago);
+                pago.Borrado = true;
+                pago.State = BusinessEntity.States.Modified;
+                _context.Pagos.Update(pago);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al modificar datos del pago", e);
+                throw ExceptionManejada;
+            }
+        }*/
 
         public void Save(Pago pago)
         {

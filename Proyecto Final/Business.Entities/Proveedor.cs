@@ -17,6 +17,7 @@ namespace Business.Entities
         private string _telefono;
         private string _email;
         private string _direccion;
+        private bool _deleted;
         private List<InsumoProveedor> _insumosProveedor;//Lista de insumos que provee ese proveedor
 
         [Key]
@@ -55,6 +56,13 @@ namespace Business.Entities
         {
             get { return _direccion; }
             set { _direccion = value; }
+        }
+
+        [Column("deleted")]
+        public bool Borrado
+        {
+            get { return _deleted; }
+            set { _deleted = value; }
         }
 
         public List<InsumoProveedor> InsumosProveedor

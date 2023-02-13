@@ -68,6 +68,7 @@ namespace Data.Database
             throw ExceptionManejada;
             }
         }
+        
         public void Delete(int idTipoMaquina)
         {
             TiposMaquina tipoMaquina = new TiposMaquina();
@@ -83,6 +84,24 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
+        /*
+        public void Delete(int idTipoMaquina)
+        {
+            TiposMaquina tipoMaquina = new TiposMaquina();
+            try
+            {
+                tipoMaquina = _context.TiposMaquinas.Find(idTipoMaquina);
+                tipoMaquina.Borrado = true;
+                tipoMaquina.State = BusinessEntity.States.Modified;
+                _context.TiposMaquinas.Update(tipoMaquina);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al modificar datos del tipo de máquina", e);
+                throw ExceptionManejada;
+            }
+        }*/
 
         public void Save(TiposMaquina tipoMaquina)
         {

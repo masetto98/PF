@@ -151,7 +151,14 @@ namespace UI.Desktop
             }
             try
             {
-                _itemsServicio = OrdenActual.ItemsPedidos;
+                if (OrdenActual.ItemsPedidos is not null)
+                {
+                    foreach (OrdenServicioTipoPrenda ostp in OrdenActual.ItemsPedidos)
+                    {
+                        _itemsServicio.Add(ostp);
+                    }
+                }
+                //_itemsServicio = OrdenActual.ItemsPedidos;
                 ListarItems();
                 CalcularImporte();
                 List<Servicio> servicios = _servicioLogic.GetAll();
@@ -669,7 +676,8 @@ namespace UI.Desktop
                             }
                         }
                         
-                        Close();
+                        //Close();
+                        Dispose();
                     }
                 }
                 else 
@@ -736,12 +744,14 @@ namespace UI.Desktop
                         {
                             InformarPagosOrdenABorrar();
                             Eliminar();
-                            Close();
+                            //Close();
+                            Dispose();
                         }
                     };
                     break;
                 case ModoForm.Consulta:
-                    Close();
+                    //Close();
+                    Dispose();
                     break;
             }
         }
@@ -882,7 +892,8 @@ namespace UI.Desktop
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            Close();
+            //Close();
+            Dispose();
         }
 
         private void listItemsServicio_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)

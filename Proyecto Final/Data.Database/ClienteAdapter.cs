@@ -35,7 +35,7 @@ namespace Data.Database
             try
             {
                 return _context.Clientes.Where(c => c.Borrado == false).
-                    Include(c => c.Ordenes.Where(o => o.Borrado== false)).
+                    Include(c => c.Ordenes).
                     FirstOrDefault(c => c.IdCliente == idCliente);
             }
             catch (Exception e)
@@ -71,6 +71,7 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
+        /*
         public void Delete(int idCliente)
         {
             Cliente cliente = new Cliente();
@@ -83,6 +84,24 @@ namespace Data.Database
             catch (Exception e)
             {
                 Exception ExceptionManejada = new Exception("Error al eliminar cliente", e);
+                throw ExceptionManejada;
+            }
+        }*/
+
+        public void Delete(int idCliente)
+        {
+            Cliente cliente = new Cliente();
+            try
+            {
+                cliente = _context.Clientes.Find(idCliente);
+                cliente.Borrado = true;
+                cliente.State = BusinessEntity.States.Modified;
+                _context.Clientes.Update(cliente);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al eliminar el cliente", e);
                 throw ExceptionManejada;
             }
         }

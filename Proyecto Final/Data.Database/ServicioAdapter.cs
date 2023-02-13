@@ -68,6 +68,7 @@ namespace Data.Database
                 throw ExceptionManejada;
             }
         }
+        /*
         public void Delete(int idServicio)
         {
             Servicio servicio = new Servicio();
@@ -80,6 +81,29 @@ namespace Data.Database
             catch (Exception e)
             {
                 Exception ExceptionManejada = new Exception("Error al eliminar servicio", e);
+                throw ExceptionManejada;
+            }
+        }*/
+
+        public void Delete(int idServicio)
+        {
+            Servicio servicio = new Servicio();
+            try
+            {
+                servicio = _context.Servicios.Find(idServicio);
+                servicio.Borrado = true;
+                servicio.State = BusinessEntity.States.Modified;
+                foreach (ServicioTipoPrenda stp in servicio.ServicioTipoPrenda)
+                {
+                    stp.Borrado = true;
+                    stp.State = BusinessEntity.States.Modified;
+                }
+                _context.Servicios.Update(servicio);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Exception ExceptionManejada = new Exception("Error al borrar servicio", e);
                 throw ExceptionManejada;
             }
         }

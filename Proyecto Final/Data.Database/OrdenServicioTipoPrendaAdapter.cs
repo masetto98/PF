@@ -20,7 +20,7 @@ namespace Data.Database
             List<OrdenServicioTipoPrenda> itemsOrden = new List<OrdenServicioTipoPrenda>();
             try
             {
-                itemsOrden = _context.OrdenesServiciosTipoPrendas.Where(i => i.Borrado == false)
+                itemsOrden = _context.OrdenesServiciosTipoPrendas
                     .Include(i => i.Orden)
                     .Include(i => i.ServicioTipoPrenda)
                         .ThenInclude(stp => stp.Servicio)
@@ -39,14 +39,14 @@ namespace Data.Database
         {
             try
             {
-                return _context.OrdenesServiciosTipoPrendas.Where(i => i.Borrado == false)
+                return _context.OrdenesServiciosTipoPrendas
                     .Include(i => i.Orden)
                     .Include(i => i.ServicioTipoPrenda)
                         .ThenInclude(stp => stp.InsumoServicioTipoPrenda)
                             .ThenInclude(stp => stp.Insumo)
                     .Include(i => i.ServicioTipoPrenda)
                         .ThenInclude(stp => stp.TipoPrenda)
-                    .Include(i => i.MaquinaOrdenServicioTipoPrenda.Where(mostp => mostp.Borrado == false))
+                    .Include(i => i.MaquinaOrdenServicioTipoPrenda)
                     .FirstOrDefault(o => o.NroOrden == nroOrden && o.IdServicio==idServicio && o.IdTipoPrenda==idTipoPrenda && o.OrdenItem==ordenItem);
             }
             catch (Exception e)
@@ -119,7 +119,7 @@ namespace Data.Database
         {
             try
             {
-                var consulta = from items in GetAll() where items.Estado != OrdenServicioTipoPrenda.Estados.Finalizado && items.Borrado == false
+                var consulta = from items in GetAll() where items.Estado != OrdenServicioTipoPrenda.Estados.Finalizado 
                                orderby items.Orden.FechaEntrada descending
                                select items;
                                
@@ -137,7 +137,7 @@ namespace Data.Database
             try
             {
                 var consulta = from items in GetAll()
-                               where items.Estado == OrdenServicioTipoPrenda.Estados.Procesando && items.Borrado == false
+                               where items.Estado == OrdenServicioTipoPrenda.Estados.Procesando
                                orderby items.Orden.FechaEntrada descending
                                select items;
 
