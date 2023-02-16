@@ -86,7 +86,7 @@ namespace UI.Desktop
             // columnDescripcion
             // 
             this.columnDescripcion.Text = "Descripción";
-            this.columnDescripcion.Width = 150;
+            this.columnDescripcion.Width = 155;
             // 
             // columnFechaRealizado
             // 

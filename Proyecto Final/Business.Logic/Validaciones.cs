@@ -157,7 +157,18 @@ namespace Business.Logic
             RuleFor(x => x.Nombre).NotEmpty();
             RuleFor(x => x.Apellido).NotEmpty();
             RuleFor(x => x.Telefono).NotEmpty().Matches("^[0-9]+$").WithMessage("'Teléfono' debe contener solo números");
-            RuleFor(x => x.Email).NotEmpty().EmailAddress();
+            //RuleFor(x => x.Email).NotEmpty().EmailAddress();
+            
+            RuleFor(x => x.Email).EmailAddress();
+            RuleFor(x => x.Direccion).NotEmpty().MaximumLength(50).Matches("^[a-zA-Z0-9üéáíóúñÑ ]+$").WithMessage("'Dirección' debe contener solo letras y/o números");
+        }
+        public ClienteValidator(string email)
+        {
+            RuleFor(x => x.Cuit).NotEmpty().Matches("^[0-9]+$").WithMessage("'Cuit' debe contener solo números");
+            RuleFor(x => x.Nombre).NotEmpty();
+            RuleFor(x => x.Apellido).NotEmpty();
+            RuleFor(x => x.Telefono).NotEmpty().Matches("^[0-9]+$").WithMessage("'Teléfono' debe contener solo números");
+            //RuleFor(x => x.Email).NotEmpty().EmailAddress();
             RuleFor(x => x.Direccion).NotEmpty().MaximumLength(50).Matches("^[a-zA-Z0-9üéáíóúñÑ ]+$").WithMessage("'Dirección' debe contener solo letras y/o números");
         }
     }
@@ -170,7 +181,16 @@ namespace Business.Logic
             RuleFor(x => x.Nombre).NotEmpty();
             RuleFor(x => x.Apellido).NotEmpty();
             RuleFor(x => x.Telefono).NotEmpty().Matches("^[0-9]+$").WithMessage("'Teléfono' debe contener solo números");
-            RuleFor(x => x.Email).NotEmpty().EmailAddress();
+            RuleFor(x => x.Email).EmailAddress();
+            RuleFor(x => x.Direccion).NotEmpty().MaximumLength(50).Matches("^[a-zA-Z0-9üéáíóúñÑ ]+$").WithMessage("'Dirección' debe contener solo letras y/o números");
+        }
+        public EmpleadoValidator(string email)
+        {
+            RuleFor(x => x.Cuit).NotEmpty().Matches("^[0-9]+$").WithMessage("'Cuit' debe contener solo números");
+            RuleFor(x => x.Nombre).NotEmpty();
+            RuleFor(x => x.Apellido).NotEmpty();
+            RuleFor(x => x.Telefono).NotEmpty().Matches("^[0-9]+$").WithMessage("'Teléfono' debe contener solo números");
+           
             RuleFor(x => x.Direccion).NotEmpty().MaximumLength(50).Matches("^[a-zA-Z0-9üéáíóúñÑ ]+$").WithMessage("'Dirección' debe contener solo letras y/o números");
         }
     }
@@ -227,6 +247,15 @@ namespace Business.Logic
             RuleFor(x => x.RazonSocial).NotEmpty();
             RuleFor(x => x.Telefono).NotEmpty().Matches("^[0-9]+$").WithMessage("'Teléfono' debe contener solo números");
             RuleFor(x => x.Email).NotEmpty().EmailAddress();
+            RuleFor(x => x.Direccion).NotEmpty().MaximumLength(50).Matches("^[a-zA-Z0-9üéáíóúñÑ ]+$").WithMessage("'Dirección' debe contener solo letras y/o números");
+
+        }
+        public ProveedorValidator(string email)
+        {
+            RuleFor(x => x.Cuit).NotEmpty().Matches("^[0-9]+$").WithMessage("'Cuit' debe contener solo números");
+            RuleFor(x => x.RazonSocial).NotEmpty();
+            RuleFor(x => x.Telefono).NotEmpty().Matches("^[0-9]+$").WithMessage("'Teléfono' debe contener solo números");
+           
             RuleFor(x => x.Direccion).NotEmpty().MaximumLength(50).Matches("^[a-zA-Z0-9üéáíóúñÑ ]+$").WithMessage("'Dirección' debe contener solo letras y/o números");
 
         }

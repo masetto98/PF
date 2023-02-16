@@ -50,7 +50,7 @@ namespace UI.Desktop
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btnCancelar.Size = new System.Drawing.Size(96, 36);
-            this.btnCancelar.TabIndex = 0;
+            this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnCancelar.UseAccentColor = false;
@@ -71,7 +71,7 @@ namespace UI.Desktop
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btnAceptar.Size = new System.Drawing.Size(86, 36);
-            this.btnAceptar.TabIndex = 1;
+            this.btnAceptar.TabIndex = 2;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnAceptar.UseAccentColor = false;
@@ -95,7 +95,7 @@ namespace UI.Desktop
             this.txtID.Multiline = false;
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(71, 50);
-            this.txtID.TabIndex = 2;
+            this.txtID.TabIndex = 0;
             this.txtID.Text = "";
             this.txtID.TrailingIcon = null;
             // 
@@ -115,7 +115,7 @@ namespace UI.Desktop
             this.txtDescripcion.Multiline = false;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(322, 50);
-            this.txtDescripcion.TabIndex = 3;
+            this.txtDescripcion.TabIndex = 1;
             this.txtDescripcion.Text = "";
             this.txtDescripcion.TrailingIcon = null;
             // 

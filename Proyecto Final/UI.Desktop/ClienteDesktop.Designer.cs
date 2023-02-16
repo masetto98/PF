@@ -50,13 +50,13 @@ namespace UI.Desktop
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAceptar.HighEmphasis = true;
             this.btnAceptar.Icon = null;
-            this.btnAceptar.Location = new System.Drawing.Point(150, 545);
+            this.btnAceptar.Location = new System.Drawing.Point(150, 556);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btnAceptar.Size = new System.Drawing.Size(86, 36);
-            this.btnAceptar.TabIndex = 0;
+            this.btnAceptar.TabIndex = 19;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnAceptar.UseAccentColor = false;
@@ -73,7 +73,7 @@ namespace UI.Desktop
             this.txtRazonSocial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtRazonSocial.Hint = "Razón Social";
             this.txtRazonSocial.LeadingIcon = null;
-            this.txtRazonSocial.Location = new System.Drawing.Point(12, 206);
+            this.txtRazonSocial.Location = new System.Drawing.Point(12, 217);
             this.txtRazonSocial.MaxLength = 50;
             this.txtRazonSocial.MouseState = MaterialSkin.MouseState.OUT;
             this.txtRazonSocial.Multiline = false;
@@ -93,7 +93,7 @@ namespace UI.Desktop
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtNombre.Hint = "Nombre";
             this.txtNombre.LeadingIcon = null;
-            this.txtNombre.Location = new System.Drawing.Point(12, 262);
+            this.txtNombre.Location = new System.Drawing.Point(12, 273);
             this.txtNombre.MaxLength = 50;
             this.txtNombre.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNombre.Multiline = false;
@@ -113,7 +113,7 @@ namespace UI.Desktop
             this.txtApellido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtApellido.Hint = "Apellido";
             this.txtApellido.LeadingIcon = null;
-            this.txtApellido.Location = new System.Drawing.Point(12, 318);
+            this.txtApellido.Location = new System.Drawing.Point(12, 329);
             this.txtApellido.MaxLength = 50;
             this.txtApellido.MouseState = MaterialSkin.MouseState.OUT;
             this.txtApellido.Multiline = false;
@@ -133,7 +133,7 @@ namespace UI.Desktop
             this.txtTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtTelefono.Hint = "Teléfono";
             this.txtTelefono.LeadingIcon = null;
-            this.txtTelefono.Location = new System.Drawing.Point(12, 374);
+            this.txtTelefono.Location = new System.Drawing.Point(12, 385);
             this.txtTelefono.MaxLength = 50;
             this.txtTelefono.MouseState = MaterialSkin.MouseState.OUT;
             this.txtTelefono.Multiline = false;
@@ -153,7 +153,7 @@ namespace UI.Desktop
             this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtEmail.Hint = "Email";
             this.txtEmail.LeadingIcon = null;
-            this.txtEmail.Location = new System.Drawing.Point(12, 430);
+            this.txtEmail.Location = new System.Drawing.Point(12, 441);
             this.txtEmail.MaxLength = 50;
             this.txtEmail.MouseState = MaterialSkin.MouseState.OUT;
             this.txtEmail.Multiline = false;
@@ -173,7 +173,7 @@ namespace UI.Desktop
             this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtDireccion.Hint = "Dirección";
             this.txtDireccion.LeadingIcon = null;
-            this.txtDireccion.Location = new System.Drawing.Point(12, 486);
+            this.txtDireccion.Location = new System.Drawing.Point(12, 497);
             this.txtDireccion.MaxLength = 50;
             this.txtDireccion.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDireccion.Multiline = false;
@@ -213,7 +213,7 @@ namespace UI.Desktop
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
-            this.btnCancelar.Location = new System.Drawing.Point(244, 545);
+            this.btnCancelar.Location = new System.Drawing.Point(244, 556);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -252,7 +252,7 @@ namespace UI.Desktop
             this.txtCuit.ShortcutsEnabled = true;
             this.txtCuit.ShowAssistiveText = true;
             this.txtCuit.Size = new System.Drawing.Size(328, 64);
-            this.txtCuit.TabIndex = 19;
+            this.txtCuit.TabIndex = 0;
             this.txtCuit.TabStop = false;
             this.txtCuit.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCuit.TrailingIcon = null;
@@ -262,7 +262,7 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(357, 592);
+            this.ClientSize = new System.Drawing.Size(357, 596);
             this.Controls.Add(this.txtCuit);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtID);

@@ -700,7 +700,7 @@ namespace UI.Desktop
             // columnFechaPago
             // 
             this.columnFechaPago.Text = "Fecha pago";
-            this.columnFechaPago.Width = 204;
+            this.columnFechaPago.Width = 213;
             // 
             // columnVal
             // 
@@ -930,7 +930,7 @@ namespace UI.Desktop
             // columnDeuda
             // 
             this.columnDeuda.Text = "Deuda";
-            this.columnDeuda.Width = 100;
+            this.columnDeuda.Width = 108;
             // 
             // columnSalida
             // 
@@ -1133,7 +1133,7 @@ namespace UI.Desktop
             // columnNombre
             // 
             this.columnNombre.Text = "Nombre";
-            this.columnNombre.Width = 150;
+            this.columnNombre.Width = 145;
             // 
             // columnApellido
             // 
@@ -1143,7 +1143,7 @@ namespace UI.Desktop
             // columnRazonSocial
             // 
             this.columnRazonSocial.Text = "Razón Social";
-            this.columnRazonSocial.Width = 155;
+            this.columnRazonSocial.Width = 160;
             // 
             // mnuTabInventario
             // 

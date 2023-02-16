@@ -116,7 +116,15 @@ namespace UI.Desktop
 
         public override bool Validar()
         {
-            ValidationResult result = new ProveedorValidator().Validate(ProveedorActual);
+            ValidationResult result = new ValidationResult();
+            if(ProveedorActual.Email != "")
+            {
+                result = new ProveedorValidator().Validate(ProveedorActual);
+            }
+            else
+            {
+                result = new ProveedorValidator(ProveedorActual.Email).Validate(ProveedorActual);
+            }
             if (!result.IsValid)
             {
                 string notificacion = string.Join(Environment.NewLine, result.Errors);

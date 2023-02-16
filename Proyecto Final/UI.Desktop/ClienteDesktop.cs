@@ -126,7 +126,16 @@ namespace UI.Desktop
 
         public override bool Validar()
         {
-            ValidationResult result = new ClienteValidator().Validate(ClienteActual);
+            ValidationResult result = new ValidationResult();
+            if(ClienteActual.Email != "")
+            {
+               result = new ClienteValidator().Validate(ClienteActual);
+            }
+            else
+            {
+                result = new ClienteValidator(ClienteActual.Email).Validate(ClienteActual);
+            }
+           
             if (!result.IsValid)
             {
                 string notificacion = string.Join(Environment.NewLine, result.Errors);
@@ -135,7 +144,10 @@ namespace UI.Desktop
             }
             return true;
         }
-
+        public Cliente getClienteActual()
+        {
+            return ClienteActual;
+        }
         public override void GuardarCambios()
         {
             try
@@ -144,6 +156,7 @@ namespace UI.Desktop
                 if (Validar())
                 {
                     _clienteLogic.Save(ClienteActual);
+                    this.DialogResult = DialogResult.OK;
                     Close();
                 }
             }

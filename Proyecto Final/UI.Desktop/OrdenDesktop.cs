@@ -28,6 +28,7 @@ namespace UI.Desktop
 
         private readonly LavanderiaContext _context;
         public Orden OrdenActual { set; get; }
+        public Cliente ClienteActual { set; get; }
         public Pago PagoActual { set; get; }
         public Factura FacturaActual { set; get; }
         public List<Pago> _pagosFactura;
@@ -349,7 +350,11 @@ namespace UI.Desktop
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            cargarCliente();
+            if(txtCuit.Text != "")
+            {
+                cargarCliente();
+            }
+            
         }
 
         private void cargarCliente()
@@ -387,11 +392,49 @@ namespace UI.Desktop
                 MessageBox.Show(e.Message,"Cliente",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
+        private void cargarCliente(Cliente cli)
+        {
+            this.txtDireccion.Text = "";
+            this.txtIdCliente.Text = "";
+            this.txtNombreApellidoRazonSocial.Text = "";
+            try
+            {
+               
+                if (cli == null)
+                {
 
+                    Exception e = new Exception("Ocurrió un error al registrar el nuevo cliente.");
+                    throw e;
+
+                }
+                if (cli.Nombre != "" && cli.Apellido != "" && cli.RazonSocial == "")
+                {
+                    this.txtNombreApellidoRazonSocial.Text = String.Concat(cli.Nombre, " ", cli.Apellido);
+                }
+                if (cli.Nombre != "" && cli.Apellido != "" && cli.RazonSocial != "")
+                {
+                    this.txtNombreApellidoRazonSocial.Text = String.Concat(cli.Nombre, " ", cli.Apellido, " / ", cli.RazonSocial);
+                }
+                this.txtIdCliente.Text = cli.IdCliente.ToString();
+                this.txtDireccion.Text = cli.Direccion;
+                this.txtCuit.Text = cli.Cuit;
+                this.txtCuit.Enabled = false;
+                this.btnBuscar.Enabled = false;
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Cliente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
         private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
             ClienteDesktop frmCliente = new ClienteDesktop(ApplicationForm.ModoForm.Alta, _context);
-            frmCliente.ShowDialog();
+            if (frmCliente.ShowDialog() == DialogResult.OK)
+            {
+                ClienteActual = frmCliente.getClienteActual();
+                cargarCliente(ClienteActual);
+            }
         }
         #endregion
 
@@ -776,7 +819,7 @@ namespace UI.Desktop
                 }
                 if (pagos != 0.0) 
                 { 
-                    MessageBox.Show($"Se debe DEVOLVER al CLIENTE ${pagos}", "Orden", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                    MessageBox.Show($"¡Atención! La factura correspondiente a la orden junto con sus pagos serán eliminados. Se debe DEVOLVER al CLIENTE ${pagos}", "Orden", MessageBoxButtons.OK, MessageBoxIcon.Information); 
                 }
             }
         }

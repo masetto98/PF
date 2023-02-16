@@ -44,23 +44,24 @@ namespace UI.Desktop
             {
                 this.cmbPreguntas.Enabled = true;
                 this.txtRespuesta.Enabled = true;
+                this.txtUsuario.Enabled = false;
                 CargarPreguntas();
             }
             else
             {
                 this.cmbPreguntas.Enabled = false;
                 this.txtRespuesta.Enabled = false;
-                MessageBox.Show("El usuario ingresado es incorrecto", "Usuario", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El nombre de usuario ingresado es incorrecto o no existe. Por favor, ingrese un nombre de usuario válido para continuar.", "Usuario", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void CargarPreguntas() 
         {
             List<string> preguntas = new List<string>();
-            preguntas.Add("¿Como es el nombre de tu perro de la infancia?");
-            preguntas.Add("¿Cual es el nombre de tu superheroe favorito?");
-            preguntas.Add("¿Como es el apellido de soltera de tu madre?");
-            preguntas.Add("¿Cual es el nombre de un amigo de la infancia?");
+            preguntas.Add("¿Cómo es el nombre de tu perro de la infancia?");
+            preguntas.Add("¿Cuál es el nombre de tu superheroe favorito?");
+            preguntas.Add("¿Cómo es el apellido de soltera de tu madre?");
+            preguntas.Add("¿Cuál es el nombre de un amigo de la infancia?");
             this.cmbPreguntas.DataSource = preguntas;
         }
         
@@ -120,13 +121,35 @@ namespace UI.Desktop
 
         private void btnEnviar_Click(object sender, EventArgs e)
         {
-            string respuesta = new Hasher().GenerateHash(this.txtRespuesta.Text, usuarioActual.Salt);
-            if (usuarioActual.Respuesta == respuesta && this.cmbPreguntas.SelectedIndex == usuarioActual.Pregunta)
+            if(usuarioActual is not null)
             {
-                this.txtNewPass.Enabled = true;
-                this.txtRepeatNewPass.Enabled = true;
-                this.btnAceptar.Enabled = true;
+                string respuesta = new Hasher().GenerateHash(this.txtRespuesta.Text, usuarioActual.Salt);
+                if (usuarioActual.Respuesta == respuesta && this.cmbPreguntas.SelectedIndex == usuarioActual.Pregunta)
+                {
+                    this.txtNewPass.Enabled = true;
+                    this.txtRepeatNewPass.Enabled = true;
+                    this.btnAceptar.Enabled = true;
+                    this.cardNuevaContra.Visible = true;
+                    this.lblNuevaContra.Visible = true;
+                    this.txtNewPass.Visible = true;
+                    this.txtRepeatNewPass.Visible = true;
+                    this.txtUsuario.Enabled = false;
+                    this.cmbPreguntas.Enabled = false;
+                    this.txtRespuesta.Enabled = false;
+                    this.btnEnviar.Enabled = false;
+                    this.btnBuscarUsuario.Enabled = false;
+                }
+                else
+                {
+                    this.txtRespuesta.ErrorMessage = "La respuesta ingresada no es correcta o no coincide con la pregunta seleccionada.";
+                    this.txtRespuesta.SetErrorState(true);
+                }
             }
+            else
+            {
+                MessageBox.Show("Debe ingresar un usuario válido para continuar", "Recuperar contraseña", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void btnAceptar_Click_1(object sender, EventArgs e)
@@ -135,8 +158,15 @@ namespace UI.Desktop
             {
                 GuardarCambios();
             }
-            else { MessageBox.Show("Las constraseñas no coinciden", "Usuario", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            else { MessageBox.Show("Las contraseñas no coinciden", "Usuario", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
+        private void txtRespuesta_TextChanged(object sender, EventArgs e)
+        {
+            if(this.txtRespuesta.GetErrorState())
+            {
+                this.txtRespuesta.SetErrorState(false);
+            }
+        }
     }
 }

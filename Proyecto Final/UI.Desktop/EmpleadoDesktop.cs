@@ -134,7 +134,16 @@ namespace UI.Desktop
 
         public override bool Validar()
         {
-            ValidationResult result = new EmpleadoValidator().Validate(EmpleadoActual);
+            ValidationResult result = new ValidationResult();
+            if(EmpleadoActual.Email != "")
+            {
+                result = new EmpleadoValidator().Validate(EmpleadoActual);
+            }
+            else
+            {
+                result = new EmpleadoValidator(EmpleadoActual.Email).Validate(EmpleadoActual);
+
+            }
             if (!result.IsValid)
             {
                 string notificacion = string.Join(Environment.NewLine, result.Errors);

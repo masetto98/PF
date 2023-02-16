@@ -29,10 +29,10 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            FastReport.DataVisualization.Charting.ChartArea chartArea1 = new FastReport.DataVisualization.Charting.ChartArea();
-            FastReport.DataVisualization.Charting.Legend legend1 = new FastReport.DataVisualization.Charting.Legend();
-            FastReport.DataVisualization.Charting.Series series1 = new FastReport.DataVisualization.Charting.Series();
-            FastReport.DataVisualization.Charting.Title title1 = new FastReport.DataVisualization.Charting.Title();
+            FastReport.DataVisualization.Charting.ChartArea chartArea2 = new FastReport.DataVisualization.Charting.ChartArea();
+            FastReport.DataVisualization.Charting.Legend legend2 = new FastReport.DataVisualization.Charting.Legend();
+            FastReport.DataVisualization.Charting.Series series2 = new FastReport.DataVisualization.Charting.Series();
+            FastReport.DataVisualization.Charting.Title title2 = new FastReport.DataVisualization.Charting.Title();
             this.listInsumos = new MaterialSkin.Controls.MaterialListView();
             this.columnIDInsumo = new System.Windows.Forms.ColumnHeader();
             this.columnDesc = new System.Windows.Forms.ColumnHeader();
@@ -75,6 +75,7 @@ namespace UI.Desktop
             this.columnHeader1,
             this.columnHeader2});
             this.listInsumos.Depth = 0;
+            this.listInsumos.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listInsumos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listInsumos.FullRowSelect = true;
             this.listInsumos.HideSelection = false;
@@ -82,6 +83,7 @@ namespace UI.Desktop
             this.listInsumos.MinimumSize = new System.Drawing.Size(200, 100);
             this.listInsumos.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listInsumos.MouseState = MaterialSkin.MouseState.OUT;
+            this.listInsumos.MultiSelect = false;
             this.listInsumos.Name = "listInsumos";
             this.listInsumos.OwnerDraw = true;
             this.listInsumos.Size = new System.Drawing.Size(500, 504);
@@ -150,6 +152,7 @@ namespace UI.Desktop
             this.listConsumos.MinimumSize = new System.Drawing.Size(200, 100);
             this.listConsumos.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listConsumos.MouseState = MaterialSkin.MouseState.OUT;
+            this.listConsumos.MultiSelect = false;
             this.listConsumos.Name = "listConsumos";
             this.listConsumos.OwnerDraw = true;
             this.listConsumos.Size = new System.Drawing.Size(452, 252);
@@ -286,7 +289,7 @@ namespace UI.Desktop
             this.txtBuscarInsumos.Depth = 0;
             this.txtBuscarInsumos.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtBuscarInsumos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtBuscarInsumos.Hint = "Buscar....";
+            this.txtBuscarInsumos.Hint = "Buscar insumo...";
             this.txtBuscarInsumos.LeadingIcon = null;
             this.txtBuscarInsumos.Location = new System.Drawing.Point(13, 649);
             this.txtBuscarInsumos.MaxLength = 50;
@@ -437,32 +440,32 @@ namespace UI.Desktop
             // 
             // chartInsumos2
             // 
-            chartArea1.Name = "ChartArea1";
-            chartArea1.Position.Auto = false;
-            chartArea1.Position.Height = 90F;
-            chartArea1.Position.Width = 73.1875F;
-            chartArea1.Position.X = 11F;
-            chartArea1.Position.Y = 10F;
-            this.chartInsumos2.ChartAreas.Add(chartArea1);
-            legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            legend1.IsTextAutoFit = false;
-            legend1.Name = "Legend1";
-            this.chartInsumos2.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            chartArea2.Position.Auto = false;
+            chartArea2.Position.Height = 90F;
+            chartArea2.Position.Width = 73.1875F;
+            chartArea2.Position.X = 11F;
+            chartArea2.Position.Y = 10F;
+            this.chartInsumos2.ChartAreas.Add(chartArea2);
+            legend2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            legend2.IsTextAutoFit = false;
+            legend2.Name = "Legend1";
+            this.chartInsumos2.Legends.Add(legend2);
             this.chartInsumos2.Location = new System.Drawing.Point(983, 139);
             this.chartInsumos2.Name = "chartInsumos2";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.CustomProperties = "PieLabelStyle=Disabled";
-            series1.IsValueShownAsLabel = true;
-            series1.Legend = "Legend1";
-            series1.Name = "consumo";
-            this.chartInsumos2.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.CustomProperties = "PieLabelStyle=Disabled";
+            series2.IsValueShownAsLabel = true;
+            series2.Legend = "Legend1";
+            series2.Name = "consumo";
+            this.chartInsumos2.Series.Add(series2);
             this.chartInsumos2.Size = new System.Drawing.Size(321, 466);
             this.chartInsumos2.TabIndex = 17;
             this.chartInsumos2.Text = "chart1";
-            title1.Name = "Title1";
-            title1.Text = "Proporción de consumo por Servicio Tipo de Prenda";
-            this.chartInsumos2.Titles.Add(title1);
+            title2.Name = "Title1";
+            title2.Text = "Proporción de consumo por Servicio Tipo de Prenda";
+            this.chartInsumos2.Titles.Add(title2);
             // 
             // Insumos
             // 

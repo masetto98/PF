@@ -64,6 +64,7 @@ namespace UI.Desktop
             this.columnServicio,
             this.columnTipoPrenda});
             this.listServiciosTipoPrendas.Depth = 0;
+            this.listServiciosTipoPrendas.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listServiciosTipoPrendas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listServiciosTipoPrendas.FullRowSelect = true;
             this.listServiciosTipoPrendas.HideSelection = false;

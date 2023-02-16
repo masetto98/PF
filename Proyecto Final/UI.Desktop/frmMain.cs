@@ -129,7 +129,7 @@ namespace UI.Desktop
             {
                 case 0:
                     ListarStock();
-                    ValidarStock();
+                    //ValidarStock();
                     break;
                 case 1:
                     ListarIngresos();
@@ -590,11 +590,8 @@ namespace UI.Desktop
                             factura = factura.Replace("@direccionempresa", negocio.DireccionEmpresa);
                             factura = factura.Replace("@telempresa", negocio.TelEmpresa);
                             factura = factura.Replace("@redes", negocio.RedesEmpresa);
-
                             factura = factura.Replace("@fechafactura", DateTime.Now.Date.ToString("dd/MM/yyyy"));
                             factura = factura.Replace("@hsfactura", DateTime.Now.ToString("HH:mm:ss"));
-
-
                             factura = factura.Replace("@cuit", clienteActual.Cuit);
                             if (clienteActual.RazonSocial == "")
                             {
@@ -628,9 +625,11 @@ namespace UI.Desktop
                                 totalItems += row.Factura.Importe;
                                 if(row.Factura.Pagos.Count > 0)
                                 {
+                                    row.Factura.Pagos.Sort((a, b) => a.FechaPago.CompareTo(b.FechaPago));
+                                    Pago ultPago = row.Factura.Pagos.Last();
                                     foreach(Pago p in row.Factura.Pagos)
                                     {
-                                        if(p.FechaPago.Date != DateTime.Now.Date)
+                                        if(p.FechaPago < ultPago.FechaPago)
                                         {
                                             _pagosAnteriores += p.Importe;
                                         }
@@ -654,8 +653,14 @@ namespace UI.Desktop
                             Empleado empActual = Singleton.getInstance().UserLogged.Empleado;
                             int parteEntera = Convert.ToInt32((Math.Truncate(totalfactura)));
                             double parteDecimal = totalfactura - Convert.ToDouble(parteEntera);
-                            string Decimal = parteDecimal.ToString().Split(",")[1];
-                            int pDecimal = Convert.ToInt32(Decimal);
+                            string Decimal = "";
+                            int pDecimal = 0;
+                            if (parteDecimal != 0)
+                            {
+                                Decimal = parteDecimal.ToString().Split(",")[1];
+                                pDecimal = Convert.ToInt32(Decimal);
+                            }
+                           
                             factura = factura.Replace("@totalfact", "$"+totalfactura.ToString());
                             factura = factura.Replace("@empleado", empActual.Apellido + ", "+empActual.Nombre);
                             factura = factura.Replace("@fechapago", "el día "+ DateTime.Now.Day.ToString() + " del mes de " + DateTime.Now.ToString("MMMM") +" del año " + DateTime.Now.Year.ToString());
@@ -670,7 +675,8 @@ namespace UI.Desktop
                             
                             factura = factura.Replace("@formpago", formaPago.ToString());
                             factura = factura.Replace("@concepto", "Saldar Deuda Cta.Cte");
-                            
+                            int nroComprobante = generarNumeroComprobante();
+                            factura = factura.Replace("@nrocomprobante", nroComprobante.ToString());
 
 
 
@@ -707,7 +713,14 @@ namespace UI.Desktop
 
             }
         }
-
+        private int generarNumeroComprobante()
+        {
+            int numComprobanteActual = Properties.Settings.Default.nroComprobante;
+            numComprobanteActual += 1;
+            Properties.Settings.Default.nroComprobante = numComprobanteActual;
+            Properties.Settings.Default.Save();
+            return numComprobanteActual;
+        }
         private void btnSaldarDeuda_Click(object sender, EventArgs e)
         {
             
@@ -783,10 +796,10 @@ namespace UI.Desktop
                                     _clienteLogic.Save(clienteActual);
                                 }
                             }
-                        }
-                        if (Properties.Settings.Default.emitirComprobantes)
-                        {
-                            verificarAtributosNegocio();
+                            if (Properties.Settings.Default.emitirComprobantes)
+                            {
+                                verificarAtributosNegocio();
+                            }
                         }
                         CalcularCuentaCorrienteCliente();
                         ListarOrdenesCliente();
@@ -1182,7 +1195,7 @@ namespace UI.Desktop
         private void ValidarStock() 
         {
             List<Insumo> insumos = _insumoLogic.GetAll();
-            if (insumos is not null) 
+            if (insumos.Count > 0) 
             {
                 listInsumosFaltantes.Items.Clear();
                 foreach (Insumo i in insumos) 

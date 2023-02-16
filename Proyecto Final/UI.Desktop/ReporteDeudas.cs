@@ -98,7 +98,7 @@ namespace UI.Desktop
         private double CalcularImporteOrden(Orden ordenActual)
         {
             double importe = 0;
-            if (ordenActual.Estado == Orden.Estados.Pagado)
+            if (ordenActual.Estado == Orden.Estados.Pagado || ordenActual.Factura.FechaFactura != DateTime.MinValue)
             {
                 Pago pago = ordenActual.Factura.Pagos.FindLast(delegate (Pago p) { return p.FechaPago <= DateTime.Now; });
                 foreach (OrdenServicioTipoPrenda ostp in ordenActual.ItemsPedidos)

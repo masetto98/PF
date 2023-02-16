@@ -103,7 +103,7 @@ namespace UI.Desktop
             // columnRazonSocial
             // 
             this.columnRazonSocial.Text = "Razón Social";
-            this.columnRazonSocial.Width = 170;
+            this.columnRazonSocial.Width = 200;
             // 
             // columnTelefono
             // 
@@ -118,7 +118,7 @@ namespace UI.Desktop
             // columnDireccion
             // 
             this.columnDireccion.Text = "Dirección";
-            this.columnDireccion.Width = 150;
+            this.columnDireccion.Width = 200;
             // 
             // btnEditarProveedor
             // 
