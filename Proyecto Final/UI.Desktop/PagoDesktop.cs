@@ -29,6 +29,7 @@ namespace UI.Desktop
         public double _totalpagos;
         public double _totalApagar;
         public double _total;
+
         public PagoDesktop(LavanderiaContext context)
         {
             _context = context;
@@ -40,12 +41,14 @@ namespace UI.Desktop
             _itemsServicio = new List<OrdenServicioTipoPrenda>();
             _pagosActuales = new List<Pago>();
             btnAgregarPago.Enabled = false;
+            CargarFormaPago();
 
         }
 
         public PagoDesktop(Orden ordenActual, ModoForm modo, LavanderiaContext context) : this(context)
         {
             Modos = modo;
+            CargarFormaPago();
             OrdenActual = ordenActual;
             FacturaActual = _facturaLogic.GetOne(OrdenActual.NroFactura);
             if (FacturaActual.Importe == 0)
@@ -105,12 +108,15 @@ namespace UI.Desktop
         {
 
             this.txtNroFactura.Text = FacturaActual.NroFactura.ToString();
-            this.cbFormaPago.DataSource = Enum.GetNames(typeof(Business.Entities.Pago.FormasPago));
+            //this.cbFormaPago.DataSource = Enum.GetNames(typeof(Business.Entities.Pago.FormasPago));
             this.txtTotalFactura.Text = FacturaActual.Importe.ToString();
             if(OrdenActual.Senia == true)
             {
                 this.txtSenia.Text = OrdenActual.Factura.Pagos[0].Importe.ToString();
-                foreach(Pago p in FacturaActual.Pagos)
+            }
+            if (FacturaActual.Pagos is not null && FacturaActual.Pagos.Count>0) 
+            {
+                foreach (Pago p in FacturaActual.Pagos)
                 {
                     _pagosActuales.Add(p);
                 }
@@ -219,7 +225,7 @@ namespace UI.Desktop
                     ListViewItem item = new ListViewItem(FacturaActual.NroFactura.ToString());
                     item.SubItems.Add(p.FechaPago.ToString());
                     item.SubItems.Add(p.FormaPago.ToString());
-                    item.SubItems.Add(p.Importe.ToString());
+                    item.SubItems.Add(String.Concat("$",p.Importe.ToString()));
                     listPagos.Items.Add(item);
                 }
             }
@@ -232,7 +238,7 @@ namespace UI.Desktop
                     ListViewItem item = new ListViewItem(FacturaActual.NroFactura.ToString());
                     item.SubItems.Add(p.FechaPago.ToString());
                     item.SubItems.Add(p.FormaPago.ToString());
-                    item.SubItems.Add(p.Importe.ToString());
+                    item.SubItems.Add(String.Concat("$", p.Importe.ToString()));
                     listPagos.Items.Add(item);
                 }
             }
@@ -245,9 +251,10 @@ namespace UI.Desktop
             {
                 PagoActual = new Pago();
                 PagoActual.FechaPago = DateTime.Now;
-                PagoActual.FormaPago = (Business.Entities.Pago.FormasPago)Enum.Parse(typeof(Business.Entities.Pago.FormasPago), cbFormaPago.SelectedItem.ToString());
+                Regex formaPago = new Regex(@"\s+");
+                PagoActual.FormaPago = (Business.Entities.Pago.FormasPago)Enum.Parse(typeof(Business.Entities.Pago.FormasPago), formaPago.Replace(cbFormaPago.SelectedItem.ToString(), string.Empty));
+                PagoActual.State = BusinessEntity.States.New;
                 PagoActual.Importe = double.Parse(txtImportePago.Text);
-                              
                 FacturaActual.Pagos = new List<Pago>();
                 _pagosActuales.Add(PagoActual);
                 /*
@@ -259,8 +266,10 @@ namespace UI.Desktop
             {
                 PagoActual = new Pago();
                 PagoActual.FechaPago = DateTime.Now;
-                PagoActual.FormaPago = (Business.Entities.Pago.FormasPago)Enum.Parse(typeof(Business.Entities.Pago.FormasPago), cbFormaPago.SelectedItem.ToString());
+                Regex formaPago = new Regex(@"\s+");
+                PagoActual.FormaPago = (Business.Entities.Pago.FormasPago)Enum.Parse(typeof(Business.Entities.Pago.FormasPago), formaPago.Replace(cbFormaPago.SelectedItem.ToString(), string.Empty));
                 PagoActual.Importe = double.Parse(txtImportePago.Text);
+                PagoActual.State = BusinessEntity.States.New;
                 _pagosActuales.Add(PagoActual);
                 /*
                 FacturaActual.Pagos.Add(PagoActual);
@@ -477,6 +486,24 @@ namespace UI.Desktop
             e.NewWidth = listPagos.Columns[e.ColumnIndex].Width;
         }
 
+        public void CargarFormaPago()
+        {
+            List<String> formasPago = new List<string>();
+            foreach (string fp in Enum.GetNames(typeof(Business.Entities.Pago.FormasPago)))
+            {
+                string palabra = fp;
+                for (int i = 2; i < fp.Length; i++)
+                {
+                    if (char.IsUpper(palabra[i]))
+                    {
+                        palabra = palabra.Insert(i, " ");
+                        i++;
+                    }
+                }
+                formasPago.Add(palabra);
+            }
+            this.cbFormaPago.DataSource = formasPago;
+        }
 
         /* SE QUITÓ LA FUNCIONALIDAD DE ELIMINAR PAGO
         private void btnEliminarPago_Click(object sender, EventArgs e)
@@ -524,5 +551,6 @@ namespace UI.Desktop
             }
         }
         */
+
     }
 }

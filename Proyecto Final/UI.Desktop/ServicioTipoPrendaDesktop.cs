@@ -353,6 +353,10 @@ namespace UI.Desktop
                             _consumosActuales.Add(consumoActual);
                         }
                         ListarConsumos();
+                        this.cmbInsumos.SelectedItem = null;
+                        this.txtCantidad.Text = "";
+                        this.cmbUnidadMedida.SelectedItem = null;
+                        this.cmbTiposMaquina.SelectedItem = null;
                     }
                     else
                     {
@@ -383,6 +387,7 @@ namespace UI.Desktop
             else { return true; }
             
         }
+
         #region ------- UNIDADES DE MEDIDA -------
         private List<String> SetearMedidas(int unidad, List<string> unidadesMedida)
         {

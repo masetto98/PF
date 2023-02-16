@@ -33,11 +33,15 @@ namespace UI.Desktop
             _gastoLogic = new GastoLogic(new GastoAdapter(context));
 
         }
-        public MantenimientoDesktop(int idMaquina,ModoForm modo, LavanderiaContext context):this(context)
+        public MantenimientoDesktop(int idMaquina, ModoForm modo, LavanderiaContext context) : this(context)
         {
             Modos = modo;
             MaquinaActual = _maquinaLogic.GetOne(idMaquina);
-
+            if (MaquinaActual is not null)
+            {
+                this.txtMaquina.Text = MaquinaActual.Descripcion;
+                this.txtTipoMaquina.Text = MaquinaActual.TipoMaquina.Descripcion;
+            }
         }
 
         public MantenimientoDesktop(int idMaquina,DateTime fechaMantenimiento,ModoForm modo, LavanderiaContext context) : this(context)
@@ -56,6 +60,8 @@ namespace UI.Desktop
 
         public override void MapearDeDatos()
         {
+            this.txtMaquina.Text = MantenimientoActual.Maquina.Descripcion;
+            this.txtTipoMaquina.Text = MantenimientoActual.Maquina.TipoMaquina.Descripcion;
             this.dtpFechaRealizacion.Value = MantenimientoActual.FechaRealizado;
             this.txtDescripcion.Text = MantenimientoActual.Descripcion;
             this.txtCosto.Text = MantenimientoActual.Costo.ToString();

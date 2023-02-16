@@ -83,7 +83,6 @@ namespace UI.Desktop
             
         }
        
-
         private void RellenarComboBox(ListView listActual, ComboBox cbActual)
         {
             List<string> columnas = new List<string>();
@@ -121,8 +120,6 @@ namespace UI.Desktop
             }
         }
         
-
-
         private void tabControlInventario_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (tabControlInventario.SelectedIndex)
@@ -143,7 +140,6 @@ namespace UI.Desktop
 
             }
         }
-
 
         #region ------- CLIENTES -------
 
@@ -318,7 +314,7 @@ namespace UI.Desktop
             if (listClientes.SelectedItems.Count > 0)
             {
                 Cliente clienteActual = _clienteLogic.GetOne(Int32.Parse(listClientes.SelectedItems[0].Text));
-                if (clienteActual.Ordenes is not null)
+                if (clienteActual.Ordenes is not null && clienteActual.Ordenes.Count > 0)
                 {
                     //clienteActual.Ordenes.Sort((x, y) => x.Estado.CompareTo(y.Estado));
                     List<Orden> orderOrdenes = clienteActual.Ordenes.OrderBy(x => x.Estado).ToList();
@@ -329,12 +325,12 @@ namespace UI.Desktop
                         item.SubItems.Add(o.FechaEntrada.ToString());
                         double pagos = 0;
                         double deudas = 0;
-                        if(o.Factura.Importe != 0 && o.Factura.FechaFactura.ToString("yyyy/MM/dd") != "0001/01/01")
+                        if (o.Factura.Importe != 0 && o.Factura.FechaFactura.ToString("yyyy/MM/dd") != "0001/01/01")
                         {
 
                             pagos = CalcularPagosOrden(o);
                             deudas = o.Factura.Importe - pagos;
-                            item.SubItems.Add(o.Factura.Importe.ToString());
+                            item.SubItems.Add(String.Concat("$",o.Factura.Importe.ToString()));
                         }
                         else
                         {
@@ -347,16 +343,17 @@ namespace UI.Desktop
                             }
                             pagos = CalcularPagosOrden(o);
                             deudas = importe - pagos;
-                            item.SubItems.Add(importe.ToString());
+                            item.SubItems.Add(String.Concat("$",importe.ToString()));
                         }
-                        
+
                         if (deudas == 0) { item.SubItems.Add("Pagado"); }
-                        else { item.SubItems.Add(deudas.ToString()); }
+                        else { item.SubItems.Add(String.Concat("$", deudas.ToString())); }
                         if (o.FechaSalida == DateTime.MinValue) { item.SubItems.Add("Sin retirar"); }
                         else { item.SubItems.Add(o.FechaSalida.ToString()); }
                         listOrdenesCliente.Items.Add(item);
                     }
                 }
+                else { MessageBox.Show("El cliente seleccionado NO posee ordenes registradas", "Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information); }
             }
             else
             {
@@ -441,7 +438,7 @@ namespace UI.Desktop
 
                         ListViewItem item = new ListViewItem(ordenActual.NroOrden.ToString());
                         item.SubItems.Add(p.FechaPago.ToString());
-                        item.SubItems.Add(p.Importe.ToString());
+                        item.SubItems.Add(String.Concat("$", p.Importe.ToString()));
                         item.SubItems.Add(p.FormaPago.ToString());
                         listPagosOrden.Items.Add(item);
                     }
@@ -482,7 +479,7 @@ namespace UI.Desktop
                         }
                     }
                 }
-                this.lblCuentaCorriente.Text = _deudaCliente.ToString();
+                this.lblCuentaCorriente.Text = String.Concat("$", _deudaCliente.ToString());
                 this.lblDatosCliente.Text = String.Concat(clienteActual.IdCliente, " - ", clienteActual.Apellido, " ", clienteActual.Nombre);
             }
 
@@ -516,6 +513,7 @@ namespace UI.Desktop
                 }
                 ListarOrdenesCliente();
                 CalcularCuentaCorrienteCliente();
+                
                 listPagosOrden.Items.Clear();
                 if (OrdenActual.Factura is not null && OrdenActual.Factura.Pagos is not null && OrdenActual.Factura.Pagos.Count > 0)
                 {
@@ -523,11 +521,12 @@ namespace UI.Desktop
                     {
                         ListViewItem item = new ListViewItem(OrdenActual.NroOrden.ToString());
                         item.SubItems.Add(p.FechaPago.ToString());
-                        item.SubItems.Add(p.Importe.ToString());
+                        item.SubItems.Add(String.Concat("$", p.Importe.ToString()));
                         item.SubItems.Add(p.FormaPago.ToString());
                         listPagosOrden.Items.Add(item);
                     }
                 }
+                //ListarPagosOrden();
                 
             }
 
@@ -945,35 +944,7 @@ namespace UI.Desktop
             //ListarIngresos();
 
         }
-        /*
-        private void btnEditarIngresoInsumo_Click(object sender, EventArgs e)
-        {
-            if (listIngresosInsumos.SelectedItems.Count > 0)
-            {
-                InsumoProveedor ipActual = _insumoProveedorLogic.GetAll().Find(delegate (InsumoProveedor ip)
-                {
-                    return ip.Proveedor.RazonSocial == listIngresosInsumos.SelectedItems[0].Text &&
-                           ip.IdInsumo == Int32.Parse(listInsumos.SelectedItems[0].Text) &&
-                           ip.FechaIngreso == DateTime.Parse(listIngresosInsumos.SelectedItems[0].SubItems[1].Text);
-                });
-                if (ipActual is not null)
-                {
-                    InsumoProveedorDesktop frmInsumoProveedor = new InsumoProveedorDesktop(ipActual.IdProveedor, ipActual.IdInsumo, ipActual.FechaIngreso, ApplicationForm.ModoForm.Modificacion, _context);
-                    frmInsumoProveedor.ShowDialog();
-                }
-                else
-                {
-                    MessageBox.Show("Seleccionar una fila en la lista para poder editar", "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                //ListarIngresos();
-            }
-            else
-            {
-                MessageBox.Show("Seleccionar una fila en la lista de \"Movimientos del insumo\" para editar un ingreso", "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-        }
-        */
+        
         private void btnEliminarIngresoInsumo_Click(object sender, EventArgs e)
         {
             if (listIngresosInsumos.SelectedItems.Count > 0)
@@ -1127,51 +1098,7 @@ namespace UI.Desktop
         {
             filtroFechaMovimientos();
         }
-        /*
-        private void dtpFiltroFechaIngreso_CloseUp(object sender, EventArgs e)
-        {
-
-            listIngresosInsumos.Items.Clear();
-            if (listInsumos.SelectedItems.Count > 0)
-            {
-                Insumo insumoActual = _insumoLogic.GetOne(Int32.Parse(listInsumos.SelectedItems[0].Text));
-                List<InsumoProveedor> ip = insumoActual.InsumosProveedores;
-                List<InsumoProveedor> ipFiltro = ip.FindAll(
-                    delegate (InsumoProveedor ip)
-                    {
-                        return ip.FechaIngreso.Date == dtpFiltroFechaIngreso.Value.Date;
-                    });
-                if (insumoActual is not null && ipFiltro.Count > 0)
-                {
-                    foreach (InsumoProveedor insP in ipFiltro)
-                    {
-                        ListViewItem item = new ListViewItem(insP.Proveedor.RazonSocial);
-                        item.SubItems.Add(insP.FechaIngreso.ToString("yyyy-MM-dd HH:mm:ss.fffffff"));
-                        item.SubItems.Add(insP.Cantidad.ToString());
-                        item.SubItems.Add(insP.Insumo.UnidadMedida.ToString());
-                        listIngresosInsumos.Items.Add(item);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Seleccionar una fila en la lista para poder observar los detalles", "Insumo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            
-            DateTime fechaFiltro = dtpFiltroFechaIngreso.Value;
-            List<InsumoProveedor> insumosproveedores = _insumoProveedorLogic.GetAll();
-            List<InsumoProveedor> ipFecha = insumosproveedores.FindAll(ip => ip.FechaIngreso.ToString("yyyy/MM/dd") == fechaFiltro.ToString("yyyy/MM/dd"));
-            listIngresosInsumos.Items.Clear();
-            foreach (InsumoProveedor ip in ipFecha)
-            {
-                ListViewItem item = new ListViewItem(ip.Proveedor.RazonSocial);
-                item.SubItems.Add(ip.FechaIngreso.ToString());
-                item.SubItems.Add(ip.Cantidad.ToString());
-                listIngresosInsumos.Items.Add(item);
-            }
-            
-        }
-        */
+        
         private void btnReset_Click(object sender, EventArgs e)
         {
             ListarIngresosInsumo();
@@ -1182,7 +1109,7 @@ namespace UI.Desktop
         private void ValidarStock() 
         {
             List<Insumo> insumos = _insumoLogic.GetAll();
-            if (insumos is not null) 
+            if (insumos is not null && insumos.Count>0) 
             {
                 listInsumosFaltantes.Items.Clear();
                 foreach (Insumo i in insumos) 
@@ -1205,8 +1132,7 @@ namespace UI.Desktop
                 niFaltaInsumos.BalloonTipTitle = "IMPORTANTE!! Hay insumos con poco stock!";
                 niFaltaInsumos.BalloonTipText = "Ver detalles";
                 niFaltaInsumos.ShowBalloonTip(3000);
-                //this.mnuTabInventario.ImageIndex = imageList1.Images.IndexOfKey("inventario_notify.png");
-                //this.mnuTabInventario.ImageKey = "inventario_notify.png";
+                
             }
             else 
             {
@@ -1214,8 +1140,7 @@ namespace UI.Desktop
                 this.pxRojo.Visible = false;
                 this.lblInsumosFaltantes.Visible = false;
                 this.listInsumosFaltantes.Visible = false;
-                //this.mnuTabInventario.ImageKey = "sales_sale_supermarket_stock_market_icon_153849.png";
-                //this.mnuTabInventario.ImageIndex = imageList1.Images.IndexOfKey("sales_sale_supermarket_stock_market_icon_153849.png");
+                
             }
             
         }
@@ -1235,26 +1160,7 @@ namespace UI.Desktop
             frmInsumoProveedor.ShowDialog();
             ListarIngresos();
         }
-        /*
-        private void btnEditarIngreso_Click(object sender, EventArgs e)
-        {
-            if (listIngresos.SelectedItems.Count > 0)
-            {
-
-                int IDProv = Int32.Parse(this.listIngresos.SelectedItems[0].Text);
-                int IDIns = Int32.Parse(this.listIngresos.SelectedItems[0].SubItems[2].Text);
-                DateTime fechaIngreso = DateTime.Parse(this.listIngresos.SelectedItems[0].SubItems[4].Text);
-                InsumoProveedorDesktop formInsumoProveedor = new InsumoProveedorDesktop(IDProv, IDIns, fechaIngreso, ApplicationForm.ModoForm.Modificacion, _context);
-                formInsumoProveedor.ShowDialog();
-                //ListarIngresos();
-            }
-            else
-            {
-                MessageBox.Show("Seleccionar una fila en la lista para poder editar", "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        */
+        
         private void btnEliminarIngreso_Click(object sender, EventArgs e)
         {
             if (listIngresos.SelectedItems.Count > 0)
@@ -1273,25 +1179,7 @@ namespace UI.Desktop
             }
 
         }
-        /*
-        private void dtpFiltrarFechaIngreso_CloseUp(object sender, EventArgs e)
-        {
-            DateTime fechaFiltro = dtpFiltrarFechaIngreso.Value;
-            List<InsumoProveedor> insumosproveedores = _insumoProveedorLogic.GetAll();
-            List<InsumoProveedor> ipFecha = insumosproveedores.FindAll(ip => ip.FechaIngreso.ToString("yyyy/MM/dd") == fechaFiltro.ToString("yyyy/MM/dd"));
-            listIngresos.Items.Clear();
-            foreach (InsumoProveedor ip in ipFecha)
-            {
-                ListViewItem item = new ListViewItem(ip.Proveedor.IdProveedor.ToString());
-                item.SubItems.Add(ip.Proveedor.RazonSocial);
-                item.SubItems.Add(ip.Insumo.IdInsumo.ToString());
-                item.SubItems.Add(ip.Insumo.Descripcion);
-                item.SubItems.Add(ip.FechaIngreso.ToString());
-                item.SubItems.Add(ip.Cantidad.ToString());
-                listIngresos.Items.Add(item);
-            }
-
-        }*/
+        
 
         private void txtBuscarInsumos_TextChanged(object sender, EventArgs e)
         {
@@ -1823,35 +1711,7 @@ namespace UI.Desktop
                 else { listTrabajosPendientes.Items[i].BackColor = Color.White; }
             }
         }
-        /*
-        private void ListarEstadoMaquinas()
-        {
-            List<Maquina> maquinas = _maquinaLogic.GetAll();
-            listEstadoMaquinas.Items.Clear();
-            foreach (Maquina m in maquinas)
-            {
-                List<MaquinaOrdenServicioTipoPrenda> ordenesAtendidas = m.itemsAtendidos;
-                if (m.itemsAtendidos is null) { ordenesAtendidas = new List<MaquinaOrdenServicioTipoPrenda>(); }
-                MaquinaOrdenServicioTipoPrenda? itemEnAtencion = ordenesAtendidas.Find(delegate (MaquinaOrdenServicioTipoPrenda item)
-                {
-                    return item.TiempoFinServicio == DateTime.MinValue;
-                });
-                if (itemEnAtencion is null)
-                {
-                    ListViewItem estadoMaquina = new ListViewItem(m.Descripcion);
-                    estadoMaquina.SubItems.Add("Disponible");
-                    listEstadoMaquinas.Items.Add(estadoMaquina);
-
-                }
-                else
-                {
-                    ListViewItem estadoMaquina = new ListViewItem(m.Descripcion);
-                    estadoMaquina.SubItems.Add("En servicio");
-                    listEstadoMaquinas.Items.Add(estadoMaquina);
-                }
-            }
-            listMaquinasItem.Sort();
-        }*/
+        
 
         private void btnMostrarServicios_Click(object sender, EventArgs e)
         {
@@ -1911,8 +1771,12 @@ namespace UI.Desktop
                                item.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[2].Text &&
                                item.OrdenItem == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].SubItems[3].Text);
                     });
-                    MaquinaOrdenServicioTipoPrendaDesktop frmTrabajos = new MaquinaOrdenServicioTipoPrendaDesktop(t.NroOrden, t.IdServicio, t.IdTipoPrenda, t.OrdenItem, ApplicationForm.ModoForm.Alta, _context);
-                    frmTrabajos.ShowDialog();
+                    if (t.Estado != OrdenServicioTipoPrenda.Estados.Procesando)
+                    {
+                        MaquinaOrdenServicioTipoPrendaDesktop frmTrabajos = new MaquinaOrdenServicioTipoPrendaDesktop(t.NroOrden, t.IdServicio, t.IdTipoPrenda, t.OrdenItem, ApplicationForm.ModoForm.Alta, _context);
+                        frmTrabajos.ShowDialog();
+                    }
+                    else { MessageBox.Show("Actualmente se le esta dando servicio al trabajo seleccionado", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information); }
                 }
                 else
                 {

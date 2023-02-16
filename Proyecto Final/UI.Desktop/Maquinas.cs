@@ -295,7 +295,8 @@ namespace UI.Desktop
         }
         private void listTiposMaquina_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            listMaquinas.Items.Clear();
+            listMantenimientos.Items.Clear();
             ListarMaquinas();
             CargarSerieGrafico2();
 
@@ -441,7 +442,7 @@ namespace UI.Desktop
                     {
                         ListViewItem item = new ListViewItem(ma.FechaRealizado.ToString("yyyy-MM-dd HH:mm:ss.fffffff"));
                         item.SubItems.Add(ma.Descripcion);
-                        item.SubItems.Add(ma.Costo.ToString());
+                        item.SubItems.Add(String.Concat("$", ma.Costo.ToString()));
                         listMantenimientos.Items.Add(item);
                     }
                 }

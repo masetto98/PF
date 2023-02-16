@@ -64,6 +64,7 @@ namespace UI.Desktop
                     break;
                 case ModoForm.Modificacion:
                     this.btnAceptarInsumo.Text = "Guardar";
+                    this.cmbUnidadMedida.Enabled = false;
                     break;
                 case ModoForm.Baja:
                     this.btnAceptarInsumo.Text = "Eliminar";
