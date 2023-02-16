@@ -394,7 +394,7 @@ namespace UI.Desktop
             Maquina  maquinaSelected= _maquinaLogic.GetOne((int)this.cmbMaquinas.SelectedValue);
             MaquinaOrdenServicioTipoPrenda maquinasItem = OrdenServicioTipoPrendaActual.MaquinaOrdenServicioTipoPrenda.Find(delegate (MaquinaOrdenServicioTipoPrenda m)
             {
-                return m.Maquina.IdMaquina == maquinaSelected.IdMaquina;
+                return m.Maquina.IdMaquina == maquinaSelected.IdMaquina || m.Maquina.IdTipoMaquina== maquinaSelected.IdTipoMaquina;
             });
             if (maquinasItem is null) { return false; }
             else { return true; }

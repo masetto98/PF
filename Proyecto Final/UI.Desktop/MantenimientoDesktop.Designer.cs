@@ -35,6 +35,8 @@ namespace UI.Desktop
             this.txtCosto = new MaterialSkin.Controls.MaterialTextBox();
             this.btnCancelar = new MaterialSkin.Controls.MaterialButton();
             this.btnAceptar = new MaterialSkin.Controls.MaterialButton();
+            this.txtMaquina = new MaterialSkin.Controls.MaterialTextBox();
+            this.txtTipoMaquina = new MaterialSkin.Controls.MaterialTextBox();
             this.SuspendLayout();
             // 
             // materialLabel1
@@ -44,7 +46,7 @@ namespace UI.Desktop
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(22, 105);
+            this.materialLabel1.Location = new System.Drawing.Point(12, 148);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(154, 19);
@@ -58,7 +60,7 @@ namespace UI.Desktop
             this.dtpFechaRealizacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpFechaRealizacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dtpFechaRealizacion.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaRealizacion.Location = new System.Drawing.Point(182, 105);
+            this.dtpFechaRealizacion.Location = new System.Drawing.Point(172, 148);
             this.dtpFechaRealizacion.Name = "dtpFechaRealizacion";
             this.dtpFechaRealizacion.Size = new System.Drawing.Size(357, 23);
             this.dtpFechaRealizacion.TabIndex = 1;
@@ -73,7 +75,7 @@ namespace UI.Desktop
             this.txtDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtDescripcion.Hint = "Descripción";
             this.txtDescripcion.LeadingIcon = null;
-            this.txtDescripcion.Location = new System.Drawing.Point(22, 135);
+            this.txtDescripcion.Location = new System.Drawing.Point(12, 178);
             this.txtDescripcion.MaxLength = 50;
             this.txtDescripcion.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDescripcion.Multiline = false;
@@ -93,7 +95,7 @@ namespace UI.Desktop
             this.txtCosto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtCosto.Hint = "Costo";
             this.txtCosto.LeadingIcon = null;
-            this.txtCosto.Location = new System.Drawing.Point(22, 191);
+            this.txtCosto.Location = new System.Drawing.Point(12, 234);
             this.txtCosto.MaxLength = 50;
             this.txtCosto.MouseState = MaterialSkin.MouseState.OUT;
             this.txtCosto.Multiline = false;
@@ -112,7 +114,7 @@ namespace UI.Desktop
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
-            this.btnCancelar.Location = new System.Drawing.Point(443, 250);
+            this.btnCancelar.Location = new System.Drawing.Point(433, 293);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -134,7 +136,7 @@ namespace UI.Desktop
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAceptar.HighEmphasis = true;
             this.btnAceptar.Icon = null;
-            this.btnAceptar.Location = new System.Drawing.Point(349, 250);
+            this.btnAceptar.Location = new System.Drawing.Point(339, 293);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptar.Name = "btnAceptar";
@@ -147,11 +149,55 @@ namespace UI.Desktop
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // txtMaquina
+            // 
+            this.txtMaquina.AnimateReadOnly = false;
+            this.txtMaquina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.txtMaquina.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMaquina.Depth = 0;
+            this.txtMaquina.Enabled = false;
+            this.txtMaquina.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtMaquina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtMaquina.Hint = "Máquina";
+            this.txtMaquina.LeadingIcon = null;
+            this.txtMaquina.Location = new System.Drawing.Point(255, 92);
+            this.txtMaquina.MaxLength = 50;
+            this.txtMaquina.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtMaquina.Multiline = false;
+            this.txtMaquina.Name = "txtMaquina";
+            this.txtMaquina.Size = new System.Drawing.Size(274, 50);
+            this.txtMaquina.TabIndex = 8;
+            this.txtMaquina.Text = "";
+            this.txtMaquina.TrailingIcon = null;
+            // 
+            // txtTipoMaquina
+            // 
+            this.txtTipoMaquina.AnimateReadOnly = false;
+            this.txtTipoMaquina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.txtTipoMaquina.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTipoMaquina.Depth = 0;
+            this.txtTipoMaquina.Enabled = false;
+            this.txtTipoMaquina.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtTipoMaquina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtTipoMaquina.Hint = "Tipo de máquina";
+            this.txtTipoMaquina.LeadingIcon = null;
+            this.txtTipoMaquina.Location = new System.Drawing.Point(12, 92);
+            this.txtTipoMaquina.MaxLength = 50;
+            this.txtTipoMaquina.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtTipoMaquina.Multiline = false;
+            this.txtTipoMaquina.Name = "txtTipoMaquina";
+            this.txtTipoMaquina.Size = new System.Drawing.Size(237, 50);
+            this.txtTipoMaquina.TabIndex = 9;
+            this.txtTipoMaquina.Text = "";
+            this.txtTipoMaquina.TrailingIcon = null;
+            // 
             // MantenimientoDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(569, 308);
+            this.ClientSize = new System.Drawing.Size(541, 344);
+            this.Controls.Add(this.txtTipoMaquina);
+            this.Controls.Add(this.txtMaquina);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtCosto);
@@ -177,5 +223,7 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialTextBox txtCosto;
         private MaterialSkin.Controls.MaterialButton btnCancelar;
         private MaterialSkin.Controls.MaterialButton btnAceptar;
+        private MaterialSkin.Controls.MaterialTextBox txtMaquina;
+        private MaterialSkin.Controls.MaterialTextBox txtTipoMaquina;
     }
 }

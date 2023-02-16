@@ -522,7 +522,7 @@ namespace UI.Desktop
                             {
                                 item.SubItems.Add(o.FechaSalida.Date.ToString("yyyy-MM-dd"));
                             }
-                            item.SubItems.Add(ingresos.ToString());
+                            item.SubItems.Add(String.Concat("$", ingresos.ToString()));
                             listOrdenes.Items.Add(item);
                             ingresosTotal += ingresos;
                         }
@@ -555,7 +555,7 @@ namespace UI.Desktop
                             {
                                 item.SubItems.Add(o.FechaSalida.Date.ToString("yyyy-MM-dd"));
                             }
-                            item.SubItems.Add(ingresos.ToString());
+                            item.SubItems.Add(String.Concat("$", ingresos.ToString()));
                             listOrdenes.Items.Add(item);
                             ingresosTotal += ingresos;
                         }
@@ -589,7 +589,7 @@ namespace UI.Desktop
                         {
                             item.SubItems.Add(o.FechaSalida.Date.ToString("yyyy-MM-dd"));
                         }
-                        item.SubItems.Add(ingresos.ToString());
+                        item.SubItems.Add(String.Concat("$", ingresos.ToString()));
                         listOrdenes.Items.Add(item);
                         ingresosTotal += ingresos;
                     }
@@ -633,7 +633,7 @@ namespace UI.Desktop
                         {
                             item.SubItems.Add(o.FechaSalida.Date.ToString("yyyy-MM-dd"));
                         }
-                        item.SubItems.Add(ingresos.ToString());
+                        item.SubItems.Add(String.Concat("$", ingresos.ToString()));
                         listOrdenes.Items.Add(item);
                         ingresoTotal += ingresos;
                     }
@@ -670,7 +670,7 @@ namespace UI.Desktop
                     ListViewItem item = new ListViewItem(g.TipoGasto.ToString());
                     item.SubItems.Add(g.Descripcion);
                     item.SubItems.Add(g.FechaRealizado.ToString());
-                    item.SubItems.Add(g.Importe.ToString());
+                    item.SubItems.Add(String.Concat("$", g.Importe.ToString()));
                     listGastos.Items.Add(item);
                     gastoTotal += g.Importe;
                 }
@@ -690,7 +690,7 @@ namespace UI.Desktop
                     ListViewItem item = new ListViewItem(g.TipoGasto.ToString());
                     item.SubItems.Add(g.Descripcion);
                     item.SubItems.Add(g.FechaRealizado.ToString());
-                    item.SubItems.Add(g.Importe.ToString());
+                    item.SubItems.Add(String.Concat("$", g.Importe.ToString()));
                     listGastos.Items.Add(item);
                     gastoTotal += g.Importe;
                 }

@@ -59,6 +59,7 @@ namespace UI.Desktop
             this.txtIdCliente.Enabled = false;
             this.cbFormaPago.Enabled = false;
             _total = 0;
+            CargarFormaPago();
 
         }
 
@@ -76,12 +77,13 @@ namespace UI.Desktop
                 this.cmbEstado.DataSource = Enum.GetNames(typeof(Orden.Estados));
                 this.cmbPrioridad.DataSource = Enum.GetNames(typeof(Orden.Prioridades));
                 this.cmbPrioridad.SelectedIndex = 0;
-                this.cmbEntregaDomicilio.DataSource= Enum.GetNames(typeof(Orden.EntregasDomicilio));
+                this.cmbEntregaDomicilio.DataSource = Enum.GetNames(typeof(Orden.EntregasDomicilio));
                 this.cmbEntregaDomicilio.SelectedIndex = 0;
                 this.txtDescuento.Enabled = false;
                 this.dtpFechaIngreso.Value = DateTime.Now;
                 this.dtpFechaSalida.Value = DateTime.Now;
                 this.dtpFechaEntrega.Value = DateTime.Today;
+                CargarFormaPago();
             }
             catch (Exception e)
             {
@@ -104,6 +106,39 @@ namespace UI.Desktop
             {
                 MessageBox.Show(e.Message, "Orden", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public void CargarFormaPago()
+        {
+            List<String> formasPago = new List<string>();
+            foreach (string fp in Enum.GetNames(typeof(Business.Entities.Pago.FormasPago)))
+            {/*
+                string palabra = fp;
+                for (int i = 2; i < fp.Length; i++)
+                {
+                    if (char.IsUpper(palabra[i]))
+                    {
+                        palabra = palabra.Insert(i, " ");
+                        i++;
+                    }
+                }*/
+                formasPago.Add(FormaPagoCorrecta(fp));
+            }
+            this.cbFormaPago.DataSource = formasPago;
+        }
+
+        public string FormaPagoCorrecta(string formaPago) 
+        {
+            string palabra = formaPago;
+            for (int i = 2; i < formaPago.Length; i++)
+            {
+                if (char.IsUpper(palabra[i]))
+                {
+                    palabra = palabra.Insert(i, " ");
+                    i++;
+                }
+            }
+            return palabra;
         }
 
         public override void MapearDeDatos()
@@ -147,7 +182,7 @@ namespace UI.Desktop
                 if (senia is not null) 
                 { 
                     this.txtSeniaOrden.Text = senia.Importe.ToString(); 
-                    this.cbFormaPago.SelectedIndex = cbFormaPago.FindStringExact(Enum.GetName(OrdenActual.Factura.Pagos[0].FormaPago));
+                    this.cbFormaPago.SelectedIndex = cbFormaPago.FindStringExact(FormaPagoCorrecta(Enum.GetName(OrdenActual.Factura.Pagos[0].FormaPago)));
                 } 
             }
             try
@@ -256,7 +291,8 @@ namespace UI.Desktop
                     FacturaActual.Pagos = new List<Pago>();
                     PagoActual = new Pago();
                     PagoActual.FechaPago = DateTime.Now;
-                    PagoActual.FormaPago = (Business.Entities.Pago.FormasPago)Enum.Parse(typeof(Business.Entities.Pago.FormasPago), cbFormaPago.SelectedItem.ToString()); ;
+                    Regex formaPago = new Regex(@"\s+");
+                    PagoActual.FormaPago = (Business.Entities.Pago.FormasPago)Enum.Parse(typeof(Business.Entities.Pago.FormasPago), formaPago.Replace(cbFormaPago.SelectedItem.ToString(), string.Empty)); ;
                     //PagoActual.FormaPago = (Pago.FormasPago)Enum.Parse(typeof(Business.Entities.Pago.FormasPago), "Seña");
                     PagoActual.Importe = double.Parse(txtSeniaOrden.Text);
                     FacturaActual.Pagos.Add(PagoActual);
@@ -457,7 +493,7 @@ namespace UI.Desktop
                     ListViewItem item = new ListViewItem((listItemsServicio.Items.Count + 1).ToString());
                     item.SubItems.Add(i.ServicioTipoPrenda.Servicio.Descripcion);
                     item.SubItems.Add(i.ServicioTipoPrenda.TipoPrenda.Descripcion);
-                    item.SubItems.Add(precioActual.Valor.ToString());
+                    item.SubItems.Add(String.Concat("$",precioActual.Valor.ToString()));
                     item.SubItems.Add(i.Estado.ToString());
                     listItemsServicio.Items.Add(item);
                 }
@@ -474,7 +510,7 @@ namespace UI.Desktop
                     ListViewItem item = new ListViewItem((listItemsServicio.Items.Count + 1).ToString());
                     item.SubItems.Add(i.ServicioTipoPrenda.Servicio.Descripcion);
                     item.SubItems.Add(i.ServicioTipoPrenda.TipoPrenda.Descripcion);
-                    item.SubItems.Add(precioActual.Valor.ToString());
+                    item.SubItems.Add(String.Concat("$",precioActual.Valor.ToString()));
                     item.SubItems.Add(i.Estado.ToString());
                     listItemsServicio.Items.Add(item);
                 }
@@ -969,7 +1005,7 @@ namespace UI.Desktop
         private void txtSeniaOrden_TextChanged(object sender, EventArgs e)
         {
             
-            if(_modos != ModoForm.Baja)
+            if(_modos != ModoForm.Baja && _modos != ModoForm.Consulta)
             {
                 if (this.txtSeniaOrden.Text != "" && ValidarNumeroEnteroDecimal(this.txtSeniaOrden.Text))
                 {
@@ -977,7 +1013,7 @@ namespace UI.Desktop
                     if (double.Parse(this.txtSeniaOrden.Text) <= _total)
                     {
                         this.cbFormaPago.Enabled = true;
-                        this.cbFormaPago.DataSource = Enum.GetNames(typeof(Business.Entities.Pago.FormasPago));
+                        //this.cbFormaPago.DataSource = Enum.GetNames(typeof(Business.Entities.Pago.FormasPago));
                     }
                     else
                     {
