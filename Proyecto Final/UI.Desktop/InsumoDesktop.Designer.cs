@@ -29,6 +29,7 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtIDInsumo = new MaterialSkin.Controls.MaterialTextBox();
             this.txtDescInsumo = new MaterialSkin.Controls.MaterialTextBox();
             this.txtExistenciaInsumo = new MaterialSkin.Controls.MaterialTextBox();
@@ -36,6 +37,7 @@ namespace UI.Desktop
             this.btnCancelar = new MaterialSkin.Controls.MaterialButton();
             this.cmbUnidadMedida = new MaterialSkin.Controls.MaterialComboBox();
             this.txtPuntoPedido = new MaterialSkin.Controls.MaterialTextBox();
+            this.ayudaInsumo = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // txtIDInsumo
@@ -97,6 +99,8 @@ namespace UI.Desktop
             this.txtExistenciaInsumo.Size = new System.Drawing.Size(161, 50);
             this.txtExistenciaInsumo.TabIndex = 5;
             this.txtExistenciaInsumo.Text = "";
+            this.ayudaInsumo.SetToolTip(this.txtExistenciaInsumo, "Refiere a la cantidad de insumo con la que cuenta el negocio actualmente.\r\nSi no " +
+        "cuenta con stock actualmente ingrese cantidad 0.");
             this.txtExistenciaInsumo.TrailingIcon = null;
             this.txtExistenciaInsumo.TextChanged += new System.EventHandler(this.txtExistenciaInsumo_TextChanged);
             // 
@@ -185,7 +189,16 @@ namespace UI.Desktop
             this.txtPuntoPedido.Size = new System.Drawing.Size(179, 50);
             this.txtPuntoPedido.TabIndex = 10;
             this.txtPuntoPedido.Text = "";
+            this.ayudaInsumo.SetToolTip(this.txtPuntoPedido, "Indique la cantidad a partir de la cual desea que el sistema \r\ninforme la necesid" +
+        "ad de realizar un nuevo pedido.");
             this.txtPuntoPedido.TrailingIcon = null;
+            this.txtPuntoPedido.TextChanged += new System.EventHandler(this.txtPuntoPedido_TextChanged);
+            // 
+            // ayudaInsumo
+            // 
+            this.ayudaInsumo.AutomaticDelay = 0;
+            this.ayudaInsumo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.ayudaInsumo.ToolTipTitle = "Ayuda";
             // 
             // InsumoDesktop
             // 
@@ -219,5 +232,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnCancelar;
         private MaterialSkin.Controls.MaterialComboBox cmbUnidadMedida;
         private MaterialSkin.Controls.MaterialTextBox txtPuntoPedido;
+        private System.Windows.Forms.ToolTip ayudaInsumo;
     }
 }

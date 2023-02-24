@@ -239,9 +239,34 @@ namespace UI.Desktop
 
         private void txtExistenciaInsumo_TextChanged(object sender, EventArgs e)
         {
-            if(this.txtExistenciaInsumo.Text.Contains("-"))
+            try
             {
-                MessageBox.Show("La cantidad de existencia ingresada no es válida. Por favor, vuelva a ingresar una cantidad válida para continuar.","Info",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                Validaciones.ValidarNumeroEnteroDecimal(this.txtExistenciaInsumo.Text);
+                if (this.txtExistenciaInsumo.Text.Contains("-"))
+                {
+                    MessageBox.Show("La cantidad de existencia ingresada no es válida. Por favor, vuelva a ingresar una cantidad válida para continuar.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Existencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.txtExistenciaInsumo.Text = "";
+
+            }
+            
+        }
+
+        private void txtPuntoPedido_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Validaciones.ValidarNumeroEnteroDecimal(this.txtPuntoPedido.Text);
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Punto de Pedido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.txtPuntoPedido.Text = "";
             }
         }
     }

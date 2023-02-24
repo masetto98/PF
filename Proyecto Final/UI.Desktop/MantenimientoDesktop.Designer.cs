@@ -104,6 +104,7 @@ namespace UI.Desktop
             this.txtCosto.TabIndex = 5;
             this.txtCosto.Text = "";
             this.txtCosto.TrailingIcon = null;
+            this.txtCosto.TextChanged += new System.EventHandler(this.txtCosto_TextChanged);
             // 
             // btnCancelar
             // 

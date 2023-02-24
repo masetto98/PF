@@ -29,6 +29,7 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cmbServicios = new MaterialSkin.Controls.MaterialComboBox();
             this.cmbTipoPrendas = new MaterialSkin.Controls.MaterialComboBox();
             this.btnAceptar = new MaterialSkin.Controls.MaterialButton();
@@ -49,6 +50,7 @@ namespace UI.Desktop
             this.txtCantidad = new MaterialSkin.Controls.MaterialTextBox();
             this.cmbInsumos = new MaterialSkin.Controls.MaterialComboBox();
             this.materialComboBox1 = new MaterialSkin.Controls.MaterialComboBox();
+            this.ayudaServicioTipoPrenda = new System.Windows.Forms.ToolTip(this.components);
             this.materialCard1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -164,6 +166,7 @@ namespace UI.Desktop
             this.txtPrecio.Size = new System.Drawing.Size(346, 50);
             this.txtPrecio.TabIndex = 15;
             this.txtPrecio.Text = "";
+            this.ayudaServicioTipoPrenda.SetToolTip(this.txtPrecio, "Si desea ingresar un precio con decimales recuerde utilizar \",\" y no \".\"");
             this.txtPrecio.TrailingIcon = null;
             // 
             // materialCard1
@@ -364,6 +367,7 @@ namespace UI.Desktop
             this.txtCantidad.Size = new System.Drawing.Size(93, 50);
             this.txtCantidad.TabIndex = 1;
             this.txtCantidad.Text = "";
+            this.ayudaServicioTipoPrenda.SetToolTip(this.txtCantidad, "Ingresar una cantidad que se corresponda con la unidad de medida a seleccionar.");
             this.txtCantidad.TrailingIcon = null;
             // 
             // cmbInsumos
@@ -416,6 +420,12 @@ namespace UI.Desktop
             this.materialComboBox1.TabIndex = 17;
             this.materialComboBox1.Visible = false;
             // 
+            // ayudaServicioTipoPrenda
+            // 
+            this.ayudaServicioTipoPrenda.AutomaticDelay = 0;
+            this.ayudaServicioTipoPrenda.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.ayudaServicioTipoPrenda.ToolTipTitle = "Ayuda";
+            // 
             // ServicioTipoPrendaDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -462,5 +472,6 @@ namespace UI.Desktop
         private System.Windows.Forms.ColumnHeader columnUnidad;
         private MaterialSkin.Controls.MaterialComboBox cmbTiposMaquina;
         private System.Windows.Forms.ColumnHeader columnTipoMaquina;
+        private System.Windows.Forms.ToolTip ayudaServicioTipoPrenda;
     }
 }

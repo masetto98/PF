@@ -29,6 +29,7 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblFechaEntrada = new MaterialSkin.Controls.MaterialLabel();
             this.txtIdCliente = new MaterialSkin.Controls.MaterialTextBox();
             this.dtpFechaIngreso = new System.Windows.Forms.DateTimePicker();
@@ -74,6 +75,7 @@ namespace UI.Desktop
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.nudHoraEntrega = new System.Windows.Forms.NumericUpDown();
+            this.ayudaOrden = new System.Windows.Forms.ToolTip(this.components);
             this.materialCard1.SuspendLayout();
             this.materialCard2.SuspendLayout();
             this.materialCard3.SuspendLayout();
@@ -360,6 +362,7 @@ namespace UI.Desktop
             this.txtCuit.Size = new System.Drawing.Size(237, 50);
             this.txtCuit.TabIndex = 22;
             this.txtCuit.Text = "";
+            this.ayudaOrden.SetToolTip(this.txtCuit, "Recuerde no incluir espacios ni guiones al ingresar un CUIT.");
             this.txtCuit.TrailingIcon = null;
             // 
             // cmbTipoPrenda
@@ -544,6 +547,9 @@ namespace UI.Desktop
             this.cmbPrioridad.Size = new System.Drawing.Size(233, 49);
             this.cmbPrioridad.StartIndex = 0;
             this.cmbPrioridad.TabIndex = 34;
+            this.ayudaOrden.SetToolTip(this.cmbPrioridad, "Si selecciona prioridad \"Alta\" los trabajos a realizar incluidos en la Orden\r\nse " +
+        "mostrarán por encima de los trabajos con prioridad \"Estándar\" en\r\nel modulo Plan" +
+        "ificación.");
             // 
             // txtDireccion
             // 
@@ -664,6 +670,8 @@ namespace UI.Desktop
             this.txtDescuento.Size = new System.Drawing.Size(88, 50);
             this.txtDescuento.TabIndex = 1;
             this.txtDescuento.Text = "";
+            this.ayudaOrden.SetToolTip(this.txtDescuento, "Si selecciona \"Porcentaje\" ingrese un valor entre 0 y 100.\r\nSi selecciona \"Valor\"" +
+        " ingrese un valor entre 0 y el total de la orden.");
             this.txtDescuento.TrailingIcon = null;
             this.txtDescuento.TextChanged += new System.EventHandler(this.txtDescuento_TextChanged);
             // 
@@ -889,6 +897,15 @@ namespace UI.Desktop
             this.nudHoraEntrega.Size = new System.Drawing.Size(47, 23);
             this.nudHoraEntrega.TabIndex = 44;
             // 
+            // ayudaOrden
+            // 
+            this.ayudaOrden.AutomaticDelay = 0;
+            this.ayudaOrden.AutoPopDelay = 4800;
+            this.ayudaOrden.InitialDelay = 0;
+            this.ayudaOrden.ReshowDelay = 96;
+            this.ayudaOrden.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.ayudaOrden.ToolTipTitle = "Ayuda";
+            // 
             // OrdenDesktop
             // 
             this.AcceptButton = this.btnAceptar;
@@ -984,5 +1001,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private System.Windows.Forms.NumericUpDown nudHoraEntrega;
+        private System.Windows.Forms.ToolTip ayudaOrden;
     }
 }

@@ -12,16 +12,28 @@ namespace Business.Logic
 {
     public class Validaciones
     {
-        static public void ValidarNumeroEnteroDecimal(string cantidad) 
+        static public bool ValidarNumeroEnteroDecimal(string cantidad) 
         {
             
 
             try
             {
-                if (!Regex.IsMatch(cantidad, @"\d{1,7}(,\d{1,2})?"))
+                if(cantidad != "")
                 {
-                    throw new Exception();
+                    if (!Regex.IsMatch(cantidad, @"\d{1,7}(,\d{1,2})?"))
+                    {
+                        throw new Exception();
+                    }
+                    else
+                    {
+                        return true;
+                    }
                 }
+                else
+                {
+                    return false;
+                }
+                
             }
             catch (Exception e)
             {
@@ -200,6 +212,7 @@ namespace Business.Logic
         public InsumoValidator()
         {
             RuleFor(x => x.Descripcion).NotEmpty().MaximumLength(50).Matches("^[a-zA-Z0-9üéáíóúñÑ ]+$").WithMessage("'Descripción' debe contener solo letras y/o números");
+            RuleFor(x => x.Stock.ToString()).NotEmpty();
         }
     }
 

@@ -345,6 +345,7 @@ namespace UI.Desktop
             if (this.rbtnPorcentaje.Checked == true)
             {
                 this.rbtnValor.Checked = false;
+                
             }
             if (this.rbtnPorcentaje.Checked == true && this.txtDescuento.Text != "") 
             {
@@ -400,27 +401,30 @@ namespace UI.Desktop
             this.txtNombreApellidoRazonSocial.Text = "";
             try
             {
-                Cliente cli = _clienteLogic.GetAll().Find(
+               
+                    Cliente cli = _clienteLogic.GetAll().Find(
                     delegate (Cliente c) {
-                        return c.Cuit == this.txtCuit.Text || c.Cuit.Contains(this.txtCuit.Text);
+                        string dni = c.Cuit.Substring(2, 10);
+                        return c.Cuit == this.txtCuit.Text || dni == this.txtCuit.Text;
                     });
-                if (cli == null)
-                {
-                   
-                    Exception e = new Exception("No existe cliente para el cuit ingresado.");
-                    throw e;
-                    
-                }
-                if (cli.Nombre != "" && cli.Apellido != "" && cli.RazonSocial == "") 
-                {
-                    this.txtNombreApellidoRazonSocial.Text =String.Concat(cli.Nombre, " ",cli.Apellido);
-                }
-                if (cli.Nombre != "" && cli.Apellido != "" && cli.RazonSocial != "") 
-                {
-                    this.txtNombreApellidoRazonSocial.Text = String.Concat(cli.Nombre, " ", cli.Apellido, " / ",cli.RazonSocial);
-                }
-                this.txtIdCliente.Text = cli.IdCliente.ToString();
-                this.txtDireccion.Text = cli.Direccion;
+                    if (cli == null)
+                    {
+
+                        Exception e = new Exception("No existe cliente para el cuit ingresado.");
+                        throw e;
+
+                    }
+                    if (cli.Nombre != "" && cli.Apellido != "" && cli.RazonSocial == "")
+                    {
+                        this.txtNombreApellidoRazonSocial.Text = String.Concat(cli.Nombre, " ", cli.Apellido);
+                    }
+                    if (cli.Nombre != "" && cli.Apellido != "" && cli.RazonSocial != "")
+                    {
+                        this.txtNombreApellidoRazonSocial.Text = String.Concat(cli.Nombre, " ", cli.Apellido, " / ", cli.RazonSocial);
+                    }
+                    this.txtIdCliente.Text = cli.IdCliente.ToString();
+                    this.txtDireccion.Text = cli.Direccion;
+                
                 
             }
             catch (Exception e)
@@ -654,20 +658,27 @@ namespace UI.Desktop
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (_itemsServicio.Count > 1)
-            {
-                EliminarItem();
-                CalcularImporte();
-            }
-            else 
-            {
-                MessageBox.Show("La orden debe contener por lo menos un servicio", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+           
+             EliminarItem();
+             CalcularImporte();
+           
         }
 
         private void txtDescuento_TextChanged(object sender, EventArgs e)
         {
-            CalcularImporte();
+            try
+            {
+                if (Validaciones.ValidarNumeroEnteroDecimal(this.txtDescuento.Text))
+                {
+                    CalcularImporte();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Descuento", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.txtDescuento.Text = "";
+            }
+            
         }
 
         private void EliminarItem() 
@@ -728,11 +739,7 @@ namespace UI.Desktop
         {
             try
             {   
-                if (this.txtDescuento.Text != "") 
-                {
-                    Validaciones.ValidarNumeroEnteroDecimal(this.txtDescuento.Text);
-
-                }
+                
                 MapearADatos();
                 if (Validar() && OrdenActual.Cliente is not null && OrdenActual.ItemsPedidos.Count > 0)
                 {

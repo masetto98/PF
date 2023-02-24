@@ -110,6 +110,7 @@ namespace UI.Desktop
             this.txtCantidad.TabIndex = 2;
             this.txtCantidad.Text = "";
             this.txtCantidad.TrailingIcon = null;
+            this.txtCantidad.TextChanged += new System.EventHandler(this.txtCantidad_TextChanged);
             // 
             // btnAceptarIngreso
             // 
@@ -165,7 +166,7 @@ namespace UI.Desktop
             this.btnNewProvIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnNewProvIngreso.HighEmphasis = true;
             this.btnNewProvIngreso.Icon = global::UI.Desktop.Properties.Resources.plus_icon_icons_com_70890;
-            this.btnNewProvIngreso.Location = new System.Drawing.Point(303, 87);
+            this.btnNewProvIngreso.Location = new System.Drawing.Point(303, 90);
             this.btnNewProvIngreso.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnNewProvIngreso.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNewProvIngreso.Name = "btnNewProvIngreso";

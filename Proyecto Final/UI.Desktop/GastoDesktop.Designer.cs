@@ -160,6 +160,7 @@ namespace UI.Desktop
             this.txtImporte.TabIndex = 5;
             this.txtImporte.Text = "";
             this.txtImporte.TrailingIcon = null;
+            this.txtImporte.TextChanged += new System.EventHandler(this.txtImporte_TextChanged);
             // 
             // dtpFechaRealizacion
             // 

@@ -241,6 +241,7 @@ namespace UI.Desktop
             this.imgUserLogin = new System.Windows.Forms.PictureBox();
             this.btnCerrarSesion = new MaterialSkin.Controls.MaterialButton();
             this.niFaltaInsumos = new System.Windows.Forms.NotifyIcon(this.components);
+            this.ayudaGeneral = new System.Windows.Forms.ToolTip(this.components);
             this.mnuPrincipal.SuspendLayout();
             this.mnuTabOrdenes.SuspendLayout();
             this.mnuTabClientes.SuspendLayout();
@@ -426,6 +427,8 @@ namespace UI.Desktop
             this.btnVerDetalles.Size = new System.Drawing.Size(114, 55);
             this.btnVerDetalles.TabIndex = 11;
             this.btnVerDetalles.Text = "Detalles";
+            this.ayudaGeneral.SetToolTip(this.btnVerDetalles, "Permite visualizar información detallada de la orden seleccionada. \r\nSi presiona " +
+        "dos veces sobre la orden en el listado también puede \r\nacceder a los detalles.");
             this.btnVerDetalles.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnVerDetalles.UseAccentColor = false;
             this.btnVerDetalles.UseVisualStyleBackColor = false;
@@ -473,6 +476,7 @@ namespace UI.Desktop
             this.btnRetirarOrden.Size = new System.Drawing.Size(114, 51);
             this.btnRetirarOrden.TabIndex = 9;
             this.btnRetirarOrden.Text = "Retirar Orden";
+            this.ayudaGeneral.SetToolTip(this.btnRetirarOrden, resources.GetString("btnRetirarOrden.ToolTip"));
             this.btnRetirarOrden.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnRetirarOrden.UseAccentColor = false;
             this.btnRetirarOrden.UseVisualStyleBackColor = false;
@@ -760,14 +764,15 @@ namespace UI.Desktop
             // 
             // btnSaldarDeuda
             // 
+            this.btnSaldarDeuda.AutoSize = false;
             this.btnSaldarDeuda.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSaldarDeuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnSaldarDeuda.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnSaldarDeuda.Depth = 0;
             this.btnSaldarDeuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnSaldarDeuda.HighEmphasis = true;
-            this.btnSaldarDeuda.Icon = null;
-            this.btnSaldarDeuda.Location = new System.Drawing.Point(275, 39);
+            this.btnSaldarDeuda.Icon = global::UI.Desktop.Properties.Resources.paying_money_invoice_payment_your_bill_icon_220368;
+            this.btnSaldarDeuda.Location = new System.Drawing.Point(266, 39);
             this.btnSaldarDeuda.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnSaldarDeuda.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSaldarDeuda.Name = "btnSaldarDeuda";
@@ -775,6 +780,7 @@ namespace UI.Desktop
             this.btnSaldarDeuda.Size = new System.Drawing.Size(127, 36);
             this.btnSaldarDeuda.TabIndex = 3;
             this.btnSaldarDeuda.Text = "Saldar deuda";
+            this.ayudaGeneral.SetToolTip(this.btnSaldarDeuda, resources.GetString("btnSaldarDeuda.ToolTip"));
             this.btnSaldarDeuda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnSaldarDeuda.UseAccentColor = false;
             this.btnSaldarDeuda.UseVisualStyleBackColor = false;
@@ -826,6 +832,8 @@ namespace UI.Desktop
             this.btnAgregarPago.Size = new System.Drawing.Size(114, 51);
             this.btnAgregarPago.TabIndex = 13;
             this.btnAgregarPago.Text = "Agregar Pago";
+            this.ayudaGeneral.SetToolTip(this.btnAgregarPago, "Se abrirá una nueva venta donde podrá\r\nagregar nuevos pagos y saldar la deuda\r\nto" +
+        "tal de una orden.");
             this.btnAgregarPago.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnAgregarPago.UseAccentColor = false;
             this.btnAgregarPago.UseVisualStyleBackColor = false;
@@ -849,6 +857,8 @@ namespace UI.Desktop
             this.btnVerPagos.Size = new System.Drawing.Size(114, 51);
             this.btnVerPagos.TabIndex = 12;
             this.btnVerPagos.Text = "Ver pagos";
+            this.ayudaGeneral.SetToolTip(this.btnVerPagos, "Permite observar el detalle de los pagos\r\ncorrespondientes a la orden del cliente" +
+        "\r\nseleccionada de la lista.");
             this.btnVerPagos.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnVerPagos.UseAccentColor = false;
             this.btnVerPagos.UseVisualStyleBackColor = false;
@@ -992,6 +1002,8 @@ namespace UI.Desktop
             this.btnOrdenesCliente.Size = new System.Drawing.Size(111, 51);
             this.btnOrdenesCliente.TabIndex = 5;
             this.btnOrdenesCliente.Text = "Detalles";
+            this.ayudaGeneral.SetToolTip(this.btnOrdenesCliente, "Permite observar el histórico de ordenes del cliente\r\nseleccionado en la lista. E" +
+        "n base a esto último calcula\r\nla cuenta corriente del cliente.");
             this.btnOrdenesCliente.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnOrdenesCliente.UseAccentColor = false;
             this.btnOrdenesCliente.UseVisualStyleBackColor = false;
@@ -1492,6 +1504,7 @@ namespace UI.Desktop
             this.btnIngresoInsumo.Size = new System.Drawing.Size(115, 51);
             this.btnIngresoInsumo.TabIndex = 17;
             this.btnIngresoInsumo.Text = "nuevo ingreso";
+            this.ayudaGeneral.SetToolTip(this.btnIngresoInsumo, "Permite registrar un nuevo ingreso del insumo seleccionado.");
             this.btnIngresoInsumo.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnIngresoInsumo.UseAccentColor = false;
             this.btnIngresoInsumo.UseVisualStyleBackColor = false;
@@ -1515,6 +1528,8 @@ namespace UI.Desktop
             this.btnDetalles.Size = new System.Drawing.Size(115, 51);
             this.btnDetalles.TabIndex = 15;
             this.btnDetalles.Text = "Detalles";
+            this.ayudaGeneral.SetToolTip(this.btnDetalles, "Permite observar los detalles de los movimientos/ingresos del insumo seleccionado" +
+        ".");
             this.btnDetalles.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnDetalles.UseAccentColor = false;
             this.btnDetalles.UseVisualStyleBackColor = false;
@@ -2031,6 +2046,8 @@ namespace UI.Desktop
             this.btnFinalizarTrabajo.Size = new System.Drawing.Size(134, 51);
             this.btnFinalizarTrabajo.TabIndex = 6;
             this.btnFinalizarTrabajo.Text = "Finalizar Trabajo";
+            this.ayudaGeneral.SetToolTip(this.btnFinalizarTrabajo, "Permite finalizar un trabajo una vez que ha sido servido.\r\nEl trabajo seleccionad" +
+        "o pasará de estado \"Iniciado\" a\r\n\"Finalizado\" y desaparecerá del listado.");
             this.btnFinalizarTrabajo.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnFinalizarTrabajo.UseAccentColor = false;
             this.btnFinalizarTrabajo.UseVisualStyleBackColor = false;
@@ -2054,6 +2071,8 @@ namespace UI.Desktop
             this.btnIniciarServicio.Size = new System.Drawing.Size(134, 51);
             this.btnIniciarServicio.TabIndex = 5;
             this.btnIniciarServicio.Text = "Iniciar Servicio";
+            this.ayudaGeneral.SetToolTip(this.btnIniciarServicio, "Permite asignar una máquina al trabajo seleccionado.\r\nUna vez iniciado el servici" +
+        "o el trabajo pasará a estado\r\n\"Procesando\" y pasará a Trabajos en Proceso.");
             this.btnIniciarServicio.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnIniciarServicio.UseAccentColor = false;
             this.btnIniciarServicio.UseVisualStyleBackColor = false;
@@ -2119,6 +2138,7 @@ namespace UI.Desktop
             this.btnMostrarServicios.Size = new System.Drawing.Size(134, 51);
             this.btnMostrarServicios.TabIndex = 3;
             this.btnMostrarServicios.Text = "Servicios detallados";
+            this.ayudaGeneral.SetToolTip(this.btnMostrarServicios, "Permite observar las máquinas por las que ha pasado un trabajo.");
             this.btnMostrarServicios.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnMostrarServicios.UseAccentColor = false;
             this.btnMostrarServicios.UseVisualStyleBackColor = false;
@@ -2220,6 +2240,8 @@ namespace UI.Desktop
             this.btnTerminarServicio.Size = new System.Drawing.Size(108, 51);
             this.btnTerminarServicio.TabIndex = 1;
             this.btnTerminarServicio.Text = "Detener Servicio";
+            this.ayudaGeneral.SetToolTip(this.btnTerminarServicio, "Permite detener el servicio que actualmente se está brindando a un trabajo.\r\nEl t" +
+        "rabajo pasará de estado \"Procesando\" a \"Iniciado\".");
             this.btnTerminarServicio.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnTerminarServicio.UseAccentColor = false;
             this.btnTerminarServicio.UseVisualStyleBackColor = false;
@@ -2436,9 +2458,11 @@ namespace UI.Desktop
             this.btnServiciosDetallados.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnServiciosDetallados.Name = "btnServiciosDetallados";
             this.btnServiciosDetallados.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnServiciosDetallados.Size = new System.Drawing.Size(176, 51);
+            this.btnServiciosDetallados.Size = new System.Drawing.Size(142, 51);
             this.btnServiciosDetallados.TabIndex = 6;
             this.btnServiciosDetallados.Text = "Servicios detallados";
+            this.ayudaGeneral.SetToolTip(this.btnServiciosDetallados, "Permite observar las máquinas y los tiempos por los que ha pasado un trabajo fina" +
+        "lizado.\r\n");
             this.btnServiciosDetallados.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnServiciosDetallados.UseAccentColor = false;
             this.btnServiciosDetallados.UseVisualStyleBackColor = false;
@@ -2501,15 +2525,17 @@ namespace UI.Desktop
             this.btnEnviarPendientes.Depth = 0;
             this.btnEnviarPendientes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEnviarPendientes.HighEmphasis = true;
-            this.btnEnviarPendientes.Icon = null;
+            this.btnEnviarPendientes.Icon = global::UI.Desktop.Properties.Resources.reload_webpage_icon_icons_com_53905;
             this.btnEnviarPendientes.Location = new System.Drawing.Point(715, 72);
             this.btnEnviarPendientes.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEnviarPendientes.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEnviarPendientes.Name = "btnEnviarPendientes";
             this.btnEnviarPendientes.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEnviarPendientes.Size = new System.Drawing.Size(176, 51);
+            this.btnEnviarPendientes.Size = new System.Drawing.Size(143, 51);
             this.btnEnviarPendientes.TabIndex = 1;
             this.btnEnviarPendientes.Text = "Enviar a pendientes";
+            this.ayudaGeneral.SetToolTip(this.btnEnviarPendientes, "Permite devolver un trabajo finalizado hacia el listado de trabajos pendientes.\r\n" +
+        "Utilice cuando un trabajo finalizado le falte brindar un servicio.");
             this.btnEnviarPendientes.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnEnviarPendientes.UseAccentColor = false;
             this.btnEnviarPendientes.UseVisualStyleBackColor = false;
@@ -2552,12 +2578,12 @@ namespace UI.Desktop
             // columnServ
             // 
             this.columnServ.Text = "Servicio";
-            this.columnServ.Width = 140;
+            this.columnServ.Width = 160;
             // 
             // columnTprenda
             // 
             this.columnTprenda.Text = "Tipo Prenda";
-            this.columnTprenda.Width = 180;
+            this.columnTprenda.Width = 160;
             // 
             // columnIt
             // 
@@ -2735,6 +2761,8 @@ namespace UI.Desktop
             this.btnAtributos.Size = new System.Drawing.Size(196, 36);
             this.btnAtributos.TabIndex = 5;
             this.btnAtributos.Text = "Atributos del negocio";
+            this.ayudaGeneral.SetToolTip(this.btnAtributos, "Permite registrar caracteristicas de su negocio. Es importante completarlas\r\npara" +
+        " poder hacer uso de los comprobantes que emite el sistema.");
             this.btnAtributos.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnAtributos.UseAccentColor = false;
             this.btnAtributos.UseVisualStyleBackColor = false;
@@ -2772,6 +2800,8 @@ namespace UI.Desktop
             this.btnObjetosPerdidos.Size = new System.Drawing.Size(196, 36);
             this.btnObjetosPerdidos.TabIndex = 0;
             this.btnObjetosPerdidos.Text = "Objetos Perdidos";
+            this.ayudaGeneral.SetToolTip(this.btnObjetosPerdidos, "Permite identificar el trayecto de los trabajos durante su estadía en la lavander" +
+        "ía\r\ny por lo tanto tener información acerca de objetos perdidos.");
             this.btnObjetosPerdidos.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnObjetosPerdidos.UseAccentColor = false;
             this.btnObjetosPerdidos.UseVisualStyleBackColor = false;
@@ -2813,6 +2843,8 @@ namespace UI.Desktop
             this.btnReporteEmpleados.Size = new System.Drawing.Size(196, 36);
             this.btnReporteEmpleados.TabIndex = 5;
             this.btnReporteEmpleados.Text = "Empleados";
+            this.ayudaGeneral.SetToolTip(this.btnReporteEmpleados, "Permite obtener información sobre las ordenes registradas\r\ny los trabajos atendid" +
+        "os por empleado.");
             this.btnReporteEmpleados.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnReporteEmpleados.UseAccentColor = false;
             this.btnReporteEmpleados.UseVisualStyleBackColor = false;
@@ -2836,6 +2868,8 @@ namespace UI.Desktop
             this.btnMovimientos.Size = new System.Drawing.Size(196, 36);
             this.btnMovimientos.TabIndex = 3;
             this.btnMovimientos.Text = "Movimientos";
+            this.ayudaGeneral.SetToolTip(this.btnMovimientos, "Permite obtener información detallada sobre los ingresos y consumos\r\nde un insumo" +
+        " en particular. Puede exportar dicha información en\r\nformato PDF.\r\n\r\n");
             this.btnMovimientos.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnMovimientos.UseAccentColor = false;
             this.btnMovimientos.UseVisualStyleBackColor = false;
@@ -2859,6 +2893,8 @@ namespace UI.Desktop
             this.btnReporteGastos.Size = new System.Drawing.Size(196, 36);
             this.btnReporteGastos.TabIndex = 2;
             this.btnReporteGastos.Text = "Gastos";
+            this.ayudaGeneral.SetToolTip(this.btnReporteGastos, "Permite obtener la información sobre los gastos realizados en un periodo de tiemp" +
+        "o\r\ny exportar dicha información en formato PDF.");
             this.btnReporteGastos.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnReporteGastos.UseAccentColor = false;
             this.btnReporteGastos.UseVisualStyleBackColor = false;
@@ -2882,6 +2918,8 @@ namespace UI.Desktop
             this.btnDeudas.Size = new System.Drawing.Size(196, 36);
             this.btnDeudas.TabIndex = 1;
             this.btnDeudas.Text = "Deudas";
+            this.ayudaGeneral.SetToolTip(this.btnDeudas, "Permite observar las deudas de todos los clientes o de un cliente en particular.\r" +
+        "\nPuede exportar y guardar la información obtenida en formato PDF.");
             this.btnDeudas.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnDeudas.UseAccentColor = false;
             this.btnDeudas.UseVisualStyleBackColor = false;
@@ -3317,6 +3355,15 @@ namespace UI.Desktop
             this.niFaltaInsumos.Visible = true;
             this.niFaltaInsumos.BalloonTipClicked += new System.EventHandler(this.niFaltaInsumos_BalloonTipClicked);
             // 
+            // ayudaGeneral
+            // 
+            this.ayudaGeneral.AutomaticDelay = 0;
+            this.ayudaGeneral.AutoPopDelay = 5000;
+            this.ayudaGeneral.InitialDelay = 0;
+            this.ayudaGeneral.ReshowDelay = 96;
+            this.ayudaGeneral.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.ayudaGeneral.ToolTipTitle = "Ayuda";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -3591,6 +3638,7 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialSwitch switchComprobantes;
         private MaterialSkin.Controls.MaterialLabel lblDatosCliente;
         private MaterialSkin.Controls.MaterialLabel materialLabel19;
+        private System.Windows.Forms.ToolTip ayudaGeneral;
     }
 }
 

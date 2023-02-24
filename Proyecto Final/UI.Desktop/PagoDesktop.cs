@@ -458,24 +458,29 @@ namespace UI.Desktop
         }
         private void txtImportePago_TextChanged(object sender, EventArgs e)
         {
-            if (txtImportePago.Text != "" && double.Parse(txtImportePago.Text) != 0)
+            try
             {
-                if (ValidarNumeroEnteroDecimal(txtImportePago.Text))
+                if (Validaciones.ValidarNumeroEnteroDecimal(txtImportePago.Text))
                 {
+                    if (txtImportePago.Text != "" && double.Parse(txtImportePago.Text) != 0)
+                    {
+                        
+                            btnAgregarPago.Enabled = true;
 
-                    btnAgregarPago.Enabled = true;
-
-                }
-                else
-                {
-                    MessageBox.Show("El importe de pago ingresado no es un número. Por favor, ingrese un importe válido.", "Pago", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.txtImportePago.Text = "";
+                    }
+                    else
+                    {
+                        btnAgregarPago.Enabled = false;
+                    }
                 }
             }
-            else
+            catch(Exception ex)
             {
-                btnAgregarPago.Enabled = false;
+                MessageBox.Show(ex.Message, "Importe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.txtImportePago.Text = "";
             }
+           
+            
             
             
         }

@@ -183,5 +183,20 @@ namespace UI.Desktop
         {
             Close();
         }
+
+        private void txtImporte_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Validaciones.ValidarNumeroEnteroDecimal(this.txtImporte.Text);
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Importe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.txtImporte.Text = "";
+
+            }
+        }
     }
 }

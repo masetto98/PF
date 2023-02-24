@@ -306,7 +306,6 @@ namespace UI.Desktop
             {
                
                     MapearADatos();
-                    Validaciones.ValidarNumeroEnteroDecimal(this.txtCantidad.Text);
                     _insumoProveedorLogic.Save(InsumoProveedorActual);
                     Close();
                
@@ -356,6 +355,20 @@ namespace UI.Desktop
                 this.cmbUnidadMedida.DataSource = _unidadesMedida;
             }
             
+        }
+
+        private void txtCantidad_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Validaciones.ValidarNumeroEnteroDecimal(txtCantidad.Text);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Cantidad", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.txtCantidad.Text = "";
+            }
+           
         }
     }
 }

@@ -60,7 +60,7 @@ namespace UI.Desktop
             // 
             this.listInsumos.AutoSizeTable = false;
             this.listInsumos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listInsumos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listInsumos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listInsumos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnID,
             this.columnDesc});
@@ -95,7 +95,7 @@ namespace UI.Desktop
             // 
             this.listIngresos.AutoSizeTable = false;
             this.listIngresos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listIngresos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listIngresos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listIngresos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnProveedor,
             this.columnFecha,
@@ -109,6 +109,7 @@ namespace UI.Desktop
             this.listIngresos.MinimumSize = new System.Drawing.Size(200, 100);
             this.listIngresos.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listIngresos.MouseState = MaterialSkin.MouseState.OUT;
+            this.listIngresos.MultiSelect = false;
             this.listIngresos.Name = "listIngresos";
             this.listIngresos.OwnerDraw = true;
             this.listIngresos.Size = new System.Drawing.Size(650, 173);
@@ -136,7 +137,7 @@ namespace UI.Desktop
             // 
             this.listEgresos.AutoSizeTable = false;
             this.listEgresos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listEgresos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listEgresos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listEgresos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnNroOrden,
             this.columnServicio,
@@ -152,6 +153,7 @@ namespace UI.Desktop
             this.listEgresos.MinimumSize = new System.Drawing.Size(200, 100);
             this.listEgresos.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listEgresos.MouseState = MaterialSkin.MouseState.OUT;
+            this.listEgresos.MultiSelect = false;
             this.listEgresos.Name = "listEgresos";
             this.listEgresos.OwnerDraw = true;
             this.listEgresos.Size = new System.Drawing.Size(780, 200);

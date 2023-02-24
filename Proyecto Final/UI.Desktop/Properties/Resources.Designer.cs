@@ -542,6 +542,16 @@ namespace UI.Desktop.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap reload_webpage_icon_icons_com_53905 {
+            get {
+                object obj = ResourceManager.GetObject("reload-webpage_icon-icons.com_53905", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap report_document_finance_business_analysis_analytics_chart_icon_188615 {
             get {
                 object obj = ResourceManager.GetObject("report_document_finance_business_analysis_analytics_chart_icon_188615", resourceCulture);

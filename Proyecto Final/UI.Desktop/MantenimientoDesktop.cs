@@ -245,5 +245,20 @@ namespace UI.Desktop
         {
             Close();
         }
+
+        private void txtCosto_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Validaciones.ValidarNumeroEnteroDecimal(this.txtCosto.Text);
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Costo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.txtCosto.Text = "";
+
+            }
+        }
     }
 }
