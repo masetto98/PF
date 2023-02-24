@@ -404,7 +404,6 @@ namespace UI.Desktop
             this.cmbPreguntas.DropDownHeight = 174;
             this.cmbPreguntas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPreguntas.DropDownWidth = 121;
-            this.cmbPreguntas.Enabled = false;
             this.cmbPreguntas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cmbPreguntas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cmbPreguntas.FormattingEnabled = true;
@@ -424,7 +423,6 @@ namespace UI.Desktop
             this.txtRespuesta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtRespuesta.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtRespuesta.Depth = 0;
-            this.txtRespuesta.Enabled = false;
             this.txtRespuesta.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtRespuesta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtRespuesta.Hint = "Respuesta";

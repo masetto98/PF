@@ -35,7 +35,7 @@ namespace UI.Desktop
         public double _totalitems;
         public RetirarOrdenDesktop(LavanderiaContext context)
         {
-            
+
             InitializeComponent();
             _context = context;
             _ordenLogic = new OrdenLogic(new OrdenAdapter(context));
@@ -50,8 +50,8 @@ namespace UI.Desktop
             {
                 OrdenActual = _ordenLogic.GetOne(nroOrden);
                 MapearDeDatos();
-                
-                
+
+
             }
             catch (Exception e)
             {
@@ -67,7 +67,7 @@ namespace UI.Desktop
             this.txtNroOrdenRetiro.Text = OrdenActual.NroOrden.ToString();
             this.txtEstadoRetiro.Text = OrdenActual.Estado.ToString();
             this.txtFechaEntradaRetiro.Text = OrdenActual.FechaEntrada.Date.ToString();
-            this.txtDescuentoRetiro.Text = OrdenActual.Descuento;
+            //this.txtDescuentoRetiro.Text = OrdenActual.Descuento;
             try
             {
                 _itemsServicio = OrdenActual.ItemsPedidos;
@@ -96,9 +96,9 @@ namespace UI.Desktop
                     this.txtFechaEntradaRetiro.Enabled = false;
                     this.txtEstadoRetiro.Enabled = false;
                     this.txtNroOrdenRetiro.Enabled = false;
-                    this.txtTotalFactura.Enabled = false;
+                    
                     this.txtRazonSocialRetiro.Enabled = false;
-                    this.txtDescuentoRetiro.Enabled = false;
+                    
                     break;
                 case ModoForm.Baja:
 
@@ -112,56 +112,13 @@ namespace UI.Desktop
                     this.txtFechaEntradaRetiro.Enabled = false;
                     this.txtEstadoRetiro.Enabled = false;
                     this.txtNroOrdenRetiro.Enabled = false;
-                    this.txtTotalFactura.Enabled = false;
+                    
                     this.txtRazonSocialRetiro.Enabled = false;
                     ;
                     break;
             }
         }
-        /*
-        public void ListarItems()
-        {
-            listItemsRetiro.Items.Clear();
-            foreach (OrdenServicioTipoPrenda i in _itemsServicio)
-            {
-                Precio precioActual = i.ServicioTipoPrenda.HistoricoPrecios.FindLast(
-                    delegate (Precio p)
-                    {
-                        return p.FechaDesde <= DateTime.Today.AddHours(23).AddMinutes(59).AddMilliseconds(59999);
-                    });
-                
-                ListViewItem item = new ListViewItem(i.ServicioTipoPrenda.Servicio.Descripcion);
-                item.SubItems.Add(i.ServicioTipoPrenda.TipoPrenda.Descripcion);
-                item.SubItems.Add(i.Estado.ToString());
-                item.SubItems.Add(precioActual.Valor.ToString());
-                listItemsRetiro.Items.Add(item);
-                _totalitems += precioActual.Valor;
-            }
-            if (OrdenActual.Descuento != null)
-            {
-                if (OrdenActual.Descuento.Contains("%"))
-                {
-                    string desc = OrdenActual.Descuento.Substring(1, OrdenActual.Descuento.Length - 1);
-                    _total = _totalitems * (1 - (Double.Parse(desc) / 100.0));
-                }
-                else
-                {
-                    _total = _totalitems - Int32.Parse(OrdenActual.Descuento);
-                }
-                this.txtTotalFactura.Text = _total.ToString();
-            }
-            else
-            {
-                _total = _totalitems;
-                this.txtTotalFactura.Text = _totalitems.ToString();
-            }
-            if(OrdenActual.Factura.Importe != _total)
-            {
-                OrdenActual.Factura.Importe = _total;
-            }
-            
-        }
-        */
+
         public void ListarItems()
         {
             listItemsRetiro.Items.Clear();
@@ -201,28 +158,41 @@ namespace UI.Desktop
                     _totalitems += precioActual.Valor;
                 }
             }
+            this.lblTotalFactura.Text = String.Concat("$ ",_totalitems.ToString());
+            _total = 0;
             if (OrdenActual.Descuento != null)
             {
                 if (OrdenActual.Descuento.Contains("%"))
                 {
                     string desc = OrdenActual.Descuento.Substring(1, OrdenActual.Descuento.Length - 1);
-                    _total = _totalitems * (1 - (Double.Parse(desc) / 100.0));
+                    _total = _totalitems * (Double.Parse(desc) / 100.0);
                 }
                 else
                 {
-                    _total = _totalitems - Int32.Parse(OrdenActual.Descuento);
+                    _total = Int32.Parse(OrdenActual.Descuento);
                 }
-                this.txtTotalFactura.Text = _total.ToString();
+                
             }
+            this.lblDescuento.Text = String.Concat("$ ", _total.ToString());
+            /*
             else
             {
                 _total = _totalitems;
                 this.txtTotalFactura.Text = _totalitems.ToString();
-            }
-            
-            if (OrdenActual.Factura.Importe != _total)
+            }*/
+            double pagos = 0;
+            if (OrdenActual.Factura is not null && OrdenActual.Factura.Pagos is not null && OrdenActual.Factura.Pagos.Count > 0)
             {
-                OrdenActual.Factura.Importe = _total;
+                foreach (Pago p in OrdenActual.Factura.Pagos)
+                {
+                    pagos += p.Importe;
+                }
+            }
+            this.lblPagos.Text = String.Concat("$ ", pagos.ToString());
+            this.txtTotalAPagar.Text = String.Concat("$ ", (_totalitems - _total - pagos).ToString());
+            if (OrdenActual.Factura.Importe != (_totalitems - _total))
+            {
+                OrdenActual.Factura.Importe = (_totalitems - _total);
                 OrdenActual.Factura.State = BusinessEntity.States.Modified;
                 _facturaLogic.Save(OrdenActual.Factura);
             }
@@ -276,7 +246,7 @@ namespace UI.Desktop
             {
                 if(OrdenActual.Factura.Importe == 0)
                 {
-                    OrdenActual.Factura.Importe = double.Parse(this.txtTotalFactura.Text);
+                    OrdenActual.Factura.Importe = double.Parse(this.lblTotalFactura.Text) - double.Parse(this.lblDescuento.Text);
                 }
                 OrdenActual.Estado = Orden.Estados.Retirado;
                 OrdenActual.FechaSalida = DateTime.Now;

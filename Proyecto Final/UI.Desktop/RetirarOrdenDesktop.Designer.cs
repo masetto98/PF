@@ -46,15 +46,19 @@ namespace UI.Desktop
             this.columnValor = new System.Windows.Forms.ColumnHeader();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            this.txtTotalAPagar = new MaterialSkin.Controls.MaterialTextBox();
             this.btnPagoRetirar = new MaterialSkin.Controls.MaterialButton();
-            this.txtTotalFactura = new MaterialSkin.Controls.MaterialTextBox();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
             this.btnRetirar = new MaterialSkin.Controls.MaterialButton();
             this.btnCancelarRetiro = new MaterialSkin.Controls.MaterialButton();
             this.btnImpFactura = new MaterialSkin.Controls.MaterialButton();
             this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
-            this.txtDescuentoRetiro = new MaterialSkin.Controls.MaterialTextBox();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
+            this.lblTotalFactura = new MaterialSkin.Controls.MaterialLabel();
+            this.lblDescuento = new MaterialSkin.Controls.MaterialLabel();
+            this.lblPagos = new MaterialSkin.Controls.MaterialLabel();
             this.cardClienteRetiro.SuspendLayout();
             this.cardOrdenRetiro.SuspendLayout();
             this.materialCard1.SuspendLayout();
@@ -76,7 +80,7 @@ namespace UI.Desktop
             this.cardClienteRetiro.MouseState = MaterialSkin.MouseState.HOVER;
             this.cardClienteRetiro.Name = "cardClienteRetiro";
             this.cardClienteRetiro.Padding = new System.Windows.Forms.Padding(14);
-            this.cardClienteRetiro.Size = new System.Drawing.Size(770, 150);
+            this.cardClienteRetiro.Size = new System.Drawing.Size(719, 150);
             this.cardClienteRetiro.TabIndex = 0;
             // 
             // txtApellidoRetiro
@@ -90,12 +94,12 @@ namespace UI.Desktop
             this.txtApellidoRetiro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtApellidoRetiro.Hint = "Apellido";
             this.txtApellidoRetiro.LeadingIcon = null;
-            this.txtApellidoRetiro.Location = new System.Drawing.Point(424, 92);
+            this.txtApellidoRetiro.Location = new System.Drawing.Point(371, 91);
             this.txtApellidoRetiro.MaxLength = 50;
             this.txtApellidoRetiro.MouseState = MaterialSkin.MouseState.OUT;
             this.txtApellidoRetiro.Multiline = false;
             this.txtApellidoRetiro.Name = "txtApellidoRetiro";
-            this.txtApellidoRetiro.Size = new System.Drawing.Size(329, 50);
+            this.txtApellidoRetiro.Size = new System.Drawing.Size(331, 50);
             this.txtApellidoRetiro.TabIndex = 4;
             this.txtApellidoRetiro.Text = "";
             this.txtApellidoRetiro.TrailingIcon = null;
@@ -116,7 +120,7 @@ namespace UI.Desktop
             this.txtNombreRetiro.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNombreRetiro.Multiline = false;
             this.txtNombreRetiro.Name = "txtNombreRetiro";
-            this.txtNombreRetiro.Size = new System.Drawing.Size(329, 50);
+            this.txtNombreRetiro.Size = new System.Drawing.Size(309, 50);
             this.txtNombreRetiro.TabIndex = 3;
             this.txtNombreRetiro.Text = "";
             this.txtNombreRetiro.TrailingIcon = null;
@@ -132,12 +136,12 @@ namespace UI.Desktop
             this.txtRazonSocialRetiro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtRazonSocialRetiro.Hint = "Razón Social";
             this.txtRazonSocialRetiro.LeadingIcon = null;
-            this.txtRazonSocialRetiro.Location = new System.Drawing.Point(424, 36);
+            this.txtRazonSocialRetiro.Location = new System.Drawing.Point(371, 35);
             this.txtRazonSocialRetiro.MaxLength = 50;
             this.txtRazonSocialRetiro.MouseState = MaterialSkin.MouseState.OUT;
             this.txtRazonSocialRetiro.Multiline = false;
             this.txtRazonSocialRetiro.Name = "txtRazonSocialRetiro";
-            this.txtRazonSocialRetiro.Size = new System.Drawing.Size(329, 50);
+            this.txtRazonSocialRetiro.Size = new System.Drawing.Size(331, 50);
             this.txtRazonSocialRetiro.TabIndex = 2;
             this.txtRazonSocialRetiro.Text = "";
             this.txtRazonSocialRetiro.TrailingIcon = null;
@@ -157,7 +161,7 @@ namespace UI.Desktop
             this.txtCuitRetiro.MouseState = MaterialSkin.MouseState.OUT;
             this.txtCuitRetiro.Multiline = false;
             this.txtCuitRetiro.Name = "txtCuitRetiro";
-            this.txtCuitRetiro.Size = new System.Drawing.Size(329, 50);
+            this.txtCuitRetiro.Size = new System.Drawing.Size(309, 50);
             this.txtCuitRetiro.TabIndex = 1;
             this.txtCuitRetiro.Text = "";
             this.txtCuitRetiro.TrailingIcon = null;
@@ -180,6 +184,7 @@ namespace UI.Desktop
             // 
             this.cardOrdenRetiro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cardOrdenRetiro.Controls.Add(this.txtFechaEntradaRetiro);
+            this.cardOrdenRetiro.Controls.Add(this.btnImpFactura);
             this.cardOrdenRetiro.Controls.Add(this.txtEstadoRetiro);
             this.cardOrdenRetiro.Controls.Add(this.txtNroOrdenRetiro);
             this.cardOrdenRetiro.Controls.Add(this.listItemsRetiro);
@@ -191,7 +196,7 @@ namespace UI.Desktop
             this.cardOrdenRetiro.MouseState = MaterialSkin.MouseState.HOVER;
             this.cardOrdenRetiro.Name = "cardOrdenRetiro";
             this.cardOrdenRetiro.Padding = new System.Windows.Forms.Padding(14);
-            this.cardOrdenRetiro.Size = new System.Drawing.Size(770, 244);
+            this.cardOrdenRetiro.Size = new System.Drawing.Size(719, 244);
             this.cardOrdenRetiro.TabIndex = 1;
             // 
             // txtFechaEntradaRetiro
@@ -204,7 +209,7 @@ namespace UI.Desktop
             this.txtFechaEntradaRetiro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtFechaEntradaRetiro.Hint = "Fecha Entrada";
             this.txtFechaEntradaRetiro.LeadingIcon = null;
-            this.txtFechaEntradaRetiro.Location = new System.Drawing.Point(479, 28);
+            this.txtFechaEntradaRetiro.Location = new System.Drawing.Point(314, 28);
             this.txtFechaEntradaRetiro.MaxLength = 50;
             this.txtFechaEntradaRetiro.MouseState = MaterialSkin.MouseState.OUT;
             this.txtFechaEntradaRetiro.Multiline = false;
@@ -224,7 +229,7 @@ namespace UI.Desktop
             this.txtEstadoRetiro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtEstadoRetiro.Hint = "Estado";
             this.txtEstadoRetiro.LeadingIcon = null;
-            this.txtEstadoRetiro.Location = new System.Drawing.Point(216, 28);
+            this.txtEstadoRetiro.Location = new System.Drawing.Point(129, 28);
             this.txtEstadoRetiro.MaxLength = 50;
             this.txtEstadoRetiro.MouseState = MaterialSkin.MouseState.OUT;
             this.txtEstadoRetiro.Multiline = false;
@@ -244,7 +249,7 @@ namespace UI.Desktop
             this.txtNroOrdenRetiro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtNroOrdenRetiro.Hint = "N° Orden";
             this.txtNroOrdenRetiro.LeadingIcon = null;
-            this.txtNroOrdenRetiro.Location = new System.Drawing.Point(25, 28);
+            this.txtNroOrdenRetiro.Location = new System.Drawing.Point(17, 28);
             this.txtNroOrdenRetiro.MaxLength = 50;
             this.txtNroOrdenRetiro.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNroOrdenRetiro.Multiline = false;
@@ -275,7 +280,7 @@ namespace UI.Desktop
             this.listItemsRetiro.MultiSelect = false;
             this.listItemsRetiro.Name = "listItemsRetiro";
             this.listItemsRetiro.OwnerDraw = true;
-            this.listItemsRetiro.Size = new System.Drawing.Size(736, 143);
+            this.listItemsRetiro.Size = new System.Drawing.Size(685, 143);
             this.listItemsRetiro.TabIndex = 2;
             this.listItemsRetiro.UseCompatibleStateImageBehavior = false;
             this.listItemsRetiro.View = System.Windows.Forms.View.Details;
@@ -294,12 +299,12 @@ namespace UI.Desktop
             // columnEstado
             // 
             this.columnEstado.Text = "Estado";
-            this.columnEstado.Width = 200;
+            this.columnEstado.Width = 170;
             // 
             // columnValor
             // 
             this.columnValor.Text = "Precio";
-            this.columnValor.Width = 186;
+            this.columnValor.Width = 130;
             // 
             // materialLabel6
             // 
@@ -318,18 +323,38 @@ namespace UI.Desktop
             // materialCard1
             // 
             this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.Controls.Add(this.txtTotalAPagar);
             this.materialCard1.Controls.Add(this.btnPagoRetirar);
-            this.materialCard1.Controls.Add(this.txtTotalFactura);
-            this.materialCard1.Controls.Add(this.materialLabel7);
+            this.materialCard1.Controls.Add(this.materialLabel3);
             this.materialCard1.Depth = 0;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(357, 501);
+            this.materialCard1.Location = new System.Drawing.Point(338, 501);
             this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(427, 68);
+            this.materialCard1.Size = new System.Drawing.Size(395, 68);
             this.materialCard1.TabIndex = 2;
+            // 
+            // txtTotalAPagar
+            // 
+            this.txtTotalAPagar.AnimateReadOnly = false;
+            this.txtTotalAPagar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.txtTotalAPagar.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTotalAPagar.Depth = 0;
+            this.txtTotalAPagar.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtTotalAPagar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtTotalAPagar.Hint = "Deuda";
+            this.txtTotalAPagar.LeadingIcon = null;
+            this.txtTotalAPagar.Location = new System.Drawing.Point(119, 8);
+            this.txtTotalAPagar.MaxLength = 50;
+            this.txtTotalAPagar.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtTotalAPagar.Multiline = false;
+            this.txtTotalAPagar.Name = "txtTotalAPagar";
+            this.txtTotalAPagar.Size = new System.Drawing.Size(145, 50);
+            this.txtTotalAPagar.TabIndex = 5;
+            this.txtTotalAPagar.Text = "";
+            this.txtTotalAPagar.TrailingIcon = null;
             // 
             // btnPagoRetirar
             // 
@@ -341,7 +366,7 @@ namespace UI.Desktop
             this.btnPagoRetirar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnPagoRetirar.HighEmphasis = true;
             this.btnPagoRetirar.Icon = global::UI.Desktop.Properties.Resources.payment_tax_invoice_document_calculator_icon_188684__1_;
-            this.btnPagoRetirar.Location = new System.Drawing.Point(296, 8);
+            this.btnPagoRetirar.Location = new System.Drawing.Point(271, 8);
             this.btnPagoRetirar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnPagoRetirar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnPagoRetirar.Name = "btnPagoRetirar";
@@ -354,25 +379,19 @@ namespace UI.Desktop
             this.btnPagoRetirar.UseVisualStyleBackColor = false;
             this.btnPagoRetirar.Click += new System.EventHandler(this.btnPagoRetirar_Click);
             // 
-            // txtTotalFactura
+            // materialLabel3
             // 
-            this.txtTotalFactura.AnimateReadOnly = false;
-            this.txtTotalFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.txtTotalFactura.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTotalFactura.Depth = 0;
-            this.txtTotalFactura.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtTotalFactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtTotalFactura.Hint = "Total";
-            this.txtTotalFactura.LeadingIcon = null;
-            this.txtTotalFactura.Location = new System.Drawing.Point(114, 8);
-            this.txtTotalFactura.MaxLength = 50;
-            this.txtTotalFactura.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtTotalFactura.Multiline = false;
-            this.txtTotalFactura.Name = "txtTotalFactura";
-            this.txtTotalFactura.Size = new System.Drawing.Size(158, 50);
-            this.txtTotalFactura.TabIndex = 3;
-            this.txtTotalFactura.Text = "";
-            this.txtTotalFactura.TrailingIcon = null;
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel3.Location = new System.Drawing.Point(17, 25);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(96, 19);
+            this.materialLabel3.TabIndex = 3;
+            this.materialLabel3.Text = "Total a pagar";
             // 
             // materialLabel7
             // 
@@ -381,7 +400,7 @@ namespace UI.Desktop
             this.materialLabel7.Depth = 0;
             this.materialLabel7.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel7.Location = new System.Drawing.Point(8, 28);
+            this.materialLabel7.Location = new System.Drawing.Point(7, 14);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
             this.materialLabel7.Size = new System.Drawing.Size(100, 19);
@@ -397,7 +416,7 @@ namespace UI.Desktop
             this.btnRetirar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnRetirar.HighEmphasis = true;
             this.btnRetirar.Icon = null;
-            this.btnRetirar.Location = new System.Drawing.Point(600, 577);
+            this.btnRetirar.Location = new System.Drawing.Point(549, 589);
             this.btnRetirar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnRetirar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRetirar.Name = "btnRetirar";
@@ -419,7 +438,7 @@ namespace UI.Desktop
             this.btnCancelarRetiro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelarRetiro.HighEmphasis = true;
             this.btnCancelarRetiro.Icon = null;
-            this.btnCancelarRetiro.Location = new System.Drawing.Point(688, 577);
+            this.btnCancelarRetiro.Location = new System.Drawing.Point(637, 589);
             this.btnCancelarRetiro.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelarRetiro.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelarRetiro.Name = "btnCancelarRetiro";
@@ -443,7 +462,7 @@ namespace UI.Desktop
             this.btnImpFactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnImpFactura.HighEmphasis = true;
             this.btnImpFactura.Icon = global::UI.Desktop.Properties.Resources.mbriprint_99560;
-            this.btnImpFactura.Location = new System.Drawing.Point(14, 577);
+            this.btnImpFactura.Location = new System.Drawing.Point(8, 197);
             this.btnImpFactura.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnImpFactura.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnImpFactura.Name = "btnImpFactura";
@@ -460,8 +479,12 @@ namespace UI.Desktop
             // materialCard2
             // 
             this.materialCard2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialCard2.Controls.Add(this.txtDescuentoRetiro);
+            this.materialCard2.Controls.Add(this.lblPagos);
+            this.materialCard2.Controls.Add(this.lblDescuento);
+            this.materialCard2.Controls.Add(this.lblTotalFactura);
+            this.materialCard2.Controls.Add(this.materialLabel2);
             this.materialCard2.Controls.Add(this.materialLabel8);
+            this.materialCard2.Controls.Add(this.materialLabel7);
             this.materialCard2.Depth = 0;
             this.materialCard2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialCard2.Location = new System.Drawing.Point(14, 501);
@@ -469,28 +492,22 @@ namespace UI.Desktop
             this.materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard2.Name = "materialCard2";
             this.materialCard2.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard2.Size = new System.Drawing.Size(315, 68);
+            this.materialCard2.Size = new System.Drawing.Size(315, 122);
             this.materialCard2.TabIndex = 6;
             // 
-            // txtDescuentoRetiro
+            // materialLabel2
             // 
-            this.txtDescuentoRetiro.AnimateReadOnly = false;
-            this.txtDescuentoRetiro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.txtDescuentoRetiro.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtDescuentoRetiro.Depth = 0;
-            this.txtDescuentoRetiro.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtDescuentoRetiro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtDescuentoRetiro.Hint = "Descuento";
-            this.txtDescuentoRetiro.LeadingIcon = null;
-            this.txtDescuentoRetiro.Location = new System.Drawing.Point(99, 8);
-            this.txtDescuentoRetiro.MaxLength = 50;
-            this.txtDescuentoRetiro.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtDescuentoRetiro.Multiline = false;
-            this.txtDescuentoRetiro.Name = "txtDescuentoRetiro";
-            this.txtDescuentoRetiro.Size = new System.Drawing.Size(158, 50);
-            this.txtDescuentoRetiro.TabIndex = 4;
-            this.txtDescuentoRetiro.Text = "";
-            this.txtDescuentoRetiro.TrailingIcon = null;
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel2.Location = new System.Drawing.Point(8, 88);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(127, 19);
+            this.materialLabel2.TabIndex = 5;
+            this.materialLabel2.Text = "Pagos realizados:";
             // 
             // materialLabel8
             // 
@@ -499,20 +516,55 @@ namespace UI.Desktop
             this.materialLabel8.Depth = 0;
             this.materialLabel8.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel8.Location = new System.Drawing.Point(7, 28);
+            this.materialLabel8.Location = new System.Drawing.Point(8, 49);
             this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel8.Name = "materialLabel8";
             this.materialLabel8.Size = new System.Drawing.Size(80, 19);
             this.materialLabel8.TabIndex = 3;
             this.materialLabel8.Text = "Descuento:";
             // 
+            // lblTotalFactura
+            // 
+            this.lblTotalFactura.AutoSize = true;
+            this.lblTotalFactura.Depth = 0;
+            this.lblTotalFactura.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblTotalFactura.Location = new System.Drawing.Point(141, 10);
+            this.lblTotalFactura.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblTotalFactura.Name = "lblTotalFactura";
+            this.lblTotalFactura.Size = new System.Drawing.Size(5, 19);
+            this.lblTotalFactura.TabIndex = 6;
+            this.lblTotalFactura.Text = "-";
+            // 
+            // lblDescuento
+            // 
+            this.lblDescuento.AutoSize = true;
+            this.lblDescuento.Depth = 0;
+            this.lblDescuento.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblDescuento.Location = new System.Drawing.Point(141, 49);
+            this.lblDescuento.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblDescuento.Name = "lblDescuento";
+            this.lblDescuento.Size = new System.Drawing.Size(5, 19);
+            this.lblDescuento.TabIndex = 7;
+            this.lblDescuento.Text = "-";
+            // 
+            // lblPagos
+            // 
+            this.lblPagos.AutoSize = true;
+            this.lblPagos.Depth = 0;
+            this.lblPagos.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblPagos.Location = new System.Drawing.Point(141, 88);
+            this.lblPagos.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblPagos.Name = "lblPagos";
+            this.lblPagos.Size = new System.Drawing.Size(5, 19);
+            this.lblPagos.TabIndex = 8;
+            this.lblPagos.Text = "-";
+            // 
             // RetirarOrdenDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 624);
+            this.ClientSize = new System.Drawing.Size(742, 634);
             this.Controls.Add(this.materialCard2);
-            this.Controls.Add(this.btnImpFactura);
             this.Controls.Add(this.btnCancelarRetiro);
             this.Controls.Add(this.btnRetirar);
             this.Controls.Add(this.materialCard1);
@@ -555,7 +607,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialTextBox txtEstadoRetiro;
         private MaterialSkin.Controls.MaterialTextBox txtNroOrdenRetiro;
         private MaterialSkin.Controls.MaterialCard materialCard1;
-        private MaterialSkin.Controls.MaterialTextBox txtTotalFactura;
         private MaterialSkin.Controls.MaterialLabel materialLabel7;
         private MaterialSkin.Controls.MaterialTextBox txtFechaEntradaRetiro;
         private MaterialSkin.Controls.MaterialButton btnPagoRetirar;
@@ -563,7 +614,12 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialButton btnCancelarRetiro;
         private MaterialSkin.Controls.MaterialButton btnImpFactura;
         private MaterialSkin.Controls.MaterialCard materialCard2;
-        private MaterialSkin.Controls.MaterialTextBox txtDescuentoRetiro;
         private MaterialSkin.Controls.MaterialLabel materialLabel8;
+        private MaterialSkin.Controls.MaterialTextBox txtTotalAPagar;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialLabel lblPagos;
+        private MaterialSkin.Controls.MaterialLabel lblDescuento;
+        private MaterialSkin.Controls.MaterialLabel lblTotalFactura;
     }
 }

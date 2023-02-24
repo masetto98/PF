@@ -37,8 +37,8 @@ namespace UI.Desktop
             this.txtClaveUser.Enabled = false;
             this.txtConfirmarClave.Enabled = false;
             this.btnAceptarUsuario.Enabled = false;
-            this.cmbPreguntas.Enabled = false;
-            this.txtRespuesta.Enabled = false;
+            //this.cmbPreguntas.Enabled = false;
+            //this.txtRespuesta.Enabled = false;
             CargarPreguntas();
         }
         public UsuarioDesktop(int ID, ModoForm modo, LavanderiaContext context) : this(context)
@@ -69,7 +69,7 @@ namespace UI.Desktop
             this.txtIdUsuario.Text = this.UsuarioActual.IdUsuario.ToString();
             this.chkHabilitado.Checked = this.UsuarioActual.Habilitado;
             this.txtNombreUsuario.Text = this.UsuarioActual.NombreUsuario;
-            this.cmbPreguntas.SelectedIndex = UsuarioActual.Pregunta.Value;
+            //this.cmbPreguntas.SelectedIndex = UsuarioActual.Pregunta.Value;
             
             // La clave no la tengo que cargar porque no se muestra, siempre se vuelve a poner de 0
             // Ahora tengo que cargar los datos de la persona también
@@ -134,12 +134,10 @@ namespace UI.Desktop
                 {
                     UsuarioModif.Clave = this.txtClaveUser.Text;
                 }
-                if (this.txtRespuesta.Text != "")
-                {
-                    UsuarioModif.Pregunta = this.cmbPreguntas.SelectedIndex;
-                    UsuarioModif.Respuesta = this.txtRespuesta.Text;
-                }
-                
+                UsuarioModif.Pregunta = this.cmbPreguntas.SelectedIndex;
+                UsuarioModif.Respuesta = this.txtRespuesta.Text;
+
+
             }
             switch (Modos)
             {
@@ -165,6 +163,7 @@ namespace UI.Desktop
                     }
                     else if(Modos == ModoForm.Modificacion)
                     {
+                        //if(this.cmbPreguntas.SelectedIndex==UsuarioActual.Pregunta && this.txtRespuesta.Text)
                         _usuarioLogic.Save(UsuarioModif);
                     }
                     Close();

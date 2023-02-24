@@ -54,6 +54,7 @@ namespace UI.Desktop
             this.columnFechaSalida = new System.Windows.Forms.ColumnHeader();
             this.columnEstado = new System.Windows.Forms.ColumnHeader();
             this.mnuTabClientes = new System.Windows.Forms.TabPage();
+            this.switchMostrarImpagas = new MaterialSkin.Controls.MaterialSwitch();
             this.materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
             this.listPagosOrden = new MaterialSkin.Controls.MaterialListView();
             this.columnNroO = new System.Windows.Forms.ColumnHeader();
@@ -419,7 +420,7 @@ namespace UI.Desktop
             this.btnVerDetalles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnVerDetalles.HighEmphasis = true;
             this.btnVerDetalles.Icon = global::UI.Desktop.Properties.Resources.document_3530;
-            this.btnVerDetalles.Location = new System.Drawing.Point(1164, 74);
+            this.btnVerDetalles.Location = new System.Drawing.Point(1177, 74);
             this.btnVerDetalles.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnVerDetalles.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVerDetalles.Name = "btnVerDetalles";
@@ -444,7 +445,7 @@ namespace UI.Desktop
             this.btnEditarOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEditarOrden.HighEmphasis = true;
             this.btnEditarOrden.Icon = global::UI.Desktop.Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
-            this.btnEditarOrden.Location = new System.Drawing.Point(149, 13);
+            this.btnEditarOrden.Location = new System.Drawing.Point(129, 13);
             this.btnEditarOrden.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEditarOrden.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEditarOrden.Name = "btnEditarOrden";
@@ -468,7 +469,7 @@ namespace UI.Desktop
             this.btnRetirarOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnRetirarOrden.HighEmphasis = true;
             this.btnRetirarOrden.Icon = global::UI.Desktop.Properties.Resources.thefreeforty_withdraw_icon_icons_com_66307;
-            this.btnRetirarOrden.Location = new System.Drawing.Point(1164, 141);
+            this.btnRetirarOrden.Location = new System.Drawing.Point(1177, 141);
             this.btnRetirarOrden.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnRetirarOrden.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRetirarOrden.Name = "btnRetirarOrden";
@@ -529,7 +530,7 @@ namespace UI.Desktop
             this.btnEliminarOrden.HighEmphasis = true;
             this.btnEliminarOrden.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
             this.btnEliminarOrden.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEliminarOrden.Location = new System.Drawing.Point(271, 13);
+            this.btnEliminarOrden.Location = new System.Drawing.Point(251, 14);
             this.btnEliminarOrden.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminarOrden.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminarOrden.Name = "btnEliminarOrden";
@@ -552,7 +553,7 @@ namespace UI.Desktop
             this.btnNuevaOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnNuevaOrden.HighEmphasis = true;
             this.btnNuevaOrden.Icon = global::UI.Desktop.Properties.Resources.addthelist_añadir_3477;
-            this.btnNuevaOrden.Location = new System.Drawing.Point(27, 13);
+            this.btnNuevaOrden.Location = new System.Drawing.Point(7, 13);
             this.btnNuevaOrden.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnNuevaOrden.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNuevaOrden.Name = "btnNuevaOrden";
@@ -582,7 +583,7 @@ namespace UI.Desktop
             this.listOrdenes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listOrdenes.FullRowSelect = true;
             this.listOrdenes.HideSelection = false;
-            this.listOrdenes.Location = new System.Drawing.Point(27, 74);
+            this.listOrdenes.Location = new System.Drawing.Point(7, 74);
             this.listOrdenes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listOrdenes.MinimumSize = new System.Drawing.Size(200, 100);
             this.listOrdenes.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -590,7 +591,7 @@ namespace UI.Desktop
             this.listOrdenes.MultiSelect = false;
             this.listOrdenes.Name = "listOrdenes";
             this.listOrdenes.OwnerDraw = true;
-            this.listOrdenes.Size = new System.Drawing.Size(1118, 573);
+            this.listOrdenes.Size = new System.Drawing.Size(1163, 573);
             this.listOrdenes.TabIndex = 2;
             this.listOrdenes.UseCompatibleStateImageBehavior = false;
             this.listOrdenes.View = System.Windows.Forms.View.Details;
@@ -604,8 +605,8 @@ namespace UI.Desktop
             // 
             // columnCliente
             // 
-            this.columnCliente.Text = "Cliente(Nombre y Apellido/Razón Social)";
-            this.columnCliente.Width = 345;
+            this.columnCliente.Text = "Cliente";
+            this.columnCliente.Width = 400;
             // 
             // columnPrioridad
             // 
@@ -630,6 +631,7 @@ namespace UI.Desktop
             // mnuTabClientes
             // 
             this.mnuTabClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.mnuTabClientes.Controls.Add(this.switchMostrarImpagas);
             this.mnuTabClientes.Controls.Add(this.materialLabel16);
             this.mnuTabClientes.Controls.Add(this.listPagosOrden);
             this.mnuTabClientes.Controls.Add(this.materialCard7);
@@ -654,6 +656,25 @@ namespace UI.Desktop
             this.mnuTabClientes.Size = new System.Drawing.Size(1353, 679);
             this.mnuTabClientes.TabIndex = 1;
             this.mnuTabClientes.Text = "Clientes";
+            // 
+            // switchMostrarImpagas
+            // 
+            this.switchMostrarImpagas.AutoSize = true;
+            this.switchMostrarImpagas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.switchMostrarImpagas.Depth = 0;
+            this.switchMostrarImpagas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.switchMostrarImpagas.Location = new System.Drawing.Point(832, 136);
+            this.switchMostrarImpagas.Margin = new System.Windows.Forms.Padding(0);
+            this.switchMostrarImpagas.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.switchMostrarImpagas.MouseState = MaterialSkin.MouseState.HOVER;
+            this.switchMostrarImpagas.Name = "switchMostrarImpagas";
+            this.switchMostrarImpagas.Ripple = true;
+            this.switchMostrarImpagas.Size = new System.Drawing.Size(179, 37);
+            this.switchMostrarImpagas.TabIndex = 17;
+            this.switchMostrarImpagas.Text = "Mostrar Impagas";
+            this.switchMostrarImpagas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.switchMostrarImpagas.UseVisualStyleBackColor = false;
+            this.switchMostrarImpagas.CheckedChanged += new System.EventHandler(this.switchMostrarImpagas_CheckedChanged);
             // 
             // materialLabel16
             // 
@@ -3639,6 +3660,7 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialLabel lblDatosCliente;
         private MaterialSkin.Controls.MaterialLabel materialLabel19;
         private System.Windows.Forms.ToolTip ayudaGeneral;
+        private MaterialSkin.Controls.MaterialSwitch switchMostrarImpagas;
     }
 }
 

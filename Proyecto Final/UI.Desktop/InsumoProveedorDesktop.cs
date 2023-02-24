@@ -51,7 +51,9 @@ namespace UI.Desktop
                 //this.cbProveedores.SelectedIndex = 0;
                 List<Insumo> insumos = _insumoLogic.GetAll();
                 this.cbInsumos.DataSource = insumos;
-               // this.cbInsumos.SelectedIndex = 0;
+                // this.cbInsumos.SelectedIndex = 0;
+                this.cbInsumos.SelectedItem = null;
+                this.cbProveedores.SelectedItem = null;
                 
             }
             catch (Exception e)

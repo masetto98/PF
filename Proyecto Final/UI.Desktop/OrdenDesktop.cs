@@ -1,4 +1,4 @@
-﻿using MaterialSkin;
+using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
@@ -404,8 +404,7 @@ namespace UI.Desktop
                
                     Cliente cli = _clienteLogic.GetAll().Find(
                     delegate (Cliente c) {
-                        string dni = c.Cuit.Substring(2, 10);
-                        return c.Cuit == this.txtCuit.Text || dni == this.txtCuit.Text;
+                        return c.Cuit == this.txtCuit.Text ||  buscarDNI(c.Cuit);
                     });
                     if (cli == null)
                     {
@@ -432,6 +431,21 @@ namespace UI.Desktop
                 MessageBox.Show(e.Message,"Cliente",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
+
+        private bool buscarDNI(string cuit) 
+        {
+            if (cuit.Length > 3)
+            {
+                if (cuit.Substring(2, cuit.Length - 3) == this.txtCuit.Text)
+                {
+                    return true;
+                }
+                else { return false; }
+            }
+            else { return false; }
+
+        }
+
         private void cargarCliente(Cliente cli)
         {
             this.txtDireccion.Text = "";
