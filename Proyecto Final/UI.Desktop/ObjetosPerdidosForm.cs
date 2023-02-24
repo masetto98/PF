@@ -103,6 +103,7 @@ namespace UI.Desktop
                     listItemsPedidos.Items.Add(item);
                 }
             }
+            else { MessageBox.Show("El número ingresado no pertenece a una orden de trabajo", "Orden", MessageBoxButtons.OK, MessageBoxIcon.Information); }
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {

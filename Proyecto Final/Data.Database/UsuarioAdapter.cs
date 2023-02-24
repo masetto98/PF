@@ -56,23 +56,18 @@ namespace Data.Database
         {
             
             Usuario userAnterior = GetOne(usuario.IdUsuario);
-            if (usuario.Clave != null && usuario.Clave != userAnterior.Clave)
+            userAnterior.NombreUsuario = usuario.NombreUsuario;
+            if (usuario.Clave != null && new Hasher().GenerateHash(usuario.Clave, userAnterior.Salt) != userAnterior.Clave)
             {
                 userAnterior.Clave = new Hasher().GenerateHash(usuario.Clave, userAnterior.Salt);
             }
-            else
-            {
-                userAnterior.Clave = usuario.Clave;
-            }
-            if (usuario.Respuesta != null && usuario.Respuesta != userAnterior.Respuesta)
-            {
-                userAnterior.Respuesta = new Hasher().GenerateHash(usuario.Respuesta, userAnterior.Salt);
-            }
-            else { userAnterior.Respuesta = usuario.Respuesta; }
             try
             {
-                _context.Usuarios.Update(userAnterior);
-                _context.SaveChanges();
+                if (usuario.Pregunta == userAnterior.Pregunta && userAnterior.Respuesta == new Hasher().GenerateHash(usuario.Respuesta, userAnterior.Salt))
+                {
+                    _context.Usuarios.Update(userAnterior);
+                    _context.SaveChanges();
+                }
             }
             catch (Exception e)
             {

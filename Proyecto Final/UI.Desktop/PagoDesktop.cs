@@ -170,6 +170,7 @@ namespace UI.Desktop
                     break;
             }
         }
+
         public void TotalAPagar()
         {
             
@@ -187,6 +188,7 @@ namespace UI.Desktop
             }
            
         }
+
         public double TotalPagos()
         {
             double totalpagos = 0;
@@ -215,6 +217,7 @@ namespace UI.Desktop
                 return 0;
             }
         }
+
         public void ListarPagos()
         {
             if(_pagosActuales.Count > 0)
@@ -245,6 +248,7 @@ namespace UI.Desktop
             
             
         }
+
         public override void MapearADatos()
         {
             if (Modos == ModoForm.Alta)
@@ -280,12 +284,15 @@ namespace UI.Desktop
             {
                 case ModoForm.Alta:
                     FacturaActual.State = BusinessEntity.States.Modified;
+                    this.btnAceptarPago.Enabled = true;
                     break;
                 case ModoForm.Modificacion:
                     FacturaActual.State = BusinessEntity.States.Modified;
+                    this.btnAceptarPago.Enabled = true;
                     break;
             }
         }
+
         public override void GuardarCambios()
         {
             try
@@ -302,6 +309,7 @@ namespace UI.Desktop
                  MessageBox.Show(e.Message, "Pagos-Factura", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void btnAceptarPago_Click(object sender, EventArgs e)
         {
             double totalActual = TotalPagos();
@@ -421,12 +429,14 @@ namespace UI.Desktop
                         this.cbFormaPago.Enabled = false;
                         this.txtImportePago.Enabled = false;
                         this.btnAgregarPago.Enabled = false;
+                        this.btnAceptarPago.Enabled = true;
                         break;
                     case ModoForm.Modificacion:
                         FacturaActual.State = BusinessEntity.States.Modified;
                         this.cbFormaPago.Enabled = false;
                         this.txtImportePago.Enabled = false;
                         this.btnAgregarPago.Enabled = false;
+                        this.btnAceptarPago.Enabled = true;
                         break;
                 }
                 ListarPagos();
@@ -444,6 +454,7 @@ namespace UI.Desktop
                 btnAgregarPago.Enabled = false;
             }
         }
+
         public bool ValidarNumeroEnteroDecimal(string cantidad)
         {
             if (!Regex.IsMatch(cantidad, @"\d{1,7}(,\d{1,2})?"))
@@ -456,6 +467,7 @@ namespace UI.Desktop
                 return true;
             }
         }
+
         private void txtImportePago_TextChanged(object sender, EventArgs e)
         {
             if (txtImportePago.Text != "" && double.Parse(txtImportePago.Text) != 0)

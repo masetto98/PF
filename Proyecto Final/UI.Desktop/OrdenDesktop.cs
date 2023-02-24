@@ -402,7 +402,7 @@ namespace UI.Desktop
             {
                 Cliente cli = _clienteLogic.GetAll().Find(
                     delegate (Cliente c) {
-                        return c.Cuit == this.txtCuit.Text || c.Cuit.Contains(this.txtCuit.Text);
+                        return c.Cuit == this.txtCuit.Text ||  buscarDNI(c.Cuit);
                     });
                 if (cli == null)
                 {
@@ -428,6 +428,21 @@ namespace UI.Desktop
                 MessageBox.Show(e.Message,"Cliente",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
+
+        private bool buscarDNI(string cuit) 
+        {
+            if (cuit.Length > 3)
+            {
+                if (cuit.Substring(2, cuit.Length - 3) == this.txtCuit.Text)
+                {
+                    return true;
+                }
+                else { return false; }
+            }
+            else { return false; }
+
+        }
+
         private void cargarCliente(Cliente cli)
         {
             this.txtDireccion.Text = "";
@@ -654,19 +669,20 @@ namespace UI.Desktop
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (_itemsServicio.Count > 1)
-            {
+            //if (_itemsServicio.Count > 1)
+            //{
                 EliminarItem();
                 CalcularImporte();
-            }
-            else 
-            {
-                MessageBox.Show("La orden debe contener por lo menos un servicio", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //}
+            //else 
+            //{
+            //   MessageBox.Show("La orden debe contener por lo menos un servicio", "Trabajo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
 
         private void txtDescuento_TextChanged(object sender, EventArgs e)
         {
+
             CalcularImporte();
         }
 

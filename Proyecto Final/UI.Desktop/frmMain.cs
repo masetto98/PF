@@ -27,6 +27,7 @@ namespace UI.Desktop
     public partial class frmMain : ApplicationForm
     {
         private readonly LavanderiaContext _context;
+        private readonly UsuarioLogic _usuarioLogic;
         private readonly ClienteLogic _clienteLogic;
         private readonly AtributosNegocioLogic _atributosNegocioLogic;
         private readonly ProveedorLogic _proveedorLogic;
@@ -71,6 +72,7 @@ namespace UI.Desktop
             _listaEspera = new List<ItemTrabajo>();
             _listaFinalizados = new List<ItemTrabajo>();
             _atributosLogic = new AtributosNegocioLogic(new AtributosNegocioAdapter(context));
+            _usuarioLogic = new UsuarioLogic(new UsuarioAdapter(context));
             //NegocioActual = _atributosNegocioLogic.GetOne(1);
             RellenarComboBox(listClientes, cmbBuscarCliente);
             RellenarComboBox(listOrdenes, cmbBuscarOrden);
@@ -288,6 +290,7 @@ namespace UI.Desktop
             e.Cancel = true;
             e.NewWidth = listClientes.Columns[e.ColumnIndex].Width;
         }
+
         private void listOrdenesCliente_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
 
@@ -295,6 +298,7 @@ namespace UI.Desktop
             e.Cancel = true;
             e.NewWidth = listOrdenesCliente.Columns[e.ColumnIndex].Width;
         }
+
         private void listPagosOrden_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             e.Cancel = true;
@@ -303,7 +307,15 @@ namespace UI.Desktop
        
         private void btnOrdenesCliente_Click(object sender, EventArgs e)
         {
-            ListarOrdenesCliente();
+            if (this.switchMostrarImpagas.Checked)
+            {
+                ListarOrdenesImpagas();
+            }
+            else
+            {
+                ListarOrdenesCliente();
+            }
+            
             CalcularCuentaCorrienteCliente();
             listPagosOrden.Items.Clear();
         }
@@ -351,6 +363,7 @@ namespace UI.Desktop
                         if (o.FechaSalida == DateTime.MinValue) { item.SubItems.Add("Sin retirar"); }
                         else { item.SubItems.Add(o.FechaSalida.ToString()); }
                         listOrdenesCliente.Items.Add(item);
+                        
                     }
                 }
                 else { MessageBox.Show("El cliente seleccionado NO posee ordenes registradas", "Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information); }
@@ -359,6 +372,71 @@ namespace UI.Desktop
             {
                 MessageBox.Show("Seleccionar una fila en la lista para poder observar los detalles", "Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void switchMostrarImpagas_CheckedChanged(object sender, EventArgs e)
+        {
+            
+            if (this.switchMostrarImpagas.Checked)
+            {
+                ListarOrdenesImpagas();
+            }
+            else 
+            {
+                ListarOrdenesCliente();
+            }
+        }
+
+        private void ListarOrdenesImpagas() 
+        {
+            
+                listOrdenesCliente.Items.Clear();
+                if (listClientes.SelectedItems.Count > 0)
+                {
+                    Cliente clienteActual = _clienteLogic.GetOne(Int32.Parse(listClientes.SelectedItems[0].Text));
+                    if (clienteActual.Ordenes is not null && clienteActual.Ordenes.Count > 0)
+                    {
+                        List<Orden> orderOrdenes = clienteActual.Ordenes.OrderBy(x => x.Estado).ToList();
+                        foreach (Orden o in orderOrdenes)
+                        {
+                            ListViewItem item = new ListViewItem(o.NroOrden.ToString());
+                            item.SubItems.Add(o.FechaEntrada.ToString());
+                            double pagos = 0;
+                            double deudas = 0;
+                            if (o.Factura.Importe != 0 && o.Factura.FechaFactura.ToString("yyyy/MM/dd") != "0001/01/01")
+                            {
+
+                                pagos = CalcularPagosOrden(o);
+                                deudas = o.Factura.Importe - pagos;
+                                item.SubItems.Add(String.Concat("$", o.Factura.Importe.ToString()));
+                            }
+                            else
+                            {
+                                double importe = CalcularImporteOrden(o);
+                                if (o.Factura.Importe != importe)
+                                {
+                                    o.Factura.Importe = importe;
+                                    o.Factura.State = BusinessEntity.States.Modified;
+                                    _facturaLogic.Save(o.Factura);
+                                }
+                                pagos = CalcularPagosOrden(o);
+                                deudas = importe - pagos;
+                                item.SubItems.Add(String.Concat("$", importe.ToString()));
+                            }
+
+                            if (deudas == 0) { item.SubItems.Add("Pagado"); }
+                            else { item.SubItems.Add(String.Concat("$", deudas.ToString())); }
+                            if (o.FechaSalida == DateTime.MinValue) { item.SubItems.Add("Sin retirar"); }
+                            else { item.SubItems.Add(o.FechaSalida.ToString()); }
+                            if (item.SubItems[3].Text != "Pagado")
+                            {
+                                listOrdenesCliente.Items.Add(item);
+                            }
+                        }
+                    }
+
+                }
+            
         }
 
         private double CalcularImporteOrden(Orden ordenActual)
@@ -495,6 +573,7 @@ namespace UI.Desktop
             }
 
         }
+
         private void btnAgregarPago_Click(object sender, EventArgs e)
         {
             if (listOrdenesCliente.SelectedItems.Count > 0)
@@ -536,6 +615,7 @@ namespace UI.Desktop
             }
 
         }
+
         private void verificarAtributosNegocio()
         {
             negocio = _atributosLogic.GetAll().FirstOrDefault();
@@ -553,6 +633,7 @@ namespace UI.Desktop
                 emitirComprobantePago();
             }
         }
+
         private void emitirComprobantePago()
         {
             SaveFileDialog sfd = new SaveFileDialog();
@@ -712,6 +793,7 @@ namespace UI.Desktop
 
             }
         }
+
         private int generarNumeroComprobante()
         {
             int numComprobanteActual = Properties.Settings.Default.nroComprobante;
@@ -720,6 +802,7 @@ namespace UI.Desktop
             Properties.Settings.Default.Save();
             return numComprobanteActual;
         }
+
         private void btnSaldarDeuda_Click(object sender, EventArgs e)
         {
             
@@ -1293,7 +1376,7 @@ namespace UI.Desktop
             foreach (Orden o in ordenes)
             {
                 ListViewItem item = new ListViewItem(o.NroOrden.ToString());
-                item.SubItems.Add(String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
+                item.SubItems.Add(String.Concat(o.Cliente.Cuit," - ",o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
                 item.SubItems.Add(o.Prioridad.ToString());
                 item.SubItems.Add(o.FechaEntrada.ToString());
                 if (o.FechaSalida == DateTime.MinValue)
@@ -1317,7 +1400,7 @@ namespace UI.Desktop
                     if (o.NroOrden.ToString() == this.txtBuscarOrdenes.Text)
                     {
                         ListViewItem item = new ListViewItem(o.NroOrden.ToString());
-                        item.SubItems.Add(String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
+                        item.SubItems.Add(String.Concat(o.Cliente.Cuit, " - ", o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
                         item.SubItems.Add(o.Prioridad.ToString());
                         item.SubItems.Add(o.FechaEntrada.ToString());
                         if (o.FechaSalida == DateTime.MinValue)
@@ -1330,16 +1413,16 @@ namespace UI.Desktop
                     }
                 }
             }
-            if (this.cmbBuscarOrden.SelectedItem.ToString() == "Cliente(Nombre y Apellido/Razón Social)")
+            if (this.cmbBuscarOrden.SelectedItem.ToString() == "Cliente")
             {
                 foreach (Orden o in ordenes)
                 {
-                    string cliente = String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial);
+                    string cliente = String.Concat(o.Cliente.Cuit, " - ", o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial);
                     //if (o.Cliente.Nombre.ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()) || o.Cliente.Apellido.ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()) || o.Cliente.RazonSocial.ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()))
                     if (cliente.ToLower().Contains(this.txtBuscarOrdenes.Text.ToLower()))
                     {
                         ListViewItem item = new ListViewItem(o.NroOrden.ToString());
-                        item.SubItems.Add(String.Concat(o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
+                        item.SubItems.Add(String.Concat(o.Cliente.Cuit, " - ", o.Cliente.Nombre, " ", o.Cliente.Apellido, " / ", o.Cliente.RazonSocial));
                         item.SubItems.Add(o.Prioridad.ToString());
                         item.SubItems.Add(o.FechaEntrada.ToString());
                         if (o.FechaSalida == DateTime.MinValue)
@@ -1626,6 +1709,30 @@ namespace UI.Desktop
         {
             this.frmMain_Shown(sender, e);
             this.epUser.Collapse = true;
+        }
+
+        private void btnEditarPerfil_Click(object sender, EventArgs e)
+        {
+
+            int ID = Singleton.getInstance().UserLogged.IdUsuario;
+            Usuario userAnt = ObtenerValor(ID);
+            UsuarioDesktop frmUser = new UsuarioDesktop(ID, ApplicationForm.ModoForm.Modificacion, _context);
+            frmUser.ShowDialog();
+            Usuario userNew = _usuarioLogic.GetOne(ID);
+            if (userAnt.NombreUsuario!=userNew.NombreUsuario || userAnt.Clave!=userNew.Clave)
+            { 
+                btnCerrarSesion.PerformClick();
+            }
+        }
+        //Uso este metodo para que me guarde los valores anteriores de la clase, si los saco de aca cambian y entonces
+        //no puedo hacer la comparacion para cerrar la session
+        private Usuario ObtenerValor(int ID) 
+        {
+            Usuario userAnt = _usuarioLogic.GetOne(ID);
+            Usuario user = new Usuario();
+            user.NombreUsuario = userAnt.NombreUsuario;
+            user.Clave = userAnt.Clave;
+            return user;
         }
 
         private void epUser_Leave(object sender, EventArgs e)
@@ -2722,13 +2829,7 @@ namespace UI.Desktop
             }
         }
         */
-        private void btnEditarPerfil_Click(object sender, EventArgs e)
-        {
-            
-            int ID = Singleton.getInstance().UserLogged.IdUsuario;
-            UsuarioDesktop frmUser = new UsuarioDesktop(ID, ApplicationForm.ModoForm.Modificacion, _context);
-            frmUser.ShowDialog();
-        }
+        
 
         private void chkCambioColor_CheckedChanged(object sender, EventArgs e)
         {

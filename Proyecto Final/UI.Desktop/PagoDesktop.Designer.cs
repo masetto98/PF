@@ -218,6 +218,7 @@ namespace UI.Desktop
             this.btnAceptarPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnAceptarPago.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnAceptarPago.Depth = 0;
+            this.btnAceptarPago.Enabled = false;
             this.btnAceptarPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAceptarPago.HighEmphasis = true;
             this.btnAceptarPago.Icon = null;
