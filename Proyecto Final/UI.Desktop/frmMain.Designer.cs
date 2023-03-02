@@ -591,7 +591,7 @@ namespace UI.Desktop
             this.listOrdenes.MultiSelect = false;
             this.listOrdenes.Name = "listOrdenes";
             this.listOrdenes.OwnerDraw = true;
-            this.listOrdenes.Size = new System.Drawing.Size(1163, 573);
+            this.listOrdenes.Size = new System.Drawing.Size(1163, 552);
             this.listOrdenes.TabIndex = 2;
             this.listOrdenes.UseCompatibleStateImageBehavior = false;
             this.listOrdenes.View = System.Windows.Forms.View.Details;
@@ -1584,6 +1584,7 @@ namespace UI.Desktop
             this.listInsumos.UseCompatibleStateImageBehavior = false;
             this.listInsumos.View = System.Windows.Forms.View.Details;
             this.listInsumos.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listInsumos_ColumnWidthChanging_1);
+            this.listInsumos.SelectedIndexChanged += new System.EventHandler(this.listInsumos_SelectedIndexChanged);
             // 
             // columnIDIns
             // 

@@ -36,6 +36,7 @@ namespace UI.Desktop
             this.txtDescripcion = new MaterialSkin.Controls.MaterialMultiLineTextBox();
             this.txtImporte = new MaterialSkin.Controls.MaterialTextBox();
             this.dtpFechaRealizacion = new System.Windows.Forms.DateTimePicker();
+            this.txtEmpleado = new MaterialSkin.Controls.MaterialTextBox();
             this.SuspendLayout();
             // 
             // txtId
@@ -68,7 +69,7 @@ namespace UI.Desktop
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAceptar.HighEmphasis = true;
             this.btnAceptar.Icon = null;
-            this.btnAceptar.Location = new System.Drawing.Point(153, 395);
+            this.btnAceptar.Location = new System.Drawing.Point(151, 397);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptar.Name = "btnAceptar";
@@ -90,7 +91,7 @@ namespace UI.Desktop
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
-            this.btnCancelar.Location = new System.Drawing.Point(247, 395);
+            this.btnCancelar.Location = new System.Drawing.Point(245, 397);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -174,11 +175,33 @@ namespace UI.Desktop
             this.dtpFechaRealizacion.Size = new System.Drawing.Size(331, 23);
             this.dtpFechaRealizacion.TabIndex = 6;
             // 
+            // txtEmpleado
+            // 
+            this.txtEmpleado.AnimateReadOnly = false;
+            this.txtEmpleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.txtEmpleado.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtEmpleado.Depth = 0;
+            this.txtEmpleado.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtEmpleado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtEmpleado.Hint = "Registrado por";
+            this.txtEmpleado.LeadingIcon = null;
+            this.txtEmpleado.Location = new System.Drawing.Point(114, 95);
+            this.txtEmpleado.MaxLength = 50;
+            this.txtEmpleado.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtEmpleado.Multiline = false;
+            this.txtEmpleado.Name = "txtEmpleado";
+            this.txtEmpleado.Size = new System.Drawing.Size(227, 50);
+            this.txtEmpleado.TabIndex = 7;
+            this.txtEmpleado.Text = "";
+            this.txtEmpleado.TrailingIcon = null;
+            this.txtEmpleado.Visible = false;
+            // 
             // GastoDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 446);
+            this.ClientSize = new System.Drawing.Size(354, 441);
+            this.Controls.Add(this.txtEmpleado);
             this.Controls.Add(this.dtpFechaRealizacion);
             this.Controls.Add(this.txtImporte);
             this.Controls.Add(this.txtDescripcion);
@@ -204,5 +227,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialMultiLineTextBox txtDescripcion;
         private MaterialSkin.Controls.MaterialTextBox txtImporte;
         private System.Windows.Forms.DateTimePicker dtpFechaRealizacion;
+        private MaterialSkin.Controls.MaterialTextBox txtEmpleado;
     }
 }

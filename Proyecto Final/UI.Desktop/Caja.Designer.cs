@@ -29,17 +29,14 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            FastReport.DataVisualization.Charting.ChartArea chartArea1 = new FastReport.DataVisualization.Charting.ChartArea();
-            FastReport.DataVisualization.Charting.Legend legend1 = new FastReport.DataVisualization.Charting.Legend();
-            FastReport.DataVisualization.Charting.Series series1 = new FastReport.DataVisualization.Charting.Series();
-            FastReport.DataVisualization.Charting.Title title1 = new FastReport.DataVisualization.Charting.Title();
-            FastReport.DataVisualization.Charting.ChartArea chartArea2 = new FastReport.DataVisualization.Charting.ChartArea();
-            FastReport.DataVisualization.Charting.Series series2 = new FastReport.DataVisualization.Charting.Series();
-            FastReport.DataVisualization.Charting.Title title2 = new FastReport.DataVisualization.Charting.Title();
+            FastReport.DataVisualization.Charting.ChartArea chartArea3 = new FastReport.DataVisualization.Charting.ChartArea();
+            FastReport.DataVisualization.Charting.Legend legend2 = new FastReport.DataVisualization.Charting.Legend();
+            FastReport.DataVisualization.Charting.Series series3 = new FastReport.DataVisualization.Charting.Series();
+            FastReport.DataVisualization.Charting.Title title3 = new FastReport.DataVisualization.Charting.Title();
+            FastReport.DataVisualization.Charting.ChartArea chartArea4 = new FastReport.DataVisualization.Charting.ChartArea();
+            FastReport.DataVisualization.Charting.Series series4 = new FastReport.DataVisualization.Charting.Series();
+            FastReport.DataVisualization.Charting.Title title4 = new FastReport.DataVisualization.Charting.Title();
             this.listOrdenes = new MaterialSkin.Controls.MaterialListView();
-            this.columnNro = new System.Windows.Forms.ColumnHeader();
-            this.columnFechaSalida = new System.Windows.Forms.ColumnHeader();
-            this.columnIngresos = new System.Windows.Forms.ColumnHeader();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.lblBalanceHoy = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
@@ -65,6 +62,9 @@ namespace UI.Desktop
             this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.materialCard1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartGastos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartIngresos)).BeginInit();
@@ -77,9 +77,9 @@ namespace UI.Desktop
             this.listOrdenes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.listOrdenes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listOrdenes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnNro,
-            this.columnFechaSalida,
-            this.columnIngresos});
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
             this.listOrdenes.Depth = 0;
             this.listOrdenes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listOrdenes.FullRowSelect = true;
@@ -96,21 +96,6 @@ namespace UI.Desktop
             this.listOrdenes.UseCompatibleStateImageBehavior = false;
             this.listOrdenes.View = System.Windows.Forms.View.Details;
             this.listOrdenes.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listOrdenes_ColumnWidthChanging);
-            // 
-            // columnNro
-            // 
-            this.columnNro.Text = "N° Orden";
-            this.columnNro.Width = 100;
-            // 
-            // columnFechaSalida
-            // 
-            this.columnFechaSalida.Text = "Fecha Salida";
-            this.columnFechaSalida.Width = 151;
-            // 
-            // columnIngresos
-            // 
-            this.columnIngresos.Text = "Dinero ingresado";
-            this.columnIngresos.Width = 150;
             // 
             // materialCard1
             // 
@@ -395,46 +380,46 @@ namespace UI.Desktop
             // chartGastos
             // 
             this.chartGastos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            chartArea1.Name = "ChartArea1";
-            this.chartGastos.ChartAreas.Add(chartArea1);
-            legend1.Enabled = false;
-            legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            legend1.IsTextAutoFit = false;
-            legend1.Name = "Legend1";
-            this.chartGastos.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.chartGastos.ChartAreas.Add(chartArea3);
+            legend2.Enabled = false;
+            legend2.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            legend2.IsTextAutoFit = false;
+            legend2.Name = "Legend1";
+            this.chartGastos.Legends.Add(legend2);
             this.chartGastos.Location = new System.Drawing.Point(17, 14);
             this.chartGastos.Name = "chartGastos";
-            series1.ChartArea = "ChartArea1";
-            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            series1.Legend = "Legend1";
-            series1.Name = "Gastos";
-            this.chartGastos.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            series3.Legend = "Legend1";
+            series3.Name = "Gastos";
+            this.chartGastos.Series.Add(series3);
             this.chartGastos.Size = new System.Drawing.Size(349, 216);
             this.chartGastos.TabIndex = 11;
             this.chartGastos.Text = "chart1";
-            title1.Name = "Title1";
-            title1.Text = "Gastos por categoría";
-            this.chartGastos.Titles.Add(title1);
+            title3.Name = "Title1";
+            title3.Text = "Gastos por categoría";
+            this.chartGastos.Titles.Add(title3);
             // 
             // chartIngresos
             // 
             this.chartIngresos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            chartArea2.Name = "ChartArea1";
-            this.chartIngresos.ChartAreas.Add(chartArea2);
+            chartArea4.Name = "ChartArea1";
+            this.chartIngresos.ChartAreas.Add(chartArea4);
             this.chartIngresos.Location = new System.Drawing.Point(17, 236);
             this.chartIngresos.Name = "chartIngresos";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Name = "Ingresos";
-            series2.XValueType = FastReport.DataVisualization.Charting.ChartValueType.Date;
-            series2.YValuesPerPoint = 3;
-            this.chartIngresos.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Name = "Ingresos";
+            series4.XValueType = FastReport.DataVisualization.Charting.ChartValueType.Date;
+            series4.YValuesPerPoint = 3;
+            this.chartIngresos.Series.Add(series4);
             this.chartIngresos.Size = new System.Drawing.Size(349, 251);
             this.chartIngresos.TabIndex = 12;
             this.chartIngresos.Text = "chart1";
-            title2.Name = "Title1";
-            title2.Text = "Evolución de los Ingresos en el Periodo seleccionado";
-            this.chartIngresos.Titles.Add(title2);
+            title4.Name = "Title1";
+            title4.Text = "Evolución de los Ingresos en el Periodo seleccionado";
+            this.chartIngresos.Titles.Add(title4);
             // 
             // materialCard2
             // 
@@ -468,6 +453,21 @@ namespace UI.Desktop
             this.dtpFechaHasta.Size = new System.Drawing.Size(181, 23);
             this.dtpFechaHasta.TabIndex = 15;
             this.dtpFechaHasta.ValueChanged += new System.EventHandler(this.dtpFechaHasta_ValueChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Fecha pago";
+            this.columnHeader1.Width = 150;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "N° Orden";
+            this.columnHeader2.Width = 100;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Importe";
+            this.columnHeader3.Width = 150;
             // 
             // Caja
             // 
@@ -505,8 +505,6 @@ namespace UI.Desktop
         #endregion
 
         private MaterialSkin.Controls.MaterialListView listOrdenes;
-        private System.Windows.Forms.ColumnHeader columnNro;
-        private System.Windows.Forms.ColumnHeader columnFechaSalida;
         private MaterialSkin.Controls.MaterialCard materialCard1;
         private MaterialSkin.Controls.MaterialLabel lblSalidasDia;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
@@ -526,12 +524,14 @@ namespace UI.Desktop
         private System.Windows.Forms.ColumnHeader columnFecha;
         private System.Windows.Forms.ColumnHeader columnImporte;
         private MaterialSkin.Controls.MaterialButton btnReporteCaja;
-        private System.Windows.Forms.ColumnHeader columnIngresos;
         private MaterialSkin.Controls.MaterialLabel materialLabel7;
         private FastReport.DataVisualization.Charting.Chart chartGastos;
         private FastReport.DataVisualization.Charting.Chart chartIngresos;
         private MaterialSkin.Controls.MaterialCard materialCard2;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.DateTimePicker dtpFechaHasta;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }

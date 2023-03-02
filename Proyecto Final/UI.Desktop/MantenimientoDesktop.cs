@@ -207,7 +207,7 @@ namespace UI.Desktop
                 case ModoForm.Alta:
                     {
                         GastoActual = new Gasto();
-                        GastoActual.Descripcion = MantenimientoActual.Descripcion;
+                        GastoActual.Descripcion = String.Concat(MantenimientoActual.IdMaquina," - ",MantenimientoActual.Maquina.Descripcion," - ", MantenimientoActual.Descripcion);
                         GastoActual.FechaRealizado = MantenimientoActual.FechaRealizado;
                         GastoActual.Importe = MantenimientoActual.Costo;
                         GastoActual.TipoGasto = Gasto.TiposGasto.Matenimientos;
