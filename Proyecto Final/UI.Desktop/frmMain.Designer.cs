@@ -377,7 +377,7 @@ namespace UI.Desktop
             this.cmbEstadosOrdenes.FormattingEnabled = true;
             this.cmbEstadosOrdenes.IntegralHeight = false;
             this.cmbEstadosOrdenes.ItemHeight = 43;
-            this.cmbEstadosOrdenes.Location = new System.Drawing.Point(766, 15);
+            this.cmbEstadosOrdenes.Location = new System.Drawing.Point(766, 17);
             this.cmbEstadosOrdenes.MaxDropDownItems = 4;
             this.cmbEstadosOrdenes.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbEstadosOrdenes.Name = "cmbEstadosOrdenes";
@@ -663,7 +663,7 @@ namespace UI.Desktop
             this.switchMostrarImpagas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.switchMostrarImpagas.Depth = 0;
             this.switchMostrarImpagas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.switchMostrarImpagas.Location = new System.Drawing.Point(832, 136);
+            this.switchMostrarImpagas.Location = new System.Drawing.Point(832, 130);
             this.switchMostrarImpagas.Margin = new System.Windows.Forms.Padding(0);
             this.switchMostrarImpagas.MouseLocation = new System.Drawing.Point(-1, -1);
             this.switchMostrarImpagas.MouseState = MaterialSkin.MouseState.HOVER;
@@ -701,6 +701,7 @@ namespace UI.Desktop
             this.columnVal,
             this.columnTp});
             this.listPagosOrden.Depth = 0;
+            this.listPagosOrden.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listPagosOrden.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listPagosOrden.FullRowSelect = true;
             this.listPagosOrden.HideSelection = false;
@@ -1311,6 +1312,7 @@ namespace UI.Desktop
             this.listInsumosFaltantes.MinimumSize = new System.Drawing.Size(200, 100);
             this.listInsumosFaltantes.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listInsumosFaltantes.MouseState = MaterialSkin.MouseState.OUT;
+            this.listInsumosFaltantes.MultiSelect = false;
             this.listInsumosFaltantes.Name = "listInsumosFaltantes";
             this.listInsumosFaltantes.OwnerDraw = true;
             this.listInsumosFaltantes.Size = new System.Drawing.Size(310, 148);
@@ -1318,6 +1320,7 @@ namespace UI.Desktop
             this.listInsumosFaltantes.UseCompatibleStateImageBehavior = false;
             this.listInsumosFaltantes.View = System.Windows.Forms.View.Details;
             this.listInsumosFaltantes.Visible = false;
+            this.listInsumosFaltantes.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listInsumosFaltantes_ColumnWidthChanging);
             // 
             // columnHeader14
             // 
@@ -1326,7 +1329,7 @@ namespace UI.Desktop
             // columnHeader15
             // 
             this.columnHeader15.Text = "Insumo";
-            this.columnHeader15.Width = 200;
+            this.columnHeader15.Width = 250;
             // 
             // pxRojo
             // 

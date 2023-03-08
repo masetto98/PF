@@ -29,9 +29,9 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            FastReport.DataVisualization.Charting.ChartArea chartArea1 = new FastReport.DataVisualization.Charting.ChartArea();
-            FastReport.DataVisualization.Charting.Series series1 = new FastReport.DataVisualization.Charting.Series();
-            FastReport.DataVisualization.Charting.Title title1 = new FastReport.DataVisualization.Charting.Title();
+            FastReport.DataVisualization.Charting.ChartArea chartArea2 = new FastReport.DataVisualization.Charting.ChartArea();
+            FastReport.DataVisualization.Charting.Series series2 = new FastReport.DataVisualization.Charting.Series();
+            FastReport.DataVisualization.Charting.Title title2 = new FastReport.DataVisualization.Charting.Title();
             this.listServiciosTipoPrendas = new MaterialSkin.Controls.MaterialListView();
             this.columnServicio = new System.Windows.Forms.ColumnHeader();
             this.columnTipoPrenda = new System.Windows.Forms.ColumnHeader();
@@ -294,23 +294,23 @@ namespace UI.Desktop
             // chartItem
             // 
             this.chartItem.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            this.chartItem.ChartAreas.Add(chartArea1);
+            chartArea2.BackColor = System.Drawing.Color.Transparent;
+            chartArea2.Name = "ChartArea1";
+            this.chartItem.ChartAreas.Add(chartArea2);
             this.chartItem.Location = new System.Drawing.Point(9, 178);
             this.chartItem.Name = "chartItem";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.StackedBar;
-            series1.IsValueShownAsLabel = true;
-            series1.Name = "Series1";
-            series1.YValuesPerPoint = 6;
-            this.chartItem.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.StackedBar;
+            series2.IsValueShownAsLabel = true;
+            series2.Name = "Series1";
+            series2.YValuesPerPoint = 6;
+            this.chartItem.Series.Add(series2);
             this.chartItem.Size = new System.Drawing.Size(430, 234);
             this.chartItem.TabIndex = 8;
             this.chartItem.Text = "chart1";
-            title1.Name = "Title1";
-            title1.Text = "Porcentaje de Servicios brindados por Tipo de Prenda";
-            this.chartItem.Titles.Add(title1);
+            title2.Name = "Title1";
+            title2.Text = "Porcentaje de Servicios brindados por Tipo de Prenda";
+            this.chartItem.Titles.Add(title2);
             // 
             // materialLabel3
             // 

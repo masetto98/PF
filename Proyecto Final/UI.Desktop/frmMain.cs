@@ -957,6 +957,12 @@ namespace UI.Desktop
             e.NewWidth = listInsumos.Columns[e.ColumnIndex].Width;
 
         }
+        private void listInsumosFaltantes_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+
+            e.Cancel = true;
+            e.NewWidth = listInsumosFaltantes.Columns[e.ColumnIndex].Width;
+        }
         private void listIngresosInsumos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
 

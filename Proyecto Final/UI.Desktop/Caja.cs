@@ -935,7 +935,7 @@ namespace UI.Desktop
                                 }
                                 Paragraph ordenesretiradas = new Paragraph();
                                 ordenesretiradas.SetTextAlignment(TextAlignment.LEFT);
-                                ordenesretiradas.Add($"Ordenes retiradas: \n");
+                                ordenesretiradas.Add($"Pagos ingresados: \n");
                                 ordenesretiradas.SetFontSize(12);
                                 ordenesretiradas.SetBold();
                                 document.Add(ordenesretiradas);

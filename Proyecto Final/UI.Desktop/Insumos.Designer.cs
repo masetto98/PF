@@ -29,10 +29,10 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            FastReport.DataVisualization.Charting.ChartArea chartArea2 = new FastReport.DataVisualization.Charting.ChartArea();
-            FastReport.DataVisualization.Charting.Legend legend2 = new FastReport.DataVisualization.Charting.Legend();
-            FastReport.DataVisualization.Charting.Series series2 = new FastReport.DataVisualization.Charting.Series();
-            FastReport.DataVisualization.Charting.Title title2 = new FastReport.DataVisualization.Charting.Title();
+            FastReport.DataVisualization.Charting.ChartArea chartArea1 = new FastReport.DataVisualization.Charting.ChartArea();
+            FastReport.DataVisualization.Charting.Legend legend1 = new FastReport.DataVisualization.Charting.Legend();
+            FastReport.DataVisualization.Charting.Series series1 = new FastReport.DataVisualization.Charting.Series();
+            FastReport.DataVisualization.Charting.Title title1 = new FastReport.DataVisualization.Charting.Title();
             this.listInsumos = new MaterialSkin.Controls.MaterialListView();
             this.columnIDInsumo = new System.Windows.Forms.ColumnHeader();
             this.columnDesc = new System.Windows.Forms.ColumnHeader();
@@ -440,32 +440,32 @@ namespace UI.Desktop
             // 
             // chartInsumos2
             // 
-            chartArea2.Name = "ChartArea1";
-            chartArea2.Position.Auto = false;
-            chartArea2.Position.Height = 90F;
-            chartArea2.Position.Width = 73.1875F;
-            chartArea2.Position.X = 11F;
-            chartArea2.Position.Y = 10F;
-            this.chartInsumos2.ChartAreas.Add(chartArea2);
-            legend2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            legend2.IsTextAutoFit = false;
-            legend2.Name = "Legend1";
-            this.chartInsumos2.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            chartArea1.Position.Auto = false;
+            chartArea1.Position.Height = 90F;
+            chartArea1.Position.Width = 73.1875F;
+            chartArea1.Position.X = 11F;
+            chartArea1.Position.Y = 10F;
+            this.chartInsumos2.ChartAreas.Add(chartArea1);
+            legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            this.chartInsumos2.Legends.Add(legend1);
             this.chartInsumos2.Location = new System.Drawing.Point(983, 139);
             this.chartInsumos2.Name = "chartInsumos2";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.CustomProperties = "PieLabelStyle=Disabled";
-            series2.IsValueShownAsLabel = true;
-            series2.Legend = "Legend1";
-            series2.Name = "consumo";
-            this.chartInsumos2.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = FastReport.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.CustomProperties = "PieLabelStyle=Disabled";
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.Name = "consumo";
+            this.chartInsumos2.Series.Add(series1);
             this.chartInsumos2.Size = new System.Drawing.Size(321, 466);
             this.chartInsumos2.TabIndex = 17;
             this.chartInsumos2.Text = "chart1";
-            title2.Name = "Title1";
-            title2.Text = "Proporción de consumo por Servicio Tipo de Prenda";
-            this.chartInsumos2.Titles.Add(title2);
+            title1.Name = "Title1";
+            title1.Text = "Proporción de consumo por Servicio Tipo de Prenda";
+            this.chartInsumos2.Titles.Add(title1);
             // 
             // Insumos
             // 

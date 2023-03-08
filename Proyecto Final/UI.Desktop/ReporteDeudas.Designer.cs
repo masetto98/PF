@@ -88,7 +88,7 @@ namespace UI.Desktop
             // 
             // columnNroOrden
             // 
-            this.columnNroOrden.Text = "Nro Orden";
+            this.columnNroOrden.Text = "N° Orden";
             this.columnNroOrden.Width = 96;
             // 
             // columnFechaEntrada

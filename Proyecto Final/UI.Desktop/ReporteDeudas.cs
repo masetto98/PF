@@ -196,18 +196,18 @@ namespace UI.Desktop
                 if (oc.Factura.Importe == 0)
                 {
                     double importe = CalcularImporteOrden(oc);
-                    item.SubItems.Add(importe.ToString());
+                    item.SubItems.Add("$"+importe.ToString());
                     deudas = importe - pagos;
 
                 }
                 else
                 {
-                    item.SubItems.Add(oc.Factura.Importe.ToString());
+                    item.SubItems.Add("$" + oc.Factura.Importe.ToString());
                     deudas = oc.Factura.Importe - pagos;
                 }
                 
-                item.SubItems.Add(pagos.ToString());
-                item.SubItems.Add(deudas.ToString());
+                item.SubItems.Add("$" + pagos.ToString());
+                item.SubItems.Add("$" + deudas.ToString());
                 montoTotal1 += deudas;
                 listOrdenesCliente.Items.Add(item);
             }
@@ -437,18 +437,18 @@ namespace UI.Desktop
                 if (oc.Factura.Importe == 0)
                 {
                     double importe = CalcularImporteOrden(oc);
-                    item.SubItems.Add(importe.ToString());
+                    item.SubItems.Add("$" + importe.ToString());
                     deudas = importe - pagos;
 
                 }
                 else
                 {
-                    item.SubItems.Add(oc.Factura.Importe.ToString());
+                    item.SubItems.Add("$" + oc.Factura.Importe.ToString());
                     deudas = oc.Factura.Importe - pagos;
                 }
 
-                item.SubItems.Add(pagos.ToString());
-                item.SubItems.Add(deudas.ToString());
+                item.SubItems.Add("$" + pagos.ToString());
+                item.SubItems.Add("$" + deudas.ToString());
                 montoTotal1 += deudas;
                 listOrdenesCliente.Items.Add(item);
             }
