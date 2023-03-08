@@ -260,7 +260,13 @@ namespace UI.Desktop
                     this.btnAgregarCliente.Enabled = false;
                     this.dtpFechaEntrega.Enabled = false;
                     this.nudHoraEntrega.Enabled = false;
-                    
+                    if (OrdenActual.FechaSalida != DateTime.MinValue)
+                    {
+                        this.dtpFechaSalida.Visible = true;
+                        this.dtpFechaSalida.Enabled = false;
+                        this.lblFechaSalida.Visible = true;
+                        this.dtpFechaSalida.Value = OrdenActual.FechaSalida;
+                    }
                     break;
             }
         }
@@ -642,16 +648,20 @@ namespace UI.Desktop
                     _total += precioActual.Valor;
                 }
             }
+            this.lblTotal.Text = _total.ToString("0.##");
             if (this.rbtnPorcentaje.Checked == true && this.txtDescuento.Text != "")
             {
                 if(Int32.Parse(this.txtDescuento.Text) > 0 && Int32.Parse(this.txtDescuento.Text) <= 100)
                 {
+                    this.lblDescueto.Text = (_total * ((Double.Parse(this.txtDescuento.Text) / 100.0))).ToString("0.##");
                     _total *= (1 - (Double.Parse(this.txtDescuento.Text) / 100.0));
                 }
                 else
                 {
-                    MessageBox.Show("El porcentaje de descuento ingresado no se encuentra dentro del rango válido(0-100). Por favor, vuelva a ingresar un valor válido.", "Descuento", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El porcentaje de descuento ingresado no se encuentra dentro del rango válido(1-100). Por favor, vuelva a ingresar un valor válido.", "Descuento", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.txtDescuento.Text = "";
                 }
+                
             }
             else if (this.rbtnValor.Checked == true && this.txtDescuento.Text != "")
             {
@@ -662,12 +672,12 @@ namespace UI.Desktop
                 else
                 {
                     MessageBox.Show("El valor de descuento ingresado supera el monto de la Orden. Por favor, vuelva a ingresar un valor válido.", "Descuento", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.txtDescuento.Text = "";
                 }
-                
+                this.lblDescueto.Text = this.txtDescuento.Text;
             }
             
-            this.txtPrecioTotal.Text = _total.ToString();
-
+            this.txtPrecioTotal.Text = _total.ToString("0.##");
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -682,10 +692,20 @@ namespace UI.Desktop
         {
             try
             {
-                if (Validaciones.ValidarNumeroEnteroDecimal(this.txtDescuento.Text))
+                if (txtDescuento.Text != "")
                 {
-                    CalcularImporte();
+                    if (Validaciones.ValidarNumeroEnteroDecimal(this.txtDescuento.Text))
+                    {
+                        CalcularImporte();
+                    }
+                    
                 }
+                else { CalcularImporte(); }
+                if (this.txtDescuento.Text == "")
+                {
+                    this.lblDescueto.Text = "0";
+                }
+
             }
             catch(Exception ex)
             {

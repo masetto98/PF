@@ -24,7 +24,7 @@ namespace UI.Desktop
             InitializeComponent();
             _gastoLogic = new GastoLogic(new GastoAdapter(context));
             this.cmbTipoGasto.DataSource = Enum.GetNames(typeof(Gasto.TiposGasto));
-
+            this.cmbTipoGasto.SelectedItem = null;
         }
 
         public GastoDesktop(ModoForm modo, LavanderiaContext context) : this(context)
@@ -52,6 +52,7 @@ namespace UI.Desktop
             this.txtDescripcion.Text = GastoActual.Descripcion;
             this.dtpFechaRealizacion.Value = GastoActual.FechaRealizado;
             this.txtImporte.Text = GastoActual.Importe.ToString();
+            this.txtEmpleado.Text = String.Concat(GastoActual.Empleado.IdEmpleado, " - ", GastoActual.Empleado.Nombre, " ", GastoActual.Empleado.Apellido);
             switch (this.Modos)
             {
                 case ModoForm.Alta:
@@ -60,18 +61,24 @@ namespace UI.Desktop
                 case ModoForm.Modificacion:
                     this.txtId.Enabled = false;
                     this.dtpFechaRealizacion.Enabled = false;
+                    this.txtEmpleado.Visible = true;
+                    this.txtEmpleado.Enabled = false;
                     break;
                 case ModoForm.Baja:
                     this.cmbTipoGasto.Enabled = false;
                     this.txtDescripcion.Enabled = false;
                     this.dtpFechaRealizacion.Enabled = false;
                     this.txtImporte.Enabled = false;
+                    this.txtEmpleado.Visible = true;
+                    this.txtEmpleado.Enabled = false;
                     break;
                 case ModoForm.Consulta:
                     this.cmbTipoGasto.Enabled = false;
                     this.txtDescripcion.Enabled = false;
                     this.dtpFechaRealizacion.Enabled = false;
                     this.txtImporte.Enabled = false;
+                    this.txtEmpleado.Visible = true;
+                    this.txtEmpleado.Enabled = false;
                     break;
             }
         }

@@ -107,6 +107,7 @@ namespace UI.Desktop
                     break;
                 case 2:
                     tabControlInventario_SelectedIndexChanged(sender, e);
+                    //ValidarStock();
                     break;
                 case 3:
                     ListarOrdenesTrabajosPendientes();
@@ -1951,7 +1952,9 @@ namespace UI.Desktop
                     }
                     else
                     {
-                        if (MessageBox.Show("¿Esta seguro que desea finalizar este trabajo?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        if (MessageBox.Show("¿Esta seguro que desea finalizar este trabajo?" + "\n" + 
+                            "Orden N°" + t.NroOrden +" | "+ t.ServicioTipoPrenda.Servicio.Descripcion + " " + 
+                            t.ServicioTipoPrenda.TipoPrenda.Descripcion + "| Item: " + t.OrdenItem.ToString(), "Finalizar Trabajo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         { 
                             t.Estado = OrdenServicioTipoPrenda.Estados.Finalizado;
                             if (ValidarFinalizacionOrden(t.NroOrden))
@@ -2293,7 +2296,11 @@ namespace UI.Desktop
         {
             if (listTrabajosEnProceso.SelectedItems.Count > 0)
             {
-                if (MessageBox.Show("¿Esta seguro que desea detener el servicio a este trabajo?", "Info", MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("¿Esta seguro que desea detener el servicio a este trabajo?" + "\n" + "Maquina: " +
+                    listTrabajosEnProceso.SelectedItems[0].Text + " | " +
+                    "Orden N°: " + listTrabajosEnProceso.SelectedItems[0].SubItems[1].Text + " | "
+                    + listTrabajosEnProceso.SelectedItems[0].SubItems[2].Text + " " + listTrabajosEnProceso.SelectedItems[0].SubItems[3].Text +" | "
+                    + "Item: " + listTrabajosEnProceso.SelectedItems[0].SubItems[4].Text, "Detener Servicio", MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
                     MaquinaOrdenServicioTipoPrenda mostpActual = _trabajosEnProceso.Find(delegate (MaquinaOrdenServicioTipoPrenda mostp)
@@ -2842,6 +2849,9 @@ namespace UI.Desktop
             CambiarColor(chkCambioColor.Checked);
         }
 
-        
+        private void listInsumos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.listIngresosInsumos.Items.Clear();
+        }
     }
 }

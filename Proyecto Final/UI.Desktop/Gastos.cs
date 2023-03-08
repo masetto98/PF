@@ -49,7 +49,7 @@ namespace UI.Desktop
                     item.SubItems.Add(g.TipoGasto.ToString());
                     item.SubItems.Add(g.Descripcion);
                     item.SubItems.Add(g.FechaRealizado.ToString());
-                    item.SubItems.Add(g.Importe.ToString());
+                    item.SubItems.Add(String.Concat("$ ",g.Importe.ToString()));
                     item.SubItems.Add(String.Concat(g.IdEmpleado," - ",g.Empleado.Apellido, " ", g.Empleado.Nombre));
                     listGastos.Items.Add(item);
                 }

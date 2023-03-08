@@ -299,6 +299,9 @@ namespace UI.Desktop
             listMantenimientos.Items.Clear();
             ListarMaquinas();
             CargarSerieGrafico2();
+            this.lblOrdenesAtendidas.Text = "-";
+            this.lblMantenimientosRealizados.Text = "-";
+            this.lblEstadisticas.Text = "Estadisticas:";
 
         }
 
@@ -318,7 +321,13 @@ namespace UI.Desktop
                     this.lblMantenimientosRealizados.Text = MaquinaActual.Mantenimientos.Count.ToString();
 
                 }
-
+                this.lblEstadisticas.Text = String.Concat("Estadisticas de ", MaquinaActual.Descripcion," :");
+            }
+            else 
+            {
+                this.lblOrdenesAtendidas.Text = "-";
+                this.lblMantenimientosRealizados.Text = "-";
+                this.lblEstadisticas.Text = "Estadisticas:";
             }
             //else
             //{

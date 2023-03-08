@@ -47,7 +47,7 @@ namespace UI.Desktop
             this.lblOrdenesAtendidas = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.lblEstadisticas = new MaterialSkin.Controls.MaterialLabel();
             this.btnEditarMantenimiento = new MaterialSkin.Controls.MaterialButton();
             this.btnEliminarMantenimiento = new MaterialSkin.Controls.MaterialButton();
             this.btnAgregarMantenimiento = new MaterialSkin.Controls.MaterialButton();
@@ -228,10 +228,10 @@ namespace UI.Desktop
             this.materialCard1.Controls.Add(this.lblOrdenesAtendidas);
             this.materialCard1.Controls.Add(this.materialLabel3);
             this.materialCard1.Controls.Add(this.materialLabel2);
-            this.materialCard1.Controls.Add(this.materialLabel1);
+            this.materialCard1.Controls.Add(this.lblEstadisticas);
             this.materialCard1.Depth = 0;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(384, 88);
+            this.materialCard1.Location = new System.Drawing.Point(384, 371);
             this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
@@ -295,19 +295,19 @@ namespace UI.Desktop
             this.materialLabel2.TabIndex = 1;
             this.materialLabel2.Text = "Cantidad de ordenes antendidas:";
             // 
-            // materialLabel1
+            // lblEstadisticas
             // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(9, 9);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(91, 19);
-            this.materialLabel1.TabIndex = 0;
-            this.materialLabel1.Text = "Estadísticas:";
+            this.lblEstadisticas.AutoSize = true;
+            this.lblEstadisticas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.lblEstadisticas.Depth = 0;
+            this.lblEstadisticas.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblEstadisticas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblEstadisticas.Location = new System.Drawing.Point(9, 9);
+            this.lblEstadisticas.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblEstadisticas.Name = "lblEstadisticas";
+            this.lblEstadisticas.Size = new System.Drawing.Size(91, 19);
+            this.lblEstadisticas.TabIndex = 0;
+            this.lblEstadisticas.Text = "Estadísticas:";
             // 
             // btnEditarMantenimiento
             // 
@@ -626,7 +626,7 @@ namespace UI.Desktop
             this.materialCard2.Controls.Add(this.materialLabel7);
             this.materialCard2.Depth = 0;
             this.materialCard2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard2.Location = new System.Drawing.Point(384, 192);
+            this.materialCard2.Location = new System.Drawing.Point(386, 96);
             this.materialCard2.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard2.Name = "materialCard2";
@@ -710,5 +710,6 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialLabel materialLabel7;
         private MaterialSkin.Controls.MaterialLabel materialLabel8;
         private MaterialSkin.Controls.MaterialCard materialCard2;
+        private MaterialSkin.Controls.MaterialLabel lblEstadisticas;
     }
 }

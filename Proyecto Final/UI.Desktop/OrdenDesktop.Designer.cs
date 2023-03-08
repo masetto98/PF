@@ -54,7 +54,7 @@ namespace UI.Desktop
             this.btnAgregarCliente = new MaterialSkin.Controls.MaterialButton();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.txtPrecioTotal = new MaterialSkin.Controls.MaterialTextBox();
-            this.lblTotal = new MaterialSkin.Controls.MaterialLabel();
+            this.lblAPagar = new MaterialSkin.Controls.MaterialLabel();
             this.cmbPrioridad = new MaterialSkin.Controls.MaterialComboBox();
             this.txtDireccion = new MaterialSkin.Controls.MaterialTextBox();
             this.btnBuscar = new MaterialSkin.Controls.MaterialButton();
@@ -76,11 +76,17 @@ namespace UI.Desktop
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.nudHoraEntrega = new System.Windows.Forms.NumericUpDown();
             this.ayudaOrden = new System.Windows.Forms.ToolTip(this.components);
+            this.materialCard5 = new MaterialSkin.Controls.MaterialCard();
+            this.lblDescueto = new MaterialSkin.Controls.MaterialLabel();
+            this.lblTotal = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.materialCard1.SuspendLayout();
             this.materialCard2.SuspendLayout();
             this.materialCard3.SuspendLayout();
             this.materialCard4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudHoraEntrega)).BeginInit();
+            this.materialCard5.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblFechaEntrada
@@ -123,7 +129,7 @@ namespace UI.Desktop
             // dtpFechaIngreso
             // 
             this.dtpFechaIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.dtpFechaIngreso.CustomFormat = "dd/MM/yyyy hh:mm:ss";
+            this.dtpFechaIngreso.CustomFormat = "dd/MM/yyyy HH:mm:ss";
             this.dtpFechaIngreso.Enabled = false;
             this.dtpFechaIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpFechaIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -138,7 +144,7 @@ namespace UI.Desktop
             // dtpFechaSalida
             // 
             this.dtpFechaSalida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.dtpFechaSalida.CustomFormat = "dd/MM/yyyy hh:mm:ss";
+            this.dtpFechaSalida.CustomFormat = "dd/MM/yyyy HH:mm:ss";
             this.dtpFechaSalida.Enabled = false;
             this.dtpFechaSalida.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpFechaSalida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -308,7 +314,7 @@ namespace UI.Desktop
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAceptar.HighEmphasis = true;
             this.btnAceptar.Icon = null;
-            this.btnAceptar.Location = new System.Drawing.Point(752, 583);
+            this.btnAceptar.Location = new System.Drawing.Point(749, 585);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptar.Name = "btnAceptar";
@@ -330,7 +336,7 @@ namespace UI.Desktop
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
-            this.btnCancelar.Location = new System.Drawing.Point(846, 583);
+            this.btnCancelar.Location = new System.Drawing.Point(843, 585);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -498,31 +504,31 @@ namespace UI.Desktop
             this.txtPrecioTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtPrecioTotal.Hint = "Total";
             this.txtPrecioTotal.LeadingIcon = null;
-            this.txtPrecioTotal.Location = new System.Drawing.Point(801, 525);
+            this.txtPrecioTotal.Location = new System.Drawing.Point(813, 527);
             this.txtPrecioTotal.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.txtPrecioTotal.MaxLength = 50;
             this.txtPrecioTotal.MouseState = MaterialSkin.MouseState.OUT;
             this.txtPrecioTotal.Multiline = false;
             this.txtPrecioTotal.Name = "txtPrecioTotal";
-            this.txtPrecioTotal.Size = new System.Drawing.Size(138, 50);
+            this.txtPrecioTotal.Size = new System.Drawing.Size(129, 50);
             this.txtPrecioTotal.TabIndex = 32;
             this.txtPrecioTotal.Text = "";
             this.txtPrecioTotal.TrailingIcon = null;
             // 
-            // lblTotal
+            // lblAPagar
             // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.lblTotal.Depth = 0;
-            this.lblTotal.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTotal.Location = new System.Drawing.Point(738, 546);
-            this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTotal.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(55, 19);
-            this.lblTotal.TabIndex = 33;
-            this.lblTotal.Text = "TOTAL:";
+            this.lblAPagar.AutoSize = true;
+            this.lblAPagar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.lblAPagar.Depth = 0;
+            this.lblAPagar.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblAPagar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblAPagar.Location = new System.Drawing.Point(745, 540);
+            this.lblAPagar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAPagar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblAPagar.Name = "lblAPagar";
+            this.lblAPagar.Size = new System.Drawing.Size(60, 19);
+            this.lblAPagar.TabIndex = 33;
+            this.lblAPagar.Text = "A pagar:";
             // 
             // cmbPrioridad
             // 
@@ -698,12 +704,12 @@ namespace UI.Desktop
             this.materialCard3.Controls.Add(this.materialLabel2);
             this.materialCard3.Depth = 0;
             this.materialCard3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard3.Location = new System.Drawing.Point(245, 525);
+            this.materialCard3.Location = new System.Drawing.Point(243, 525);
             this.materialCard3.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard3.Name = "materialCard3";
             this.materialCard3.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard3.Size = new System.Drawing.Size(293, 96);
+            this.materialCard3.Size = new System.Drawing.Size(283, 96);
             this.materialCard3.TabIndex = 36;
             // 
             // cbFormaPago
@@ -721,7 +727,7 @@ namespace UI.Desktop
             this.cbFormaPago.Hint = "Forma de pago";
             this.cbFormaPago.IntegralHeight = false;
             this.cbFormaPago.ItemHeight = 43;
-            this.cbFormaPago.Location = new System.Drawing.Point(122, 36);
+            this.cbFormaPago.Location = new System.Drawing.Point(114, 36);
             this.cbFormaPago.MaxDropDownItems = 4;
             this.cbFormaPago.MouseState = MaterialSkin.MouseState.OUT;
             this.cbFormaPago.Name = "cbFormaPago";
@@ -746,7 +752,7 @@ namespace UI.Desktop
             this.txtSeniaOrden.MouseState = MaterialSkin.MouseState.OUT;
             this.txtSeniaOrden.Multiline = false;
             this.txtSeniaOrden.Name = "txtSeniaOrden";
-            this.txtSeniaOrden.Size = new System.Drawing.Size(110, 50);
+            this.txtSeniaOrden.Size = new System.Drawing.Size(102, 50);
             this.txtSeniaOrden.TabIndex = 1;
             this.txtSeniaOrden.Text = "";
             this.txtSeniaOrden.TrailingIcon = null;
@@ -906,13 +912,87 @@ namespace UI.Desktop
             this.ayudaOrden.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.ayudaOrden.ToolTipTitle = "Ayuda";
             // 
+            // materialCard5
+            // 
+            this.materialCard5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard5.Controls.Add(this.lblDescueto);
+            this.materialCard5.Controls.Add(this.lblTotal);
+            this.materialCard5.Controls.Add(this.materialLabel7);
+            this.materialCard5.Controls.Add(this.materialLabel6);
+            this.materialCard5.Depth = 0;
+            this.materialCard5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard5.Location = new System.Drawing.Point(537, 525);
+            this.materialCard5.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard5.Name = "materialCard5";
+            this.materialCard5.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard5.Size = new System.Drawing.Size(197, 96);
+            this.materialCard5.TabIndex = 45;
+            // 
+            // lblDescueto
+            // 
+            this.lblDescueto.AutoSize = true;
+            this.lblDescueto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.lblDescueto.Depth = 0;
+            this.lblDescueto.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblDescueto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblDescueto.Location = new System.Drawing.Point(96, 40);
+            this.lblDescueto.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblDescueto.Name = "lblDescueto";
+            this.lblDescueto.Size = new System.Drawing.Size(5, 19);
+            this.lblDescueto.TabIndex = 4;
+            this.lblDescueto.Text = "-";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.lblTotal.Depth = 0;
+            this.lblTotal.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblTotal.Location = new System.Drawing.Point(96, 14);
+            this.lblTotal.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(5, 19);
+            this.lblTotal.TabIndex = 3;
+            this.lblTotal.Text = "-";
+            // 
+            // materialLabel7
+            // 
+            this.materialLabel7.AutoSize = true;
+            this.materialLabel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel7.Depth = 0;
+            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel7.Location = new System.Drawing.Point(6, 40);
+            this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel7.Name = "materialLabel7";
+            this.materialLabel7.Size = new System.Drawing.Size(80, 19);
+            this.materialLabel7.TabIndex = 1;
+            this.materialLabel7.Text = "Descuento:";
+            // 
+            // materialLabel6
+            // 
+            this.materialLabel6.AutoSize = true;
+            this.materialLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel6.Location = new System.Drawing.Point(6, 14);
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            this.materialLabel6.Size = new System.Drawing.Size(42, 19);
+            this.materialLabel6.TabIndex = 0;
+            this.materialLabel6.Text = "Total:";
+            // 
             // OrdenDesktop
             // 
             this.AcceptButton = this.btnAceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancelar;
-            this.ClientSize = new System.Drawing.Size(952, 630);
+            this.ClientSize = new System.Drawing.Size(952, 629);
+            this.Controls.Add(this.materialCard5);
             this.Controls.Add(this.nudHoraEntrega);
             this.Controls.Add(this.materialLabel5);
             this.Controls.Add(this.materialLabel4);
@@ -924,7 +1004,7 @@ namespace UI.Desktop
             this.Controls.Add(this.materialCard3);
             this.Controls.Add(this.materialCard2);
             this.Controls.Add(this.cmbPrioridad);
-            this.Controls.Add(this.lblTotal);
+            this.Controls.Add(this.lblAPagar);
             this.Controls.Add(this.txtPrecioTotal);
             this.Controls.Add(this.materialCard1);
             this.Controls.Add(this.lblFechaSalida);
@@ -950,6 +1030,8 @@ namespace UI.Desktop
             this.materialCard3.PerformLayout();
             this.materialCard4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nudHoraEntrega)).EndInit();
+            this.materialCard5.ResumeLayout(false);
+            this.materialCard5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -980,7 +1062,7 @@ namespace UI.Desktop
         private System.Windows.Forms.ColumnHeader columnEstado;
         private MaterialSkin.Controls.MaterialCard materialCard1;
         private MaterialSkin.Controls.MaterialTextBox txtPrecioTotal;
-        private MaterialSkin.Controls.MaterialLabel lblTotal;
+        private MaterialSkin.Controls.MaterialLabel lblAPagar;
         private MaterialSkin.Controls.MaterialComboBox cmbPrioridad;
         private MaterialSkin.Controls.MaterialCard materialCard2;
         private MaterialSkin.Controls.MaterialTextBox txtDescuento;
@@ -1002,5 +1084,10 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private System.Windows.Forms.NumericUpDown nudHoraEntrega;
         private System.Windows.Forms.ToolTip ayudaOrden;
+        private MaterialSkin.Controls.MaterialCard materialCard5;
+        private MaterialSkin.Controls.MaterialLabel lblDescueto;
+        private MaterialSkin.Controls.MaterialLabel lblTotal;
+        private MaterialSkin.Controls.MaterialLabel materialLabel7;
+        private MaterialSkin.Controls.MaterialLabel materialLabel6;
     }
 }
