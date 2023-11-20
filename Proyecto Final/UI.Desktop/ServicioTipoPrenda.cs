@@ -45,8 +45,12 @@ namespace UI.Desktop
                         cantxItem += 1;
                     }
                 }
-                double mostrar = Math.Round((cantxItem / totalItems) * 100, 2);
-                chartItem.Series["Series1"].Points.AddXY(item.Servicio.Descripcion +" "+ item.TipoPrenda.Descripcion, mostrar);
+                if(cantxItem != 0)
+                {
+                    double mostrar = Math.Round((cantxItem / totalItems) * 100, 2);
+                    chartItem.Series["Series1"].Points.AddXY(item.Servicio.Descripcion + " " + item.TipoPrenda.Descripcion, mostrar);
+                }
+              
             }
         }
         private void ListarServicioTipoPrenda() 

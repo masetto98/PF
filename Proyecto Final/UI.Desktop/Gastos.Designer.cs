@@ -101,7 +101,7 @@ namespace UI.Desktop
             // columnEmployee
             // 
             this.columnEmployee.Text = "Empleado";
-            this.columnEmployee.Width = 150;
+            this.columnEmployee.Width = 200;
             // 
             // btnEditar
             // 
@@ -179,7 +179,7 @@ namespace UI.Desktop
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(14, 565);
+            this.materialLabel1.Location = new System.Drawing.Point(15, 569);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(54, 19);
@@ -217,7 +217,7 @@ namespace UI.Desktop
             this.txtBuscar.Depth = 0;
             this.txtBuscar.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtBuscar.Hint = "Buscar gasto ....";
+            this.txtBuscar.Hint = "Buscar gasto...";
             this.txtBuscar.LeadingIcon = null;
             this.txtBuscar.Location = new System.Drawing.Point(285, 552);
             this.txtBuscar.MaxLength = 50;

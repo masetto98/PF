@@ -2269,6 +2269,34 @@ namespace UI.Desktop
         private void listTrabajosPendientes_SelectedIndexChanged(object sender, EventArgs e)
         {
             listMaquinasItem.Items.Clear();
+            lblCliente.Text = "";
+            lblFechaEntrega.Text = "";
+            if (listTrabajosPendientes.SelectedItems.Count > 0)
+            {
+                OrdenServicioTipoPrenda t = _trabajosPendientes.Find(delegate (OrdenServicioTipoPrenda item)
+                {
+                    return item.NroOrden == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].Text) &&
+                           item.ServicioTipoPrenda.Servicio.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[1].Text &&
+                           item.ServicioTipoPrenda.TipoPrenda.Descripcion == this.listTrabajosPendientes.SelectedItems[0].SubItems[2].Text &&
+                           item.OrdenItem == Int32.Parse(this.listTrabajosPendientes.SelectedItems[0].SubItems[3].Text);
+                });
+                if (t is not null)
+                {
+                    if (t.Orden.Cliente.RazonSocial != "")
+                    {
+                        lblCliente.Text = t.Orden.Cliente.RazonSocial;
+                        
+                    }
+                    else
+                    {
+                        lblCliente.Text = t.Orden.Cliente.Apellido + ", " + t.Orden.Cliente.Nombre;
+                    }
+
+                    lblFechaEntrega.Text = t.Orden.FechaHoraEntregaIngresada.ToString();
+
+                }
+
+            }
         }
         #endregion
 

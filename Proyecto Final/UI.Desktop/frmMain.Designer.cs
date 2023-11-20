@@ -142,6 +142,11 @@ namespace UI.Desktop
             this.tabPlanificacion = new System.Windows.Forms.TabPage();
             this.tabControlPlanificacion = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPendientes = new System.Windows.Forms.TabPage();
+            this.materialCard8 = new MaterialSkin.Controls.MaterialCard();
+            this.lblFechaEntrega = new MaterialSkin.Controls.MaterialLabel();
+            this.lblCliente = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel21 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel20 = new MaterialSkin.Controls.MaterialLabel();
             this.dtpFechaVencitmiento = new System.Windows.Forms.DateTimePicker();
             this.lblElijaFechaEntrega = new MaterialSkin.Controls.MaterialLabel();
             this.cmbEstados = new MaterialSkin.Controls.MaterialComboBox();
@@ -256,6 +261,7 @@ namespace UI.Desktop
             this.tabPlanificacion.SuspendLayout();
             this.tabControlPlanificacion.SuspendLayout();
             this.tabPendientes.SuspendLayout();
+            this.materialCard8.SuspendLayout();
             this.tabEnProceso.SuspendLayout();
             this.tabFinalizados.SuspendLayout();
             this.tabUtilidades.SuspendLayout();
@@ -1927,6 +1933,7 @@ namespace UI.Desktop
             // tabPendientes
             // 
             this.tabPendientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.tabPendientes.Controls.Add(this.materialCard8);
             this.tabPendientes.Controls.Add(this.dtpFechaVencitmiento);
             this.tabPendientes.Controls.Add(this.lblElijaFechaEntrega);
             this.tabPendientes.Controls.Add(this.cmbEstados);
@@ -1944,6 +1951,80 @@ namespace UI.Desktop
             this.tabPendientes.Size = new System.Drawing.Size(1364, 604);
             this.tabPendientes.TabIndex = 0;
             this.tabPendientes.Text = "Trabajos Pendientes";
+            // 
+            // materialCard8
+            // 
+            this.materialCard8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard8.Controls.Add(this.lblFechaEntrega);
+            this.materialCard8.Controls.Add(this.lblCliente);
+            this.materialCard8.Controls.Add(this.materialLabel21);
+            this.materialCard8.Controls.Add(this.materialLabel20);
+            this.materialCard8.Depth = 0;
+            this.materialCard8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.materialCard8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard8.Location = new System.Drawing.Point(985, 9);
+            this.materialCard8.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard8.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard8.Name = "materialCard8";
+            this.materialCard8.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard8.Size = new System.Drawing.Size(265, 158);
+            this.materialCard8.TabIndex = 13;
+            // 
+            // lblFechaEntrega
+            // 
+            this.lblFechaEntrega.AutoSize = true;
+            this.lblFechaEntrega.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.lblFechaEntrega.Depth = 0;
+            this.lblFechaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.lblFechaEntrega.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblFechaEntrega.Location = new System.Drawing.Point(17, 112);
+            this.lblFechaEntrega.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblFechaEntrega.Name = "lblFechaEntrega";
+            this.lblFechaEntrega.Size = new System.Drawing.Size(5, 19);
+            this.lblFechaEntrega.TabIndex = 3;
+            this.lblFechaEntrega.Text = "-";
+            // 
+            // lblCliente
+            // 
+            this.lblCliente.AutoSize = true;
+            this.lblCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.lblCliente.Depth = 0;
+            this.lblCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.lblCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblCliente.Location = new System.Drawing.Point(17, 48);
+            this.lblCliente.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblCliente.Name = "lblCliente";
+            this.lblCliente.Size = new System.Drawing.Size(5, 19);
+            this.lblCliente.TabIndex = 2;
+            this.lblCliente.Text = "-";
+            // 
+            // materialLabel21
+            // 
+            this.materialLabel21.AutoSize = true;
+            this.materialLabel21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel21.Depth = 0;
+            this.materialLabel21.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel21.Location = new System.Drawing.Point(17, 80);
+            this.materialLabel21.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel21.Name = "materialLabel21";
+            this.materialLabel21.Size = new System.Drawing.Size(126, 19);
+            this.materialLabel21.TabIndex = 1;
+            this.materialLabel21.Text = "Fecha de entrega:";
+            // 
+            // materialLabel20
+            // 
+            this.materialLabel20.AutoSize = true;
+            this.materialLabel20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.materialLabel20.Depth = 0;
+            this.materialLabel20.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel20.Location = new System.Drawing.Point(17, 17);
+            this.materialLabel20.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel20.Name = "materialLabel20";
+            this.materialLabel20.Size = new System.Drawing.Size(53, 19);
+            this.materialLabel20.TabIndex = 0;
+            this.materialLabel20.Text = "Cliente:";
             // 
             // dtpFechaVencitmiento
             // 
@@ -3428,6 +3509,8 @@ namespace UI.Desktop
             this.tabControlPlanificacion.ResumeLayout(false);
             this.tabPendientes.ResumeLayout(false);
             this.tabPendientes.PerformLayout();
+            this.materialCard8.ResumeLayout(false);
+            this.materialCard8.PerformLayout();
             this.tabEnProceso.ResumeLayout(false);
             this.tabFinalizados.ResumeLayout(false);
             this.tabFinalizados.PerformLayout();
@@ -3665,6 +3748,11 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialLabel materialLabel19;
         private System.Windows.Forms.ToolTip ayudaGeneral;
         private MaterialSkin.Controls.MaterialSwitch switchMostrarImpagas;
+        private MaterialSkin.Controls.MaterialCard materialCard8;
+        private MaterialSkin.Controls.MaterialLabel lblFechaEntrega;
+        private MaterialSkin.Controls.MaterialLabel lblCliente;
+        private MaterialSkin.Controls.MaterialLabel materialLabel21;
+        private MaterialSkin.Controls.MaterialLabel materialLabel20;
     }
 }
 
