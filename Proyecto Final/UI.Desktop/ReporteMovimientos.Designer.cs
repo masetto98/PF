@@ -80,6 +80,7 @@ namespace UI.Desktop
             this.listInsumos.UseCompatibleStateImageBehavior = false;
             this.listInsumos.View = System.Windows.Forms.View.Details;
             this.listInsumos.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listInsumos_ColumnWidthChanging);
+            this.listInsumos.SelectedIndexChanged += new System.EventHandler(this.listInsumos_SelectedIndexChanged);
             // 
             // columnID
             // 

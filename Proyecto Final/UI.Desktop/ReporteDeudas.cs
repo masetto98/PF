@@ -34,6 +34,7 @@ namespace UI.Desktop
         private readonly LavanderiaContext _context;
         public Cliente clienteActual;
         public double montoTotal;
+
         public ReporteDeudas(LavanderiaContext context)
         {
             InitializeComponent();
@@ -42,11 +43,15 @@ namespace UI.Desktop
             _ordenLogic = new OrdenLogic(new OrdenAdapter(context));
             //ordenes = _ordenLogic.GetAll();
             ListarClientes();
-            listarOrdenesCliente();
+            //listarOrdenesCliente();
+            listarOrdenes(OrdenesDeuda());
+            dtpFechaDesde.Value = DateTime.Today.AddYears(-3);
             Singleton.getInstance().ListActual = this.listOrdenesCliente;
             Singleton.getInstance().ModuloActual = "Deudas Clientes";
             
         }
+
+
         private void ListarClientes()
         {
             List<Cliente> clientes = _clienteLogic.GetAll();
@@ -59,6 +64,7 @@ namespace UI.Desktop
 
             }
         }
+
         public List<Orden> OrdenesDeuda()
         {
              ordenesDeuda = _ordenLogic.GetAll().FindAll(
@@ -92,8 +98,6 @@ namespace UI.Desktop
                 });
              return ordenesDeuda;
         }
-        
-
         
         private double CalcularImporteOrden(Orden ordenActual)
         {
@@ -144,9 +148,59 @@ namespace UI.Desktop
                 return importe;
             }
         }
-        
 
-        
+        public void listarOrdenes(List<Orden> ordenes)
+        {
+            double montoTotal1 = 0;
+            listOrdenesCliente.Items.Clear();
+            foreach (Orden oc in ordenes)
+            {
+                ListViewItem item = new ListViewItem();
+                if (oc.Cliente.RazonSocial == "")
+                {
+                    item.Text = item.Name = oc.Cliente.Nombre + " " + oc.Cliente.Apellido;
+
+                }
+                else
+                {
+                    item.Text = oc.Cliente.RazonSocial;
+                }
+                item.SubItems.Add(oc.NroOrden.ToString());
+                item.SubItems.Add(oc.FechaEntrada.ToString("dd/MM/yyyy HH:ss:mm"));
+                string fecha = oc.FechaSalida.Date.ToString();
+                if (oc.FechaSalida.Date.ToString() == "1/1/0001 00:00:00")
+                {
+                    item.SubItems.Add("No retirada");
+                }
+                else
+                {
+                    item.SubItems.Add(oc.FechaSalida.ToString());
+                }
+
+
+                double deudas = 0;
+                double pagos = CalcularPagosOrden(oc);
+                if (oc.Factura.Importe == 0)
+                {
+                    double importe = CalcularImporteOrden(oc);
+                    item.SubItems.Add("$" + importe.ToString());
+                    deudas = importe - pagos;
+
+                }
+                else
+                {
+                    item.SubItems.Add("$" + oc.Factura.Importe.ToString());
+                    deudas = oc.Factura.Importe - pagos;
+                }
+
+                item.SubItems.Add("$" + pagos.ToString());
+                item.SubItems.Add("$" + deudas.ToString());
+                montoTotal1 += deudas;
+                listOrdenesCliente.Items.Add(item);
+            }
+            montoTotal = montoTotal1;
+        }
+
         private double CalcularPagosOrden(Orden ordenActual)
         {
             double pagos = 0;
@@ -159,8 +213,74 @@ namespace UI.Desktop
             }
             return pagos;
         }
-        
-        
+
+
+        private List<Orden> FiltrarOrdenesClienteFecha(Cliente cliente)
+        {
+            List<Orden> ordenesFiltradas = new List<Orden>();
+            if (cliente is not null)
+            {
+                ordenesFiltradas = ordenesDeuda.FindAll(
+                    delegate (Orden or)
+                    {
+                        return or.Cliente.Cuit == cliente.Cuit && or.FechaEntrada.Date>= dtpFechaDesde.Value.Date && or.FechaEntrada.Date <= dtpFechaHasta.Value.Date;
+                    });
+            }
+            else
+            {
+                ordenesFiltradas = ordenesDeuda.FindAll(
+                    delegate (Orden or)
+                    {
+                        return or.FechaEntrada.Date >= dtpFechaDesde.Value.Date && or.FechaEntrada.Date <= dtpFechaHasta.Value.Date;
+                    });
+            }
+
+            return ordenesFiltradas;
+        }
+
+        private void listClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (listClientes.SelectedItems.Count > 0)
+            {
+                clienteActual = _clienteLogic.GetOneConCuit(listClientes.SelectedItems[0].Text);
+                listarOrdenes(FiltrarOrdenesClienteFecha(clienteActual));
+                /*
+                if (ClienteSelect is not null)
+                {
+                    List<Orden> ordenesFiltro = new List<Orden>();
+                    foreach (Orden oc in ordenesDeuda)
+                    {
+                        if (oc.Cliente == ClienteSelect)
+                        {
+                            ordenesFiltro.Add(oc);
+                        }
+                    }
+                    
+                    ordenesDeudaCliente = ordenesFiltro;
+                    clienteActual = ClienteSelect;
+                }*/
+            }
+            else
+            {
+                clienteActual = null;
+                listarOrdenes(OrdenesDeuda());
+            }
+
+        }
+
+        private void dtpFechaDesde_ValueChanged(object sender, EventArgs e)
+        {
+            listarOrdenes(FiltrarOrdenesClienteFecha(clienteActual));
+            
+        }
+
+        private void dtpFechaHasta_ValueChanged(object sender, EventArgs e)
+        {
+             listarOrdenes(FiltrarOrdenesClienteFecha(clienteActual));
+        }
+
+        /*
         public void listarOrdenesCliente()
         {
             double montoTotal1=0;
@@ -212,161 +332,10 @@ namespace UI.Desktop
                 listOrdenesCliente.Items.Add(item);
             }
             montoTotal = montoTotal1;
-        }
-        
-       
-        private void btnReporteDeudas_Click(object sender, EventArgs e)
-        {
-            
+        }*/
 
-                if (Singleton.getInstance().ListActual != null && Singleton.getInstance().ListActual.Items.Count > 0)
-                {
-                    SaveFileDialog sfd = new SaveFileDialog();
-                    sfd.Filter = "PDF (*.pdf)|*.pdf";
-                    sfd.FileName = $"Reporte de {Singleton.getInstance().ModuloActual} - {DateTime.Now.ToString("yyyyMMddHHmmss")}.pdf";
-                    bool fileError = false;
-                    if (sfd.ShowDialog() == DialogResult.OK)
-                    {
-                        if (File.Exists(sfd.FileName))
-                        {
-                            try
-                            {
-                                File.Delete(sfd.FileName);
-                            }
-                            catch (IOException ex)
-                            {
-                                fileError = true;
-                                MessageBox.Show("No fue posible escribir el archivo en el disco." + ex.Message);
-                            }
-                        }
-                        if (!fileError)
-                        {
-                            try
-                            {
-                                Table pdfTable = new Table(Singleton.getInstance().ListActual.Columns.Count);
-                                pdfTable.SetPadding(3);
-                                pdfTable.SetWidth(UnitValue.CreatePercentValue(100));
-                                pdfTable.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
 
-                                foreach (ColumnHeader column in Singleton.getInstance().ListActual.Columns)
-                                {
 
-                                    Cell cell = new Cell().Add(new Paragraph(column.Text).SetBold());
-                                    cell.SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
-                                    cell.SetTextAlignment(TextAlignment.CENTER);
-                                    pdfTable.AddCell(cell);
-
-                                }
-
-                                foreach (ListViewItem row in Singleton.getInstance().ListActual.Items)
-                                {
-                                    foreach (ListViewItem.ListViewSubItem cell in row.SubItems)
-                                    {
-                                        pdfTable.AddCell(cell.Text);
-                                    }
-
-                                }
-
-                                using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
-                                {
-                                    PdfWriter writer = new PdfWriter(stream);
-                                    PdfDocument pdf = new PdfDocument(writer);
-                                    Document document = new Document(pdf);
-                                    pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4);
-                                    document.SetMargins(10f, 20f, 20f, 10f);
-                                    Paragraph p = new Paragraph();
-                                    p.SetTextAlignment(TextAlignment.CENTER);
-                                    p.Add($"Reporte de {Singleton.getInstance().ModuloActual} \n");
-                                    p.SetBold();
-                                    p.SetUnderline();
-                                    p.SetFontSize(18);
-                                    document.Add(p);
-                                    Paragraph fecha = new Paragraph();
-                                    fecha.SetTextAlignment(TextAlignment.LEFT);
-                                    fecha.Add($"Fecha y hora de emisión: {DateTime.Now} \n");
-                                    fecha.SetFontSize(9);
-                                    document.Add(fecha);
-                                    if (dtpFechaHasta.Value.Date != DateTime.Now.Date)
-                                    {
-                                        if(dtpFechaDesde.Value.Date != DateTime.Now.Date)
-                                        {
-                                            Paragraph fechaDesde = new Paragraph();
-                                            fechaDesde.SetTextAlignment(TextAlignment.CENTER);
-                                            fechaDesde.Add($"El Reporte abarca desde: {dtpFechaDesde.Value.Date.ToString("yyyy/MM/dd")} - hasta: {dtpFechaHasta.Value.Date.ToString("yyyy/MM/dd")}\n");
-                                            fechaDesde.SetFontSize(9);
-                                            document.Add(fechaDesde);
-                                        }
-                                        else
-                                        {
-                                            Paragraph fechaDesde = new Paragraph();
-                                            fechaDesde.SetTextAlignment(TextAlignment.CENTER);
-                                            fechaDesde.Add($"El Reporte abarca hasta: {dtpFechaHasta.Value.Date.ToString("yyyy/MM/dd")}\n");
-                                            fechaDesde.SetFontSize(9);
-                                            document.Add(fechaDesde);
-                                        }
-                                    
-                                    }
-                                    else if(dtpFechaDesde.Value.Date != DateTime.Now.Date)
-                                    {
-                                        Paragraph fechaDesde = new Paragraph();
-                                        fechaDesde.SetTextAlignment(TextAlignment.CENTER);
-                                        fechaDesde.Add($"El Reporte abarca desde: {dtpFechaDesde.Value.Date.ToString("yyyy/MM/dd")}\n");
-                                        fechaDesde.SetFontSize(9);
-                                        document.Add(fechaDesde);
-                                    }
-                                    if (clienteActual is not null)
-                                    {
-                                        Paragraph cliente = new Paragraph();
-                                        cliente.SetTextAlignment(TextAlignment.LEFT);
-                                        if(clienteActual.RazonSocial == "")
-                                        {
-                                            cliente.Add($"Cliente: {clienteActual.Nombre}, {clienteActual.Apellido} \n");
-                                        }
-                                        else
-                                        {
-                                            if(clienteActual.Nombre != "" && clienteActual.Apellido != "")
-                                            {
-                                                cliente.Add($"Cliente: {clienteActual.Nombre}, {clienteActual.Apellido} / {clienteActual.RazonSocial} \n");
-                                            }
-                                            else
-                                            {
-                                                cliente.Add($"Cliente: {clienteActual.RazonSocial} \n");
-                                            }
-                                        
-                                        }
-                                        cliente.SetBold();
-                                        cliente.SetFontSize(12);
-                                        document.Add(cliente);
-                                    }
-                                    document.Add(pdfTable);
-                                    Paragraph Total = new Paragraph();
-                                    Total.SetTextAlignment(TextAlignment.RIGHT);
-                                    Total.Add($"Deuda Total: {montoTotal} \n");
-                                    Total.SetBold();
-                                    Total.SetUnderline();
-                                    Total.SetFontSize(12);
-                                    document.Add(Total);
-                                    document.Close();
-                                    stream.Close();
-                                }
-
-                                MessageBox.Show("Reporte exportado exitosamente", "Info",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show("Error: " + ex.Message);
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No hay registros para exportar", "Info",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
-                }
-                
-        }
-
-    
 
         private void listarClientesFiltrados(List<Cliente> clientes)
         {
@@ -378,6 +347,7 @@ namespace UI.Desktop
                 listClientes.Items.Add(item);
             }
         }
+
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             List<Cliente> clientes = _clienteLogic.GetAll().FindAll(
@@ -454,12 +424,14 @@ namespace UI.Desktop
             }
             montoTotal = montoTotal1;
         }
+
         private void filtroFecha()
         {
-            if (dtpFechaHasta.Value.Date != DateTime.Now.Date)
-            {
-                if (dtpFechaDesde.Value.Date != DateTime.Now.Date)
-                {
+            //if (dtpFechaHasta.Value.Date != DateTime.Now.Date)
+            //{
+            //    if (dtpFechaDesde.Value.Date != DateTime.Now.Date)
+            //    {
+
                     List<Orden> ordenesFiltro = ordenesDeuda.FindAll(
                         delegate (Orden or)
                         {
@@ -469,36 +441,36 @@ namespace UI.Desktop
                     {
                         listarOrdenesFiltradas(ordenesFiltro);
                     }
-                }
-                else
-                {
-                    List<Orden> ordenesFiltro = ordenesDeuda.FindAll(
-                       delegate (Orden or)
-                       {
+            //    }
+            //    else
+            //    {
+            //        List<Orden> ordenesFiltro = ordenesDeuda.FindAll(
+            //           delegate (Orden or)
+            //           {
 
-                           return or.FechaEntrada.Date <= dtpFechaHasta.Value.Date;
-                       });
-                    if (ordenesFiltro.Count > 0)
-                    {
-                        listarOrdenesFiltradas(ordenesFiltro);
+            //               return or.FechaEntrada.Date <= dtpFechaHasta.Value.Date;
+            //           });
+            //        if (ordenesFiltro.Count > 0)
+            //        {
+            //            listarOrdenesFiltradas(ordenesFiltro);
 
-                    }
-                }
-            }
-            else
-            {
-                List<Orden> ordenesFiltro = ordenesDeuda.FindAll(
-                       delegate (Orden or)
-                       {
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    List<Orden> ordenesFiltro = ordenesDeuda.FindAll(
+            //           delegate (Orden or)
+            //           {
 
-                           return or.FechaEntrada.Date >= dtpFechaDesde.Value.Date;
-                       });
-                if (ordenesFiltro.Count > 0)
-                {
+            //               return or.FechaEntrada.Date >= dtpFechaDesde.Value.Date;
+            //           });
+            //    if (ordenesFiltro.Count > 0)
+            //    {
 
-                    listarOrdenesFiltradas(ordenesFiltro);
-                }
-            }
+            //        listarOrdenesFiltradas(ordenesFiltro);
+            //    }
+            //}
         }
         
         private void filtroFechaCliente()
@@ -548,59 +520,166 @@ namespace UI.Desktop
             }
         }
       
-        private void dtpFechaDesde_ValueChanged(object sender, EventArgs e)
-        {
-            if(listClientes.SelectedItems.Count > 0 && clienteActual is not null)
-            {
-                filtroFechaCliente();
-            }
-            else
-            {
-                filtroFecha();
-            }
-           
+        
 
-        }
+        
 
-        private void dtpFechaHasta_ValueChanged(object sender, EventArgs e)
-        {
-            if (listClientes.SelectedItems.Count > 0 && clienteActual is not null)
-            {
-                filtroFechaCliente();
-            }
-            else
-            {
-                filtroFecha();
-            }
-        }
 
-        private void listClientes_SelectedIndexChanged(object sender, EventArgs e)
+        
+
+        private void btnReporteDeudas_Click(object sender, EventArgs e)
         {
-            
-            if (listClientes.SelectedItems.Count > 0)
+
+
+            if (Singleton.getInstance().ListActual != null && Singleton.getInstance().ListActual.Items.Count > 0)
             {
-                Cliente ClienteSelect = _clienteLogic.GetOneConCuit(listClientes.SelectedItems[0].Text);
-                if (ClienteSelect is not null)
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "PDF (*.pdf)|*.pdf";
+                sfd.FileName = $"Reporte de {Singleton.getInstance().ModuloActual} - {DateTime.Now.ToString("yyyyMMddHHmmss")}.pdf";
+                bool fileError = false;
+                if (sfd.ShowDialog() == DialogResult.OK)
                 {
-                    List<Orden> ordenesFiltro = new List<Orden>();
-                    foreach (Orden oc in ordenesDeuda)
+                    if (File.Exists(sfd.FileName))
                     {
-                        if (oc.Cliente == ClienteSelect)
+                        try
                         {
-                            ordenesFiltro.Add(oc);
+                            File.Delete(sfd.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            MessageBox.Show("No fue posible escribir el archivo en el disco." + ex.Message);
                         }
                     }
-                    listarOrdenesFiltradas(ordenesFiltro);
-                    ordenesDeudaCliente = ordenesFiltro;
-                    clienteActual = ClienteSelect;
+                    if (!fileError)
+                    {
+                        try
+                        {
+                            Table pdfTable = new Table(Singleton.getInstance().ListActual.Columns.Count);
+                            pdfTable.SetPadding(3);
+                            pdfTable.SetWidth(UnitValue.CreatePercentValue(100));
+                            pdfTable.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
+
+                            foreach (ColumnHeader column in Singleton.getInstance().ListActual.Columns)
+                            {
+
+                                Cell cell = new Cell().Add(new Paragraph(column.Text).SetBold());
+                                cell.SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+                                cell.SetTextAlignment(TextAlignment.CENTER);
+                                pdfTable.AddCell(cell);
+
+                            }
+
+                            foreach (ListViewItem row in Singleton.getInstance().ListActual.Items)
+                            {
+                                foreach (ListViewItem.ListViewSubItem cell in row.SubItems)
+                                {
+                                    pdfTable.AddCell(cell.Text);
+                                }
+
+                            }
+
+                            using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                            {
+                                PdfWriter writer = new PdfWriter(stream);
+                                PdfDocument pdf = new PdfDocument(writer);
+                                Document document = new Document(pdf);
+                                pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4);
+                                document.SetMargins(10f, 20f, 20f, 10f);
+                                Paragraph p = new Paragraph();
+                                p.SetTextAlignment(TextAlignment.CENTER);
+                                p.Add($"Reporte de {Singleton.getInstance().ModuloActual} \n");
+                                p.SetBold();
+                                p.SetUnderline();
+                                p.SetFontSize(18);
+                                document.Add(p);
+                                Paragraph fecha = new Paragraph();
+                                fecha.SetTextAlignment(TextAlignment.LEFT);
+                                fecha.Add($"Fecha y hora de emisión: {DateTime.Now} \n");
+                                fecha.SetFontSize(9);
+                                document.Add(fecha);
+                                if (dtpFechaHasta.Value.Date != DateTime.Now.Date)
+                                {
+                                    if (dtpFechaDesde.Value.Date != DateTime.Now.Date)
+                                    {
+                                        Paragraph fechaDesde = new Paragraph();
+                                        fechaDesde.SetTextAlignment(TextAlignment.CENTER);
+                                        fechaDesde.Add($"El Reporte abarca desde: {dtpFechaDesde.Value.Date.ToString("yyyy/MM/dd")} - hasta: {dtpFechaHasta.Value.Date.ToString("yyyy/MM/dd")}\n");
+                                        fechaDesde.SetFontSize(9);
+                                        document.Add(fechaDesde);
+                                    }
+                                    else
+                                    {
+                                        Paragraph fechaDesde = new Paragraph();
+                                        fechaDesde.SetTextAlignment(TextAlignment.CENTER);
+                                        fechaDesde.Add($"El Reporte abarca hasta: {dtpFechaHasta.Value.Date.ToString("yyyy/MM/dd")}\n");
+                                        fechaDesde.SetFontSize(9);
+                                        document.Add(fechaDesde);
+                                    }
+
+                                }
+                                else if (dtpFechaDesde.Value.Date != DateTime.Now.Date)
+                                {
+                                    Paragraph fechaDesde = new Paragraph();
+                                    fechaDesde.SetTextAlignment(TextAlignment.CENTER);
+                                    fechaDesde.Add($"El Reporte abarca desde: {dtpFechaDesde.Value.Date.ToString("yyyy/MM/dd")}\n");
+                                    fechaDesde.SetFontSize(9);
+                                    document.Add(fechaDesde);
+                                }
+                                if (clienteActual is not null)
+                                {
+                                    Paragraph cliente = new Paragraph();
+                                    cliente.SetTextAlignment(TextAlignment.LEFT);
+                                    if (clienteActual.RazonSocial == "")
+                                    {
+                                        cliente.Add($"Cliente: {clienteActual.Nombre}, {clienteActual.Apellido} \n");
+                                    }
+                                    else
+                                    {
+                                        if (clienteActual.Nombre != "" && clienteActual.Apellido != "")
+                                        {
+                                            cliente.Add($"Cliente: {clienteActual.Nombre}, {clienteActual.Apellido} / {clienteActual.RazonSocial} \n");
+                                        }
+                                        else
+                                        {
+                                            cliente.Add($"Cliente: {clienteActual.RazonSocial} \n");
+                                        }
+
+                                    }
+                                    cliente.SetBold();
+                                    cliente.SetFontSize(12);
+                                    document.Add(cliente);
+                                }
+                                document.Add(pdfTable);
+                                Paragraph Total = new Paragraph();
+                                Total.SetTextAlignment(TextAlignment.RIGHT);
+                                Total.Add($"Deuda Total: {montoTotal} \n");
+                                Total.SetBold();
+                                Total.SetUnderline();
+                                Total.SetFontSize(12);
+                                document.Add(Total);
+                                document.Close();
+                                stream.Close();
+                            }
+
+                            MessageBox.Show("Reporte exportado exitosamente", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error: " + ex.Message);
+                        }
+                    }
                 }
             }
             else
             {
-                listarOrdenesCliente();
+                MessageBox.Show("No hay registros para exportar", "Info", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-               
+
         }
+
+
+
     }
 
 

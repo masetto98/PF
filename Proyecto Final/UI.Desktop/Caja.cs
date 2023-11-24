@@ -244,7 +244,7 @@ namespace UI.Desktop
         
         private void ActualizarInformacion() 
         {
-            ListarPagos(DateTime.Now.Date, DateTime.Now.Date);
+            ListarPagos(DateTime.Now.Date, DateTime.Now.Date.AddHours(23).AddMinutes(59).AddSeconds(59));
             //ListarOrdenes();
             ListarGastos();
             CargarSeriesGrafico2();
@@ -271,6 +271,7 @@ namespace UI.Desktop
             double balance = ingresos - gastos;
             this.lblBalanceHoy.Text = String.Concat("$ ", balance.ToString());
         }
+
         private void filtroFecha()
         {
             List<Orden> ordenes = _ordenLogic.GetAll();
