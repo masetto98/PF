@@ -367,6 +367,7 @@ namespace UI.Desktop
             this.txtTotalAPagar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtTotalAPagar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTotalAPagar.Depth = 0;
+            this.txtTotalAPagar.Enabled = false;
             this.txtTotalAPagar.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtTotalAPagar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtTotalAPagar.Hint = "Deuda";

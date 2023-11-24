@@ -626,7 +626,7 @@ namespace UI.Desktop
             // 
             // columnFechaSalida
             // 
-            this.columnFechaSalida.Text = "Fecha de Salida";
+            this.columnFechaSalida.Text = "Fecha retiro est.";
             this.columnFechaSalida.Width = 210;
             // 
             // columnEstado
@@ -1975,7 +1975,7 @@ namespace UI.Desktop
             this.lblFechaEntrega.AutoSize = true;
             this.lblFechaEntrega.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.lblFechaEntrega.Depth = 0;
-            this.lblFechaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.lblFechaEntrega.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblFechaEntrega.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblFechaEntrega.Location = new System.Drawing.Point(17, 112);
             this.lblFechaEntrega.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1989,7 +1989,7 @@ namespace UI.Desktop
             this.lblCliente.AutoSize = true;
             this.lblCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.lblCliente.Depth = 0;
-            this.lblCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.lblCliente.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblCliente.Location = new System.Drawing.Point(17, 48);
             this.lblCliente.MouseState = MaterialSkin.MouseState.HOVER;

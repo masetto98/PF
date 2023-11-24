@@ -122,7 +122,7 @@ namespace UI.Desktop
         public void ListarItems()
         {
             listItemsRetiro.Items.Clear();
-
+            _totalitems = 0;
             if (OrdenActual is not null && (OrdenActual.Estado == Orden.Estados.Pagado || OrdenActual.Factura.FechaFactura != DateTime.MinValue))
             {
                 Pago pago = OrdenActual.Factura.Pagos.FindLast(delegate (Pago p) { return p.FechaPago <= DateTime.Now; });

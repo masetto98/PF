@@ -36,6 +36,7 @@ namespace UI.Desktop
             Singleton.getInstance().ListActual = this.listIngresos;
             Singleton.getInstance().ListAlternativa = this.listEgresos;
             Singleton.getInstance().ModuloActual = "Movimientos de Insumo";
+            //dtpFechaDesde.Value = DateTime.Today.AddYears(-1);
             ListarStock();
         }
         private void ListarStock()
@@ -475,6 +476,12 @@ namespace UI.Desktop
                 dtpFechaHasta.Value = DateTime.Today;
             }
             
+        }
+
+        private void listInsumos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listEgresos.Items.Clear();
+            listIngresos.Items.Clear();
         }
     }
 }

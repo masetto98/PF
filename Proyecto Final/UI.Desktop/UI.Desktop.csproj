@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>laundry_washing_machine_clothes_clean_wash_icon_196747.ico</ApplicationIcon>
   </PropertyGroup>
 	
 	<ItemGroup>
