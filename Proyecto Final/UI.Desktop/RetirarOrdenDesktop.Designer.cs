@@ -37,6 +37,7 @@ namespace UI.Desktop
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.cardOrdenRetiro = new MaterialSkin.Controls.MaterialCard();
             this.txtFechaEntradaRetiro = new MaterialSkin.Controls.MaterialTextBox();
+            this.btnImpFactura = new MaterialSkin.Controls.MaterialButton();
             this.txtEstadoRetiro = new MaterialSkin.Controls.MaterialTextBox();
             this.txtNroOrdenRetiro = new MaterialSkin.Controls.MaterialTextBox();
             this.listItemsRetiro = new MaterialSkin.Controls.MaterialListView();
@@ -52,13 +53,12 @@ namespace UI.Desktop
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
             this.btnRetirar = new MaterialSkin.Controls.MaterialButton();
             this.btnCancelarRetiro = new MaterialSkin.Controls.MaterialButton();
-            this.btnImpFactura = new MaterialSkin.Controls.MaterialButton();
             this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
+            this.lblPagos = new MaterialSkin.Controls.MaterialLabel();
+            this.lblDescuento = new MaterialSkin.Controls.MaterialLabel();
+            this.lblTotalFactura = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
-            this.lblTotalFactura = new MaterialSkin.Controls.MaterialLabel();
-            this.lblDescuento = new MaterialSkin.Controls.MaterialLabel();
-            this.lblPagos = new MaterialSkin.Controls.MaterialLabel();
             this.cardClienteRetiro.SuspendLayout();
             this.cardOrdenRetiro.SuspendLayout();
             this.materialCard1.SuspendLayout();
@@ -218,6 +218,31 @@ namespace UI.Desktop
             this.txtFechaEntradaRetiro.TabIndex = 10;
             this.txtFechaEntradaRetiro.Text = "";
             this.txtFechaEntradaRetiro.TrailingIcon = null;
+            // 
+            // btnImpFactura
+            // 
+            this.btnImpFactura.AutoSize = false;
+            this.btnImpFactura.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnImpFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnImpFactura.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnImpFactura.Depth = 0;
+            this.btnImpFactura.Enabled = false;
+            this.btnImpFactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnImpFactura.HighEmphasis = true;
+            this.btnImpFactura.Icon = global::UI.Desktop.Properties.Resources.mbriprint_99560;
+            this.btnImpFactura.Location = new System.Drawing.Point(8, 197);
+            this.btnImpFactura.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnImpFactura.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnImpFactura.Name = "btnImpFactura";
+            this.btnImpFactura.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnImpFactura.Size = new System.Drawing.Size(149, 36);
+            this.btnImpFactura.TabIndex = 5;
+            this.btnImpFactura.Text = "Imprimir Comprobante";
+            this.btnImpFactura.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnImpFactura.UseAccentColor = false;
+            this.btnImpFactura.UseVisualStyleBackColor = false;
+            this.btnImpFactura.Visible = false;
+            this.btnImpFactura.Click += new System.EventHandler(this.btnImpFactura_Click);
             // 
             // txtEstadoRetiro
             // 
@@ -451,31 +476,6 @@ namespace UI.Desktop
             this.btnCancelarRetiro.UseVisualStyleBackColor = false;
             this.btnCancelarRetiro.Click += new System.EventHandler(this.btnCancelarRetiro_Click);
             // 
-            // btnImpFactura
-            // 
-            this.btnImpFactura.AutoSize = false;
-            this.btnImpFactura.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnImpFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.btnImpFactura.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnImpFactura.Depth = 0;
-            this.btnImpFactura.Enabled = false;
-            this.btnImpFactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnImpFactura.HighEmphasis = true;
-            this.btnImpFactura.Icon = global::UI.Desktop.Properties.Resources.mbriprint_99560;
-            this.btnImpFactura.Location = new System.Drawing.Point(8, 197);
-            this.btnImpFactura.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnImpFactura.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnImpFactura.Name = "btnImpFactura";
-            this.btnImpFactura.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnImpFactura.Size = new System.Drawing.Size(149, 36);
-            this.btnImpFactura.TabIndex = 5;
-            this.btnImpFactura.Text = "Imprimir Comprobante";
-            this.btnImpFactura.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnImpFactura.UseAccentColor = false;
-            this.btnImpFactura.UseVisualStyleBackColor = false;
-            this.btnImpFactura.Visible = false;
-            this.btnImpFactura.Click += new System.EventHandler(this.btnImpFactura_Click);
-            // 
             // materialCard2
             // 
             this.materialCard2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -494,6 +494,48 @@ namespace UI.Desktop
             this.materialCard2.Padding = new System.Windows.Forms.Padding(14);
             this.materialCard2.Size = new System.Drawing.Size(315, 122);
             this.materialCard2.TabIndex = 6;
+            // 
+            // lblPagos
+            // 
+            this.lblPagos.AutoSize = true;
+            this.lblPagos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.lblPagos.Depth = 0;
+            this.lblPagos.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblPagos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblPagos.Location = new System.Drawing.Point(141, 88);
+            this.lblPagos.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblPagos.Name = "lblPagos";
+            this.lblPagos.Size = new System.Drawing.Size(5, 19);
+            this.lblPagos.TabIndex = 8;
+            this.lblPagos.Text = "-";
+            // 
+            // lblDescuento
+            // 
+            this.lblDescuento.AutoSize = true;
+            this.lblDescuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.lblDescuento.Depth = 0;
+            this.lblDescuento.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblDescuento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblDescuento.Location = new System.Drawing.Point(141, 49);
+            this.lblDescuento.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblDescuento.Name = "lblDescuento";
+            this.lblDescuento.Size = new System.Drawing.Size(5, 19);
+            this.lblDescuento.TabIndex = 7;
+            this.lblDescuento.Text = "-";
+            // 
+            // lblTotalFactura
+            // 
+            this.lblTotalFactura.AutoSize = true;
+            this.lblTotalFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.lblTotalFactura.Depth = 0;
+            this.lblTotalFactura.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblTotalFactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblTotalFactura.Location = new System.Drawing.Point(141, 10);
+            this.lblTotalFactura.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblTotalFactura.Name = "lblTotalFactura";
+            this.lblTotalFactura.Size = new System.Drawing.Size(5, 19);
+            this.lblTotalFactura.TabIndex = 6;
+            this.lblTotalFactura.Text = "-";
             // 
             // materialLabel2
             // 
@@ -522,42 +564,6 @@ namespace UI.Desktop
             this.materialLabel8.Size = new System.Drawing.Size(80, 19);
             this.materialLabel8.TabIndex = 3;
             this.materialLabel8.Text = "Descuento:";
-            // 
-            // lblTotalFactura
-            // 
-            this.lblTotalFactura.AutoSize = true;
-            this.lblTotalFactura.Depth = 0;
-            this.lblTotalFactura.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblTotalFactura.Location = new System.Drawing.Point(141, 10);
-            this.lblTotalFactura.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblTotalFactura.Name = "lblTotalFactura";
-            this.lblTotalFactura.Size = new System.Drawing.Size(5, 19);
-            this.lblTotalFactura.TabIndex = 6;
-            this.lblTotalFactura.Text = "-";
-            // 
-            // lblDescuento
-            // 
-            this.lblDescuento.AutoSize = true;
-            this.lblDescuento.Depth = 0;
-            this.lblDescuento.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblDescuento.Location = new System.Drawing.Point(141, 49);
-            this.lblDescuento.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblDescuento.Name = "lblDescuento";
-            this.lblDescuento.Size = new System.Drawing.Size(5, 19);
-            this.lblDescuento.TabIndex = 7;
-            this.lblDescuento.Text = "-";
-            // 
-            // lblPagos
-            // 
-            this.lblPagos.AutoSize = true;
-            this.lblPagos.Depth = 0;
-            this.lblPagos.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblPagos.Location = new System.Drawing.Point(141, 88);
-            this.lblPagos.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblPagos.Name = "lblPagos";
-            this.lblPagos.Size = new System.Drawing.Size(5, 19);
-            this.lblPagos.TabIndex = 8;
-            this.lblPagos.Text = "-";
             // 
             // RetirarOrdenDesktop
             // 

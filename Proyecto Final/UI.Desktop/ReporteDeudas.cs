@@ -456,10 +456,7 @@ namespace UI.Desktop
         }
         private void filtroFecha()
         {
-            if (dtpFechaHasta.Value.Date != DateTime.Now.Date)
-            {
-                if (dtpFechaDesde.Value.Date != DateTime.Now.Date)
-                {
+           
                     List<Orden> ordenesFiltro = ordenesDeuda.FindAll(
                         delegate (Orden or)
                         {
@@ -469,36 +466,7 @@ namespace UI.Desktop
                     {
                         listarOrdenesFiltradas(ordenesFiltro);
                     }
-                }
-                else
-                {
-                    List<Orden> ordenesFiltro = ordenesDeuda.FindAll(
-                       delegate (Orden or)
-                       {
-
-                           return or.FechaEntrada.Date <= dtpFechaHasta.Value.Date;
-                       });
-                    if (ordenesFiltro.Count > 0)
-                    {
-                        listarOrdenesFiltradas(ordenesFiltro);
-
-                    }
-                }
-            }
-            else
-            {
-                List<Orden> ordenesFiltro = ordenesDeuda.FindAll(
-                       delegate (Orden or)
-                       {
-
-                           return or.FechaEntrada.Date >= dtpFechaDesde.Value.Date;
-                       });
-                if (ordenesFiltro.Count > 0)
-                {
-
-                    listarOrdenesFiltradas(ordenesFiltro);
-                }
-            }
+                
         }
         
         private void filtroFechaCliente()

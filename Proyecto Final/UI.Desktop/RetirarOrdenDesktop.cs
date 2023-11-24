@@ -217,6 +217,7 @@ namespace UI.Desktop
             {
                 this.btnRetirar.Enabled = true;
             }
+            ListarItems();
         }
         private double CalcularPagosOrden(Orden ordenActual)
         {
