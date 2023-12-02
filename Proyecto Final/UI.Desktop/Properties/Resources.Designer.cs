@@ -203,9 +203,9 @@ namespace UI.Desktop.Properties {
         ///					&lt;/tr&gt;
         ///					&lt; [resto de la cadena truncado]&quot;;.
         /// </summary>
-        internal static string comprobantepago {
+        internal static string comprobantepago_original {
             get {
-                return ResourceManager.GetString("comprobantepago", resourceCulture);
+                return ResourceManager.GetString("comprobantepago_original", resourceCulture);
             }
         }
         

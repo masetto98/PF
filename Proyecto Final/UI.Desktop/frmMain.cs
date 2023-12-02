@@ -21,6 +21,7 @@ using PdfiumViewer;
 using Humanizer;
 using System.Configuration;
 using System.Xml;
+using iText.Kernel.Utils;
 
 namespace UI.Desktop
 {
@@ -665,7 +666,7 @@ namespace UI.Desktop
                         negocio = negocioLogic.GetAll().FirstOrDefault();
                         if(negocio is not null)
                         {
-                            string factura = Properties.Resources.comprobantepago.ToString();
+                            string factura = Properties.Resources.comprobantepago_original.ToString();
                             factura = factura.Replace("@nombrempresa", negocio.NombreEmpresa);
                             factura = factura.Replace("@cuitempresa", negocio.CuitEmpresa);
                             factura = factura.Replace("@direccionempresa", negocio.DireccionEmpresa);
@@ -764,8 +765,8 @@ namespace UI.Desktop
                             using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
                             {
                                 PdfWriter writer = new PdfWriter(stream);
-                                iText.Kernel.Pdf.PdfDocument pdf = new iText.Kernel.Pdf.PdfDocument(writer);
-                                pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4);
+                                //iText.Kernel.Pdf.PdfDocument pdf = new iText.Kernel.Pdf.PdfDocument(writer);
+                                //pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4);
 
                                 //Paragraph p = new Paragraph();
                                 //p.SetTextAlignment(TextAlignment.CENTER);
@@ -2755,6 +2756,13 @@ namespace UI.Desktop
             ReporteEmpleado frmEmpleados = new ReporteEmpleado(_context);
             frmEmpleados.ShowDialog();
         }
+
+        private void btnReporteDomicilio_Click(object sender, EventArgs e)
+        {
+
+            ReporteEnvioDomicilio frmEnvioDomicilio = new ReporteEnvioDomicilio(_context);
+            frmEnvioDomicilio.ShowDialog();
+        }
         private void verificarEmisionComprobantes()
         {
             this.switchComprobantes.Checked = Properties.Settings.Default.emitirComprobantes;
@@ -2889,5 +2897,7 @@ namespace UI.Desktop
         {
             this.listIngresosInsumos.Items.Clear();
         }
+
+        
     }
 }

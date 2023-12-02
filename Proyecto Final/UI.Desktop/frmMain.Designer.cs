@@ -212,6 +212,7 @@ namespace UI.Desktop
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.btnObjetosPerdidos = new MaterialSkin.Controls.MaterialButton();
             this.materialCard3 = new MaterialSkin.Controls.MaterialCard();
+            this.btnReporteDomicilio = new MaterialSkin.Controls.MaterialButton();
             this.btnReporteEmpleados = new MaterialSkin.Controls.MaterialButton();
             this.btnMovimientos = new MaterialSkin.Controls.MaterialButton();
             this.btnReporteGastos = new MaterialSkin.Controls.MaterialButton();
@@ -2916,6 +2917,7 @@ namespace UI.Desktop
             // materialCard3
             // 
             this.materialCard3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard3.Controls.Add(this.btnReporteDomicilio);
             this.materialCard3.Controls.Add(this.btnReporteEmpleados);
             this.materialCard3.Controls.Add(this.btnMovimientos);
             this.materialCard3.Controls.Add(this.btnReporteGastos);
@@ -2930,6 +2932,31 @@ namespace UI.Desktop
             this.materialCard3.Padding = new System.Windows.Forms.Padding(14);
             this.materialCard3.Size = new System.Drawing.Size(279, 340);
             this.materialCard3.TabIndex = 3;
+            // 
+            // btnReporteDomicilio
+            // 
+            this.btnReporteDomicilio.AutoSize = false;
+            this.btnReporteDomicilio.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnReporteDomicilio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnReporteDomicilio.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnReporteDomicilio.Depth = 0;
+            this.btnReporteDomicilio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnReporteDomicilio.HighEmphasis = true;
+            this.btnReporteDomicilio.Icon = global::UI.Desktop.Properties.Resources.report_document_finance_business_analysis_analytics_chart_icon_188615;
+            this.btnReporteDomicilio.Location = new System.Drawing.Point(41, 223);
+            this.btnReporteDomicilio.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnReporteDomicilio.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnReporteDomicilio.Name = "btnReporteDomicilio";
+            this.btnReporteDomicilio.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnReporteDomicilio.Size = new System.Drawing.Size(196, 36);
+            this.btnReporteDomicilio.TabIndex = 7;
+            this.btnReporteDomicilio.Text = "Envios a domicilio";
+            this.ayudaGeneral.SetToolTip(this.btnReporteDomicilio, "Permite obtener información sobre las ordenes registradas\r\ny los trabajos atendid" +
+        "os por empleado.");
+            this.btnReporteDomicilio.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnReporteDomicilio.UseAccentColor = false;
+            this.btnReporteDomicilio.UseVisualStyleBackColor = false;
+            this.btnReporteDomicilio.Click += new System.EventHandler(this.btnReporteDomicilio_Click);
             // 
             // btnReporteEmpleados
             // 
@@ -3753,6 +3780,7 @@ namespace UI.Desktop
         private MaterialSkin.Controls.MaterialLabel lblCliente;
         private MaterialSkin.Controls.MaterialLabel materialLabel21;
         private MaterialSkin.Controls.MaterialLabel materialLabel20;
+        private MaterialSkin.Controls.MaterialButton btnReporteDomicilio;
     }
 }
 

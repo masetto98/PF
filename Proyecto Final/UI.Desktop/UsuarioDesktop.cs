@@ -240,9 +240,16 @@ namespace UI.Desktop
                     break;
                 case ModoForm.Modificacion:
                     {
-                        if (MessageBox.Show($"¿Está seguro que desea modificar el usuario {UsuarioActual.NombreUsuario}?", "Usuario", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        if (this.txtConfirmarClave.Text != "" & this.txtClaveUser.Text != "")
                         {
-                            GuardarCambios();
+                            if (MessageBox.Show($"¿Está seguro que desea modificar el usuario {UsuarioActual.NombreUsuario}?", "Usuario", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                            {
+                                GuardarCambios();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("La contraseña no es válida. Por favor, ingrese una contraseña válida para continuar.", "Usuario", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     };
                     break;
