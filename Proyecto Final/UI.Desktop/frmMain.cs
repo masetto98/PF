@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -74,7 +75,10 @@ namespace UI.Desktop
             _listaFinalizados = new List<ItemTrabajo>();
             _atributosLogic = new AtributosNegocioLogic(new AtributosNegocioAdapter(context));
             _usuarioLogic = new UsuarioLogic(new UsuarioAdapter(context));
-            //NegocioActual = _atributosNegocioLogic.GetOne(1);
+            if (_atributosNegocioLogic.GetAll().Count > 0)
+            {
+                NegocioActual = _atributosNegocioLogic.GetAll().FirstOrDefault();
+            }
             RellenarComboBox(listClientes, cmbBuscarCliente);
             RellenarComboBox(listOrdenes, cmbBuscarOrden);
             RellenarComboBox(listInsumos, cmbInsumos);
@@ -832,7 +836,7 @@ namespace UI.Desktop
                                 {
                                     foreach (Orden o in clienteActual.Ordenes)
                                     {
-                                        if(o.Factura.Importe == 0 && o.Factura.FechaFactura == DateTime.MinValue)
+                                        if (o.Factura.Importe == 0 && o.Factura.FechaFactura == DateTime.MinValue)
                                         {
                                             double importe = CalcularImporteOrden(o);
                                             o.Factura.Importe = importe;
@@ -851,10 +855,10 @@ namespace UI.Desktop
 
                                             }
                                         }
-                                        else if(o.Factura.Importe != 0 && o.Factura.FechaFactura == DateTime.MinValue)
+                                        else if (o.Factura.Importe != 0 && o.Factura.FechaFactura == DateTime.MinValue)
                                         {
                                             double importe = CalcularImporteOrden(o);
-                                            if(o.Factura.Importe != importe)
+                                            if (o.Factura.Importe != importe)
                                             {
                                                 o.Factura.Importe = importe;
                                                 o.Factura.State = BusinessEntity.States.Modified;
@@ -873,9 +877,13 @@ namespace UI.Desktop
 
                                             }
                                         }
+                                        if (o.Estado == Orden.Estados.Finalizado) 
+                                        {
+                                            o.Estado = Orden.Estados.Pagado;
+                                            o.State = BusinessEntity.States.Modified;
+                                        }
                                                                               
                                     }
-                                    
                                     clienteActual.State = BusinessEntity.States.Modified;
                                     _clienteLogic.Save(clienteActual);
                                 }
@@ -1951,6 +1959,10 @@ namespace UI.Desktop
                             if (ValidarFinalizacionOrden(t.NroOrden))
                             {
                                 t.Orden.Estado = Orden.Estados.Finalizado;
+                                if (NegocioActual is not null && NegocioActual.Email is not null & NegocioActual.Contrasenia is not null)
+                                {
+                                    EnviarMail(NegocioActual.Email, t.Orden.Cliente.Email);
+                                }
                             }
                             if (ValidarOrdenSaldada(t.NroOrden)) {t.Orden.Estado = Orden.Estados.Pagado; }
                             t.State = BusinessEntity.States.Modified;
@@ -1968,6 +1980,10 @@ namespace UI.Desktop
                             if (ValidarFinalizacionOrden(t.NroOrden))
                             {
                                 t.Orden.Estado = Orden.Estados.Finalizado;
+                                if (NegocioActual is not null && NegocioActual.Email is not null & NegocioActual.Contrasenia is not null)
+                                {
+                                    EnviarMail(NegocioActual.Email, t.Orden.Cliente.Email);
+                                }
                             }
                             if (ValidarOrdenSaldada(t.NroOrden)) { t.Orden.Estado = Orden.Estados.Pagado; }
                             t.State = BusinessEntity.States.Modified;
@@ -2011,6 +2027,48 @@ namespace UI.Desktop
             }
             else { return false; }
         }
+
+        private void EnviarMail(string de, string para) 
+        {
+            string error = "";
+            if (NegocioActual is not null) 
+            {
+                if (NegocioActual.Email is not null && NegocioActual.Contrasenia is not null) 
+                {
+                    try
+                    {
+                        StringBuilder Mensaje = new StringBuilder();
+                        Mensaje.Append(Environment.NewLine);
+                        Mensaje.Append(string.Format("Su pedido a sido completado. Ya puede pasar a retirlo si asi lo desea"));
+                        Mensaje.Append(Environment.NewLine);
+                        Mensaje.Append(string.Format("Saludos!"));
+                        Mensaje.Append(Environment.NewLine);
+                        //Mensaje.Append(string.Format($"{NegocioActual.NombreEmpresa}"));
+                        MailMessage mail = new MailMessage();
+                        mail.From = new MailAddress(de);
+                        mail.To.Add(para);
+                        mail.Subject = "Finalizacion de pedido de lavanderia";
+                        mail.Body = Mensaje.ToString();
+                        SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+                        smtp.Port = 587;
+                        smtp.UseDefaultCredentials = false;
+                        smtp.Credentials = new System.Net.NetworkCredential(NegocioActual.Email, SecurityManager.Decrypt(NegocioActual.Contrasenia));
+                        smtp.EnableSsl = true;
+                        smtp.Send(mail);
+                        error = "Aviso enviado!";
+                        MessageBox.Show(error);
+                    }
+                    catch (Exception ex)
+                    {
+                        error = error + ex.Message;
+                        MessageBox.Show(error);
+                        return;
+                    }
+
+                }
+            }
+        } 
+
 
         private bool ValidarOrdenSaldada(int nroOrden) 
         {

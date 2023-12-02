@@ -18,6 +18,9 @@ namespace Business.Entities
         private string _direccionEmpresa;
         private string _telEmpresa;
         private string _redesEmpresa;
+        private string _email;
+        private string _emailPass;
+        private string _salt;
 
         [Column ("id")]
         public int ID 
@@ -69,6 +72,24 @@ namespace Business.Entities
             get { return _redesEmpresa; }
             set { _redesEmpresa = value; }
         }
-       
+        [Column("email")]
+        public string Email
+        {
+            get { return _email; }
+            set { _email = value; }
+        }
+        [Column("email_pass")]
+        public string Contrasenia
+        {
+            get { return _emailPass; }
+            set { _emailPass = value; }
+        }
+        [Column("salt")]
+        public string Salt
+        {
+            get { return _salt; }
+            set { _salt = value; }
+        }
+
     }
 }

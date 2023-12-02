@@ -54,6 +54,7 @@ namespace UI.Desktop
             this.txtDireccion.Text = AtributosNegocioActual.DireccionEmpresa;
             this.txtTelefono.Text = AtributosNegocioActual.TelEmpresa;
             this.txtRedes.Text = AtributosNegocioActual.RedesEmpresa;
+            this.txtEmail.Text = AtributosNegocioActual.Email;
             try
             {
 
@@ -93,6 +94,8 @@ namespace UI.Desktop
                 AtributosNegocioActual.DireccionEmpresa = this.txtDireccion.Text;
                 AtributosNegocioActual.TelEmpresa = this.txtTelefono.Text;
                 AtributosNegocioActual.RedesEmpresa = this.txtRedes.Text;
+                AtributosNegocioActual.Email = this.txtEmail.Text;
+                AtributosNegocioActual.Contrasenia = this.txtEmailPass.Text;
             }
             if (Modos == ModoForm.Modificacion)
             {
@@ -101,6 +104,8 @@ namespace UI.Desktop
                 AtributosNegocioActual.DireccionEmpresa = this.txtDireccion.Text;
                 AtributosNegocioActual.TelEmpresa = this.txtTelefono.Text;
                 AtributosNegocioActual.RedesEmpresa = this.txtRedes.Text;
+                AtributosNegocioActual.Email = this.txtEmail.Text;
+                AtributosNegocioActual.Contrasenia = this.txtEmailPass.Text;
 
             }
             switch (Modos)
@@ -177,6 +182,19 @@ namespace UI.Desktop
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void showPass1_Click(object sender, EventArgs e)
+        {
+            hidePass1.BringToFront();
+            this.txtEmailPass.UseSystemPasswordChar = false;
+            this.txtEmailPass.PasswordChar = '\0';
+        }
+
+        private void hidePass1_Click(object sender, EventArgs e)
+        {
+            this.txtEmailPass.UseSystemPasswordChar = true;
+            showPass1.BringToFront();
         }
     }
 }
