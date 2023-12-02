@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Business.Entities;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace Data.Database
 {
     public class AtributosNegocioAdapter : Adapter
@@ -47,6 +48,11 @@ namespace Data.Database
 
         protected void Update(AtributosNegocio an)
         {
+            AtributosNegocio an_ant = GetAll().FirstOrDefault();
+            if (an.Contrasenia != null && SecurityManager.Encrypt(an.Contrasenia) != an_ant.Contrasenia)
+            {
+                an_ant.Contrasenia = SecurityManager.Encrypt(an.Contrasenia);
+            }
             try
             {
                 _context.AtributosNegocio.Update(an);
@@ -60,6 +66,8 @@ namespace Data.Database
         }
         protected void Insert(AtributosNegocio an)
         {
+            //an.Salt = new Hasher().GenerateSalt();
+            an.Contrasenia = SecurityManager.Encrypt(an.Contrasenia);
             try
             {
                 _context.AtributosNegocio.Add(an);
@@ -103,5 +111,7 @@ namespace Data.Database
             }
             an.State = BusinessEntity.States.Unmodified;
         }
+
+        
     }
 }
