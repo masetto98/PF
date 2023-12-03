@@ -52,7 +52,14 @@ namespace UI.Desktop
             this.btnCerrar = new MaterialSkin.Controls.MaterialButton();
             this.btnReporteMovimientos = new MaterialSkin.Controls.MaterialButton();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            this.listAllMov = new MaterialSkin.Controls.MaterialListView();
+            this.ColFecha = new System.Windows.Forms.ColumnHeader();
+            this.colMov = new System.Windows.Forms.ColumnHeader();
+            this.colInsumo = new System.Windows.Forms.ColumnHeader();
+            this.colCant = new System.Windows.Forms.ColumnHeader();
+            this.colUnidad = new System.Windows.Forms.ColumnHeader();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.lblInsumo = new MaterialSkin.Controls.MaterialLabel();
             this.materialCard1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -209,6 +216,7 @@ namespace UI.Desktop
             this.btnDetalles.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnDetalles.UseAccentColor = false;
             this.btnDetalles.UseVisualStyleBackColor = false;
+            this.btnDetalles.Visible = false;
             this.btnDetalles.Click += new System.EventHandler(this.btnDetalles_Click);
             // 
             // materialLabel1
@@ -333,6 +341,7 @@ namespace UI.Desktop
             // 
             this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.materialCard1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.materialCard1.Controls.Add(this.listAllMov);
             this.materialCard1.Controls.Add(this.materialLabel1);
             this.materialCard1.Controls.Add(this.listIngresos);
             this.materialCard1.Controls.Add(this.materialLabel2);
@@ -346,6 +355,57 @@ namespace UI.Desktop
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
             this.materialCard1.Size = new System.Drawing.Size(808, 447);
             this.materialCard1.TabIndex = 12;
+            // 
+            // listAllMov
+            // 
+            this.listAllMov.AutoSizeTable = false;
+            this.listAllMov.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listAllMov.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listAllMov.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ColFecha,
+            this.colMov,
+            this.colInsumo,
+            this.colCant,
+            this.colUnidad});
+            this.listAllMov.Depth = 0;
+            this.listAllMov.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.listAllMov.FullRowSelect = true;
+            this.listAllMov.HideSelection = false;
+            this.listAllMov.Location = new System.Drawing.Point(16, 17);
+            this.listAllMov.MinimumSize = new System.Drawing.Size(200, 100);
+            this.listAllMov.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listAllMov.MouseState = MaterialSkin.MouseState.OUT;
+            this.listAllMov.Name = "listAllMov";
+            this.listAllMov.OwnerDraw = true;
+            this.listAllMov.Size = new System.Drawing.Size(780, 417);
+            this.listAllMov.TabIndex = 6;
+            this.listAllMov.UseCompatibleStateImageBehavior = false;
+            this.listAllMov.View = System.Windows.Forms.View.Details;
+            // 
+            // ColFecha
+            // 
+            this.ColFecha.Text = "Fecha";
+            this.ColFecha.Width = 150;
+            // 
+            // colMov
+            // 
+            this.colMov.Text = "Motivo";
+            this.colMov.Width = 150;
+            // 
+            // colInsumo
+            // 
+            this.colInsumo.Text = "Insumo";
+            this.colInsumo.Width = 200;
+            // 
+            // colCant
+            // 
+            this.colCant.Text = "Cantidad";
+            this.colCant.Width = 100;
+            // 
+            // colUnidad
+            // 
+            this.colUnidad.Text = "Unidad de Medida";
+            this.colUnidad.Width = 150;
             // 
             // materialLabel5
             // 
@@ -361,11 +421,26 @@ namespace UI.Desktop
             this.materialLabel5.TabIndex = 13;
             this.materialLabel5.Text = "Insumos:";
             // 
+            // lblInsumo
+            // 
+            this.lblInsumo.AutoSize = true;
+            this.lblInsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.lblInsumo.Depth = 0;
+            this.lblInsumo.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblInsumo.Location = new System.Drawing.Point(319, 155);
+            this.lblInsumo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblInsumo.Name = "lblInsumo";
+            this.lblInsumo.Size = new System.Drawing.Size(122, 19);
+            this.lblInsumo.TabIndex = 14;
+            this.lblInsumo.Text = "Movimientos de: ";
+            // 
             // ReporteMovimientos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1140, 688);
+            this.Controls.Add(this.lblInsumo);
             this.Controls.Add(this.materialLabel5);
             this.Controls.Add(this.materialCard1);
             this.Controls.Add(this.btnReporteMovimientos);
@@ -415,5 +490,12 @@ namespace UI.Desktop
         private System.Windows.Forms.ColumnHeader columnCantCons;
         private MaterialSkin.Controls.MaterialCard materialCard1;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private MaterialSkin.Controls.MaterialListView listAllMov;
+        private System.Windows.Forms.ColumnHeader ColFecha;
+        private System.Windows.Forms.ColumnHeader colMov;
+        private System.Windows.Forms.ColumnHeader colInsumo;
+        private System.Windows.Forms.ColumnHeader colCant;
+        private System.Windows.Forms.ColumnHeader colUnidad;
+        private MaterialSkin.Controls.MaterialLabel lblInsumo;
     }
 }

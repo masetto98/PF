@@ -22,9 +22,12 @@ namespace UI.Desktop
     {
         private LavanderiaContext _context;
         private OrdenLogic _ordenLogic;
+        private ConsumoLogic _consumoLogic;
+        private InsumoProveedorLogic _insumoProveedorLogic;
         public List<Orden> ordenes;
         private InsumoLogic _insumoLogic;
         public Insumo insumoActual;
+        public List<_Movimiento> mov = new List<_Movimiento>();
         public double _totalIngresos;
         public double _totalEgresos;
         public ReporteMovimientos(LavanderiaContext context)
@@ -33,11 +36,15 @@ namespace UI.Desktop
             InitializeComponent();
             _ordenLogic = new OrdenLogic(new OrdenAdapter(context));
             _insumoLogic = new InsumoLogic(new InsumoAdapter(context));
+            _consumoLogic = new ConsumoLogic(new ConsumoAdapter(context));
+            _insumoProveedorLogic = new InsumoProveedorLogic(new InsumoProveedorAdapter(context));
             Singleton.getInstance().ListActual = this.listIngresos;
             Singleton.getInstance().ListAlternativa = this.listEgresos;
             Singleton.getInstance().ModuloActual = "Movimientos de Insumo";
-            //dtpFechaDesde.Value = DateTime.Today.AddYears(-1);
+            dtpFechaDesde.Value = DateTime.Today.AddYears(-1);
             ListarStock();
+            MovimientosInsumos();
+            ListarMovimientos(dtpFechaDesde.Value.Date, DateTime.Today.Date);
         }
         private void ListarStock()
         {
@@ -56,7 +63,16 @@ namespace UI.Desktop
 
         private void btnDetalles_Click(object sender, EventArgs e)
         {
-            if(listInsumos.SelectedItems.Count > 0)
+            if (listInsumos.SelectedItems.Count > 0)
+            {
+                ListarMovimientosPorInsumo(Int32.Parse(listInsumos.SelectedItems[0].Text), dtpFechaDesde.Value.Date, dtpFechaHasta.Value.Date);
+            }
+            else
+            {
+                ListarMovimientos(dtpFechaDesde.Value.Date, dtpFechaHasta.Value.Date);
+            }
+
+            if (listInsumos.SelectedItems.Count > 0)
             {
                 ListarIngresos();
                 ListarEgresos();
@@ -69,6 +85,7 @@ namespace UI.Desktop
 
         private void ListarIngresos()
         {
+            listIngresos.Items.Clear();
             insumoActual = _insumoLogic.GetOne(Int32.Parse(listInsumos.SelectedItems[0].Text));
             double totalIngresos1 = 0;
             listIngresos.Items.Clear();
@@ -84,6 +101,7 @@ namespace UI.Desktop
         }
         private void ListarEgresos()
         {
+            listEgresos.Items.Clear();
             List<Consumo> consumosInsumo = insumoActual.Consumos;
             double totalEgresos1 = 0;
             if (consumosInsumo is not null)
@@ -330,6 +348,17 @@ namespace UI.Desktop
 
         private void dtpFechaDesde_ValueChanged(object sender, EventArgs e)
         {
+
+            if (listInsumos.SelectedItems.Count > 0)
+            {
+                ListarMovimientosPorInsumo(Int32.Parse(listInsumos.SelectedItems[0].Text), dtpFechaDesde.Value.Date, dtpFechaHasta.Value.Date);
+            }
+            else
+            {
+                ListarMovimientos(dtpFechaDesde.Value.Date, dtpFechaHasta.Value.Date);
+            }
+            /*
+
             if (listInsumos.SelectedItems.Count > 0)
             {
                 insumoActual = _insumoLogic.GetOne(Int32.Parse(listInsumos.SelectedItems[0].Text));
@@ -376,11 +405,20 @@ namespace UI.Desktop
                 dtpFechaDesde.Value = DateTime.Today;
             }
             
-
+            */
         }
 
         private void dtpFechaHasta_ValueChanged(object sender, EventArgs e)
         {
+            if (listInsumos.SelectedItems.Count > 0)
+            {
+                ListarMovimientosPorInsumo(Int32.Parse(listInsumos.SelectedItems[0].Text), dtpFechaDesde.Value.Date, dtpFechaHasta.Value.Date);
+            }
+            else
+            {
+                ListarMovimientos(dtpFechaDesde.Value.Date, dtpFechaHasta.Value.Date);
+            }
+            /*
             if(listInsumos.SelectedItems.Count > 0)
             {
                 if (dtpFechaHasta.Value > dtpFechaDesde.Value)
@@ -475,13 +513,104 @@ namespace UI.Desktop
                 MessageBox.Show("Debe seleccionar un Insumo de la lista para poder continuar.", "Movimientos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dtpFechaHasta.Value = DateTime.Today;
             }
-            
+            */
         }
 
         private void listInsumos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listEgresos.Items.Clear();
-            listIngresos.Items.Clear();
+
+            if (listInsumos.SelectedItems.Count > 0)
+            {
+                ListarMovimientosPorInsumo(Int32.Parse(listInsumos.SelectedItems[0].Text), dtpFechaDesde.Value.Date, dtpFechaHasta.Value.Date);
+                ListarIngresos();
+                ListarEgresos();
+            }
+            else
+            {
+                ListarMovimientos(dtpFechaDesde.Value.Date, dtpFechaHasta.Value.Date);
+            }
         }
+
+
+        private void MovimientosInsumos() 
+        {
+            listAllMov.Items.Clear();
+            List<Consumo> consumosInsumos = _consumoLogic.GetAll();
+            List<InsumoProveedor> movimientos = _insumoProveedorLogic.GetAll();
+            if (consumosInsumos is not null)
+            {
+                var consumosAgrupados = consumosInsumos.GroupBy(l => new { l.FechaConsumo.Date,l.Insumo.IdInsumo,l.Insumo.Descripcion, l.Insumo.UnidadMedida})
+                                                             .Select(x => new _Movimiento()
+                                                             {
+                                                                 Fecha = x.Key.Date,
+                                                                 Movimiento = "Consumo",
+                                                                 idInsumo = x.Key.IdInsumo,
+                                                                 Insumo = x.Key.Descripcion,
+                                                                 Cantidad = x.Sum(s => (decimal)s.Cantidad),
+                                                                 Unidad = x.Key.UnidadMedida.ToString()
+                                                             }).ToList();
+                mov.AddRange(consumosAgrupados);
+                
+            }
+
+            if (movimientos is not null)
+            {
+                var movimientosAgrupados = movimientos.GroupBy(m => new { m.FechaIngreso.Date ,m.Insumo.IdInsumo, m.Insumo.Descripcion,m.Insumo.UnidadMedida})
+                                                      .Select(r => new _Movimiento()
+                                                      {
+                                                          Fecha = r.Key.Date,
+                                                          Movimiento = "Ingreso",
+                                                          idInsumo = r.Key.IdInsumo,
+                                                          Insumo = r.Key.Descripcion,
+                                                          Cantidad = r.Sum(t => (decimal)t.Cantidad),
+                                                          Unidad = r.Key.UnidadMedida.ToString()
+                                                      }).ToList();
+                mov.AddRange(movimientosAgrupados);
+                
+            }
+
+            
+            
+        }
+
+        private void ListarMovimientos(DateTime fechaDesde, DateTime fechaHasta) 
+        {
+            listAllMov.Items.Clear();
+            mov.Sort((x, y) => DateTime.Compare(x.Fecha, y.Fecha));
+            foreach (_Movimiento m in mov)
+            {
+                if (m.Fecha >= fechaDesde && m.Fecha <= fechaHasta)
+                {
+                    ListViewItem item = new ListViewItem(m.Fecha.Date.ToShortDateString());
+                    item.SubItems.Add(m.Movimiento.ToString());
+                    item.SubItems.Add(m.Insumo.ToString());
+                    item.SubItems.Add(m.Cantidad.ToString());
+                    item.SubItems.Add(m.Unidad.ToString());
+                    listAllMov.Items.Add(item);
+                }
+            }
+            this.lblInsumo.Text = "Movimientos de: Todos";
+        }
+
+        private void ListarMovimientosPorInsumo(int id, DateTime fechaDesde, DateTime fechaHasta)
+        {
+            listAllMov.Items.Clear();
+            mov.Sort((x, y) => DateTime.Compare(x.Fecha, y.Fecha));
+            foreach (_Movimiento m in mov)
+            {
+                if (m.Fecha >= fechaDesde && m.Fecha <= fechaHasta && m.idInsumo==id)
+                {
+                    ListViewItem item = new ListViewItem(m.Fecha.Date.ToShortDateString());
+                    item.SubItems.Add(m.Movimiento.ToString());
+                    item.SubItems.Add(m.Insumo.ToString());
+                    item.SubItems.Add(m.Cantidad.ToString());
+                    item.SubItems.Add(m.Unidad.ToString());
+                    listAllMov.Items.Add(item);
+                }
+            }
+            this.lblInsumo.Text = "Movimientos de: " + listInsumos.SelectedItems[0].SubItems[1].Text;
+        }
+
+
     }
 }

@@ -2031,6 +2031,10 @@ namespace UI.Desktop
         private void EnviarMail(string de, string para) 
         {
             string error = "";
+            if (NegocioActual is null && _atributosNegocioLogic.GetAll().Count > 0) 
+            {
+                NegocioActual = _atributosNegocioLogic.GetAll().FirstOrDefault();
+            }
             if (NegocioActual is not null) 
             {
                 if (NegocioActual.Email is not null && NegocioActual.Contrasenia is not null) 
@@ -2043,7 +2047,7 @@ namespace UI.Desktop
                         Mensaje.Append(Environment.NewLine);
                         Mensaje.Append(string.Format("Saludos!"));
                         Mensaje.Append(Environment.NewLine);
-                        //Mensaje.Append(string.Format($"{NegocioActual.NombreEmpresa}"));
+                        Mensaje.Append(string.Format($"{NegocioActual.NombreEmpresa}"));
                         MailMessage mail = new MailMessage();
                         mail.From = new MailAddress(de);
                         mail.To.Add(para);
@@ -2055,13 +2059,13 @@ namespace UI.Desktop
                         smtp.Credentials = new System.Net.NetworkCredential(NegocioActual.Email, SecurityManager.Decrypt(NegocioActual.Contrasenia));
                         smtp.EnableSsl = true;
                         smtp.Send(mail);
-                        error = "Aviso enviado!";
-                        MessageBox.Show(error);
+                        error = "El aviso ha sido enviado al cliente!";
+                        MessageBox.Show(error, "Aviso Email", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
                         error = error + ex.Message;
-                        MessageBox.Show(error);
+                        MessageBox.Show(error,"Aviso Email",MessageBoxButtons.OK , MessageBoxIcon.Error);
                         return;
                     }
 
