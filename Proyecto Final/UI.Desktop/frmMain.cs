@@ -47,6 +47,7 @@ namespace UI.Desktop
         public List<OrdenServicioTipoPrenda> _trabajosFinalizados;
         public List<ItemTrabajo> _listaEspera;
         public List<ItemTrabajo> _listaFinalizados;
+        public List<_Movimiento> mov = new List<_Movimiento>();
         public double _deudaCliente;
         public Insumo insumoActual;
         public Cliente clienteActual;
@@ -135,6 +136,7 @@ namespace UI.Desktop
                 case 0:
                     ListarStock();
                     //ValidarStock();
+                    this.dtpFiltroFechaIngreso.Value = DateTime.Today.Date.AddYears(-1);
                     break;
                 case 1:
                     ListarIngresos();
@@ -953,12 +955,93 @@ namespace UI.Desktop
                 foreach (Insumo i in insumos)
                 {
                     ListViewItem item = new ListViewItem(i.IdInsumo.ToString());
-                    item.SubItems.Add(i.Descripcion);
+                    if (i.Stock < i.PuntoPedido)
+                    {
+                        item.SubItems.Add("* "+i.Descripcion);
+                    }
+                    else 
+                    {
+                        item.SubItems.Add(i.Descripcion);
+                    }
                     item.SubItems.Add(i.Stock.ToString());
                     item.SubItems.Add(i.UnidadMedida.ToString());
                     listInsumos.Items.Add(item);
                 }
             }
+        }
+        /* --------------------------------------------------------------------*/
+        private void MovimientosInsumos()
+        {
+            listAllMov.Items.Clear();
+            mov.Clear();
+            Insumo insumoActual = _insumoLogic.GetOne(Int32.Parse(this.listInsumos.SelectedItems[0].Text));
+            //List<Consumo> consumosInsumos =//_consumoLogic.GetAll();
+            //List<InsumoProveedor> movimientos = _insumoProveedorLogic.GetAll();
+            
+            if (insumoActual.Consumos is not null)
+            {
+                var consumosAgrupados = insumoActual.Consumos.GroupBy(l => new { l.FechaConsumo.Date,l.Insumo.UnidadMedida })
+                                                             .Select(x => new _Movimiento()
+                                                             {
+                                                                 Fecha = x.Key.Date,
+                                                                 Movimiento = "Consumo",
+                                                                 Cantidad = x.Sum(s => (decimal)s.Cantidad),
+                                                                 Unidad = x.Key.UnidadMedida.ToString()
+                                                             }).ToList();
+                mov.AddRange(consumosAgrupados);
+
+            }
+
+            if (insumoActual.InsumosProveedores is not null)
+            {
+                var movimientosAgrupados = insumoActual.InsumosProveedores.GroupBy(m => new { m.FechaIngreso.Date, m.Insumo.UnidadMedida })
+                                                      .Select(r => new _Movimiento()
+                                                      {
+                                                          Fecha = r.Key.Date,
+                                                          Movimiento = "Ingreso",
+                                                          Cantidad = r.Sum(t => (decimal)t.Cantidad),
+                                                          Unidad = r.Key.UnidadMedida.ToString()
+                                                      }).ToList();
+                mov.AddRange(movimientosAgrupados);
+
+            }
+        }
+
+        private void ListarMovimientosPorInsumo(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            listAllMov.Items.Clear();
+            mov.Sort((x, y) => DateTime.Compare(x.Fecha, y.Fecha));
+            foreach (_Movimiento m in mov)
+            {
+                if (m.Fecha >= fechaDesde && m.Fecha <= fechaHasta)
+                {
+                    ListViewItem item = new ListViewItem(m.Fecha.Date.ToShortDateString());
+                    item.SubItems.Add(m.Movimiento.ToString());
+                    if (m.Movimiento == "Consumo")
+                    {
+                        item.SubItems.Add("- " + m.Cantidad.ToString());
+                    }
+                    else { item.SubItems.Add("  " + m.Cantidad.ToString()); }
+                    item.SubItems.Add(m.Unidad.ToString());
+                    listAllMov.Items.Add(item);
+                }
+            }
+        }
+        /* --------------------------------------------------------------------*/
+
+        private void listInsumos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listInsumos.SelectedItems.Count > 0)
+            {
+                MovimientosInsumos();
+                ListarMovimientosPorInsumo(dtpFiltroFechaIngreso.Value.Date, dtpHastaIngreso.Value.Date);
+            }
+            else 
+            {
+                listAllMov.Items.Clear();
+                this.listIngresosInsumos.Items.Clear();
+            }
+            
         }
         private void listInsumos_ColumnWidthChanging_1(object sender, ColumnWidthChangingEventArgs e)
         {
@@ -967,12 +1050,14 @@ namespace UI.Desktop
             e.NewWidth = listInsumos.Columns[e.ColumnIndex].Width;
 
         }
+
         private void listInsumosFaltantes_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
 
             e.Cancel = true;
             e.NewWidth = listInsumosFaltantes.Columns[e.ColumnIndex].Width;
         }
+
         private void listIngresosInsumos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
 
@@ -982,11 +1067,13 @@ namespace UI.Desktop
 
 
         }
+
         private void btnAgregarInsumo_Click(object sender, EventArgs e)
         {
             InsumoDesktop frmInsumo = new InsumoDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmInsumo.ShowDialog();
             ListarStock();
+            ValidarStock();
         }
 
         private void btnEditarInsumo_Click(object sender, EventArgs e)
@@ -1002,6 +1089,7 @@ namespace UI.Desktop
                 MessageBox.Show("Seleccionar una fila en la lista para poder editar", "Insumo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             ListarStock();
+            ValidarStock();
         }
 
         private void btnEliminarInsumo_Click(object sender, EventArgs e)
@@ -1083,6 +1171,7 @@ namespace UI.Desktop
             }
             //ListarIngresos();
         }
+
         private void filtroFechaIngresos()
         {
             if(insumoActual is not null)
@@ -1119,6 +1208,7 @@ namespace UI.Desktop
                 }
             }
         }
+
         private void filtroFechaMovimientos()
         {
            
@@ -1154,6 +1244,7 @@ namespace UI.Desktop
                 }
             
         }
+
         private void listarMovimientosFiltrados(List<InsumoProveedor> ipFiltro)
         {
             listIngresos.Items.Clear();
@@ -1169,6 +1260,7 @@ namespace UI.Desktop
                 listIngresos.Items.Add(item);
             }
         }
+
         private void listarIngresosFiltrados(List<InsumoProveedor> ipFiltro)
         {
             listIngresosInsumos.Items.Clear();
@@ -1184,19 +1276,17 @@ namespace UI.Desktop
                 }
             }
         }
+
         private void dtpHastaIngreso_ValueChanged(object sender, EventArgs e)
         {
-           
-                filtroFechaIngresos();
-
-            
-               
+            filtroFechaIngresos();
+            ListarMovimientosPorInsumo(dtpFiltroFechaIngreso.Value.Date, dtpHastaIngreso.Value.Date);
         }
+
         private void dtpFiltroFechaIngreso_ValueChanged(object sender, EventArgs e)
         {
-            
-             filtroFechaIngresos();
-
+            filtroFechaIngresos();
+            ListarMovimientosPorInsumo(dtpFiltroFechaIngreso.Value.Date, dtpHastaIngreso.Value.Date);
         }
 
         private void dtpDesdeMovimientos_ValueChanged(object sender, EventArgs e)
@@ -1220,6 +1310,33 @@ namespace UI.Desktop
 
         private void ValidarStock() 
         {
+
+            List<Insumo> insumos = _insumoLogic.GetAll().FindAll(delegate (Insumo i) 
+            {
+                return i.Stock < i.PuntoPedido;
+            });
+            if (insumos.Count > 0)
+            {
+                cardReferencias.Visible = true;
+                this.cardInsumosFaltantes.Visible = true;
+                this.pxRojo.Visible = true;
+                this.lblInsumosFaltantes.Visible = true;
+                this.listInsumosFaltantes.Visible = true;
+                ///Notificacion
+                niFaltaInsumos.BalloonTipTitle = "IMPORTANTE!! Hay insumos con poco stock!";
+                niFaltaInsumos.BalloonTipText = "Ver detalles";
+                niFaltaInsumos.ShowBalloonTip(3000);
+
+            }
+            else
+            {
+                this.cardReferencias.Visible = false;
+                this.cardInsumosFaltantes.Visible = false;
+                this.pxRojo.Visible = false;
+                this.lblInsumosFaltantes.Visible = false;
+                this.listInsumosFaltantes.Visible = false;
+            }
+            /*
             List<Insumo> insumos = _insumoLogic.GetAll();
             if (insumos is not null && insumos.Count>0) 
             {
@@ -1253,10 +1370,9 @@ namespace UI.Desktop
                 this.lblInsumosFaltantes.Visible = false;
                 this.listInsumosFaltantes.Visible = false;
                 
-            }
-            
-        }
+            }*/
 
+        }
 
         private void listProveedores_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {/*
@@ -1264,13 +1380,12 @@ namespace UI.Desktop
             e.NewWidth = listProveedores.Columns[e.ColumnIndex].Width;*/
         }
 
-
-
         private void btnNuevoIngreso_Click(object sender, EventArgs e)
         {
             InsumoProveedorDesktop frmInsumoProveedor = new InsumoProveedorDesktop(ApplicationForm.ModoForm.Alta, _context);
             frmInsumoProveedor.ShowDialog();
             ListarIngresos();
+            ValidarStock();
         }
         
         private void btnEliminarIngreso_Click(object sender, EventArgs e)
@@ -1371,6 +1486,7 @@ namespace UI.Desktop
             e.Cancel = true;
             e.NewWidth = listInsumos1.Columns[e.ColumnIndex].Width;*/
         }
+
         private void btnActualizarIngresos_Click(object sender, EventArgs e)
         {
             ListarIngresos();
@@ -2953,11 +3069,6 @@ namespace UI.Desktop
         private void chkCambioColor_CheckedChanged(object sender, EventArgs e)
         {
             CambiarColor(chkCambioColor.Checked);
-        }
-
-        private void listInsumos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.listIngresosInsumos.Items.Clear();
         }
 
         
