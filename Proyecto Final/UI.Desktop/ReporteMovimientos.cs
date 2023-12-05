@@ -751,9 +751,6 @@ namespace UI.Desktop
                 mov.AddRange(movimientosAgrupados);
                 
             }
-
-            
-            
         }
 
         private void ListarMovimientos(DateTime fechaDesde, DateTime fechaHasta) 
