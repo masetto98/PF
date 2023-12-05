@@ -85,17 +85,22 @@ namespace UI.Desktop
 
         private void ListarIngresos()
         {
+            
             listIngresos.Items.Clear();
             insumoActual = _insumoLogic.GetOne(Int32.Parse(listInsumos.SelectedItems[0].Text));
             double totalIngresos1 = 0;
             listIngresos.Items.Clear();
             foreach(InsumoProveedor ip in insumoActual.InsumosProveedores)
             {
-                ListViewItem item = new ListViewItem(ip.Proveedor.RazonSocial);
-                item.SubItems.Add(ip.FechaIngreso.ToString());
-                item.SubItems.Add(ip.Cantidad.ToString()+ " "+ insumoActual.UnidadMedida);
-                totalIngresos1 += ip.Cantidad;
-                listIngresos.Items.Add(item);
+                if(ip.FechaIngreso.Date >= dtpFechaDesde.Value.Date && ip.FechaIngreso.Date <= dtpFechaHasta.Value.Date)
+                {
+                    ListViewItem item = new ListViewItem(ip.Proveedor.RazonSocial);
+                    item.SubItems.Add(ip.FechaIngreso.ToString());
+                    item.SubItems.Add(ip.Cantidad.ToString("N2") + " " + insumoActual.UnidadMedida);
+                    totalIngresos1 += ip.Cantidad;
+                    listIngresos.Items.Add(item);
+                }
+                
             }
             _totalIngresos = totalIngresos1;
         }
@@ -109,13 +114,17 @@ namespace UI.Desktop
                 listEgresos.Items.Clear();
                 foreach(Consumo c in consumosInsumo)
                 {
-                    ListViewItem item = new ListViewItem(c.MaquinaOrdenServicioTipoPrenda.NroOrden.ToString());
-                    item.SubItems.Add(c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda.Servicio.Descripcion + " " + c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda.TipoPrenda.Descripcion);
-                    item.SubItems.Add(c.MaquinaOrdenServicioTipoPrenda.Maquina.Descripcion);
-                    item.SubItems.Add(c.FechaConsumo.ToString());
-                    item.SubItems.Add(c.Cantidad.ToString());
-                    totalEgresos1 += c.Cantidad;
-                    listEgresos.Items.Add(item);
+                    if (c.FechaConsumo.Date >= dtpFechaDesde.Value.Date && c.FechaConsumo.Date <= dtpFechaHasta.Value.Date)
+                    {
+                        ListViewItem item = new ListViewItem(c.MaquinaOrdenServicioTipoPrenda.NroOrden.ToString());
+                        item.SubItems.Add(c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda.Servicio.Descripcion + " " + c.MaquinaOrdenServicioTipoPrenda.OrdenServicioTipoPrenda.ServicioTipoPrenda.TipoPrenda.Descripcion);
+                        item.SubItems.Add(c.MaquinaOrdenServicioTipoPrenda.Maquina.Descripcion);
+                        item.SubItems.Add(c.FechaConsumo.ToString());
+                        item.SubItems.Add(c.Cantidad.ToString());
+                        totalEgresos1 += c.Cantidad;
+                        listEgresos.Items.Add(item);
+                    }
+                       
                 }
                 _totalEgresos = totalEgresos1;
             }
@@ -210,18 +219,18 @@ namespace UI.Desktop
                             totalingresos.SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
                             totalingresos.SetTextAlignment(TextAlignment.CENTER);
                             tablacaja.AddCell(totalingresos);
-                            tablacaja.AddCell(_totalIngresos.ToString());
+                            tablacaja.AddCell(_totalIngresos.ToString("N2"));
                             Cell totalgastos = new Cell().Add(new Paragraph("Total Consumido").SetBold());
                             totalgastos.SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
                             totalgastos.SetTextAlignment(TextAlignment.CENTER);
                             tablacaja.AddCell(totalgastos);
-                            tablacaja.AddCell(_totalEgresos.ToString());
+                            tablacaja.AddCell("-"+_totalEgresos.ToString("N2"));
                             Cell balancetotal = new Cell().Add(new Paragraph("Balance Total").SetBold());
                             balancetotal.SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
                             balancetotal.SetTextAlignment(TextAlignment.CENTER);
                             tablacaja.AddCell(balancetotal);
                             double balance = _totalIngresos - _totalEgresos;
-                            tablacaja.AddCell(balance.ToString());
+                            tablacaja.AddCell(balance.ToString("N2"));
                             Table pdfTable = new Table(Singleton.getInstance().ListActual.Columns.Count);
                             pdfTable.SetPadding(3);
                             pdfTable.SetWidth(UnitValue.CreatePercentValue(100));
@@ -337,10 +346,178 @@ namespace UI.Desktop
             }
             else
             {
-                MessageBox.Show("No hay registros para exportar", "Info",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+
+                MessageBox.Show("No hay registros para exportar", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             }
         }
+        //private void emitirReporteAllMov()
+        //{
+        //    if (listAllMov.Items.Count > 0)
+        //    {
+        //        SaveFileDialog sfd = new SaveFileDialog();
+        //        sfd.Filter = "PDF (*.pdf)|*.pdf";
+        //        sfd.FileName = $"Reporte de {Singleton.getInstance().ModuloActual} - {DateTime.Now.ToString("yyyyMMddHHmmss")}.pdf";
+        //        bool fileError = false;
+        //        if (sfd.ShowDialog() == DialogResult.OK)
+        //        {
+        //            if (File.Exists(sfd.FileName))
+        //            {
+        //                try
+        //                {
+        //                    File.Delete(sfd.FileName);
+        //                }
+        //                catch (IOException ex)
+        //                {
+        //                    fileError = true;
+        //                    MessageBox.Show("No fue posible escribir el archivo en el disco." + ex.Message);
+        //                }
+        //            }
+        //            if (!fileError)
+        //            {
+        //                try
+        //                {
+        //                    //float[] pointColumnWidths = { 150F, 150F };
+        //                    //Table tablacaja = new Table(pointColumnWidths);
+        //                    //tablacaja.SetPadding(3);
+        //                    //tablacaja.SetWidth(UnitValue.CreatePercentValue(100));
+        //                    //tablacaja.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
+        //                    //Cell totalingresos = new Cell().Add(new Paragraph("Total Ingresos").SetBold());
+        //                    //totalingresos.SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+        //                    //totalingresos.SetTextAlignment(TextAlignment.CENTER);
+        //                    //tablacaja.AddCell(totalingresos);
+        //                    //tablacaja.AddCell(_totalIngresos.ToString());
+        //                    //Cell totalgastos = new Cell().Add(new Paragraph("Total Consumido").SetBold());
+        //                    //totalgastos.SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+        //                    //totalgastos.SetTextAlignment(TextAlignment.CENTER);
+        //                    //tablacaja.AddCell(totalgastos);
+        //                    //tablacaja.AddCell(_totalEgresos.ToString());
+        //                    //Cell balancetotal = new Cell().Add(new Paragraph("Balance Total").SetBold());
+        //                    //balancetotal.SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+        //                    //balancetotal.SetTextAlignment(TextAlignment.CENTER);
+        //                    //tablacaja.AddCell(balancetotal);
+        //                    //double balance = _totalIngresos - _totalEgresos;
+        //                    //tablacaja.AddCell(balance.ToString());
+        //                    Table pdfTable = new Table(listAllMov.Columns.Count);
+        //                    pdfTable.SetPadding(3);
+        //                    pdfTable.SetWidth(UnitValue.CreatePercentValue(100));
+        //                    pdfTable.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
 
+        //                    foreach (ColumnHeader column in listAllMov.Columns)
+        //                    {
+
+        //                        Cell cell = new Cell().Add(new Paragraph(column.Text).SetBold());
+        //                        cell.SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+        //                        cell.SetTextAlignment(TextAlignment.CENTER);
+        //                        pdfTable.AddCell(cell);
+
+        //                    }
+
+        //                    foreach (ListViewItem row in listAllMov.Items)
+        //                    {
+        //                        foreach (ListViewItem.ListViewSubItem cell in row.SubItems)
+        //                        {
+        //                            pdfTable.AddCell(cell.Text);
+        //                        }
+
+        //                    }
+        //                    //Table pdfTable2 = new Table(Singleton.getInstance().ListAlternativa.Columns.Count);
+        //                    //pdfTable2.SetPadding(3);
+        //                    //pdfTable2.SetWidth(UnitValue.CreatePercentValue(100));
+        //                    //pdfTable2.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
+
+        //                    //foreach (ColumnHeader column in Singleton.getInstance().ListAlternativa.Columns)
+        //                    //{
+
+        //                    //    Cell cell = new Cell().Add(new Paragraph(column.Text).SetBold());
+        //                    //    cell.SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+        //                    //    cell.SetTextAlignment(TextAlignment.CENTER);
+        //                    //    pdfTable2.AddCell(cell);
+
+        //                    //}
+
+        //                    //foreach (ListViewItem row in Singleton.getInstance().ListAlternativa.Items)
+        //                    //{
+        //                    //    foreach (ListViewItem.ListViewSubItem cell in row.SubItems)
+        //                    //    {
+        //                    //        pdfTable2.AddCell(cell.Text);
+        //                    //    }
+
+        //                    //}
+        //                    using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+        //                    {
+        //                        PdfWriter writer = new PdfWriter(stream);
+        //                        PdfDocument pdf = new PdfDocument(writer);
+        //                        Document document = new Document(pdf);
+        //                        pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4);
+        //                        document.SetMargins(10f, 20f, 20f, 10f);
+        //                        Paragraph p = new Paragraph();
+        //                        p.SetTextAlignment(TextAlignment.CENTER);
+        //                        p.Add($"Reporte de {Singleton.getInstance().ModuloActual}"+"s" +"\n");
+        //                        p.SetBold();
+        //                        p.SetUnderline();
+        //                        p.SetFontSize(18);
+        //                        document.Add(p);
+        //                        Paragraph fecha = new Paragraph();
+        //                        fecha.SetTextAlignment(TextAlignment.LEFT);
+        //                        fecha.Add($"Fecha de emisión: {DateTime.Now} \n");
+        //                        fecha.SetFontSize(9);
+        //                        document.Add(fecha);
+        //                        //Paragraph insumo = new Paragraph();
+        //                        //insumo.SetTextAlignment(TextAlignment.LEFT);
+        //                        //insumo.Add($"Insumo: {insumoActual.Descripcion} \n");
+        //                        //insumo.SetFontSize(12);
+        //                        //insumo.SetBold();
+        //                        //document.Add(insumo);
+        //                        if (dtpFechaDesde.Value.ToString("yyyy/MM/dd") != DateTime.Now.ToString("yyyy/MM/dd"))
+        //                        {
+        //                            Paragraph fechaDesde = new Paragraph();
+        //                            fechaDesde.SetTextAlignment(TextAlignment.CENTER);
+        //                            fechaDesde.Add($"Movimientos desde: {dtpFechaDesde.Value.Date.ToString("yyyy/MM/dd")} - hasta: {dtpFechaHasta.Value.Date.ToString("yyyy/MM/dd")}\n");
+        //                            fechaDesde.SetFontSize(9);
+        //                            document.Add(fechaDesde);
+        //                        }
+        //                        //Paragraph ordenesretiradas = new Paragraph();
+        //                        //ordenesretiradas.SetTextAlignment(TextAlignment.LEFT);
+        //                        //ordenesretiradas.Add($"Ingresos: \n");
+        //                        //ordenesretiradas.SetFontSize(12);
+        //                        //ordenesretiradas.SetBold();
+        //                        //document.Add(ordenesretiradas);
+        //                        document.Add(pdfTable);
+        //                        //Paragraph gastos = new Paragraph();
+        //                        //gastos.SetTextAlignment(TextAlignment.LEFT);
+        //                        //gastos.Add($"Consumos: \n");
+        //                        //gastos.SetFontSize(12);
+        //                        //gastos.SetBold();
+        //                        //document.Add(gastos);
+        //                        //document.Add(pdfTable2);
+        //                        //Paragraph resumen = new Paragraph();
+        //                        //resumen.SetTextAlignment(TextAlignment.LEFT);
+        //                        //resumen.Add($"Resumen: \n");
+        //                        //resumen.SetFontSize(12);
+        //                        //resumen.SetBold();
+        //                        //document.Add(resumen);
+        //                        //document.Add(tablacaja);
+        //                        document.Close();
+        //                        stream.Close();
+        //                    }
+
+        //                    MessageBox.Show("Reporte exportado exitosamente", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //                }
+        //                catch (Exception ex)
+        //                {
+        //                    MessageBox.Show("Error: " + ex.Message);
+        //                }
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("No hay registros para exportar", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //    }
+
+
+        //}
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
@@ -351,6 +528,8 @@ namespace UI.Desktop
 
             if (listInsumos.SelectedItems.Count > 0)
             {
+                ListarIngresos();
+                ListarEgresos();
                 ListarMovimientosPorInsumo(Int32.Parse(listInsumos.SelectedItems[0].Text), dtpFechaDesde.Value.Date, dtpFechaHasta.Value.Date);
             }
             else
@@ -412,6 +591,8 @@ namespace UI.Desktop
         {
             if (listInsumos.SelectedItems.Count > 0)
             {
+                ListarIngresos();
+                ListarEgresos();
                 ListarMovimientosPorInsumo(Int32.Parse(listInsumos.SelectedItems[0].Text), dtpFechaDesde.Value.Date, dtpFechaHasta.Value.Date);
             }
             else
@@ -527,6 +708,8 @@ namespace UI.Desktop
             }
             else
             {
+                listEgresos.Items.Clear();
+                listIngresos.Items.Clear();
                 ListarMovimientos(dtpFechaDesde.Value.Date, dtpFechaHasta.Value.Date);
             }
         }

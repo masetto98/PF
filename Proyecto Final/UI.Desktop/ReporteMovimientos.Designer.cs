@@ -371,7 +371,7 @@ namespace UI.Desktop
             this.listAllMov.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listAllMov.FullRowSelect = true;
             this.listAllMov.HideSelection = false;
-            this.listAllMov.Location = new System.Drawing.Point(16, 17);
+            this.listAllMov.Location = new System.Drawing.Point(9, 17);
             this.listAllMov.MinimumSize = new System.Drawing.Size(200, 100);
             this.listAllMov.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listAllMov.MouseState = MaterialSkin.MouseState.OUT;
@@ -381,6 +381,7 @@ namespace UI.Desktop
             this.listAllMov.TabIndex = 6;
             this.listAllMov.UseCompatibleStateImageBehavior = false;
             this.listAllMov.View = System.Windows.Forms.View.Details;
+            this.listAllMov.Visible = false;
             // 
             // ColFecha
             // 

@@ -954,7 +954,7 @@ namespace UI.Desktop
                 {
                     ListViewItem item = new ListViewItem(i.IdInsumo.ToString());
                     item.SubItems.Add(i.Descripcion);
-                    item.SubItems.Add(i.Stock.ToString());
+                    item.SubItems.Add(i.Stock.ToString("N2"));
                     item.SubItems.Add(i.UnidadMedida.ToString());
                     listInsumos.Items.Add(item);
                 }
