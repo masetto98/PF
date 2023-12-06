@@ -140,6 +140,7 @@ namespace UI.Desktop
                     break;
                 case 1:
                     ListarIngresos();
+                    this.dtpDesdeMovimientos.Value = DateTime.Today.Date.AddYears(-1);
                     break;
                 case 2:
                     //ListarInsumos();
@@ -933,15 +934,21 @@ namespace UI.Desktop
         {
             listIngresos.Items.Clear();
             List<InsumoProveedor> ingresos = _insumoProveedorLogic.GetAll();
+            ingresos.Sort((x, y) => DateTime.Compare(y.FechaIngreso, x.FechaIngreso));
             foreach (InsumoProveedor ig in ingresos)
             {
-                ListViewItem item = new ListViewItem(ig.IdProveedor.ToString());
-                item.SubItems.Add(ig.Proveedor.RazonSocial);
-                item.SubItems.Add(ig.IdInsumo.ToString());
-                item.SubItems.Add(ig.Insumo.Descripcion);
-                item.SubItems.Add(ig.FechaIngreso.ToString("yyyy-MM-dd HH:mm:ss.fffffff"));
-                item.SubItems.Add(ig.Cantidad.ToString());
-                listIngresos.Items.Add(item);
+                if (ig.FechaIngreso >= dtpDesdeMovimientos.Value && ig.FechaIngreso <= dtpHastaMovimientos.Value)
+                {
+                    ListViewItem item = new ListViewItem(ig.FechaIngreso.ToShortDateString());
+                    item.SubItems.Add(ig.IdProveedor.ToString());
+                    item.SubItems.Add(ig.Proveedor.RazonSocial);
+                    item.SubItems.Add(ig.IdInsumo.ToString());
+                    item.SubItems.Add(ig.Insumo.Descripcion);
+                    /*ToString("yyyy-MM-dd HH:mm:ss.fffffff")*/
+                    item.SubItems.Add(ig.Cantidad.ToString());
+                    item.SubItems.Add(ig.Insumo.UnidadMedida.ToString());
+                    listIngresos.Items.Add(item);
+                }
             }
         }
         #region ------- Stock -------
@@ -1291,14 +1298,17 @@ namespace UI.Desktop
 
         private void dtpDesdeMovimientos_ValueChanged(object sender, EventArgs e)
         {
-            filtroFechaMovimientos();
-            
-            
+            //filtroFechaMovimientos();
+            ListarIngresos();
+
+
+
         }
 
         private void dtpHastaMovimientos_ValueChanged(object sender, EventArgs e)
         {
-            filtroFechaMovimientos();
+            //filtroFechaMovimientos();
+            ListarIngresos();
         }
         
         private void btnReset_Click(object sender, EventArgs e)

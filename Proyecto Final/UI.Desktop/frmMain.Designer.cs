@@ -140,12 +140,13 @@ namespace UI.Desktop
             this.btnEliminarIngreso = new MaterialSkin.Controls.MaterialButton();
             this.btnNuevoIngreso = new MaterialSkin.Controls.MaterialButton();
             this.listIngresos = new MaterialSkin.Controls.MaterialListView();
+            this.columnFechaIngreso = new System.Windows.Forms.ColumnHeader();
             this.columnIdProvIngreso = new System.Windows.Forms.ColumnHeader();
             this.columnProvIngreso = new System.Windows.Forms.ColumnHeader();
             this.columnIdInsumoIngreso = new System.Windows.Forms.ColumnHeader();
             this.columnInsumoIngreso = new System.Windows.Forms.ColumnHeader();
-            this.columnFechaIngreso = new System.Windows.Forms.ColumnHeader();
             this.columnCantIngreso = new System.Windows.Forms.ColumnHeader();
+            this.colUnida = new System.Windows.Forms.ColumnHeader();
             this.tabSelectorInventario = new MaterialSkin.Controls.MaterialTabSelector();
             this.tabPlanificacion = new System.Windows.Forms.TabPage();
             this.tabControlPlanificacion = new MaterialSkin.Controls.MaterialTabControl();
@@ -1815,7 +1816,7 @@ namespace UI.Desktop
             this.materialLabel18.Depth = 0;
             this.materialLabel18.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel18.Location = new System.Drawing.Point(775, 27);
+            this.materialLabel18.Location = new System.Drawing.Point(1020, 26);
             this.materialLabel18.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel18.Name = "materialLabel18";
             this.materialLabel18.Size = new System.Drawing.Size(47, 19);
@@ -1828,7 +1829,7 @@ namespace UI.Desktop
             this.dtpHastaMovimientos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpHastaMovimientos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dtpHastaMovimientos.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpHastaMovimientos.Location = new System.Drawing.Point(828, 23);
+            this.dtpHastaMovimientos.Location = new System.Drawing.Point(1073, 24);
             this.dtpHastaMovimientos.Name = "dtpHastaMovimientos";
             this.dtpHastaMovimientos.Size = new System.Drawing.Size(130, 23);
             this.dtpHastaMovimientos.TabIndex = 16;
@@ -1844,7 +1845,7 @@ namespace UI.Desktop
             this.btnActualizarIngresos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnActualizarIngresos.HighEmphasis = true;
             this.btnActualizarIngresos.Icon = null;
-            this.btnActualizarIngresos.Location = new System.Drawing.Point(971, 14);
+            this.btnActualizarIngresos.Location = new System.Drawing.Point(1089, 16);
             this.btnActualizarIngresos.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnActualizarIngresos.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnActualizarIngresos.Name = "btnActualizarIngresos";
@@ -1855,6 +1856,7 @@ namespace UI.Desktop
             this.btnActualizarIngresos.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnActualizarIngresos.UseAccentColor = false;
             this.btnActualizarIngresos.UseVisualStyleBackColor = false;
+            this.btnActualizarIngresos.Visible = false;
             this.btnActualizarIngresos.Click += new System.EventHandler(this.btnActualizarIngresos_Click);
             // 
             // lblFiltrarFecha
@@ -1864,7 +1866,7 @@ namespace UI.Desktop
             this.lblFiltrarFecha.Depth = 0;
             this.lblFiltrarFecha.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblFiltrarFecha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblFiltrarFecha.Location = new System.Drawing.Point(564, 27);
+            this.lblFiltrarFecha.Location = new System.Drawing.Point(819, 28);
             this.lblFiltrarFecha.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblFiltrarFecha.Name = "lblFiltrarFecha";
             this.lblFiltrarFecha.Size = new System.Drawing.Size(49, 19);
@@ -1877,7 +1879,7 @@ namespace UI.Desktop
             this.dtpDesdeMovimientos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtpDesdeMovimientos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dtpDesdeMovimientos.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDesdeMovimientos.Location = new System.Drawing.Point(619, 23);
+            this.dtpDesdeMovimientos.Location = new System.Drawing.Point(874, 24);
             this.dtpDesdeMovimientos.Name = "dtpDesdeMovimientos";
             this.dtpDesdeMovimientos.Size = new System.Drawing.Size(130, 23);
             this.dtpDesdeMovimientos.TabIndex = 13;
@@ -1893,7 +1895,7 @@ namespace UI.Desktop
             this.btnEliminarIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEliminarIngreso.HighEmphasis = true;
             this.btnEliminarIngreso.Icon = global::UI.Desktop.Properties.Resources.trash_bin_icon_icons_com_67981;
-            this.btnEliminarIngreso.Location = new System.Drawing.Point(181, 16);
+            this.btnEliminarIngreso.Location = new System.Drawing.Point(184, 16);
             this.btnEliminarIngreso.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminarIngreso.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminarIngreso.Name = "btnEliminarIngreso";
@@ -1904,6 +1906,7 @@ namespace UI.Desktop
             this.btnEliminarIngreso.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnEliminarIngreso.UseAccentColor = false;
             this.btnEliminarIngreso.UseVisualStyleBackColor = false;
+            this.btnEliminarIngreso.Visible = false;
             this.btnEliminarIngreso.Click += new System.EventHandler(this.btnEliminarIngreso_Click);
             // 
             // btnNuevoIngreso
@@ -1916,7 +1919,7 @@ namespace UI.Desktop
             this.btnNuevoIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnNuevoIngreso.HighEmphasis = true;
             this.btnNuevoIngreso.Icon = global::UI.Desktop.Properties.Resources.product_delivery_icon_152013;
-            this.btnNuevoIngreso.Location = new System.Drawing.Point(15, 16);
+            this.btnNuevoIngreso.Location = new System.Drawing.Point(18, 16);
             this.btnNuevoIngreso.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnNuevoIngreso.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNuevoIngreso.Name = "btnNuevoIngreso";
@@ -1935,18 +1938,19 @@ namespace UI.Desktop
             this.listIngresos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.listIngresos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listIngresos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnFechaIngreso,
             this.columnIdProvIngreso,
             this.columnProvIngreso,
             this.columnIdInsumoIngreso,
             this.columnInsumoIngreso,
-            this.columnFechaIngreso,
-            this.columnCantIngreso});
+            this.columnCantIngreso,
+            this.colUnida});
             this.listIngresos.Depth = 0;
             this.listIngresos.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listIngresos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.listIngresos.FullRowSelect = true;
             this.listIngresos.HideSelection = false;
-            this.listIngresos.Location = new System.Drawing.Point(15, 58);
+            this.listIngresos.Location = new System.Drawing.Point(18, 60);
             this.listIngresos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listIngresos.MinimumSize = new System.Drawing.Size(200, 100);
             this.listIngresos.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -1954,11 +1958,16 @@ namespace UI.Desktop
             this.listIngresos.MultiSelect = false;
             this.listIngresos.Name = "listIngresos";
             this.listIngresos.OwnerDraw = true;
-            this.listIngresos.Size = new System.Drawing.Size(1070, 508);
+            this.listIngresos.Size = new System.Drawing.Size(1201, 508);
             this.listIngresos.TabIndex = 0;
             this.listIngresos.UseCompatibleStateImageBehavior = false;
             this.listIngresos.View = System.Windows.Forms.View.Details;
             this.listIngresos.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listIngresos_ColumnWidthChanging);
+            // 
+            // columnFechaIngreso
+            // 
+            this.columnFechaIngreso.Text = "Fecha Ingreso";
+            this.columnFechaIngreso.Width = 190;
             // 
             // columnIdProvIngreso
             // 
@@ -1980,15 +1989,15 @@ namespace UI.Desktop
             this.columnInsumoIngreso.Text = "Insumo";
             this.columnInsumoIngreso.Width = 210;
             // 
-            // columnFechaIngreso
-            // 
-            this.columnFechaIngreso.Text = "Fecha Ingreso";
-            this.columnFechaIngreso.Width = 190;
-            // 
             // columnCantIngreso
             // 
             this.columnCantIngreso.Text = "Cantidad";
-            this.columnCantIngreso.Width = 145;
+            this.columnCantIngreso.Width = 170;
+            // 
+            // colUnida
+            // 
+            this.colUnida.Text = "Unidad";
+            this.colUnida.Width = 150;
             // 
             // tabSelectorInventario
             // 
@@ -2751,6 +2760,7 @@ namespace UI.Desktop
             this.btnEnviarPendientes.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnEnviarPendientes.UseAccentColor = false;
             this.btnEnviarPendientes.UseVisualStyleBackColor = false;
+            this.btnEnviarPendientes.Visible = false;
             this.btnEnviarPendientes.Click += new System.EventHandler(this.btnEnviarPendientes_Click);
             // 
             // listTrabajosFinalizados
@@ -3896,6 +3906,7 @@ namespace UI.Desktop
         private System.Windows.Forms.ColumnHeader colMovimiento;
         private System.Windows.Forms.ColumnHeader colCantidad;
         private System.Windows.Forms.ColumnHeader colUnidad;
+        private System.Windows.Forms.ColumnHeader colUnida;
     }
 }
 

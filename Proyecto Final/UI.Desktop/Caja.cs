@@ -262,7 +262,7 @@ namespace UI.Desktop
 
         private void ActualizarInformacionFiltro()
         {
-            ListarPagos(this.dtpFecha.Value.Date, this.dtpFechaHasta.Value.Date);
+            ListarPagos(this.dtpFecha.Value.Date, this.dtpFechaHasta.Value.Date.AddDays(1));
             //filtroFecha();
             ListarGastosFiltro();
             CargarSeriesGrafico2();
